@@ -1,0 +1,8 @@
+{
+  "name": "@ajf/material/image",
+  "typings": "../image.d.ts",
+  "main": "../bundles/material-image.umd.js",
+  "module": "../esm5/image.es5.js",
+  "es2015": "../esm2015/image.js",
+  "sideEffects": false
+}

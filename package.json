@@ -1,0 +1,46 @@
+{
+  "name": "@ajf/material",
+  "version": "7.0.0-alpha.17-ff4de9a",
+  "description": "",
+  "main": "./bundles/material.umd.js",
+  "module": "./esm5/material.es5.js",
+  "es2015": "./esm2015/material.js",
+  "typings": "./material.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gnucoop/ajf.git"
+  },
+  "keywords": [],
+  "license": "AGPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/gnucoop/ajf/issues"
+  },
+  "homepage": "https://github.com/gnucoop/ajf#readme",
+  "peerDependencies": {
+    "@angular/cdk": ">=7.0.0",
+    "@angular/core": ">=7.0.0",
+    "@angular/common": ">=7.0.0",
+    "@angular/router": ">=7.0.0",
+    "@angular/material": ">=7.0.0",
+    "@ajf/icons": "^1.0.0",
+    "@ajf/core": "7.0.0-alpha.17-ff4de9a",
+    "flag-icon-css": "^3.2.1",
+    "ngx-color-picker": "^7.3.0",
+    "quill": "^1.3.6"
+  },
+  "dependencies": {
+    "tslib": "^1.7.1"
+  },
+  "schematics": "./schematics/collection.json",
+  "ng-update": {
+    "migrations": "./schematics/migration.json",
+    "packageGroup": [
+      "@ajf/material",
+      "@ajf/core"
+    ]
+  },
+  "sideEffects": false,
+  "releaseGitCommitSha": "ff4de9af7b3bc5588c7dd6236edfedf65997f660",
+  "releaseGitBranch": "master",
+  "releaseGitUser": "trik <marco.marche@gnucoop.com>"
+}

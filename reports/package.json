@@ -1,0 +1,8 @@
+{
+  "name": "@ajf/material/reports",
+  "typings": "../reports.d.ts",
+  "main": "../bundles/material-reports.umd.js",
+  "module": "../esm5/reports.es5.js",
+  "es2015": "../esm2015/reports.js",
+  "sideEffects": false
+}

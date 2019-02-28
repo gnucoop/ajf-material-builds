@@ -1,0 +1,8 @@
+{
+  "name": "@ajf/material/form-builder",
+  "typings": "../form-builder.d.ts",
+  "main": "../bundles/material-form-builder.umd.js",
+  "module": "../esm5/form-builder.es5.js",
+  "es2015": "../esm2015/form-builder.js",
+  "sideEffects": false
+}

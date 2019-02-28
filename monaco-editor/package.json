@@ -1,0 +1,8 @@
+{
+  "name": "@ajf/material/monaco-editor",
+  "typings": "../monaco-editor.d.ts",
+  "main": "../bundles/material-monaco-editor.umd.js",
+  "module": "../esm5/monaco-editor.es5.js",
+  "es2015": "../esm2015/monaco-editor.js",
+  "sideEffects": false
+}
