@@ -99,8 +99,8 @@
         return AjfNodeIconModule;
     }());
 
-    exports.AjfNodeIconModule = AjfNodeIconModule;
     exports.AjfNodeIcon = AjfNodeIcon;
+    exports.AjfNodeIconModule = AjfNodeIconModule;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 

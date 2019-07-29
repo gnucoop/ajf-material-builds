@@ -965,7 +965,6 @@ var AjfFormBuilderService = /** @class */ (function () {
      */
     function (nodes, _curMaxId) {
         var _this = this;
-        if (_curMaxId === void 0) { _curMaxId = 0; }
         /** @type {?} */
         var maxId = 0;
         nodes.forEach((/**
@@ -1416,7 +1415,7 @@ var AjfFbChoicesOriginEditorDialog = /** @class */ (function () {
         { type: AjfFormBuilderService }
     ]; };
     AjfFbChoicesOriginEditorDialog.propDecorators = {
-        editor: [{ type: ViewChild, args: [AjfFbChoicesOriginEditor,] }]
+        editor: [{ type: ViewChild, args: [AjfFbChoicesOriginEditor, { static: true },] }]
     };
     return AjfFbChoicesOriginEditorDialog;
 }());
@@ -1600,7 +1599,7 @@ var AjfFbConditionEditor = /** @class */ (function () {
         { type: AjfValidationService }
     ]; };
     AjfFbConditionEditor.propDecorators = {
-        monacoEditor: [{ type: ViewChild, args: [AjfMonacoEditor,] }],
+        monacoEditor: [{ type: ViewChild, args: [AjfMonacoEditor, { static: true },] }],
         fields: [{ type: Input }],
         condition: [{ type: Input }]
     };
@@ -1661,7 +1660,7 @@ var AjfFbConditionEditorDialog = /** @class */ (function () {
         { type: MatDialogRef }
     ]; };
     AjfFbConditionEditorDialog.propDecorators = {
-        editor: [{ type: ViewChild, args: [AjfFbConditionEditor,] }]
+        editor: [{ type: ViewChild, args: [AjfFbConditionEditor, { static: true },] }]
     };
     return AjfFbConditionEditorDialog;
 }());
@@ -1862,7 +1861,7 @@ var AjfFormBuilder = /** @class */ (function () {
         { type: MatDialog }
     ]; };
     AjfFormBuilder.propDecorators = {
-        designerCont: [{ type: ViewChild, args: ['designer',] }],
+        designerCont: [{ type: ViewChild, args: ['designer', { static: true },] }],
         form: [{ type: Input }]
     };
     return AjfFormBuilder;
@@ -2270,7 +2269,7 @@ var AjfFbValidationConditionEditorDialog = /** @class */ (function () {
         { type: MatDialogRef }
     ]; };
     AjfFbValidationConditionEditorDialog.propDecorators = {
-        editor: [{ type: ViewChild, args: [AjfFbConditionEditor,] }]
+        editor: [{ type: ViewChild, args: [AjfFbConditionEditor, { static: true },] }]
     };
     return AjfFbValidationConditionEditorDialog;
 }());
@@ -2329,7 +2328,7 @@ var AjfFbWarningConditionEditorDialog = /** @class */ (function () {
         { type: MatDialogRef }
     ]; };
     AjfFbWarningConditionEditorDialog.propDecorators = {
-        editor: [{ type: ViewChild, args: [AjfFbConditionEditor,] }]
+        editor: [{ type: ViewChild, args: [AjfFbConditionEditor, { static: true },] }]
     };
     return AjfFbWarningConditionEditorDialog;
 }());
@@ -4209,15 +4208,5 @@ var AjfFormBuilderModule = /** @class */ (function () {
     return AjfFormBuilderModule;
 }());
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-export { AjfFormBuilderModule, isContainerNode, isRepeatingContainerNode, isSlideNode, flattenNodes, AjfFormBuilderService, AjfFormBuilder, AjfFbBranchLine as ɵa, AjfFbChoicesOriginEditor as ɵc, AjfFbChoicesOriginEditorDialog as ɵb, AjfFbConditionEditor as ɵe, AjfFbConditionEditorDialog as ɵd, AjfFbNodeEntry as ɵf, AjfFbNodeProperties as ɵg, AjfFbNodeTypeEntry as ɵh, AjfFbValidationConditionEditorDialog as ɵi, AjfFbWarningConditionEditorDialog as ɵj };
+export { AjfFormBuilder, AjfFormBuilderModule, AjfFormBuilderService, flattenNodes, isContainerNode, isRepeatingContainerNode, isSlideNode, AjfFbBranchLine as ɵa, AjfFbChoicesOriginEditorDialog as ɵb, AjfFbChoicesOriginEditor as ɵc, AjfFbConditionEditorDialog as ɵd, AjfFbConditionEditor as ɵe, AjfFbNodeEntry as ɵf, AjfFbNodeProperties as ɵg, AjfFbNodeTypeEntry as ɵh, AjfFbValidationConditionEditorDialog as ɵi, AjfFbWarningConditionEditorDialog as ɵj };
 //# sourceMappingURL=form-builder.es5.js.map

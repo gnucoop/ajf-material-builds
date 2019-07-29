@@ -3781,8 +3781,8 @@ var AjfReportBuilderConditionEditor = /** @class */ (function () {
     ]; };
     AjfReportBuilderConditionEditor.propDecorators = {
         visibility: [{ type: Input }],
-        conditionTextArea: [{ type: ViewChild, args: ['conditionTextArea',] }],
-        errorMessage: [{ type: ViewChild, args: ['errorMessage',] }]
+        conditionTextArea: [{ type: ViewChild, args: ['conditionTextArea', { static: false },] }],
+        errorMessage: [{ type: ViewChild, args: ['errorMessage', { static: false },] }]
     };
     return AjfReportBuilderConditionEditor;
 }());
@@ -3797,9 +3797,9 @@ var AjfReportBuilderConditionEditor = /** @class */ (function () {
  * @export
  */
 var AjfReportBuilderContent = /** @class */ (function () {
-    function AjfReportBuilderContent(service, cdRef) {
-        this.service = service;
-        this.cdRef = cdRef;
+    function AjfReportBuilderContent(_service, _cdRef) {
+        this._service = _service;
+        this._cdRef = _cdRef;
         // this boolean sign if is dragged a widget
         this.onDragged = false;
         /**
@@ -3834,9 +3834,9 @@ var AjfReportBuilderContent = /** @class */ (function () {
         this._footerWidgetsSub = Subscription.EMPTY;
         this._onOverSub = Subscription.EMPTY;
         this._currentWidgetSub = Subscription.EMPTY;
-        this.headerStyles = this.service.headerStyles;
-        this.contentStyles = this.service.contentStyles;
-        this.footerStyles = this.service.footerStyles;
+        this.headerStyles = this._service.headerStyles;
+        this.contentStyles = this._service.contentStyles;
+        this.footerStyles = this._service.footerStyles;
     }
     /**
      * @return {?}
@@ -3846,7 +3846,7 @@ var AjfReportBuilderContent = /** @class */ (function () {
      */
     function () {
         this.showActions = true;
-        this.service.overStarted();
+        this._service.overStarted();
     };
     /**
      * @return {?}
@@ -3856,7 +3856,7 @@ var AjfReportBuilderContent = /** @class */ (function () {
      */
     function () {
         this.showActions = false;
-        this.service.overEnded();
+        this._service.overEnded();
     };
     /**
      * @param {?} dropZones
@@ -3928,7 +3928,7 @@ var AjfReportBuilderContent = /** @class */ (function () {
             if (s != null) {
                 s.unsubscribe();
             }
-            _this.service.dragStarted();
+            _this._service.dragStarted();
         }));
     };
     /**
@@ -3949,7 +3949,7 @@ var AjfReportBuilderContent = /** @class */ (function () {
      * @return {?}
      */
     function () {
-        this.service.dragEnded();
+        this._service.dragEnded();
     };
     /**
      *  sign the enter of mouse drag
@@ -3973,7 +3973,7 @@ var AjfReportBuilderContent = /** @class */ (function () {
      * @return {?}
      */
     function (array, index) {
-        this.service.dragEnter(array, index);
+        this._service.dragEnter(array, index);
     };
     /**
      * sign the leave of mouse drag
@@ -3993,7 +3993,7 @@ var AjfReportBuilderContent = /** @class */ (function () {
      * @return {?}
      */
     function () {
-        this.service.dragLeave();
+        this._service.dragLeave();
     };
     /**
      *  return true if array and index is === with array and index of onDragEnter
@@ -4057,7 +4057,7 @@ var AjfReportBuilderContent = /** @class */ (function () {
      * @return {?}
      */
     function (type, idx) {
-        this.service.remove(type, idx);
+        this._service.remove(type, idx);
     };
     /**
      * add widget element into type array in idx position
@@ -4089,11 +4089,11 @@ var AjfReportBuilderContent = /** @class */ (function () {
      */
     function (arrayTo, event, to) {
         this.onDragEndHandler();
-        this.service.setOrigin(arrayTo);
+        this._service.setOrigin(arrayTo);
         /** @type {?} */
         var itemData = (/** @type {?} */ (event.item.data));
         if (itemData.fromColumn != null) {
-            this.service.removeWidgetToColumn(itemData.fromColumn, (/** @type {?} */ (itemData.fromIndex)));
+            this._service.removeWidgetToColumn(itemData.fromColumn, (/** @type {?} */ (itemData.fromIndex)));
             this.currentWidget = (/** @type {?} */ (itemData.widget));
         }
         else if (itemData.widget != null) {
@@ -4114,13 +4114,13 @@ var AjfReportBuilderContent = /** @class */ (function () {
         if (this.currentWidget != null) {
             switch (arrayTo) {
                 case 'header':
-                    this.service.addHeaderWidget(this.currentWidget, to);
+                    this._service.addHeaderWidget(this.currentWidget, to);
                     break;
                 case 'content':
-                    this.service.addContentWidget(this.currentWidget, to);
+                    this._service.addContentWidget(this.currentWidget, to);
                     break;
                 case 'footer':
-                    this.service.addfooterWidget(this.currentWidget, to);
+                    this._service.addfooterWidget(this.currentWidget, to);
                     break;
             }
         }
@@ -4134,7 +4134,7 @@ var AjfReportBuilderContent = /** @class */ (function () {
      */
     function () {
         var _this = this;
-        this._headerWidgetsSub = this.service.headerWidgets
+        this._headerWidgetsSub = this._service.headerWidgets
             .subscribe((/**
          * @param {?} x
          * @return {?}
@@ -4142,7 +4142,7 @@ var AjfReportBuilderContent = /** @class */ (function () {
         function (x) {
             _this.headerWidgets = x.widgets;
         }));
-        this._contentWidgetsSub = this.service.contentWidgets
+        this._contentWidgetsSub = this._service.contentWidgets
             .subscribe((/**
          * @param {?} x
          * @return {?}
@@ -4150,7 +4150,7 @@ var AjfReportBuilderContent = /** @class */ (function () {
         function (x) {
             _this.contentWidgets = x.widgets;
         }));
-        this._footerWidgetsSub = this.service.footerWidgets
+        this._footerWidgetsSub = this._service.footerWidgets
             .subscribe((/**
          * @param {?} x
          * @return {?}
@@ -4158,7 +4158,7 @@ var AjfReportBuilderContent = /** @class */ (function () {
         function (x) {
             _this.footerWidgets = x.widgets;
         }));
-        this._onDraggedSub = this.service.onDragged
+        this._onDraggedSub = this._service.onDragged
             .subscribe((/**
          * @param {?} x
          * @return {?}
@@ -4166,7 +4166,7 @@ var AjfReportBuilderContent = /** @class */ (function () {
         function (x) {
             _this.onDragged = x;
         }));
-        this._fixedZoomSub = this.service.fixedZoom
+        this._fixedZoomSub = this._service.fixedZoom
             .subscribe((/**
          * @param {?} bool
          * @return {?}
@@ -4174,7 +4174,7 @@ var AjfReportBuilderContent = /** @class */ (function () {
         function (bool) {
             _this.fixedZoom = bool;
         }));
-        this._onDragEnterSub = this.service.onDragEnter
+        this._onDragEnterSub = this._service.onDragEnter
             .subscribe((/**
          * @param {?} x
          * @return {?}
@@ -4182,7 +4182,7 @@ var AjfReportBuilderContent = /** @class */ (function () {
         function (x) {
             _this.onDragEnter = x;
         }));
-        this._onOverSub = this.service.onOver
+        this._onOverSub = this._service.onOver
             .subscribe((/**
          * @param {?} x
          * @return {?}
@@ -4198,7 +4198,7 @@ var AjfReportBuilderContent = /** @class */ (function () {
      * @return {?}
      */
     function () {
-        this.cdRef.detectChanges();
+        this._cdRef.detectChanges();
     };
     /**
      * @return {?}
@@ -4242,8 +4242,8 @@ var AjfReportBuilderContent = /** @class */ (function () {
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 var AjfReportBuilderCustomWidgetDialog = /** @class */ (function () {
-    function AjfReportBuilderCustomWidgetDialog(service, _dialogRef) {
-        this.service = service;
+    function AjfReportBuilderCustomWidgetDialog(_service, _dialogRef) {
+        this._service = _service;
         this._dialogRef = _dialogRef;
     }
     /**
@@ -4253,7 +4253,7 @@ var AjfReportBuilderCustomWidgetDialog = /** @class */ (function () {
      * @return {?}
      */
     function () {
-        this.service.changeLabelCustomWidget(this.label, this.position);
+        this._service.changeLabelCustomWidget(this.label, this.position);
         this._dialogRef.close();
     };
     AjfReportBuilderCustomWidgetDialog.decorators = [
@@ -4344,8 +4344,8 @@ var AjfReportBuilderCustomWidgetToolbarButton = /** @class */ (function () {
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 var AjfReportBuilderCustomWidgetsToolbar = /** @class */ (function () {
-    function AjfReportBuilderCustomWidgetsToolbar(service, dialog) {
-        this.service = service;
+    function AjfReportBuilderCustomWidgetsToolbar(_service, dialog) {
+        this._service = _service;
         this.dialog = dialog;
         this.customWidgets = [];
         this._customWidgetsSub = Subscription.EMPTY;
@@ -4403,7 +4403,7 @@ var AjfReportBuilderCustomWidgetsToolbar = /** @class */ (function () {
             if (s != null) {
                 s.unsubscribe();
             }
-            _this.service.dragStarted();
+            _this._service.dragStarted();
         }));
     };
     /**
@@ -4424,7 +4424,7 @@ var AjfReportBuilderCustomWidgetsToolbar = /** @class */ (function () {
      * @return {?}
      */
     function () {
-        this.service.dragEnded();
+        this._service.dragEnded();
     };
     /**
      *  sign the enter of mouse drag
@@ -4448,7 +4448,7 @@ var AjfReportBuilderCustomWidgetsToolbar = /** @class */ (function () {
      * @return {?}
      */
     function (array, index) {
-        this.service.dragEnter(array, index);
+        this._service.dragEnter(array, index);
     };
     /**
      * sign the leave of mouse drag
@@ -4468,7 +4468,7 @@ var AjfReportBuilderCustomWidgetsToolbar = /** @class */ (function () {
      * @return {?}
      */
     function () {
-        this.service.dragLeave();
+        this._service.dragLeave();
     };
     /**
      * @return {?}
@@ -4478,7 +4478,7 @@ var AjfReportBuilderCustomWidgetsToolbar = /** @class */ (function () {
      */
     function () {
         var _this = this;
-        this._customWidgetsSub = this.service.customWidgets
+        this._customWidgetsSub = this._service.customWidgets
             .subscribe((/**
          * @param {?} x
          * @return {?}
@@ -4490,11 +4490,11 @@ var AjfReportBuilderCustomWidgetsToolbar = /** @class */ (function () {
                 _this.openDialog(_this.customWidgets.length - 1);
             }
         }));
-        this.service.addCustomWidgets({
+        this._service.addCustomWidgets({
             json: this._threeColumnsLayout,
             type: 'LayoutWidgetWith3Columns',
         });
-        this.service.addCustomWidgets({
+        this._service.addCustomWidgets({
             json: this._fourColumnsLayout,
             type: 'LayoutWidgetWith4Columns'
         });
@@ -4507,7 +4507,7 @@ var AjfReportBuilderCustomWidgetsToolbar = /** @class */ (function () {
      */
     function () {
         this._customWidgetsSub.unsubscribe();
-        this.service.resetCustomWidgets();
+        this._service.resetCustomWidgets();
     };
     AjfReportBuilderCustomWidgetsToolbar.decorators = [
         { type: Component, args: [{selector: 'ajf-report-builder-custom-widgets-toolbar',
@@ -4821,6 +4821,7 @@ var AjfReportBuilderFormsAnalyzerDialog = /** @class */ (function () {
             switch (this.currentWidget.widgetType) {
                 case 2:
                     this.saveImageFormula();
+                    break;
                 case 3:
                     this.saveFormulaHtml();
                     break;
@@ -5011,9 +5012,9 @@ var AjfReportBuilderFormsAnalyzerDialog = /** @class */ (function () {
         index: [{ type: Input }],
         mainIndex: [{ type: Input }],
         reference: [{ type: Input }],
-        formulaTextArea: [{ type: ViewChild, args: ['formulaTextArea',] }],
-        errorMessage: [{ type: ViewChild, args: ['errorMessage',] }],
-        monacoEditor: [{ type: ViewChild, args: [AjfMonacoEditor,] }]
+        formulaTextArea: [{ type: ViewChild, args: ['formulaTextArea', { static: true },] }],
+        errorMessage: [{ type: ViewChild, args: ['errorMessage', { static: true },] }],
+        monacoEditor: [{ type: ViewChild, args: [AjfMonacoEditor, { static: false },] }]
     };
     return AjfReportBuilderFormsAnalyzerDialog;
 }());
@@ -5677,10 +5678,10 @@ var AjfReportBuilderImageGroup = /** @class */ (function () {
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 var AjfReportBuilderProperties = /** @class */ (function () {
-    function AjfReportBuilderProperties(_dialog, service) {
+    function AjfReportBuilderProperties(_dialog, _service) {
         var _this = this;
         this._dialog = _dialog;
-        this.service = service;
+        this._service = _service;
         /**
          *  true when the first time chart type is setted
          *
@@ -6081,7 +6082,7 @@ var AjfReportBuilderProperties = /** @class */ (function () {
         this._updateWidgetBorderRadiusEvt = new EventEmitter();
         this.tabValue = 'backgroundColor';
         this.setForms();
-        this.iconSet.data = Object.keys(service.iconSets).filter((/**
+        this.iconSet.data = Object.keys(_service.iconSets).filter((/**
          * @param {?} x
          * @return {?}
          */
@@ -6090,9 +6091,9 @@ var AjfReportBuilderProperties = /** @class */ (function () {
          * @return {?}
          */
         function (i) {
-            return { name: i, icons: service.iconSets[i] };
+            return { name: i, icons: _service.iconSets[i] };
         }));
-        this._headerStyleSub = this.service.headerStyles.subscribe((/**
+        this._headerStyleSub = this._service.headerStyles.subscribe((/**
          * @param {?} s
          * @return {?}
          */
@@ -6101,7 +6102,7 @@ var AjfReportBuilderProperties = /** @class */ (function () {
                 _this.styleBackgroundColor = s['background-color'];
             }
         }));
-        this._contentStylesSub = this.service.contentStyles.subscribe((/**
+        this._contentStylesSub = this._service.contentStyles.subscribe((/**
          * @param {?} s
          * @return {?}
          */
@@ -6110,7 +6111,7 @@ var AjfReportBuilderProperties = /** @class */ (function () {
                 _this.styleBackgroundColor = s['background-color'];
             }
         }));
-        this._footerStylesSub = this.service.footerStyles.subscribe((/**
+        this._footerStylesSub = this._service.footerStyles.subscribe((/**
          * @param {?} s
          * @return {?}
          */
@@ -6119,7 +6120,7 @@ var AjfReportBuilderProperties = /** @class */ (function () {
                 _this.styleBackgroundColor = s['background-color'];
             }
         }));
-        this._originSub = this.service.origin.subscribe((/**
+        this._originSub = this._service.origin.subscribe((/**
          * @param {?} s
          * @return {?}
          */
@@ -6321,7 +6322,7 @@ var AjfReportBuilderProperties = /** @class */ (function () {
             for (var i = 0; i < this.formsJson.forms.length; i++) {
                 forms.push(AjfForm.fromJson(this.formsJson.forms[i]));
             }
-            this.service.setReportForms(forms);
+            this._service.setReportForms(forms);
         }
         catch (e) { }
     };
@@ -6352,7 +6353,7 @@ var AjfReportBuilderProperties = /** @class */ (function () {
      * @return {?}
      */
     function (col, idx) {
-        this.service.instantColumnValue(col, idx);
+        this._service.instantColumnValue(col, idx);
     };
     /**
      *  force copy of style
@@ -6379,7 +6380,7 @@ var AjfReportBuilderProperties = /** @class */ (function () {
             return;
         }
         this.currentWidget.styles = deepCopy(this.currentWidget.styles);
-        this.service.updateCurrentWidget(this.currentWidget);
+        this._service.updateCurrentWidget(this.currentWidget);
     };
     /**
      * call to service to add new style to widget
@@ -6408,7 +6409,7 @@ var AjfReportBuilderProperties = /** @class */ (function () {
      * @return {?}
      */
     function (label, value) {
-        this.service.setWidgetStyles(label, value);
+        this._service.setWidgetStyles(label, value);
         this.currentColor = value;
         this.setStyle();
     };
@@ -6491,7 +6492,7 @@ var AjfReportBuilderProperties = /** @class */ (function () {
      * @return {?}
      */
     function (label, value) {
-        this.service.setSectionStyles(this.origin, label, value);
+        this._service.setSectionStyles(this.origin, label, value);
         this.styleColor = value;
     };
     /**
@@ -6521,7 +6522,7 @@ var AjfReportBuilderProperties = /** @class */ (function () {
      * @return {?}
      */
     function (label, value) {
-        this.service.setReportStyles(label, value);
+        this._service.setReportStyles(label, value);
         this.styleBackgroundColor = value;
     };
     /**
@@ -6545,8 +6546,8 @@ var AjfReportBuilderProperties = /** @class */ (function () {
      * @return {?}
      */
     function () {
-        this.service.addCustomColor(this.currentColor);
-        this.service.updateCurrentWidget(this.currentWidget);
+        this._service.addCustomColor(this.currentColor);
+        this._service.updateCurrentWidget(this.currentWidget);
     };
     /**
      * get the module exploit to quill text editor
@@ -6633,7 +6634,7 @@ var AjfReportBuilderProperties = /** @class */ (function () {
      * @return {?}
      */
     function () {
-        this.service.addColumn();
+        this._service.addColumn();
     };
     /**
      * call to service to add a obj to current layout widget
@@ -6659,7 +6660,7 @@ var AjfReportBuilderProperties = /** @class */ (function () {
      * @return {?}
      */
     function (idx) {
-        this.service.fixedColumn(idx);
+        this._service.fixedColumn(idx);
     };
     /**
      * call to service to remove obj of current layout widget
@@ -6685,7 +6686,7 @@ var AjfReportBuilderProperties = /** @class */ (function () {
      * @return {?}
      */
     function (idx) {
-        this.service.remove('unfixedColumn', idx);
+        this._service.remove('unfixedColumn', idx);
     };
     /* image functions */
     /**
@@ -6711,7 +6712,7 @@ var AjfReportBuilderProperties = /** @class */ (function () {
      * @return {?}
      */
     function () {
-        this.service.setImageUrl(this.imageUrl);
+        this._service.setImageUrl(this.imageUrl);
     };
     /**
      * @param {?} icon
@@ -6723,7 +6724,7 @@ var AjfReportBuilderProperties = /** @class */ (function () {
      */
     function (icon) {
         this._icon = icon;
-        this.service.setIcon(icon);
+        this._service.setIcon(icon);
     };
     /* chart functions */
     /**
@@ -6753,7 +6754,7 @@ var AjfReportBuilderProperties = /** @class */ (function () {
      */
     function (type) {
         this.initChartType = true;
-        this.service.setChartType(type);
+        this._service.setChartType(type);
     };
     /**
      * @param {?} value
@@ -6764,7 +6765,7 @@ var AjfReportBuilderProperties = /** @class */ (function () {
      * @return {?}
      */
     function (value) {
-        this.service.setChartBorderWidth(value);
+        this._service.setChartBorderWidth(value);
     };
     /**
      * @param {?} event
@@ -6806,7 +6807,7 @@ var AjfReportBuilderProperties = /** @class */ (function () {
      * @return {?}
      */
     function (index) {
-        this.service.removeChartBackgroundColor(index);
+        this._service.removeChartBackgroundColor(index);
     };
     /**
      * call to service to remove border color to current chart
@@ -6832,7 +6833,7 @@ var AjfReportBuilderProperties = /** @class */ (function () {
      * @return {?}
      */
     function (index) {
-        this.service.removeChartBorderColor(index);
+        this._service.removeChartBorderColor(index);
     };
     /**
      * @return {?}
@@ -6841,7 +6842,7 @@ var AjfReportBuilderProperties = /** @class */ (function () {
      * @return {?}
      */
     function () {
-        this.service.updateCurrentWidget(null);
+        this._service.updateCurrentWidget(null);
     };
     /**
      * @param {?} event
@@ -6868,7 +6869,7 @@ var AjfReportBuilderProperties = /** @class */ (function () {
      */
     function () {
         var _this = this;
-        this._formsSub = this.service.reportForms
+        this._formsSub = this._service.reportForms
             .subscribe((/**
          * @param {?} x
          * @return {?}
@@ -6876,7 +6877,7 @@ var AjfReportBuilderProperties = /** @class */ (function () {
         function (x) {
             _this.forms = x || [];
         }));
-        this._currentWidgetSub = this.service.currentWidget
+        this._currentWidgetSub = this._service.currentWidget
             .subscribe((/**
          * @param {?} x
          * @return {?}
@@ -6899,7 +6900,7 @@ var AjfReportBuilderProperties = /** @class */ (function () {
                 _this.widgetName = '';
             }
         }));
-        this._colorSub = this.service.colors
+        this._colorSub = this._service.colors
             .subscribe((/**
          * @param {?} x
          * @return {?}
@@ -6928,7 +6929,7 @@ var AjfReportBuilderProperties = /** @class */ (function () {
                 };
             }
         }));
-        this.getHTML = this.service.currentWidget.pipe(map((/**
+        this.getHTML = this._service.currentWidget.pipe(map((/**
          * @param {?} widget
          * @return {?}
          */
@@ -6940,7 +6941,7 @@ var AjfReportBuilderProperties = /** @class */ (function () {
             }
             return '';
         })), distinctUntilChanged(), startWith('<p><br></p>'));
-        this.getHeightWidget = this.service.currentWidget.pipe(filter((/**
+        this.getHeightWidget = this._service.currentWidget.pipe(filter((/**
          * @param {?} x
          * @return {?}
          */
@@ -6957,7 +6958,7 @@ var AjfReportBuilderProperties = /** @class */ (function () {
                 }
             }
         })), distinctUntilChanged());
-        this.getFontSizeWidget = this.service.currentWidget.pipe(map((/**
+        this.getFontSizeWidget = this._service.currentWidget.pipe(map((/**
          * @param {?} myObj
          * @return {?}
          */
@@ -6966,7 +6967,7 @@ var AjfReportBuilderProperties = /** @class */ (function () {
                 return (_this.toNumber(myObj.styles['font-size']) || 12);
             }
         })), distinctUntilChanged());
-        this.getFontAlignWidget = this.service.currentWidget.pipe(map((/**
+        this.getFontAlignWidget = this._service.currentWidget.pipe(map((/**
          * @param {?} myObj
          * @return {?}
          */
@@ -6975,7 +6976,7 @@ var AjfReportBuilderProperties = /** @class */ (function () {
                 return ((myObj.styles['text-align']) || 'center');
             }
         })), distinctUntilChanged());
-        this.getBorderWidthWidget = this.service.currentWidget.pipe(map((/**
+        this.getBorderWidthWidget = this._service.currentWidget.pipe(map((/**
          * @param {?} myObj
          * @return {?}
          */
@@ -7020,7 +7021,7 @@ var AjfReportBuilderProperties = /** @class */ (function () {
          * @return {?}
          */
         function (m) { return (/** @type {?} */ (m))[3]; })));
-        this.getBorderRadiusWidget = this.service.currentWidget.pipe(map((/**
+        this.getBorderRadiusWidget = this._service.currentWidget.pipe(map((/**
          * @param {?} myObj
          * @return {?}
          */
@@ -7065,7 +7066,7 @@ var AjfReportBuilderProperties = /** @class */ (function () {
          * @return {?}
          */
         function (m) { return (/** @type {?} */ (m))[3]; })));
-        this.getMarginWidget = this.service.currentWidget.pipe(map((/**
+        this.getMarginWidget = this._service.currentWidget.pipe(map((/**
          * @param {?} myObj
          * @return {?}
          */
@@ -7110,7 +7111,7 @@ var AjfReportBuilderProperties = /** @class */ (function () {
          * @return {?}
          */
         function (m) { return (/** @type {?} */ (m))[3]; })));
-        this.getPaddingWidget = this.service.currentWidget.pipe(map((/**
+        this.getPaddingWidget = this._service.currentWidget.pipe(map((/**
          * @param {?} myObj
          * @return {?}
          */
@@ -7155,7 +7156,7 @@ var AjfReportBuilderProperties = /** @class */ (function () {
          * @return {?}
          */
         function (m) { return (/** @type {?} */ (m))[3]; })));
-        this.getBackgroundColorWidget = this.service.currentWidget.pipe(map((/**
+        this.getBackgroundColorWidget = this._service.currentWidget.pipe(map((/**
          * @param {?} myObj
          * @return {?}
          */
@@ -7164,7 +7165,7 @@ var AjfReportBuilderProperties = /** @class */ (function () {
                 return myObj.styles['backgroundColor'] || '';
             }
         })), distinctUntilChanged());
-        this.getColorWidget = this.service.currentWidget.pipe(map((/**
+        this.getColorWidget = this._service.currentWidget.pipe(map((/**
          * @param {?} myObj
          * @return {?}
          */
@@ -7315,10 +7316,10 @@ var AjfReportBuilderProperties = /** @class */ (function () {
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 var AjfQuillEditor = /** @class */ (function () {
-    function AjfQuillEditor(elementRef, renderer, _service) {
+    function AjfQuillEditor(_elementRef, _renderer, _service) {
         var _this = this;
-        this.elementRef = elementRef;
-        this.renderer = renderer;
+        this._elementRef = _elementRef;
+        this._renderer = _renderer;
         this._service = _service;
         this.emptyArray = [];
         this._init = false;
@@ -7407,7 +7408,7 @@ var AjfQuillEditor = /** @class */ (function () {
                 // reference is defined only when the user want to edit the formula
                 if (event.reference !== undefined) {
                     event.reference.innerHTML = event.formula;
-                    _this.renderer.setAttribute(event.reference, 'formula', event.formula);
+                    _this._renderer.setAttribute(event.reference, 'formula', event.formula);
                     /** @type {?} */
                     var efs = _this._formulas.filter((/**
                      * @param {?} f
@@ -7429,7 +7430,7 @@ var AjfQuillEditor = /** @class */ (function () {
                         formulaEntry = { formula: event.reference, unlisten: null };
                         _this._formulas.push(formulaEntry);
                     }
-                    formulaEntry.unlisten = _this.renderer.listen(event.reference, 'click', (/**
+                    formulaEntry.unlisten = _this._renderer.listen(event.reference, 'click', (/**
                      * @return {?}
                      */
                     function () {
@@ -7443,18 +7444,18 @@ var AjfQuillEditor = /** @class */ (function () {
                 }
                 else {
                     /** @type {?} */
-                    var quillEditor = _this.elementRef.nativeElement.querySelector('.ajf-ql-editor');
+                    var quillEditor = _this._elementRef.nativeElement.querySelector('.ajf-ql-editor');
                     /** @type {?} */
-                    var link_1 = _this.renderer.createElement('a');
-                    _this.renderer.setAttribute(link_1, 'href', 'javascript:void(0)');
-                    _this.renderer.setStyle(link_1, 'cursor', 'pointer');
-                    _this.renderer.setAttribute(link_1, 'formula', _this.check(event.formula));
+                    var link_1 = _this._renderer.createElement('a');
+                    _this._renderer.setAttribute(link_1, 'href', 'javascript:void(0)');
+                    _this._renderer.setStyle(link_1, 'cursor', 'pointer');
+                    _this._renderer.setAttribute(link_1, 'formula', _this.check(event.formula));
                     /** @type {?} */
-                    var linkLabel = _this.renderer.createText(event.formula);
-                    _this.renderer.appendChild(link_1, linkLabel);
+                    var linkLabel = _this._renderer.createText(event.formula);
+                    _this._renderer.appendChild(link_1, linkLabel);
                     // add listener related on the click event of the new formula
                     /** @type {?} */
-                    var unlisten = _this.renderer.listen(link_1, 'click', (/**
+                    var unlisten = _this._renderer.listen(link_1, 'click', (/**
                      * @param {?} _
                      * @return {?}
                      */
@@ -7466,7 +7467,7 @@ var AjfQuillEditor = /** @class */ (function () {
                         };
                         _this.formulaClick.emit(obj);
                     }));
-                    _this.renderer.appendChild(quillEditor, link_1);
+                    _this._renderer.appendChild(quillEditor, link_1);
                     _this._formulas.push({ unlisten: unlisten, formula: link_1 });
                 }
             }));
@@ -7523,7 +7524,7 @@ var AjfQuillEditor = /** @class */ (function () {
     function () {
         var _this = this;
         /** @type {?} */
-        var toolbarElem = this.elementRef.nativeElement.querySelector('[ajf-quill-editor-toolbar]');
+        var toolbarElem = this._elementRef.nativeElement.querySelector('[ajf-quill-editor-toolbar]');
         /** @type {?} */
         var modules = this.modules || this.defaultModules;
         Quill.register(this.font, true);
@@ -7531,8 +7532,8 @@ var AjfQuillEditor = /** @class */ (function () {
             modules['toolbar'] = toolbarElem;
             modules['formula'] = true;
         }
-        this.elementRef.nativeElement.insertAdjacentHTML('beforeend', '<div quill-editor-element></div>');
-        this.editorElem = this.elementRef.nativeElement.querySelector('[quill-editor-element]');
+        this._elementRef.nativeElement.insertAdjacentHTML('beforeend', '<div quill-editor-element></div>');
+        this.editorElem = this._elementRef.nativeElement.querySelector('[quill-editor-element]');
         this.quillEditor = new Quill(this.editorElem, {
             modules: modules,
             placeholder: this.placeholder || 'Insert text here ...',
@@ -7586,8 +7587,8 @@ var AjfQuillEditor = /** @class */ (function () {
             });
         }));
         /** @type {?} */
-        var elem = this.elementRef.nativeElement.querySelector('.ajf-ql-formula');
-        this.listenFunc = this.renderer.listen(elem, 'click', (/**
+        var elem = this._elementRef.nativeElement.querySelector('.ajf-ql-formula');
+        this.listenFunc = this._renderer.listen(elem, 'click', (/**
          * @param {?} _
          * @return {?}
          */
@@ -7610,17 +7611,17 @@ var AjfQuillEditor = /** @class */ (function () {
             if (currentValue) {
                 if (currentValue == this.initHTML && !this._init) {
                     /** @type {?} */
-                    var editor = this.elementRef.nativeElement.querySelector('.ajf-ql-editor');
+                    var editor = this._elementRef.nativeElement.querySelector('.ajf-ql-editor');
                     editor.innerHTML = this.initHTML;
                     /** @type {?} */
-                    var allFormulas = this.elementRef.nativeElement.querySelectorAll('[formula]');
+                    var allFormulas = this._elementRef.nativeElement.querySelectorAll('[formula]');
                     allFormulas.forEach((/**
                      * @param {?} elem
                      * @return {?}
                      */
                     function (elem) {
                         /** @type {?} */
-                        var unlisten = _this.renderer.listen(elem, 'click', (/**
+                        var unlisten = _this._renderer.listen(elem, 'click', (/**
                          * @param {?} _
                          * @return {?}
                          */
@@ -7632,7 +7633,7 @@ var AjfQuillEditor = /** @class */ (function () {
                             };
                             _this.formulaClick.emit(obj);
                         }));
-                        _this.renderer.setStyle(elem, 'cursor', 'pointer');
+                        _this._renderer.setStyle(elem, 'cursor', 'pointer');
                         _this._formulas.push({ unlisten: unlisten, formula: elem });
                         _this._init = true;
                     }));
@@ -7722,7 +7723,7 @@ var AjfQuillEditor = /** @class */ (function () {
                 theme: this.theme || 'snow',
                 formats: this.formats
             });
-            this.elementRef.nativeElement.children[0].remove();
+            this._elementRef.nativeElement.children[0].remove();
         }
     };
     /**
@@ -7792,8 +7793,8 @@ var AjfQuillEditor = /** @class */ (function () {
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 var AjfReportBuilderRendererWidget = /** @class */ (function () {
-    function AjfReportBuilderRendererWidget(service) {
-        this.service = service;
+    function AjfReportBuilderRendererWidget(_service) {
+        this._service = _service;
         // this boolean sign if is dragged a widget
         this.onDragged = false;
         this.currentContentWidget = null;
@@ -7863,7 +7864,7 @@ var AjfReportBuilderRendererWidget = /** @class */ (function () {
          */
         function () {
             s.unsubscribe();
-            _this.service.dragStarted();
+            _this._service.dragStarted();
         }));
     };
     /**
@@ -7884,7 +7885,7 @@ var AjfReportBuilderRendererWidget = /** @class */ (function () {
      * @return {?}
      */
     function () {
-        this.service.dragEnded();
+        this._service.dragEnded();
     };
     /**
      * @return {?}
@@ -8051,7 +8052,7 @@ var AjfReportBuilderRendererWidget = /** @class */ (function () {
      */
     function (event, toColumn) {
         this.onDragEndHandler();
-        this.service.addToColumn(event, toColumn);
+        this._service.addToColumn(event, toColumn);
     };
     /**
      * @return {?}
@@ -8061,7 +8062,7 @@ var AjfReportBuilderRendererWidget = /** @class */ (function () {
      */
     function () {
         var _this = this;
-        this._onDraggedSub = this.service.onDragged
+        this._onDraggedSub = this._service.onDragged
             .subscribe((/**
          * @param {?} x
          * @return {?}
@@ -8069,7 +8070,7 @@ var AjfReportBuilderRendererWidget = /** @class */ (function () {
         function (x) {
             _this.onDragged = x;
         }));
-        this.getChartType = this.service.currentWidget.pipe(map((/**
+        this.getChartType = this._service.currentWidget.pipe(map((/**
          * @param {?} widget
          * @return {?}
          */
@@ -8081,7 +8082,7 @@ var AjfReportBuilderRendererWidget = /** @class */ (function () {
             var myObj = (/** @type {?} */ (_this.widget));
             return (/** @type {?} */ ((myObj.chartType)));
         })), distinctUntilChanged(), startWith(0));
-        this.getDataset = this.service.currentWidget.pipe(map((/**
+        this.getDataset = this._service.currentWidget.pipe(map((/**
          * @param {?} widget
          * @return {?}
          */
@@ -8095,7 +8096,7 @@ var AjfReportBuilderRendererWidget = /** @class */ (function () {
                 return [];
             }
         })), distinctUntilChanged());
-        this.getTableTitles = this.service.currentWidget.pipe(map((/**
+        this.getTableTitles = this._service.currentWidget.pipe(map((/**
          * @param {?} widget
          * @return {?}
          */
@@ -8119,7 +8120,7 @@ var AjfReportBuilderRendererWidget = /** @class */ (function () {
                 return [];
             }
         })));
-        this.getTableContent = this.service.currentWidget.pipe(map((/**
+        this.getTableContent = this._service.currentWidget.pipe(map((/**
          * @param {?} widget
          * @return {?}
          */
@@ -8149,7 +8150,7 @@ var AjfReportBuilderRendererWidget = /** @class */ (function () {
                 return tableContent;
             }
         })));
-        this.service.updateCurrentWidget(this.widget);
+        this._service.updateCurrentWidget(this.widget);
     };
     /**
      * @param {?} changes
@@ -8307,7 +8308,7 @@ var AjfReportBuilderThemeColorDialog = /** @class */ (function () {
         { type: MatDialogRef }
     ]; };
     AjfReportBuilderThemeColorDialog.propDecorators = {
-        elem: [{ type: ViewChild, args: ['colorpic',] }]
+        elem: [{ type: ViewChild, args: ['colorpic', { static: true },] }]
     };
     return AjfReportBuilderThemeColorDialog;
 }());
@@ -9044,8 +9045,8 @@ var AjfReportBuilderWidgetsToolbar = /** @class */ (function () {
      *
      * @param private _afjBuilderService: AjfBuilderService
      */
-    function AjfReportBuilderWidgetsToolbar(service) {
-        this.service = service;
+    function AjfReportBuilderWidgetsToolbar(_service) {
+        this._service = _service;
         // fieldTypes is an array string that contains the field options
         this.chartTypes = sizedEnumToStringArray(AjfChartType);
         this.widgetTypes = sizedEnumToStringArray(AjfReportWidgetType);
@@ -9084,7 +9085,7 @@ var AjfReportBuilderWidgetsToolbar = /** @class */ (function () {
             if (s != null) {
                 s.unsubscribe();
             }
-            _this.service.dragStarted();
+            _this._service.dragStarted();
         }));
     };
     /**
@@ -9105,7 +9106,7 @@ var AjfReportBuilderWidgetsToolbar = /** @class */ (function () {
      * @return {?}
      */
     function () {
-        this.service.dragEnded();
+        this._service.dragEnded();
     };
     AjfReportBuilderWidgetsToolbar.decorators = [
         { type: Component, args: [{selector: 'ajf-report-builder-widgets-toolbar',
@@ -9185,7 +9186,7 @@ var AjfReportBuilder = /** @class */ (function () {
         { type: AjfReportBuilderService }
     ]; };
     AjfReportBuilder.propDecorators = {
-        startSidenav: [{ type: ViewChild, args: [MatSidenav,] }],
+        startSidenav: [{ type: ViewChild, args: [MatSidenav, { static: true },] }],
         report: [{ type: Input }]
     };
     return AjfReportBuilder;
@@ -9266,15 +9267,5 @@ var AjfReportBuilderModule = /** @class */ (function () {
     return AjfReportBuilderModule;
 }());
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-export { AjfReportBuilderModule, AjfReportBuilderService, AjfReportBuilder, AJF_REPORTS_CONFIG, AjfReportBuilderColumn as ɵb, AjfReportBuilderConditionEditor as ɵc, AjfReportBuilderContent as ɵd, AjfReportBuilderCustomWidgetDialog as ɵe, AjfReportBuilderCustomWidgetToolbarButton as ɵf, AjfReportBuilderCustomWidgetsToolbar as ɵg, AjfReportBuilderFormsAnalyzer as ɵi, AjfReportBuilderFormsAnalyzerDialog as ɵh, AjfImageFilterPipe as ɵt, AjfReportBuilderImageGroup as ɵj, AjfReportBuilderProperties as ɵk, AjfQuillEditor as ɵa, AjfReportBuilderRendererWidget as ɵl, AjfReportBuilderThemeColor as ɵn, AjfReportBuilderThemeColorDialog as ɵm, AjfReportBuilderToolbar as ɵp, AjfReportBuilderToolbarDialog as ɵo, AjfReportBuilderWidgetToolbarButton as ɵq, AjfReportBuilderWidgetsRowButtons as ɵr, AjfReportBuilderWidgetsToolbar as ɵs };
+export { AJF_REPORTS_CONFIG, AjfReportBuilder, AjfReportBuilderModule, AjfReportBuilderService, AjfQuillEditor as ɵa, AjfReportBuilderColumn as ɵb, AjfReportBuilderConditionEditor as ɵc, AjfReportBuilderContent as ɵd, AjfReportBuilderCustomWidgetDialog as ɵe, AjfReportBuilderCustomWidgetToolbarButton as ɵf, AjfReportBuilderCustomWidgetsToolbar as ɵg, AjfReportBuilderFormsAnalyzerDialog as ɵh, AjfReportBuilderFormsAnalyzer as ɵi, AjfReportBuilderImageGroup as ɵj, AjfReportBuilderProperties as ɵk, AjfReportBuilderRendererWidget as ɵl, AjfReportBuilderThemeColorDialog as ɵm, AjfReportBuilderThemeColor as ɵn, AjfReportBuilderToolbarDialog as ɵo, AjfReportBuilderToolbar as ɵp, AjfReportBuilderWidgetToolbarButton as ɵq, AjfReportBuilderWidgetsRowButtons as ɵr, AjfReportBuilderWidgetsToolbar as ɵs, AjfImageFilterPipe as ɵt };
 //# sourceMappingURL=report-builder.es5.js.map

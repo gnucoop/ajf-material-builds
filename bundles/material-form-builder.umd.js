@@ -982,7 +982,6 @@
          */
         function (nodes, _curMaxId) {
             var _this = this;
-            if (_curMaxId === void 0) { _curMaxId = 0; }
             /** @type {?} */
             var maxId = 0;
             nodes.forEach((/**
@@ -1433,7 +1432,7 @@
             { type: AjfFormBuilderService }
         ]; };
         AjfFbChoicesOriginEditorDialog.propDecorators = {
-            editor: [{ type: core.ViewChild, args: [AjfFbChoicesOriginEditor,] }]
+            editor: [{ type: core.ViewChild, args: [AjfFbChoicesOriginEditor, { static: true },] }]
         };
         return AjfFbChoicesOriginEditorDialog;
     }());
@@ -1617,7 +1616,7 @@
             { type: forms$1.AjfValidationService }
         ]; };
         AjfFbConditionEditor.propDecorators = {
-            monacoEditor: [{ type: core.ViewChild, args: [monacoEditor.AjfMonacoEditor,] }],
+            monacoEditor: [{ type: core.ViewChild, args: [monacoEditor.AjfMonacoEditor, { static: true },] }],
             fields: [{ type: core.Input }],
             condition: [{ type: core.Input }]
         };
@@ -1678,7 +1677,7 @@
             { type: dialog.MatDialogRef }
         ]; };
         AjfFbConditionEditorDialog.propDecorators = {
-            editor: [{ type: core.ViewChild, args: [AjfFbConditionEditor,] }]
+            editor: [{ type: core.ViewChild, args: [AjfFbConditionEditor, { static: true },] }]
         };
         return AjfFbConditionEditorDialog;
     }());
@@ -1879,7 +1878,7 @@
             { type: dialog.MatDialog }
         ]; };
         AjfFormBuilder.propDecorators = {
-            designerCont: [{ type: core.ViewChild, args: ['designer',] }],
+            designerCont: [{ type: core.ViewChild, args: ['designer', { static: true },] }],
             form: [{ type: core.Input }]
         };
         return AjfFormBuilder;
@@ -2287,7 +2286,7 @@
             { type: dialog.MatDialogRef }
         ]; };
         AjfFbValidationConditionEditorDialog.propDecorators = {
-            editor: [{ type: core.ViewChild, args: [AjfFbConditionEditor,] }]
+            editor: [{ type: core.ViewChild, args: [AjfFbConditionEditor, { static: true },] }]
         };
         return AjfFbValidationConditionEditorDialog;
     }());
@@ -2346,7 +2345,7 @@
             { type: dialog.MatDialogRef }
         ]; };
         AjfFbWarningConditionEditorDialog.propDecorators = {
-            editor: [{ type: core.ViewChild, args: [AjfFbConditionEditor,] }]
+            editor: [{ type: core.ViewChild, args: [AjfFbConditionEditor, { static: true },] }]
         };
         return AjfFbWarningConditionEditorDialog;
     }());
@@ -4226,18 +4225,18 @@
         return AjfFormBuilderModule;
     }());
 
+    exports.AjfFormBuilder = AjfFormBuilder;
     exports.AjfFormBuilderModule = AjfFormBuilderModule;
+    exports.AjfFormBuilderService = AjfFormBuilderService;
+    exports.flattenNodes = flattenNodes;
     exports.isContainerNode = isContainerNode;
     exports.isRepeatingContainerNode = isRepeatingContainerNode;
     exports.isSlideNode = isSlideNode;
-    exports.flattenNodes = flattenNodes;
-    exports.AjfFormBuilderService = AjfFormBuilderService;
-    exports.AjfFormBuilder = AjfFormBuilder;
     exports.ɵa = AjfFbBranchLine;
-    exports.ɵc = AjfFbChoicesOriginEditor;
     exports.ɵb = AjfFbChoicesOriginEditorDialog;
-    exports.ɵe = AjfFbConditionEditor;
+    exports.ɵc = AjfFbChoicesOriginEditor;
     exports.ɵd = AjfFbConditionEditorDialog;
+    exports.ɵe = AjfFbConditionEditor;
     exports.ɵf = AjfFbNodeEntry;
     exports.ɵg = AjfFbNodeProperties;
     exports.ɵh = AjfFbNodeTypeEntry;

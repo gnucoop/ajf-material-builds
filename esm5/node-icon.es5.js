@@ -70,15 +70,5 @@ var AjfNodeIconModule = /** @class */ (function () {
     return AjfNodeIconModule;
 }());
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-export { AjfNodeIconModule, AjfNodeIcon };
+export { AjfNodeIcon, AjfNodeIconModule };
 //# sourceMappingURL=node-icon.es5.js.map

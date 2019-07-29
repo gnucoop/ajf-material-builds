@@ -227,15 +227,5 @@ AjfTimeModule.decorators = [
             },] },
 ];
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-export { AjfTimeModel, AjfTimeModule, AJF_TIME_CONTROL_VALUE_ACCESSOR, AjfTime };
+export { AJF_TIME_CONTROL_VALUE_ACCESSOR, AjfTime, AjfTimeModel, AjfTimeModule };
 //# sourceMappingURL=time.js.map

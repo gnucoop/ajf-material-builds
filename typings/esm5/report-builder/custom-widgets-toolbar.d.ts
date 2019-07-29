@@ -33,14 +33,14 @@ export interface CustomWidgets {
     widgets: CustomWidget[];
 }
 export declare class AjfReportBuilderCustomWidgetsToolbar implements OnDestroy, OnInit {
-    private service;
+    private _service;
     dialog: MatDialog;
     customWidgets: CustomWidget[];
     private _customWidgetsSub;
     private _dialogRef;
     private _threeColumnsLayout;
     private _fourColumnsLayout;
-    constructor(service: AjfReportBuilderService, dialog: MatDialog);
+    constructor(_service: AjfReportBuilderService, dialog: MatDialog);
     openDialog(idx: number): void;
     /**
      *  sign the start of mouse drag with 200 ms of delay

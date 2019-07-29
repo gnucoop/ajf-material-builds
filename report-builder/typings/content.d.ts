@@ -31,8 +31,8 @@ import { AjfReportBuilderService } from './report-builder-service';
  * @export
  */
 export declare class AjfReportBuilderContent implements OnInit, AfterViewChecked, OnDestroy {
-    private service;
-    private cdRef;
+    private _service;
+    private _cdRef;
     onMouseOver(): void;
     onMouseLeave(): void;
     canDropPredicate(dropZones: string[]): (item: CdkDrag<AjfReportBuilderDragData>) => boolean;
@@ -83,7 +83,7 @@ export declare class AjfReportBuilderContent implements OnInit, AfterViewChecked
     private _footerWidgetsSub;
     private _onOverSub;
     private _currentWidgetSub;
-    constructor(service: AjfReportBuilderService, cdRef: ChangeDetectorRef);
+    constructor(_service: AjfReportBuilderService, _cdRef: ChangeDetectorRef);
     isLayout(widget: AjfReportWidget): boolean;
     /**
      *  sign the start of mouse drag with 200 ms of delay

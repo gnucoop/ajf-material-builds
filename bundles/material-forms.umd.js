@@ -111,8 +111,8 @@
                             'valueChanged'
                         ],
                         queries: {
-                            singleChoiceSelect: new core.ViewChild('singleChoiceSelect'),
-                            multipleChoiceSelect: new core.ViewChild('multipleChoiceSelect')
+                            singleChoiceSelect: new core.ViewChild('singleChoiceSelect', { static: false }),
+                            multipleChoiceSelect: new core.ViewChild('multipleChoiceSelect', { static: false })
                         },
                         changeDetection: core.ChangeDetectionStrategy.OnPush
                     },] },
@@ -173,7 +173,7 @@
                             'orientationChange',
                         ],
                         queries: {
-                            formSlider: new core.ViewChild('formSlider'),
+                            formSlider: new core.ViewChild('formSlider', { static: false }),
                             fields: new core.ViewChildren(AjfFormField)
                         }
                     },] },

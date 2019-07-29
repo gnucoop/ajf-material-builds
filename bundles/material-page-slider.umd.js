@@ -73,7 +73,7 @@
                         outputs: ['pageScrollFinish', 'orientationChange'],
                         queries: {
                             pages: new core.ContentChildren(pageSlider.AjfPageSliderItem),
-                            body: new core.ViewChild('body')
+                            body: new core.ViewChild('body', { static: true })
                         },
                     },] },
         ];

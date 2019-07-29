@@ -61,15 +61,5 @@ AjfNodeIconModule.decorators = [
             },] },
 ];
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-export { AjfNodeIconModule, AjfNodeIcon };
+export { AjfNodeIcon, AjfNodeIconModule };
 //# sourceMappingURL=node-icon.js.map

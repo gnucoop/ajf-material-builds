@@ -119,15 +119,5 @@ var AjfReportsModule = /** @class */ (function () {
     return AjfReportsModule;
 }());
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-export { AjfReportRenderer, AjfReportsModule, AjfReportWidgetRenderer };
+export { AjfReportRenderer, AjfReportWidgetRenderer, AjfReportsModule };
 //# sourceMappingURL=reports.es5.js.map

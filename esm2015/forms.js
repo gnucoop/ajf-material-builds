@@ -95,8 +95,8 @@ AjfFormField.decorators = [
                     'valueChanged'
                 ],
                 queries: {
-                    singleChoiceSelect: new ViewChild('singleChoiceSelect'),
-                    multipleChoiceSelect: new ViewChild('multipleChoiceSelect')
+                    singleChoiceSelect: new ViewChild('singleChoiceSelect', { static: false }),
+                    multipleChoiceSelect: new ViewChild('multipleChoiceSelect', { static: false })
                 },
                 changeDetection: ChangeDetectionStrategy.OnPush
             },] },
@@ -159,7 +159,7 @@ AjfFormRenderer.decorators = [
                     'orientationChange',
                 ],
                 queries: {
-                    formSlider: new ViewChild('formSlider'),
+                    formSlider: new ViewChild('formSlider', { static: false }),
                     fields: new ViewChildren(AjfFormField)
                 }
             },] },
@@ -216,16 +216,6 @@ AjfFormsModule.decorators = [
                 ]
             },] },
 ];
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 
 export { AjfFormField, AjfFormFieldWarningDialog, AjfFormRenderer, AjfFormsModule };
 //# sourceMappingURL=forms.js.map

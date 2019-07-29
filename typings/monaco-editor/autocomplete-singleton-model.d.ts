@@ -32,7 +32,7 @@ export declare class AutoCompleteSingleton {
     readonly autoCompleteValues: {
         [p: string]: AutoCompleteItem[];
     };
-    private static instance;
+    private static _instance;
     private _autoCompleteValues;
     private constructor();
     /**
@@ -50,6 +50,6 @@ export declare class AutoCompleteSingleton {
      * Parse the XML content and add all tags in AutoComplete for XML Language
      * @param content
      */
-    private parseXmlAutoComplete;
-    private parseJsonAutoComplete;
+    private _parseXmlAutoComplete;
+    private _parseJsonAutoComplete;
 }

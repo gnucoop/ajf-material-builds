@@ -142,8 +142,8 @@
     }());
 
     exports.AjfReportRenderer = AjfReportRenderer;
-    exports.AjfReportsModule = AjfReportsModule;
     exports.AjfReportWidgetRenderer = AjfReportWidgetRenderer;
+    exports.AjfReportsModule = AjfReportsModule;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 

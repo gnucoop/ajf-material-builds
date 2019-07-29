@@ -121,32 +121,32 @@ export declare class AjfMonacoEditor implements OnDestroy, AfterViewInit, OnChan
      * Init editor
      * Is called once monaco library is available
      */
-    private initMonaco;
-    private initEditor;
+    private _initMonaco;
+    private _initEditor;
     /**
      * Create a simple editor text
      * @param div
      * @param options
      */
-    private initSimpleEditor;
+    private _initSimpleEditor;
     /**
      * Create a diff editor to compare two string (_value and _valueToCompare)
      * @param div
      */
-    private initDiffEditor;
-    private getOptions;
+    private _initDiffEditor;
+    private _getOptions;
     /**
      * UpdateValue
      *
      * @param value
      */
-    private updateValue;
+    private _updateValue;
     /**
      * UpdateValue
      *
      * @param value
      */
-    private updateValueToCompare;
-    private getOriginalModel;
-    private getModifiedModel;
+    private _updateValueToCompare;
+    private _getOriginalModel;
+    private _getModifiedModel;
 }

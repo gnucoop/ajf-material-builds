@@ -109,8 +109,8 @@
         return AjfImageModule;
     }());
 
-    exports.AjfImageModule = AjfImageModule;
     exports.AjfImage = AjfImage;
+    exports.AjfImageModule = AjfImageModule;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 

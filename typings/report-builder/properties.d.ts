@@ -30,7 +30,7 @@ import { AjfFormVariables } from './models';
 import { AjfReportBuilderService } from './report-builder-service';
 export declare class AjfReportBuilderProperties implements OnInit, OnChanges, OnDestroy {
     private _dialog;
-    private service;
+    private _service;
     /**
      *  true when the first time chart type is setted
      *
@@ -181,7 +181,7 @@ export declare class AjfReportBuilderProperties implements OnInit, OnChanges, On
     private _updateWidgetPaddingEvt;
     private _updateWidgetBorderWidthEvt;
     private _updateWidgetBorderRadiusEvt;
-    constructor(_dialog: MatDialog, service: AjfReportBuilderService);
+    constructor(_dialog: MatDialog, _service: AjfReportBuilderService);
     /**
      *
      * UTILS

@@ -3779,8 +3779,8 @@
         ]; };
         AjfReportBuilderConditionEditor.propDecorators = {
             visibility: [{ type: core.Input }],
-            conditionTextArea: [{ type: core.ViewChild, args: ['conditionTextArea',] }],
-            errorMessage: [{ type: core.ViewChild, args: ['errorMessage',] }]
+            conditionTextArea: [{ type: core.ViewChild, args: ['conditionTextArea', { static: false },] }],
+            errorMessage: [{ type: core.ViewChild, args: ['errorMessage', { static: false },] }]
         };
         return AjfReportBuilderConditionEditor;
     }());
@@ -3795,9 +3795,9 @@
      * @export
      */
     var AjfReportBuilderContent = /** @class */ (function () {
-        function AjfReportBuilderContent(service, cdRef) {
-            this.service = service;
-            this.cdRef = cdRef;
+        function AjfReportBuilderContent(_service, _cdRef) {
+            this._service = _service;
+            this._cdRef = _cdRef;
             // this boolean sign if is dragged a widget
             this.onDragged = false;
             /**
@@ -3832,9 +3832,9 @@
             this._footerWidgetsSub = rxjs.Subscription.EMPTY;
             this._onOverSub = rxjs.Subscription.EMPTY;
             this._currentWidgetSub = rxjs.Subscription.EMPTY;
-            this.headerStyles = this.service.headerStyles;
-            this.contentStyles = this.service.contentStyles;
-            this.footerStyles = this.service.footerStyles;
+            this.headerStyles = this._service.headerStyles;
+            this.contentStyles = this._service.contentStyles;
+            this.footerStyles = this._service.footerStyles;
         }
         /**
          * @return {?}
@@ -3844,7 +3844,7 @@
          */
         function () {
             this.showActions = true;
-            this.service.overStarted();
+            this._service.overStarted();
         };
         /**
          * @return {?}
@@ -3854,7 +3854,7 @@
          */
         function () {
             this.showActions = false;
-            this.service.overEnded();
+            this._service.overEnded();
         };
         /**
          * @param {?} dropZones
@@ -3926,7 +3926,7 @@
                 if (s != null) {
                     s.unsubscribe();
                 }
-                _this.service.dragStarted();
+                _this._service.dragStarted();
             }));
         };
         /**
@@ -3947,7 +3947,7 @@
          * @return {?}
          */
         function () {
-            this.service.dragEnded();
+            this._service.dragEnded();
         };
         /**
          *  sign the enter of mouse drag
@@ -3971,7 +3971,7 @@
          * @return {?}
          */
         function (array, index) {
-            this.service.dragEnter(array, index);
+            this._service.dragEnter(array, index);
         };
         /**
          * sign the leave of mouse drag
@@ -3991,7 +3991,7 @@
          * @return {?}
          */
         function () {
-            this.service.dragLeave();
+            this._service.dragLeave();
         };
         /**
          *  return true if array and index is === with array and index of onDragEnter
@@ -4055,7 +4055,7 @@
          * @return {?}
          */
         function (type, idx) {
-            this.service.remove(type, idx);
+            this._service.remove(type, idx);
         };
         /**
          * add widget element into type array in idx position
@@ -4087,11 +4087,11 @@
          */
         function (arrayTo, event, to) {
             this.onDragEndHandler();
-            this.service.setOrigin(arrayTo);
+            this._service.setOrigin(arrayTo);
             /** @type {?} */
             var itemData = (/** @type {?} */ (event.item.data));
             if (itemData.fromColumn != null) {
-                this.service.removeWidgetToColumn(itemData.fromColumn, (/** @type {?} */ (itemData.fromIndex)));
+                this._service.removeWidgetToColumn(itemData.fromColumn, (/** @type {?} */ (itemData.fromIndex)));
                 this.currentWidget = (/** @type {?} */ (itemData.widget));
             }
             else if (itemData.widget != null) {
@@ -4112,13 +4112,13 @@
             if (this.currentWidget != null) {
                 switch (arrayTo) {
                     case 'header':
-                        this.service.addHeaderWidget(this.currentWidget, to);
+                        this._service.addHeaderWidget(this.currentWidget, to);
                         break;
                     case 'content':
-                        this.service.addContentWidget(this.currentWidget, to);
+                        this._service.addContentWidget(this.currentWidget, to);
                         break;
                     case 'footer':
-                        this.service.addfooterWidget(this.currentWidget, to);
+                        this._service.addfooterWidget(this.currentWidget, to);
                         break;
                 }
             }
@@ -4132,7 +4132,7 @@
          */
         function () {
             var _this = this;
-            this._headerWidgetsSub = this.service.headerWidgets
+            this._headerWidgetsSub = this._service.headerWidgets
                 .subscribe((/**
              * @param {?} x
              * @return {?}
@@ -4140,7 +4140,7 @@
             function (x) {
                 _this.headerWidgets = x.widgets;
             }));
-            this._contentWidgetsSub = this.service.contentWidgets
+            this._contentWidgetsSub = this._service.contentWidgets
                 .subscribe((/**
              * @param {?} x
              * @return {?}
@@ -4148,7 +4148,7 @@
             function (x) {
                 _this.contentWidgets = x.widgets;
             }));
-            this._footerWidgetsSub = this.service.footerWidgets
+            this._footerWidgetsSub = this._service.footerWidgets
                 .subscribe((/**
              * @param {?} x
              * @return {?}
@@ -4156,7 +4156,7 @@
             function (x) {
                 _this.footerWidgets = x.widgets;
             }));
-            this._onDraggedSub = this.service.onDragged
+            this._onDraggedSub = this._service.onDragged
                 .subscribe((/**
              * @param {?} x
              * @return {?}
@@ -4164,7 +4164,7 @@
             function (x) {
                 _this.onDragged = x;
             }));
-            this._fixedZoomSub = this.service.fixedZoom
+            this._fixedZoomSub = this._service.fixedZoom
                 .subscribe((/**
              * @param {?} bool
              * @return {?}
@@ -4172,7 +4172,7 @@
             function (bool) {
                 _this.fixedZoom = bool;
             }));
-            this._onDragEnterSub = this.service.onDragEnter
+            this._onDragEnterSub = this._service.onDragEnter
                 .subscribe((/**
              * @param {?} x
              * @return {?}
@@ -4180,7 +4180,7 @@
             function (x) {
                 _this.onDragEnter = x;
             }));
-            this._onOverSub = this.service.onOver
+            this._onOverSub = this._service.onOver
                 .subscribe((/**
              * @param {?} x
              * @return {?}
@@ -4196,7 +4196,7 @@
          * @return {?}
          */
         function () {
-            this.cdRef.detectChanges();
+            this._cdRef.detectChanges();
         };
         /**
          * @return {?}
@@ -4240,8 +4240,8 @@
      * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
     var AjfReportBuilderCustomWidgetDialog = /** @class */ (function () {
-        function AjfReportBuilderCustomWidgetDialog(service, _dialogRef) {
-            this.service = service;
+        function AjfReportBuilderCustomWidgetDialog(_service, _dialogRef) {
+            this._service = _service;
             this._dialogRef = _dialogRef;
         }
         /**
@@ -4251,7 +4251,7 @@
          * @return {?}
          */
         function () {
-            this.service.changeLabelCustomWidget(this.label, this.position);
+            this._service.changeLabelCustomWidget(this.label, this.position);
             this._dialogRef.close();
         };
         AjfReportBuilderCustomWidgetDialog.decorators = [
@@ -4342,8 +4342,8 @@
      * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
     var AjfReportBuilderCustomWidgetsToolbar = /** @class */ (function () {
-        function AjfReportBuilderCustomWidgetsToolbar(service, dialog) {
-            this.service = service;
+        function AjfReportBuilderCustomWidgetsToolbar(_service, dialog) {
+            this._service = _service;
             this.dialog = dialog;
             this.customWidgets = [];
             this._customWidgetsSub = rxjs.Subscription.EMPTY;
@@ -4401,7 +4401,7 @@
                 if (s != null) {
                     s.unsubscribe();
                 }
-                _this.service.dragStarted();
+                _this._service.dragStarted();
             }));
         };
         /**
@@ -4422,7 +4422,7 @@
          * @return {?}
          */
         function () {
-            this.service.dragEnded();
+            this._service.dragEnded();
         };
         /**
          *  sign the enter of mouse drag
@@ -4446,7 +4446,7 @@
          * @return {?}
          */
         function (array, index) {
-            this.service.dragEnter(array, index);
+            this._service.dragEnter(array, index);
         };
         /**
          * sign the leave of mouse drag
@@ -4466,7 +4466,7 @@
          * @return {?}
          */
         function () {
-            this.service.dragLeave();
+            this._service.dragLeave();
         };
         /**
          * @return {?}
@@ -4476,7 +4476,7 @@
          */
         function () {
             var _this = this;
-            this._customWidgetsSub = this.service.customWidgets
+            this._customWidgetsSub = this._service.customWidgets
                 .subscribe((/**
              * @param {?} x
              * @return {?}
@@ -4488,11 +4488,11 @@
                     _this.openDialog(_this.customWidgets.length - 1);
                 }
             }));
-            this.service.addCustomWidgets({
+            this._service.addCustomWidgets({
                 json: this._threeColumnsLayout,
                 type: 'LayoutWidgetWith3Columns',
             });
-            this.service.addCustomWidgets({
+            this._service.addCustomWidgets({
                 json: this._fourColumnsLayout,
                 type: 'LayoutWidgetWith4Columns'
             });
@@ -4505,7 +4505,7 @@
          */
         function () {
             this._customWidgetsSub.unsubscribe();
-            this.service.resetCustomWidgets();
+            this._service.resetCustomWidgets();
         };
         AjfReportBuilderCustomWidgetsToolbar.decorators = [
             { type: core.Component, args: [{selector: 'ajf-report-builder-custom-widgets-toolbar',
@@ -4819,6 +4819,7 @@
                 switch (this.currentWidget.widgetType) {
                     case 2:
                         this.saveImageFormula();
+                        break;
                     case 3:
                         this.saveFormulaHtml();
                         break;
@@ -5009,9 +5010,9 @@
             index: [{ type: core.Input }],
             mainIndex: [{ type: core.Input }],
             reference: [{ type: core.Input }],
-            formulaTextArea: [{ type: core.ViewChild, args: ['formulaTextArea',] }],
-            errorMessage: [{ type: core.ViewChild, args: ['errorMessage',] }],
-            monacoEditor: [{ type: core.ViewChild, args: [monacoEditor.AjfMonacoEditor,] }]
+            formulaTextArea: [{ type: core.ViewChild, args: ['formulaTextArea', { static: true },] }],
+            errorMessage: [{ type: core.ViewChild, args: ['errorMessage', { static: true },] }],
+            monacoEditor: [{ type: core.ViewChild, args: [monacoEditor.AjfMonacoEditor, { static: false },] }]
         };
         return AjfReportBuilderFormsAnalyzerDialog;
     }());
@@ -5675,10 +5676,10 @@
      * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
     var AjfReportBuilderProperties = /** @class */ (function () {
-        function AjfReportBuilderProperties(_dialog, service) {
+        function AjfReportBuilderProperties(_dialog, _service) {
             var _this = this;
             this._dialog = _dialog;
-            this.service = service;
+            this._service = _service;
             /**
              *  true when the first time chart type is setted
              *
@@ -6079,7 +6080,7 @@
             this._updateWidgetBorderRadiusEvt = new core.EventEmitter();
             this.tabValue = 'backgroundColor';
             this.setForms();
-            this.iconSet.data = Object.keys(service.iconSets).filter((/**
+            this.iconSet.data = Object.keys(_service.iconSets).filter((/**
              * @param {?} x
              * @return {?}
              */
@@ -6088,9 +6089,9 @@
              * @return {?}
              */
             function (i) {
-                return { name: i, icons: service.iconSets[i] };
+                return { name: i, icons: _service.iconSets[i] };
             }));
-            this._headerStyleSub = this.service.headerStyles.subscribe((/**
+            this._headerStyleSub = this._service.headerStyles.subscribe((/**
              * @param {?} s
              * @return {?}
              */
@@ -6099,7 +6100,7 @@
                     _this.styleBackgroundColor = s['background-color'];
                 }
             }));
-            this._contentStylesSub = this.service.contentStyles.subscribe((/**
+            this._contentStylesSub = this._service.contentStyles.subscribe((/**
              * @param {?} s
              * @return {?}
              */
@@ -6108,7 +6109,7 @@
                     _this.styleBackgroundColor = s['background-color'];
                 }
             }));
-            this._footerStylesSub = this.service.footerStyles.subscribe((/**
+            this._footerStylesSub = this._service.footerStyles.subscribe((/**
              * @param {?} s
              * @return {?}
              */
@@ -6117,7 +6118,7 @@
                     _this.styleBackgroundColor = s['background-color'];
                 }
             }));
-            this._originSub = this.service.origin.subscribe((/**
+            this._originSub = this._service.origin.subscribe((/**
              * @param {?} s
              * @return {?}
              */
@@ -6319,7 +6320,7 @@
                 for (var i = 0; i < this.formsJson.forms.length; i++) {
                     forms.push(forms$1.AjfForm.fromJson(this.formsJson.forms[i]));
                 }
-                this.service.setReportForms(forms);
+                this._service.setReportForms(forms);
             }
             catch (e) { }
         };
@@ -6350,7 +6351,7 @@
          * @return {?}
          */
         function (col, idx) {
-            this.service.instantColumnValue(col, idx);
+            this._service.instantColumnValue(col, idx);
         };
         /**
          *  force copy of style
@@ -6377,7 +6378,7 @@
                 return;
             }
             this.currentWidget.styles = utils.deepCopy(this.currentWidget.styles);
-            this.service.updateCurrentWidget(this.currentWidget);
+            this._service.updateCurrentWidget(this.currentWidget);
         };
         /**
          * call to service to add new style to widget
@@ -6406,7 +6407,7 @@
          * @return {?}
          */
         function (label, value) {
-            this.service.setWidgetStyles(label, value);
+            this._service.setWidgetStyles(label, value);
             this.currentColor = value;
             this.setStyle();
         };
@@ -6489,7 +6490,7 @@
          * @return {?}
          */
         function (label, value) {
-            this.service.setSectionStyles(this.origin, label, value);
+            this._service.setSectionStyles(this.origin, label, value);
             this.styleColor = value;
         };
         /**
@@ -6519,7 +6520,7 @@
          * @return {?}
          */
         function (label, value) {
-            this.service.setReportStyles(label, value);
+            this._service.setReportStyles(label, value);
             this.styleBackgroundColor = value;
         };
         /**
@@ -6543,8 +6544,8 @@
          * @return {?}
          */
         function () {
-            this.service.addCustomColor(this.currentColor);
-            this.service.updateCurrentWidget(this.currentWidget);
+            this._service.addCustomColor(this.currentColor);
+            this._service.updateCurrentWidget(this.currentWidget);
         };
         /**
          * get the module exploit to quill text editor
@@ -6631,7 +6632,7 @@
          * @return {?}
          */
         function () {
-            this.service.addColumn();
+            this._service.addColumn();
         };
         /**
          * call to service to add a obj to current layout widget
@@ -6657,7 +6658,7 @@
          * @return {?}
          */
         function (idx) {
-            this.service.fixedColumn(idx);
+            this._service.fixedColumn(idx);
         };
         /**
          * call to service to remove obj of current layout widget
@@ -6683,7 +6684,7 @@
          * @return {?}
          */
         function (idx) {
-            this.service.remove('unfixedColumn', idx);
+            this._service.remove('unfixedColumn', idx);
         };
         /* image functions */
         /**
@@ -6709,7 +6710,7 @@
          * @return {?}
          */
         function () {
-            this.service.setImageUrl(this.imageUrl);
+            this._service.setImageUrl(this.imageUrl);
         };
         /**
          * @param {?} icon
@@ -6721,7 +6722,7 @@
          */
         function (icon) {
             this._icon = icon;
-            this.service.setIcon(icon);
+            this._service.setIcon(icon);
         };
         /* chart functions */
         /**
@@ -6751,7 +6752,7 @@
          */
         function (type) {
             this.initChartType = true;
-            this.service.setChartType(type);
+            this._service.setChartType(type);
         };
         /**
          * @param {?} value
@@ -6762,7 +6763,7 @@
          * @return {?}
          */
         function (value) {
-            this.service.setChartBorderWidth(value);
+            this._service.setChartBorderWidth(value);
         };
         /**
          * @param {?} event
@@ -6804,7 +6805,7 @@
          * @return {?}
          */
         function (index) {
-            this.service.removeChartBackgroundColor(index);
+            this._service.removeChartBackgroundColor(index);
         };
         /**
          * call to service to remove border color to current chart
@@ -6830,7 +6831,7 @@
          * @return {?}
          */
         function (index) {
-            this.service.removeChartBorderColor(index);
+            this._service.removeChartBorderColor(index);
         };
         /**
          * @return {?}
@@ -6839,7 +6840,7 @@
          * @return {?}
          */
         function () {
-            this.service.updateCurrentWidget(null);
+            this._service.updateCurrentWidget(null);
         };
         /**
          * @param {?} event
@@ -6866,7 +6867,7 @@
          */
         function () {
             var _this = this;
-            this._formsSub = this.service.reportForms
+            this._formsSub = this._service.reportForms
                 .subscribe((/**
              * @param {?} x
              * @return {?}
@@ -6874,7 +6875,7 @@
             function (x) {
                 _this.forms = x || [];
             }));
-            this._currentWidgetSub = this.service.currentWidget
+            this._currentWidgetSub = this._service.currentWidget
                 .subscribe((/**
              * @param {?} x
              * @return {?}
@@ -6897,7 +6898,7 @@
                     _this.widgetName = '';
                 }
             }));
-            this._colorSub = this.service.colors
+            this._colorSub = this._service.colors
                 .subscribe((/**
              * @param {?} x
              * @return {?}
@@ -6926,7 +6927,7 @@
                     };
                 }
             }));
-            this.getHTML = this.service.currentWidget.pipe(operators.map((/**
+            this.getHTML = this._service.currentWidget.pipe(operators.map((/**
              * @param {?} widget
              * @return {?}
              */
@@ -6938,7 +6939,7 @@
                 }
                 return '';
             })), operators.distinctUntilChanged(), operators.startWith('<p><br></p>'));
-            this.getHeightWidget = this.service.currentWidget.pipe(operators.filter((/**
+            this.getHeightWidget = this._service.currentWidget.pipe(operators.filter((/**
              * @param {?} x
              * @return {?}
              */
@@ -6955,7 +6956,7 @@
                     }
                 }
             })), operators.distinctUntilChanged());
-            this.getFontSizeWidget = this.service.currentWidget.pipe(operators.map((/**
+            this.getFontSizeWidget = this._service.currentWidget.pipe(operators.map((/**
              * @param {?} myObj
              * @return {?}
              */
@@ -6964,7 +6965,7 @@
                     return (_this.toNumber(myObj.styles['font-size']) || 12);
                 }
             })), operators.distinctUntilChanged());
-            this.getFontAlignWidget = this.service.currentWidget.pipe(operators.map((/**
+            this.getFontAlignWidget = this._service.currentWidget.pipe(operators.map((/**
              * @param {?} myObj
              * @return {?}
              */
@@ -6973,7 +6974,7 @@
                     return ((myObj.styles['text-align']) || 'center');
                 }
             })), operators.distinctUntilChanged());
-            this.getBorderWidthWidget = this.service.currentWidget.pipe(operators.map((/**
+            this.getBorderWidthWidget = this._service.currentWidget.pipe(operators.map((/**
              * @param {?} myObj
              * @return {?}
              */
@@ -7018,7 +7019,7 @@
              * @return {?}
              */
             function (m) { return (/** @type {?} */ (m))[3]; })));
-            this.getBorderRadiusWidget = this.service.currentWidget.pipe(operators.map((/**
+            this.getBorderRadiusWidget = this._service.currentWidget.pipe(operators.map((/**
              * @param {?} myObj
              * @return {?}
              */
@@ -7063,7 +7064,7 @@
              * @return {?}
              */
             function (m) { return (/** @type {?} */ (m))[3]; })));
-            this.getMarginWidget = this.service.currentWidget.pipe(operators.map((/**
+            this.getMarginWidget = this._service.currentWidget.pipe(operators.map((/**
              * @param {?} myObj
              * @return {?}
              */
@@ -7108,7 +7109,7 @@
              * @return {?}
              */
             function (m) { return (/** @type {?} */ (m))[3]; })));
-            this.getPaddingWidget = this.service.currentWidget.pipe(operators.map((/**
+            this.getPaddingWidget = this._service.currentWidget.pipe(operators.map((/**
              * @param {?} myObj
              * @return {?}
              */
@@ -7153,7 +7154,7 @@
              * @return {?}
              */
             function (m) { return (/** @type {?} */ (m))[3]; })));
-            this.getBackgroundColorWidget = this.service.currentWidget.pipe(operators.map((/**
+            this.getBackgroundColorWidget = this._service.currentWidget.pipe(operators.map((/**
              * @param {?} myObj
              * @return {?}
              */
@@ -7162,7 +7163,7 @@
                     return myObj.styles['backgroundColor'] || '';
                 }
             })), operators.distinctUntilChanged());
-            this.getColorWidget = this.service.currentWidget.pipe(operators.map((/**
+            this.getColorWidget = this._service.currentWidget.pipe(operators.map((/**
              * @param {?} myObj
              * @return {?}
              */
@@ -7313,10 +7314,10 @@
      * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
     var AjfQuillEditor = /** @class */ (function () {
-        function AjfQuillEditor(elementRef, renderer, _service) {
+        function AjfQuillEditor(_elementRef, _renderer, _service) {
             var _this = this;
-            this.elementRef = elementRef;
-            this.renderer = renderer;
+            this._elementRef = _elementRef;
+            this._renderer = _renderer;
             this._service = _service;
             this.emptyArray = [];
             this._init = false;
@@ -7405,7 +7406,7 @@
                     // reference is defined only when the user want to edit the formula
                     if (event.reference !== undefined) {
                         event.reference.innerHTML = event.formula;
-                        _this.renderer.setAttribute(event.reference, 'formula', event.formula);
+                        _this._renderer.setAttribute(event.reference, 'formula', event.formula);
                         /** @type {?} */
                         var efs = _this._formulas.filter((/**
                          * @param {?} f
@@ -7427,7 +7428,7 @@
                             formulaEntry = { formula: event.reference, unlisten: null };
                             _this._formulas.push(formulaEntry);
                         }
-                        formulaEntry.unlisten = _this.renderer.listen(event.reference, 'click', (/**
+                        formulaEntry.unlisten = _this._renderer.listen(event.reference, 'click', (/**
                          * @return {?}
                          */
                         function () {
@@ -7441,18 +7442,18 @@
                     }
                     else {
                         /** @type {?} */
-                        var quillEditor = _this.elementRef.nativeElement.querySelector('.ajf-ql-editor');
+                        var quillEditor = _this._elementRef.nativeElement.querySelector('.ajf-ql-editor');
                         /** @type {?} */
-                        var link_1 = _this.renderer.createElement('a');
-                        _this.renderer.setAttribute(link_1, 'href', 'javascript:void(0)');
-                        _this.renderer.setStyle(link_1, 'cursor', 'pointer');
-                        _this.renderer.setAttribute(link_1, 'formula', _this.check(event.formula));
+                        var link_1 = _this._renderer.createElement('a');
+                        _this._renderer.setAttribute(link_1, 'href', 'javascript:void(0)');
+                        _this._renderer.setStyle(link_1, 'cursor', 'pointer');
+                        _this._renderer.setAttribute(link_1, 'formula', _this.check(event.formula));
                         /** @type {?} */
-                        var linkLabel = _this.renderer.createText(event.formula);
-                        _this.renderer.appendChild(link_1, linkLabel);
+                        var linkLabel = _this._renderer.createText(event.formula);
+                        _this._renderer.appendChild(link_1, linkLabel);
                         // add listener related on the click event of the new formula
                         /** @type {?} */
-                        var unlisten = _this.renderer.listen(link_1, 'click', (/**
+                        var unlisten = _this._renderer.listen(link_1, 'click', (/**
                          * @param {?} _
                          * @return {?}
                          */
@@ -7464,7 +7465,7 @@
                             };
                             _this.formulaClick.emit(obj);
                         }));
-                        _this.renderer.appendChild(quillEditor, link_1);
+                        _this._renderer.appendChild(quillEditor, link_1);
                         _this._formulas.push({ unlisten: unlisten, formula: link_1 });
                     }
                 }));
@@ -7521,7 +7522,7 @@
         function () {
             var _this = this;
             /** @type {?} */
-            var toolbarElem = this.elementRef.nativeElement.querySelector('[ajf-quill-editor-toolbar]');
+            var toolbarElem = this._elementRef.nativeElement.querySelector('[ajf-quill-editor-toolbar]');
             /** @type {?} */
             var modules = this.modules || this.defaultModules;
             Quill.register(this.font, true);
@@ -7529,8 +7530,8 @@
                 modules['toolbar'] = toolbarElem;
                 modules['formula'] = true;
             }
-            this.elementRef.nativeElement.insertAdjacentHTML('beforeend', '<div quill-editor-element></div>');
-            this.editorElem = this.elementRef.nativeElement.querySelector('[quill-editor-element]');
+            this._elementRef.nativeElement.insertAdjacentHTML('beforeend', '<div quill-editor-element></div>');
+            this.editorElem = this._elementRef.nativeElement.querySelector('[quill-editor-element]');
             this.quillEditor = new Quill(this.editorElem, {
                 modules: modules,
                 placeholder: this.placeholder || 'Insert text here ...',
@@ -7584,8 +7585,8 @@
                 });
             }));
             /** @type {?} */
-            var elem = this.elementRef.nativeElement.querySelector('.ajf-ql-formula');
-            this.listenFunc = this.renderer.listen(elem, 'click', (/**
+            var elem = this._elementRef.nativeElement.querySelector('.ajf-ql-formula');
+            this.listenFunc = this._renderer.listen(elem, 'click', (/**
              * @param {?} _
              * @return {?}
              */
@@ -7608,17 +7609,17 @@
                 if (currentValue) {
                     if (currentValue == this.initHTML && !this._init) {
                         /** @type {?} */
-                        var editor = this.elementRef.nativeElement.querySelector('.ajf-ql-editor');
+                        var editor = this._elementRef.nativeElement.querySelector('.ajf-ql-editor');
                         editor.innerHTML = this.initHTML;
                         /** @type {?} */
-                        var allFormulas = this.elementRef.nativeElement.querySelectorAll('[formula]');
+                        var allFormulas = this._elementRef.nativeElement.querySelectorAll('[formula]');
                         allFormulas.forEach((/**
                          * @param {?} elem
                          * @return {?}
                          */
                         function (elem) {
                             /** @type {?} */
-                            var unlisten = _this.renderer.listen(elem, 'click', (/**
+                            var unlisten = _this._renderer.listen(elem, 'click', (/**
                              * @param {?} _
                              * @return {?}
                              */
@@ -7630,7 +7631,7 @@
                                 };
                                 _this.formulaClick.emit(obj);
                             }));
-                            _this.renderer.setStyle(elem, 'cursor', 'pointer');
+                            _this._renderer.setStyle(elem, 'cursor', 'pointer');
                             _this._formulas.push({ unlisten: unlisten, formula: elem });
                             _this._init = true;
                         }));
@@ -7720,7 +7721,7 @@
                     theme: this.theme || 'snow',
                     formats: this.formats
                 });
-                this.elementRef.nativeElement.children[0].remove();
+                this._elementRef.nativeElement.children[0].remove();
             }
         };
         /**
@@ -7790,8 +7791,8 @@
      * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
     var AjfReportBuilderRendererWidget = /** @class */ (function () {
-        function AjfReportBuilderRendererWidget(service) {
-            this.service = service;
+        function AjfReportBuilderRendererWidget(_service) {
+            this._service = _service;
             // this boolean sign if is dragged a widget
             this.onDragged = false;
             this.currentContentWidget = null;
@@ -7861,7 +7862,7 @@
              */
             function () {
                 s.unsubscribe();
-                _this.service.dragStarted();
+                _this._service.dragStarted();
             }));
         };
         /**
@@ -7882,7 +7883,7 @@
          * @return {?}
          */
         function () {
-            this.service.dragEnded();
+            this._service.dragEnded();
         };
         /**
          * @return {?}
@@ -8049,7 +8050,7 @@
          */
         function (event, toColumn) {
             this.onDragEndHandler();
-            this.service.addToColumn(event, toColumn);
+            this._service.addToColumn(event, toColumn);
         };
         /**
          * @return {?}
@@ -8059,7 +8060,7 @@
          */
         function () {
             var _this = this;
-            this._onDraggedSub = this.service.onDragged
+            this._onDraggedSub = this._service.onDragged
                 .subscribe((/**
              * @param {?} x
              * @return {?}
@@ -8067,7 +8068,7 @@
             function (x) {
                 _this.onDragged = x;
             }));
-            this.getChartType = this.service.currentWidget.pipe(operators.map((/**
+            this.getChartType = this._service.currentWidget.pipe(operators.map((/**
              * @param {?} widget
              * @return {?}
              */
@@ -8079,7 +8080,7 @@
                 var myObj = (/** @type {?} */ (_this.widget));
                 return (/** @type {?} */ ((myObj.chartType)));
             })), operators.distinctUntilChanged(), operators.startWith(0));
-            this.getDataset = this.service.currentWidget.pipe(operators.map((/**
+            this.getDataset = this._service.currentWidget.pipe(operators.map((/**
              * @param {?} widget
              * @return {?}
              */
@@ -8093,7 +8094,7 @@
                     return [];
                 }
             })), operators.distinctUntilChanged());
-            this.getTableTitles = this.service.currentWidget.pipe(operators.map((/**
+            this.getTableTitles = this._service.currentWidget.pipe(operators.map((/**
              * @param {?} widget
              * @return {?}
              */
@@ -8117,7 +8118,7 @@
                     return [];
                 }
             })));
-            this.getTableContent = this.service.currentWidget.pipe(operators.map((/**
+            this.getTableContent = this._service.currentWidget.pipe(operators.map((/**
              * @param {?} widget
              * @return {?}
              */
@@ -8147,7 +8148,7 @@
                     return tableContent;
                 }
             })));
-            this.service.updateCurrentWidget(this.widget);
+            this._service.updateCurrentWidget(this.widget);
         };
         /**
          * @param {?} changes
@@ -8305,7 +8306,7 @@
             { type: dialog.MatDialogRef }
         ]; };
         AjfReportBuilderThemeColorDialog.propDecorators = {
-            elem: [{ type: core.ViewChild, args: ['colorpic',] }]
+            elem: [{ type: core.ViewChild, args: ['colorpic', { static: true },] }]
         };
         return AjfReportBuilderThemeColorDialog;
     }());
@@ -9042,8 +9043,8 @@
          *
          * @param private _afjBuilderService: AjfBuilderService
          */
-        function AjfReportBuilderWidgetsToolbar(service) {
-            this.service = service;
+        function AjfReportBuilderWidgetsToolbar(_service) {
+            this._service = _service;
             // fieldTypes is an array string that contains the field options
             this.chartTypes = utils.sizedEnumToStringArray(reports.AjfChartType);
             this.widgetTypes = utils.sizedEnumToStringArray(reports.AjfReportWidgetType);
@@ -9082,7 +9083,7 @@
                 if (s != null) {
                     s.unsubscribe();
                 }
-                _this.service.dragStarted();
+                _this._service.dragStarted();
             }));
         };
         /**
@@ -9103,7 +9104,7 @@
          * @return {?}
          */
         function () {
-            this.service.dragEnded();
+            this._service.dragEnded();
         };
         AjfReportBuilderWidgetsToolbar.decorators = [
             { type: core.Component, args: [{selector: 'ajf-report-builder-widgets-toolbar',
@@ -9183,7 +9184,7 @@
             { type: AjfReportBuilderService }
         ]; };
         AjfReportBuilder.propDecorators = {
-            startSidenav: [{ type: core.ViewChild, args: [sidenav.MatSidenav,] }],
+            startSidenav: [{ type: core.ViewChild, args: [sidenav.MatSidenav, { static: true },] }],
             report: [{ type: core.Input }]
         };
         return AjfReportBuilder;
@@ -9264,30 +9265,30 @@
         return AjfReportBuilderModule;
     }());
 
+    exports.AJF_REPORTS_CONFIG = AJF_REPORTS_CONFIG;
+    exports.AjfReportBuilder = AjfReportBuilder;
     exports.AjfReportBuilderModule = AjfReportBuilderModule;
     exports.AjfReportBuilderService = AjfReportBuilderService;
-    exports.AjfReportBuilder = AjfReportBuilder;
-    exports.AJF_REPORTS_CONFIG = AJF_REPORTS_CONFIG;
+    exports.ɵa = AjfQuillEditor;
     exports.ɵb = AjfReportBuilderColumn;
     exports.ɵc = AjfReportBuilderConditionEditor;
     exports.ɵd = AjfReportBuilderContent;
     exports.ɵe = AjfReportBuilderCustomWidgetDialog;
     exports.ɵf = AjfReportBuilderCustomWidgetToolbarButton;
     exports.ɵg = AjfReportBuilderCustomWidgetsToolbar;
-    exports.ɵi = AjfReportBuilderFormsAnalyzer;
     exports.ɵh = AjfReportBuilderFormsAnalyzerDialog;
-    exports.ɵt = AjfImageFilterPipe;
+    exports.ɵi = AjfReportBuilderFormsAnalyzer;
     exports.ɵj = AjfReportBuilderImageGroup;
     exports.ɵk = AjfReportBuilderProperties;
-    exports.ɵa = AjfQuillEditor;
     exports.ɵl = AjfReportBuilderRendererWidget;
-    exports.ɵn = AjfReportBuilderThemeColor;
     exports.ɵm = AjfReportBuilderThemeColorDialog;
-    exports.ɵp = AjfReportBuilderToolbar;
+    exports.ɵn = AjfReportBuilderThemeColor;
     exports.ɵo = AjfReportBuilderToolbarDialog;
+    exports.ɵp = AjfReportBuilderToolbar;
     exports.ɵq = AjfReportBuilderWidgetToolbarButton;
     exports.ɵr = AjfReportBuilderWidgetsRowButtons;
     exports.ɵs = AjfReportBuilderWidgetsToolbar;
+    exports.ɵt = AjfImageFilterPipe;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 

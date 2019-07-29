@@ -23,8 +23,8 @@ import { AfterViewInit, ElementRef, EventEmitter, Renderer2, OnChanges, OnDestro
 import { ControlValueAccessor, FormControl, Validator } from '@angular/forms';
 import { AjfReportBuilderService } from './report-builder-service';
 export declare class AjfQuillEditor implements AfterViewInit, ControlValueAccessor, OnChanges, OnDestroy, Validator {
-    private elementRef;
-    private renderer;
+    private _elementRef;
+    private _renderer;
     private _service;
     quillEditor: any;
     editorElem: HTMLElement;
@@ -85,7 +85,7 @@ export declare class AjfQuillEditor implements AfterViewInit, ControlValueAccess
     onModelTouched: Function;
     private _formulas;
     private _formulaTextSub;
-    constructor(elementRef: ElementRef, renderer: Renderer2, _service: AjfReportBuilderService);
+    constructor(_elementRef: ElementRef, _renderer: Renderer2, _service: AjfReportBuilderService);
     check(value: string): string;
     /**
      * this function search fomulas inside the init text

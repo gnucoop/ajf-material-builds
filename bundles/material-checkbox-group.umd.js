@@ -127,8 +127,8 @@
         return AjfCheckboxGroupModule;
     }());
 
-    exports.CheckboxGroupItem = CheckboxGroupItem;
     exports.AjfCheckboxGroupModule = AjfCheckboxGroupModule;
+    exports.CheckboxGroupItem = CheckboxGroupItem;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 

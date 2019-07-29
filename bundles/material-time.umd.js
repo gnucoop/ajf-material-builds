@@ -279,10 +279,10 @@
         return AjfTimeModule;
     }());
 
-    exports.AjfTimeModel = AjfTimeModel;
-    exports.AjfTimeModule = AjfTimeModule;
     exports.AJF_TIME_CONTROL_VALUE_ACCESSOR = AJF_TIME_CONTROL_VALUE_ACCESSOR;
     exports.AjfTime = AjfTime;
+    exports.AjfTimeModel = AjfTimeModel;
+    exports.AjfTimeModule = AjfTimeModule;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 

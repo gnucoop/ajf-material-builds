@@ -21,14 +21,14 @@
  */
 import { AjfReportBuilderService } from './report-builder-service';
 export declare class AjfReportBuilderWidgetsToolbar {
-    private service;
+    private _service;
     chartTypes: string[];
     widgetTypes: string[];
     /**
      *
      * @param private _afjBuilderService: AjfBuilderService
      */
-    constructor(service: AjfReportBuilderService);
+    constructor(_service: AjfReportBuilderService);
     /**
      *  sign the start of mouse drag with 200 ms of delay
      *

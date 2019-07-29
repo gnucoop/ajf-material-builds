@@ -22,10 +22,10 @@
 import { MatDialogRef } from '@angular/material/dialog';
 import { AjfReportBuilderService } from './report-builder-service';
 export declare class AjfReportBuilderCustomWidgetDialog {
-    private service;
+    private _service;
     private _dialogRef;
     label: string;
     position: number;
-    constructor(service: AjfReportBuilderService, _dialogRef: MatDialogRef<AjfReportBuilderCustomWidgetDialog>);
+    constructor(_service: AjfReportBuilderService, _dialogRef: MatDialogRef<AjfReportBuilderCustomWidgetDialog>);
     changeLabel(): void;
 }

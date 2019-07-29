@@ -129,10 +129,10 @@ class AutoCompleteSingleton {
      * @return {?}
      */
     static getInstance() {
-        if (!AutoCompleteSingleton.instance) {
-            AutoCompleteSingleton.instance = new AutoCompleteSingleton();
+        if (!AutoCompleteSingleton._instance) {
+            AutoCompleteSingleton._instance = new AutoCompleteSingleton();
         }
-        return AutoCompleteSingleton.instance;
+        return AutoCompleteSingleton._instance;
     }
     /**
      * @return {?}
@@ -173,9 +173,9 @@ class AutoCompleteSingleton {
     parseAutoCompleteValues(language, content) {
         switch (language) {
             case IEditorLanguage.XML:
-                return this.parseXmlAutoComplete(content);
+                return this._parseXmlAutoComplete(content);
             case IEditorLanguage.JSON:
-                return this.parseJsonAutoComplete(content);
+                return this._parseJsonAutoComplete(content);
             default:
                 return [];
         }
@@ -186,7 +186,7 @@ class AutoCompleteSingleton {
      * @param {?} content
      * @return {?}
      */
-    parseXmlAutoComplete(content) {
+    _parseXmlAutoComplete(content) {
         /** @type {?} */
         let tempList = [];
         /** @type {?} */
@@ -228,7 +228,7 @@ class AutoCompleteSingleton {
      * @param {?} content
      * @return {?}
      */
-    parseJsonAutoComplete(content) {
+    _parseJsonAutoComplete(content) {
         /* tslint:disable-next-line */
         /** @type {?} */
         const regex = /(?:\'|\')([^']*)(?:\'|\')(?=:)(?:\:\s*)(?:\'|\')?(true|false|[0-9a-zA-Z\+\-\,\.\$]*)/g;
@@ -270,7 +270,7 @@ class AutoCompleteSingleton {
         return tempList;
     }
 }
-AutoCompleteSingleton.instance = null;
+AutoCompleteSingleton._instance = null;
 
 /**
  * @fileoverview added by tsickle
@@ -282,11 +282,6 @@ AutoCompleteSingleton.instance = null;
  */
 class IEditorOptions {
 }
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 
 /**
  * @fileoverview added by tsickle
@@ -311,7 +306,7 @@ class AjfMonacoEditor {
             this._valueToCompare = v;
             if (this._valueToCompare === void 0 || !this._valueToCompare || !this._editor) {
                 if (this._editor && this._editor.getEditorType() !== 'vs.editor.ICodeEditor') {
-                    this.initEditor();
+                    this._initEditor();
                     return;
                 }
                 return;
@@ -320,7 +315,7 @@ class AjfMonacoEditor {
                 this._value = '';
             }
             if (this._editor.getEditorType() === 'vs.editor.ICodeEditor') {
-                this.initEditor();
+                this._initEditor();
                 return;
             }
         }
@@ -336,7 +331,7 @@ class AjfMonacoEditor {
                 return;
             }
             if (this._editor.getEditorType() !== 'vs.editor.ICodeEditor') {
-                this.initEditor();
+                this._initEditor();
                 return;
             }
             this._editor.setValue(this._value);
@@ -361,7 +356,7 @@ class AjfMonacoEditor {
              * @return {?}
              */
             () => {
-                this.initMonaco();
+                this._initMonaco();
             }));
         });
         // Load AMD loader if necessary
@@ -391,7 +386,7 @@ class AjfMonacoEditor {
      */
     ngOnChanges(_changes) {
         if (this._editor) {
-            this._editor.updateOptions(this.getOptions());
+            this._editor.updateOptions(this._getOptions());
         }
     }
     /**
@@ -431,25 +426,25 @@ class AjfMonacoEditor {
      * @private
      * @return {?}
      */
-    initMonaco() {
-        this.initEditor();
+    _initMonaco() {
+        this._initEditor();
         this.init.emit();
     }
     /**
      * @private
      * @return {?}
      */
-    initEditor() {
+    _initEditor() {
         /** @type {?} */
         let myDiv = this.editorContent.nativeElement;
         /** @type {?} */
-        let options = this.getOptions();
+        let options = this._getOptions();
         this.dispose();
         if (!this._valueToCompare) {
-            this._editor = this.initSimpleEditor(myDiv, options);
+            this._editor = this._initSimpleEditor(myDiv, options);
         }
         else {
-            this._editor = this.initDiffEditor(myDiv, options);
+            this._editor = this._initDiffEditor(myDiv, options);
         }
         // Manually set monaco size because MonacoEditor doesn't work with Flexbox css
         if (myDiv != null && myDiv.parentElement != null) {
@@ -469,28 +464,28 @@ class AjfMonacoEditor {
         //     }
         // });
         // Trigger on change event for simple editor
-        this.getOriginalModel().onDidChangeContent((/**
+        this._getOriginalModel().onDidChangeContent((/**
          * @param {?} _e
          * @return {?}
          */
         (_e) => {
             /** @type {?} */
-            let newVal = this.getOriginalModel().getValue();
+            let newVal = this._getOriginalModel().getValue();
             if (this._value !== newVal) {
-                this.updateValue(newVal);
+                this._updateValue(newVal);
             }
         }));
         // Trigger on change event for diff editor
-        if (this.getModifiedModel()) {
-            this.getModifiedModel().onDidChangeContent((/**
+        if (this._getModifiedModel()) {
+            this._getModifiedModel().onDidChangeContent((/**
              * @param {?} _e
              * @return {?}
              */
             (_e) => {
                 /** @type {?} */
-                let newVal = this.getModifiedModel().getValue();
+                let newVal = this._getModifiedModel().getValue();
                 if (this._valueToCompare !== newVal) {
-                    this.updateValueToCompare(newVal);
+                    this._updateValueToCompare(newVal);
                 }
             }));
         }
@@ -502,7 +497,7 @@ class AjfMonacoEditor {
      * @param {?} options
      * @return {?}
      */
-    initSimpleEditor(div, options) {
+    _initSimpleEditor(div, options) {
         return monaco.editor.create(div, options);
     }
     /**
@@ -512,7 +507,7 @@ class AjfMonacoEditor {
      * @param {?} options
      * @return {?}
      */
-    initDiffEditor(div, options) {
+    _initDiffEditor(div, options) {
         /** @type {?} */
         let originalModel = monaco.editor.createModel(this._value, this.language);
         /** @type {?} */
@@ -529,7 +524,7 @@ class AjfMonacoEditor {
      * @private
      * @return {?}
      */
-    getOptions() {
+    _getOptions() {
         /** @type {?} */
         let options = new IEditorOptions();
         options.experimentalScreenReader = this.experimentalScreenReader;
@@ -611,7 +606,7 @@ class AjfMonacoEditor {
      * @param {?} value
      * @return {?}
      */
-    updateValue(value) {
+    _updateValue(value) {
         this.value = value;
         this._value = value;
         this.valueChange.emit(value);
@@ -623,7 +618,7 @@ class AjfMonacoEditor {
      * @param {?} value
      * @return {?}
      */
-    updateValueToCompare(value) {
+    _updateValueToCompare(value) {
         this.valueToCompare = value;
         this._valueToCompare = value;
         this.valueToCompareChange.emit(value);
@@ -632,7 +627,7 @@ class AjfMonacoEditor {
      * @private
      * @return {?}
      */
-    getOriginalModel() {
+    _getOriginalModel() {
         if (this._editor) {
             /** @type {?} */
             let model = this._editor.getModel();
@@ -643,7 +638,7 @@ class AjfMonacoEditor {
      * @private
      * @return {?}
      */
-    getModifiedModel() {
+    _getModifiedModel() {
         if (this._editor) {
             /** @type {?} */
             let model = this._editor.getModel();
@@ -731,7 +726,7 @@ AjfMonacoEditor.propDecorators = {
     valueChange: [{ type: Output }],
     valueToCompareChange: [{ type: Output }],
     init: [{ type: Output }],
-    editorContent: [{ type: ViewChild, args: ['editor',] }]
+    editorContent: [{ type: ViewChild, args: ['editor', { static: true },] }]
 };
 
 /**
@@ -751,15 +746,5 @@ AjfMonacoEditorModule.decorators = [
             },] },
 ];
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-export { AjfMonacoEditorModule, AjfMonacoEditor };
+export { AjfMonacoEditor, AjfMonacoEditorModule };
 //# sourceMappingURL=monaco-editor.js.map

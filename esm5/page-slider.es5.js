@@ -47,7 +47,7 @@ var AjfPageSlider = /** @class */ (function (_super) {
                     outputs: ['pageScrollFinish', 'orientationChange'],
                     queries: {
                         pages: new ContentChildren(AjfPageSliderItem),
-                        body: new ViewChild('body')
+                        body: new ViewChild('body', { static: true })
                     },
                 },] },
     ];
@@ -87,16 +87,6 @@ var AjfPageSliderModule = /** @class */ (function () {
     ];
     return AjfPageSliderModule;
 }());
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 
 export { AjfPageSlider, AjfPageSliderModule };
 //# sourceMappingURL=page-slider.es5.js.map

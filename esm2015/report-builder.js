@@ -2667,8 +2667,8 @@ AjfReportBuilderConditionEditor.ctorParameters = () => [
 ];
 AjfReportBuilderConditionEditor.propDecorators = {
     visibility: [{ type: Input }],
-    conditionTextArea: [{ type: ViewChild, args: ['conditionTextArea',] }],
-    errorMessage: [{ type: ViewChild, args: ['errorMessage',] }]
+    conditionTextArea: [{ type: ViewChild, args: ['conditionTextArea', { static: false },] }],
+    errorMessage: [{ type: ViewChild, args: ['errorMessage', { static: false },] }]
 };
 
 /**
@@ -2682,12 +2682,12 @@ AjfReportBuilderConditionEditor.propDecorators = {
  */
 class AjfReportBuilderContent {
     /**
-     * @param {?} service
-     * @param {?} cdRef
+     * @param {?} _service
+     * @param {?} _cdRef
      */
-    constructor(service, cdRef) {
-        this.service = service;
-        this.cdRef = cdRef;
+    constructor(_service, _cdRef) {
+        this._service = _service;
+        this._cdRef = _cdRef;
         // this boolean sign if is dragged a widget
         this.onDragged = false;
         /**
@@ -2722,23 +2722,23 @@ class AjfReportBuilderContent {
         this._footerWidgetsSub = Subscription.EMPTY;
         this._onOverSub = Subscription.EMPTY;
         this._currentWidgetSub = Subscription.EMPTY;
-        this.headerStyles = this.service.headerStyles;
-        this.contentStyles = this.service.contentStyles;
-        this.footerStyles = this.service.footerStyles;
+        this.headerStyles = this._service.headerStyles;
+        this.contentStyles = this._service.contentStyles;
+        this.footerStyles = this._service.footerStyles;
     }
     /**
      * @return {?}
      */
     onMouseOver() {
         this.showActions = true;
-        this.service.overStarted();
+        this._service.overStarted();
     }
     /**
      * @return {?}
      */
     onMouseLeave() {
         this.showActions = false;
-        this.service.overEnded();
+        this._service.overEnded();
     }
     /**
      * @param {?} dropZones
@@ -2790,7 +2790,7 @@ class AjfReportBuilderContent {
             if (s != null) {
                 s.unsubscribe();
             }
-            this.service.dragStarted();
+            this._service.dragStarted();
         }));
     }
     /**
@@ -2800,7 +2800,7 @@ class AjfReportBuilderContent {
      * @return {?}
      */
     onDragEndHandler() {
-        this.service.dragEnded();
+        this._service.dragEnded();
     }
     /**
      *  sign the enter of mouse drag
@@ -2811,7 +2811,7 @@ class AjfReportBuilderContent {
      * @return {?}
      */
     onDragEnterHandler(array, index) {
-        this.service.dragEnter(array, index);
+        this._service.dragEnter(array, index);
     }
     /**
      * sign the leave of mouse drag
@@ -2820,7 +2820,7 @@ class AjfReportBuilderContent {
      * @return {?}
      */
     onDragLeaveHandler() {
-        this.service.dragLeave();
+        this._service.dragLeave();
     }
     /**
      *  return true if array and index is === with array and index of onDragEnter
@@ -2850,7 +2850,7 @@ class AjfReportBuilderContent {
      * @return {?}
      */
     remove(type, idx) {
-        this.service.remove(type, idx);
+        this._service.remove(type, idx);
     }
     /**
      * add widget element into type array in idx position
@@ -2864,11 +2864,11 @@ class AjfReportBuilderContent {
      */
     addToList(arrayTo, event, to) {
         this.onDragEndHandler();
-        this.service.setOrigin(arrayTo);
+        this._service.setOrigin(arrayTo);
         /** @type {?} */
         const itemData = (/** @type {?} */ (event.item.data));
         if (itemData.fromColumn != null) {
-            this.service.removeWidgetToColumn(itemData.fromColumn, (/** @type {?} */ (itemData.fromIndex)));
+            this._service.removeWidgetToColumn(itemData.fromColumn, (/** @type {?} */ (itemData.fromIndex)));
             this.currentWidget = (/** @type {?} */ (itemData.widget));
         }
         else if (itemData.widget != null) {
@@ -2889,13 +2889,13 @@ class AjfReportBuilderContent {
         if (this.currentWidget != null) {
             switch (arrayTo) {
                 case 'header':
-                    this.service.addHeaderWidget(this.currentWidget, to);
+                    this._service.addHeaderWidget(this.currentWidget, to);
                     break;
                 case 'content':
-                    this.service.addContentWidget(this.currentWidget, to);
+                    this._service.addContentWidget(this.currentWidget, to);
                     break;
                 case 'footer':
-                    this.service.addfooterWidget(this.currentWidget, to);
+                    this._service.addfooterWidget(this.currentWidget, to);
                     break;
             }
         }
@@ -2905,7 +2905,7 @@ class AjfReportBuilderContent {
      * @return {?}
      */
     ngOnInit() {
-        this._headerWidgetsSub = this.service.headerWidgets
+        this._headerWidgetsSub = this._service.headerWidgets
             .subscribe((/**
          * @param {?} x
          * @return {?}
@@ -2913,7 +2913,7 @@ class AjfReportBuilderContent {
         x => {
             this.headerWidgets = x.widgets;
         }));
-        this._contentWidgetsSub = this.service.contentWidgets
+        this._contentWidgetsSub = this._service.contentWidgets
             .subscribe((/**
          * @param {?} x
          * @return {?}
@@ -2921,7 +2921,7 @@ class AjfReportBuilderContent {
         x => {
             this.contentWidgets = x.widgets;
         }));
-        this._footerWidgetsSub = this.service.footerWidgets
+        this._footerWidgetsSub = this._service.footerWidgets
             .subscribe((/**
          * @param {?} x
          * @return {?}
@@ -2929,7 +2929,7 @@ class AjfReportBuilderContent {
         x => {
             this.footerWidgets = x.widgets;
         }));
-        this._onDraggedSub = this.service.onDragged
+        this._onDraggedSub = this._service.onDragged
             .subscribe((/**
          * @param {?} x
          * @return {?}
@@ -2937,7 +2937,7 @@ class AjfReportBuilderContent {
         x => {
             this.onDragged = x;
         }));
-        this._fixedZoomSub = this.service.fixedZoom
+        this._fixedZoomSub = this._service.fixedZoom
             .subscribe((/**
          * @param {?} bool
          * @return {?}
@@ -2945,7 +2945,7 @@ class AjfReportBuilderContent {
         bool => {
             this.fixedZoom = bool;
         }));
-        this._onDragEnterSub = this.service.onDragEnter
+        this._onDragEnterSub = this._service.onDragEnter
             .subscribe((/**
          * @param {?} x
          * @return {?}
@@ -2953,7 +2953,7 @@ class AjfReportBuilderContent {
         x => {
             this.onDragEnter = x;
         }));
-        this._onOverSub = this.service.onOver
+        this._onOverSub = this._service.onOver
             .subscribe((/**
          * @param {?} x
          * @return {?}
@@ -2966,7 +2966,7 @@ class AjfReportBuilderContent {
      * @return {?}
      */
     ngAfterViewChecked() {
-        this.cdRef.detectChanges();
+        this._cdRef.detectChanges();
     }
     /**
      * @return {?}
@@ -3007,18 +3007,18 @@ AjfReportBuilderContent.ctorParameters = () => [
  */
 class AjfReportBuilderCustomWidgetDialog {
     /**
-     * @param {?} service
+     * @param {?} _service
      * @param {?} _dialogRef
      */
-    constructor(service, _dialogRef) {
-        this.service = service;
+    constructor(_service, _dialogRef) {
+        this._service = _service;
         this._dialogRef = _dialogRef;
     }
     /**
      * @return {?}
      */
     changeLabel() {
-        this.service.changeLabelCustomWidget(this.label, this.position);
+        this._service.changeLabelCustomWidget(this.label, this.position);
         this._dialogRef.close();
     }
 }
@@ -3099,11 +3099,11 @@ AjfReportBuilderCustomWidgetToolbarButton.ctorParameters = () => [
  */
 class AjfReportBuilderCustomWidgetsToolbar {
     /**
-     * @param {?} service
+     * @param {?} _service
      * @param {?} dialog
      */
-    constructor(service, dialog) {
-        this.service = service;
+    constructor(_service, dialog) {
+        this._service = _service;
         this.dialog = dialog;
         this.customWidgets = [];
         this._customWidgetsSub = Subscription.EMPTY;
@@ -3145,7 +3145,7 @@ class AjfReportBuilderCustomWidgetsToolbar {
             if (s != null) {
                 s.unsubscribe();
             }
-            this.service.dragStarted();
+            this._service.dragStarted();
         }));
     }
     /**
@@ -3155,7 +3155,7 @@ class AjfReportBuilderCustomWidgetsToolbar {
      * @return {?}
      */
     onDragEndHandler() {
-        this.service.dragEnded();
+        this._service.dragEnded();
     }
     /**
      *  sign the enter of mouse drag
@@ -3166,7 +3166,7 @@ class AjfReportBuilderCustomWidgetsToolbar {
      * @return {?}
      */
     onDragEnterHandler(array, index) {
-        this.service.dragEnter(array, index);
+        this._service.dragEnter(array, index);
     }
     /**
      * sign the leave of mouse drag
@@ -3175,13 +3175,13 @@ class AjfReportBuilderCustomWidgetsToolbar {
      * @return {?}
      */
     onDragLeaveHandler() {
-        this.service.dragLeave();
+        this._service.dragLeave();
     }
     /**
      * @return {?}
      */
     ngOnInit() {
-        this._customWidgetsSub = this.service.customWidgets
+        this._customWidgetsSub = this._service.customWidgets
             .subscribe((/**
          * @param {?} x
          * @return {?}
@@ -3193,11 +3193,11 @@ class AjfReportBuilderCustomWidgetsToolbar {
                 this.openDialog(this.customWidgets.length - 1);
             }
         }));
-        this.service.addCustomWidgets({
+        this._service.addCustomWidgets({
             json: this._threeColumnsLayout,
             type: 'LayoutWidgetWith3Columns',
         });
-        this.service.addCustomWidgets({
+        this._service.addCustomWidgets({
             json: this._fourColumnsLayout,
             type: 'LayoutWidgetWith4Columns'
         });
@@ -3207,7 +3207,7 @@ class AjfReportBuilderCustomWidgetsToolbar {
      */
     ngOnDestroy() {
         this._customWidgetsSub.unsubscribe();
-        this.service.resetCustomWidgets();
+        this._service.resetCustomWidgets();
     }
 }
 AjfReportBuilderCustomWidgetsToolbar.decorators = [
@@ -3480,6 +3480,7 @@ class AjfReportBuilderFormsAnalyzerDialog {
             switch (this.currentWidget.widgetType) {
                 case 2:
                     this.saveImageFormula();
+                    break;
                 case 3:
                     this.saveFormulaHtml();
                     break;
@@ -3633,9 +3634,9 @@ AjfReportBuilderFormsAnalyzerDialog.propDecorators = {
     index: [{ type: Input }],
     mainIndex: [{ type: Input }],
     reference: [{ type: Input }],
-    formulaTextArea: [{ type: ViewChild, args: ['formulaTextArea',] }],
-    errorMessage: [{ type: ViewChild, args: ['errorMessage',] }],
-    monacoEditor: [{ type: ViewChild, args: [AjfMonacoEditor,] }]
+    formulaTextArea: [{ type: ViewChild, args: ['formulaTextArea', { static: true },] }],
+    errorMessage: [{ type: ViewChild, args: ['errorMessage', { static: true },] }],
+    monacoEditor: [{ type: ViewChild, args: [AjfMonacoEditor, { static: false },] }]
 };
 
 /**
@@ -4126,11 +4127,11 @@ AjfReportBuilderImageGroup.propDecorators = {
 class AjfReportBuilderProperties {
     /**
      * @param {?} _dialog
-     * @param {?} service
+     * @param {?} _service
      */
-    constructor(_dialog, service) {
+    constructor(_dialog, _service) {
         this._dialog = _dialog;
-        this.service = service;
+        this._service = _service;
         /**
          *  true when the first time chart type is setted
          *
@@ -4531,7 +4532,7 @@ class AjfReportBuilderProperties {
         this._updateWidgetBorderRadiusEvt = new EventEmitter();
         this.tabValue = 'backgroundColor';
         this.setForms();
-        this.iconSet.data = Object.keys(service.iconSets).filter((/**
+        this.iconSet.data = Object.keys(_service.iconSets).filter((/**
          * @param {?} x
          * @return {?}
          */
@@ -4540,9 +4541,9 @@ class AjfReportBuilderProperties {
          * @return {?}
          */
         i => {
-            return { name: i, icons: service.iconSets[i] };
+            return { name: i, icons: _service.iconSets[i] };
         }));
-        this._headerStyleSub = this.service.headerStyles.subscribe((/**
+        this._headerStyleSub = this._service.headerStyles.subscribe((/**
          * @param {?} s
          * @return {?}
          */
@@ -4551,7 +4552,7 @@ class AjfReportBuilderProperties {
                 this.styleBackgroundColor = s['background-color'];
             }
         }));
-        this._contentStylesSub = this.service.contentStyles.subscribe((/**
+        this._contentStylesSub = this._service.contentStyles.subscribe((/**
          * @param {?} s
          * @return {?}
          */
@@ -4560,7 +4561,7 @@ class AjfReportBuilderProperties {
                 this.styleBackgroundColor = s['background-color'];
             }
         }));
-        this._footerStylesSub = this.service.footerStyles.subscribe((/**
+        this._footerStylesSub = this._service.footerStyles.subscribe((/**
          * @param {?} s
          * @return {?}
          */
@@ -4569,7 +4570,7 @@ class AjfReportBuilderProperties {
                 this.styleBackgroundColor = s['background-color'];
             }
         }));
-        this._originSub = this.service.origin.subscribe((/**
+        this._originSub = this._service.origin.subscribe((/**
          * @param {?} s
          * @return {?}
          */
@@ -4707,7 +4708,7 @@ class AjfReportBuilderProperties {
             for (let i = 0; i < this.formsJson.forms.length; i++) {
                 forms.push(AjfForm.fromJson(this.formsJson.forms[i]));
             }
-            this.service.setReportForms(forms);
+            this._service.setReportForms(forms);
         }
         catch (e) { }
     }
@@ -4721,7 +4722,7 @@ class AjfReportBuilderProperties {
      * @return {?}
      */
     instantColumnValue(col, idx) {
-        this.service.instantColumnValue(col, idx);
+        this._service.instantColumnValue(col, idx);
     }
     /**
      *  force copy of style
@@ -4735,7 +4736,7 @@ class AjfReportBuilderProperties {
             return;
         }
         this.currentWidget.styles = deepCopy(this.currentWidget.styles);
-        this.service.updateCurrentWidget(this.currentWidget);
+        this._service.updateCurrentWidget(this.currentWidget);
     }
     /**
      * call to service to add new style to widget
@@ -4747,7 +4748,7 @@ class AjfReportBuilderProperties {
      * @return {?}
      */
     setWidgetStyles(label, value) {
-        this.service.setWidgetStyles(label, value);
+        this._service.setWidgetStyles(label, value);
         this.currentColor = value;
         this.setStyle();
     }
@@ -4793,7 +4794,7 @@ class AjfReportBuilderProperties {
      * @return {?}
      */
     setSectionStyles(label, value) {
-        this.service.setSectionStyles(this.origin, label, value);
+        this._service.setSectionStyles(this.origin, label, value);
         this.styleColor = value;
     }
     /**
@@ -4806,7 +4807,7 @@ class AjfReportBuilderProperties {
      * @return {?}
      */
     setReportStyles(label, value) {
-        this.service.setReportStyles(label, value);
+        this._service.setReportStyles(label, value);
         this.styleBackgroundColor = value;
     }
     /**
@@ -4817,8 +4818,8 @@ class AjfReportBuilderProperties {
      * @return {?}
      */
     addCustomColor() {
-        this.service.addCustomColor(this.currentColor);
-        this.service.updateCurrentWidget(this.currentWidget);
+        this._service.addCustomColor(this.currentColor);
+        this._service.updateCurrentWidget(this.currentWidget);
     }
     /**
      * get the module exploit to quill text editor
@@ -4860,7 +4861,7 @@ class AjfReportBuilderProperties {
      * @return {?}
      */
     addColumn() {
-        this.service.addColumn();
+        this._service.addColumn();
     }
     /**
      * call to service to add a obj to current layout widget
@@ -4871,7 +4872,7 @@ class AjfReportBuilderProperties {
      * @return {?}
      */
     fixedColumn(idx) {
-        this.service.fixedColumn(idx);
+        this._service.fixedColumn(idx);
     }
     /**
      * call to service to remove obj of current layout widget
@@ -4882,7 +4883,7 @@ class AjfReportBuilderProperties {
      * @return {?}
      */
     unfixedColumn(idx) {
-        this.service.remove('unfixedColumn', idx);
+        this._service.remove('unfixedColumn', idx);
     }
     /* image functions */
     /**
@@ -4893,7 +4894,7 @@ class AjfReportBuilderProperties {
      * @return {?}
      */
     setImageUrl() {
-        this.service.setImageUrl(this.imageUrl);
+        this._service.setImageUrl(this.imageUrl);
     }
     /**
      * @param {?} icon
@@ -4901,7 +4902,7 @@ class AjfReportBuilderProperties {
      */
     setIcon(icon) {
         this._icon = icon;
-        this.service.setIcon(icon);
+        this._service.setIcon(icon);
     }
     /* chart functions */
     /**
@@ -4914,14 +4915,14 @@ class AjfReportBuilderProperties {
      */
     setChartType(type) {
         this.initChartType = true;
-        this.service.setChartType(type);
+        this._service.setChartType(type);
     }
     /**
      * @param {?} value
      * @return {?}
      */
     setChartBorderColor(value) {
-        this.service.setChartBorderWidth(value);
+        this._service.setChartBorderWidth(value);
     }
     /**
      * @param {?} event
@@ -4944,7 +4945,7 @@ class AjfReportBuilderProperties {
      * @return {?}
      */
     removeChartBackgroundColor(index) {
-        this.service.removeChartBackgroundColor(index);
+        this._service.removeChartBackgroundColor(index);
     }
     /**
      * call to service to remove border color to current chart
@@ -4955,13 +4956,13 @@ class AjfReportBuilderProperties {
      * @return {?}
      */
     removeChartBorderColor(index) {
-        this.service.removeChartBorderColor(index);
+        this._service.removeChartBorderColor(index);
     }
     /**
      * @return {?}
      */
     hideMenu() {
-        this.service.updateCurrentWidget(null);
+        this._service.updateCurrentWidget(null);
     }
     /**
      * @param {?} event
@@ -4980,7 +4981,7 @@ class AjfReportBuilderProperties {
      * @return {?}
      */
     ngOnInit() {
-        this._formsSub = this.service.reportForms
+        this._formsSub = this._service.reportForms
             .subscribe((/**
          * @param {?} x
          * @return {?}
@@ -4988,7 +4989,7 @@ class AjfReportBuilderProperties {
         x => {
             this.forms = x || [];
         }));
-        this._currentWidgetSub = this.service.currentWidget
+        this._currentWidgetSub = this._service.currentWidget
             .subscribe((/**
          * @param {?} x
          * @return {?}
@@ -5011,7 +5012,7 @@ class AjfReportBuilderProperties {
                 this.widgetName = '';
             }
         }));
-        this._colorSub = this.service.colors
+        this._colorSub = this._service.colors
             .subscribe((/**
          * @param {?} x
          * @return {?}
@@ -5040,7 +5041,7 @@ class AjfReportBuilderProperties {
                 };
             }
         }));
-        this.getHTML = this.service.currentWidget.pipe(map((/**
+        this.getHTML = this._service.currentWidget.pipe(map((/**
          * @param {?} widget
          * @return {?}
          */
@@ -5052,7 +5053,7 @@ class AjfReportBuilderProperties {
             }
             return '';
         })), distinctUntilChanged(), startWith('<p><br></p>'));
-        this.getHeightWidget = this.service.currentWidget.pipe(filter((/**
+        this.getHeightWidget = this._service.currentWidget.pipe(filter((/**
          * @param {?} x
          * @return {?}
          */
@@ -5069,7 +5070,7 @@ class AjfReportBuilderProperties {
                 }
             }
         })), distinctUntilChanged());
-        this.getFontSizeWidget = this.service.currentWidget.pipe(map((/**
+        this.getFontSizeWidget = this._service.currentWidget.pipe(map((/**
          * @param {?} myObj
          * @return {?}
          */
@@ -5078,7 +5079,7 @@ class AjfReportBuilderProperties {
                 return (this.toNumber(myObj.styles['font-size']) || 12);
             }
         })), distinctUntilChanged());
-        this.getFontAlignWidget = this.service.currentWidget.pipe(map((/**
+        this.getFontAlignWidget = this._service.currentWidget.pipe(map((/**
          * @param {?} myObj
          * @return {?}
          */
@@ -5087,7 +5088,7 @@ class AjfReportBuilderProperties {
                 return ((myObj.styles['text-align']) || 'center');
             }
         })), distinctUntilChanged());
-        this.getBorderWidthWidget = this.service.currentWidget.pipe(map((/**
+        this.getBorderWidthWidget = this._service.currentWidget.pipe(map((/**
          * @param {?} myObj
          * @return {?}
          */
@@ -5132,7 +5133,7 @@ class AjfReportBuilderProperties {
          * @return {?}
          */
         m => (/** @type {?} */ (m))[3])));
-        this.getBorderRadiusWidget = this.service.currentWidget.pipe(map((/**
+        this.getBorderRadiusWidget = this._service.currentWidget.pipe(map((/**
          * @param {?} myObj
          * @return {?}
          */
@@ -5177,7 +5178,7 @@ class AjfReportBuilderProperties {
          * @return {?}
          */
         m => (/** @type {?} */ (m))[3])));
-        this.getMarginWidget = this.service.currentWidget.pipe(map((/**
+        this.getMarginWidget = this._service.currentWidget.pipe(map((/**
          * @param {?} myObj
          * @return {?}
          */
@@ -5222,7 +5223,7 @@ class AjfReportBuilderProperties {
          * @return {?}
          */
         m => (/** @type {?} */ (m))[3])));
-        this.getPaddingWidget = this.service.currentWidget.pipe(map((/**
+        this.getPaddingWidget = this._service.currentWidget.pipe(map((/**
          * @param {?} myObj
          * @return {?}
          */
@@ -5267,7 +5268,7 @@ class AjfReportBuilderProperties {
          * @return {?}
          */
         m => (/** @type {?} */ (m))[3])));
-        this.getBackgroundColorWidget = this.service.currentWidget.pipe(map((/**
+        this.getBackgroundColorWidget = this._service.currentWidget.pipe(map((/**
          * @param {?} myObj
          * @return {?}
          */
@@ -5276,7 +5277,7 @@ class AjfReportBuilderProperties {
                 return myObj.styles['backgroundColor'] || '';
             }
         })), distinctUntilChanged());
-        this.getColorWidget = this.service.currentWidget.pipe(map((/**
+        this.getColorWidget = this._service.currentWidget.pipe(map((/**
          * @param {?} myObj
          * @return {?}
          */
@@ -5420,13 +5421,13 @@ AjfReportBuilderProperties.ctorParameters = () => [
  */
 class AjfQuillEditor {
     /**
-     * @param {?} elementRef
-     * @param {?} renderer
+     * @param {?} _elementRef
+     * @param {?} _renderer
      * @param {?} _service
      */
-    constructor(elementRef, renderer, _service) {
-        this.elementRef = elementRef;
-        this.renderer = renderer;
+    constructor(_elementRef, _renderer, _service) {
+        this._elementRef = _elementRef;
+        this._renderer = _renderer;
         this._service = _service;
         this.emptyArray = [];
         this._init = false;
@@ -5515,7 +5516,7 @@ class AjfQuillEditor {
                 // reference is defined only when the user want to edit the formula
                 if (event.reference !== undefined) {
                     event.reference.innerHTML = event.formula;
-                    this.renderer.setAttribute(event.reference, 'formula', event.formula);
+                    this._renderer.setAttribute(event.reference, 'formula', event.formula);
                     /** @type {?} */
                     const efs = this._formulas.filter((/**
                      * @param {?} f
@@ -5537,7 +5538,7 @@ class AjfQuillEditor {
                         formulaEntry = { formula: event.reference, unlisten: null };
                         this._formulas.push(formulaEntry);
                     }
-                    formulaEntry.unlisten = this.renderer.listen(event.reference, 'click', (/**
+                    formulaEntry.unlisten = this._renderer.listen(event.reference, 'click', (/**
                      * @return {?}
                      */
                     () => {
@@ -5551,18 +5552,18 @@ class AjfQuillEditor {
                 }
                 else {
                     /** @type {?} */
-                    const quillEditor = this.elementRef.nativeElement.querySelector('.ajf-ql-editor');
+                    const quillEditor = this._elementRef.nativeElement.querySelector('.ajf-ql-editor');
                     /** @type {?} */
-                    const link = this.renderer.createElement('a');
-                    this.renderer.setAttribute(link, 'href', 'javascript:void(0)');
-                    this.renderer.setStyle(link, 'cursor', 'pointer');
-                    this.renderer.setAttribute(link, 'formula', this.check(event.formula));
+                    const link = this._renderer.createElement('a');
+                    this._renderer.setAttribute(link, 'href', 'javascript:void(0)');
+                    this._renderer.setStyle(link, 'cursor', 'pointer');
+                    this._renderer.setAttribute(link, 'formula', this.check(event.formula));
                     /** @type {?} */
-                    const linkLabel = this.renderer.createText(event.formula);
-                    this.renderer.appendChild(link, linkLabel);
+                    const linkLabel = this._renderer.createText(event.formula);
+                    this._renderer.appendChild(link, linkLabel);
                     // add listener related on the click event of the new formula
                     /** @type {?} */
-                    const unlisten = this.renderer.listen(link, 'click', (/**
+                    const unlisten = this._renderer.listen(link, 'click', (/**
                      * @param {?} _
                      * @return {?}
                      */
@@ -5574,7 +5575,7 @@ class AjfQuillEditor {
                         };
                         this.formulaClick.emit(obj);
                     }));
-                    this.renderer.appendChild(quillEditor, link);
+                    this._renderer.appendChild(quillEditor, link);
                     this._formulas.push({ unlisten, formula: link });
                 }
             }));
@@ -5610,7 +5611,7 @@ class AjfQuillEditor {
      */
     ngAfterViewInit() {
         /** @type {?} */
-        const toolbarElem = this.elementRef.nativeElement.querySelector('[ajf-quill-editor-toolbar]');
+        const toolbarElem = this._elementRef.nativeElement.querySelector('[ajf-quill-editor-toolbar]');
         /** @type {?} */
         let modules = this.modules || this.defaultModules;
         Quill.register(this.font, true);
@@ -5618,8 +5619,8 @@ class AjfQuillEditor {
             modules['toolbar'] = toolbarElem;
             modules['formula'] = true;
         }
-        this.elementRef.nativeElement.insertAdjacentHTML('beforeend', '<div quill-editor-element></div>');
-        this.editorElem = this.elementRef.nativeElement.querySelector('[quill-editor-element]');
+        this._elementRef.nativeElement.insertAdjacentHTML('beforeend', '<div quill-editor-element></div>');
+        this.editorElem = this._elementRef.nativeElement.querySelector('[quill-editor-element]');
         this.quillEditor = new Quill(this.editorElem, {
             modules: modules,
             placeholder: this.placeholder || 'Insert text here ...',
@@ -5673,8 +5674,8 @@ class AjfQuillEditor {
             });
         }));
         /** @type {?} */
-        let elem = this.elementRef.nativeElement.querySelector('.ajf-ql-formula');
-        this.listenFunc = this.renderer.listen(elem, 'click', (/**
+        let elem = this._elementRef.nativeElement.querySelector('.ajf-ql-formula');
+        this.listenFunc = this._renderer.listen(elem, 'click', (/**
          * @param {?} _
          * @return {?}
          */
@@ -5692,17 +5693,17 @@ class AjfQuillEditor {
             if (currentValue) {
                 if (currentValue == this.initHTML && !this._init) {
                     /** @type {?} */
-                    let editor = this.elementRef.nativeElement.querySelector('.ajf-ql-editor');
+                    let editor = this._elementRef.nativeElement.querySelector('.ajf-ql-editor');
                     editor.innerHTML = this.initHTML;
                     /** @type {?} */
-                    let allFormulas = this.elementRef.nativeElement.querySelectorAll('[formula]');
+                    let allFormulas = this._elementRef.nativeElement.querySelectorAll('[formula]');
                     allFormulas.forEach((/**
                      * @param {?} elem
                      * @return {?}
                      */
                     (elem) => {
                         /** @type {?} */
-                        const unlisten = this.renderer.listen(elem, 'click', (/**
+                        const unlisten = this._renderer.listen(elem, 'click', (/**
                          * @param {?} _
                          * @return {?}
                          */
@@ -5714,7 +5715,7 @@ class AjfQuillEditor {
                             };
                             this.formulaClick.emit(obj);
                         }));
-                        this.renderer.setStyle(elem, 'cursor', 'pointer');
+                        this._renderer.setStyle(elem, 'cursor', 'pointer');
                         this._formulas.push({ unlisten, formula: elem });
                         this._init = true;
                     }));
@@ -5788,7 +5789,7 @@ class AjfQuillEditor {
                 theme: this.theme || 'snow',
                 formats: this.formats
             });
-            this.elementRef.nativeElement.children[0].remove();
+            this._elementRef.nativeElement.children[0].remove();
         }
     }
     /**
@@ -5857,10 +5858,10 @@ AjfQuillEditor.propDecorators = {
  */
 class AjfReportBuilderRendererWidget {
     /**
-     * @param {?} service
+     * @param {?} _service
      */
-    constructor(service) {
-        this.service = service;
+    constructor(_service) {
+        this._service = _service;
         // this boolean sign if is dragged a widget
         this.onDragged = false;
         this.currentContentWidget = null;
@@ -5906,7 +5907,7 @@ class AjfReportBuilderRendererWidget {
          */
         () => {
             s.unsubscribe();
-            this.service.dragStarted();
+            this._service.dragStarted();
         }));
     }
     /**
@@ -5916,7 +5917,7 @@ class AjfReportBuilderRendererWidget {
      * @return {?}
      */
     onDragEndHandler() {
-        this.service.dragEnded();
+        this._service.dragEnded();
     }
     /**
      * @return {?}
@@ -6047,13 +6048,13 @@ class AjfReportBuilderRendererWidget {
      */
     addToList(event, toColumn) {
         this.onDragEndHandler();
-        this.service.addToColumn(event, toColumn);
+        this._service.addToColumn(event, toColumn);
     }
     /**
      * @return {?}
      */
     ngOnInit() {
-        this._onDraggedSub = this.service.onDragged
+        this._onDraggedSub = this._service.onDragged
             .subscribe((/**
          * @param {?} x
          * @return {?}
@@ -6061,7 +6062,7 @@ class AjfReportBuilderRendererWidget {
         x => {
             this.onDragged = x;
         }));
-        this.getChartType = this.service.currentWidget.pipe(map((/**
+        this.getChartType = this._service.currentWidget.pipe(map((/**
          * @param {?} widget
          * @return {?}
          */
@@ -6073,7 +6074,7 @@ class AjfReportBuilderRendererWidget {
             const myObj = (/** @type {?} */ (this.widget));
             return (/** @type {?} */ ((myObj.chartType)));
         })), distinctUntilChanged(), startWith(0));
-        this.getDataset = this.service.currentWidget.pipe(map((/**
+        this.getDataset = this._service.currentWidget.pipe(map((/**
          * @param {?} widget
          * @return {?}
          */
@@ -6087,7 +6088,7 @@ class AjfReportBuilderRendererWidget {
                 return [];
             }
         })), distinctUntilChanged());
-        this.getTableTitles = this.service.currentWidget.pipe(map((/**
+        this.getTableTitles = this._service.currentWidget.pipe(map((/**
          * @param {?} widget
          * @return {?}
          */
@@ -6111,7 +6112,7 @@ class AjfReportBuilderRendererWidget {
                 return [];
             }
         })));
-        this.getTableContent = this.service.currentWidget.pipe(map((/**
+        this.getTableContent = this._service.currentWidget.pipe(map((/**
          * @param {?} widget
          * @return {?}
          */
@@ -6141,7 +6142,7 @@ class AjfReportBuilderRendererWidget {
                 return tableContent;
             }
         })));
-        this.service.updateCurrentWidget(this.widget);
+        this._service.updateCurrentWidget(this.widget);
     }
     /**
      * @param {?} changes
@@ -6273,7 +6274,7 @@ AjfReportBuilderThemeColorDialog.ctorParameters = () => [
     { type: MatDialogRef }
 ];
 AjfReportBuilderThemeColorDialog.propDecorators = {
-    elem: [{ type: ViewChild, args: ['colorpic',] }]
+    elem: [{ type: ViewChild, args: ['colorpic', { static: true },] }]
 };
 
 /**
@@ -6859,10 +6860,10 @@ AjfReportBuilderWidgetsRowButtons.ctorParameters = () => [
 class AjfReportBuilderWidgetsToolbar {
     /**
      *
-     * @param {?} service
+     * @param {?} _service
      */
-    constructor(service) {
-        this.service = service;
+    constructor(_service) {
+        this._service = _service;
         // fieldTypes is an array string that contains the field options
         this.chartTypes = sizedEnumToStringArray(AjfChartType);
         this.widgetTypes = sizedEnumToStringArray(AjfReportWidgetType);
@@ -6889,7 +6890,7 @@ class AjfReportBuilderWidgetsToolbar {
             if (s != null) {
                 s.unsubscribe();
             }
-            this.service.dragStarted();
+            this._service.dragStarted();
         }));
     }
     /**
@@ -6899,7 +6900,7 @@ class AjfReportBuilderWidgetsToolbar {
      * @return {?}
      */
     onDragEndHandler() {
-        this.service.dragEnded();
+        this._service.dragEnded();
     }
 }
 AjfReportBuilderWidgetsToolbar.decorators = [
@@ -6974,7 +6975,7 @@ AjfReportBuilder.ctorParameters = () => [
     { type: AjfReportBuilderService }
 ];
 AjfReportBuilder.propDecorators = {
-    startSidenav: [{ type: ViewChild, args: [MatSidenav,] }],
+    startSidenav: [{ type: ViewChild, args: [MatSidenav, { static: true },] }],
     report: [{ type: Input }]
 };
 
@@ -7050,15 +7051,5 @@ AjfReportBuilderModule.decorators = [
             },] },
 ];
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-export { AjfReportBuilderModule, AjfReportBuilderService, AjfReportBuilder, AJF_REPORTS_CONFIG, AjfReportBuilderColumn as ɵb, AjfReportBuilderConditionEditor as ɵc, AjfReportBuilderContent as ɵd, AjfReportBuilderCustomWidgetDialog as ɵe, AjfReportBuilderCustomWidgetToolbarButton as ɵf, AjfReportBuilderCustomWidgetsToolbar as ɵg, AjfReportBuilderFormsAnalyzer as ɵi, AjfReportBuilderFormsAnalyzerDialog as ɵh, AjfImageFilterPipe as ɵt, AjfReportBuilderImageGroup as ɵj, AjfReportBuilderProperties as ɵk, AjfQuillEditor as ɵa, AjfReportBuilderRendererWidget as ɵl, AjfReportBuilderThemeColor as ɵn, AjfReportBuilderThemeColorDialog as ɵm, AjfReportBuilderToolbar as ɵp, AjfReportBuilderToolbarDialog as ɵo, AjfReportBuilderWidgetToolbarButton as ɵq, AjfReportBuilderWidgetsRowButtons as ɵr, AjfReportBuilderWidgetsToolbar as ɵs };
+export { AJF_REPORTS_CONFIG, AjfReportBuilder, AjfReportBuilderModule, AjfReportBuilderService, AjfQuillEditor as ɵa, AjfReportBuilderColumn as ɵb, AjfReportBuilderConditionEditor as ɵc, AjfReportBuilderContent as ɵd, AjfReportBuilderCustomWidgetDialog as ɵe, AjfReportBuilderCustomWidgetToolbarButton as ɵf, AjfReportBuilderCustomWidgetsToolbar as ɵg, AjfReportBuilderFormsAnalyzerDialog as ɵh, AjfReportBuilderFormsAnalyzer as ɵi, AjfReportBuilderImageGroup as ɵj, AjfReportBuilderProperties as ɵk, AjfReportBuilderRendererWidget as ɵl, AjfReportBuilderThemeColorDialog as ɵm, AjfReportBuilderThemeColor as ɵn, AjfReportBuilderToolbarDialog as ɵo, AjfReportBuilderToolbar as ɵp, AjfReportBuilderWidgetToolbarButton as ɵq, AjfReportBuilderWidgetsRowButtons as ɵr, AjfReportBuilderWidgetsToolbar as ɵs, AjfImageFilterPipe as ɵt };
 //# sourceMappingURL=report-builder.js.map

@@ -160,10 +160,10 @@
          * @return {?}
          */
         function () {
-            if (!AutoCompleteSingleton.instance) {
-                AutoCompleteSingleton.instance = new AutoCompleteSingleton();
+            if (!AutoCompleteSingleton._instance) {
+                AutoCompleteSingleton._instance = new AutoCompleteSingleton();
             }
-            return AutoCompleteSingleton.instance;
+            return AutoCompleteSingleton._instance;
         };
         Object.defineProperty(AutoCompleteSingleton.prototype, "autoCompleteValues", {
             get: /**
@@ -228,9 +228,9 @@
         function (language, content) {
             switch (language) {
                 case IEditorLanguage.XML:
-                    return this.parseXmlAutoComplete(content);
+                    return this._parseXmlAutoComplete(content);
                 case IEditorLanguage.JSON:
-                    return this.parseJsonAutoComplete(content);
+                    return this._parseJsonAutoComplete(content);
                 default:
                     return [];
             }
@@ -245,7 +245,7 @@
          * @param {?} content
          * @return {?}
          */
-        AutoCompleteSingleton.prototype.parseXmlAutoComplete = /**
+        AutoCompleteSingleton.prototype._parseXmlAutoComplete = /**
          * Parse the XML content and add all tags in AutoComplete for XML Language
          * @private
          * @param {?} content
@@ -297,7 +297,7 @@
          * @param {?} content
          * @return {?}
          */
-        AutoCompleteSingleton.prototype.parseJsonAutoComplete = /**
+        AutoCompleteSingleton.prototype._parseJsonAutoComplete = /**
          * @private
          * @param {?} content
          * @return {?}
@@ -343,7 +343,7 @@
             }
             return tempList;
         };
-        AutoCompleteSingleton.instance = null;
+        AutoCompleteSingleton._instance = null;
         return AutoCompleteSingleton;
     }());
 
@@ -363,11 +363,6 @@
         }
         return IEditorOptions;
     }());
-
-    /**
-     * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
-     */
 
     /**
      * @fileoverview added by tsickle
@@ -393,7 +388,7 @@
                     this._valueToCompare = v;
                     if (this._valueToCompare === void 0 || !this._valueToCompare || !this._editor) {
                         if (this._editor && this._editor.getEditorType() !== 'vs.editor.ICodeEditor') {
-                            this.initEditor();
+                            this._initEditor();
                             return;
                         }
                         return;
@@ -402,7 +397,7 @@
                         this._value = '';
                     }
                     if (this._editor.getEditorType() === 'vs.editor.ICodeEditor') {
-                        this.initEditor();
+                        this._initEditor();
                         return;
                     }
                 }
@@ -422,7 +417,7 @@
                         return;
                     }
                     if (this._editor.getEditorType() !== 'vs.editor.ICodeEditor') {
-                        this.initEditor();
+                        this._initEditor();
                         return;
                     }
                     this._editor.setValue(this._value);
@@ -462,7 +457,7 @@
                  * @return {?}
                  */
                 function () {
-                    _this.initMonaco();
+                    _this._initMonaco();
                 }));
             });
             // Load AMD loader if necessary
@@ -505,7 +500,7 @@
          */
         function (_changes) {
             if (this._editor) {
-                this._editor.updateOptions(this.getOptions());
+                this._editor.updateOptions(this._getOptions());
             }
         };
         /**
@@ -565,21 +560,21 @@
          * @private
          * @return {?}
          */
-        AjfMonacoEditor.prototype.initMonaco = /**
+        AjfMonacoEditor.prototype._initMonaco = /**
          * Init editor
          * Is called once monaco library is available
          * @private
          * @return {?}
          */
         function () {
-            this.initEditor();
+            this._initEditor();
             this.init.emit();
         };
         /**
          * @private
          * @return {?}
          */
-        AjfMonacoEditor.prototype.initEditor = /**
+        AjfMonacoEditor.prototype._initEditor = /**
          * @private
          * @return {?}
          */
@@ -588,13 +583,13 @@
             /** @type {?} */
             var myDiv = this.editorContent.nativeElement;
             /** @type {?} */
-            var options = this.getOptions();
+            var options = this._getOptions();
             this.dispose();
             if (!this._valueToCompare) {
-                this._editor = this.initSimpleEditor(myDiv, options);
+                this._editor = this._initSimpleEditor(myDiv, options);
             }
             else {
-                this._editor = this.initDiffEditor(myDiv, options);
+                this._editor = this._initDiffEditor(myDiv, options);
             }
             // Manually set monaco size because MonacoEditor doesn't work with Flexbox css
             if (myDiv != null && myDiv.parentElement != null) {
@@ -614,28 +609,28 @@
             //     }
             // });
             // Trigger on change event for simple editor
-            this.getOriginalModel().onDidChangeContent((/**
+            this._getOriginalModel().onDidChangeContent((/**
              * @param {?} _e
              * @return {?}
              */
             function (_e) {
                 /** @type {?} */
-                var newVal = _this.getOriginalModel().getValue();
+                var newVal = _this._getOriginalModel().getValue();
                 if (_this._value !== newVal) {
-                    _this.updateValue(newVal);
+                    _this._updateValue(newVal);
                 }
             }));
             // Trigger on change event for diff editor
-            if (this.getModifiedModel()) {
-                this.getModifiedModel().onDidChangeContent((/**
+            if (this._getModifiedModel()) {
+                this._getModifiedModel().onDidChangeContent((/**
                  * @param {?} _e
                  * @return {?}
                  */
                 function (_e) {
                     /** @type {?} */
-                    var newVal = _this.getModifiedModel().getValue();
+                    var newVal = _this._getModifiedModel().getValue();
                     if (_this._valueToCompare !== newVal) {
-                        _this.updateValueToCompare(newVal);
+                        _this._updateValueToCompare(newVal);
                     }
                 }));
             }
@@ -652,7 +647,7 @@
          * @param {?} options
          * @return {?}
          */
-        AjfMonacoEditor.prototype.initSimpleEditor = /**
+        AjfMonacoEditor.prototype._initSimpleEditor = /**
          * Create a simple editor text
          * @private
          * @param {?} div
@@ -673,7 +668,7 @@
          * @param {?} options
          * @return {?}
          */
-        AjfMonacoEditor.prototype.initDiffEditor = /**
+        AjfMonacoEditor.prototype._initDiffEditor = /**
          * Create a diff editor to compare two string (_value and _valueToCompare)
          * @private
          * @param {?} div
@@ -697,7 +692,7 @@
          * @private
          * @return {?}
          */
-        AjfMonacoEditor.prototype.getOptions = /**
+        AjfMonacoEditor.prototype._getOptions = /**
          * @private
          * @return {?}
          */
@@ -788,7 +783,7 @@
          * @param {?} value
          * @return {?}
          */
-        AjfMonacoEditor.prototype.updateValue = /**
+        AjfMonacoEditor.prototype._updateValue = /**
          * UpdateValue
          *
          * @private
@@ -812,7 +807,7 @@
          * @param {?} value
          * @return {?}
          */
-        AjfMonacoEditor.prototype.updateValueToCompare = /**
+        AjfMonacoEditor.prototype._updateValueToCompare = /**
          * UpdateValue
          *
          * @private
@@ -828,7 +823,7 @@
          * @private
          * @return {?}
          */
-        AjfMonacoEditor.prototype.getOriginalModel = /**
+        AjfMonacoEditor.prototype._getOriginalModel = /**
          * @private
          * @return {?}
          */
@@ -843,7 +838,7 @@
          * @private
          * @return {?}
          */
-        AjfMonacoEditor.prototype.getModifiedModel = /**
+        AjfMonacoEditor.prototype._getModifiedModel = /**
          * @private
          * @return {?}
          */
@@ -934,7 +929,7 @@
             valueChange: [{ type: core.Output }],
             valueToCompareChange: [{ type: core.Output }],
             init: [{ type: core.Output }],
-            editorContent: [{ type: core.ViewChild, args: ['editor',] }]
+            editorContent: [{ type: core.ViewChild, args: ['editor', { static: true },] }]
         };
         return AjfMonacoEditor;
     }());
@@ -959,8 +954,8 @@
         return AjfMonacoEditorModule;
     }());
 
-    exports.AjfMonacoEditorModule = AjfMonacoEditorModule;
     exports.AjfMonacoEditor = AjfMonacoEditor;
+    exports.AjfMonacoEditorModule = AjfMonacoEditorModule;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 

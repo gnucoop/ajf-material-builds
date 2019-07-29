@@ -27,7 +27,7 @@ import { AjfDataset, AjfReportColumnWidget, AjfReportLayoutWidget, AjfReportWidg
 import { AjfReportBuilderDragData } from './report-builder-drag-data';
 import { AjfReportBuilderService } from './report-builder-service';
 export declare class AjfReportBuilderRendererWidget implements OnInit, OnDestroy, OnChanges {
-    private service;
+    private _service;
     readonly widgetTypes: typeof AjfReportWidgetType;
     widget: AjfReportWidget;
     readonly layoutWidget: AjfReportLayoutWidget;
@@ -46,7 +46,7 @@ export declare class AjfReportBuilderRendererWidget implements OnInit, OnDestroy
     getChartBorderWidth: Observable<number>;
     layoutShow: boolean;
     private _onDraggedSub;
-    constructor(service: AjfReportBuilderService);
+    constructor(_service: AjfReportBuilderService);
     canDropPredicate(item: CdkDrag<AjfReportBuilderDragData>): boolean;
     /**
      *  sign the start of mouse drag with 200 ms of delay

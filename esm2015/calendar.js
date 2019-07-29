@@ -104,15 +104,5 @@ AjfCalendarModule.decorators = [
             },] },
 ];
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-export { AjfCalendarModule, AjfCalendarComponent as ɵb, CALENDAR_CONTROL_VALUE_ACCESSOR as ɵa };
+export { AjfCalendarModule, CALENDAR_CONTROL_VALUE_ACCESSOR as ɵa, AjfCalendarComponent as ɵb };
 //# sourceMappingURL=calendar.js.map

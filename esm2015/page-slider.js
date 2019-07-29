@@ -51,7 +51,7 @@ AjfPageSlider.decorators = [
                 outputs: ['pageScrollFinish', 'orientationChange'],
                 queries: {
                     pages: new ContentChildren(AjfPageSliderItem),
-                    body: new ViewChild('body')
+                    body: new ViewChild('body', { static: true })
                 },
             },] },
 ];
@@ -86,16 +86,6 @@ AjfPageSliderModule.decorators = [
                 ]
             },] },
 ];
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 
 export { AjfPageSlider, AjfPageSliderModule };
 //# sourceMappingURL=page-slider.js.map
