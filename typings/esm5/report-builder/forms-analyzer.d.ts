@@ -19,10 +19,10 @@
  * If not, see http://www.gnu.org/licenses/.
  *
  */
+import { AjfForm } from '@ajf/core/forms';
+import { AjfWidget } from '@ajf/core/reports';
 import { OnDestroy } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { AjfForm } from '@ajf/core/forms';
-import { AjfReportWidget } from '@ajf/core/reports';
 import { AjfReportBuilderFormsAnalyzerDialog } from './forms-analyzer-dialog';
 import { AjfFormVariables } from './models';
 import { AjfReportBuilderService } from './report-builder-service';
@@ -34,7 +34,7 @@ import { AjfReportBuilderService } from './report-builder-service';
 export declare class AjfReportBuilderFormsAnalyzer implements OnDestroy {
     private _service;
     dialog: MatDialog;
-    currentWidget: AjfReportWidget | null;
+    currentWidget: AjfWidget | null;
     forms: AjfForm[];
     formsVariables: AjfFormVariables[];
     choicesOrigins: any;

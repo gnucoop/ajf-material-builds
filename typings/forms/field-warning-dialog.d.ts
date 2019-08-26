@@ -19,6 +19,6 @@
  * If not, see http://www.gnu.org/licenses/.
  *
  */
-export declare class AjfFormFieldWarningDialog {
+export declare class AjfFieldWarningDialog {
     message: string;
 }

@@ -19,11 +19,11 @@
  * If not, see http://www.gnu.org/licenses/.
  *
  */
+import { AjfChoicesOrigin, AjfNode } from '@ajf/core/forms';
 import { OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
-import { AjfNode, IAjfChoicesOrigin } from '@ajf/core/forms';
 import { AjfFormBuilderNodeEntry, AjfFormBuilderService } from './form-builder-service';
 export interface ValidationCondition {
     condition: string;
@@ -45,7 +45,7 @@ export declare class AjfFbNodeProperties implements OnDestroy {
     private _nodeEntry;
     readonly nodeEntry: Observable<AjfFormBuilderNodeEntry | null>;
     private _choicesOrigins;
-    readonly choicesOrigins: IAjfChoicesOrigin[];
+    readonly choicesOrigins: AjfChoicesOrigin<any>[];
     private _enabled;
     readonly enabled: Observable<boolean>;
     private _propertiesForm;

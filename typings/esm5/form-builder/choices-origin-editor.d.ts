@@ -19,13 +19,13 @@
  * If not, see http://www.gnu.org/licenses/.
  *
  */
-import { IAjfChoicesOrigin } from '@ajf/core/forms';
+import { AjfChoicesOrigin } from '@ajf/core/forms';
 import { ChoicesOriginChoiceEntry, ChoicesOriginDataSource } from './choices-origin-data-source';
 export declare class AjfFbChoicesOriginEditor {
     private _displayedColumns;
     readonly displayedColumns: string[];
     private _choicesOrigin;
-    choicesOrigin: IAjfChoicesOrigin;
+    choicesOrigin: AjfChoicesOrigin<any>;
     editing: {
         [key: string]: boolean;
     };

@@ -19,17 +19,17 @@
  * If not, see http://www.gnu.org/licenses/.
  *
  */
+import { AjfWidget } from '@ajf/core/reports';
 import { OnDestroy, OnInit } from '@angular/core';
-import { AjfReportWidget } from '@ajf/core/reports';
 import { AjfReportBuilderService } from './report-builder-service';
 export declare class AjfReportBuilderWidgetsRowButtons implements OnDestroy, OnInit {
     private _service;
     from: string;
-    fromWidget: AjfReportWidget;
+    fromWidget: AjfWidget;
     position: number;
-    widget: AjfReportWidget;
+    widget: AjfWidget;
     child: boolean;
-    currentWidget: AjfReportWidget | null;
+    currentWidget: AjfWidget | null;
     isClicked: boolean;
     color: string[];
     isOver: boolean;

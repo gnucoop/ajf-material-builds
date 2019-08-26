@@ -19,12 +19,12 @@
  * If not, see http://www.gnu.org/licenses/.
  *
  */
-import { OnInit, OnChanges, OnDestroy } from '@angular/core';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { Observable } from 'rxjs';
-import { AjfReportTextWidget, AjfReportWidget, AjfReportLayoutWidget } from '@ajf/core/reports';
 import { AjfForm } from '@ajf/core/forms';
 import { AjfCondition } from '@ajf/core/models';
+import { AjfLayoutWidget, AjfTextWidget, AjfWidget } from '@ajf/core/reports';
+import { OnChanges, OnDestroy, OnInit } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { Observable } from 'rxjs';
 import { AjfReportBuilderFormsAnalyzerDialog } from './forms-analyzer-dialog';
 import { AjfFormVariables } from './models';
 import { AjfReportBuilderService } from './report-builder-service';
@@ -42,9 +42,9 @@ export declare class AjfReportBuilderProperties implements OnInit, OnChanges, On
      *
      * @memberOf AjfReportBuilderProperties
      */
-    currentWidget: AjfReportWidget | null;
-    readonly currentLayoutWidget: AjfReportLayoutWidget;
-    readonly currentTextWidget: AjfReportTextWidget;
+    currentWidget: AjfWidget | null;
+    readonly currentLayoutWidget: AjfLayoutWidget;
+    readonly currentTextWidget: AjfTextWidget;
     /**
      * this array contains the forms exploited for generate data labels
      *

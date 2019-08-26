@@ -19,12 +19,12 @@
  * If not, see http://www.gnu.org/licenses/.
  *
  */
-import { AjfReportColumnWidget, AjfReportWidget } from '@ajf/core/reports';
+import { AjfColumnWidget, AjfWidget } from '@ajf/core/reports';
 export interface AjfReportBuilderDragData {
     widgetType: string;
-    widget?: AjfReportWidget;
+    widget?: AjfWidget;
     fromIndex?: number;
-    fromColumn?: AjfReportColumnWidget;
+    fromColumn?: AjfColumnWidget;
     from?: number;
     json?: any;
     arrayFrom?: 'header' | 'content' | 'footer';

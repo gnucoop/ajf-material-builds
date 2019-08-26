@@ -19,10 +19,10 @@
  * If not, see http://www.gnu.org/licenses/.
  *
  */
-import { AfterViewChecked, ChangeDetectorRef, OnInit, OnDestroy } from '@angular/core';
+import { AjfStyles, AjfWidget } from '@ajf/core/reports';
 import { CdkDrag, CdkDragDrop } from '@angular/cdk/drag-drop';
+import { AfterViewChecked, ChangeDetectorRef, OnDestroy, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { AjfReportStyles, AjfReportWidget } from '@ajf/core/reports';
 import { AjfReportBuilderDragData } from './report-builder-drag-data';
 import { AjfReportBuilderService } from './report-builder-service';
 /**
@@ -36,7 +36,7 @@ export declare class AjfReportBuilderContent implements OnInit, AfterViewChecked
     onMouseOver(): void;
     onMouseLeave(): void;
     canDropPredicate(dropZones: string[]): (item: CdkDrag<AjfReportBuilderDragData>) => boolean;
-    reportStyles: Observable<AjfReportStyles>;
+    reportStyles: Observable<AjfStyles>;
     onDragged: boolean;
     /**
      *  observe the status of the fixed zoom
@@ -46,29 +46,29 @@ export declare class AjfReportBuilderContent implements OnInit, AfterViewChecked
     fixedZoom: boolean;
     onDragEnter: any;
     show: boolean;
-    headerWidgets: AjfReportWidget[];
+    headerWidgets: AjfWidget[];
     /**
      * observe the css style of header
      *
      * @memberOf AjfReportBuilderContent
      */
-    headerStyles: Observable<AjfReportStyles>;
-    contentWidgets: AjfReportWidget[];
+    headerStyles: Observable<AjfStyles>;
+    contentWidgets: AjfWidget[];
     /**
      * observe the css style of content
      *
      * @memberOf AjfReportBuilderContent
      */
-    contentStyles: Observable<AjfReportStyles>;
-    footerWidgets: AjfReportWidget[];
+    contentStyles: Observable<AjfStyles>;
+    footerWidgets: AjfWidget[];
     onOver: boolean;
     /**
      * observe the css style of footer
      *
      * @memberOf AjfReportBuilderContent
      */
-    footerStyles: Observable<AjfReportStyles>;
-    currentWidget: AjfReportWidget | null;
+    footerStyles: Observable<AjfStyles>;
+    currentWidget: AjfWidget | null;
     /**
      * if true mouse event is on dragged status
      *
@@ -84,7 +84,7 @@ export declare class AjfReportBuilderContent implements OnInit, AfterViewChecked
     private _onOverSub;
     private _currentWidgetSub;
     constructor(_service: AjfReportBuilderService, _cdRef: ChangeDetectorRef);
-    isLayout(widget: AjfReportWidget): boolean;
+    isLayout(widget: AjfWidget): boolean;
     /**
      *  sign the start of mouse drag with 200 ms of delay
      *

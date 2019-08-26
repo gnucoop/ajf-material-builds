@@ -19,8 +19,8 @@
  * If not, see http://www.gnu.org/licenses/.
  *
  */
-import { OnInit, OnDestroy } from '@angular/core';
 import { AjfCondition } from '@ajf/core/models';
+import { OnDestroy, OnInit } from '@angular/core';
 import { AjfFormVariables } from './models';
 import { AjfReportBuilderService } from './report-builder-service';
 export declare class AjfReportBuilderConditionEditor implements OnInit, OnDestroy {

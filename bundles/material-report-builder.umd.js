@@ -20,10 +20,10 @@
  *
  */
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/common'), require('@angular/core'), require('@angular/forms'), require('@angular/cdk/drag-drop'), require('@angular/material/button'), require('@angular/material/button-toggle'), require('@angular/material/card'), require('@angular/material/dialog'), require('@angular/material/grid-list'), require('@angular/material/icon'), require('@angular/material/list'), require('@angular/material/select'), require('@angular/material/sidenav'), require('@angular/material/slide-toggle'), require('@angular/material/slider'), require('@angular/material/tabs'), require('@angular/material/toolbar'), require('@angular/material/tooltip'), require('@ngx-translate/core'), require('ngx-color-picker'), require('@ajf/core/common'), require('@ajf/core/map'), require('@ajf/core/table'), require('@ajf/core/text'), require('@ajf/material/image'), require('@ajf/material/monaco-editor'), require('rxjs'), require('@ajf/core/reports'), require('rxjs/operators'), require('@ajf/core/models'), require('@ajf/core/forms'), require('@ajf/core/utils'), require('@ajf/core/image'), require('quill')) :
-    typeof define === 'function' && define.amd ? define('@ajf/material/report-builder', ['exports', '@angular/common', '@angular/core', '@angular/forms', '@angular/cdk/drag-drop', '@angular/material/button', '@angular/material/button-toggle', '@angular/material/card', '@angular/material/dialog', '@angular/material/grid-list', '@angular/material/icon', '@angular/material/list', '@angular/material/select', '@angular/material/sidenav', '@angular/material/slide-toggle', '@angular/material/slider', '@angular/material/tabs', '@angular/material/toolbar', '@angular/material/tooltip', '@ngx-translate/core', 'ngx-color-picker', '@ajf/core/common', '@ajf/core/map', '@ajf/core/table', '@ajf/core/text', '@ajf/material/image', '@ajf/material/monaco-editor', 'rxjs', '@ajf/core/reports', 'rxjs/operators', '@ajf/core/models', '@ajf/core/forms', '@ajf/core/utils', '@ajf/core/image', 'quill'], factory) :
-    (global = global || self, factory((global.ajf = global.ajf || {}, global.ajf.material = global.ajf.material || {}, global.ajf.material.reportBuilder = {}), global.ng.common, global.ng.core, global.ng.forms, global.ng.cdk.dragDrop, global.ng.material.button, global.ng.material.buttonToggle, global.ng.material.card, global.ng.material.dialog, global.ng.material.gridList, global.ng.material.icon, global.ng.material.list, global.ng.material.select, global.ng.material.sidenav, global.ng.material.slideToggle, global.ng.material.slider, global.ng.material.tabs, global.ng.material.toolbar, global.ng.material.tooltip, global.ngxt.core, global.ngxColorPicker, global.ajf.core.common, global.ajf.core.map, global.ajf.core.table, global.ajf.core.text, global.ajf.material.image, global.ajf.material.monacoEditor, global.rxjs, global.ajf.core.reports, global.rxjs.operators, global.ajf.core.models, global.ajf.core.forms, global.ajf.core.utils, global.ajf.core.image, global.quill));
-}(this, function (exports, common, core, forms, dragDrop, button, buttonToggle, card, dialog, gridList, icon, list, select, sidenav, slideToggle, slider, tabs, toolbar, tooltip, core$1, ngxColorPicker, common$1, map, table, text, image, monacoEditor, rxjs, reports, operators, models, forms$1, utils, image$1, Quill) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/common'), require('@angular/core'), require('@angular/forms'), require('@angular/cdk/drag-drop'), require('@angular/material/button'), require('@angular/material/button-toggle'), require('@angular/material/card'), require('@angular/material/dialog'), require('@angular/material/grid-list'), require('@angular/material/icon'), require('@angular/material/list'), require('@angular/material/select'), require('@angular/material/sidenav'), require('@angular/material/slide-toggle'), require('@angular/material/slider'), require('@angular/material/tabs'), require('@angular/material/toolbar'), require('@angular/material/tooltip'), require('@ngx-translate/core'), require('ngx-color-picker'), require('@ajf/core/common'), require('@ajf/core/map'), require('@ajf/core/table'), require('@ajf/core/text'), require('@ajf/material/image'), require('@ajf/material/monaco-editor'), require('rxjs'), require('@ajf/core/forms'), require('@ajf/core/models'), require('@ajf/core/reports'), require('@ajf/core/utils'), require('rxjs/operators'), require('@ajf/core/image'), require('quill')) :
+    typeof define === 'function' && define.amd ? define('@ajf/material/report-builder', ['exports', '@angular/common', '@angular/core', '@angular/forms', '@angular/cdk/drag-drop', '@angular/material/button', '@angular/material/button-toggle', '@angular/material/card', '@angular/material/dialog', '@angular/material/grid-list', '@angular/material/icon', '@angular/material/list', '@angular/material/select', '@angular/material/sidenav', '@angular/material/slide-toggle', '@angular/material/slider', '@angular/material/tabs', '@angular/material/toolbar', '@angular/material/tooltip', '@ngx-translate/core', 'ngx-color-picker', '@ajf/core/common', '@ajf/core/map', '@ajf/core/table', '@ajf/core/text', '@ajf/material/image', '@ajf/material/monaco-editor', 'rxjs', '@ajf/core/forms', '@ajf/core/models', '@ajf/core/reports', '@ajf/core/utils', 'rxjs/operators', '@ajf/core/image', 'quill'], factory) :
+    (global = global || self, factory((global.ajf = global.ajf || {}, global.ajf.material = global.ajf.material || {}, global.ajf.material.reportBuilder = {}), global.ng.common, global.ng.core, global.ng.forms, global.ng.cdk.dragDrop, global.ng.material.button, global.ng.material.buttonToggle, global.ng.material.card, global.ng.material.dialog, global.ng.material.gridList, global.ng.material.icon, global.ng.material.list, global.ng.material.select, global.ng.material.sidenav, global.ng.material.slideToggle, global.ng.material.slider, global.ng.material.tabs, global.ng.material.toolbar, global.ng.material.tooltip, global.ngxt.core, global.ngxColorPicker, global.ajf.core.common, global.ajf.core.map, global.ajf.core.table, global.ajf.core.text, global.ajf.material.image, global.ajf.material.monacoEditor, global.rxjs, global.ajf.core.forms, global.ajf.core.models, global.ajf.core.reports, global.ajf.core.utils, global.rxjs.operators, global.ajf.core.image, global.quill));
+}(this, function (exports, common, core, forms, dragDrop, button, buttonToggle, card, dialog, gridList, icon, list, select, sidenav, slideToggle, slider, tabs, toolbar, tooltip, core$1, ngxColorPicker, common$1, map, table, text, image, monacoEditor, rxjs, forms$1, models, reports, utils, operators, image$1, Quill) { 'use strict';
 
     Quill = Quill && Quill.hasOwnProperty('default') ? Quill['default'] : Quill;
 
@@ -55,14 +55,14 @@
 
     /**
      * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
     /** @type {?} */
     var AJF_REPORTS_CONFIG = new core.InjectionToken('AJF_REPORTS_CONFIG');
 
     /**
      * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
     /**
      * This service contains all the logic to model the report widget.
@@ -161,7 +161,8 @@
             this._onOver = ((/** @type {?} */ (this._onOverUpdate))).pipe(operators.startWith(false), operators.share());
             this._fixedZoom = ((/** @type {?} */ (this._fixedZoomUpdate))).pipe(operators.startWith(false), operators.share());
             this._onDragEnter = this._onDragEnterUpdate.pipe(operators.share());
-            this._reportStyles = ((/** @type {?} */ (this._reportStylesUpdate))).pipe(operators.scan((/**
+            this._reportStyles = ((/** @type {?} */ (this._reportStylesUpdate)))
+                .pipe(operators.scan((/**
              * @param {?} styles
              * @param {?} op
              * @return {?}
@@ -169,7 +170,8 @@
             function (styles, op) {
                 return op(styles);
             }), (/** @type {?} */ ({}))), operators.share(), operators.startWith((/** @type {?} */ ({}))));
-            this._reportForms = ((/** @type {?} */ (this._reportFormsUpdate))).pipe(operators.scan((/**
+            this._reportForms = ((/** @type {?} */ (this._reportFormsUpdate)))
+                .pipe(operators.scan((/**
              * @param {?} forms
              * @param {?} op
              * @return {?}
@@ -177,42 +179,46 @@
             function (forms, op) {
                 return op(forms);
             }), []), operators.share(), operators.startWith([]));
-            this._customWidgets = ((/** @type {?} */ (this._customWidgetsUpdate)))
+            this._customWidgets =
+                ((/** @type {?} */ (this._customWidgetsUpdate)))
+                    .pipe(operators.scan((/**
+                 * @param {?} widgets
+                 * @param {?} op
+                 * @return {?}
+                 */
+                function (widgets, op) {
+                    return op(widgets);
+                }), []), operators.share(), operators.startWith([]));
+            this._formsVariables =
+                ((/** @type {?} */ (this._formsVariablesUpdate)))
+                    .pipe(operators.filter((/**
+                 * @param {?} s
+                 * @return {?}
+                 */
+                function (s) { return s != null; })), operators.scan((/**
+                 * @param {?} variables
+                 * @param {?} op
+                 * @return {?}
+                 */
+                function (variables, op) {
+                    return op(variables);
+                }), []), operators.publishReplay(1), operators.refCount());
+            this._conditionNames =
+                ((/** @type {?} */ (this._conditionNamesUpdate)))
+                    .pipe(operators.filter((/**
+                 * @param {?} s
+                 * @return {?}
+                 */
+                function (s) { return s != null; })), operators.scan((/**
+                 * @param {?} variables
+                 * @param {?} op
+                 * @return {?}
+                 */
+                function (variables, op) {
+                    return op(variables);
+                }), []), operators.share(), operators.startWith([]));
+            this._headerWidgets = ((/** @type {?} */ (this._headerWidgetsUpdate)))
                 .pipe(operators.scan((/**
-             * @param {?} widgets
-             * @param {?} op
-             * @return {?}
-             */
-            function (widgets, op) {
-                return op(widgets);
-            }), []), operators.share(), operators.startWith([]));
-            this._formsVariables = ((/** @type {?} */ (this._formsVariablesUpdate)))
-                .pipe(operators.filter((/**
-             * @param {?} s
-             * @return {?}
-             */
-            function (s) { return s != null; })), operators.scan((/**
-             * @param {?} variables
-             * @param {?} op
-             * @return {?}
-             */
-            function (variables, op) {
-                return op(variables);
-            }), []), operators.publishReplay(1), operators.refCount());
-            this._conditionNames = ((/** @type {?} */ (this._conditionNamesUpdate)))
-                .pipe(operators.filter((/**
-             * @param {?} s
-             * @return {?}
-             */
-            function (s) { return s != null; })), operators.scan((/**
-             * @param {?} variables
-             * @param {?} op
-             * @return {?}
-             */
-            function (variables, op) {
-                return op(variables);
-            }), []), operators.share(), operators.startWith([]));
-            this._headerWidgets = ((/** @type {?} */ (this._headerWidgetsUpdate))).pipe(operators.scan((/**
              * @param {?} widgets
              * @param {?} op
              * @return {?}
@@ -243,7 +249,8 @@
             function (widgets) {
                 return widgets != null ? widgets.styles : {};
             })));
-            this._footerWidgets = ((/** @type {?} */ (this._footerWidgetsUpdate))).pipe(operators.scan((/**
+            this._footerWidgets = ((/** @type {?} */ (this._footerWidgetsUpdate)))
+                .pipe(operators.scan((/**
              * @param {?} widgets
              * @param {?} op
              * @return {?}
@@ -258,7 +265,8 @@
             function (widgets) {
                 return widgets != null ? widgets.styles : {};
             })));
-            this._color = ((/** @type {?} */ (this._colorUpdate))).pipe(operators.scan((/**
+            this._color = ((/** @type {?} */ (this._colorUpdate)))
+                .pipe(operators.scan((/**
              * @param {?} color
              * @param {?} op
              * @return {?}
@@ -266,18 +274,20 @@
             function (color, op) {
                 return op(color);
             }), this._defaultColor), operators.share(), operators.startWith(this._defaultColor));
-            this._currentWidget = ((/** @type {?} */ (this._currentWidgetUpdate))).pipe(operators.filter((/**
-             * @param {?} s
-             * @return {?}
-             */
-            function (s) { return s != null; })), operators.scan((/**
-             * @param {?} widget
-             * @param {?} op
-             * @return {?}
-             */
-            function (widget, op) {
-                return op(widget);
-            }), undefined), operators.publishReplay(1), operators.refCount());
+            this._currentWidget =
+                ((/** @type {?} */ (this._currentWidgetUpdate)))
+                    .pipe(operators.filter((/**
+                 * @param {?} s
+                 * @return {?}
+                 */
+                function (s) { return s != null; })), operators.scan((/**
+                 * @param {?} widget
+                 * @param {?} op
+                 * @return {?}
+                 */
+                function (widget, op) {
+                    return op(widget);
+                }), undefined), operators.publishReplay(1), operators.refCount());
             this._reportForms.pipe(operators.filter((/**
              * @param {?} f
              * @return {?}
@@ -331,24 +341,30 @@
                     }
                     else {
                         _this.parseColor(r.styles, tempColors);
-                        _this.parseColor(r.content.styles, tempColors);
-                        _this.parseColor(r.footer.styles, tempColors);
-                        _this.parseColor(r.header.styles, tempColors);
-                        for (var i = 0; i < r.header.content.length; i++) {
-                            /** @type {?} */
-                            var obj = r.header.content[i];
-                            _this.parseColor(obj.styles, tempColors);
-                            if (obj instanceof reports.AjfReportLayoutWidget) {
+                        if (r.content) {
+                            _this.parseColor(r.content.styles, tempColors);
+                        }
+                        if (r.footer) {
+                            _this.parseColor(r.footer.styles, tempColors);
+                        }
+                        if (r.header) {
+                            _this.parseColor(r.header.styles, tempColors);
+                            for (var i = 0; i < r.header.content.length; i++) {
                                 /** @type {?} */
-                                var layoutObj = (/** @type {?} */ (obj));
-                                for (var j = 0; j < layoutObj.content.length; j++) {
+                                var obj = r.header.content[i];
+                                _this.parseColor(obj.styles, tempColors);
+                                if (obj.widgetType === reports.AjfWidgetType.Layout) {
                                     /** @type {?} */
-                                    var columnObj = (/** @type {?} */ (layoutObj.content[j]));
-                                    _this.parseColor(columnObj.styles, tempColors);
-                                    for (var z = 0; z < columnObj.content.length; z++) {
+                                    var layoutObj = (/** @type {?} */ (obj));
+                                    for (var j = 0; j < layoutObj.content.length; j++) {
                                         /** @type {?} */
-                                        var widgetObj = columnObj.content[z];
-                                        _this.parseColor(widgetObj.styles, tempColors);
+                                        var columnObj = (/** @type {?} */ (layoutObj.content[j]));
+                                        _this.parseColor(columnObj.styles, tempColors);
+                                        for (var z = 0; z < columnObj.content.length; z++) {
+                                            /** @type {?} */
+                                            var widgetObj = columnObj.content[z];
+                                            _this.parseColor(widgetObj.styles, tempColors);
+                                        }
                                     }
                                 }
                             }
@@ -357,7 +373,8 @@
                     return (/** @type {?} */ (tempColors));
                 });
             }))).subscribe(this._colorUpdate);
-            reportObs.pipe(operators.map((/**
+            reportObs
+                .pipe(operators.map((/**
              * @param {?} r
              * @return {?}
              */
@@ -374,8 +391,10 @@
                         return (/** @type {?} */ (r.styles));
                     }
                 });
-            }))).subscribe(this._reportStylesUpdate);
-            reportObs.pipe(operators.map((/**
+            })))
+                .subscribe(this._reportStylesUpdate);
+            reportObs
+                .pipe(operators.map((/**
              * @param {?} r
              * @return {?}
              */
@@ -395,8 +414,10 @@
                         }));
                     }
                 });
-            }))).subscribe(this._headerWidgetsUpdate);
-            reportObs.pipe(operators.map((/**
+            })))
+                .subscribe(this._headerWidgetsUpdate);
+            reportObs
+                .pipe(operators.map((/**
              * @param {?} r
              * @return {?}
              */
@@ -416,8 +437,10 @@
                         }));
                     }
                 });
-            }))).subscribe(this._contentWidgetsUpdate);
-            reportObs.pipe(operators.map((/**
+            })))
+                .subscribe(this._contentWidgetsUpdate);
+            reportObs
+                .pipe(operators.map((/**
              * @param {?} r
              * @return {?}
              */
@@ -437,7 +460,8 @@
                         }));
                     }
                 });
-            }))).subscribe(this._footerWidgetsUpdate);
+            })))
+                .subscribe(this._footerWidgetsUpdate);
             this._saveReport.pipe(operators.map((/**
              * @param {?} json
              * @return {?}
@@ -454,7 +478,8 @@
                     return json;
                 });
             })));
-            this._saveReportEvent.pipe(operators.combineLatest(this.report, this.reportForms), operators.combineLatest(this._headerWidgets.pipe(operators.filter((/**
+            this._saveReportEvent
+                .pipe(operators.combineLatest(this.report, this.reportForms), operators.combineLatest(this._headerWidgets.pipe(operators.filter((/**
              * @param {?} w
              * @return {?}
              */
@@ -470,7 +495,8 @@
              * @param {?} w
              * @return {?}
              */
-            function (w) { return w != null; }))))).subscribe((/**
+            function (w) { return w != null; })))))
+                .subscribe((/**
              * @param {?} r
              * @return {?}
              */
@@ -481,38 +507,29 @@
                 var curRo = r[0][1];
                 /** @type {?} */
                 var forms = r[0][2] != null ? r[0][2] || [] : (curRo != null ? curRo.forms || [] : []);
-                obj['header'] = { content: r[1].widgets.map((/**
+                obj.header = (/** @type {?} */ ({ content: r[1].widgets.map((/**
                      * @param {?} w
                      * @return {?}
                      */
-                    function (w) { return w.toJson(); })), styles: r[1].styles };
-                obj['content'] = { content: r[2].widgets.map((/**
+                    function (w) { return utils.deepCopy(w); })), styles: r[1].styles }));
+                obj.content = (/** @type {?} */ ({ content: r[2].widgets.map((/**
                      * @param {?} w
                      * @return {?}
                      */
-                    function (w) { return w.toJson(); })), styles: r[2].styles };
-                obj['footer'] = { content: r[3].widgets.map((/**
+                    function (w) { return utils.deepCopy(w); })), styles: r[2].styles }));
+                obj.footer = (/** @type {?} */ ({ content: r[3].widgets.map((/**
                      * @param {?} w
                      * @return {?}
                      */
-                    function (w) { return w.toJson(); })), styles: r[3].styles };
-                obj['styles'] = r[4];
+                    function (w) { return utils.deepCopy(w); })), styles: r[3].styles }));
+                obj.styles = r[4];
                 /** @type {?} */
-                var ro = new reports.AjfReport(forms, {
-                    header: new reports.AjfReportContainer({
-                        content: r[1].widgets,
-                        styles: r[1].styles
-                    }),
-                    content: new reports.AjfReportContainer({
-                        content: r[2].widgets,
-                        styles: r[2].styles
-                    }),
-                    footer: new reports.AjfReportContainer({
-                        content: r[3].widgets,
-                        styles: r[3].styles
-                    }),
+                var ro = (/** @type {?} */ ({
+                    header: { content: r[1].widgets, styles: r[1].styles },
+                    content: { content: r[2].widgets, styles: r[2].styles },
+                    footer: { content: r[3].widgets, styles: r[3].styles },
                     styles: r[4]
-                });
+                }));
                 _this.setSaveReport(obj);
                 _this._savedReportUpdate.next(ro);
                 _this.pushJsonStack(JSON.stringify(obj));
@@ -578,10 +595,12 @@
          */
         function (nodes) {
             for (var i = 0; i < nodes.length; i++) {
-                if (nodes[i] instanceof forms$1.AjfNodeGroup ||
-                    nodes[i] instanceof forms$1.AjfSlide ||
-                    nodes[i] instanceof forms$1.AjfRepeatingSlide ||
-                    nodes[i] instanceof forms$1.AjfStringField) {
+                /** @type {?} */
+                var node = nodes[i];
+                if (node.nodeType === forms$1.AjfNodeType.AjfNodeGroup || node.nodeType === forms$1.AjfNodeType.AjfSlide ||
+                    node.nodeType === forms$1.AjfNodeType.AjfRepeatingSlide ||
+                    (node.nodeType === forms$1.AjfNodeType.AjfField &&
+                        ((/** @type {?} */ (node))).fieldType === forms$1.AjfFieldType.String)) {
                     nodes.splice(i, 1);
                     i--;
                 }
@@ -1820,14 +1839,14 @@
             }));
         };
         /**
-         * This method set the imageUrl on the current AjfReportImageWidget.
+         * This method set the imageUrl on the current AjfImageWidget.
          *
          * @param imageUrl
          *
          * @memberOf AjfReportBuilderService
          */
         /**
-         * This method set the imageUrl on the current AjfReportImageWidget.
+         * This method set the imageUrl on the current AjfImageWidget.
          *
          * \@memberOf AjfReportBuilderService
          * @param {?} imageUrl
@@ -1835,7 +1854,7 @@
          * @return {?}
          */
         AjfReportBuilderService.prototype.setImageUrl = /**
-         * This method set the imageUrl on the current AjfReportImageWidget.
+         * This method set the imageUrl on the current AjfImageWidget.
          *
          * \@memberOf AjfReportBuilderService
          * @param {?} imageUrl
@@ -1853,7 +1872,7 @@
                 }
                 /** @type {?} */
                 var myObj = (/** @type {?} */ (widget));
-                myObj.setUrl(imageUrl);
+                myObj.url = models.createFormula({ formula: "\"" + imageUrl + "\"" });
                 return myObj;
             }));
         };
@@ -1876,7 +1895,7 @@
                 }
                 /** @type {?} */
                 var myObj = (/** @type {?} */ (widget));
-                myObj.setIcon(icon);
+                myObj.icon = models.createFormula({ formula: "\"" + icon + "\"" });
                 return myObj;
             }));
         };
@@ -1899,7 +1918,7 @@
                 }
                 /** @type {?} */
                 var myObj = (/** @type {?} */ (widget));
-                myObj.setFlag(value);
+                myObj.flag = models.createFormula({ formula: "\"" + value + "\"" });
                 return myObj;
             }));
         };
@@ -1957,9 +1976,9 @@
                 var widget = (/** @type {?} */ (w));
                 if (widget != null && widget.dataset != null) {
                     /** @type {?} */
-                    var formula = new models.AjfFormula();
+                    var formula = models.createFormula({});
                     /** @type {?} */
-                    var aggregation = new reports.AjfAggregation();
+                    var aggregation = reports.createAggregation({});
                     // let obj: any;
                     formula.formula = formulaText;
                     aggregation.aggregation = aggregationType;
@@ -2019,9 +2038,9 @@
                 var widget = (/** @type {?} */ (w));
                 if (widget.dataset != null) {
                     /** @type {?} */
-                    var formula = new models.AjfFormula();
+                    var formula = models.createFormula({});
                     /** @type {?} */
-                    var aggregation = new reports.AjfAggregation();
+                    var aggregation = reports.createAggregation({});
                     // let dataset: AjfDataset = new AjfDataset();
                     // let rowDataset: AjfDataset[] = [];
                     // let obj: any;
@@ -2085,14 +2104,14 @@
             }));
         };
         /**
-         * update type field of AjfReportChartWidget current widget
+         * update type field of AjfChartWidget current widget
          *
          * @param type
          *
          * @memberOf AjfReportBuilderService
          */
         /**
-         * update type field of AjfReportChartWidget current widget
+         * update type field of AjfChartWidget current widget
          *
          * \@memberOf AjfReportBuilderService
          * @param {?} type
@@ -2100,7 +2119,7 @@
          * @return {?}
          */
         AjfReportBuilderService.prototype.setChartType = /**
-         * update type field of AjfReportChartWidget current widget
+         * update type field of AjfChartWidget current widget
          *
          * \@memberOf AjfReportBuilderService
          * @param {?} type
@@ -2111,21 +2130,21 @@
             this._setCurrentWidgetProperty('type', type);
         };
         /**
-         * remove  idx element of xLabels field of AjfReportChartWidget current widget
+         * remove  idx element of xLabels field of AjfChartWidget current widget
          *
          * @param idx
          *
          * @memberOf AjfReportBuilderService
          */
         /**
-         * remove  idx element of xLabels field of AjfReportChartWidget current widget
+         * remove  idx element of xLabels field of AjfChartWidget current widget
          *
          * \@memberOf AjfReportBuilderService
          * @param {?} _idx
          * @return {?}
          */
         AjfReportBuilderService.prototype.removeMainData = /**
-         * remove  idx element of xLabels field of AjfReportChartWidget current widget
+         * remove  idx element of xLabels field of AjfChartWidget current widget
          *
          * \@memberOf AjfReportBuilderService
          * @param {?} _idx
@@ -2170,14 +2189,14 @@
             }));
         };
         /**
-         * update backgroundColor field of AjfReportChartWidget current widget
+         * update backgroundColor field of AjfChartWidget current widget
          *
          * @param colors
          *
          * @memberOf AjfReportBuilderService
          */
         /**
-         * update backgroundColor field of AjfReportChartWidget current widget
+         * update backgroundColor field of AjfChartWidget current widget
          *
          * \@memberOf AjfReportBuilderService
          * @param {?} colors
@@ -2185,7 +2204,7 @@
          * @return {?}
          */
         AjfReportBuilderService.prototype.setChartBackgroundColor = /**
-         * update backgroundColor field of AjfReportChartWidget current widget
+         * update backgroundColor field of AjfChartWidget current widget
          *
          * \@memberOf AjfReportBuilderService
          * @param {?} colors
@@ -2218,14 +2237,14 @@
             this._removeFromCurrentWidgetArrayProperty('backgroundColor', idx);
         };
         /**
-         * update borderColor field of AjfReportChartWidget current widget
+         * update borderColor field of AjfChartWidget current widget
          *
          * @param colors
          *
          * @memberOf AjfReportBuilderService
          */
         /**
-         * update borderColor field of AjfReportChartWidget current widget
+         * update borderColor field of AjfChartWidget current widget
          *
          * \@memberOf AjfReportBuilderService
          * @param {?} colors
@@ -2233,7 +2252,7 @@
          * @return {?}
          */
         AjfReportBuilderService.prototype.setChartBorderColor = /**
-         * update borderColor field of AjfReportChartWidget current widget
+         * update borderColor field of AjfChartWidget current widget
          *
          * \@memberOf AjfReportBuilderService
          * @param {?} colors
@@ -2327,7 +2346,7 @@
             this._saveReport.next(json);
         };
         /**
-         * This method set the font attribute on the current AjfReportWidget.
+         * This method set the font attribute on the current AjfWidget.
          *
          * There is a check on font-size attribute,
          * if is no specificate the type of size font set 'pt' as default.
@@ -2338,7 +2357,7 @@
          * @memberOf AjfReportBuilderService
          */
         /**
-         * This method set the font attribute on the current AjfReportWidget.
+         * This method set the font attribute on the current AjfWidget.
          *
          * There is a check on font-size attribute,
          * if is no specificate the type of size font set 'pt' as default.
@@ -2350,7 +2369,7 @@
          * @return {?}
          */
         AjfReportBuilderService.prototype.setWidgetStyles = /**
-         * This method set the font attribute on the current AjfReportWidget.
+         * This method set the font attribute on the current AjfWidget.
          *
          * There is a check on font-size attribute,
          * if is no specificate the type of size font set 'pt' as default.
@@ -2610,7 +2629,7 @@
             }));
         };
         /**
-         * Add an AjfReportWidget on _headerWidgetsUpdate
+         * Add an AjfWidget on _headerWidgetsUpdate
          *
          * @param widget
          * @param [position]
@@ -2618,7 +2637,7 @@
          * @memberOf AjfReportBuilderService
          */
         /**
-         * Add an AjfReportWidget on _headerWidgetsUpdate
+         * Add an AjfWidget on _headerWidgetsUpdate
          *
          * \@memberOf AjfReportBuilderService
          * @param {?} widget
@@ -2626,7 +2645,7 @@
          * @return {?}
          */
         AjfReportBuilderService.prototype.addHeaderWidget = /**
-         * Add an AjfReportWidget on _headerWidgetsUpdate
+         * Add an AjfWidget on _headerWidgetsUpdate
          *
          * \@memberOf AjfReportBuilderService
          * @param {?} widget
@@ -2637,7 +2656,7 @@
             this._addWidgetToContainer(this._headerWidgetsUpdate, widget, position);
         };
         /**
-         * Add an AjfReportWidget on _contentWidgetsUpdate
+         * Add an AjfWidget on _contentWidgetsUpdate
          *
          * @param widget
          * @param [position]
@@ -2645,7 +2664,7 @@
          * @memberOf AjfReportBuilderService
          */
         /**
-         * Add an AjfReportWidget on _contentWidgetsUpdate
+         * Add an AjfWidget on _contentWidgetsUpdate
          *
          * \@memberOf AjfReportBuilderService
          * @param {?} widget
@@ -2653,7 +2672,7 @@
          * @return {?}
          */
         AjfReportBuilderService.prototype.addContentWidget = /**
-         * Add an AjfReportWidget on _contentWidgetsUpdate
+         * Add an AjfWidget on _contentWidgetsUpdate
          *
          * \@memberOf AjfReportBuilderService
          * @param {?} widget
@@ -2664,7 +2683,7 @@
             this._addWidgetToContainer(this._contentWidgetsUpdate, widget, position);
         };
         /**
-         * Add an AjfReportWidget on _footerWidgetsUpdate
+         * Add an AjfWidget on _footerWidgetsUpdate
          *
          * @param widget
          * @param [position]
@@ -2672,7 +2691,7 @@
          * @memberOf AjfReportBuilderService
          */
         /**
-         * Add an AjfReportWidget on _footerWidgetsUpdate
+         * Add an AjfWidget on _footerWidgetsUpdate
          *
          * \@memberOf AjfReportBuilderService
          * @param {?} widget
@@ -2680,7 +2699,7 @@
          * @return {?}
          */
         AjfReportBuilderService.prototype.addfooterWidget = /**
-         * Add an AjfReportWidget on _footerWidgetsUpdate
+         * Add an AjfWidget on _footerWidgetsUpdate
          *
          * \@memberOf AjfReportBuilderService
          * @param {?} widget
@@ -2747,7 +2766,7 @@
             }));
         };
         /**
-         * Add column on the current AjfReportLayoutWidget.
+         * Add column on the current AjfLayoutWidget.
          *
          * When adding a column the width of the other columns is recalculated
          * by dividing it by the number of column
@@ -2755,7 +2774,7 @@
          * @memberOf AjfReportBuilderService
          */
         /**
-         * Add column on the current AjfReportLayoutWidget.
+         * Add column on the current AjfLayoutWidget.
          *
          * When adding a column the width of the other columns is recalculated
          * by dividing it by the number of column
@@ -2764,7 +2783,7 @@
          * @return {?}
          */
         AjfReportBuilderService.prototype.addColumn = /**
-         * Add column on the current AjfReportLayoutWidget.
+         * Add column on the current AjfLayoutWidget.
          *
          * When adding a column the width of the other columns is recalculated
          * by dividing it by the number of column
@@ -2826,12 +2845,12 @@
                     tempObj[0] = Number(_this.roundTo(tempObj[0], 2).toFixed(2));
                 }
                 myObj.columns = tempObj;
+                // TODO: @trik what's value?!?
                 /** @type {?} */
-                var columnObj = {
+                var columnObj = reports.createWidget({
                     widgetType: 7,
-                    value: myObj.columns[myObj.columns.length - 1]
-                };
-                myObj.content.push(new reports.AjfReportColumnWidget(columnObj));
+                });
+                myObj.content.push(columnObj);
                 _this._saveReportEvent.emit();
                 return myObj;
             }));
@@ -2939,7 +2958,7 @@
                         /** @type {?} */
                         var myObj = (/** @type {?} */ (widget));
                         if (myObj.columns.length === 1) {
-                            myObj.content[0].content.length = 0;
+                            ((/** @type {?} */ (myObj.content[0]))).content.length = 0;
                             return myObj;
                         }
                         if (myObj.columns[idx] == null) {
@@ -3031,7 +3050,7 @@
             }
         };
         /**
-         * This method add a AjfReportWidget on the current AjfReportLayoutWidget.
+         * This method add a AjfWidget on the current AjfLayoutWidget.
          *
          * @param newWidget
          * @param idx
@@ -3039,7 +3058,7 @@
          * @memberOf AjfReportBuilderService
          */
         /**
-         * This method add a AjfReportWidget on the current AjfReportLayoutWidget.
+         * This method add a AjfWidget on the current AjfLayoutWidget.
          *
          * \@memberOf AjfReportBuilderService
          * @param {?} newWidget
@@ -3048,7 +3067,7 @@
          * @return {?}
          */
         AjfReportBuilderService.prototype.addToContent = /**
-         * This method add a AjfReportWidget on the current AjfReportLayoutWidget.
+         * This method add a AjfWidget on the current AjfLayoutWidget.
          *
          * \@memberOf AjfReportBuilderService
          * @param {?} newWidget
@@ -3105,7 +3124,7 @@
                 /** @type {?} */
                 var obj = JSON.parse(event.dragData.json);
                 /** @type {?} */
-                var newWidget = reports.AjfReportWidget.fromJson(obj);
+                var newWidget = utils.deepCopy(obj);
                 if (position != null) {
                     toColumn.content.splice(position, 0, newWidget);
                 }
@@ -3115,11 +3134,9 @@
             }
             else {
                 /** @type {?} */
-                var obj = {
-                    'widgetType': reports.AjfReportWidgetType[event.dragData]
-                };
+                var obj = { 'widgetType': reports.AjfWidgetType[event.dragData] };
                 /** @type {?} */
-                var newWidget = reports.AjfReportWidget.fromJson(obj);
+                var newWidget = utils.deepCopy(obj);
                 if (position != null) {
                     toColumn.content.splice(position, 0, newWidget);
                 }
@@ -3358,7 +3375,7 @@
 
     /**
      * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
     /**
      * this component manages the report text
@@ -3496,7 +3513,7 @@
 
     /**
      * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
     /**
      * @param {?} widgetType
@@ -3524,14 +3541,14 @@
      * @return {?}
      */
     function ajfWidgetTypeToLabel(type) {
-        return ajfWidgetTypeStringToLabel(reports.AjfReportWidgetType[type]);
+        return ajfWidgetTypeStringToLabel(reports.AjfWidgetType[type]);
     }
     /**
      * @param {?} type
      * @return {?}
      */
     function widgetReportBuilderIconName(type) {
-        return "reportbuilder-" + reports.AjfReportWidgetType[type].toLowerCase();
+        return "reportbuilder-" + reports.AjfWidgetType[type].toLowerCase();
     }
     /**
      * @param {?} str
@@ -3547,7 +3564,7 @@
 
     /**
      * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
     var AjfReportBuilderConditionEditor = /** @class */ (function () {
         /**
@@ -3612,7 +3629,7 @@
          * @return {?} boolean
          */
         function () {
-            return models.AjfCondition.validate(this.conditionText, this.names);
+            return models.validateExpression(this.conditionText, this.names);
         };
         // TODO complete the comment
         /**
@@ -3787,7 +3804,7 @@
 
     /**
      * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
     /**
      *  manage the content page
@@ -3891,12 +3908,7 @@
          * @return {?}
          */
         function (widget) {
-            if (widget instanceof reports.AjfReportLayoutWidget) {
-                return true;
-            }
-            else {
-                return false;
-            }
+            return widget.widgetType === reports.AjfWidgetType.Layout;
         };
         /**
          *  sign the start of mouse drag with 200 ms of delay
@@ -4099,14 +4111,12 @@
                 this.currentWidget = itemData.widget;
             }
             else if (itemData.json != null && itemData.json !== '') {
-                this.currentWidget = reports.AjfReportWidget.fromJson(JSON.parse(utils.deepCopy(itemData.json)));
+                this.currentWidget = utils.deepCopy(itemData.json);
             }
             else {
                 /** @type {?} */
-                var obj = {
-                    'widgetType': ((/** @type {?} */ (reports.AjfReportWidgetType)))[(/** @type {?} */ (itemData.widgetType))]
-                };
-                this.currentWidget = reports.AjfReportWidget.fromJson(obj);
+                var obj = { 'widgetType': ((/** @type {?} */ (reports.AjfWidgetType)))[(/** @type {?} */ (itemData.widgetType))] };
+                this.currentWidget = utils.deepCopy(obj);
             }
             this.onDragEndHandler();
             if (this.currentWidget != null) {
@@ -4237,7 +4247,7 @@
 
     /**
      * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
     var AjfReportBuilderCustomWidgetDialog = /** @class */ (function () {
         function AjfReportBuilderCustomWidgetDialog(_service, _dialogRef) {
@@ -4275,7 +4285,7 @@
 
     /**
      * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
     var AjfReportBuilderCustomWidgetToolbarButton = /** @class */ (function () {
         // {...t, dropZones: ['header','content','footer','column','widget']}
@@ -4339,7 +4349,7 @@
 
     /**
      * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
     var AjfReportBuilderCustomWidgetsToolbar = /** @class */ (function () {
         function AjfReportBuilderCustomWidgetsToolbar(_service, dialog) {
@@ -4525,7 +4535,7 @@
 
     /**
      * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
     var AjfReportBuilderFormsAnalyzerDialog = /** @class */ (function () {
         function AjfReportBuilderFormsAnalyzerDialog(_service, _dialogRef, _) {
@@ -4690,8 +4700,8 @@
          */
         function () {
             try {
-                monaco.languages.typescript.javascriptDefaults
-                    ._extraLibs['condition-editor-functions.d.ts'] = models.AjfValidatedProperty.UTIL_FUNCTIONS;
+                monaco.languages.typescript.javascriptDefaults._extraLibs['condition-editor-functions.d.ts'] =
+                    models.AjfExpressionUtils.UTIL_FUNCTIONS;
             }
             catch (e) { }
         };
@@ -4805,7 +4815,7 @@
                 return false;
             }
             else {
-                return models.AjfFormula.validate(this.formulaText, this.formsVariablesName);
+                return models.validateExpression(this.formulaText, this.formsVariablesName);
             }
         };
         /**
@@ -4840,7 +4850,7 @@
          * @return {?}
          */
         function () {
-            this._service.saveImageFormula(new models.AjfFormula(this.formulaText));
+            this._service.saveImageFormula(models.createFormula({ formula: this.formulaText }));
         };
         /**
          * @return {?}
@@ -5019,7 +5029,7 @@
 
     /**
      * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
     /**
      * this component provides the support for connect the form fields with the report
@@ -5118,7 +5128,7 @@
                 /** @type {?} */
                 var mainData = [];
                 for (var i = 0; i < this._dataset[0].length; i++) {
-                    mainData.push(this._dataset[0][i].label);
+                    mainData.push(this._dataset[0][i].label || '');
                 }
                 return mainData;
             }
@@ -5154,7 +5164,7 @@
             var dataset = [];
             if (this._dataset[0] != null) {
                 for (var i = 1; i < this._dataset.length; i++) {
-                    dataset.push(this._dataset[i][0].label);
+                    dataset.push(this._dataset[i][0].label || '');
                 }
                 return dataset;
             }
@@ -5190,7 +5200,7 @@
                 /** @type {?} */
                 var relatedData = [];
                 for (var i = 1; i < this._dataset[this.currentMainDataIndex + 1].length; i++) {
-                    relatedData.push(this._dataset[this.currentMainDataIndex + 1][i].label);
+                    relatedData.push(this._dataset[this.currentMainDataIndex + 1][i].label || '');
                 }
                 return relatedData;
             }
@@ -5210,7 +5220,7 @@
             if (this._dataset != null) {
                 for (var i = 0; i < this._dataset.length; i++) {
                     if (this._dataset[i][0] != null) {
-                        mainData.push(this._dataset[i][0].label);
+                        mainData.push(this._dataset[i][0].label || '');
                     }
                 }
             }
@@ -5228,7 +5238,7 @@
                 var tableData = [];
                 for (var i = 1; i < this._dataset[this.currentMainDataIndex].length; i++) {
                     if (this._dataset[this.currentMainDataIndex][i] != null) {
-                        tableData.push(this._dataset[this.currentMainDataIndex][i].label);
+                        tableData.push(this._dataset[this.currentMainDataIndex][i].label || '');
                     }
                 }
                 return tableData;
@@ -5352,8 +5362,7 @@
                     index = 0;
                 }
                 if (level === 1) {
-                    if (this.currentWidget != null &&
-                        this.currentWidget.widgetType == reports.AjfReportWidgetType.Chart) {
+                    if (this.currentWidget != null && this.currentWidget.widgetType == reports.AjfWidgetType.Chart) {
                         mainIndex++;
                     }
                     index++;
@@ -5493,7 +5502,7 @@
 
     /**
      * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
     var AjfImageFilterPipe = /** @class */ (function () {
         function AjfImageFilterPipe() {
@@ -5528,7 +5537,7 @@
 
     /**
      * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
     /**
      * this component handle a group of image object
@@ -5673,7 +5682,7 @@
 
     /**
      * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
     var AjfReportBuilderProperties = /** @class */ (function () {
         function AjfReportBuilderProperties(_dialog, _service) {
@@ -6318,7 +6327,7 @@
             var forms = [];
             try {
                 for (var i = 0; i < this.formsJson.forms.length; i++) {
-                    forms.push(forms$1.AjfForm.fromJson(this.formsJson.forms[i]));
+                    forms.push(utils.deepCopy(this.formsJson.forms[i]));
                 }
                 this._service.setReportForms(forms);
             }
@@ -6884,7 +6893,7 @@
                 if (x != null) {
                     if (_this.currentWidget !== x) {
                         _this.currentWidget = x;
-                        _this.widgetName = reports.AjfReportWidgetType[x.widgetType];
+                        _this.widgetName = reports.AjfWidgetType[x.widgetType];
                         _this.reportStyles = false;
                         _this.sectionStyles = false;
                         _this.widgetStyles = false;
@@ -7275,7 +7284,7 @@
             if (this.currentWidget == null) {
                 return;
             }
-            this.widgetName = reports.AjfReportWidgetType[this.currentWidget.widgetType];
+            this.widgetName = reports.AjfWidgetType[this.currentWidget.widgetType];
         };
         /**
          * @return {?}
@@ -7311,7 +7320,7 @@
 
     /**
      * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
     var AjfQuillEditor = /** @class */ (function () {
         function AjfQuillEditor(_elementRef, _renderer, _service) {
@@ -7788,7 +7797,7 @@
 
     /**
      * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
     var AjfReportBuilderRendererWidget = /** @class */ (function () {
         function AjfReportBuilderRendererWidget(_service) {
@@ -7802,7 +7811,9 @@
             get: /**
              * @return {?}
              */
-            function () { return reports.AjfReportWidgetType; },
+            function () {
+                return reports.AjfWidgetType;
+            },
             enumerable: true,
             configurable: true
         });
@@ -7910,7 +7921,7 @@
             if (myObj.icon == null) {
                 return null;
             }
-            return myObj.icon.evaluate({}) || defVal;
+            return models.evaluateExpression(myObj.icon.formula) || defVal;
         };
         /**
          * @return {?}
@@ -7926,7 +7937,7 @@
             if (myObj.flag == null) {
                 return null;
             }
-            return myObj.flag.evaluate({}) || defVal;
+            return models.evaluateExpression(myObj.flag.formula) || defVal;
         };
         /**
          * @param {?} index
@@ -7957,7 +7968,7 @@
             if (myObj.url == null) {
                 return null;
             }
-            return myObj.url.evaluate({}) || defVal;
+            return models.evaluateExpression(myObj.url.formula) || defVal;
         };
         /**
          * @return {?}
@@ -7966,9 +7977,7 @@
          * @return {?}
          */
         function () {
-            return this.widget != null ?
-                ((/** @type {?} */ (this.widget))).imageType :
-                image$1.AjfImageType.Image;
+            return this.widget != null ? ((/** @type {?} */ (this.widget))).imageType : image$1.AjfImageType.Image;
         };
         /**
          * @return {?}
@@ -7978,8 +7987,7 @@
          */
         function () {
             /** @type {?} */
-            var myObj;
-            myObj = (/** @type {?} */ (this.widget));
+            var myObj = (/** @type {?} */ (this.widget));
             if (myObj.htmlText === '') {
                 return '...';
             }
@@ -7995,8 +8003,7 @@
          */
         function () {
             /** @type {?} */
-            var myObj;
-            myObj = (/** @type {?} */ (this.widget));
+            var myObj = (/** @type {?} */ (this.widget));
             if (myObj.coordinate == null) {
                 return [51.505, -0.09, 13];
             }
@@ -8012,13 +8019,12 @@
          */
         function () {
             /** @type {?} */
-            var myObj;
-            myObj = (/** @type {?} */ (this.widget));
+            var myObj = (/** @type {?} */ (this.widget));
             if (myObj.tileLayer === '') {
                 return 'http://{s}.tile.osm.org/{z}/{x}/{y}.png';
             }
             else {
-                return myObj.tileLayerMap;
+                return myObj.tileLayer;
             }
         };
         /**
@@ -8035,7 +8041,7 @@
                 return "&copy; <a href='http://osm.org/copyright'>O</a> contributors";
             }
             else {
-                return myObj.attributionMap;
+                return myObj.attribution;
             }
         };
         /**
@@ -8109,7 +8115,7 @@
                     var tableTitle = [];
                     for (var i = 0; i < myObj.dataset.length; i++) {
                         if (myObj.dataset[i][0] != null) {
-                            tableTitle.push(myObj.dataset[i][0].label);
+                            tableTitle.push(myObj.dataset[i][0].label || '');
                         }
                     }
                     return tableTitle;
@@ -8133,15 +8139,14 @@
                     var tableContent = [];
                     for (var i = 0; i < myObj.dataset.length; i++) {
                         for (var j = 0; j < myObj.dataset[i].length; j++) {
-                            if ((myObj.dataset[i] != null) &&
-                                (myObj.dataset[i][j + 1] != null)) {
+                            if ((myObj.dataset[i] != null) && (myObj.dataset[i][j + 1] != null)) {
                                 if (tableContent[j] == null) {
                                     tableContent[j] = [];
                                 }
                                 if (tableContent[j][i] == null) {
                                     tableContent[j][i] = ' ';
                                 }
-                                tableContent[j].splice(i, 1, myObj.dataset[i][j + 1].label);
+                                tableContent[j].splice(i, 1, myObj.dataset[i][j + 1].label || '');
                             }
                         }
                     }
@@ -8174,7 +8179,7 @@
         };
         AjfReportBuilderRendererWidget.decorators = [
             { type: core.Component, args: [{selector: 'ajf-report-builder-renderer-widget',
-                        template: "<div class=\"ajf-container\" [ngSwitch]=\"widget?.widgetType\" [ngClass]=\"{'ajf-drag-mode': (onDragged || fixedZoom)}\"><div *ngSwitchCase=\"widgetTypes.Layout\" class=\"ajf-row ajf-layout\" [applyStyles]=\"widget.styles\"><div class=\"ajf-columns\"><ng-template ngFor let-clm [ngForOf]=\"getColumnContent()\" let-idx=\"index\"><div class=\"ajf-column\" [ngClass]=\"{'ajf-fixed': layoutWidget.columns[idx] == -1}\" [style.width]=\"getPercent(idx)\" [applyStyles]=\"widget.content[idx].styles\"><ajf-report-builder-widgets-row-buttons [from]=\"'layout'\" [fromWidget]=\"widget\" [widget]=\"clm\" [position]=\"idx\" (onDragStart)=\"onDragStartHandler();\" (onDragEnd)=\"onDragEndHandler();\" [child]=\"true\"></ajf-report-builder-widgets-row-buttons><ajf-column [column]=\"clm\" [applyStyles]=\"widget.styles\"></ajf-column><ng-template [ngIf]=\"onDragged === true\"><div cdkDropList [cdkDropListEnterPredicate]=\"canDropPredicate\" [style.display]=\"onDragged ? 'block' : 'none'\" (cdkDropListDropped)=\"addToList($event, clm)\" class=\"ajf-column-drop-zone\" (dragover)=\"layoutShow = true;\" (dragleave)=\"layoutShow = false;\"></div></ng-template></div></ng-template></div></div><div *ngSwitchCase=\"widgetTypes.Image\" class=\"ajf-row\"><ajf-image [applyStyles]=\"widget.styles\" [type]=\"getImageType()\" [imageUrl]=\"getImageUrl()\" [icon]=\"getIcon()\" [flag]=\"getFlag()\"></ajf-image></div><div *ngSwitchCase=\"widgetTypes.Text\" class=\"ajf-row ajf-text\"><ajf-text [htmlText]=\"getHtmlText() | translate\" [applyStyles]=\"widget.styles\"></ajf-text></div><div *ngSwitchCase=\"widgetTypes.Chart\" class=\"ajf-row\" [applyStyles]=\"widget.styles\"></div><div *ngSwitchCase=\"widgetTypes.Table\" class=\"ajf-row\" [applyStyles]=\"widget.styles\"><ajf-table [data]=\"(getTableContent|async)\"></ajf-table></div><div *ngSwitchCase=\"widgetTypes.Map\" class=\"ajf-row\" [applyStyles]=\"widget.styles\"><ajf-map [coordinate]=\"getCoordinate()\" [tileLayer]=\"getTileLayer()\" [attribution]=\"getAttribution()\"></ajf-map></div></div>",
+                        template: "<div class=\"ajf-container\" [ngSwitch]=\"widget?.widgetType\" [ngClass]=\"{'ajf-drag-mode': (onDragged || fixedZoom)}\"><div *ngSwitchCase=\"widgetTypes.Layout\" class=\"ajf-row ajf-layout\" [applyStyles]=\"widget.styles\"><div class=\"ajf-columns\"><ng-template ngFor let-clm [ngForOf]=\"getColumnContent()\" let-idx=\"index\"><div class=\"ajf-column\" [ngClass]=\"{'ajf-fixed': layoutWidget.columns[idx] == -1}\" [style.width]=\"getPercent(idx)\" [applyStyles]=\"layoutWidget.content[idx].styles\"><ajf-report-builder-widgets-row-buttons [from]=\"'layout'\" [fromWidget]=\"widget\" [widget]=\"clm\" [position]=\"idx\" (onDragStart)=\"onDragStartHandler();\" (onDragEnd)=\"onDragEndHandler();\" [child]=\"true\"></ajf-report-builder-widgets-row-buttons><ajf-column [column]=\"clm\" [applyStyles]=\"widget.styles\"></ajf-column><ng-template [ngIf]=\"onDragged === true\"><div cdkDropList [cdkDropListEnterPredicate]=\"canDropPredicate\" [style.display]=\"onDragged ? 'block' : 'none'\" (cdkDropListDropped)=\"addToList($event, clm)\" class=\"ajf-column-drop-zone\" (dragover)=\"layoutShow = true;\" (dragleave)=\"layoutShow = false;\"></div></ng-template></div></ng-template></div></div><div *ngSwitchCase=\"widgetTypes.Image\" class=\"ajf-row\"><ajf-image [applyStyles]=\"widget.styles\" [type]=\"getImageType()\" [imageUrl]=\"getImageUrl()\" [icon]=\"getIcon()\" [flag]=\"getFlag()\"></ajf-image></div><div *ngSwitchCase=\"widgetTypes.Text\" class=\"ajf-row ajf-text\"><ajf-text [htmlText]=\"getHtmlText() | translate\" [applyStyles]=\"widget.styles\"></ajf-text></div><div *ngSwitchCase=\"widgetTypes.Chart\" class=\"ajf-row\" [applyStyles]=\"widget.styles\"></div><div *ngSwitchCase=\"widgetTypes.Table\" class=\"ajf-row\" [applyStyles]=\"widget.styles\"><ajf-table [data]=\"(getTableContent|async)\"></ajf-table></div><div *ngSwitchCase=\"widgetTypes.Map\" class=\"ajf-row\" [applyStyles]=\"widget.styles\"><ajf-map [coordinate]=\"getCoordinate()\" [tileLayer]=\"getTileLayer()\" [attribution]=\"getAttribution()\"></ajf-map></div></div>",
                         styles: ["ajf-report-builder-renderer-widget .ajf-drag-mode .ajf-layout{border:none!important}ajf-report-builder-renderer-widget .ajf-drag-mode .ajf-row{border:9px solid #00f;border-radius:36px;height:100%}ajf-report-builder-renderer-widget .ajf-drag-mode .ajf-row .ajf-columns{border:9px solid red!important;height:100%;margin-bottom:20px;padding-bottom:20px;padding-top:20px}ajf-report-builder-renderer-widget .ajf-drag-mode .ajf-row .ajf-columns .ajf-fixed{border:9px solid #ff0!important}ajf-report-builder-renderer-widget .ajf-drag-mode .ajf-row .ajf-columns .ajf-column{border:9px solid #9acd32;margin-left:10px;margin-right:10px;border-radius:36px;height:100%}ajf-report-builder-renderer-widget .ajf-drag-mode .ajf-row .ajf-columns .ajf-column ajf-report-builder-widgets-row-buttons{visibility:visible!important;display:block!important}ajf-report-builder-renderer-widget .ajf-drag-mode .ajf-row .ajf-columns .ajf-column .ajf-container{min-height:50px}ajf-report-builder-renderer-widget .ajf-container{height:inherit;display:block;min-height:50px}ajf-report-builder-renderer-widget .ajf-row-button{width:100%}ajf-report-builder-renderer-widget .ajf-container:hover{border:3px dotted #00f;border-radius:16px;opacity:1;min-height:50px}ajf-report-builder-renderer-widget .ajf-on-dragged{border:23px dotted #00f}ajf-report-builder-renderer-widget .ajf-selected{background-color:red}ajf-report-builder-renderer-widget .ajf-on-drag-over,ajf-report-builder-renderer-widget .ajf-show{border:33px dotted #00f;opacity:1!important;z-index:10}ajf-report-builder-renderer-widget .ajf-no-obj{max-width:200px;max-height:200px;width:auto;height:auto}ajf-report-builder-renderer-widget .ajf-row{display:flex;flex-direction:column;height:100%}ajf-report-builder-renderer-widget .ajf-columns{display:flex;flex-direction:row}ajf-report-builder-renderer-widget .ajf-column{min-height:50px}ajf-report-builder-renderer-widget .ajf-column ajf-report-builder-widgets-row-buttons{visibility:hidden!important;display:none!important}ajf-report-builder-renderer-widget .ajf-column:hover{border:3px dashed #9acd32;border-radius:16px}ajf-report-builder-renderer-widget .ajf-column:hover ajf-report-builder-widgets-row-buttons{visibility:visible!important;display:block!important}ajf-report-builder-renderer-widget .ajf-column:hover .ajf-container{min-height:50px}ajf-report-builder-renderer-widget .ajf-fixed:hover{border:3px dashed red!important}ajf-report-builder-renderer-widget .ajf-fixed{min-width:100px}ajf-report-builder-renderer-widget .ajf-column-drop-zone{margin:10%;height:50px;background-color:#fff;border:9px solid rgba(66,134,244,.6);border-radius:16px}ajf-report-builder-renderer-widget .ajf-text{min-height:20px}ajf-report-builder-renderer-widget ajf-map{z-index:30}ajf-report-builder-renderer-widget ajf-column{width:100%}ajf-report-builder-renderer-widget button{width:100%}ajf-report-builder-renderer-widget mat-list{height:100%;padding:0}ajf-report-builder-renderer-widget .ajf-ui.ajf-fluid.ajf-image{max-width:100%;height:auto}ajf-report-builder-renderer-widget .ajf-column-right{float:right;width:33%;background-color:#8b4513}ajf-report-builder-renderer-widget .ajf-column-center{display:inline-block;width:33%;background-color:olive}"],
                         encapsulation: core.ViewEncapsulation.None,
                         changeDetection: core.ChangeDetectionStrategy.OnPush
@@ -8194,7 +8199,7 @@
 
     /**
      * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
     var AjfReportBuilderThemeColorDialog = /** @class */ (function () {
         function AjfReportBuilderThemeColorDialog(_service, _dialogRef) {
@@ -8313,7 +8318,7 @@
 
     /**
      * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
     /**
      * this component manages the report text
@@ -8665,7 +8670,7 @@
 
     /**
      * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
     var AjfReportBuilderToolbarDialog = /** @class */ (function () {
         function AjfReportBuilderToolbarDialog(_service, _dialogRef) {
@@ -8715,7 +8720,7 @@
 
     /**
      * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
     var AjfReportBuilderToolbar = /** @class */ (function () {
         function AjfReportBuilderToolbar(_service, dialog) {
@@ -8787,7 +8792,7 @@
             try {
                 /** @type {?} */
                 var myObj = JSON.parse(this._service.popJsonStack() || '');
-                this._service.setReport(reports.AjfReport.fromJson(myObj));
+                this._service.setReport(utils.deepCopy(myObj));
             }
             catch (e) { }
         };
@@ -8834,7 +8839,7 @@
 
     /**
      * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
     var AjfReportBuilderWidgetToolbarButton = /** @class */ (function () {
         function AjfReportBuilderWidgetToolbarButton() {
@@ -8864,7 +8869,7 @@
 
     /**
      * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
     var AjfReportBuilderWidgetsRowButtons = /** @class */ (function () {
         /**
@@ -8976,7 +8981,7 @@
          */
         function () {
             var _this = this;
-            this.label = reports.AjfReportWidgetType[this.widget.widgetType];
+            this.label = reports.AjfWidgetType[this.widget.widgetType];
             this.widgetIcon = widgetReportBuilderIconName(this.widget.widgetType);
             this.widgetLabel = ajfWidgetTypeToLabel(this.widget.widgetType);
             this._onDraggedSub = this._service.onDragged
@@ -9036,7 +9041,7 @@
 
     /**
      * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
     var AjfReportBuilderWidgetsToolbar = /** @class */ (function () {
         /**
@@ -9047,7 +9052,7 @@
             this._service = _service;
             // fieldTypes is an array string that contains the field options
             this.chartTypes = utils.sizedEnumToStringArray(reports.AjfChartType);
-            this.widgetTypes = utils.sizedEnumToStringArray(reports.AjfReportWidgetType);
+            this.widgetTypes = utils.sizedEnumToStringArray(reports.AjfWidgetType);
             // delete Column widget
             /** @type {?} */
             var pos = this.widgetTypes.indexOf('Column');
@@ -9122,7 +9127,7 @@
 
     /**
      * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
     var AjfReportBuilder = /** @class */ (function () {
         function AjfReportBuilder(_service) {
@@ -9192,7 +9197,7 @@
 
     /**
      * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
     var AjfReportBuilderModule = /** @class */ (function () {
         function AjfReportBuilderModule() {

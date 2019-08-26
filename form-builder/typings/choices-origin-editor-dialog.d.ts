@@ -19,15 +19,15 @@
  * If not, see http://www.gnu.org/licenses/.
  *
  */
+import { AjfChoicesOrigin } from '@ajf/core/forms';
 import { Observable } from 'rxjs';
-import { IAjfChoicesOrigin } from '@ajf/core/forms';
 import { AjfFbChoicesOriginEditor } from './choices-origin-editor';
 import { AjfFormBuilderService } from './form-builder-service';
 export declare class AjfFbChoicesOriginEditorDialog {
     private _service;
     editor: AjfFbChoicesOriginEditor;
     private _choicesOrigin;
-    readonly choicesOrigin: Observable<IAjfChoicesOrigin>;
+    readonly choicesOrigin: Observable<AjfChoicesOrigin<any>>;
     constructor(_service: AjfFormBuilderService);
     saveChoicesOrigin(): void;
     cancelChoicesOriginEdit(): void;

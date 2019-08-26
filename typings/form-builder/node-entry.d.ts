@@ -19,8 +19,8 @@
  * If not, see http://www.gnu.org/licenses/.
  *
  */
-import { AfterViewInit, ElementRef, OnDestroy, QueryList } from '@angular/core';
 import { CdkDrag, CdkDragDrop } from '@angular/cdk/drag-drop';
+import { AfterViewInit, ElementRef, OnDestroy, QueryList } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AjfFbBranchLine } from './branch-line';
 import { AjfFormBuilderNode, AjfFormBuilderNodeEntry, AjfFormBuilderNodeTypeEntry, AjfFormBuilderService } from './form-builder-service';

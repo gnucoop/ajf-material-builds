@@ -19,11 +19,11 @@
  * If not, see http://www.gnu.org/licenses/.
  *
  */
-import { AjfReportWidgetType } from '@ajf/core/reports';
+import { AjfWidgetType } from '@ajf/core/reports';
 export declare function ajfReportBuilderWidgetToString(widgetType: string): string;
 export declare function ajfWidgetTypeStringToIcon(widgetType: string): string;
-export declare function ajfWidgetTypeToIcon(widgetType: AjfReportWidgetType): string;
+export declare function ajfWidgetTypeToIcon(widgetType: AjfWidgetType): string;
 export declare function ajfWidgetTypeStringToLabel(widgetType: string): string;
-export declare function ajfWidgetTypeToLabel(type: AjfReportWidgetType): string;
-export declare function widgetReportBuilderIconName(type: AjfReportWidgetType): string;
+export declare function ajfWidgetTypeToLabel(type: AjfWidgetType): string;
+export declare function widgetReportBuilderIconName(type: AjfWidgetType): string;
 export declare function sanitizeConditionString(str: string): string;

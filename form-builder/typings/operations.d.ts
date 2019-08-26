@@ -19,10 +19,10 @@
  * If not, see http://www.gnu.org/licenses/.
  *
  */
-import { AjfAttachmentsOrigin, IAjfChoicesOrigin } from '@ajf/core/forms';
-export interface IAjfAttachmentsOriginsOperation {
-    (attachmentOrigins: AjfAttachmentsOrigin[]): AjfAttachmentsOrigin[];
+import { AjfAttachmentsOrigin, AjfChoicesOrigin } from '@ajf/core/forms';
+export interface AjfAttachmentsOriginsOperation {
+    (attachmentOrigins: AjfAttachmentsOrigin<any>[]): AjfAttachmentsOrigin<any>[];
 }
-export interface IAjfChoicesOriginsOperation {
-    (choicesOrigins: IAjfChoicesOrigin[]): IAjfChoicesOrigin[];
+export interface AjfChoicesOriginsOperation {
+    (choicesOrigins: AjfChoicesOrigin<any>[]): AjfChoicesOrigin<any>[];
 }

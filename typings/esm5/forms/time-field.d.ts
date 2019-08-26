@@ -19,13 +19,9 @@
  * If not, see http://www.gnu.org/licenses/.
  *
  */
-import { EventEmitter } from '@angular/core';
-export declare class AjfTimeModel {
-    private _hours;
-    private _minutes;
-    changed: EventEmitter<string>;
-    minutes: number;
-    hours: number;
-    toString(): string;
-    fromString(value: string): void;
+import { AjfBaseFieldComponent, AjfFormRendererService } from '@ajf/core/forms';
+import { ChangeDetectorRef } from '@angular/core';
+import { AjfWarningAlertService } from './warning-alert-service';
+export declare class AjfTimeFieldComponent extends AjfBaseFieldComponent {
+    constructor(cdr: ChangeDetectorRef, service: AjfFormRendererService, was: AjfWarningAlertService);
 }

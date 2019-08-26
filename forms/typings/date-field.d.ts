@@ -19,6 +19,9 @@
  * If not, see http://www.gnu.org/licenses/.
  *
  */
-export * from './time-model';
-export * from './time-module';
-export * from './time';
+import { AjfBaseFieldComponent, AjfDateFieldInstance, AjfFormRendererService } from '@ajf/core/forms';
+import { ChangeDetectorRef } from '@angular/core';
+import { AjfWarningAlertService } from './warning-alert-service';
+export declare class AjfDateFieldComponent extends AjfBaseFieldComponent<AjfDateFieldInstance> {
+    constructor(cdr: ChangeDetectorRef, service: AjfFormRendererService, was: AjfWarningAlertService);
+}

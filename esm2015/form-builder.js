@@ -42,14 +42,15 @@ import { TranslateModule } from '@ngx-translate/core';
 import { AjfMonacoEditor, AjfMonacoEditorModule } from '@ajf/material/monaco-editor';
 import { AjfNodeIconModule } from '@ajf/material/node-icon';
 import { withLatestFrom, filter, map, scan, publishReplay, refCount, sample, distinctUntilChanged } from 'rxjs/operators';
-import { AjfChoicesFixedOrigin, AjfSlide, AjfRepeatingSlide, AjfNodeGroup, AjfStringField, AjfTextField, AjfNumberField, AjfBooleanField, AjfSingleChoiceField, AjfMultipleChoiceField, AjfFormulaField, AjfDateField, AjfDateInputField, AjfTimeField, AjfTableField, AjfNode, AjfForm, AjfField, AjfValidationGroup, AjfValidation, AjfWarningGroup, AjfWarning, AjfFieldWithChoices, AjfFieldType, AjfValidationService, isContainerNode as isContainerNode$1 } from '@ajf/core/forms';
+import { isChoicesFixedOrigin, isContainerNode, AjfNodeType, AjfFieldType, createField, createNode, createForm, createChoicesFixedOrigin, isRepeatingContainerNode, isField, createValidationGroup, notEmptyValidation, minValidation, maxValidation, minDigitsValidation, maxDigitsValidation, createValidation, createWarningGroup, notEmptyWarning, createWarning, isFieldWithChoices, isSlidesNode, AjfValidationService, isNumberField } from '@ajf/core/forms';
 import { DataSource } from '@angular/cdk/collections';
 import { BehaviorSubject, Subject, Subscription } from 'rxjs';
-import { AjfCondition, AjfFormula, AjfValidatedProperty } from '@ajf/core/models';
+import { createCondition, alwaysCondition, createFormula, AjfExpressionUtils, neverCondition } from '@ajf/core/models';
+import { deepCopy } from '@ajf/core/utils';
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 class AjfFbBranchLine {
     /**
@@ -134,7 +135,7 @@ AjfFbBranchLine.propDecorators = {
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 class ChoicesOriginDataSource extends DataSource {
     constructor() {
@@ -163,7 +164,7 @@ class ChoicesOriginDataSource extends DataSource {
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 class AjfFbChoicesOriginEditor {
     constructor() {
@@ -179,17 +180,19 @@ class AjfFbChoicesOriginEditor {
     /**
      * @return {?}
      */
-    get choicesOrigin() { return this._choicesOrigin; }
+    get choicesOrigin() {
+        return this._choicesOrigin;
+    }
     /**
      * @param {?} choicesOrigin
      * @return {?}
      */
     set choicesOrigin(choicesOrigin) {
         this._choicesOrigin = choicesOrigin;
-        this.name = choicesOrigin.getName();
-        this.label = choicesOrigin.getLabel();
-        this.canEditChoices = choicesOrigin instanceof AjfChoicesFixedOrigin;
-        this._choicesArr = choicesOrigin.getChoices();
+        this.name = choicesOrigin.name;
+        this.label = choicesOrigin.label;
+        this.canEditChoices = isChoicesFixedOrigin(choicesOrigin);
+        this._choicesArr = choicesOrigin.choices;
         this._choices.updateChoices(this._choicesArr);
     }
     /**
@@ -242,33 +245,8 @@ AjfFbChoicesOriginEditor.propDecorators = {
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
-/**
- * @param {?} node
- * @return {?}
- */
-function isContainerNode(node) {
-    return node != null && (node instanceof AjfSlide ||
-        node instanceof AjfRepeatingSlide ||
-        node instanceof AjfNodeGroup);
-}
-/**
- * @param {?} node
- * @return {?}
- */
-function isRepeatingContainerNode(node) {
-    return node != null && (node instanceof AjfRepeatingSlide ||
-        node instanceof AjfNodeGroup);
-}
-/**
- * @param {?} node
- * @return {?}
- */
-function isSlideNode(node) {
-    return node != null && (node instanceof AjfSlide ||
-        node instanceof AjfRepeatingSlide);
-}
 /**
  * @param {?} c
  * @param {?} node
@@ -363,7 +341,7 @@ function buildFormBuilderNodesTree(nodes) {
     if (rootNodes.length === 1) {
         /** @type {?} */
         const rootNode = rootNodes[0];
-        if (rootNode instanceof AjfRepeatingSlide || rootNode instanceof AjfSlide) {
+        if (isSlidesNode(rootNode)) {
             /** @type {?} */
             const tree = [];
             tree.push((/** @type {?} */ ({
@@ -471,32 +449,73 @@ let nodeUniqueId = 0;
 class AjfFormBuilderService {
     constructor() {
         this._availableNodeTypes = [
-            { label: 'Slide', icon: { fontSet: 'ajf-icon', fontIcon: 'field-slide' }, nodeType: AjfSlide,
-                isSlide: true },
-            { label: 'Repeating slide', icon: { fontSet: 'ajf-icon', fontIcon: 'field-repeatingslide' },
-                nodeType: AjfRepeatingSlide, isSlide: true },
-            { label: 'String', icon: { fontSet: 'ajf-icon', fontIcon: 'field-string' },
-                nodeType: AjfStringField },
-            { label: 'Text', icon: { fontSet: 'ajf-icon', fontIcon: 'field-text' },
-                nodeType: AjfTextField },
-            { label: 'Number', icon: { fontSet: 'ajf-icon', fontIcon: 'field-number' },
-                nodeType: AjfNumberField },
-            { label: 'Boolean', icon: { fontSet: 'ajf-icon', fontIcon: 'field-boolean' },
-                nodeType: AjfBooleanField },
-            { label: 'Single choice', icon: { fontSet: 'ajf-icon', fontIcon: 'field-singlechoice' },
-                nodeType: AjfSingleChoiceField },
-            { label: 'Multiple choice', icon: { fontSet: 'ajf-icon', fontIcon: 'field-multiplechoice' },
-                nodeType: AjfMultipleChoiceField },
-            { label: 'Formula', icon: { fontSet: 'ajf-icon', fontIcon: 'field-formula' },
-                nodeType: AjfFormulaField },
-            { label: 'Date', icon: { fontSet: 'ajf-icon', fontIcon: 'field-date' },
-                nodeType: AjfDateField },
-            { label: 'Date input', icon: { fontSet: 'ajf-icon', fontIcon: 'field-dateinput' },
-                nodeType: AjfDateInputField },
-            { label: 'Time', icon: { fontSet: 'ajf-icon', fontIcon: 'field-time' },
-                nodeType: AjfTimeField },
-            { label: 'Table', icon: { fontSet: 'ajf-icon', fontIcon: 'field-table' },
-                nodeType: AjfTableField }
+            {
+                label: 'Slide',
+                icon: { fontSet: 'ajf-icon', fontIcon: 'field-slide' },
+                nodeType: { node: AjfNodeType.AjfSlide },
+                isSlide: true
+            },
+            {
+                label: 'Repeating slide',
+                icon: { fontSet: 'ajf-icon', fontIcon: 'field-repeatingslide' },
+                nodeType: { node: AjfNodeType.AjfRepeatingSlide },
+                isSlide: true
+            },
+            {
+                label: 'String',
+                icon: { fontSet: 'ajf-icon', fontIcon: 'field-string' },
+                nodeType: { node: AjfNodeType.AjfField, field: AjfFieldType.String }
+            },
+            {
+                label: 'Text',
+                icon: { fontSet: 'ajf-icon', fontIcon: 'field-text' },
+                nodeType: { node: AjfNodeType.AjfField, field: AjfFieldType.Text }
+            },
+            {
+                label: 'Number',
+                icon: { fontSet: 'ajf-icon', fontIcon: 'field-number' },
+                nodeType: { node: AjfNodeType.AjfField, field: AjfFieldType.Number }
+            },
+            {
+                label: 'Boolean',
+                icon: { fontSet: 'ajf-icon', fontIcon: 'field-boolean' },
+                nodeType: { node: AjfNodeType.AjfField, field: AjfFieldType.Boolean }
+            },
+            {
+                label: 'Single choice',
+                icon: { fontSet: 'ajf-icon', fontIcon: 'field-singlechoice' },
+                nodeType: { node: AjfNodeType.AjfField, field: AjfFieldType.SingleChoice }
+            },
+            {
+                label: 'Multiple choice',
+                icon: { fontSet: 'ajf-icon', fontIcon: 'field-multiplechoice' },
+                nodeType: { node: AjfNodeType.AjfField, field: AjfFieldType.MultipleChoice }
+            },
+            {
+                label: 'Formula',
+                icon: { fontSet: 'ajf-icon', fontIcon: 'field-formula' },
+                nodeType: { node: AjfNodeType.AjfField, field: AjfFieldType.Formula }
+            },
+            {
+                label: 'Date',
+                icon: { fontSet: 'ajf-icon', fontIcon: 'field-date' },
+                nodeType: { node: AjfNodeType.AjfField, field: AjfFieldType.Date }
+            },
+            {
+                label: 'Date input',
+                icon: { fontSet: 'ajf-icon', fontIcon: 'field-dateinput' },
+                nodeType: { node: AjfNodeType.AjfField, field: AjfFieldType.DateInput }
+            },
+            {
+                label: 'Time',
+                icon: { fontSet: 'ajf-icon', fontIcon: 'field-time' },
+                nodeType: { node: AjfNodeType.AjfField, field: AjfFieldType.Time }
+            },
+            {
+                label: 'Table',
+                icon: { fontSet: 'ajf-icon', fontIcon: 'field-table' },
+                nodeType: { node: AjfNodeType.AjfField, field: AjfFieldType.Table }
+            }
         ];
         this._form = new BehaviorSubject(null);
         this._formObs = this._form.asObservable();
@@ -541,11 +560,15 @@ class AjfFormBuilderService {
     /**
      * @return {?}
      */
-    get attachmentsOrigins() { return this._attachmentsOrigins; }
+    get attachmentsOrigins() {
+        return this._attachmentsOrigins;
+    }
     /**
      * @return {?}
      */
-    get choicesOrigins() { return this._choicesOrigins; }
+    get choicesOrigins() {
+        return this._choicesOrigins;
+    }
     /**
      * @return {?}
      */
@@ -643,11 +666,30 @@ class AjfFormBuilderService {
      */
     insertNode(nodeType, parent, parentNode, inContent = false) {
         /** @type {?} */
-        let node = new nodeType.nodeType({
-            id: ++nodeUniqueId,
-            parent: parent.id,
-            parentNode
-        });
+        let node;
+        /** @type {?} */
+        const id = ++nodeUniqueId;
+        /** @type {?} */
+        const isFieldNode = nodeType.nodeType.field != null;
+        if (isFieldNode) {
+            node = createField({
+                id,
+                nodeType: AjfNodeType.AjfField,
+                fieldType: (/** @type {?} */ (nodeType.nodeType.field)),
+                parent: parent.id,
+                parentNode,
+                name: '',
+            });
+        }
+        else {
+            node = createNode({
+                id,
+                nodeType: nodeType.nodeType.node,
+                parent: parent.id,
+                parentNode,
+                name: '',
+            });
+        }
         this._beforeNodesUpdate.emit();
         this._nodesUpdates.next((/**
          * @param {?} nodes
@@ -659,7 +701,7 @@ class AjfFormBuilderService {
                 ((/** @type {?} */ (parent))) :
                 getNodeContainer({ nodes }, parent);
             if (cn != null) {
-                if (cn instanceof AjfNode) {
+                if (!isFieldNode) {
                     /** @type {?} */
                     const newNodes = cn.nodes.slice(0);
                     newNodes.push(node);
@@ -709,11 +751,11 @@ class AjfFormBuilderService {
             const form = (/** @type {?} */ (r[0]));
             /** @type {?} */
             const nodes = r[1];
-            return new AjfForm({
+            return createForm({
                 choicesOrigins: form.choicesOrigins.slice(0),
                 attachmentsOrigins: form.attachmentsOrigins.slice(0),
                 stringIdentifier: form.stringIdentifier.slice(0),
-                nodes: nodes.slice(0)
+                nodes: (/** @type {?} */ (nodes.slice(0))),
             });
         })));
     }
@@ -728,7 +770,7 @@ class AjfFormBuilderService {
      * @return {?}
      */
     createChoicesOrigin() {
-        this._editedChoicesOrigin.next(new AjfChoicesFixedOrigin());
+        this._editedChoicesOrigin.next(createChoicesFixedOrigin({ name: '' }));
     }
     /**
      * @return {?}
@@ -744,10 +786,10 @@ class AjfFormBuilderService {
         /** @type {?} */
         const choicesOrigin = this._editedChoicesOrigin.getValue();
         if (choicesOrigin != null) {
-            choicesOrigin.setLabel(params.label);
-            choicesOrigin.setName(params.name);
-            if (choicesOrigin instanceof AjfChoicesFixedOrigin) {
-                choicesOrigin.setChoices(params.choices);
+            choicesOrigin.label = params.label;
+            choicesOrigin.name = params.name;
+            if (isChoicesFixedOrigin(choicesOrigin)) {
+                choicesOrigin.choices = params.choices;
             }
         }
         this._editedChoicesOrigin.next(null);
@@ -801,14 +843,16 @@ class AjfFormBuilderService {
              */
             (_attachmentsOrigins) => {
                 return form != null && form.attachmentsOrigins != null ?
-                    form.attachmentsOrigins.slice(0) : [];
+                    form.attachmentsOrigins.slice(0) :
+                    [];
             }));
             this._choicesOriginsUpdates.next((/**
              * @param {?} _choicesOrigins
              * @return {?}
              */
             (_choicesOrigins) => {
-                return form != null && form.choicesOrigins != null ? form.choicesOrigins.slice(0) : [];
+                return form != null && form.choicesOrigins != null ? form.choicesOrigins.slice(0) :
+                    [];
             }));
         }));
     }
@@ -817,15 +861,16 @@ class AjfFormBuilderService {
      * @return {?}
      */
     _initChoicesOriginsStreams() {
-        this._choicesOrigins = ((/** @type {?} */ (this._choicesOriginsUpdates)))
-            .pipe(scan((/**
-         * @param {?} choicesOrigins
-         * @param {?} op
-         * @return {?}
-         */
-        (choicesOrigins, op) => {
-            return op(choicesOrigins);
-        }), []), publishReplay(1), refCount());
+        this._choicesOrigins =
+            ((/** @type {?} */ (this._choicesOriginsUpdates)))
+                .pipe(scan((/**
+             * @param {?} choicesOrigins
+             * @param {?} op
+             * @return {?}
+             */
+            (choicesOrigins, op) => {
+                return op(choicesOrigins);
+            }), []), publishReplay(1), refCount());
     }
     /**
      * @private
@@ -833,7 +878,8 @@ class AjfFormBuilderService {
      */
     _initAttachmentsOriginsStreams() {
         this._attachmentsOrigins =
-            ((/** @type {?} */ (this._attachmentsOriginsUpdates))).pipe(scan((/**
+            ((/** @type {?} */ (this._attachmentsOriginsUpdates)))
+                .pipe(scan((/**
              * @param {?} attachmentsOrigins
              * @param {?} op
              * @return {?}
@@ -847,7 +893,8 @@ class AjfFormBuilderService {
      * @return {?}
      */
     _initNodesStreams() {
-        this._nodes = ((/** @type {?} */ (this._nodesUpdates))).pipe(scan((/**
+        this._nodes = ((/** @type {?} */ (this._nodesUpdates)))
+            .pipe(scan((/**
          * @param {?} nodes
          * @param {?} op
          * @return {?}
@@ -880,7 +927,8 @@ class AjfFormBuilderService {
      * @return {?}
      */
     _initSaveNode() {
-        this._saveNodeEntryEvent.pipe(withLatestFrom(this.editedNodeEntry, this.choicesOrigins, this.attachmentsOrigins), filter((/**
+        this._saveNodeEntryEvent
+            .pipe(withLatestFrom(this.editedNodeEntry, this.choicesOrigins, this.attachmentsOrigins), filter((/**
          * @param {?} r
          * @return {?}
          */
@@ -896,58 +944,59 @@ class AjfFormBuilderService {
             const nodeEntry = (/** @type {?} */ (r[1]));
             /** @type {?} */
             const choicesOrigins = r[2];
-            /** @type {?} */
-            const attachmentsOrigins = r[3];
+            // const attachmentsOrigins = r[3];
             /** @type {?} */
             const origNode = nodeEntry.node;
             /** @type {?} */
-            const node = AjfNode.fromJson(origNode.toJson(), choicesOrigins, attachmentsOrigins);
+            const node = deepCopy(origNode);
             node.id = nodeEntry.node.id;
-            node.name = properties['name'];
-            node.label = properties['label'];
-            node.visibility = properties['visibility'] != null ?
-                new AjfCondition({ condition: properties['visibility'] }) : null;
+            node.name = properties.name;
+            node.label = properties.label;
+            node.visibility = properties.visibility != null ?
+                createCondition({ condition: properties.visibility }) :
+                null;
             /** @type {?} */
             const oldConditionalBranches = node.conditionalBranches.length;
-            node.conditionalBranches = properties['conditionalBranches'] != null
-                ? properties['conditionalBranches']
-                    .map((/**
+            node.conditionalBranches = properties.conditionalBranches != null ?
+                properties.conditionalBranches.map((/**
                  * @param {?} condition
                  * @return {?}
                  */
-                (condition) => new AjfCondition({ condition })))
-                : [AjfCondition.alwaysCondition()];
+                (condition) => createCondition({ condition }))) :
+                [alwaysCondition()];
             /** @type {?} */
             const newConditionalBranches = node.conditionalBranches.length;
             if (isRepeatingContainerNode(node)) {
                 /** @type {?} */
                 const repNode = (/** @type {?} */ (node));
-                repNode.formulaReps = properties['formulaReps'] != null ?
-                    new AjfFormula({ formula: properties['formulaReps'] }) : null;
-                repNode.minReps = properties['minReps'];
-                repNode.maxReps = properties['maxReps'];
+                repNode.formulaReps = properties.formulaReps != null ?
+                    createFormula({ formula: properties.formulaReps }) :
+                    undefined;
+                repNode.minReps = properties.minReps;
+                repNode.maxReps = properties.maxReps;
             }
-            if (nodeEntry.node instanceof AjfField) {
+            if (isField(nodeEntry.node)) {
                 /** @type {?} */
                 const field = (/** @type {?} */ (nodeEntry.node));
-                field.description = properties['description'];
-                field.defaultValue = properties['defaultValue'];
-                field.formula = properties['formula'] != null ?
-                    new AjfFormula({ formula: properties['formula'] }) : null;
+                field.description = properties.description;
+                field.defaultValue = properties.defaultValue;
+                field.formula = properties.formula != null ?
+                    createFormula({ formula: properties.formula }) :
+                    undefined;
                 /** @type {?} */
-                const forceValue = properties['value'];
+                const forceValue = properties.value;
                 /** @type {?} */
-                const notEmpty = properties['notEmpty'];
+                const notEmpty = properties.notEmpty;
                 /** @type {?} */
-                const validationConditions = properties['validationConditions'];
+                const validationConditions = properties.validationConditions;
                 /** @type {?} */
-                let minValue = parseInt(properties['minValue'], 10);
+                let minValue = parseInt(properties.minValue, 10);
                 /** @type {?} */
-                let maxValue = parseInt(properties['maxValue'], 10);
+                let maxValue = parseInt(properties.maxValue, 10);
                 /** @type {?} */
-                let minDigits = parseInt(properties['minDigits'], 10);
+                let minDigits = parseInt(properties.minDigits, 10);
                 /** @type {?} */
-                let maxDigits = parseInt(properties['maxDigits'], 10);
+                let maxDigits = parseInt(properties.maxDigits, 10);
                 if (isNaN(minValue)) {
                     minValue = null;
                 }
@@ -962,56 +1011,61 @@ class AjfFormBuilderService {
                 }
                 if (forceValue != null || notEmpty != null ||
                     (validationConditions != null && validationConditions.length > 0) ||
-                    minValue != null || maxValue != null || minDigits != null || maxDigits != null) {
+                    minValue != null || maxValue != null || minDigits != null ||
+                    maxDigits != null) {
                     /** @type {?} */
-                    const validation = field.validation || new AjfValidationGroup();
+                    const validation = field.validation || createValidationGroup({});
                     validation.forceValue = forceValue;
-                    validation.notEmpty = notEmpty ? AjfValidation.getNotEmptyCondition() : null;
-                    validation.minValue = minValue != null ? AjfValidation.getMinCondition(minValue) : null;
-                    validation.maxValue = maxValue != null ? AjfValidation.getMaxCondition(maxValue) : null;
-                    validation.minDigits = minDigits != null ?
-                        AjfValidation.getMinDigitsCondition(minDigits) : null;
-                    validation.maxDigits = maxDigits != null ?
-                        AjfValidation.getMaxDigitsCondition(maxDigits) : null;
-                    validation.conditions = (validationConditions || [])
-                        .map((/**
-                     * @param {?} c
-                     * @return {?}
-                     */
-                    (c) => new AjfValidation({
-                        condition: c.condition,
-                        errorMessage: c.errorMessage
-                    })));
+                    validation.notEmpty = notEmpty ? notEmptyValidation() : undefined;
+                    validation.minValue = minValue != null ? minValidation(minValue) : undefined;
+                    validation.maxValue = maxValue != null ? maxValidation(maxValue) : undefined;
+                    validation.minDigits =
+                        minDigits != null ? minDigitsValidation(minDigits) : undefined;
+                    validation.maxDigits =
+                        maxDigits != null ? maxDigitsValidation(maxDigits) : undefined;
+                    validation.conditions =
+                        (validationConditions ||
+                            []).map((/**
+                         * @param {?} c
+                         * @return {?}
+                         */
+                        (c) => createValidation({
+                            condition: c.condition,
+                            errorMessage: c.errorMessage
+                        })));
                     field.validation = validation;
                 }
                 else {
-                    field.validation = null;
+                    field.validation = undefined;
                 }
                 /** @type {?} */
-                const notEmptyWarning = properties['notEmptyWarning'];
+                const notEmptyWarn = properties.notEmptyWarning;
                 /** @type {?} */
-                const warningConditions = properties['warningConditions'];
-                if (notEmptyWarning != null ||
+                const warningConditions = properties.warningConditions;
+                if (notEmptyWarn != null ||
                     (warningConditions != null && warningConditions.length > 0)) {
                     /** @type {?} */
-                    const warning = field.warning || new AjfWarningGroup();
-                    warning.notEmpty = notEmptyWarning ? AjfWarning.getNotEmptyWarning() : null;
-                    warning.conditions = (warningConditions || [])
-                        .map((/**
-                     * @param {?} w
-                     * @return {?}
-                     */
-                    (w) => new AjfWarning({
-                        condition: w.condition, warningMessage: w.warningMessage
-                    })));
+                    const warning = field.warning || createWarningGroup({});
+                    warning.notEmpty = notEmptyWarn ? notEmptyWarning() : undefined;
+                    warning.conditions =
+                        (warningConditions ||
+                            []).map((/**
+                         * @param {?} w
+                         * @return {?}
+                         */
+                        (w) => createWarning({
+                            condition: w.condition,
+                            warningMessage: w.warningMessage
+                        })));
                     field.warning = warning;
                 }
                 else {
-                    field.warning = null;
+                    field.warning = undefined;
                 }
-                field.nextSlideCondition = properties['nextSlideCondition'] != null ?
-                    new AjfCondition({ condition: properties['nextSlideCondition'] }) : null;
-                if (field instanceof AjfFieldWithChoices) {
+                field.nextSlideCondition = properties.nextSlideCondition != null ?
+                    createCondition({ condition: properties.nextSlideCondition }) :
+                    undefined;
+                if (isFieldWithChoices(field)) {
                     /** @type {?} */
                     const fwc = (/** @type {?} */ (field));
                     /** @type {?} */
@@ -1021,7 +1075,7 @@ class AjfFormBuilderService {
                     /** @type {?} */
                     const coNum = choicesOrigins.length;
                     while (choicesOrigin == null && coIdx < coNum) {
-                        if (choicesOrigins[coIdx].getName() === properties['choicesOrigin']) {
+                        if (choicesOrigins[coIdx].name === properties.choicesOrigin) {
                             choicesOrigin = choicesOrigins[coIdx];
                         }
                         coIdx++;
@@ -1029,14 +1083,14 @@ class AjfFormBuilderService {
                     if (choicesOrigin != null) {
                         fwc.choicesOrigin = choicesOrigin;
                     }
-                    fwc.forceExpanded = properties['forceExpanded'];
-                    fwc.forceNarrow = properties['forceNarrow'];
-                    fwc.triggerConditions = (properties['triggerConditions'] || [])
-                        .map((/**
+                    fwc.forceExpanded = properties.forceExpanded;
+                    fwc.forceNarrow = properties.forceNarrow;
+                    fwc.triggerConditions = (properties.triggerConditions ||
+                        []).map((/**
                      * @param {?} t
                      * @return {?}
                      */
-                    (t) => new AjfCondition({ condition: t })));
+                    (t) => createCondition({ condition: t })));
                 }
             }
             this._editedNodeEntry.next(null);
@@ -1048,21 +1102,20 @@ class AjfFormBuilderService {
                 /** @type {?} */
                 let cn = getNodeContainer({ nodes }, origNode);
                 if (cn != null) {
-                    if (cn instanceof AjfNode) {
-                        /** @type {?} */
-                        const idx = cn.nodes.indexOf(origNode);
-                        /** @type {?} */
-                        let newNodes = cn.nodes.slice(0, idx);
-                        newNodes.push(node);
-                        newNodes = newNodes.concat(cn.nodes.slice(idx + 1));
-                        cn.nodes = newNodes;
-                        nodes = nodes.slice(0);
-                    }
-                    else {
-                        /** @type {?} */
-                        const idx = nodes.indexOf(origNode);
-                        nodes = nodes.slice(0, idx).concat([node]).concat(nodes.slice(idx + 1));
-                    }
+                    // TODO: @trik check this, was always true?
+                    // if (cn instanceof AjfNode) {
+                    /** @type {?} */
+                    const idx = cn.nodes.indexOf(origNode);
+                    /** @type {?} */
+                    let newNodes = cn.nodes.slice(0, idx);
+                    newNodes.push(node);
+                    newNodes = newNodes.concat(cn.nodes.slice(idx + 1));
+                    cn.nodes = newNodes;
+                    nodes = nodes.slice(0);
+                    // } else {
+                    //   const idx = nodes.indexOf(origNode);
+                    //   nodes = nodes.slice(0, idx).concat([node]).concat(nodes.slice(idx + 1));
+                    // }
                     if (newConditionalBranches < oldConditionalBranches) {
                         for (let i = newConditionalBranches; i < oldConditionalBranches; i++) {
                             nodes = deleteNodeSubtree(nodes, node, i);
@@ -1071,7 +1124,8 @@ class AjfFormBuilderService {
                 }
                 return nodes;
             });
-        }))).subscribe(this._nodesUpdates);
+        })))
+            .subscribe(this._nodesUpdates);
     }
     /**
      * @private
@@ -1094,20 +1148,19 @@ class AjfFormBuilderService {
                 /** @type {?} */
                 let cn = getNodeContainer({ nodes }, node);
                 if (cn != null) {
-                    if (cn instanceof AjfNode) {
-                        /** @type {?} */
-                        const idx = cn.nodes.indexOf(node);
-                        /** @type {?} */
-                        let newNodes = cn.nodes.slice(0, idx);
-                        newNodes = newNodes.concat(cn.nodes.slice(idx + 1));
-                        cn.nodes = newNodes;
-                        nodes = nodes.slice(0);
-                    }
-                    else {
-                        /** @type {?} */
-                        const idx = nodes.indexOf(node);
-                        nodes = nodes.slice(0, idx).concat(nodes.slice(idx + 1));
-                    }
+                    // TODO: @trik check this, was always true?
+                    // if (cn instanceof AjfNode) {
+                    /** @type {?} */
+                    const idx = cn.nodes.indexOf(node);
+                    /** @type {?} */
+                    let newNodes = cn.nodes.slice(0, idx);
+                    newNodes = newNodes.concat(cn.nodes.slice(idx + 1));
+                    cn.nodes = newNodes;
+                    nodes = nodes.slice(0);
+                    // } else {
+                    //   const idx = nodes.indexOf(node);
+                    //   nodes = nodes.slice(0, idx).concat(nodes.slice(idx + 1));
+                    // }
                     nodes = deleteNodeSubtree(nodes, node);
                 }
                 return nodes;
@@ -1123,7 +1176,7 @@ AjfFormBuilderService.ctorParameters = () => [];
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 class AjfFbChoicesOriginEditorDialog {
     /**
@@ -1144,7 +1197,9 @@ class AjfFbChoicesOriginEditorDialog {
     /**
      * @return {?}
      */
-    get choicesOrigin() { return this._choicesOrigin; }
+    get choicesOrigin() {
+        return this._choicesOrigin;
+    }
     /**
      * @return {?}
      */
@@ -1180,7 +1235,7 @@ AjfFbChoicesOriginEditorDialog.propDecorators = {
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 class AjfFbConditionEditor {
     /**
@@ -1286,8 +1341,8 @@ class AjfFbConditionEditor {
      */
     _updateFunctions() {
         try {
-            monaco.languages.typescript.javascriptDefaults
-                ._extraLibs['condition-editor-functions.d.ts'] = AjfValidatedProperty.UTIL_FUNCTIONS;
+            monaco.languages.typescript.javascriptDefaults._extraLibs['condition-editor-functions.d.ts'] =
+                AjfExpressionUtils.UTIL_FUNCTIONS;
         }
         catch (e) { }
     }
@@ -1342,7 +1397,7 @@ AjfFbConditionEditor.propDecorators = {
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 class AjfFbConditionEditorDialog {
     /**
@@ -1397,7 +1452,7 @@ AjfFbConditionEditorDialog.propDecorators = {
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 class AjfFormBuilder {
     /**
@@ -1429,20 +1484,21 @@ class AjfFormBuilder {
                 this._editConditionDialog = this._dialog.open(AjfFbConditionEditorDialog, { disableClose: true });
             }
         }));
-        this._editChoicesOriginSub = this._service.editedChoicesOrigin
-            .subscribe((/**
-         * @param {?} choicesOrigin
-         * @return {?}
-         */
-        (choicesOrigin) => {
-            if (this._editChoicesOriginDialog != null) {
-                this._editChoicesOriginDialog.close();
-                this._editChoicesOriginDialog = null;
-            }
-            if (choicesOrigin != null) {
-                this._editChoicesOriginDialog = this._dialog.open(AjfFbChoicesOriginEditorDialog, { disableClose: true });
-            }
-        }));
+        this._editChoicesOriginSub =
+            this._service.editedChoicesOrigin.subscribe((/**
+             * @param {?} choicesOrigin
+             * @return {?}
+             */
+            (choicesOrigin) => {
+                if (this._editChoicesOriginDialog != null) {
+                    this._editChoicesOriginDialog.close();
+                    this._editChoicesOriginDialog = null;
+                }
+                if (choicesOrigin != null) {
+                    this._editChoicesOriginDialog =
+                        this._dialog.open(AjfFbChoicesOriginEditorDialog, { disableClose: true });
+                }
+            }));
         this._beforeNodesUpdateSub = this._service.beforeNodesUpdate
             .subscribe((/**
          * @return {?}
@@ -1492,7 +1548,9 @@ class AjfFormBuilder {
     /**
      * @return {?}
      */
-    get choicesOrigins() { return this._choicesOrigins; }
+    get choicesOrigins() {
+        return this._choicesOrigins;
+    }
     /**
      * @return {?}
      */
@@ -1544,7 +1602,7 @@ class AjfFormBuilder {
 }
 AjfFormBuilder.decorators = [
     { type: Component, args: [{selector: 'ajf-form-builder',
-                template: "<mat-toolbar><button mat-icon-button (click)=\"leftSidenav.toggle()\"><mat-icon>add_box</mat-icon></button> <button mat-button [matMenuTriggerFor]=\"choicesMenu\" translate>Choices</button><mat-menu #choicesMenu><button (click)=\"createChoicesOrigin()\" mat-menu-item translate>New..</button><ng-container *ngIf=\"choicesOrigins|async as cos\"><button *ngFor=\"let choicesOrigin of cos\" (click)=\"editChoicesOrigin(choicesOrigin)\" mat-menu-item>{{ choicesOrigin.getLabel() || choicesOrigin.getName() }}</button></ng-container></mat-menu><span class=\"ajf-spacer\"></span> <button mat-icon-button (click)=\"rightSidenav.toggle()\"><mat-icon>settings</mat-icon></button></mat-toolbar><mat-drawer-container cdkDropListGroup><mat-drawer #leftSidenav position=\"start\" mode=\"over\"><div #sourceDropList cdkDropList [cdkDropListEnterPredicate]=\"disableDropPredicate\" [cdkDropListData]=\"nodeTypes\"><ajf-fb-node-type-entry *ngFor=\"let nodeType of nodeTypes\" cdkDrag [cdkDragData]=\"nodeType\" (cdkDragStarted)=\"leftSidenav.close()\" [nodeType]=\"nodeType\"></ajf-fb-node-type-entry></div></mat-drawer><mat-drawer #rightSidenav position=\"end\" mode=\"side\" [opened]=\"true\"><ajf-fb-node-properties></ajf-fb-node-properties></mat-drawer><div #designer class=\"ajf-designer\"><ajf-fb-node-entry *ngFor=\"let nodeEntry of (nodeEntriesTree|async); let isFirst = first\" [isFirst]=\"isFirst\" [nodeEntry]=\"nodeEntry\"></ajf-fb-node-entry></div></mat-drawer-container>",
+                template: "<mat-toolbar><button mat-icon-button (click)=\"leftSidenav.toggle()\"><mat-icon>add_box</mat-icon></button> <button mat-button [matMenuTriggerFor]=\"choicesMenu\" translate>Choices</button><mat-menu #choicesMenu><button (click)=\"createChoicesOrigin()\" mat-menu-item translate>New..</button><ng-container *ngIf=\"choicesOrigins|async as cos\"><button *ngFor=\"let choicesOrigin of cos\" (click)=\"editChoicesOrigin(choicesOrigin)\" mat-menu-item>{{ choicesOrigin.label || choicesOrigin.name }}</button></ng-container></mat-menu><span class=\"ajf-spacer\"></span> <button mat-icon-button (click)=\"rightSidenav.toggle()\"><mat-icon>settings</mat-icon></button></mat-toolbar><mat-drawer-container cdkDropListGroup><mat-drawer #leftSidenav position=\"start\" mode=\"over\"><div #sourceDropList cdkDropList [cdkDropListEnterPredicate]=\"disableDropPredicate\" [cdkDropListData]=\"nodeTypes\"><ajf-fb-node-type-entry *ngFor=\"let nodeType of nodeTypes\" cdkDrag [cdkDragData]=\"nodeType\" (cdkDragStarted)=\"leftSidenav.close()\" [nodeType]=\"nodeType\"></ajf-fb-node-type-entry></div></mat-drawer><mat-drawer #rightSidenav position=\"end\" mode=\"side\" [opened]=\"true\"><ajf-fb-node-properties></ajf-fb-node-properties></mat-drawer><div #designer class=\"ajf-designer\"><ajf-fb-node-entry *ngFor=\"let nodeEntry of (nodeEntriesTree|async); let isFirst = first\" [isFirst]=\"isFirst\" [nodeEntry]=\"nodeEntry\"></ajf-fb-node-entry></div></mat-drawer-container>",
                 styles: ["ajf-form-builder mat-toolbar mat-menu div[mat-menu-item]>button[mat-button]{flex:1 0 auto}ajf-form-builder mat-toolbar mat-menu div[mat-menu-item]>button[mat-icon-button]{flex:0 0 auto}ajf-form-builder mat-drawer-container{height:700px}ajf-form-builder mat-drawer-container mat-drawer{max-width:20%}ajf-form-builder mat-drawer-container .ajf-designer{padding:1em;position:absolute;top:0;right:0;bottom:0;left:0;overflow-y:auto}ajf-form-builder mat-toolbar .ajf-spacer{flex:1 1 auto}"],
                 changeDetection: ChangeDetectionStrategy.OnPush,
                 encapsulation: ViewEncapsulation.None
@@ -1562,7 +1620,7 @@ AjfFormBuilder.propDecorators = {
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 /** @type {?} */
 const branchColors = [
@@ -1625,13 +1683,13 @@ class AjfFbNodeEntry {
             this._isNodeEntry = true;
             /** @type {?} */
             const node = ne.node;
-            this._hasContent = node != null && isContainerNode$1(node);
+            this._hasContent = node != null && isContainerNode(node);
             this._isSlide = false;
         }
         else {
             this._isNodeEntry = false;
             this._hasContent = false;
-            this._isSlide = isSlideNode(((/** @type {?} */ (nodeEntry))).parent);
+            this._isSlide = isSlidesNode(((/** @type {?} */ (nodeEntry))).parent);
         }
     }
     /**
@@ -1830,7 +1888,7 @@ AjfFbNodeEntry.propDecorators = {
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 class AjfFbValidationConditionEditorDialog {
     /**
@@ -1885,7 +1943,7 @@ AjfFbValidationConditionEditorDialog.propDecorators = {
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 class AjfFbWarningConditionEditorDialog {
     /**
@@ -1940,7 +1998,7 @@ AjfFbWarningConditionEditorDialog.propDecorators = {
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 /**
  * @param {?} c
@@ -2102,7 +2160,9 @@ class AjfFbNodeProperties {
     /**
      * @return {?}
      */
-    get choicesOrigins() { return this._choicesOrigins; }
+    get choicesOrigins() {
+        return this._choicesOrigins;
+    }
     /**
      * @return {?}
      */
@@ -2284,21 +2344,21 @@ class AjfFbNodeProperties {
      * @return {?}
      */
     isField(node) {
-        return node != null && node instanceof AjfField;
+        return isField(node);
     }
     /**
      * @param {?} node
      * @return {?}
      */
     isNumericField(node) {
-        return node != null && node instanceof AjfNumberField;
+        return isField(node) && isNumberField((/** @type {?} */ (node)));
     }
     /**
      * @param {?} node
      * @return {?}
      */
     isFieldWithChoices(node) {
-        return node != null && node instanceof AjfFieldWithChoices;
+        return isField(node) && isFieldWithChoices((/** @type {?} */ (node)));
     }
     /**
      * @return {?}
@@ -2519,7 +2579,7 @@ class AjfFbNodeProperties {
                  * @return {?}
                  */
                 (c) => c.condition));
-                controls.choicesOrigin = fieldWithChoices.choicesOrigin.getName();
+                controls.choicesOrigin = fieldWithChoices.choicesOrigin.name;
                 controls.choicesFilter = fieldWithChoices.choicesFilter != null ?
                     fieldWithChoices.choicesFilter.formula : null;
                 controls.forceExpanded = fieldWithChoices.forceExpanded;
@@ -3327,7 +3387,7 @@ class AjfFbNodeProperties {
                 /** @type {?} */
                 let newCbs = [];
                 for (let i = curCbNum; i < cbNum; i++) {
-                    newCbs.push(AjfCondition.alwaysCondition().condition);
+                    newCbs.push(alwaysCondition().condition);
                 }
                 this._conditionalBranches = this._conditionalBranches.concat(newCbs);
             }
@@ -3360,10 +3420,10 @@ class AjfFbNodeProperties {
             let newCondition;
             switch (visibilityOpt) {
                 case 'always':
-                    newCondition = AjfCondition.alwaysCondition().condition;
+                    newCondition = alwaysCondition().condition;
                     break;
                 case 'never':
-                    newCondition = AjfCondition.neverCondition().condition;
+                    newCondition = neverCondition().condition;
                     break;
                 default:
                     newCondition = null;
@@ -3378,10 +3438,10 @@ class AjfFbNodeProperties {
      * @return {?}
      */
     _guessVisibilityOpt(condition) {
-        if (condition.condition.localeCompare(AjfCondition.alwaysCondition().condition) === 0) {
+        if (condition.condition.localeCompare(alwaysCondition().condition) === 0) {
             return 'always';
         }
-        if (condition.condition.localeCompare(AjfCondition.neverCondition().condition) === 0) {
+        if (condition.condition.localeCompare(neverCondition().condition) === 0) {
             return 'never';
         }
         return 'condition';
@@ -3389,7 +3449,7 @@ class AjfFbNodeProperties {
 }
 AjfFbNodeProperties.decorators = [
     { type: Component, args: [{selector: 'ajf-fb-node-properties',
-                template: "<div [style.display]=\"(enabled|async) ? 'none' : 'block'\" class=\"ajf-disabled-overlay\"></div><div class=\"ajf-header\"><h3 translate>Properties</h3><mat-icon (click)=\"save()\">save</mat-icon><mat-icon (click)=\"cancel()\">cancel</mat-icon></div><ng-container *ngIf=\"nodeEntry|async as ne\"><ng-container *ngIf=\"propertiesForm|async as pf\"><form [formGroup]=\"pf\" novalidate><div class=\"ajf-prop\"><mat-form-field><input matInput formControlName=\"name\" [placeholder]=\"'Name' | translate\"></mat-form-field></div><div class=\"ajf-prop\"><mat-form-field><input matInput formControlName=\"label\" [placeholder]=\"'Label' | translate\"></mat-form-field></div><div class=\"ajf-prop\"><div class=\"ajf-select-container\"><mat-select formControlName=\"visibilityOpt\" [placeholder]=\"'Visible' | translate\"><mat-option value=\"always\" translate>Always</mat-option><mat-option value=\"never\" translate>Never</mat-option><mat-option value=\"condition\" translate>Condition...</mat-option></mat-select><button (click)=\"editVisibility()\" [disabled]=\"pf.value['visibilityOpt'] != 'condition'\" mat-raised-button [matTooltip]=\"curVisibility\"><div class=\"ajf-icon-cont\"><mat-icon>edit</mat-icon><span>{{ curVisibility }}</span></div></button></div></div><div class=\"ajf-prop\"><div><label translate>Branches</label></div><div><mat-slider formControlName=\"conditionalBranchesNum\" thumbLabel tickInterval=\"auto\" min=\"1\" max=\"5\" step=\"1\"></mat-slider></div><div *ngFor=\"let branch of conditionalBranches; let idx = index\"><button (click)=\"editConditionalBranch(idx)\" mat-raised-button [matTooltip]=\"branch\"><div class=\"ajf-icon-cont\"><mat-icon>edit</mat-icon><span>{{ branch }}</span></div></button></div></div><ng-template [ngIf]=\"isRepeatingContainerNode((ne)?.node)\"><div class=\"ajf-prop\"><div><label translate>Repetitions</label></div><div><button (click)=\"editFormulaReps()\" mat-raised-button [matTooltip]=\"curFormulaReps\"><div class=\"ajf-icon-cont\"><mat-icon>edit</mat-icon><span>{{ curFormulaReps }}</span></div></button></div><div><label translate>Min repetitions</label></div><div><mat-slider formControlName=\"minReps\" thumbLabel tickInterval=\"auto\" min=\"1\" max=\"5\" step=\"1\"></mat-slider></div><div><label translate>Max repetitions</label></div><div><mat-slider formControlName=\"maxReps\" thumbLabel tickInterval=\"auto\" min=\"1\" max=\"5\" step=\"1\"></mat-slider></div></div></ng-template><ng-template [ngIf]=\"isField((ne)?.node)\"><div class=\"ajf-prop\"><div class=\"ajf-select-container\"><mat-select formControlName=\"size\" [placeholder]=\"'Size' | translate\"><mat-option *ngFor=\"let fieldSize of fieldSizes\" [value]=\"fieldSize.value\">{{ fieldSize.label }}</mat-option></mat-select></div></div><div class=\"ajf-prop\"><mat-form-field><textarea matInput formControlName=\"description\" [placeholder]=\"'Description' | translate\"></textarea></mat-form-field></div><div class=\"ajf-prop\"><mat-form-field><input matInput formControlName=\"defaultValue\" [placeholder]=\"'Default value' | translate\"></mat-form-field></div><div class=\"ajf-prop\"><div><label translate>Formula</label></div><div><button (click)=\"editFormula()\" mat-raised-button [matTooltip]=\"curFormula\"><div class=\"ajf-icon-cont\"><mat-icon>edit</mat-icon><span>{{ curFormula }}</span></div></button></div></div><div class=\"ajf-prop\"><div><label translate>Force value</label></div><div><button (click)=\"editForceValue()\" mat-raised-button [matTooltip]=\"curForceValue\"><div class=\"ajf-icon-cont\"><mat-icon>edit</mat-icon><span>{{ curForceValue }}</span></div></button></div></div><div class=\"ajf-prop\"><mat-checkbox formControlName=\"notEmpty\" translate>Not empty</mat-checkbox></div><ng-template [ngIf]=\"isNumericField((ne)?.node)\"><div class=\"ajf-prop\"><mat-form-field><input matInput formControlName=\"minValue\" [placeholder]=\"'Min value' | translate\"></mat-form-field></div><div class=\"ajf-prop\"><mat-form-field><input matInput formControlName=\"maxValue\" [placeholder]=\"'Max value' | translate\"></mat-form-field></div><div class=\"ajf-prop\"><mat-form-field><input matInput formControlName=\"minDigits\" [placeholder]=\"'Min digits' | translate\"></mat-form-field></div><div class=\"ajf-prop\"><mat-form-field><input matInput formControlName=\"maxDigits\" [placeholder]=\"'Max digits' | translate\"></mat-form-field></div></ng-template><div class=\"ajf-prop\"><div class=\"ajf-header\"><label translate>Validation</label><mat-icon class=\"ajf-pointer\" (click)=\"addValidationCondition()\">add_circle_outline</mat-icon></div><div *ngIf=\"validationConditions == null || validationConditions.length == 0\" class=\"ajf-validation-row ajf-emph\" translate>No conditions</div><div class=\"ajf-validation-row\" *ngFor=\"let validationCondition of validationConditions; let idx = index\"><button (click)=\"editValidationCondition(idx)\" mat-raised-button [matTooltip]=\"validationCondition.condition\"><div class=\"ajf-icon-cont\"><mat-icon>edit</mat-icon><span>{{ validationCondition.condition }}</span></div></button><mat-icon class=\"ajf-pointer\" (click)=\"removeValidationCondition(idx)\">remove_circle_outline</mat-icon></div></div><div class=\"ajf-prop\"><mat-checkbox formControlName=\"notEmptyWarning\" translate>Not empty warning</mat-checkbox></div><div class=\"ajf-prop\"><div class=\"ajf-header\"><label translate>Warnings</label><mat-icon class=\"ajf-pointer\" (click)=\"addWarningCondition()\">add_circle_outline</mat-icon></div><div *ngIf=\"warningConditions == null || warningConditions.length == 0\" class=\"ajf-validation-row ajf-emph\" translate>No warnings</div><div class=\"ajf-validation-row\" *ngFor=\"let warningCondition of warningConditions; let idx = index\"><button (click)=\"editWarningCondition(idx)\" mat-raised-button [matTooltip]=\"warningCondition.condition\"><div class=\"ajf-icon-cont\"><mat-icon>edit</mat-icon><span>{{ warningCondition.condition }}</span></div></button><mat-icon class=\"ajf-pointer\" (click)=\"removeWarningCondition(idx)\">remove_circle_outline</mat-icon></div></div><div class=\"ajf-prop\"><div><label translate>Go to next slide condition</label></div><div><button (click)=\"editNextSlideCondition()\" mat-raised-button [matTooltip]=\"nextSlideCondition\"><div class=\"ajf-icon-cont\"><mat-icon>edit</mat-icon><span>{{ nextSlideCondition }}</span></div></button></div></div><ng-template [ngIf]=\"isFieldWithChoices((ne)?.node)\"><div class=\"ajf-prop\"><div class=\"ajf-select-container\"><mat-select formControlName=\"choicesOrigin\" [placeholder]=\"'Choices' | translate\"><mat-option *ngFor=\"let choicesOrigin of choicesOrigins\" [value]=\"choicesOrigin.getName()\">{{ choicesOrigin.getLabel() || choicesOrigin.getName() }}</mat-option></mat-select></div></div><div class=\"ajf-prop\"><div><label translate>Choices filter</label></div><div><button (click)=\"editChoicesFilter()\" mat-raised-button [matTooltip]=\"curChoicesFilter\"><div class=\"ajf-icon-cont\"><mat-icon>edit</mat-icon><span>{{ curChoicesFilter }}</span></div></button></div></div><div class=\"ajf-prop\"><mat-checkbox formControlName=\"forceExpanded\" translate>Force expanded selection</mat-checkbox></div><div class=\"ajf-prop\"><mat-checkbox formControlName=\"forceNarrow\" translate>Force narrow selection</mat-checkbox></div><div class=\"ajf-prop\"><div class=\"ajf-header\"><label translate>Trigger selection</label><mat-icon class=\"ajf-pointer\" (click)=\"addTriggerCondition()\">add_circle_outline</mat-icon></div><div *ngIf=\"triggerConditions == null || triggerConditions.length == 0\" class=\"ajf-validation-row ajf-emph\" translate>No trigger condition</div><div class=\"ajf-validation-row\" *ngFor=\"let triggerCondition of triggerConditions; let idx = index\"><button (click)=\"editTriggerCondition(idx)\" mat-raised-button [matTooltip]=\"triggerCondition\"><div class=\"ajf-icon-cont\"><mat-icon>edit</mat-icon><span>{{ triggerCondition }}</span></div></button><mat-icon class=\"pointer\" (click)=\"removeTriggerCondition(idx)\">remove_circle_outline</mat-icon></div></div></ng-template></ng-template></form></ng-container></ng-container>",
+                template: "<div [style.display]=\"(enabled|async) ? 'none' : 'block'\" class=\"ajf-disabled-overlay\"></div><div class=\"ajf-header\"><h3 translate>Properties</h3><mat-icon (click)=\"save()\">save</mat-icon><mat-icon (click)=\"cancel()\">cancel</mat-icon></div><ng-container *ngIf=\"nodeEntry|async as ne\"><ng-container *ngIf=\"propertiesForm|async as pf\"><form [formGroup]=\"pf\" novalidate><div class=\"ajf-prop\"><mat-form-field><input matInput formControlName=\"name\" [placeholder]=\"'Name' | translate\"></mat-form-field></div><div class=\"ajf-prop\"><mat-form-field><input matInput formControlName=\"label\" [placeholder]=\"'Label' | translate\"></mat-form-field></div><div class=\"ajf-prop\"><div class=\"ajf-select-container\"><mat-select formControlName=\"visibilityOpt\" [placeholder]=\"'Visible' | translate\"><mat-option value=\"always\" translate>Always</mat-option><mat-option value=\"never\" translate>Never</mat-option><mat-option value=\"condition\" translate>Condition...</mat-option></mat-select><button (click)=\"editVisibility()\" [disabled]=\"pf.value['visibilityOpt'] != 'condition'\" mat-raised-button [matTooltip]=\"curVisibility\"><div class=\"ajf-icon-cont\"><mat-icon>edit</mat-icon><span>{{ curVisibility }}</span></div></button></div></div><div class=\"ajf-prop\"><div><label translate>Branches</label></div><div><mat-slider formControlName=\"conditionalBranchesNum\" thumbLabel tickInterval=\"auto\" min=\"1\" max=\"5\" step=\"1\"></mat-slider></div><div *ngFor=\"let branch of conditionalBranches; let idx = index\"><button (click)=\"editConditionalBranch(idx)\" mat-raised-button [matTooltip]=\"branch\"><div class=\"ajf-icon-cont\"><mat-icon>edit</mat-icon><span>{{ branch }}</span></div></button></div></div><ng-template [ngIf]=\"isRepeatingContainerNode((ne)?.node)\"><div class=\"ajf-prop\"><div><label translate>Repetitions</label></div><div><button (click)=\"editFormulaReps()\" mat-raised-button [matTooltip]=\"curFormulaReps\"><div class=\"ajf-icon-cont\"><mat-icon>edit</mat-icon><span>{{ curFormulaReps }}</span></div></button></div><div><label translate>Min repetitions</label></div><div><mat-slider formControlName=\"minReps\" thumbLabel tickInterval=\"auto\" min=\"1\" max=\"5\" step=\"1\"></mat-slider></div><div><label translate>Max repetitions</label></div><div><mat-slider formControlName=\"maxReps\" thumbLabel tickInterval=\"auto\" min=\"1\" max=\"5\" step=\"1\"></mat-slider></div></div></ng-template><ng-template [ngIf]=\"isField((ne)?.node)\"><div class=\"ajf-prop\"><div class=\"ajf-select-container\"><mat-select formControlName=\"size\" [placeholder]=\"'Size' | translate\"><mat-option *ngFor=\"let fieldSize of fieldSizes\" [value]=\"fieldSize.value\">{{ fieldSize.label }}</mat-option></mat-select></div></div><div class=\"ajf-prop\"><mat-form-field><textarea matInput formControlName=\"description\" [placeholder]=\"'Description' | translate\"></textarea></mat-form-field></div><div class=\"ajf-prop\"><mat-form-field><input matInput formControlName=\"defaultValue\" [placeholder]=\"'Default value' | translate\"></mat-form-field></div><div class=\"ajf-prop\"><div><label translate>Formula</label></div><div><button (click)=\"editFormula()\" mat-raised-button [matTooltip]=\"curFormula\"><div class=\"ajf-icon-cont\"><mat-icon>edit</mat-icon><span>{{ curFormula }}</span></div></button></div></div><div class=\"ajf-prop\"><div><label translate>Force value</label></div><div><button (click)=\"editForceValue()\" mat-raised-button [matTooltip]=\"curForceValue\"><div class=\"ajf-icon-cont\"><mat-icon>edit</mat-icon><span>{{ curForceValue }}</span></div></button></div></div><div class=\"ajf-prop\"><mat-checkbox formControlName=\"notEmpty\" translate>Not empty</mat-checkbox></div><ng-template [ngIf]=\"isNumericField((ne)?.node)\"><div class=\"ajf-prop\"><mat-form-field><input matInput formControlName=\"minValue\" [placeholder]=\"'Min value' | translate\"></mat-form-field></div><div class=\"ajf-prop\"><mat-form-field><input matInput formControlName=\"maxValue\" [placeholder]=\"'Max value' | translate\"></mat-form-field></div><div class=\"ajf-prop\"><mat-form-field><input matInput formControlName=\"minDigits\" [placeholder]=\"'Min digits' | translate\"></mat-form-field></div><div class=\"ajf-prop\"><mat-form-field><input matInput formControlName=\"maxDigits\" [placeholder]=\"'Max digits' | translate\"></mat-form-field></div></ng-template><div class=\"ajf-prop\"><div class=\"ajf-header\"><label translate>Validation</label><mat-icon class=\"ajf-pointer\" (click)=\"addValidationCondition()\">add_circle_outline</mat-icon></div><div *ngIf=\"validationConditions == null || validationConditions.length == 0\" class=\"ajf-validation-row ajf-emph\" translate>No conditions</div><div class=\"ajf-validation-row\" *ngFor=\"let validationCondition of validationConditions; let idx = index\"><button (click)=\"editValidationCondition(idx)\" mat-raised-button [matTooltip]=\"validationCondition.condition\"><div class=\"ajf-icon-cont\"><mat-icon>edit</mat-icon><span>{{ validationCondition.condition }}</span></div></button><mat-icon class=\"ajf-pointer\" (click)=\"removeValidationCondition(idx)\">remove_circle_outline</mat-icon></div></div><div class=\"ajf-prop\"><mat-checkbox formControlName=\"notEmptyWarning\" translate>Not empty warning</mat-checkbox></div><div class=\"ajf-prop\"><div class=\"ajf-header\"><label translate>Warnings</label><mat-icon class=\"ajf-pointer\" (click)=\"addWarningCondition()\">add_circle_outline</mat-icon></div><div *ngIf=\"warningConditions == null || warningConditions.length == 0\" class=\"ajf-validation-row ajf-emph\" translate>No warnings</div><div class=\"ajf-validation-row\" *ngFor=\"let warningCondition of warningConditions; let idx = index\"><button (click)=\"editWarningCondition(idx)\" mat-raised-button [matTooltip]=\"warningCondition.condition\"><div class=\"ajf-icon-cont\"><mat-icon>edit</mat-icon><span>{{ warningCondition.condition }}</span></div></button><mat-icon class=\"ajf-pointer\" (click)=\"removeWarningCondition(idx)\">remove_circle_outline</mat-icon></div></div><div class=\"ajf-prop\"><div><label translate>Go to next slide condition</label></div><div><button (click)=\"editNextSlideCondition()\" mat-raised-button [matTooltip]=\"nextSlideCondition\"><div class=\"ajf-icon-cont\"><mat-icon>edit</mat-icon><span>{{ nextSlideCondition }}</span></div></button></div></div><ng-template [ngIf]=\"isFieldWithChoices((ne)?.node)\"><div class=\"ajf-prop\"><div class=\"ajf-select-container\"><mat-select formControlName=\"choicesOrigin\" [placeholder]=\"'Choices' | translate\"><mat-option *ngFor=\"let choicesOrigin of choicesOrigins\" [value]=\"choicesOrigin.name\">{{ choicesOrigin.label || choicesOrigin.name }}</mat-option></mat-select></div></div><div class=\"ajf-prop\"><div><label translate>Choices filter</label></div><div><button (click)=\"editChoicesFilter()\" mat-raised-button [matTooltip]=\"curChoicesFilter\"><div class=\"ajf-icon-cont\"><mat-icon>edit</mat-icon><span>{{ curChoicesFilter }}</span></div></button></div></div><div class=\"ajf-prop\"><mat-checkbox formControlName=\"forceExpanded\" translate>Force expanded selection</mat-checkbox></div><div class=\"ajf-prop\"><mat-checkbox formControlName=\"forceNarrow\" translate>Force narrow selection</mat-checkbox></div><div class=\"ajf-prop\"><div class=\"ajf-header\"><label translate>Trigger selection</label><mat-icon class=\"ajf-pointer\" (click)=\"addTriggerCondition()\">add_circle_outline</mat-icon></div><div *ngIf=\"triggerConditions == null || triggerConditions.length == 0\" class=\"ajf-validation-row ajf-emph\" translate>No trigger condition</div><div class=\"ajf-validation-row\" *ngFor=\"let triggerCondition of triggerConditions; let idx = index\"><button (click)=\"editTriggerCondition(idx)\" mat-raised-button [matTooltip]=\"triggerCondition\"><div class=\"ajf-icon-cont\"><mat-icon>edit</mat-icon><span>{{ triggerCondition }}</span></div></button><mat-icon class=\"pointer\" (click)=\"removeTriggerCondition(idx)\">remove_circle_outline</mat-icon></div></div></ng-template></ng-template></form></ng-container></ng-container>",
                 styles: ["ajf-fb-node-properties{display:block;padding:1em;position:relative}ajf-fb-node-properties mat-icon{cursor:pointer}ajf-fb-node-properties .ajf-header{display:flex;flex-direction:row;align-items:center;flex-wrap:nowrap}ajf-fb-node-properties .ajf-header>h3,ajf-fb-node-properties .ajf-header>label{flex:1 0 auto;margin-right:.5em}ajf-fb-node-properties .ajf-header>mat-icon{flex:0 0 auto;margin-left:.5em}ajf-fb-node-properties .ajf-disabled-overlay{position:absolute;top:0;right:0;bottom:0;left:0;opacity:.4;background-color:#fff}ajf-fb-node-properties .ajf-select-container{padding-top:16px;display:flex;flex-direction:column;align-items:stretch}ajf-fb-node-properties .ajf-emph{font-style:italic}ajf-fb-node-properties [mat-raised-button]{margin:.5em 0}ajf-fb-node-properties [mat-raised-button].ajf-pointer{cursor:pointer}ajf-fb-node-properties [mat-raised-button] .ajf-icon-cont{display:flex;flex-direction:row;align-items:center}ajf-fb-node-properties [mat-raised-button] .ajf-icon-cont span{flex:1 1 auto;overflow:hidden;text-overflow:ellipsis;display:block;min-height:36px}ajf-fb-node-properties .ajf-validation-row{margin:.5em 0;display:flex;flex-direction:row;align-items:center}ajf-fb-node-properties .ajf-validation-row button{flex:1 1 auto}ajf-fb-node-properties .ajf-validation-row mat-icon{flex:0 0 auto}ajf-fb-node-properties .ajf-prop{margin:.5em 0}ajf-fb-node-properties [mat-raised-button],ajf-fb-node-properties mat-form-field,ajf-fb-node-properties mat-slider{width:100%}"],
                 encapsulation: ViewEncapsulation.None,
                 changeDetection: ChangeDetectionStrategy.OnPush
@@ -3404,7 +3464,7 @@ AjfFbNodeProperties.ctorParameters = () => [
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 class AjfFbNodeTypeEntry {
     /**
@@ -3444,7 +3504,7 @@ AjfFbNodeTypeEntry.propDecorators = {
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 class AjfFormBuilderModule {
 }
@@ -3502,5 +3562,5 @@ AjfFormBuilderModule.decorators = [
             },] },
 ];
 
-export { AjfFormBuilder, AjfFormBuilderModule, AjfFormBuilderService, flattenNodes, isContainerNode, isRepeatingContainerNode, isSlideNode, AjfFbBranchLine as ɵa, AjfFbChoicesOriginEditorDialog as ɵb, AjfFbChoicesOriginEditor as ɵc, AjfFbConditionEditorDialog as ɵd, AjfFbConditionEditor as ɵe, AjfFbNodeEntry as ɵf, AjfFbNodeProperties as ɵg, AjfFbNodeTypeEntry as ɵh, AjfFbValidationConditionEditorDialog as ɵi, AjfFbWarningConditionEditorDialog as ɵj };
+export { AjfFormBuilder, AjfFormBuilderModule, AjfFormBuilderService, flattenNodes, AjfFbBranchLine as ɵa, AjfFbChoicesOriginEditorDialog as ɵb, AjfFbChoicesOriginEditor as ɵc, AjfFbConditionEditorDialog as ɵd, AjfFbConditionEditor as ɵe, AjfFbNodeEntry as ɵf, AjfFbNodeProperties as ɵg, AjfFbNodeTypeEntry as ɵh, AjfFbValidationConditionEditorDialog as ɵi, AjfFbWarningConditionEditorDialog as ɵj };
 //# sourceMappingURL=form-builder.js.map

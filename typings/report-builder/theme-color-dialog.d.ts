@@ -19,15 +19,15 @@
  * If not, see http://www.gnu.org/licenses/.
  *
  */
+import { AjfWidget } from '@ajf/core/reports';
 import { AfterViewInit, OnDestroy, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import { AjfReportWidget } from '@ajf/core/reports';
 import { AjfReportBuilderService } from './report-builder-service';
 export declare class AjfReportBuilderThemeColorDialog implements OnInit, AfterViewInit, OnDestroy {
     private _service;
     private _dialogRef;
     elem: any;
-    currentWidget: AjfReportWidget | null;
+    currentWidget: AjfWidget | null;
     currentColor: string;
     section: string;
     private _currentWidgetSub;

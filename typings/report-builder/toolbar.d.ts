@@ -19,10 +19,10 @@
  * If not, see http://www.gnu.org/licenses/.
  *
  */
-import { EventEmitter } from '@angular/core';
 import { CdkDrag, CdkDragDrop } from '@angular/cdk/drag-drop';
-import { Observable } from 'rxjs';
+import { EventEmitter } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { Observable } from 'rxjs';
 import { AjfReportBuilderDragData } from './report-builder-drag-data';
 import { AjfReportBuilderService } from './report-builder-service';
 import { AjfReportBuilderToolbarDialog } from './toolbar-dialog';

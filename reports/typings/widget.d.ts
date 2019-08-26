@@ -19,8 +19,8 @@
  * If not, see http://www.gnu.org/licenses/.
  *
  */
+import { AjfWidgetRenderer as AjfCoreReportWidgetRenderer } from '@ajf/core/reports';
 import { ChangeDetectorRef } from '@angular/core';
-import { AjfReportWidgetRenderer as AjfCoreReportWidgetRenderer } from '@ajf/core/reports';
-export declare class AjfReportWidgetRenderer extends AjfCoreReportWidgetRenderer {
+export declare class AjfWidgetRenderer extends AjfCoreReportWidgetRenderer {
     constructor(cdr: ChangeDetectorRef);
 }

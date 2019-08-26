@@ -19,12 +19,12 @@
  * If not, see http://www.gnu.org/licenses/.
  *
  */
-import { Observable } from 'rxjs';
-import { OnInit, OnDestroy } from '@angular/core';
+import { AjfWidget } from '@ajf/core/reports';
+import { OnDestroy, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { AjfReportWidget } from '@ajf/core/reports';
-import { AjfReportBuilderThemeColorDialog } from './theme-color-dialog';
+import { Observable } from 'rxjs';
 import { AjfReportBuilderService } from './report-builder-service';
+import { AjfReportBuilderThemeColorDialog } from './theme-color-dialog';
 /**
  * this component manages the report text
  *
@@ -33,7 +33,7 @@ import { AjfReportBuilderService } from './report-builder-service';
 export declare class AjfReportBuilderThemeColor implements OnInit, OnDestroy {
     private _service;
     dialog: MatDialog;
-    currentWidget: AjfReportWidget | null;
+    currentWidget: AjfWidget | null;
     alphaColor: number;
     colors: string[];
     currentColor: string;

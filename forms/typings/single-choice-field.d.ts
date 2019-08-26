@@ -19,19 +19,9 @@
  * If not, see http://www.gnu.org/licenses/.
  *
  */
-import { ControlValueAccessor } from '@angular/forms';
-import { AjfTimeModel } from './time-model';
-export declare const AJF_TIME_CONTROL_VALUE_ACCESSOR: any;
-export declare class AjfTime implements ControlValueAccessor {
-    private _value;
-    readonly time: AjfTimeModel;
-    value: string;
-    hours: number;
-    minutes: number;
-    private _onChangeCallback;
-    private _onTouchedCallback;
-    constructor();
-    writeValue(value: string): void;
-    registerOnChange(fn: (value: any) => void): void;
-    registerOnTouched(fn: any): void;
+import { AjfFieldWithChoicesComponent, AjfFormRendererService } from '@ajf/core/forms';
+import { ChangeDetectorRef } from '@angular/core';
+import { AjfWarningAlertService } from './warning-alert-service';
+export declare class AjfSingleChoiceFieldComponent<T> extends AjfFieldWithChoicesComponent<T> {
+    constructor(cdr: ChangeDetectorRef, service: AjfFormRendererService, was: AjfWarningAlertService, searchThreshold: number);
 }

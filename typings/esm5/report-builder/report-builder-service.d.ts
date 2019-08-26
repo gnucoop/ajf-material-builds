@@ -19,12 +19,12 @@
  * If not, see http://www.gnu.org/licenses/.
  *
  */
+import { AjfForm, AjfNode } from '@ajf/core/forms';
+import { AjfFormula } from '@ajf/core/models';
+import { AjfColumnWidget, AjfCustomWidget, AjfLayoutWidget, AjfReport, AjfStyles, AjfWidget } from '@ajf/core/reports';
 import { EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs';
-import { AjfFormula } from '@ajf/core/models';
-import { AjfForm, AjfNode } from '@ajf/core/forms';
-import { AjfReport, AjfReportColumnWidget, AjfReportCustomWidget, AjfReportLayoutWidget, AjfReportStyles, AjfReportWidget } from '@ajf/core/reports';
-import { AjfFormVariables, AjfReportIcons, AjfReportsConfig, AjfReportWidgetsContainer } from './models';
+import { AjfFormVariables, AjfReportIcons, AjfReportsConfig, AjfWidgetsContainer } from './models';
 /**
  * This service contains all the logic to model the report widget.
  *
@@ -356,49 +356,49 @@ export declare class AjfReportBuilderService {
      * @readonly
      * @memberOf AjfReportBuilderService
      */
-    readonly customWidgets: Observable<AjfReportCustomWidget[]>;
+    readonly customWidgets: Observable<AjfCustomWidget[]>;
     /**
      * Get the header widget
      *
      * @readonly
      * @memberOf AjfReportBuilderService
      */
-    readonly headerWidgets: Observable<AjfReportWidgetsContainer>;
+    readonly headerWidgets: Observable<AjfWidgetsContainer>;
     /**
      * Get the header styles
      *
      * @readonly
      * @memberOf AjfReportBuilderService
      */
-    readonly headerStyles: Observable<AjfReportStyles>;
+    readonly headerStyles: Observable<AjfStyles>;
     /**
      * Get the Content widget
      *
      * @readonly
      * @memberOf AjfReportBuilderService
      */
-    readonly contentWidgets: Observable<AjfReportWidgetsContainer>;
+    readonly contentWidgets: Observable<AjfWidgetsContainer>;
     /**
      * Get the content styles
      *
      * @readonly
      * @memberOf AjfReportBuilderService
      */
-    readonly contentStyles: Observable<AjfReportStyles>;
+    readonly contentStyles: Observable<AjfStyles>;
     /**
      * Get the footer widget
      *
      * @readonly
      * @memberOf AjfReportBuilderService
      */
-    readonly footerWidgets: Observable<AjfReportWidgetsContainer>;
+    readonly footerWidgets: Observable<AjfWidgetsContainer>;
     /**
      * Get the footer styles
      *
      * @readonly
      * @memberOf AjfReportBuilderService
      */
-    readonly footerStyles: Observable<AjfReportStyles>;
+    readonly footerStyles: Observable<AjfStyles>;
     /**
      * Get the colors of report
      *
@@ -414,7 +414,7 @@ export declare class AjfReportBuilderService {
      *
      * @memberOf AjfReportBuilderService
      */
-    updateArrayWidgets(type: string, newWidget: AjfReportWidgetsContainer): void;
+    updateArrayWidgets(type: string, newWidget: AjfWidgetsContainer): void;
     /**
      * get _formsVariables Observable
      *
@@ -429,7 +429,7 @@ export declare class AjfReportBuilderService {
      * @readonly
      * @memberOf AjfReportBuilderService
      */
-    readonly currentWidget: Observable<AjfReportWidget | null>;
+    readonly currentWidget: Observable<AjfWidget | null>;
     /**
      * This method Update _currentWidgetUpdate with newWidget.
      *
@@ -437,7 +437,7 @@ export declare class AjfReportBuilderService {
      *
      * @memberOf AjfReportBuilderService
      */
-    updateCurrentWidget(newWidget: AjfReportWidget | null): void;
+    updateCurrentWidget(newWidget: AjfWidget | null): void;
     /**
      * Get the report
      *
@@ -458,7 +458,7 @@ export declare class AjfReportBuilderService {
      * @readonly
      * @memberOf AjfReportBuilderService
      */
-    readonly reportStyles: Observable<AjfReportStyles>;
+    readonly reportStyles: Observable<AjfStyles>;
     /**
      * get _reportForms observable
      *
@@ -499,7 +499,7 @@ export declare class AjfReportBuilderService {
      */
     instantColumnValue(newValue: number, idx: number): void;
     /**
-     * This method set the imageUrl on the current AjfReportImageWidget.
+     * This method set the imageUrl on the current AjfImageWidget.
      *
      * @param imageUrl
      *
@@ -517,7 +517,7 @@ export declare class AjfReportBuilderService {
     removeTableMainData(index: number): void;
     removeData(_mainIndex: number, _index: number): void;
     /**
-     * update type field of AjfReportChartWidget current widget
+     * update type field of AjfChartWidget current widget
      *
      * @param type
      *
@@ -525,7 +525,7 @@ export declare class AjfReportBuilderService {
      */
     setChartType(type: number): void;
     /**
-     * remove  idx element of xLabels field of AjfReportChartWidget current widget
+     * remove  idx element of xLabels field of AjfChartWidget current widget
      *
      * @param idx
      *
@@ -534,7 +534,7 @@ export declare class AjfReportBuilderService {
     removeMainData(_idx: number): void;
     removeRelatedData(_mainIdx: number, _idx: number): void;
     /**
-     * update backgroundColor field of AjfReportChartWidget current widget
+     * update backgroundColor field of AjfChartWidget current widget
      *
      * @param colors
      *
@@ -544,7 +544,7 @@ export declare class AjfReportBuilderService {
     addChartBackgroundColor(color: string): void;
     removeChartBackgroundColor(idx: number): void;
     /**
-     * update borderColor field of AjfReportChartWidget current widget
+     * update borderColor field of AjfChartWidget current widget
      *
      * @param colors
      *
@@ -571,7 +571,7 @@ export declare class AjfReportBuilderService {
      */
     setSaveReport(json: any): void;
     /**
-     * This method set the font attribute on the current AjfReportWidget.
+     * This method set the font attribute on the current AjfWidget.
      *
      * There is a check on font-size attribute,
      * if is no specificate the type of size font set 'pt' as default.
@@ -617,7 +617,7 @@ export declare class AjfReportBuilderService {
      *
      * @memberOf AjfReportBuilderService
      */
-    addCustomWidgets(widget: AjfReportCustomWidget, position?: number): void;
+    addCustomWidgets(widget: AjfCustomWidget, position?: number): void;
     /**
      * reset customWidgets
      *
@@ -637,35 +637,35 @@ export declare class AjfReportBuilderService {
      */
     changeLabelCustomWidget(label: string, position: number): void;
     /**
-     * Add an AjfReportWidget on _headerWidgetsUpdate
+     * Add an AjfWidget on _headerWidgetsUpdate
      *
      * @param widget
      * @param [position]
      *
      * @memberOf AjfReportBuilderService
      */
-    addHeaderWidget(widget: AjfReportWidget, position?: number): void;
+    addHeaderWidget(widget: AjfWidget, position?: number): void;
     /**
-     * Add an AjfReportWidget on _contentWidgetsUpdate
+     * Add an AjfWidget on _contentWidgetsUpdate
      *
      * @param widget
      * @param [position]
      *
      * @memberOf AjfReportBuilderService
      */
-    addContentWidget(widget: AjfReportWidget, position?: number): void;
+    addContentWidget(widget: AjfWidget, position?: number): void;
     /**
-     * Add an AjfReportWidget on _footerWidgetsUpdate
+     * Add an AjfWidget on _footerWidgetsUpdate
      *
      * @param widget
      * @param [position]
      *
      * @memberOf AjfReportBuilderService
      */
-    addfooterWidget(widget: AjfReportWidget, position?: number): void;
+    addfooterWidget(widget: AjfWidget, position?: number): void;
     unfixedColumn(idx: number): void;
     /**
-     * Add column on the current AjfReportLayoutWidget.
+     * Add column on the current AjfLayoutWidget.
      *
      * When adding a column the width of the other columns is recalculated
      * by dividing it by the number of column
@@ -673,7 +673,7 @@ export declare class AjfReportBuilderService {
      * @memberOf AjfReportBuilderService
      */
     addColumn(): void;
-    removeWidgetToColumn(column: AjfReportColumnWidget, index: number): void;
+    removeWidgetToColumn(column: AjfColumnWidget, index: number): void;
     /**
      * This method remove a widget on the current AjfReport.
      *
@@ -694,16 +694,16 @@ export declare class AjfReportBuilderService {
      */
     remove(node: string, idx: number): void;
     /**
-     * This method add a AjfReportWidget on the current AjfReportLayoutWidget.
+     * This method add a AjfWidget on the current AjfLayoutWidget.
      *
      * @param newWidget
      * @param idx
      *
      * @memberOf AjfReportBuilderService
      */
-    addToContent(newWidget: AjfReportWidget, idx: number): void;
-    addToColumn(event: any, toColumn: AjfReportColumnWidget, position?: number): void;
-    changePositionOnColumn(event: any, toColumn: AjfReportColumnWidget, toIndex: number): void;
+    addToContent(newWidget: AjfWidget, idx: number): void;
+    addToColumn(event: any, toColumn: AjfColumnWidget, position?: number): void;
+    changePositionOnColumn(event: any, toColumn: AjfColumnWidget, toIndex: number): void;
     /**
      * This method add the obj on the idx position.
      * Obj have a no specificate width and is not calculate as columns
@@ -713,7 +713,7 @@ export declare class AjfReportBuilderService {
      * @memberOf AjfReportBuilderService
      */
     fixedColumn(idx: number): void;
-    changeColumn(from: number, to: number, layoutWidget: AjfReportLayoutWidget): void;
+    changeColumn(from: number, to: number, layoutWidget: AjfLayoutWidget): void;
     addCustomColor(color: string): void;
     private _addWidgetToContainer;
     private _setCurrentWidgetProperty;

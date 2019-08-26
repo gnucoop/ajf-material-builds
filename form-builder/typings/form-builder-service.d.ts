@@ -19,16 +19,19 @@
  * If not, see http://www.gnu.org/licenses/.
  *
  */
-import { Observable } from 'rxjs';
+import { AjfAttachmentsOrigin, AjfChoicesOrigin, AjfContainerNode, AjfField, AjfFieldType, AjfForm, AjfNode, AjfNodeGroup, AjfNodeType, AjfRepeatingSlide, AjfSlide } from '@ajf/core/forms';
 import { AjfCondition } from '@ajf/core/models';
-import { AjfAttachmentsOrigin, AjfField, AjfForm, AjfNode, AjfNodeGroup, AjfRepeatingSlide, AjfSlide, IAjfChoicesOrigin } from '@ajf/core/forms';
+import { Observable } from 'rxjs';
 export interface AjfFormBuilderNodeTypeEntry {
     label: string;
     icon: {
         fontSet: string;
         fontIcon: string;
     };
-    nodeType: typeof AjfNode;
+    nodeType: {
+        node: AjfNodeType;
+        field?: AjfFieldType;
+    };
     isSlide?: boolean;
 }
 export interface AjfFormBuilderNodeEntry {
@@ -42,11 +45,7 @@ export interface AjfFormBuilderEmptySlot {
     parentNode: number;
 }
 export declare type AjfFormBuilderNode = AjfFormBuilderNodeEntry | AjfFormBuilderEmptySlot;
-export declare function isContainerNode(node: AjfNode): boolean;
 export declare type AjfContainerNode = AjfSlide | AjfRepeatingSlide | AjfNodeGroup;
-export declare function isRepeatingContainerNode(node: AjfNode): boolean;
-export declare type AjfRepeatingContainerNode = AjfRepeatingSlide | AjfNodeGroup;
-export declare function isSlideNode(node: AjfNode): boolean;
 export declare function flattenNodes(nodes: AjfNode[]): AjfNode[];
 export declare class AjfFormBuilderService {
     private _availableNodeTypes;
@@ -67,9 +66,9 @@ export declare class AjfFormBuilderService {
      */
     readonly form: Observable<AjfForm | null>;
     private _attachmentsOrigins;
-    readonly attachmentsOrigins: Observable<AjfAttachmentsOrigin[]>;
+    readonly attachmentsOrigins: Observable<AjfAttachmentsOrigin<any>[]>;
     private _choicesOrigins;
-    readonly choicesOrigins: Observable<IAjfChoicesOrigin[]>;
+    readonly choicesOrigins: Observable<AjfChoicesOrigin<any>[]>;
     private _nodes;
     readonly nodes: Observable<AjfNode[]>;
     private _flatNodes;
@@ -86,7 +85,7 @@ export declare class AjfFormBuilderService {
     readonly editedCondition: Observable<AjfCondition | null>;
     private _editedChoicesOrigin;
     private _editedChoicesOriginObs;
-    readonly editedChoicesOrigin: Observable<IAjfChoicesOrigin | null>;
+    readonly editedChoicesOrigin: Observable<AjfChoicesOrigin<any> | null>;
     private _beforeNodesUpdate;
     private _beforeNodesUpdateObs;
     readonly beforeNodesUpdate: Observable<void>;
@@ -116,7 +115,7 @@ export declare class AjfFormBuilderService {
     cancelNodeEntryEdit(): void;
     deleteNodeEntry(nodeEntry: AjfFormBuilderNodeEntry): void;
     getCurrentForm(): Observable<AjfForm>;
-    editChoicesOrigin(choicesOrigin: IAjfChoicesOrigin): void;
+    editChoicesOrigin(choicesOrigin: AjfChoicesOrigin<any>): void;
     createChoicesOrigin(): void;
     cancelChoicesOriginEdit(): void;
     saveChoicesOrigin(params: {

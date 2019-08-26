@@ -19,8 +19,8 @@
  * If not, see http://www.gnu.org/licenses/.
  *
  */
+import { AjfColumnWidget } from '@ajf/core/reports';
 import { OnDestroy, OnInit } from '@angular/core';
-import { AjfReportColumnWidget } from '@ajf/core/reports';
 import { AjfReportBuilderService } from './report-builder-service';
 /**
  * this component manages the report text
@@ -42,9 +42,9 @@ export declare class AjfReportBuilderColumn implements OnDestroy, OnInit {
      *
      * @memberOf TableComponent
      */
-    column: AjfReportColumnWidget;
+    column: AjfColumnWidget;
     private _onDraggedSub;
-    addToList(event: any, idx: number, toColumn: AjfReportColumnWidget): void;
+    addToList(event: any, idx: number, toColumn: AjfColumnWidget): void;
     /**
      *  sign the start of mouse drag with 200 ms of delay
      *

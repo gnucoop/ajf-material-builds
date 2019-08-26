@@ -19,11 +19,11 @@
  * If not, see http://www.gnu.org/licenses/.
  *
  */
-import { OnInit, AfterViewChecked, OnDestroy } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
 import { AjfValidationService } from '@ajf/core/forms';
-import { AjfAggregationType, AjfDataset, AjfReportWidget } from '@ajf/core/reports';
+import { AjfAggregationType, AjfDataset, AjfWidget } from '@ajf/core/reports';
 import { AjfMonacoEditor } from '@ajf/material/monaco-editor';
+import { AfterViewChecked, OnDestroy, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 import { AjfFormVariables } from './models';
 import { AjfReportBuilderService } from './report-builder-service';
 export declare enum AjfDataType {
@@ -47,7 +47,7 @@ export declare class AjfReportBuilderFormsAnalyzerDialog implements OnInit, Afte
     currentId: number;
     currentIndex: number;
     labels: string[];
-    currentWidget: AjfReportWidget | null;
+    currentWidget: AjfWidget | null;
     formsVariables: AjfFormVariables[];
     formsVariablesName: string[];
     formsVariablesType: string[];

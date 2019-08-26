@@ -22,7 +22,7 @@
 import { OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AjfReportBuilderService } from './report-builder-service';
-export interface AjfReportStyles {
+export interface AjfStyles {
     [style: string]: any;
 }
 export interface CustomWidget {

@@ -19,22 +19,22 @@
  * If not, see http://www.gnu.org/licenses/.
  *
  */
-import { Observable } from 'rxjs';
-import { OnInit, OnChanges, OnDestroy } from '@angular/core';
-import { CdkDrag, CdkDragDrop } from '@angular/cdk/drag-drop';
 import { AjfImageType } from '@ajf/core/image';
-import { AjfDataset, AjfReportColumnWidget, AjfReportLayoutWidget, AjfReportWidget, AjfReportWidgetType } from '@ajf/core/reports';
+import { AjfColumnWidget, AjfDataset, AjfLayoutWidget, AjfWidget, AjfWidgetType } from '@ajf/core/reports';
+import { CdkDrag, CdkDragDrop } from '@angular/cdk/drag-drop';
+import { OnChanges, OnDestroy, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { AjfReportBuilderDragData } from './report-builder-drag-data';
 import { AjfReportBuilderService } from './report-builder-service';
 export declare class AjfReportBuilderRendererWidget implements OnInit, OnDestroy, OnChanges {
     private _service;
-    readonly widgetTypes: typeof AjfReportWidgetType;
-    widget: AjfReportWidget;
-    readonly layoutWidget: AjfReportLayoutWidget;
+    readonly widgetTypes: typeof AjfWidgetType;
+    widget: AjfWidget;
+    readonly layoutWidget: AjfLayoutWidget;
     position: number;
     section: string;
     onDragged: boolean;
-    currentContentWidget: AjfReportWidget | null;
+    currentContentWidget: AjfWidget | null;
     obj: any;
     fixedZoom: any;
     getTableTitles: Observable<string[]>;
@@ -60,7 +60,7 @@ export declare class AjfReportBuilderRendererWidget implements OnInit, OnDestroy
      * @memberOf AjfReportBuilderContent
      */
     onDragEndHandler(): void;
-    getColumnContent(): AjfReportColumnWidget[];
+    getColumnContent(): AjfColumnWidget[];
     getIcon(): {
         fontSet: string;
         fontIcon: string;
@@ -73,7 +73,7 @@ export declare class AjfReportBuilderRendererWidget implements OnInit, OnDestroy
     getCoordinate(): number[];
     getTileLayer(): string;
     getAttribution(): string;
-    addToList(event: CdkDragDrop<AjfReportBuilderDragData>, toColumn: AjfReportColumnWidget): void;
+    addToList(event: CdkDragDrop<AjfReportBuilderDragData>, toColumn: AjfColumnWidget): void;
     ngOnInit(): void;
     ngOnChanges(changes: any): void;
     ngOnDestroy(): void;

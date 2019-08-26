@@ -20,10 +20,10 @@
  *
  */
 import { AjfFieldType, AjfNode } from '@ajf/core/forms';
-import { AjfReportStyles, AjfReportWidget } from '@ajf/core/reports';
-export interface AjfReportWidgetsContainer {
-    widgets: AjfReportWidget[];
-    styles: AjfReportStyles;
+import { AjfStyles, AjfWidget } from '@ajf/core/reports';
+export interface AjfWidgetsContainer {
+    widgets: AjfWidget[];
+    styles: AjfStyles;
 }
 export interface AjfFormVariables {
     nodes: AjfNode[];

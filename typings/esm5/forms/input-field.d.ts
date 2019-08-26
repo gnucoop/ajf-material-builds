@@ -19,5 +19,9 @@
  * If not, see http://www.gnu.org/licenses/.
  *
  */
-export declare class AjfTimeModule {
+import { AjfInputFieldComponent as CoreComponent, AjfFormRendererService } from '@ajf/core/forms';
+import { ChangeDetectorRef } from '@angular/core';
+import { AjfWarningAlertService } from './warning-alert-service';
+export declare class AjfInputFieldComponent extends CoreComponent {
+    constructor(cdr: ChangeDetectorRef, service: AjfFormRendererService, was: AjfWarningAlertService);
 }

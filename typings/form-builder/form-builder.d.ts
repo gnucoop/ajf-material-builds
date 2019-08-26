@@ -19,10 +19,10 @@
  * If not, see http://www.gnu.org/licenses/.
  *
  */
-import { AfterViewChecked, AfterContentInit, ElementRef, OnDestroy } from '@angular/core';
+import { AjfChoicesOrigin, AjfForm } from '@ajf/core/forms';
+import { AfterContentInit, AfterViewChecked, ElementRef, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
-import { AjfForm, IAjfChoicesOrigin } from '@ajf/core/forms';
 import { AjfFormBuilderNodeEntry, AjfFormBuilderNodeTypeEntry, AjfFormBuilderService } from './form-builder-service';
 export declare class AjfFormBuilder implements AfterViewChecked, AfterContentInit, OnDestroy {
     private _service;
@@ -35,7 +35,7 @@ export declare class AjfFormBuilder implements AfterViewChecked, AfterContentIni
     private _nodeEntriesTree;
     readonly nodeEntriesTree: Observable<AjfFormBuilderNodeEntry[]>;
     private _choicesOrigins;
-    readonly choicesOrigins: Observable<IAjfChoicesOrigin[]>;
+    readonly choicesOrigins: Observable<AjfChoicesOrigin<any>[]>;
     private _vc;
     private _init;
     private _editConditionSub;
@@ -50,6 +50,6 @@ export declare class AjfFormBuilder implements AfterViewChecked, AfterContentIni
     ngOnDestroy(): void;
     createChoicesOrigin(): void;
     disableDropPredicate(): boolean;
-    editChoicesOrigin(choicesOrigin: IAjfChoicesOrigin): void;
+    editChoicesOrigin(choicesOrigin: AjfChoicesOrigin<any>): void;
     private _setCurrentForm;
 }
