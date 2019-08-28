@@ -19,17 +19,9 @@
  * If not, see http://www.gnu.org/licenses/.
  *
  */
-import { Version } from '@angular/core';
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-/**
- * Current version of Ajf.
- * @type {?}
- */
-const VERSION = new Version('8.0.1-a1bd8e5');
-
-export { VERSION };
-//# sourceMappingURL=material.js.map
+import { AjfBaseFieldComponent, AjfFormRendererService } from '@ajf/core/forms';
+import { ChangeDetectorRef } from '@angular/core';
+import { AjfWarningAlertService } from './warning-alert-service';
+export declare class AjfBarcodeFieldComponent extends AjfBaseFieldComponent {
+    constructor(cdr: ChangeDetectorRef, service: AjfFormRendererService, was: AjfWarningAlertService);
+}

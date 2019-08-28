@@ -37,6 +37,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { TranslateModule } from '@ngx-translate/core';
 import { AjfCommonModule } from '@ajf/core/common';
 import { AjfTimeModule } from '@ajf/core/time';
+import { AjfBarcodeModule } from '@ajf/material/barcode';
 import { AjfCalendarModule } from '@ajf/material/calendar';
 import { AjfCheckboxGroupModule } from '@ajf/material/checkbox-group';
 import { AjfPageSliderModule } from '@ajf/material/page-slider';
@@ -167,6 +168,34 @@ AjfEmptyFieldComponent.decorators = [
 ];
 /** @nocollapse */
 AjfEmptyFieldComponent.ctorParameters = () => [
+    { type: ChangeDetectorRef },
+    { type: AjfFormRendererService },
+    { type: AjfWarningAlertService }
+];
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+class AjfBarcodeFieldComponent extends AjfBaseFieldComponent {
+    /**
+     * @param {?} cdr
+     * @param {?} service
+     * @param {?} was
+     */
+    constructor(cdr, service, was) {
+        super(cdr, service, was);
+    }
+}
+AjfBarcodeFieldComponent.decorators = [
+    { type: Component, args: [{template: "<ajf-barcode [formControl]=\"control|async\"></ajf-barcode>",
+                styles: [""],
+                changeDetection: ChangeDetectionStrategy.OnPush,
+                encapsulation: ViewEncapsulation.None,
+            },] },
+];
+/** @nocollapse */
+AjfBarcodeFieldComponent.ctorParameters = () => [
     { type: ChangeDetectorRef },
     { type: AjfFormRendererService },
     { type: AjfWarningAlertService }
@@ -345,6 +374,7 @@ class AjfFormField extends AjfFormField$1 {
             [AjfFieldType.SingleChoice]: { component: AjfSingleChoiceFieldComponent },
             [AjfFieldType.MultipleChoice]: { component: AjfMultipleChoiceFieldComponent },
             [AjfFieldType.Time]: { component: AjfTimeFieldComponent },
+            [AjfFieldType.Barcode]: { component: AjfBarcodeFieldComponent },
         };
     }
 }
@@ -454,12 +484,14 @@ AjfFormsModule.decorators = [
                     TranslateModule,
                     AjfFormsModule$1,
                     AjfCalendarModule,
+                    AjfBarcodeModule,
                     AjfCheckboxGroupModule,
                     AjfCommonModule,
                     AjfPageSliderModule,
                     AjfTimeModule
                 ],
                 declarations: [
+                    AjfBarcodeFieldComponent,
                     AjfBooleanFieldComponent,
                     AjfDateFieldComponent,
                     AjfEmptyFieldComponent,
@@ -477,6 +509,7 @@ AjfFormsModule.decorators = [
                     AjfFormRenderer
                 ],
                 entryComponents: [
+                    AjfBarcodeFieldComponent,
                     AjfBooleanFieldComponent,
                     AjfDateFieldComponent,
                     AjfEmptyFieldComponent,
@@ -493,5 +526,5 @@ AjfFormsModule.decorators = [
             },] },
 ];
 
-export { AjfBooleanFieldComponent, AjfDateFieldComponent, AjfEmptyFieldComponent, AjfFieldWarningDialog, AjfFormField, AjfFormRenderer, AjfFormsModule, AjfInputFieldComponent, AjfMultipleChoiceFieldComponent, AjfSingleChoiceFieldComponent, AjfTableFieldComponent, AjfTimeFieldComponent, AjfWarningAlertService };
+export { AjfBooleanFieldComponent, AjfDateFieldComponent, AjfEmptyFieldComponent, AjfFieldWarningDialog, AjfFormField, AjfFormRenderer, AjfFormsModule, AjfInputFieldComponent, AjfMultipleChoiceFieldComponent, AjfSingleChoiceFieldComponent, AjfTableFieldComponent, AjfTimeFieldComponent, AjfWarningAlertService, AjfBarcodeFieldComponent as ɵa };
 //# sourceMappingURL=forms.js.map

@@ -20,10 +20,10 @@
  *
  */
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@ajf/core/forms'), require('@angular/core'), require('@angular/material/dialog'), require('rxjs/operators'), require('@angular/common'), require('@angular/forms'), require('@angular/material/button'), require('@angular/material/card'), require('@angular/material/form-field'), require('@angular/material/icon'), require('@angular/material/input'), require('@angular/material/radio'), require('@angular/material/select'), require('@angular/material/slide-toggle'), require('@angular/material/toolbar'), require('@ngx-translate/core'), require('@ajf/core/common'), require('@ajf/core/time'), require('@ajf/material/calendar'), require('@ajf/material/checkbox-group'), require('@ajf/material/page-slider')) :
-    typeof define === 'function' && define.amd ? define('@ajf/material/forms', ['exports', '@ajf/core/forms', '@angular/core', '@angular/material/dialog', 'rxjs/operators', '@angular/common', '@angular/forms', '@angular/material/button', '@angular/material/card', '@angular/material/form-field', '@angular/material/icon', '@angular/material/input', '@angular/material/radio', '@angular/material/select', '@angular/material/slide-toggle', '@angular/material/toolbar', '@ngx-translate/core', '@ajf/core/common', '@ajf/core/time', '@ajf/material/calendar', '@ajf/material/checkbox-group', '@ajf/material/page-slider'], factory) :
-    (global = global || self, factory((global.ajf = global.ajf || {}, global.ajf.material = global.ajf.material || {}, global.ajf.material.forms = {}), global.ajf.core.forms, global.ng.core, global.ng.material.dialog, global.rxjs.operators, global.ng.common, global.ng.forms, global.ng.material.button, global.ng.material.card, global.ng.material.formField, global.ng.material.icon, global.ng.material.input, global.ng.material.radio, global.ng.material.select, global.ng.material.slideToggle, global.ng.material.toolbar, global.ngxt.core, global.ajf.core.common, global.ajf.core.time, global.ajf.material.calendar, global.ajf.material.checkboxGroup, global.ajf.material.pageSlider));
-}(this, function (exports, forms, core, dialog, operators, common, forms$1, button, card, formField, icon, input, radio, select, slideToggle, toolbar, core$1, common$1, time, calendar, checkboxGroup, pageSlider) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@ajf/core/forms'), require('@angular/core'), require('@angular/material/dialog'), require('rxjs/operators'), require('@angular/common'), require('@angular/forms'), require('@angular/material/button'), require('@angular/material/card'), require('@angular/material/form-field'), require('@angular/material/icon'), require('@angular/material/input'), require('@angular/material/radio'), require('@angular/material/select'), require('@angular/material/slide-toggle'), require('@angular/material/toolbar'), require('@ngx-translate/core'), require('@ajf/core/common'), require('@ajf/core/time'), require('@ajf/material/barcode'), require('@ajf/material/calendar'), require('@ajf/material/checkbox-group'), require('@ajf/material/page-slider')) :
+    typeof define === 'function' && define.amd ? define('@ajf/material/forms', ['exports', '@ajf/core/forms', '@angular/core', '@angular/material/dialog', 'rxjs/operators', '@angular/common', '@angular/forms', '@angular/material/button', '@angular/material/card', '@angular/material/form-field', '@angular/material/icon', '@angular/material/input', '@angular/material/radio', '@angular/material/select', '@angular/material/slide-toggle', '@angular/material/toolbar', '@ngx-translate/core', '@ajf/core/common', '@ajf/core/time', '@ajf/material/barcode', '@ajf/material/calendar', '@ajf/material/checkbox-group', '@ajf/material/page-slider'], factory) :
+    (global = global || self, factory((global.ajf = global.ajf || {}, global.ajf.material = global.ajf.material || {}, global.ajf.material.forms = {}), global.ajf.core.forms, global.ng.core, global.ng.material.dialog, global.rxjs.operators, global.ng.common, global.ng.forms, global.ng.material.button, global.ng.material.card, global.ng.material.formField, global.ng.material.icon, global.ng.material.input, global.ng.material.radio, global.ng.material.select, global.ng.material.slideToggle, global.ng.material.toolbar, global.ngxt.core, global.ajf.core.common, global.ajf.core.time, global.ajf.material.barcode, global.ajf.material.calendar, global.ajf.material.checkboxGroup, global.ajf.material.pageSlider));
+}(this, function (exports, forms, core, dialog, operators, common, forms$1, button, card, formField, icon, input, radio, select, slideToggle, toolbar, core$1, common$1, time, barcode, calendar, checkboxGroup, pageSlider) { 'use strict';
 
     /*! *****************************************************************************
     Copyright (c) Microsoft Corporation. All rights reserved.
@@ -185,6 +185,31 @@
      * @fileoverview added by tsickle
      * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
+    var AjfBarcodeFieldComponent = /** @class */ (function (_super) {
+        __extends(AjfBarcodeFieldComponent, _super);
+        function AjfBarcodeFieldComponent(cdr, service, was) {
+            return _super.call(this, cdr, service, was) || this;
+        }
+        AjfBarcodeFieldComponent.decorators = [
+            { type: core.Component, args: [{template: "<ajf-barcode [formControl]=\"control|async\"></ajf-barcode>",
+                        styles: [""],
+                        changeDetection: core.ChangeDetectionStrategy.OnPush,
+                        encapsulation: core.ViewEncapsulation.None,
+                    },] },
+        ];
+        /** @nocollapse */
+        AjfBarcodeFieldComponent.ctorParameters = function () { return [
+            { type: core.ChangeDetectorRef },
+            { type: forms.AjfFormRendererService },
+            { type: AjfWarningAlertService }
+        ]; };
+        return AjfBarcodeFieldComponent;
+    }(forms.AjfBaseFieldComponent));
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
     var AjfInputFieldComponent = /** @class */ (function (_super) {
         __extends(AjfInputFieldComponent, _super);
         function AjfInputFieldComponent(cdr, service, was) {
@@ -336,6 +361,7 @@
                 _a[forms.AjfFieldType.SingleChoice] = { component: AjfSingleChoiceFieldComponent },
                 _a[forms.AjfFieldType.MultipleChoice] = { component: AjfMultipleChoiceFieldComponent },
                 _a[forms.AjfFieldType.Time] = { component: AjfTimeFieldComponent },
+                _a[forms.AjfFieldType.Barcode] = { component: AjfBarcodeFieldComponent },
                 _a);
             return _this;
         }
@@ -446,12 +472,14 @@
                             core$1.TranslateModule,
                             forms.AjfFormsModule,
                             calendar.AjfCalendarModule,
+                            barcode.AjfBarcodeModule,
                             checkboxGroup.AjfCheckboxGroupModule,
                             common$1.AjfCommonModule,
                             pageSlider.AjfPageSliderModule,
                             time.AjfTimeModule
                         ],
                         declarations: [
+                            AjfBarcodeFieldComponent,
                             AjfBooleanFieldComponent,
                             AjfDateFieldComponent,
                             AjfEmptyFieldComponent,
@@ -469,6 +497,7 @@
                             AjfFormRenderer
                         ],
                         entryComponents: [
+                            AjfBarcodeFieldComponent,
                             AjfBooleanFieldComponent,
                             AjfDateFieldComponent,
                             AjfEmptyFieldComponent,
@@ -500,6 +529,7 @@
     exports.AjfTableFieldComponent = AjfTableFieldComponent;
     exports.AjfTimeFieldComponent = AjfTimeFieldComponent;
     exports.AjfWarningAlertService = AjfWarningAlertService;
+    exports.ɵa = AjfBarcodeFieldComponent;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 

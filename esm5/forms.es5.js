@@ -38,6 +38,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { TranslateModule } from '@ngx-translate/core';
 import { AjfCommonModule } from '@ajf/core/common';
 import { AjfTimeModule } from '@ajf/core/time';
+import { AjfBarcodeModule } from '@ajf/material/barcode';
 import { AjfCalendarModule } from '@ajf/material/calendar';
 import { AjfCheckboxGroupModule } from '@ajf/material/checkbox-group';
 import { AjfPageSliderModule } from '@ajf/material/page-slider';
@@ -167,6 +168,31 @@ var AjfEmptyFieldComponent = /** @class */ (function (_super) {
         { type: AjfWarningAlertService }
     ]; };
     return AjfEmptyFieldComponent;
+}(AjfBaseFieldComponent));
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+var AjfBarcodeFieldComponent = /** @class */ (function (_super) {
+    __extends(AjfBarcodeFieldComponent, _super);
+    function AjfBarcodeFieldComponent(cdr, service, was) {
+        return _super.call(this, cdr, service, was) || this;
+    }
+    AjfBarcodeFieldComponent.decorators = [
+        { type: Component, args: [{template: "<ajf-barcode [formControl]=\"control|async\"></ajf-barcode>",
+                    styles: [""],
+                    changeDetection: ChangeDetectionStrategy.OnPush,
+                    encapsulation: ViewEncapsulation.None,
+                },] },
+    ];
+    /** @nocollapse */
+    AjfBarcodeFieldComponent.ctorParameters = function () { return [
+        { type: ChangeDetectorRef },
+        { type: AjfFormRendererService },
+        { type: AjfWarningAlertService }
+    ]; };
+    return AjfBarcodeFieldComponent;
 }(AjfBaseFieldComponent));
 
 /**
@@ -324,6 +350,7 @@ var AjfFormField = /** @class */ (function (_super) {
             _a[AjfFieldType.SingleChoice] = { component: AjfSingleChoiceFieldComponent },
             _a[AjfFieldType.MultipleChoice] = { component: AjfMultipleChoiceFieldComponent },
             _a[AjfFieldType.Time] = { component: AjfTimeFieldComponent },
+            _a[AjfFieldType.Barcode] = { component: AjfBarcodeFieldComponent },
             _a);
         return _this;
     }
@@ -434,12 +461,14 @@ var AjfFormsModule = /** @class */ (function () {
                         TranslateModule,
                         AjfFormsModule$1,
                         AjfCalendarModule,
+                        AjfBarcodeModule,
                         AjfCheckboxGroupModule,
                         AjfCommonModule,
                         AjfPageSliderModule,
                         AjfTimeModule
                     ],
                     declarations: [
+                        AjfBarcodeFieldComponent,
                         AjfBooleanFieldComponent,
                         AjfDateFieldComponent,
                         AjfEmptyFieldComponent,
@@ -457,6 +486,7 @@ var AjfFormsModule = /** @class */ (function () {
                         AjfFormRenderer
                     ],
                     entryComponents: [
+                        AjfBarcodeFieldComponent,
                         AjfBooleanFieldComponent,
                         AjfDateFieldComponent,
                         AjfEmptyFieldComponent,
@@ -475,5 +505,5 @@ var AjfFormsModule = /** @class */ (function () {
     return AjfFormsModule;
 }());
 
-export { AjfBooleanFieldComponent, AjfDateFieldComponent, AjfEmptyFieldComponent, AjfFieldWarningDialog, AjfFormField, AjfFormRenderer, AjfFormsModule, AjfInputFieldComponent, AjfMultipleChoiceFieldComponent, AjfSingleChoiceFieldComponent, AjfTableFieldComponent, AjfTimeFieldComponent, AjfWarningAlertService };
+export { AjfBooleanFieldComponent, AjfDateFieldComponent, AjfEmptyFieldComponent, AjfFieldWarningDialog, AjfFormField, AjfFormRenderer, AjfFormsModule, AjfInputFieldComponent, AjfMultipleChoiceFieldComponent, AjfSingleChoiceFieldComponent, AjfTableFieldComponent, AjfTimeFieldComponent, AjfWarningAlertService, AjfBarcodeFieldComponent as ɵa };
 //# sourceMappingURL=forms.es5.js.map
