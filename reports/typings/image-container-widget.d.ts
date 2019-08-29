@@ -19,17 +19,10 @@
  * If not, see http://www.gnu.org/licenses/.
  *
  */
-import { Version } from '@angular/core';
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-/**
- * Current version of Ajf.
- * @type {?}
- */
-var VERSION = new Version('8.0.1-e4317dd');
-
-export { VERSION };
-//# sourceMappingURL=material.es5.js.map
+import { ChangeDetectorRef } from '@angular/core';
+import { AjfImageType } from '@ajf/core/image';
+import { AjfBaseWidgetComponent, AjfImageContainerWidgetInstance } from '@ajf/core/reports';
+export declare class AjfImageContainerWidgetComponent extends AjfBaseWidgetComponent<AjfImageContainerWidgetInstance> {
+    readonly imageTypes: typeof AjfImageType;
+    constructor(cdr: ChangeDetectorRef);
+}

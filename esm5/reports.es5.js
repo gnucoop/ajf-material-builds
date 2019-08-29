@@ -20,8 +20,9 @@
  *
  */
 import { __extends } from 'tslib';
-import { Component, ViewEncapsulation, ChangeDetectionStrategy, ChangeDetectorRef, NgModule } from '@angular/core';
-import { AjfReportRenderer as AjfReportRenderer$1, AjfWidgetRenderer as AjfWidgetRenderer$1, AjfReportsModule as AjfReportsModule$1 } from '@ajf/core/reports';
+import { Component, ChangeDetectionStrategy, ViewEncapsulation, ChangeDetectorRef, ViewChild, ComponentFactoryResolver, NgModule } from '@angular/core';
+import { AjfBaseWidgetComponent, AjfReportRenderer as AjfReportRenderer$1, AjfWidgetType, AjfWidgetHost, AjfReportWidget as AjfReportWidget$1, AjfReportsModule as AjfReportsModule$1 } from '@ajf/core/reports';
+import { AjfImageType } from '@ajf/core/image';
 import { AjfChartModule } from '@ajf/core/chart';
 import { AjfCommonModule } from '@ajf/core/common';
 import { AjfMapModule } from '@ajf/core/map';
@@ -36,6 +37,192 @@ import { TranslateModule } from '@ngx-translate/core';
  * @fileoverview added by tsickle
  * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
+var AjfChartWidgetComponent = /** @class */ (function (_super) {
+    __extends(AjfChartWidgetComponent, _super);
+    function AjfChartWidgetComponent(cdr) {
+        return _super.call(this, cdr) || this;
+    }
+    AjfChartWidgetComponent.decorators = [
+        { type: Component, args: [{template: "<ajf-chart [chartType]=\"instance.chartType\" [options]=\"instance.widget.options\" [data]=\"instance.data\"></ajf-chart>",
+                    styles: [""],
+                    changeDetection: ChangeDetectionStrategy.OnPush,
+                    encapsulation: ViewEncapsulation.None,
+                },] },
+    ];
+    /** @nocollapse */
+    AjfChartWidgetComponent.ctorParameters = function () { return [
+        { type: ChangeDetectorRef }
+    ]; };
+    return AjfChartWidgetComponent;
+}(AjfBaseWidgetComponent));
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+var AjfColumnWidgetComponent = /** @class */ (function (_super) {
+    __extends(AjfColumnWidgetComponent, _super);
+    function AjfColumnWidgetComponent(cdr) {
+        return _super.call(this, cdr) || this;
+    }
+    AjfColumnWidgetComponent.decorators = [
+        { type: Component, args: [{template: "<div class=\"ajf-column-container\"><ng-container *ngFor=\"let w of instance.content\"><ajf-widget [instance]=\"w\"></ajf-widget></ng-container></div>",
+                    styles: [".ajf-column-container{flex:1 1 auto}"],
+                    changeDetection: ChangeDetectionStrategy.OnPush,
+                    encapsulation: ViewEncapsulation.None,
+                },] },
+    ];
+    /** @nocollapse */
+    AjfColumnWidgetComponent.ctorParameters = function () { return [
+        { type: ChangeDetectorRef }
+    ]; };
+    return AjfColumnWidgetComponent;
+}(AjfBaseWidgetComponent));
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+var AjfFormulaWidgetComponent = /** @class */ (function (_super) {
+    __extends(AjfFormulaWidgetComponent, _super);
+    function AjfFormulaWidgetComponent(cdr) {
+        return _super.call(this, cdr) || this;
+    }
+    AjfFormulaWidgetComponent.decorators = [
+        { type: Component, args: [{template: "<ajf-text [htmlText]=\"instance.formula\"></ajf-text>",
+                    styles: [""],
+                    changeDetection: ChangeDetectionStrategy.OnPush,
+                    encapsulation: ViewEncapsulation.None,
+                },] },
+    ];
+    /** @nocollapse */
+    AjfFormulaWidgetComponent.ctorParameters = function () { return [
+        { type: ChangeDetectorRef }
+    ]; };
+    return AjfFormulaWidgetComponent;
+}(AjfBaseWidgetComponent));
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+var AjfImageContainerWidgetComponent = /** @class */ (function (_super) {
+    __extends(AjfImageContainerWidgetComponent, _super);
+    function AjfImageContainerWidgetComponent(cdr) {
+        var _this = _super.call(this, cdr) || this;
+        _this.imageTypes = AjfImageType;
+        return _this;
+    }
+    AjfImageContainerWidgetComponent.decorators = [
+        { type: Component, args: [{template: "<div class=\"ajf-image-container ajf-columns\" [ngSwitch]=\"instance.widget.imageType\"><ng-template [ngSwitchCase]=\"imageTypes.Image\"><div *ngFor=\"let icw of instance.urls; let idx = index\" class=\"ajf-column\"><ajf-image [type]=\"instance.widget.imageType\" [imageUrl]=\"icw\" [icon]=\"\" [flag]=\"\" [applyStyles]=\"instance.widget!.styles\"></ajf-image></div></ng-template><ng-template [ngSwitchCase]=\"imageTypes.Flag\"><div *ngFor=\"let icw of instance.flags; let idx = index\" class=\"ajf-column\"><ajf-image [type]=\"instance.widget.imageType\" [imageUrl]=\"\" [icon]=\"\" [flag]=\"icw\" [applyStyles]=\"instance.widget!.styles\"></ajf-image></div></ng-template><ng-template [ngSwitchCase]=\"imageTypes.Icon\"><div *ngFor=\"let icw of instance.icons; let idx = index\" class=\"ajf-column\"><ajf-image [type]=\"instance.widget.imageType\" [imageUrl]=\"\" [icon]=\"icw\" [flag]=\"\" [applyStyles]=\"instance.widget!.styles\"></ajf-image></div></ng-template></div>",
+                    styles: [".ajf-image-container img{max-width:none;max-height:none}"],
+                    changeDetection: ChangeDetectionStrategy.OnPush,
+                    encapsulation: ViewEncapsulation.None,
+                },] },
+    ];
+    /** @nocollapse */
+    AjfImageContainerWidgetComponent.ctorParameters = function () { return [
+        { type: ChangeDetectorRef }
+    ]; };
+    return AjfImageContainerWidgetComponent;
+}(AjfBaseWidgetComponent));
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+var AjfImageWidgetComponent = /** @class */ (function (_super) {
+    __extends(AjfImageWidgetComponent, _super);
+    function AjfImageWidgetComponent(cdr) {
+        return _super.call(this, cdr) || this;
+    }
+    AjfImageWidgetComponent.decorators = [
+        { type: Component, args: [{template: "<ajf-image [type]=\"instance.widget.imageType\" [imageUrl]=\"instance.url\" [icon]=\"instance.icon\" [flag]=\"instance.flag\"></ajf-image>",
+                    styles: [""],
+                    changeDetection: ChangeDetectionStrategy.OnPush,
+                    encapsulation: ViewEncapsulation.None,
+                },] },
+    ];
+    /** @nocollapse */
+    AjfImageWidgetComponent.ctorParameters = function () { return [
+        { type: ChangeDetectorRef }
+    ]; };
+    return AjfImageWidgetComponent;
+}(AjfBaseWidgetComponent));
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+var AjfLayoutWidgetComponent = /** @class */ (function (_super) {
+    __extends(AjfLayoutWidgetComponent, _super);
+    function AjfLayoutWidgetComponent(cdr) {
+        return _super.call(this, cdr) || this;
+    }
+    AjfLayoutWidgetComponent.decorators = [
+        { type: Component, args: [{template: "<div class=\"ajf-columns\"><div *ngFor=\"let column of instance.widget.columns; let idx = index\" [ngStyle]=\"{'flex-grow': column > -1 ? 1 : null, 'flex-basis' : column > -1 ? (column * 100) + '%' : null}\" class=\"ajf-column\"><ajf-widget [instance]=\"instance|ajfGetColumnContent:idx\"></ajf-widget></div></div>",
+                    styles: [".ajf-columns{flex:1 1 auto;display:flex;align-items:inherit;box-sizing:border-box}.ajf-columns>.ajf-column{box-sizing:border-box;display:flex;align-items:inherit;flex-shrink:1}"],
+                    changeDetection: ChangeDetectionStrategy.OnPush,
+                    encapsulation: ViewEncapsulation.None,
+                },] },
+    ];
+    /** @nocollapse */
+    AjfLayoutWidgetComponent.ctorParameters = function () { return [
+        { type: ChangeDetectorRef }
+    ]; };
+    return AjfLayoutWidgetComponent;
+}(AjfBaseWidgetComponent));
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+var AjfMapWidgetComponent = /** @class */ (function (_super) {
+    __extends(AjfMapWidgetComponent, _super);
+    function AjfMapWidgetComponent(cdr) {
+        return _super.call(this, cdr) || this;
+    }
+    AjfMapWidgetComponent.decorators = [
+        { type: Component, args: [{template: "<ajf-map [coordinate]=\"instance.coordinate\" [tileLayer]=\"instance.widget.tileLayer\" [attribution]=\"instance.widget.attribution\" [disabled]=\"instance.widget.disabled\"></ajf-map>",
+                    styles: [""],
+                    changeDetection: ChangeDetectionStrategy.OnPush,
+                    encapsulation: ViewEncapsulation.None,
+                },] },
+    ];
+    /** @nocollapse */
+    AjfMapWidgetComponent.ctorParameters = function () { return [
+        { type: ChangeDetectorRef }
+    ]; };
+    return AjfMapWidgetComponent;
+}(AjfBaseWidgetComponent));
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+var AjfPageBreakWidgetComponent = /** @class */ (function (_super) {
+    __extends(AjfPageBreakWidgetComponent, _super);
+    function AjfPageBreakWidgetComponent(cdr) {
+        return _super.call(this, cdr) || this;
+    }
+    AjfPageBreakWidgetComponent.decorators = [
+        { type: Component, args: [{template: "<ajf-page-break></ajf-page-break>",
+                    styles: [""],
+                    changeDetection: ChangeDetectionStrategy.OnPush,
+                    encapsulation: ViewEncapsulation.None,
+                },] },
+    ];
+    /** @nocollapse */
+    AjfPageBreakWidgetComponent.ctorParameters = function () { return [
+        { type: ChangeDetectorRef }
+    ]; };
+    return AjfPageBreakWidgetComponent;
+}(AjfBaseWidgetComponent));
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
 var AjfReportRenderer = /** @class */ (function (_super) {
     __extends(AjfReportRenderer, _super);
     function AjfReportRenderer(cdr) {
@@ -43,12 +230,12 @@ var AjfReportRenderer = /** @class */ (function (_super) {
     }
     AjfReportRenderer.decorators = [
         { type: Component, args: [{selector: 'ajf-report',
-                    template: "<ng-template [ngIf]=\"reportInstance\"><div *ngIf=\"reportInstance.header\" @.disabled [applyStyles]=\"reportInstance.header.styles\" class=\"afj-report-header\"><ng-template ngFor let-widgetInstance [ngForOf]=\"reportInstance.header.content\"><ajf-report-widget *ngIf=\"widgetInstance.visible\" [widgetInstance]=\"widgetInstance\"></ajf-report-widget></ng-template></div><div *ngIf=\"reportInstance.content\" @.disabled [applyStyles]=\"reportInstance.content.styles\" class=\"ajf-report-content\"><ng-template ngFor let-widgetInstance [ngForOf]=\"reportInstance.content.content\"><ajf-report-widget *ngIf=\"widgetInstance.visible\" [widgetInstance]=\"widgetInstance\"></ajf-report-widget></ng-template></div><div *ngIf=\"reportInstance.footer\" @.disabled [applyStyles]=\"reportInstance.footer.styles\" class=\"ajf-report-footer\"><ng-template ngFor let-widgetInstance [ngForOf]=\"reportInstance.footer.content\"><ajf-report-widget *ngIf=\"widgetInstance.visible\" [widgetInstance]=\"widgetInstance\"></ajf-report-widget></ng-template></div></ng-template>",
+                    template: "<ng-template [ngIf]=\"instance\"><div *ngIf=\"instance.header\" @.disabled [applyStyles]=\"instance.header.styles\" class=\"afj-report-header\"><ng-template ngFor let-instance [ngForOf]=\"instance.header.content\"><ajf-widget *ngIf=\"instance.visible\" [instance]=\"instance\"></ajf-widget></ng-template></div><div *ngIf=\"instance.content\" @.disabled [applyStyles]=\"instance.content.styles\" class=\"ajf-report-content\"><ng-template ngFor let-instance [ngForOf]=\"instance.content.content\"><ajf-widget *ngIf=\"instance.visible\" [instance]=\"instance\"></ajf-widget></ng-template></div><div *ngIf=\"instance.footer\" @.disabled [applyStyles]=\"instance.footer.styles\" class=\"ajf-report-footer\"><ng-template ngFor let-instance [ngForOf]=\"instance.footer.content\"><ajf-widget *ngIf=\"instance.visible\" [instance]=\"instance\"></ajf-widget></ng-template></div></ng-template>",
                     styles: ["ajf-report{display:flex;flex-direction:column;align-items:stretch;box-sizing:border-box;position:relative;width:100%}ajf-report h1,ajf-report h2,ajf-report h3,ajf-report h4,ajf-report h5,ajf-report h6,ajf-report p{padding:0;margin:0}ajf-report .ajf-loading{position:absolute;top:0;right:0;left:0;bottom:0;min-height:300px;padding:100px;text-align:center;background-color:rgba(240,240,240,.4);display:flex;justify-content:center}"],
                     encapsulation: ViewEncapsulation.None,
                     changeDetection: ChangeDetectionStrategy.OnPush,
                     inputs: [
-                        'reportInstance'
+                        'instance'
                     ],
                 },] },
     ];
@@ -63,26 +250,89 @@ var AjfReportRenderer = /** @class */ (function (_super) {
  * @fileoverview added by tsickle
  * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
-var AjfWidgetRenderer = /** @class */ (function (_super) {
-    __extends(AjfWidgetRenderer, _super);
-    function AjfWidgetRenderer(cdr) {
+var AjfTableWidgetComponent = /** @class */ (function (_super) {
+    __extends(AjfTableWidgetComponent, _super);
+    function AjfTableWidgetComponent(cdr) {
         return _super.call(this, cdr) || this;
     }
-    AjfWidgetRenderer.decorators = [
-        { type: Component, args: [{selector: 'ajf-report-widget',
-                    template: "<ng-template [ngIf]=\"widget != null && widgetInstance.visible\"><div class=\"ajf-report-widget-container\" [applyStyles]=\"widget!.styles\" [ngSwitch]=\"widget!.widgetType\"><ng-template [ngSwitchCase]=\"widgetTypes.Layout\"><div class=\"ajf-columns\"><div *ngFor=\"let column of layoutw.columns; let idx = index\" [ngStyle]=\"{'flex-grow': column > -1 ? 1 : null, 'flex-basis' : column > -1 ? (column * 100) + '%' : null}\" class=\"ajf-column\"><ajf-report-widget [widgetInstance]=\"layoutwInst|ajfGetColumnContent:idx\"></ajf-report-widget></div></div></ng-template><ng-template [ngSwitchCase]=\"widgetTypes.PageBreak\"><ajf-page-break></ajf-page-break></ng-template><ng-template [ngSwitchCase]=\"widgetTypes.Image\"><ajf-image [type]=\"imgw.imageType\" [imageUrl]=\"imgwInst.url\" [icon]=\"imgwInst.icon\" [flag]=\"imgwInst.flag\"></ajf-image></ng-template><ng-template [ngSwitchCase]=\"widgetTypes.ImageContainer\"><div class=\"ajf-columns\" [ngSwitch]=\"imgcw.imageType\"><ng-template [ngSwitchCase]=\"imageTypes.Image\"><div *ngFor=\"let icw of imgcwInst.urls; let idx = index\" class=\"ajf-column\"><ajf-image [type]=\"imgcw.imageType\" [imageUrl]=\"icw\" [icon]=\"\" [flag]=\"\" [applyStyles]=\"widget!.styles\"></ajf-image></div></ng-template><ng-template [ngSwitchCase]=\"imageTypes.Flag\"><div *ngFor=\"let icw of imgcwInst.flags; let idx = index\" class=\"ajf-column\"><ajf-image [type]=\"imgcw.imageType\" [imageUrl]=\"\" [icon]=\"\" [flag]=\"icw\" [applyStyles]=\"widget!.styles\"></ajf-image></div></ng-template><ng-template [ngSwitchCase]=\"imageTypes.Icon\"><div *ngFor=\"let icw of imgcwInst.icons; let idx = index\" class=\"ajf-column\"><ajf-image [type]=\"imgcw.imageType\" [imageUrl]=\"\" [icon]=\"icw\" [flag]=\"\" [applyStyles]=\"widget!.styles\"></ajf-image></div></ng-template></div></ng-template><ng-template [ngSwitchCase]=\"widgetTypes.Chart\"><ajf-chart [chartType]=\"chartwInst.chartType\" [options]=\"chartw.options\" [data]=\"chartwInst.data\"></ajf-chart></ng-template><ng-template [ngSwitchCase]=\"widgetTypes.Table\"><ajf-table [data]=\"tablewInst.data\"></ajf-table></ng-template><ng-template [ngSwitchCase]=\"widgetTypes.Text\"><ajf-text [htmlText]=\"textwInst.htmlText | translate\"></ajf-text></ng-template><ng-template [ngSwitchCase]=\"widgetTypes.Map\"><ajf-map [coordinate]=\"mapwInst.coordinate\" [tileLayer]=\"mapw.tileLayer\" [attribution]=\"mapw.attribution\" [disabled]=\"mapw!.disabled\"></ajf-map></ng-template><ng-template [ngSwitchCase]=\"widgetTypes.Column\"><div class=\"ajf-column-container\" *ngIf=\"widgetInstance.visible\"><ng-container *ngFor=\"let w of columnInst.content\"><ajf-report-widget [widgetInstance]=\"w\"></ajf-report-widget></ng-container></div></ng-template><ng-template [ngSwitchCase]=\"widgetTypes.Formula\"><ajf-text [htmlText]=\"formulawInst.formula\"></ajf-text></ng-template></div></ng-template>",
-                    styles: ["ajf-report-widget{display:flex;flex:1 1 auto;box-sizing:border-box}ajf-report-widget .ajf-report-widget-container{flex:1 1 auto;display:flex;align-items:center;box-sizing:border-box;background-color:transparent}ajf-report-widget .ajf-report-widget-container>.ajf-column-container{flex:1 1 auto}ajf-report-widget .ajf-report-widget-container>.ajf-columns{flex:1 1 auto;display:flex;align-items:inherit;box-sizing:border-box}ajf-report-widget .ajf-report-widget-container>.ajf-columns>.ajf-column{box-sizing:border-box;display:flex;align-items:inherit;flex-shrink:1}"],
-                    encapsulation: ViewEncapsulation.None,
+    AjfTableWidgetComponent.decorators = [
+        { type: Component, args: [{template: "<ajf-table [data]=\"instance.data\"></ajf-table>",
+                    styles: [""],
                     changeDetection: ChangeDetectionStrategy.OnPush,
-                    inputs: ['widgetInstance'],
+                    encapsulation: ViewEncapsulation.None,
                 },] },
     ];
     /** @nocollapse */
-    AjfWidgetRenderer.ctorParameters = function () { return [
+    AjfTableWidgetComponent.ctorParameters = function () { return [
         { type: ChangeDetectorRef }
     ]; };
-    return AjfWidgetRenderer;
-}(AjfWidgetRenderer$1));
+    return AjfTableWidgetComponent;
+}(AjfBaseWidgetComponent));
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+var AjfTextWidgetComponent = /** @class */ (function (_super) {
+    __extends(AjfTextWidgetComponent, _super);
+    function AjfTextWidgetComponent(cdr) {
+        return _super.call(this, cdr) || this;
+    }
+    AjfTextWidgetComponent.decorators = [
+        { type: Component, args: [{template: "<ajf-text [htmlText]=\"instance.htmlText | translate\"></ajf-text>",
+                    styles: [""],
+                    changeDetection: ChangeDetectionStrategy.OnPush,
+                    encapsulation: ViewEncapsulation.None,
+                },] },
+    ];
+    /** @nocollapse */
+    AjfTextWidgetComponent.ctorParameters = function () { return [
+        { type: ChangeDetectorRef }
+    ]; };
+    return AjfTextWidgetComponent;
+}(AjfBaseWidgetComponent));
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+var AjfReportWidget = /** @class */ (function (_super) {
+    __extends(AjfReportWidget, _super);
+    function AjfReportWidget(cfr) {
+        var _a;
+        var _this = _super.call(this, cfr) || this;
+        _this.widgetsMap = (_a = {},
+            _a[AjfWidgetType.Layout] = { component: AjfLayoutWidgetComponent },
+            _a[AjfWidgetType.PageBreak] = { component: AjfPageBreakWidgetComponent },
+            _a[AjfWidgetType.Image] = { component: AjfImageWidgetComponent },
+            _a[AjfWidgetType.Text] = { component: AjfTextWidgetComponent },
+            _a[AjfWidgetType.Chart] = { component: AjfChartWidgetComponent },
+            _a[AjfWidgetType.Table] = { component: AjfTableWidgetComponent },
+            _a[AjfWidgetType.Map] = { component: AjfMapWidgetComponent },
+            _a[AjfWidgetType.Column] = { component: AjfColumnWidgetComponent },
+            _a[AjfWidgetType.Formula] = { component: AjfFormulaWidgetComponent },
+            _a[AjfWidgetType.ImageContainer] = { component: AjfImageContainerWidgetComponent },
+            _a);
+        return _this;
+    }
+    AjfReportWidget.decorators = [
+        { type: Component, args: [{selector: 'ajf-widget',
+                    template: "<ng-template [ngIf]=\"instance != null && instance.widget != null && instance.visible\"><div class=\"ajf-report-widget-container\" [applyStyles]=\"instance.widget.styles\"><ng-template ajf-widget-host></ng-template></div></ng-template>",
+                    styles: ["ajf-report-widget{display:flex;flex:1 1 auto;box-sizing:border-box}ajf-report-widget .ajf-report-widget-container{flex:1 1 auto;display:flex;align-items:center;box-sizing:border-box;background-color:transparent}ajf-report-widget .ajf-report-widget-container>.ajf-column-container{flex:1 1 auto}ajf-report-widget .ajf-report-widget-container>.ajf-columns{flex:1 1 auto;display:flex;align-items:inherit;box-sizing:border-box}ajf-report-widget .ajf-report-widget-container>.ajf-columns>.ajf-column{box-sizing:border-box;display:flex;align-items:inherit;flex-shrink:1}"],
+                    encapsulation: ViewEncapsulation.None,
+                    changeDetection: ChangeDetectionStrategy.OnPush,
+                    inputs: ['instance'],
+                    queries: {
+                        widgetHost: new ViewChild(AjfWidgetHost, { static: false }),
+                    },
+                },] },
+    ];
+    /** @nocollapse */
+    AjfReportWidget.ctorParameters = function () { return [
+        { type: ComponentFactoryResolver }
+    ]; };
+    return AjfReportWidget;
+}(AjfReportWidget$1));
 
 /**
  * @fileoverview added by tsickle
@@ -106,17 +356,39 @@ var AjfReportsModule = /** @class */ (function () {
                         AjfTextModule,
                     ],
                     declarations: [
+                        AjfChartWidgetComponent,
+                        AjfColumnWidgetComponent,
+                        AjfFormulaWidgetComponent,
+                        AjfImageContainerWidgetComponent,
+                        AjfImageWidgetComponent,
+                        AjfLayoutWidgetComponent,
+                        AjfMapWidgetComponent,
+                        AjfPageBreakWidgetComponent,
                         AjfReportRenderer,
-                        AjfWidgetRenderer,
+                        AjfReportWidget,
+                        AjfTableWidgetComponent,
+                        AjfTextWidgetComponent,
                     ],
                     exports: [
                         AjfReportRenderer,
-                        AjfWidgetRenderer,
-                    ]
+                        AjfReportWidget,
+                    ],
+                    entryComponents: [
+                        AjfChartWidgetComponent,
+                        AjfColumnWidgetComponent,
+                        AjfFormulaWidgetComponent,
+                        AjfImageContainerWidgetComponent,
+                        AjfImageWidgetComponent,
+                        AjfLayoutWidgetComponent,
+                        AjfMapWidgetComponent,
+                        AjfPageBreakWidgetComponent,
+                        AjfTableWidgetComponent,
+                        AjfTextWidgetComponent,
+                    ],
                 },] },
     ];
     return AjfReportsModule;
 }());
 
-export { AjfReportRenderer, AjfReportsModule, AjfWidgetRenderer };
+export { AjfChartWidgetComponent, AjfColumnWidgetComponent, AjfFormulaWidgetComponent, AjfImageContainerWidgetComponent, AjfImageWidgetComponent, AjfLayoutWidgetComponent, AjfMapWidgetComponent, AjfPageBreakWidgetComponent, AjfReportRenderer, AjfReportWidget, AjfReportsModule, AjfTableWidgetComponent, AjfTextWidgetComponent };
 //# sourceMappingURL=reports.es5.js.map

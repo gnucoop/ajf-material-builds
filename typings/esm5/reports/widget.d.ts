@@ -19,8 +19,50 @@
  * If not, see http://www.gnu.org/licenses/.
  *
  */
-import { AjfWidgetRenderer as AjfCoreReportWidgetRenderer } from '@ajf/core/reports';
-import { ChangeDetectorRef } from '@angular/core';
-export declare class AjfWidgetRenderer extends AjfCoreReportWidgetRenderer {
-    constructor(cdr: ChangeDetectorRef);
+import { AjfReportWidget as CoreComponent } from '@ajf/core/reports';
+import { ComponentFactoryResolver } from '@angular/core';
+import { AjfChartWidgetComponent } from './chart-widget';
+import { AjfColumnWidgetComponent } from './column-widget';
+import { AjfFormulaWidgetComponent } from './formula-widget';
+import { AjfImageContainerWidgetComponent } from './image-container-widget';
+import { AjfImageWidgetComponent } from './image-widget';
+import { AjfLayoutWidgetComponent } from './layout-widget';
+import { AjfMapWidgetComponent } from './map-widget';
+import { AjfPageBreakWidgetComponent } from './page-break-widget';
+import { AjfTableWidgetComponent } from './table-widget';
+import { AjfTextWidgetComponent } from './text-widget';
+export declare class AjfReportWidget extends CoreComponent {
+    constructor(cfr: ComponentFactoryResolver);
+    widgetsMap: {
+        0: {
+            component: typeof AjfLayoutWidgetComponent;
+        };
+        1: {
+            component: typeof AjfPageBreakWidgetComponent;
+        };
+        2: {
+            component: typeof AjfImageWidgetComponent;
+        };
+        3: {
+            component: typeof AjfTextWidgetComponent;
+        };
+        4: {
+            component: typeof AjfChartWidgetComponent;
+        };
+        5: {
+            component: typeof AjfTableWidgetComponent;
+        };
+        6: {
+            component: typeof AjfMapWidgetComponent;
+        };
+        7: {
+            component: typeof AjfColumnWidgetComponent;
+        };
+        8: {
+            component: typeof AjfFormulaWidgetComponent;
+        };
+        9: {
+            component: typeof AjfImageContainerWidgetComponent;
+        };
+    };
 }

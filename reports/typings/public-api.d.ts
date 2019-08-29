@@ -19,6 +19,16 @@
  * If not, see http://www.gnu.org/licenses/.
  *
  */
+export * from './chart-widget';
+export * from './column-widget';
+export * from './formula-widget';
+export * from './image-container-widget';
+export * from './image-widget';
+export * from './layout-widget';
+export * from './map-widget';
+export * from './page-break-widget';
 export * from './report';
 export * from './reports-module';
+export * from './table-widget';
+export * from './text-widget';
 export * from './widget';
