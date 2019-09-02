@@ -19,8 +19,8 @@
  * If not, see http://www.gnu.org/licenses/.
  *
  */
-import { ChangeDetectorRef } from '@angular/core';
+import { ChangeDetectorRef, ElementRef } from '@angular/core';
 import { AjfBaseWidgetComponent, AjfTableWidgetInstance } from '@ajf/core/reports';
 export declare class AjfTableWidgetComponent extends AjfBaseWidgetComponent<AjfTableWidgetInstance> {
-    constructor(cdr: ChangeDetectorRef);
+    constructor(cdr: ChangeDetectorRef, el: ElementRef);
 }

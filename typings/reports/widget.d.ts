@@ -20,7 +20,7 @@
  *
  */
 import { AjfReportWidget as CoreComponent } from '@ajf/core/reports';
-import { ComponentFactoryResolver } from '@angular/core';
+import { ComponentFactoryResolver, Renderer2 } from '@angular/core';
 import { AjfChartWidgetComponent } from './chart-widget';
 import { AjfColumnWidgetComponent } from './column-widget';
 import { AjfFormulaWidgetComponent } from './formula-widget';
@@ -32,7 +32,7 @@ import { AjfPageBreakWidgetComponent } from './page-break-widget';
 import { AjfTableWidgetComponent } from './table-widget';
 import { AjfTextWidgetComponent } from './text-widget';
 export declare class AjfReportWidget extends CoreComponent {
-    constructor(cfr: ComponentFactoryResolver);
+    constructor(cfr: ComponentFactoryResolver, renderer: Renderer2);
     widgetsMap: {
         0: {
             component: typeof AjfLayoutWidgetComponent;

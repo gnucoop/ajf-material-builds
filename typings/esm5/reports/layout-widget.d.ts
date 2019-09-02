@@ -19,8 +19,8 @@
  * If not, see http://www.gnu.org/licenses/.
  *
  */
-import { ChangeDetectorRef } from '@angular/core';
+import { ChangeDetectorRef, ElementRef } from '@angular/core';
 import { AjfBaseWidgetComponent, AjfLayoutWidgetInstance } from '@ajf/core/reports';
 export declare class AjfLayoutWidgetComponent extends AjfBaseWidgetComponent<AjfLayoutWidgetInstance> {
-    constructor(cdr: ChangeDetectorRef);
+    constructor(cdr: ChangeDetectorRef, el: ElementRef);
 }

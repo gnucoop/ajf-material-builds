@@ -19,8 +19,8 @@
  * If not, see http://www.gnu.org/licenses/.
  *
  */
-import { ChangeDetectorRef } from '@angular/core';
+import { ChangeDetectorRef, ElementRef } from '@angular/core';
 import { AjfBaseWidgetComponent, AjfChartWidgetInstance } from '@ajf/core/reports';
 export declare class AjfChartWidgetComponent extends AjfBaseWidgetComponent<AjfChartWidgetInstance> {
-    constructor(cdr: ChangeDetectorRef);
+    constructor(cdr: ChangeDetectorRef, el: ElementRef);
 }

@@ -19,10 +19,10 @@
  * If not, see http://www.gnu.org/licenses/.
  *
  */
-import { ChangeDetectorRef } from '@angular/core';
+import { ChangeDetectorRef, ElementRef } from '@angular/core';
 import { AjfImageType } from '@ajf/core/image';
 import { AjfBaseWidgetComponent, AjfImageContainerWidgetInstance } from '@ajf/core/reports';
 export declare class AjfImageContainerWidgetComponent extends AjfBaseWidgetComponent<AjfImageContainerWidgetInstance> {
     readonly imageTypes: typeof AjfImageType;
-    constructor(cdr: ChangeDetectorRef);
+    constructor(cdr: ChangeDetectorRef, el: ElementRef);
 }

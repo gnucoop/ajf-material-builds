@@ -19,7 +19,7 @@
  * If not, see http://www.gnu.org/licenses/.
  *
  */
-import { Component, ChangeDetectionStrategy, ViewEncapsulation, ChangeDetectorRef, ViewChild, ComponentFactoryResolver, NgModule } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ViewEncapsulation, ChangeDetectorRef, ElementRef, ViewChild, ComponentFactoryResolver, Renderer2, NgModule } from '@angular/core';
 import { AjfBaseWidgetComponent, AjfReportRenderer as AjfReportRenderer$1, AjfReportWidget as AjfReportWidget$1, AjfWidgetType, AjfWidgetHost, AjfReportsModule as AjfReportsModule$1 } from '@ajf/core/reports';
 import { AjfImageType } from '@ajf/core/image';
 import { AjfChartModule } from '@ajf/core/chart';
@@ -39,9 +39,10 @@ import { TranslateModule } from '@ngx-translate/core';
 class AjfChartWidgetComponent extends AjfBaseWidgetComponent {
     /**
      * @param {?} cdr
+     * @param {?} el
      */
-    constructor(cdr) {
-        super(cdr);
+    constructor(cdr, el) {
+        super(cdr, el);
     }
 }
 AjfChartWidgetComponent.decorators = [
@@ -53,7 +54,8 @@ AjfChartWidgetComponent.decorators = [
 ];
 /** @nocollapse */
 AjfChartWidgetComponent.ctorParameters = () => [
-    { type: ChangeDetectorRef }
+    { type: ChangeDetectorRef },
+    { type: ElementRef }
 ];
 
 /**
@@ -63,9 +65,10 @@ AjfChartWidgetComponent.ctorParameters = () => [
 class AjfColumnWidgetComponent extends AjfBaseWidgetComponent {
     /**
      * @param {?} cdr
+     * @param {?} el
      */
-    constructor(cdr) {
-        super(cdr);
+    constructor(cdr, el) {
+        super(cdr, el);
     }
 }
 AjfColumnWidgetComponent.decorators = [
@@ -77,7 +80,8 @@ AjfColumnWidgetComponent.decorators = [
 ];
 /** @nocollapse */
 AjfColumnWidgetComponent.ctorParameters = () => [
-    { type: ChangeDetectorRef }
+    { type: ChangeDetectorRef },
+    { type: ElementRef }
 ];
 
 /**
@@ -87,9 +91,10 @@ AjfColumnWidgetComponent.ctorParameters = () => [
 class AjfFormulaWidgetComponent extends AjfBaseWidgetComponent {
     /**
      * @param {?} cdr
+     * @param {?} el
      */
-    constructor(cdr) {
-        super(cdr);
+    constructor(cdr, el) {
+        super(cdr, el);
     }
 }
 AjfFormulaWidgetComponent.decorators = [
@@ -101,7 +106,8 @@ AjfFormulaWidgetComponent.decorators = [
 ];
 /** @nocollapse */
 AjfFormulaWidgetComponent.ctorParameters = () => [
-    { type: ChangeDetectorRef }
+    { type: ChangeDetectorRef },
+    { type: ElementRef }
 ];
 
 /**
@@ -111,9 +117,10 @@ AjfFormulaWidgetComponent.ctorParameters = () => [
 class AjfImageContainerWidgetComponent extends AjfBaseWidgetComponent {
     /**
      * @param {?} cdr
+     * @param {?} el
      */
-    constructor(cdr) {
-        super(cdr);
+    constructor(cdr, el) {
+        super(cdr, el);
         this.imageTypes = AjfImageType;
     }
 }
@@ -126,7 +133,8 @@ AjfImageContainerWidgetComponent.decorators = [
 ];
 /** @nocollapse */
 AjfImageContainerWidgetComponent.ctorParameters = () => [
-    { type: ChangeDetectorRef }
+    { type: ChangeDetectorRef },
+    { type: ElementRef }
 ];
 
 /**
@@ -136,9 +144,10 @@ AjfImageContainerWidgetComponent.ctorParameters = () => [
 class AjfImageWidgetComponent extends AjfBaseWidgetComponent {
     /**
      * @param {?} cdr
+     * @param {?} el
      */
-    constructor(cdr) {
-        super(cdr);
+    constructor(cdr, el) {
+        super(cdr, el);
     }
 }
 AjfImageWidgetComponent.decorators = [
@@ -150,7 +159,8 @@ AjfImageWidgetComponent.decorators = [
 ];
 /** @nocollapse */
 AjfImageWidgetComponent.ctorParameters = () => [
-    { type: ChangeDetectorRef }
+    { type: ChangeDetectorRef },
+    { type: ElementRef }
 ];
 
 /**
@@ -160,9 +170,10 @@ AjfImageWidgetComponent.ctorParameters = () => [
 class AjfLayoutWidgetComponent extends AjfBaseWidgetComponent {
     /**
      * @param {?} cdr
+     * @param {?} el
      */
-    constructor(cdr) {
-        super(cdr);
+    constructor(cdr, el) {
+        super(cdr, el);
     }
 }
 AjfLayoutWidgetComponent.decorators = [
@@ -174,7 +185,8 @@ AjfLayoutWidgetComponent.decorators = [
 ];
 /** @nocollapse */
 AjfLayoutWidgetComponent.ctorParameters = () => [
-    { type: ChangeDetectorRef }
+    { type: ChangeDetectorRef },
+    { type: ElementRef }
 ];
 
 /**
@@ -184,9 +196,10 @@ AjfLayoutWidgetComponent.ctorParameters = () => [
 class AjfMapWidgetComponent extends AjfBaseWidgetComponent {
     /**
      * @param {?} cdr
+     * @param {?} el
      */
-    constructor(cdr) {
-        super(cdr);
+    constructor(cdr, el) {
+        super(cdr, el);
     }
 }
 AjfMapWidgetComponent.decorators = [
@@ -198,7 +211,8 @@ AjfMapWidgetComponent.decorators = [
 ];
 /** @nocollapse */
 AjfMapWidgetComponent.ctorParameters = () => [
-    { type: ChangeDetectorRef }
+    { type: ChangeDetectorRef },
+    { type: ElementRef }
 ];
 
 /**
@@ -208,9 +222,10 @@ AjfMapWidgetComponent.ctorParameters = () => [
 class AjfPageBreakWidgetComponent extends AjfBaseWidgetComponent {
     /**
      * @param {?} cdr
+     * @param {?} el
      */
-    constructor(cdr) {
-        super(cdr);
+    constructor(cdr, el) {
+        super(cdr, el);
     }
 }
 AjfPageBreakWidgetComponent.decorators = [
@@ -222,7 +237,8 @@ AjfPageBreakWidgetComponent.decorators = [
 ];
 /** @nocollapse */
 AjfPageBreakWidgetComponent.ctorParameters = () => [
-    { type: ChangeDetectorRef }
+    { type: ChangeDetectorRef },
+    { type: ElementRef }
 ];
 
 /**
@@ -260,9 +276,10 @@ AjfReportRenderer.ctorParameters = () => [
 class AjfTableWidgetComponent extends AjfBaseWidgetComponent {
     /**
      * @param {?} cdr
+     * @param {?} el
      */
-    constructor(cdr) {
-        super(cdr);
+    constructor(cdr, el) {
+        super(cdr, el);
     }
 }
 AjfTableWidgetComponent.decorators = [
@@ -274,7 +291,8 @@ AjfTableWidgetComponent.decorators = [
 ];
 /** @nocollapse */
 AjfTableWidgetComponent.ctorParameters = () => [
-    { type: ChangeDetectorRef }
+    { type: ChangeDetectorRef },
+    { type: ElementRef }
 ];
 
 /**
@@ -284,9 +302,10 @@ AjfTableWidgetComponent.ctorParameters = () => [
 class AjfTextWidgetComponent extends AjfBaseWidgetComponent {
     /**
      * @param {?} cdr
+     * @param {?} el
      */
-    constructor(cdr) {
-        super(cdr);
+    constructor(cdr, el) {
+        super(cdr, el);
     }
 }
 AjfTextWidgetComponent.decorators = [
@@ -298,7 +317,8 @@ AjfTextWidgetComponent.decorators = [
 ];
 /** @nocollapse */
 AjfTextWidgetComponent.ctorParameters = () => [
-    { type: ChangeDetectorRef }
+    { type: ChangeDetectorRef },
+    { type: ElementRef }
 ];
 
 /**
@@ -308,9 +328,10 @@ AjfTextWidgetComponent.ctorParameters = () => [
 class AjfReportWidget extends AjfReportWidget$1 {
     /**
      * @param {?} cfr
+     * @param {?} renderer
      */
-    constructor(cfr) {
-        super(cfr);
+    constructor(cfr, renderer) {
+        super(cfr, renderer);
         this.widgetsMap = {
             [AjfWidgetType.Layout]: { component: AjfLayoutWidgetComponent },
             [AjfWidgetType.PageBreak]: { component: AjfPageBreakWidgetComponent },
@@ -327,8 +348,8 @@ class AjfReportWidget extends AjfReportWidget$1 {
 }
 AjfReportWidget.decorators = [
     { type: Component, args: [{selector: 'ajf-widget',
-                template: "<ng-template [ngIf]=\"instance != null && instance.widget != null && instance.visible\"><div class=\"ajf-report-widget-container\" [applyStyles]=\"instance.widget.styles\"><ng-template ajf-widget-host></ng-template></div></ng-template>",
-                styles: ["ajf-report-widget{display:flex;flex:1 1 auto;box-sizing:border-box}ajf-report-widget .ajf-report-widget-container{flex:1 1 auto;display:flex;align-items:center;box-sizing:border-box;background-color:transparent}ajf-report-widget .ajf-report-widget-container>.ajf-column-container{flex:1 1 auto}ajf-report-widget .ajf-report-widget-container>.ajf-columns{flex:1 1 auto;display:flex;align-items:inherit;box-sizing:border-box}ajf-report-widget .ajf-report-widget-container>.ajf-columns>.ajf-column{box-sizing:border-box;display:flex;align-items:inherit;flex-shrink:1}"],
+                template: "<ng-template [ngIf]=\"instance != null && instance.widget != null && instance.visible\" ajf-widget-host></ng-template>",
+                styles: ["ajf-widget{display:flex;flex:1 1 auto;box-sizing:border-box}ajf-widget>ng-component{flex:1 1 auto;display:flex;align-items:center;box-sizing:border-box;background-color:transparent}"],
                 encapsulation: ViewEncapsulation.None,
                 changeDetection: ChangeDetectionStrategy.OnPush,
                 inputs: ['instance'],
@@ -339,7 +360,8 @@ AjfReportWidget.decorators = [
 ];
 /** @nocollapse */
 AjfReportWidget.ctorParameters = () => [
-    { type: ComponentFactoryResolver }
+    { type: ComponentFactoryResolver },
+    { type: Renderer2 }
 ];
 
 /**

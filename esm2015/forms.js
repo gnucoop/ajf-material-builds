@@ -308,9 +308,30 @@ class AjfTableFieldComponent extends AjfBaseFieldComponent {
     constructor(cdr, service, was) {
         super(cdr, service, was);
     }
+    /**
+     * @param {?} ev
+     * @param {?} indexColumn
+     * @param {?} indexRow
+     * @return {?}
+     */
+    goToNextCell(ev, indexColumn, indexRow) {
+        /** @type {?} */
+        const rowLength = this.instance.controlsWithLabels[indexRow].length;
+        /** @type {?} */
+        const currentCell = this.instance.controlsWithLabels[indexRow][indexColumn];
+        /** @type {?} */
+        let nextCell = this.instance.controlsWithLabels[indexRow][indexColumn + 1];
+        if (indexColumn + 1 >= rowLength) {
+            nextCell = this.instance.controlsWithLabels[indexRow + 1][1];
+        }
+        currentCell.show = false;
+        nextCell.show = true;
+        ev.preventDefault();
+        ev.stopPropagation();
+    }
 }
 AjfTableFieldComponent.decorators = [
-    { type: Component, args: [{template: "<table class=\"ajf-table-field\"><ng-container *ngIf=\"!instance.node.editable else editableTmpl\"><ng-container *ngFor=\"let columns of (instance|ajfTableVisibleColumns); let i index\"><tr [ngClass]=\"i | ajfTableRowClass\"><td *ngFor=\"let cellValue of columns\">{{ cellValue | ajfTranslateIfString | ajfFormatIfNumber: '.0-2' }}</td></tr></ng-container></ng-container><ng-template #editableTmpl><ng-container *ngFor=\"let columns of instance.controlsWithLabels; let indexRows = index\"><tr [ngClass]=\"indexRows | ajfTableRowClass\"><td *ngFor=\"let contr of columns; let indexColums = index\"><ng-container *ngIf=\"contr != null\"><ng-container *ngIf=\"indexColums != 0 && indexRows != 0\"><input (focusout)=\"contr.show = false\" *ngIf=\"contr.show\" type=\"number\" [formControl]=\"contr\" autoFocus> <span *ngIf=\"!contr.show\" class=\"ajf-table-cell\" (click)=\"contr.show ? contr.show = false : contr.show = true;\">{{ contr.value | ajfTranslateIfString | ajfFormatIfNumber: '.0-2' }}</span></ng-container><ng-container *ngIf=\"indexColums == 0 || indexRows == 0\">{{ contr | ajfTranslateIfString | ajfFormatIfNumber: '.0-2' }}</ng-container></ng-container></td></tr></ng-container></ng-template></table>",
+    { type: Component, args: [{template: "<table class=\"ajf-table-field\"><ng-container *ngIf=\"!instance.node.editable else editableTmpl\"><ng-container *ngFor=\"let columns of (instance|ajfTableVisibleColumns); let i index\"><tr [ngClass]=\"i | ajfTableRowClass\"><td *ngFor=\"let cellValue of columns\">{{ cellValue | ajfTranslateIfString | ajfFormatIfNumber: '.0-2' }}</td></tr></ng-container></ng-container><ng-template #editableTmpl><ng-container *ngFor=\"let columns of instance.controlsWithLabels; let indexRows = index\"><tr [ngClass]=\"indexRows | ajfTableRowClass\"><td *ngFor=\"let contr of columns; let indexColums = index\"><ng-container *ngIf=\"contr != null\"><ng-container *ngIf=\"indexColums != 0 && indexRows != 0\"><input *ngIf=\"contr.show\" (focusout)=\"contr.show = false\" type=\"number\" [formControl]=\"contr\" (keydown.tab)=\"goToNextCell($event, indexColums, indexRows)\" autoFocus> <span *ngIf=\"!contr.show\" class=\"ajf-table-cell\" (click)=\"contr.show ? contr.show = false : contr.show = true;\">{{ contr.value | ajfTranslateIfString | ajfFormatIfNumber: '.0-2' }}</span></ng-container><ng-container *ngIf=\"indexColums == 0 || indexRows == 0\">{{ contr | ajfTranslateIfString | ajfFormatIfNumber: '.0-2' }}</ng-container></ng-container></td></tr></ng-container></ng-template></table>",
                 styles: ["table.ajf-table-field{width:100%}"],
                 changeDetection: ChangeDetectionStrategy.OnPush,
                 encapsulation: ViewEncapsulation.None,

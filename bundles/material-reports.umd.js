@@ -60,8 +60,8 @@
      */
     var AjfChartWidgetComponent = /** @class */ (function (_super) {
         __extends(AjfChartWidgetComponent, _super);
-        function AjfChartWidgetComponent(cdr) {
-            return _super.call(this, cdr) || this;
+        function AjfChartWidgetComponent(cdr, el) {
+            return _super.call(this, cdr, el) || this;
         }
         AjfChartWidgetComponent.decorators = [
             { type: core.Component, args: [{template: "<ajf-chart [chartType]=\"instance.chartType\" [options]=\"instance.widget.options\" [data]=\"instance.data\"></ajf-chart>",
@@ -72,7 +72,8 @@
         ];
         /** @nocollapse */
         AjfChartWidgetComponent.ctorParameters = function () { return [
-            { type: core.ChangeDetectorRef }
+            { type: core.ChangeDetectorRef },
+            { type: core.ElementRef }
         ]; };
         return AjfChartWidgetComponent;
     }(reports.AjfBaseWidgetComponent));
@@ -83,8 +84,8 @@
      */
     var AjfColumnWidgetComponent = /** @class */ (function (_super) {
         __extends(AjfColumnWidgetComponent, _super);
-        function AjfColumnWidgetComponent(cdr) {
-            return _super.call(this, cdr) || this;
+        function AjfColumnWidgetComponent(cdr, el) {
+            return _super.call(this, cdr, el) || this;
         }
         AjfColumnWidgetComponent.decorators = [
             { type: core.Component, args: [{template: "<div class=\"ajf-column-container\"><ng-container *ngFor=\"let w of instance.content\"><ajf-widget [instance]=\"w\"></ajf-widget></ng-container></div>",
@@ -95,7 +96,8 @@
         ];
         /** @nocollapse */
         AjfColumnWidgetComponent.ctorParameters = function () { return [
-            { type: core.ChangeDetectorRef }
+            { type: core.ChangeDetectorRef },
+            { type: core.ElementRef }
         ]; };
         return AjfColumnWidgetComponent;
     }(reports.AjfBaseWidgetComponent));
@@ -106,8 +108,8 @@
      */
     var AjfFormulaWidgetComponent = /** @class */ (function (_super) {
         __extends(AjfFormulaWidgetComponent, _super);
-        function AjfFormulaWidgetComponent(cdr) {
-            return _super.call(this, cdr) || this;
+        function AjfFormulaWidgetComponent(cdr, el) {
+            return _super.call(this, cdr, el) || this;
         }
         AjfFormulaWidgetComponent.decorators = [
             { type: core.Component, args: [{template: "<ajf-text [htmlText]=\"instance.formula\"></ajf-text>",
@@ -118,7 +120,8 @@
         ];
         /** @nocollapse */
         AjfFormulaWidgetComponent.ctorParameters = function () { return [
-            { type: core.ChangeDetectorRef }
+            { type: core.ChangeDetectorRef },
+            { type: core.ElementRef }
         ]; };
         return AjfFormulaWidgetComponent;
     }(reports.AjfBaseWidgetComponent));
@@ -129,8 +132,8 @@
      */
     var AjfImageContainerWidgetComponent = /** @class */ (function (_super) {
         __extends(AjfImageContainerWidgetComponent, _super);
-        function AjfImageContainerWidgetComponent(cdr) {
-            var _this = _super.call(this, cdr) || this;
+        function AjfImageContainerWidgetComponent(cdr, el) {
+            var _this = _super.call(this, cdr, el) || this;
             _this.imageTypes = image.AjfImageType;
             return _this;
         }
@@ -143,7 +146,8 @@
         ];
         /** @nocollapse */
         AjfImageContainerWidgetComponent.ctorParameters = function () { return [
-            { type: core.ChangeDetectorRef }
+            { type: core.ChangeDetectorRef },
+            { type: core.ElementRef }
         ]; };
         return AjfImageContainerWidgetComponent;
     }(reports.AjfBaseWidgetComponent));
@@ -154,8 +158,8 @@
      */
     var AjfImageWidgetComponent = /** @class */ (function (_super) {
         __extends(AjfImageWidgetComponent, _super);
-        function AjfImageWidgetComponent(cdr) {
-            return _super.call(this, cdr) || this;
+        function AjfImageWidgetComponent(cdr, el) {
+            return _super.call(this, cdr, el) || this;
         }
         AjfImageWidgetComponent.decorators = [
             { type: core.Component, args: [{template: "<ajf-image [type]=\"instance.widget.imageType\" [imageUrl]=\"instance.url\" [icon]=\"instance.icon\" [flag]=\"instance.flag\"></ajf-image>",
@@ -166,7 +170,8 @@
         ];
         /** @nocollapse */
         AjfImageWidgetComponent.ctorParameters = function () { return [
-            { type: core.ChangeDetectorRef }
+            { type: core.ChangeDetectorRef },
+            { type: core.ElementRef }
         ]; };
         return AjfImageWidgetComponent;
     }(reports.AjfBaseWidgetComponent));
@@ -177,8 +182,8 @@
      */
     var AjfLayoutWidgetComponent = /** @class */ (function (_super) {
         __extends(AjfLayoutWidgetComponent, _super);
-        function AjfLayoutWidgetComponent(cdr) {
-            return _super.call(this, cdr) || this;
+        function AjfLayoutWidgetComponent(cdr, el) {
+            return _super.call(this, cdr, el) || this;
         }
         AjfLayoutWidgetComponent.decorators = [
             { type: core.Component, args: [{template: "<div class=\"ajf-columns\"><div *ngFor=\"let column of instance.widget.columns; let idx = index\" [ngStyle]=\"{'flex-grow': column > -1 ? 1 : null, 'flex-basis' : column > -1 ? (column * 100) + '%' : null}\" class=\"ajf-column\"><ajf-widget [instance]=\"instance|ajfGetColumnContent:idx\"></ajf-widget></div></div>",
@@ -189,7 +194,8 @@
         ];
         /** @nocollapse */
         AjfLayoutWidgetComponent.ctorParameters = function () { return [
-            { type: core.ChangeDetectorRef }
+            { type: core.ChangeDetectorRef },
+            { type: core.ElementRef }
         ]; };
         return AjfLayoutWidgetComponent;
     }(reports.AjfBaseWidgetComponent));
@@ -200,8 +206,8 @@
      */
     var AjfMapWidgetComponent = /** @class */ (function (_super) {
         __extends(AjfMapWidgetComponent, _super);
-        function AjfMapWidgetComponent(cdr) {
-            return _super.call(this, cdr) || this;
+        function AjfMapWidgetComponent(cdr, el) {
+            return _super.call(this, cdr, el) || this;
         }
         AjfMapWidgetComponent.decorators = [
             { type: core.Component, args: [{template: "<ajf-map [coordinate]=\"instance.coordinate\" [tileLayer]=\"instance.widget.tileLayer\" [attribution]=\"instance.widget.attribution\" [disabled]=\"instance.widget.disabled\"></ajf-map>",
@@ -212,7 +218,8 @@
         ];
         /** @nocollapse */
         AjfMapWidgetComponent.ctorParameters = function () { return [
-            { type: core.ChangeDetectorRef }
+            { type: core.ChangeDetectorRef },
+            { type: core.ElementRef }
         ]; };
         return AjfMapWidgetComponent;
     }(reports.AjfBaseWidgetComponent));
@@ -223,8 +230,8 @@
      */
     var AjfPageBreakWidgetComponent = /** @class */ (function (_super) {
         __extends(AjfPageBreakWidgetComponent, _super);
-        function AjfPageBreakWidgetComponent(cdr) {
-            return _super.call(this, cdr) || this;
+        function AjfPageBreakWidgetComponent(cdr, el) {
+            return _super.call(this, cdr, el) || this;
         }
         AjfPageBreakWidgetComponent.decorators = [
             { type: core.Component, args: [{template: "<ajf-page-break></ajf-page-break>",
@@ -235,7 +242,8 @@
         ];
         /** @nocollapse */
         AjfPageBreakWidgetComponent.ctorParameters = function () { return [
-            { type: core.ChangeDetectorRef }
+            { type: core.ChangeDetectorRef },
+            { type: core.ElementRef }
         ]; };
         return AjfPageBreakWidgetComponent;
     }(reports.AjfBaseWidgetComponent));
@@ -273,8 +281,8 @@
      */
     var AjfTableWidgetComponent = /** @class */ (function (_super) {
         __extends(AjfTableWidgetComponent, _super);
-        function AjfTableWidgetComponent(cdr) {
-            return _super.call(this, cdr) || this;
+        function AjfTableWidgetComponent(cdr, el) {
+            return _super.call(this, cdr, el) || this;
         }
         AjfTableWidgetComponent.decorators = [
             { type: core.Component, args: [{template: "<ajf-table [data]=\"instance.data\"></ajf-table>",
@@ -285,7 +293,8 @@
         ];
         /** @nocollapse */
         AjfTableWidgetComponent.ctorParameters = function () { return [
-            { type: core.ChangeDetectorRef }
+            { type: core.ChangeDetectorRef },
+            { type: core.ElementRef }
         ]; };
         return AjfTableWidgetComponent;
     }(reports.AjfBaseWidgetComponent));
@@ -296,8 +305,8 @@
      */
     var AjfTextWidgetComponent = /** @class */ (function (_super) {
         __extends(AjfTextWidgetComponent, _super);
-        function AjfTextWidgetComponent(cdr) {
-            return _super.call(this, cdr) || this;
+        function AjfTextWidgetComponent(cdr, el) {
+            return _super.call(this, cdr, el) || this;
         }
         AjfTextWidgetComponent.decorators = [
             { type: core.Component, args: [{template: "<ajf-text [htmlText]=\"instance.htmlText | translate\"></ajf-text>",
@@ -308,7 +317,8 @@
         ];
         /** @nocollapse */
         AjfTextWidgetComponent.ctorParameters = function () { return [
-            { type: core.ChangeDetectorRef }
+            { type: core.ChangeDetectorRef },
+            { type: core.ElementRef }
         ]; };
         return AjfTextWidgetComponent;
     }(reports.AjfBaseWidgetComponent));
@@ -319,9 +329,9 @@
      */
     var AjfReportWidget = /** @class */ (function (_super) {
         __extends(AjfReportWidget, _super);
-        function AjfReportWidget(cfr) {
+        function AjfReportWidget(cfr, renderer) {
             var _a;
-            var _this = _super.call(this, cfr) || this;
+            var _this = _super.call(this, cfr, renderer) || this;
             _this.widgetsMap = (_a = {},
                 _a[reports.AjfWidgetType.Layout] = { component: AjfLayoutWidgetComponent },
                 _a[reports.AjfWidgetType.PageBreak] = { component: AjfPageBreakWidgetComponent },
@@ -338,8 +348,8 @@
         }
         AjfReportWidget.decorators = [
             { type: core.Component, args: [{selector: 'ajf-widget',
-                        template: "<ng-template [ngIf]=\"instance != null && instance.widget != null && instance.visible\"><div class=\"ajf-report-widget-container\" [applyStyles]=\"instance.widget.styles\"><ng-template ajf-widget-host></ng-template></div></ng-template>",
-                        styles: ["ajf-report-widget{display:flex;flex:1 1 auto;box-sizing:border-box}ajf-report-widget .ajf-report-widget-container{flex:1 1 auto;display:flex;align-items:center;box-sizing:border-box;background-color:transparent}ajf-report-widget .ajf-report-widget-container>.ajf-column-container{flex:1 1 auto}ajf-report-widget .ajf-report-widget-container>.ajf-columns{flex:1 1 auto;display:flex;align-items:inherit;box-sizing:border-box}ajf-report-widget .ajf-report-widget-container>.ajf-columns>.ajf-column{box-sizing:border-box;display:flex;align-items:inherit;flex-shrink:1}"],
+                        template: "<ng-template [ngIf]=\"instance != null && instance.widget != null && instance.visible\" ajf-widget-host></ng-template>",
+                        styles: ["ajf-widget{display:flex;flex:1 1 auto;box-sizing:border-box}ajf-widget>ng-component{flex:1 1 auto;display:flex;align-items:center;box-sizing:border-box;background-color:transparent}"],
                         encapsulation: core.ViewEncapsulation.None,
                         changeDetection: core.ChangeDetectionStrategy.OnPush,
                         inputs: ['instance'],
@@ -350,7 +360,8 @@
         ];
         /** @nocollapse */
         AjfReportWidget.ctorParameters = function () { return [
-            { type: core.ComponentFactoryResolver }
+            { type: core.ComponentFactoryResolver },
+            { type: core.Renderer2 }
         ]; };
         return AjfReportWidget;
     }(reports.AjfReportWidget));

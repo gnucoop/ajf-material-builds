@@ -24,4 +24,5 @@ import { ChangeDetectorRef } from '@angular/core';
 import { AjfWarningAlertService } from './warning-alert-service';
 export declare class AjfTableFieldComponent extends AjfBaseFieldComponent<AjfTableFieldInstance> {
     constructor(cdr: ChangeDetectorRef, service: AjfFormRendererService, was: AjfWarningAlertService);
+    goToNextCell(ev: KeyboardEvent, indexColumn: number, indexRow: number): void;
 }
