@@ -289,34 +289,102 @@ var AjfTableFieldComponent = /** @class */ (function (_super) {
     }
     /**
      * @param {?} ev
-     * @param {?} indexColumn
-     * @param {?} indexRow
+     * @param {?} row
+     * @param {?} column
      * @return {?}
      */
     AjfTableFieldComponent.prototype.goToNextCell = /**
      * @param {?} ev
-     * @param {?} indexColumn
-     * @param {?} indexRow
+     * @param {?} row
+     * @param {?} column
      * @return {?}
      */
-    function (ev, indexColumn, indexRow) {
+    function (ev, row, column) {
         /** @type {?} */
-        var rowLength = this.instance.controls[indexRow].length;
+        var rowLength = this.instance.controls[row][1].length;
         /** @type {?} */
-        var currentCell = this.instance.controls[indexRow][indexColumn];
-        /** @type {?} */
-        var nextCell = this.instance.controls[indexRow][indexColumn + 1];
-        if (indexColumn + 1 >= rowLength) {
-            nextCell = this.instance.controls[indexRow + 1][1];
+        var currentCell = (/** @type {?} */ (this.instance.controls[row][1][column]));
+        if (column + 1 >= rowLength) {
+            column = 0;
+            if (row + 1 >= this.instance.controls.length) {
+                row = 1;
+            }
+            else {
+                row += 1;
+            }
         }
-        currentCell.show = false;
-        nextCell.show = true;
+        else {
+            column += 1;
+        }
+        if (typeof currentCell !== 'string') {
+            currentCell.show = false;
+        }
+        this._showCell(row, column);
         ev.preventDefault();
         ev.stopPropagation();
     };
+    /**
+     * @param {?} row
+     * @param {?} column
+     * @return {?}
+     */
+    AjfTableFieldComponent.prototype.goToCell = /**
+     * @param {?} row
+     * @param {?} column
+     * @return {?}
+     */
+    function (row, column) {
+        this._resetControls();
+        this._showCell(row, column);
+    };
+    /**
+     * @private
+     * @return {?}
+     */
+    AjfTableFieldComponent.prototype._resetControls = /**
+     * @private
+     * @return {?}
+     */
+    function () {
+        this.instance.controls.forEach((/**
+         * @param {?} row
+         * @return {?}
+         */
+        function (row) { return row[1].forEach((/**
+         * @param {?} cell
+         * @return {?}
+         */
+        function (cell) {
+            if (typeof cell !== 'string') {
+                ((/** @type {?} */ (cell))).show = false;
+            }
+        })); }));
+    };
+    /**
+     * @private
+     * @param {?} row
+     * @param {?} column
+     * @return {?}
+     */
+    AjfTableFieldComponent.prototype._showCell = /**
+     * @private
+     * @param {?} row
+     * @param {?} column
+     * @return {?}
+     */
+    function (row, column) {
+        if (row >= this.instance.controls.length || column >= this.instance.controls[row][1].length) {
+            return;
+        }
+        /** @type {?} */
+        var nextCell = (/** @type {?} */ (this.instance.controls[row][1][column]));
+        if (typeof nextCell !== 'string') {
+            nextCell.show = true;
+        }
+    };
     AjfTableFieldComponent.decorators = [
-        { type: Component, args: [{template: "<table class=\"ajf-table-field\"><ng-container *ngIf=\"!instance.node.editable else editableTmpl\"><ng-container *ngFor=\"let columns of (instance|ajfTableVisibleColumns); let i = index\"><tr [ngClass]=\"i | ajfTableRowClass\"><td *ngFor=\"let cellValue of columns\">{{ cellValue | ajfTranslateIfString | ajfFormatIfNumber: '.0-2' }}</td></tr></ng-container></ng-container><ng-template #editableTmpl><ng-container *ngFor=\"let columns of instance.controls; let indexRows = index\"><tr [ngClass]=\"indexRows | ajfTableRowClass\"><td><ng-container *ngIf=\"columns[0] != null\">{{ columns[0] | ajfTranslateIfString | ajfFormatIfNumber: '.0-2' }}</ng-container></td><td *ngFor=\"let contr of columns[1]; let indexColums = index\"><ng-container *ngIf=\"contr != null\"><input *ngIf=\"contr.show\" (focusout)=\"contr.show = false\" type=\"number\" [formControl]=\"contr\" (keydown.tab)=\"goToNextCell($event, indexColums, indexRows)\" autoFocus> <span *ngIf=\"!contr.show\" class=\"ajf-table-cell\" (click)=\"contr.show ? contr.show = false : contr.show = true;\">{{ contr.value | ajfTranslateIfString | ajfFormatIfNumber: '.0-2' }}</span></ng-container></td></tr></ng-container></ng-template></table>",
-                    styles: ["table.ajf-table-field{width:100%}"],
+        { type: Component, args: [{template: "<table class=\"ajf-table-field\"><ng-container *ngIf=\"!instance.node.editable else editableTmpl\"><ng-container *ngFor=\"let columns of (instance|ajfTableVisibleColumns); let i = index\"><tr [ngClass]=\"i | ajfTableRowClass\"><td *ngFor=\"let cellValue of columns\">{{ cellValue | ajfTranslateIfString | ajfFormatIfNumber: '.0-2' }}</td></tr></ng-container></ng-container><ng-template #editableTmpl><ng-container *ngFor=\"let columns of instance.controls; let row = index\"><tr [ngClass]=\"row | ajfTableRowClass\"><td><ng-container *ngIf=\"columns[0] != null\">{{ columns[0] | ajfTranslateIfString | ajfFormatIfNumber: '.0-2' }}</ng-container></td><td *ngFor=\"let contr of columns[1]; let column = index\"><ng-container *ngIf=\"contr != null\"><input *ngIf=\"row > 0 && contr.show; else plainTextCell\" (focusout)=\"contr.show = false\" type=\"number\" [formControl]=\"contr\" (keydown.tab)=\"goToNextCell($event, row, column)\" autoFocus><ng-template #plainTextCell><span *ngIf=\"row > 0; else labelCell\" class=\"ajf-table-cell\" (click)=\"goToCell(row, column)\">{{ contr.value | ajfTranslateIfString | ajfFormatIfNumber: '.0-2' }}</span><ng-template #labelCell>{{ contr | ajfTranslateIfString | ajfFormatIfNumber: '.0-2' }}</ng-template></ng-template></ng-container></td></tr></ng-container></ng-template></table>",
+                    styles: ["table.ajf-table-field{border-collapse:collapse;border-spacing:0;width:100%}table.ajf-table-field tr td{position:relative}table.ajf-table-field tr td input,table.ajf-table-field tr td span{cursor:text;position:absolute;width:100%;box-sizing:border-box;outline:0;top:0;right:0;bottom:0;left:0;display:inline-block;border-top:solid 1px #ccc;border-right:solid 1px transparent;border-bottom:solid 1px transparent;border-left:solid 1px #ccc;font-family:inherit;font-size:inherit;line-height:inherit;text-align:center}table.ajf-table-field tr td:last-child input,table.ajf-table-field tr td:last-child span{border-right-color:#ccc}table.ajf-table-field tr:last-of-type td input,table.ajf-table-field tr:last-of-type td span{border-bottom-color:#ccc}"],
                     changeDetection: ChangeDetectionStrategy.OnPush,
                     encapsulation: ViewEncapsulation.None,
                 },] },
