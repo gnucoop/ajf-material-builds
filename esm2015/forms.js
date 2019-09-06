@@ -19,17 +19,17 @@
  * If not, see http://www.gnu.org/licenses/.
  *
  */
-import { AjfBaseFieldComponent, AjfFormRendererService, AjfInputFieldComponent as AjfInputFieldComponent$1, AjfFieldWithChoicesComponent, AJF_SEARCH_ALERT_THRESHOLD, AjfFormField as AjfFormField$1, AjfFieldType, AjfFieldHost, AjfFormRenderer as AjfFormRenderer$1, AjfFormsModule as AjfFormsModule$1 } from '@ajf/core/forms';
-import { Component, ChangeDetectionStrategy, ViewEncapsulation, Injectable, ChangeDetectorRef, Optional, Inject, ViewChild, ComponentFactoryResolver, ViewChildren, Input, NgModule } from '@angular/core';
+import { AjfBaseFieldComponent, AjfFormRendererService, AjfDateValueStringPipe, AjfInputFieldComponent as AjfInputFieldComponent$1, AjfFieldWithChoicesComponent, AJF_SEARCH_ALERT_THRESHOLD, AjfFormField as AjfFormField$1, AjfFieldType, AjfFieldHost, AjfFormRenderer as AjfFormRenderer$1, AjfFormsModule as AjfFormsModule$1 } from '@ajf/core/forms';
+import { Component, ChangeDetectionStrategy, ViewEncapsulation, Injectable, ChangeDetectorRef, ViewChild, Optional, Inject, ComponentFactoryResolver, ViewChildren, Input, NgModule } from '@angular/core';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { map } from 'rxjs/operators';
+import { MatInput, MatInputModule } from '@angular/material/input';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
@@ -144,6 +144,64 @@ AjfDateFieldComponent.ctorParameters = () => [
     { type: AjfFormRendererService },
     { type: AjfWarningAlertService }
 ];
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+class AjfDateInputFieldComponent extends AjfBaseFieldComponent {
+    /**
+     * @param {?} cdr
+     * @param {?} service
+     * @param {?} was
+     * @param {?} _dvs
+     */
+    constructor(cdr, service, was, _dvs) {
+        super(cdr, service, was);
+        this._dvs = _dvs;
+    }
+    /**
+     * @return {?}
+     */
+    onChange() {
+        if (this.input == null) {
+            return;
+        }
+        /** @type {?} */
+        const val = this.input.value || '';
+        if (val.length > 0) {
+            if ((this._minDateStr != null && val < this._minDateStr)
+                || (this._maxDateStr != null && val > this._maxDateStr)) {
+                this.input.value = '';
+            }
+        }
+    }
+    /**
+     * @protected
+     * @return {?}
+     */
+    _onInstanceChange() {
+        this._minDateStr = this._dvs.transform(this.instance.node.minDate);
+        this._maxDateStr = this._dvs.transform(this.instance.node.maxDate);
+    }
+}
+AjfDateInputFieldComponent.decorators = [
+    { type: Component, args: [{template: "<mat-form-field><input matInput type=\"date\" [attr.aria-label]=\"instance.node.label || (instance|ajfNodeCompleteName)\" [min]=\"instance.node.minDate|ajfDateValueString\" [max]=\"instance.node.maxDate|ajfDateValueString\" (change)=\"onChange()\" [formControl]=\"control|async\"></mat-form-field>",
+                styles: [""],
+                changeDetection: ChangeDetectionStrategy.OnPush,
+                encapsulation: ViewEncapsulation.None,
+            },] },
+];
+/** @nocollapse */
+AjfDateInputFieldComponent.ctorParameters = () => [
+    { type: ChangeDetectorRef },
+    { type: AjfFormRendererService },
+    { type: AjfWarningAlertService },
+    { type: AjfDateValueStringPipe }
+];
+AjfDateInputFieldComponent.propDecorators = {
+    input: [{ type: ViewChild, args: [MatInput, { static: false },] }]
+};
 
 /**
  * @fileoverview added by tsickle
@@ -442,7 +500,7 @@ class AjfFormField extends AjfFormField$1 {
             [AjfFieldType.Boolean]: { component: AjfBooleanFieldComponent },
             [AjfFieldType.Formula]: { component: AjfInputFieldComponent, inputs: { readonly: true } },
             [AjfFieldType.Date]: { component: AjfDateFieldComponent },
-            [AjfFieldType.DateInput]: { component: AjfInputFieldComponent, inputs: { type: 'date' } },
+            [AjfFieldType.DateInput]: { component: AjfDateInputFieldComponent },
             [AjfFieldType.Table]: { component: AjfTableFieldComponent },
             [AjfFieldType.Empty]: { component: AjfEmptyFieldComponent },
             [AjfFieldType.SingleChoice]: { component: AjfSingleChoiceFieldComponent },
@@ -568,6 +626,7 @@ AjfFormsModule.decorators = [
                     AjfBarcodeFieldComponent,
                     AjfBooleanFieldComponent,
                     AjfDateFieldComponent,
+                    AjfDateInputFieldComponent,
                     AjfEmptyFieldComponent,
                     AjfFormField,
                     AjfFieldWarningDialog,
@@ -586,6 +645,7 @@ AjfFormsModule.decorators = [
                     AjfBarcodeFieldComponent,
                     AjfBooleanFieldComponent,
                     AjfDateFieldComponent,
+                    AjfDateInputFieldComponent,
                     AjfEmptyFieldComponent,
                     AjfFieldWarningDialog,
                     AjfInputFieldComponent,
@@ -600,5 +660,5 @@ AjfFormsModule.decorators = [
             },] },
 ];
 
-export { AjfBooleanFieldComponent, AjfDateFieldComponent, AjfEmptyFieldComponent, AjfFieldWarningDialog, AjfFormField, AjfFormRenderer, AjfFormsModule, AjfInputFieldComponent, AjfMultipleChoiceFieldComponent, AjfSingleChoiceFieldComponent, AjfTableFieldComponent, AjfTimeFieldComponent, AjfWarningAlertService, AjfBarcodeFieldComponent as ɵa };
+export { AjfBooleanFieldComponent, AjfDateFieldComponent, AjfDateInputFieldComponent, AjfEmptyFieldComponent, AjfFieldWarningDialog, AjfFormField, AjfFormRenderer, AjfFormsModule, AjfInputFieldComponent, AjfMultipleChoiceFieldComponent, AjfSingleChoiceFieldComponent, AjfTableFieldComponent, AjfTimeFieldComponent, AjfWarningAlertService, AjfBarcodeFieldComponent as ɵa };
 //# sourceMappingURL=forms.js.map

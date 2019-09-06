@@ -20,10 +20,10 @@
  *
  */
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@ajf/core/forms'), require('@angular/core'), require('@angular/material/dialog'), require('rxjs/operators'), require('@angular/common'), require('@angular/forms'), require('@angular/material/button'), require('@angular/material/card'), require('@angular/material/form-field'), require('@angular/material/icon'), require('@angular/material/input'), require('@angular/material/radio'), require('@angular/material/select'), require('@angular/material/slide-toggle'), require('@angular/material/toolbar'), require('@ngx-translate/core'), require('@ajf/core/common'), require('@ajf/core/time'), require('@ajf/material/barcode'), require('@ajf/material/calendar'), require('@ajf/material/checkbox-group'), require('@ajf/material/page-slider')) :
-    typeof define === 'function' && define.amd ? define('@ajf/material/forms', ['exports', '@ajf/core/forms', '@angular/core', '@angular/material/dialog', 'rxjs/operators', '@angular/common', '@angular/forms', '@angular/material/button', '@angular/material/card', '@angular/material/form-field', '@angular/material/icon', '@angular/material/input', '@angular/material/radio', '@angular/material/select', '@angular/material/slide-toggle', '@angular/material/toolbar', '@ngx-translate/core', '@ajf/core/common', '@ajf/core/time', '@ajf/material/barcode', '@ajf/material/calendar', '@ajf/material/checkbox-group', '@ajf/material/page-slider'], factory) :
-    (global = global || self, factory((global.ajf = global.ajf || {}, global.ajf.material = global.ajf.material || {}, global.ajf.material.forms = {}), global.ajf.core.forms, global.ng.core, global.ng.material.dialog, global.rxjs.operators, global.ng.common, global.ng.forms, global.ng.material.button, global.ng.material.card, global.ng.material.formField, global.ng.material.icon, global.ng.material.input, global.ng.material.radio, global.ng.material.select, global.ng.material.slideToggle, global.ng.material.toolbar, global.ngxt.core, global.ajf.core.common, global.ajf.core.time, global.ajf.material.barcode, global.ajf.material.calendar, global.ajf.material.checkboxGroup, global.ajf.material.pageSlider));
-}(this, function (exports, forms, core, dialog, operators, common, forms$1, button, card, formField, icon, input, radio, select, slideToggle, toolbar, core$1, common$1, time, barcode, calendar, checkboxGroup, pageSlider) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@ajf/core/forms'), require('@angular/core'), require('@angular/material/dialog'), require('rxjs/operators'), require('@angular/material/input'), require('@angular/common'), require('@angular/forms'), require('@angular/material/button'), require('@angular/material/card'), require('@angular/material/form-field'), require('@angular/material/icon'), require('@angular/material/radio'), require('@angular/material/select'), require('@angular/material/slide-toggle'), require('@angular/material/toolbar'), require('@ngx-translate/core'), require('@ajf/core/common'), require('@ajf/core/time'), require('@ajf/material/barcode'), require('@ajf/material/calendar'), require('@ajf/material/checkbox-group'), require('@ajf/material/page-slider')) :
+    typeof define === 'function' && define.amd ? define('@ajf/material/forms', ['exports', '@ajf/core/forms', '@angular/core', '@angular/material/dialog', 'rxjs/operators', '@angular/material/input', '@angular/common', '@angular/forms', '@angular/material/button', '@angular/material/card', '@angular/material/form-field', '@angular/material/icon', '@angular/material/radio', '@angular/material/select', '@angular/material/slide-toggle', '@angular/material/toolbar', '@ngx-translate/core', '@ajf/core/common', '@ajf/core/time', '@ajf/material/barcode', '@ajf/material/calendar', '@ajf/material/checkbox-group', '@ajf/material/page-slider'], factory) :
+    (global = global || self, factory((global.ajf = global.ajf || {}, global.ajf.material = global.ajf.material || {}, global.ajf.material.forms = {}), global.ajf.core.forms, global.ng.core, global.ng.material.dialog, global.rxjs.operators, global.ng.material.input, global.ng.common, global.ng.forms, global.ng.material.button, global.ng.material.card, global.ng.material.formField, global.ng.material.icon, global.ng.material.radio, global.ng.material.select, global.ng.material.slideToggle, global.ng.material.toolbar, global.ngxt.core, global.ajf.core.common, global.ajf.core.time, global.ajf.material.barcode, global.ajf.material.calendar, global.ajf.material.checkboxGroup, global.ajf.material.pageSlider));
+}(this, function (exports, forms, core, dialog, operators, input, common, forms$1, button, card, formField, icon, radio, select, slideToggle, toolbar, core$1, common$1, time, barcode, calendar, checkboxGroup, pageSlider) { 'use strict';
 
     /*! *****************************************************************************
     Copyright (c) Microsoft Corporation. All rights reserved.
@@ -154,6 +154,68 @@
             { type: AjfWarningAlertService }
         ]; };
         return AjfDateFieldComponent;
+    }(forms.AjfBaseFieldComponent));
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    var AjfDateInputFieldComponent = /** @class */ (function (_super) {
+        __extends(AjfDateInputFieldComponent, _super);
+        function AjfDateInputFieldComponent(cdr, service, was, _dvs) {
+            var _this = _super.call(this, cdr, service, was) || this;
+            _this._dvs = _dvs;
+            return _this;
+        }
+        /**
+         * @return {?}
+         */
+        AjfDateInputFieldComponent.prototype.onChange = /**
+         * @return {?}
+         */
+        function () {
+            if (this.input == null) {
+                return;
+            }
+            /** @type {?} */
+            var val = this.input.value || '';
+            if (val.length > 0) {
+                if ((this._minDateStr != null && val < this._minDateStr)
+                    || (this._maxDateStr != null && val > this._maxDateStr)) {
+                    this.input.value = '';
+                }
+            }
+        };
+        /**
+         * @protected
+         * @return {?}
+         */
+        AjfDateInputFieldComponent.prototype._onInstanceChange = /**
+         * @protected
+         * @return {?}
+         */
+        function () {
+            this._minDateStr = this._dvs.transform(this.instance.node.minDate);
+            this._maxDateStr = this._dvs.transform(this.instance.node.maxDate);
+        };
+        AjfDateInputFieldComponent.decorators = [
+            { type: core.Component, args: [{template: "<mat-form-field><input matInput type=\"date\" [attr.aria-label]=\"instance.node.label || (instance|ajfNodeCompleteName)\" [min]=\"instance.node.minDate|ajfDateValueString\" [max]=\"instance.node.maxDate|ajfDateValueString\" (change)=\"onChange()\" [formControl]=\"control|async\"></mat-form-field>",
+                        styles: [""],
+                        changeDetection: core.ChangeDetectionStrategy.OnPush,
+                        encapsulation: core.ViewEncapsulation.None,
+                    },] },
+        ];
+        /** @nocollapse */
+        AjfDateInputFieldComponent.ctorParameters = function () { return [
+            { type: core.ChangeDetectorRef },
+            { type: forms.AjfFormRendererService },
+            { type: AjfWarningAlertService },
+            { type: forms.AjfDateValueStringPipe }
+        ]; };
+        AjfDateInputFieldComponent.propDecorators = {
+            input: [{ type: core.ViewChild, args: [input.MatInput, { static: false },] }]
+        };
+        return AjfDateInputFieldComponent;
     }(forms.AjfBaseFieldComponent));
 
     /**
@@ -450,7 +512,7 @@
                 _a[forms.AjfFieldType.Boolean] = { component: AjfBooleanFieldComponent },
                 _a[forms.AjfFieldType.Formula] = { component: AjfInputFieldComponent, inputs: { readonly: true } },
                 _a[forms.AjfFieldType.Date] = { component: AjfDateFieldComponent },
-                _a[forms.AjfFieldType.DateInput] = { component: AjfInputFieldComponent, inputs: { type: 'date' } },
+                _a[forms.AjfFieldType.DateInput] = { component: AjfDateInputFieldComponent },
                 _a[forms.AjfFieldType.Table] = { component: AjfTableFieldComponent },
                 _a[forms.AjfFieldType.Empty] = { component: AjfEmptyFieldComponent },
                 _a[forms.AjfFieldType.SingleChoice] = { component: AjfSingleChoiceFieldComponent },
@@ -577,6 +639,7 @@
                             AjfBarcodeFieldComponent,
                             AjfBooleanFieldComponent,
                             AjfDateFieldComponent,
+                            AjfDateInputFieldComponent,
                             AjfEmptyFieldComponent,
                             AjfFormField,
                             AjfFieldWarningDialog,
@@ -595,6 +658,7 @@
                             AjfBarcodeFieldComponent,
                             AjfBooleanFieldComponent,
                             AjfDateFieldComponent,
+                            AjfDateInputFieldComponent,
                             AjfEmptyFieldComponent,
                             AjfFieldWarningDialog,
                             AjfInputFieldComponent,
@@ -613,6 +677,7 @@
 
     exports.AjfBooleanFieldComponent = AjfBooleanFieldComponent;
     exports.AjfDateFieldComponent = AjfDateFieldComponent;
+    exports.AjfDateInputFieldComponent = AjfDateInputFieldComponent;
     exports.AjfEmptyFieldComponent = AjfEmptyFieldComponent;
     exports.AjfFieldWarningDialog = AjfFieldWarningDialog;
     exports.AjfFormField = AjfFormField;

@@ -19,17 +19,16 @@
  * If not, see http://www.gnu.org/licenses/.
  *
  */
-import { Version } from '@angular/core';
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-/**
- * Current version of Ajf.
- * @type {?}
- */
-var VERSION = new Version('8.1.8-856f56a');
-
-export { VERSION };
-//# sourceMappingURL=material.es5.js.map
+import { AjfDateFieldInstance, AjfDateValueStringPipe, AjfBaseFieldComponent, AjfFormRendererService } from '@ajf/core/forms';
+import { ChangeDetectorRef } from '@angular/core';
+import { MatInput } from '@angular/material/input';
+import { AjfWarningAlertService } from './warning-alert-service';
+export declare class AjfDateInputFieldComponent extends AjfBaseFieldComponent<AjfDateFieldInstance> {
+    private _dvs;
+    input: MatInput;
+    private _minDateStr;
+    private _maxDateStr;
+    constructor(cdr: ChangeDetectorRef, service: AjfFormRendererService, was: AjfWarningAlertService, _dvs: AjfDateValueStringPipe);
+    onChange(): void;
+    protected _onInstanceChange(): void;
+}
