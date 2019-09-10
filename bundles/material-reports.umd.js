@@ -348,13 +348,13 @@
         }
         AjfReportWidget.decorators = [
             { type: core.Component, args: [{selector: 'ajf-widget',
-                        template: "<ng-template [ngIf]=\"instance != null && instance.widget != null && instance.visible\" ajf-widget-host></ng-template>",
+                        template: "<ng-template ajf-widget-host></ng-template>",
                         styles: ["ajf-widget{display:flex;flex:1 1 auto;box-sizing:border-box}ajf-widget>ng-component{flex:1 1 auto;display:flex;align-items:center;box-sizing:border-box;background-color:transparent}"],
                         encapsulation: core.ViewEncapsulation.None,
                         changeDetection: core.ChangeDetectionStrategy.OnPush,
                         inputs: ['instance'],
                         queries: {
-                            widgetHost: new core.ViewChild(reports.AjfWidgetHost, { static: false }),
+                            widgetHost: new core.ViewChild(reports.AjfWidgetHost, { static: true }),
                         },
                     },] },
         ];
