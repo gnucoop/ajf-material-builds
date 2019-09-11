@@ -23,6 +23,7 @@ import { CommonModule } from '@angular/common';
 import { Component, ChangeDetectionStrategy, ViewEncapsulation, ElementRef, Renderer2, NgModule } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { __extends } from 'tslib';
+import { DomSanitizer } from '@angular/platform-browser';
 import { AjfImage as AjfImage$1 } from '@ajf/core/image';
 
 /**
@@ -31,8 +32,8 @@ import { AjfImage as AjfImage$1 } from '@ajf/core/image';
  */
 var AjfImage = /** @class */ (function (_super) {
     __extends(AjfImage, _super);
-    function AjfImage(el, renderer) {
-        return _super.call(this, el, renderer) || this;
+    function AjfImage(el, renderer, ds) {
+        return _super.call(this, el, renderer, ds) || this;
     }
     AjfImage.decorators = [
         { type: Component, args: [{selector: 'ajf-image',
@@ -51,7 +52,8 @@ var AjfImage = /** @class */ (function (_super) {
     /** @nocollapse */
     AjfImage.ctorParameters = function () { return [
         { type: ElementRef },
-        { type: Renderer2 }
+        { type: Renderer2 },
+        { type: DomSanitizer }
     ]; };
     return AjfImage;
 }(AjfImage$1));

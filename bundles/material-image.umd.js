@@ -20,10 +20,10 @@
  *
  */
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/common'), require('@angular/core'), require('@angular/material/icon'), require('@ajf/core/image')) :
-    typeof define === 'function' && define.amd ? define('@ajf/material/image', ['exports', '@angular/common', '@angular/core', '@angular/material/icon', '@ajf/core/image'], factory) :
-    (global = global || self, factory((global.ajf = global.ajf || {}, global.ajf.material = global.ajf.material || {}, global.ajf.material.image = {}), global.ng.common, global.ng.core, global.ng.material.icon, global.ajf.core.image));
-}(this, function (exports, common, core, icon, image) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/common'), require('@angular/core'), require('@angular/material/icon'), require('@angular/platform-browser'), require('@ajf/core/image')) :
+    typeof define === 'function' && define.amd ? define('@ajf/material/image', ['exports', '@angular/common', '@angular/core', '@angular/material/icon', '@angular/platform-browser', '@ajf/core/image'], factory) :
+    (global = global || self, factory((global.ajf = global.ajf || {}, global.ajf.material = global.ajf.material || {}, global.ajf.material.image = {}), global.ng.common, global.ng.core, global.ng.material.icon, global.ng.platformBrowser, global.ajf.core.image));
+}(this, function (exports, common, core, icon, platformBrowser, image) { 'use strict';
 
     /*! *****************************************************************************
     Copyright (c) Microsoft Corporation. All rights reserved.
@@ -60,8 +60,8 @@
      */
     var AjfImage = /** @class */ (function (_super) {
         __extends(AjfImage, _super);
-        function AjfImage(el, renderer) {
-            return _super.call(this, el, renderer) || this;
+        function AjfImage(el, renderer, ds) {
+            return _super.call(this, el, renderer, ds) || this;
         }
         AjfImage.decorators = [
             { type: core.Component, args: [{selector: 'ajf-image',
@@ -80,7 +80,8 @@
         /** @nocollapse */
         AjfImage.ctorParameters = function () { return [
             { type: core.ElementRef },
-            { type: core.Renderer2 }
+            { type: core.Renderer2 },
+            { type: platformBrowser.DomSanitizer }
         ]; };
         return AjfImage;
     }(image.AjfImage));

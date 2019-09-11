@@ -20,7 +20,8 @@
  *
  */
 import { ElementRef, Renderer2 } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { AjfImage as AjfCoreImage } from '@ajf/core/image';
 export declare class AjfImage extends AjfCoreImage {
-    constructor(el: ElementRef, renderer: Renderer2);
+    constructor(el: ElementRef, renderer: Renderer2, ds: DomSanitizer);
 }

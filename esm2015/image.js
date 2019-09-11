@@ -22,6 +22,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, ChangeDetectionStrategy, ViewEncapsulation, ElementRef, Renderer2, NgModule } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
+import { DomSanitizer } from '@angular/platform-browser';
 import { AjfImage as AjfImage$1 } from '@ajf/core/image';
 
 /**
@@ -32,9 +33,10 @@ class AjfImage extends AjfImage$1 {
     /**
      * @param {?} el
      * @param {?} renderer
+     * @param {?} ds
      */
-    constructor(el, renderer) {
-        super(el, renderer);
+    constructor(el, renderer, ds) {
+        super(el, renderer, ds);
     }
 }
 AjfImage.decorators = [
@@ -54,7 +56,8 @@ AjfImage.decorators = [
 /** @nocollapse */
 AjfImage.ctorParameters = () => [
     { type: ElementRef },
-    { type: Renderer2 }
+    { type: Renderer2 },
+    { type: DomSanitizer }
 ];
 
 /**
