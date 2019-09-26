@@ -20,10 +20,10 @@
  *
  */
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/common'), require('@angular/core'), require('@angular/forms'), require('@angular/material/button'), require('@angular/material/button-toggle'), require('@angular/material/icon'), require('@ngx-translate/core'), require('@ajf/core/common'), require('@ajf/core/barcode')) :
-    typeof define === 'function' && define.amd ? define('@ajf/material/barcode', ['exports', '@angular/common', '@angular/core', '@angular/forms', '@angular/material/button', '@angular/material/button-toggle', '@angular/material/icon', '@ngx-translate/core', '@ajf/core/common', '@ajf/core/barcode'], factory) :
-    (global = global || self, factory((global.ajf = global.ajf || {}, global.ajf.material = global.ajf.material || {}, global.ajf.material.barcode = {}), global.ng.common, global.ng.core, global.ng.forms, global.ng.material.button, global.ng.material.buttonToggle, global.ng.material.icon, global.ngxt.core, global.ajf.core.common, global.ajf.core.barcode));
-}(this, function (exports, common, core, forms, button, buttonToggle, icon, core$1, common$1, barcode) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('@angular/forms'), require('@ajf/core/barcode'), require('@angular/common'), require('@angular/material/button'), require('@angular/material/button-toggle'), require('@angular/material/icon'), require('@ngx-translate/core'), require('@ajf/core/common')) :
+    typeof define === 'function' && define.amd ? define('@ajf/material/barcode', ['exports', '@angular/core', '@angular/forms', '@ajf/core/barcode', '@angular/common', '@angular/material/button', '@angular/material/button-toggle', '@angular/material/icon', '@ngx-translate/core', '@ajf/core/common'], factory) :
+    (global = global || self, factory((global.ajf = global.ajf || {}, global.ajf.material = global.ajf.material || {}, global.ajf.material.barcode = {}), global.ng.core, global.ng.forms, global.ajf.core.barcode, global.ng.common, global.ng.material.button, global.ng.material.buttonToggle, global.ng.material.icon, global.ngxt.core, global.ajf.core.common));
+}(this, function (exports, core, forms, barcode, common, button, buttonToggle, icon, core$1, common$1) { 'use strict';
 
     /*! *****************************************************************************
     Copyright (c) Microsoft Corporation. All rights reserved.
@@ -121,9 +121,9 @@
         return AjfBarcodeModule;
     }());
 
+    exports.AjfBarcodeComponent = AjfBarcodeComponent;
     exports.AjfBarcodeModule = AjfBarcodeModule;
-    exports.ɵa = BARCODE_CONTROL_VALUE_ACCESSOR;
-    exports.ɵb = AjfBarcodeComponent;
+    exports.BARCODE_CONTROL_VALUE_ACCESSOR = BARCODE_CONTROL_VALUE_ACCESSOR;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 

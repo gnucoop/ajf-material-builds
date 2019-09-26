@@ -19,16 +19,16 @@
  * If not, see http://www.gnu.org/licenses/.
  *
  */
-import { CommonModule } from '@angular/common';
+import { __extends } from 'tslib';
 import { forwardRef, Component, ViewEncapsulation, ChangeDetectionStrategy, ChangeDetectorRef, Renderer2, NgModule } from '@angular/core';
 import { NG_VALUE_ACCESSOR, FormsModule } from '@angular/forms';
+import { AjfBarcode } from '@ajf/core/barcode';
+import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatIconModule } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
 import { AjfCommonModule } from '@ajf/core/common';
-import { __extends } from 'tslib';
-import { AjfBarcode } from '@ajf/core/barcode';
 
 /**
  * @fileoverview added by tsickle
@@ -97,5 +97,5 @@ var AjfBarcodeModule = /** @class */ (function () {
     return AjfBarcodeModule;
 }());
 
-export { AjfBarcodeModule, BARCODE_CONTROL_VALUE_ACCESSOR as ɵa, AjfBarcodeComponent as ɵb };
+export { AjfBarcodeComponent, AjfBarcodeModule, BARCODE_CONTROL_VALUE_ACCESSOR };
 //# sourceMappingURL=barcode.es5.js.map

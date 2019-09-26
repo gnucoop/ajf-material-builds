@@ -19,4 +19,5 @@
  * If not, see http://www.gnu.org/licenses/.
  *
  */
+export * from './barcode';
 export * from './barcode-module';

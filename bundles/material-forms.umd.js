@@ -698,6 +698,7 @@
     exports.AjfDateFieldComponent = AjfDateFieldComponent;
     exports.AjfDateInputFieldComponent = AjfDateInputFieldComponent;
     exports.AjfEmptyFieldComponent = AjfEmptyFieldComponent;
+    exports.AjfFieldService = AjfFieldService;
     exports.AjfFieldWarningDialog = AjfFieldWarningDialog;
     exports.AjfFormField = AjfFormField;
     exports.AjfFormRenderer = AjfFormRenderer;
@@ -708,8 +709,7 @@
     exports.AjfTableFieldComponent = AjfTableFieldComponent;
     exports.AjfTimeFieldComponent = AjfTimeFieldComponent;
     exports.AjfWarningAlertService = AjfWarningAlertService;
-    exports.ɵa = AjfFieldService;
-    exports.ɵb = AjfBarcodeFieldComponent;
+    exports.ɵa = AjfBarcodeFieldComponent;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 
