@@ -503,28 +503,31 @@
     var AjfFieldService = /** @class */ (function (_super) {
         __extends(AjfFieldService, _super);
         function AjfFieldService() {
-            var _a;
-            var _this = _super !== null && _super.apply(this, arguments) || this;
-            _this.componentsMap = (_a = {},
-                _a[forms.AjfFieldType.String] = { component: AjfInputFieldComponent },
-                _a[forms.AjfFieldType.Text] = { component: AjfInputFieldComponent },
-                _a[forms.AjfFieldType.Number] = { component: AjfInputFieldComponent, inputs: { type: 'number' } },
-                _a[forms.AjfFieldType.Boolean] = { component: AjfBooleanFieldComponent },
-                _a[forms.AjfFieldType.Formula] = { component: AjfInputFieldComponent, inputs: { readonly: true } },
-                _a[forms.AjfFieldType.Date] = { component: AjfDateFieldComponent },
-                _a[forms.AjfFieldType.DateInput] = { component: AjfDateInputFieldComponent },
-                _a[forms.AjfFieldType.Table] = { component: AjfTableFieldComponent },
-                _a[forms.AjfFieldType.Empty] = { component: AjfEmptyFieldComponent },
-                _a[forms.AjfFieldType.SingleChoice] = { component: AjfSingleChoiceFieldComponent },
-                _a[forms.AjfFieldType.MultipleChoice] = { component: AjfMultipleChoiceFieldComponent },
-                _a[forms.AjfFieldType.Time] = { component: AjfTimeFieldComponent },
-                _a[forms.AjfFieldType.Barcode] = { component: AjfBarcodeFieldComponent },
-                _a);
+            var _this = _super.call(this) || this;
+            _this.componentsMap[forms.AjfFieldType.String] = { component: AjfInputFieldComponent },
+                _this.componentsMap[forms.AjfFieldType.Text] = { component: AjfInputFieldComponent },
+                _this.componentsMap[forms.AjfFieldType.Number] = {
+                    component: AjfInputFieldComponent, inputs: { type: 'number' }
+                },
+                _this.componentsMap[forms.AjfFieldType.Boolean] = { component: AjfBooleanFieldComponent },
+                _this.componentsMap[forms.AjfFieldType.Formula] = {
+                    component: AjfInputFieldComponent, inputs: { readonly: true }
+                },
+                _this.componentsMap[forms.AjfFieldType.Date] = { component: AjfDateFieldComponent },
+                _this.componentsMap[forms.AjfFieldType.DateInput] = { component: AjfDateInputFieldComponent },
+                _this.componentsMap[forms.AjfFieldType.Table] = { component: AjfTableFieldComponent },
+                _this.componentsMap[forms.AjfFieldType.Empty] = { component: AjfEmptyFieldComponent },
+                _this.componentsMap[forms.AjfFieldType.SingleChoice] = { component: AjfSingleChoiceFieldComponent },
+                _this.componentsMap[forms.AjfFieldType.MultipleChoice] = { component: AjfMultipleChoiceFieldComponent },
+                _this.componentsMap[forms.AjfFieldType.Time] = { component: AjfTimeFieldComponent },
+                _this.componentsMap[forms.AjfFieldType.Barcode] = { component: AjfBarcodeFieldComponent };
             return _this;
         }
         AjfFieldService.decorators = [
             { type: core.Injectable, args: [{ providedIn: 'root' },] },
         ];
+        /** @nocollapse */
+        AjfFieldService.ctorParameters = function () { return []; };
         /** @nocollapse */ AjfFieldService.ngInjectableDef = core.ɵɵdefineInjectable({ factory: function AjfFieldService_Factory() { return new AjfFieldService(); }, token: AjfFieldService, providedIn: "root" });
         return AjfFieldService;
     }(forms.AjfFieldService));

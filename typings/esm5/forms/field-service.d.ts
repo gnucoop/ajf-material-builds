@@ -19,7 +19,7 @@
  * If not, see http://www.gnu.org/licenses/.
  *
  */
-import { AjfFieldComponentsMap, AjfFieldService as CoreService } from '@ajf/core/forms';
+import { AjfFieldService as CoreService } from '@ajf/core/forms';
 export declare class AjfFieldService extends CoreService {
-    readonly componentsMap: AjfFieldComponentsMap;
+    constructor();
 }
