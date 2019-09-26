@@ -20,7 +20,7 @@
  *
  */
 import { AjfBaseFieldComponent, AjfFormRendererService, AjfDateValueStringPipe, AjfInputFieldComponent as AjfInputFieldComponent$1, AjfFieldWithChoicesComponent, AJF_SEARCH_ALERT_THRESHOLD, AjfFieldService as AjfFieldService$1, AjfFieldType, AjfFormField as AjfFormField$1, AjfFieldHost, AjfFormRenderer as AjfFormRenderer$1, AjfFormsModule as AjfFormsModule$1 } from '@ajf/core/forms';
-import { Component, ChangeDetectionStrategy, ViewEncapsulation, Injectable, ChangeDetectorRef, ViewChild, Optional, Inject, ComponentFactoryResolver, ViewChildren, Input, NgModule } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ViewEncapsulation, Injectable, ChangeDetectorRef, ViewChild, Optional, Inject, ɵɵdefineInjectable, ComponentFactoryResolver, ViewChildren, Input, NgModule } from '@angular/core';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { map } from 'rxjs/operators';
 import { MatInput, MatInputModule } from '@angular/material/input';
@@ -508,8 +508,9 @@ class AjfFieldService extends AjfFieldService$1 {
     }
 }
 AjfFieldService.decorators = [
-    { type: Injectable },
+    { type: Injectable, args: [{ providedIn: 'root' },] },
 ];
+/** @nocollapse */ AjfFieldService.ngInjectableDef = ɵɵdefineInjectable({ factory: function AjfFieldService_Factory() { return new AjfFieldService(); }, token: AjfFieldService, providedIn: "root" });
 
 /**
  * @fileoverview added by tsickle
@@ -613,6 +614,17 @@ AjfFormRenderer.propDecorators = {
  * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 class AjfFormsModule {
+    /**
+     * @return {?}
+     */
+    static forRoot() {
+        return {
+            ngModule: AjfFormsModule,
+            providers: [
+                AjfFieldService,
+            ],
+        };
+    }
 }
 AjfFormsModule.decorators = [
     { type: NgModule, args: [{

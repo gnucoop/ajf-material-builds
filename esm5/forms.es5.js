@@ -21,7 +21,7 @@
  */
 import { __extends } from 'tslib';
 import { AjfFormRendererService, AjfBaseFieldComponent, AjfDateValueStringPipe, AjfInputFieldComponent as AjfInputFieldComponent$1, AJF_SEARCH_ALERT_THRESHOLD, AjfFieldWithChoicesComponent, AjfFieldType, AjfFieldService as AjfFieldService$1, AjfFieldHost, AjfFormField as AjfFormField$1, AjfFormRenderer as AjfFormRenderer$1, AjfFormsModule as AjfFormsModule$1 } from '@ajf/core/forms';
-import { Component, ChangeDetectionStrategy, ViewEncapsulation, Injectable, ChangeDetectorRef, ViewChild, Optional, Inject, ComponentFactoryResolver, ViewChildren, Input, NgModule } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ViewEncapsulation, Injectable, ChangeDetectorRef, ViewChild, Optional, Inject, ɵɵdefineInjectable, ComponentFactoryResolver, ViewChildren, Input, NgModule } from '@angular/core';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { map } from 'rxjs/operators';
 import { MatInput, MatInputModule } from '@angular/material/input';
@@ -512,8 +512,9 @@ var AjfFieldService = /** @class */ (function (_super) {
         return _this;
     }
     AjfFieldService.decorators = [
-        { type: Injectable },
+        { type: Injectable, args: [{ providedIn: 'root' },] },
     ];
+    /** @nocollapse */ AjfFieldService.ngInjectableDef = ɵɵdefineInjectable({ factory: function AjfFieldService_Factory() { return new AjfFieldService(); }, token: AjfFieldService, providedIn: "root" });
     return AjfFieldService;
 }(AjfFieldService$1));
 
@@ -618,6 +619,20 @@ var AjfFormRenderer = /** @class */ (function (_super) {
 var AjfFormsModule = /** @class */ (function () {
     function AjfFormsModule() {
     }
+    /**
+     * @return {?}
+     */
+    AjfFormsModule.forRoot = /**
+     * @return {?}
+     */
+    function () {
+        return {
+            ngModule: AjfFormsModule,
+            providers: [
+                AjfFieldService,
+            ],
+        };
+    };
     AjfFormsModule.decorators = [
         { type: NgModule, args: [{
                     imports: [

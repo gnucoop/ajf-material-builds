@@ -523,8 +523,9 @@
             return _this;
         }
         AjfFieldService.decorators = [
-            { type: core.Injectable },
+            { type: core.Injectable, args: [{ providedIn: 'root' },] },
         ];
+        /** @nocollapse */ AjfFieldService.ngInjectableDef = core.ɵɵdefineInjectable({ factory: function AjfFieldService_Factory() { return new AjfFieldService(); }, token: AjfFieldService, providedIn: "root" });
         return AjfFieldService;
     }(forms.AjfFieldService));
 
@@ -629,6 +630,20 @@
     var AjfFormsModule = /** @class */ (function () {
         function AjfFormsModule() {
         }
+        /**
+         * @return {?}
+         */
+        AjfFormsModule.forRoot = /**
+         * @return {?}
+         */
+        function () {
+            return {
+                ngModule: AjfFormsModule,
+                providers: [
+                    AjfFieldService,
+                ],
+            };
+        };
         AjfFormsModule.decorators = [
             { type: core.NgModule, args: [{
                         imports: [

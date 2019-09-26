@@ -19,5 +19,7 @@
  * If not, see http://www.gnu.org/licenses/.
  *
  */
+import { ModuleWithProviders } from '@angular/core';
 export declare class AjfFormsModule {
+    static forRoot(): ModuleWithProviders;
 }
