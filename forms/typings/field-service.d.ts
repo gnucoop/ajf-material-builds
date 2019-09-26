@@ -19,5 +19,7 @@
  * If not, see http://www.gnu.org/licenses/.
  *
  */
-!function(e,n){"object"==typeof exports&&"undefined"!=typeof module?n(exports,require("@angular/core")):"function"==typeof define&&define.amd?define("@ajf/material",["exports","@angular/core"],n):n(((e=e||self).ajf=e.ajf||{},e.ajf.material={}),e.ng.core)}(this,function(e,n){"use strict";var o=new n.Version("8.2.4-89aa77c");e.VERSION=o,Object.defineProperty(e,"__esModule",{value:!0})});
-//# sourceMappingURL=material.umd.min.js.map
+import { AjfFieldComponentsMap, AjfFieldService as CoreService } from '@ajf/core/forms';
+export declare class AjfFieldService extends CoreService {
+    readonly componentsMap: AjfFieldComponentsMap;
+}

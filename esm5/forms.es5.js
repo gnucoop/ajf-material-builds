@@ -20,7 +20,7 @@
  *
  */
 import { __extends } from 'tslib';
-import { AjfFormRendererService, AjfBaseFieldComponent, AjfDateValueStringPipe, AjfInputFieldComponent as AjfInputFieldComponent$1, AJF_SEARCH_ALERT_THRESHOLD, AjfFieldWithChoicesComponent, AjfFieldType, AjfFieldHost, AjfFormField as AjfFormField$1, AjfFormRenderer as AjfFormRenderer$1, AjfFormsModule as AjfFormsModule$1 } from '@ajf/core/forms';
+import { AjfFormRendererService, AjfBaseFieldComponent, AjfDateValueStringPipe, AjfInputFieldComponent as AjfInputFieldComponent$1, AJF_SEARCH_ALERT_THRESHOLD, AjfFieldWithChoicesComponent, AjfFieldType, AjfFieldService as AjfFieldService$1, AjfFieldHost, AjfFormField as AjfFormField$1, AjfFormRenderer as AjfFormRenderer$1, AjfFormsModule as AjfFormsModule$1 } from '@ajf/core/forms';
 import { Component, ChangeDetectionStrategy, ViewEncapsulation, Injectable, ChangeDetectorRef, ViewChild, Optional, Inject, ComponentFactoryResolver, ViewChildren, Input, NgModule } from '@angular/core';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { map } from 'rxjs/operators';
@@ -489,11 +489,11 @@ var AjfTimeFieldComponent = /** @class */ (function (_super) {
  * @fileoverview added by tsickle
  * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
-var AjfFormField = /** @class */ (function (_super) {
-    __extends(AjfFormField, _super);
-    function AjfFormField(cfr) {
+var AjfFieldService = /** @class */ (function (_super) {
+    __extends(AjfFieldService, _super);
+    function AjfFieldService() {
         var _a;
-        var _this = _super.call(this, cfr) || this;
+        var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.componentsMap = (_a = {},
             _a[AjfFieldType.String] = { component: AjfInputFieldComponent },
             _a[AjfFieldType.Text] = { component: AjfInputFieldComponent },
@@ -511,6 +511,20 @@ var AjfFormField = /** @class */ (function (_super) {
             _a);
         return _this;
     }
+    return AjfFieldService;
+}(AjfFieldService$1));
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+var AjfFormField = /** @class */ (function (_super) {
+    __extends(AjfFormField, _super);
+    function AjfFormField(cfr, fieldService) {
+        var _this = _super.call(this, cfr) || this;
+        _this.componentsMap = fieldService.componentsMap;
+        return _this;
+    }
     AjfFormField.decorators = [
         { type: Component, args: [{selector: 'ajf-field,ajf-form-field',
                     template: "<div [ngClass]=\"'ajf-field-' + (instance|ajfNodeCompleteName)\" [class.ajf-validated]=\"instance|ajfFieldIsValid\"><ng-template ajf-field-host></ng-template></div><ng-container *ngIf=\"instance && instance.node && instance.node.attachments\"><a *ngFor=\"let attachment of instance.node.attachments\" [href]=\"attachment.value\" target=\"_blank\">{{attachment.label | translate}}</a></ng-container><div *ngIf=\"instance && instance.validationResults\" class=\"ajf-errors\"><ng-container *ngFor=\"let res of instance.validationResults\"><div class=\"error\" *ngIf=\"!res.result\">{{ res.error }}</div></ng-container></div>",
@@ -525,7 +539,8 @@ var AjfFormField = /** @class */ (function (_super) {
     ];
     /** @nocollapse */
     AjfFormField.ctorParameters = function () { return [
-        { type: ComponentFactoryResolver }
+        { type: ComponentFactoryResolver },
+        { type: AjfFieldService }
     ]; };
     return AjfFormField;
 }(AjfFormField$1));
@@ -657,6 +672,7 @@ var AjfFormsModule = /** @class */ (function () {
                         AjfTimeFieldComponent
                     ],
                     providers: [
+                        AjfFieldService,
                         AjfWarningAlertService,
                     ],
                 },] },
@@ -664,5 +680,5 @@ var AjfFormsModule = /** @class */ (function () {
     return AjfFormsModule;
 }());
 
-export { AjfBooleanFieldComponent, AjfDateFieldComponent, AjfDateInputFieldComponent, AjfEmptyFieldComponent, AjfFieldWarningDialog, AjfFormField, AjfFormRenderer, AjfFormsModule, AjfInputFieldComponent, AjfMultipleChoiceFieldComponent, AjfSingleChoiceFieldComponent, AjfTableFieldComponent, AjfTimeFieldComponent, AjfWarningAlertService, AjfBarcodeFieldComponent as ɵa };
+export { AjfBooleanFieldComponent, AjfDateFieldComponent, AjfDateInputFieldComponent, AjfEmptyFieldComponent, AjfFieldWarningDialog, AjfFormField, AjfFormRenderer, AjfFormsModule, AjfInputFieldComponent, AjfMultipleChoiceFieldComponent, AjfSingleChoiceFieldComponent, AjfTableFieldComponent, AjfTimeFieldComponent, AjfWarningAlertService, AjfFieldService as ɵa, AjfBarcodeFieldComponent as ɵb };
 //# sourceMappingURL=forms.es5.js.map

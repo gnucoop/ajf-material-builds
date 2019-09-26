@@ -19,7 +19,7 @@
  * If not, see http://www.gnu.org/licenses/.
  *
  */
-import { AjfBaseFieldComponent, AjfFormRendererService, AjfDateValueStringPipe, AjfInputFieldComponent as AjfInputFieldComponent$1, AjfFieldWithChoicesComponent, AJF_SEARCH_ALERT_THRESHOLD, AjfFormField as AjfFormField$1, AjfFieldType, AjfFieldHost, AjfFormRenderer as AjfFormRenderer$1, AjfFormsModule as AjfFormsModule$1 } from '@ajf/core/forms';
+import { AjfBaseFieldComponent, AjfFormRendererService, AjfDateValueStringPipe, AjfInputFieldComponent as AjfInputFieldComponent$1, AjfFieldWithChoicesComponent, AJF_SEARCH_ALERT_THRESHOLD, AjfFieldService as AjfFieldService$1, AjfFieldType, AjfFormField as AjfFormField$1, AjfFieldHost, AjfFormRenderer as AjfFormRenderer$1, AjfFormsModule as AjfFormsModule$1 } from '@ajf/core/forms';
 import { Component, ChangeDetectionStrategy, ViewEncapsulation, Injectable, ChangeDetectorRef, ViewChild, Optional, Inject, ComponentFactoryResolver, ViewChildren, Input, NgModule } from '@angular/core';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { map } from 'rxjs/operators';
@@ -487,12 +487,9 @@ AjfTimeFieldComponent.ctorParameters = () => [
  * @fileoverview added by tsickle
  * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
-class AjfFormField extends AjfFormField$1 {
-    /**
-     * @param {?} cfr
-     */
-    constructor(cfr) {
-        super(cfr);
+class AjfFieldService extends AjfFieldService$1 {
+    constructor() {
+        super(...arguments);
         this.componentsMap = {
             [AjfFieldType.String]: { component: AjfInputFieldComponent },
             [AjfFieldType.Text]: { component: AjfInputFieldComponent },
@@ -510,6 +507,21 @@ class AjfFormField extends AjfFormField$1 {
         };
     }
 }
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+class AjfFormField extends AjfFormField$1 {
+    /**
+     * @param {?} cfr
+     * @param {?} fieldService
+     */
+    constructor(cfr, fieldService) {
+        super(cfr);
+        this.componentsMap = fieldService.componentsMap;
+    }
+}
 AjfFormField.decorators = [
     { type: Component, args: [{selector: 'ajf-field,ajf-form-field',
                 template: "<div [ngClass]=\"'ajf-field-' + (instance|ajfNodeCompleteName)\" [class.ajf-validated]=\"instance|ajfFieldIsValid\"><ng-template ajf-field-host></ng-template></div><ng-container *ngIf=\"instance && instance.node && instance.node.attachments\"><a *ngFor=\"let attachment of instance.node.attachments\" [href]=\"attachment.value\" target=\"_blank\">{{attachment.label | translate}}</a></ng-container><div *ngIf=\"instance && instance.validationResults\" class=\"ajf-errors\"><ng-container *ngFor=\"let res of instance.validationResults\"><div class=\"error\" *ngIf=\"!res.result\">{{ res.error }}</div></ng-container></div>",
@@ -524,7 +536,8 @@ AjfFormField.decorators = [
 ];
 /** @nocollapse */
 AjfFormField.ctorParameters = () => [
-    { type: ComponentFactoryResolver }
+    { type: ComponentFactoryResolver },
+    { type: AjfFieldService }
 ];
 
 /**
@@ -655,10 +668,11 @@ AjfFormsModule.decorators = [
                     AjfTimeFieldComponent
                 ],
                 providers: [
+                    AjfFieldService,
                     AjfWarningAlertService,
                 ],
             },] },
 ];
 
-export { AjfBooleanFieldComponent, AjfDateFieldComponent, AjfDateInputFieldComponent, AjfEmptyFieldComponent, AjfFieldWarningDialog, AjfFormField, AjfFormRenderer, AjfFormsModule, AjfInputFieldComponent, AjfMultipleChoiceFieldComponent, AjfSingleChoiceFieldComponent, AjfTableFieldComponent, AjfTimeFieldComponent, AjfWarningAlertService, AjfBarcodeFieldComponent as ɵa };
+export { AjfBooleanFieldComponent, AjfDateFieldComponent, AjfDateInputFieldComponent, AjfEmptyFieldComponent, AjfFieldWarningDialog, AjfFormField, AjfFormRenderer, AjfFormsModule, AjfInputFieldComponent, AjfMultipleChoiceFieldComponent, AjfSingleChoiceFieldComponent, AjfTableFieldComponent, AjfTimeFieldComponent, AjfWarningAlertService, AjfFieldService as ɵa, AjfBarcodeFieldComponent as ɵb };
 //# sourceMappingURL=forms.js.map

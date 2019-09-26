@@ -21,7 +21,8 @@
  */
 import { AjfFieldComponentsMap, AjfFormField as CoreFormField } from '@ajf/core/forms';
 import { ComponentFactoryResolver } from '@angular/core';
+import { AjfFieldService } from './field-service';
 export declare class AjfFormField extends CoreFormField {
-    componentsMap: AjfFieldComponentsMap;
-    constructor(cfr: ComponentFactoryResolver);
+    readonly componentsMap: AjfFieldComponentsMap;
+    constructor(cfr: ComponentFactoryResolver, fieldService: AjfFieldService);
 }
