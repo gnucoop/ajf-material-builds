@@ -527,8 +527,8 @@ var AjfFieldService = /** @class */ (function (_super) {
  */
 var AjfFormField = /** @class */ (function (_super) {
     __extends(AjfFormField, _super);
-    function AjfFormField(cfr, fieldService) {
-        var _this = _super.call(this, cfr) || this;
+    function AjfFormField(cdr, cfr, fieldService) {
+        var _this = _super.call(this, cdr, cfr) || this;
         _this.componentsMap = fieldService.componentsMap;
         return _this;
     }
@@ -546,6 +546,7 @@ var AjfFormField = /** @class */ (function (_super) {
     ];
     /** @nocollapse */
     AjfFormField.ctorParameters = function () { return [
+        { type: ChangeDetectorRef },
         { type: ComponentFactoryResolver },
         { type: AjfFieldService }
     ]; };
