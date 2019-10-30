@@ -278,7 +278,7 @@
             return _super.call(this, cdr, service, was) || this;
         }
         AjfInputFieldComponent.decorators = [
-            { type: core.Component, args: [{template: "<mat-form-field><input matInput [type]=\"type\" [readonly]=\"readonly\" [formControl]=\"control|async\"></mat-form-field>",
+            { type: core.Component, args: [{template: "<mat-form-field><input matInput *ngIf=\"type === 'text'\" type=\"text\" [readonly]=\"readonly\" [formControl]=\"control|async\"> <input matInput *ngIf=\"type === 'number'\" type=\"number\" [readonly]=\"readonly\" [formControl]=\"control|async\"></mat-form-field>",
                         styles: [""],
                         changeDetection: core.ChangeDetectionStrategy.OnPush,
                         encapsulation: core.ViewEncapsulation.None,

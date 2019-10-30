@@ -274,7 +274,7 @@ class AjfInputFieldComponent extends AjfInputFieldComponent$1 {
     }
 }
 AjfInputFieldComponent.decorators = [
-    { type: Component, args: [{template: "<mat-form-field><input matInput [type]=\"type\" [readonly]=\"readonly\" [formControl]=\"control|async\"></mat-form-field>",
+    { type: Component, args: [{template: "<mat-form-field><input matInput *ngIf=\"type === 'text'\" type=\"text\" [readonly]=\"readonly\" [formControl]=\"control|async\"> <input matInput *ngIf=\"type === 'number'\" type=\"number\" [readonly]=\"readonly\" [formControl]=\"control|async\"></mat-form-field>",
                 styles: [""],
                 changeDetection: ChangeDetectionStrategy.OnPush,
                 encapsulation: ViewEncapsulation.None,
