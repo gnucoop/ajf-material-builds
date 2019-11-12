@@ -1,6 +1,6 @@
 {
   "name": "@ajf/material",
-  "version": "8.2.12-ea8882d",
+  "version": "8.2.13-249bd2d",
   "description": "",
   "main": "./bundles/material.umd.js",
   "module": "./esm5/material.es5.js",
@@ -23,7 +23,7 @@
     "@angular/router": "^8.0.0",
     "@angular/material": "^8.0.0",
     "@ajf/icons": "^1.0.0",
-    "@ajf/core": "8.2.12-ea8882d",
+    "@ajf/core": "8.2.13-249bd2d",
     "flag-icon-css": "^3.3.0",
     "ngx-color-picker": "^8.1.0",
     "quill": "^1.3.6"
@@ -40,7 +40,7 @@
     ]
   },
   "sideEffects": false,
-  "releaseGitCommitSha": "ea8882df80ecaedabba817b23350e5c7eca9ab26",
+  "releaseGitCommitSha": "249bd2da1bcbc3635e18d6cfcc05e74b784981c0",
   "releaseGitBranch": "",
   "releaseGitUser": " <>"
 }
