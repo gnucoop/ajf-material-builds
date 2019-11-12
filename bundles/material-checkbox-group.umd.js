@@ -71,7 +71,7 @@
         }
         CheckboxGroupItem.decorators = [
             { type: core.Component, args: [{selector: 'ajf-checkbox-group-item',
-                        template: "<button mat-button (click)=\"onInputChange($event)\" type=\"button\" [id]=\"checkboxId|async\" [attr.aria-checked]=\"checkedState|async\" [attr.aria-disabled]=\"disabledState|async\"><span class=\"ajf-checkbox-group-content\"><ng-content></ng-content></span><mat-icon>{{ icon|async }}</mat-icon></button>",
+                        template: "<button mat-button (click)=\"onInputChange($event)\" type=\"button\" [id]=\"checkboxId|async\" [attr.aria-checked]=\"checkedState|async\" [attr.aria-disabled]=\"disabledState|async\" [disabled]=\"readonly\"><span class=\"ajf-checkbox-group-content\"><ng-content></ng-content></span><mat-icon>{{ icon|async }}</mat-icon></button>",
                         styles: [""],
                         changeDetection: core.ChangeDetectionStrategy.OnPush,
                         encapsulation: core.ViewEncapsulation.None,
@@ -86,7 +86,8 @@
                             'checked',
                             'value',
                             'checkedIcon',
-                            'notCheckedIcon'
+                            'notCheckedIcon',
+                            'readonly'
                         ],
                         outputs: [
                             'change'
