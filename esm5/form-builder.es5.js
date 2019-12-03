@@ -404,7 +404,7 @@ function buildFormBuilderNodesTree(nodes) {
      * @param {?} n
      * @return {?}
      */
-    function (n) { return n.parent == null; }));
+    function (n) { return n.parent == null || n.parent === 0; }));
     if (rootNodes.length === 1) {
         /** @type {?} */
         var rootNode = rootNodes[0];
@@ -2001,12 +2001,12 @@ var AjfFbNodeEntry = /** @class */ (function () {
                 /** @type {?} */
                 var node = ne.node;
                 this._hasContent = node != null && isContainerNode(node);
-                this._isSlide = false;
+                this._isSlide = isSlidesNode(((/** @type {?} */ (nodeEntry))).parent);
             }
             else {
                 this._isNodeEntry = false;
                 this._hasContent = false;
-                this._isSlide = isSlidesNode(((/** @type {?} */ (nodeEntry))).parent);
+                this._isSlide = false;
             }
         },
         enumerable: true,
@@ -2144,7 +2144,10 @@ var AjfFbNodeEntry = /** @class */ (function () {
      */
     function () {
         var _this = this;
-        this._updateBranchHeights();
+        setTimeout((/**
+         * @return {?}
+         */
+        function () { return _this._updateBranchHeights(); }));
         this._childEntriesSubscription = this.childEntries.changes
             .subscribe((/**
          * @return {?}
@@ -2222,7 +2225,8 @@ var AjfFbNodeEntry = /** @class */ (function () {
      * @return {?}
      */
     function () {
-        if (this.nodeEntry == null || !this.isNodeEntry) {
+        if (this.nodeEntry == null || !this.isNodeEntry
+            || this.branchLines == null || this.childEntries == null) {
             return;
         }
         /** @type {?} */

@@ -337,7 +337,7 @@ function buildFormBuilderNodesTree(nodes) {
      * @param {?} n
      * @return {?}
      */
-    n => n.parent == null));
+    n => n.parent == null || n.parent === 0));
     if (rootNodes.length === 1) {
         /** @type {?} */
         const rootNode = rootNodes[0];
@@ -1684,12 +1684,12 @@ class AjfFbNodeEntry {
             /** @type {?} */
             const node = ne.node;
             this._hasContent = node != null && isContainerNode(node);
-            this._isSlide = false;
+            this._isSlide = isSlidesNode(((/** @type {?} */ (nodeEntry))).parent);
         }
         else {
             this._isNodeEntry = false;
             this._hasContent = false;
-            this._isSlide = isSlidesNode(((/** @type {?} */ (nodeEntry))).parent);
+            this._isSlide = false;
         }
     }
     /**
@@ -1779,7 +1779,10 @@ class AjfFbNodeEntry {
      * @return {?}
      */
     ngAfterViewInit() {
-        this._updateBranchHeights();
+        setTimeout((/**
+         * @return {?}
+         */
+        () => this._updateBranchHeights()));
         this._childEntriesSubscription = this.childEntries.changes
             .subscribe((/**
          * @return {?}
@@ -1836,7 +1839,8 @@ class AjfFbNodeEntry {
      * @return {?}
      */
     _updateBranchHeights() {
-        if (this.nodeEntry == null || !this.isNodeEntry) {
+        if (this.nodeEntry == null || !this.isNodeEntry
+            || this.branchLines == null || this.childEntries == null) {
             return;
         }
         /** @type {?} */
