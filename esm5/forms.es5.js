@@ -295,7 +295,7 @@ var AjfMultipleChoiceFieldComponent = /** @class */ (function (_super) {
         return _super.call(this, cdr, service, was, searchThreshold) || this;
     }
     AjfMultipleChoiceFieldComponent.decorators = [
-        { type: Component, args: [{template: "<ng-container *ngIf=\"!(instance|ajfExpandFieldWithChoices:searchThreshold); else expanded\"><mat-select [formControl]=\"control|async\" [multiple]=\"true\" [disabled]=\"readonly\"><mat-option [value]=\"choice.value\" *ngFor=\"let choice of instance.filteredChoices\">{{ choice.label | translate }}</mat-option></mat-select></ng-container><ng-template #expanded><ajf-checkbox-group class=\"ajf-choices-container\" [formControl]=\"control|async\"><ajf-checkbox-group-item *ngFor=\"let choice of instance.filteredChoices\" [value]=\"choice.value\">{{ choice.label | translate }}</ajf-checkbox-group-item></ajf-checkbox-group></ng-template>",
+        { type: Component, args: [{template: "<ng-container *ngIf=\"!(instance|ajfExpandFieldWithChoices:searchThreshold); else expanded\"><mat-select [formControl]=\"control|async\" [multiple]=\"true\" [disabled]=\"readonly\"><mat-option [value]=\"choice.value\" *ngFor=\"let choice of instance.filteredChoices\">{{ choice.label | translate }}</mat-option></mat-select></ng-container><ng-template #expanded><ajf-checkbox-group class=\"ajf-choices-container\" [formControl]=\"control|async\"><ajf-checkbox-group-item *ngFor=\"let choice of instance.filteredChoices\" [readonly]=\"readonly\" [value]=\"choice.value\">{{ choice.label | translate }}</ajf-checkbox-group-item></ajf-checkbox-group></ng-template>",
                     styles: [""],
                     changeDetection: ChangeDetectionStrategy.OnPush,
                     encapsulation: ViewEncapsulation.None,
@@ -324,7 +324,7 @@ var AjfSingleChoiceFieldComponent = /** @class */ (function (_super) {
         return _super.call(this, cdr, service, was, searchThreshold) || this;
     }
     AjfSingleChoiceFieldComponent.decorators = [
-        { type: Component, args: [{template: "<ng-container *ngIf=\"!(instance|ajfExpandFieldWithChoices:searchThreshold) ; else expanded\"><mat-select [formControl]=\"control|async\"><mat-option [value]=\"choice.value\" *ngFor=\"let choice of instance.filteredChoices\">{{ choice.label | translate }}</mat-option></mat-select></ng-container><ng-template #expanded><mat-radio-group class=\"ajf-choices-container\" [formControl]=\"control|async\"><mat-radio-button [value]=\"choice.value\" *ngFor=\"let choice of instance.filteredChoices\">{{ choice.label | translate }}</mat-radio-button></mat-radio-group></ng-template>",
+        { type: Component, args: [{template: "<ng-container *ngIf=\"!(instance|ajfExpandFieldWithChoices:searchThreshold) ; else expanded\"><mat-select [formControl]=\"control|async\" [disabled]=\"readonly\"><mat-option [value]=\"choice.value\" *ngFor=\"let choice of instance.filteredChoices\">{{ choice.label | translate }}</mat-option></mat-select></ng-container><ng-template #expanded><mat-radio-group class=\"ajf-choices-container\" [formControl]=\"control|async\"><mat-radio-button [value]=\"choice.value\" [disabled]=\"readonly\" *ngFor=\"let choice of instance.filteredChoices\">{{ choice.label | translate }}</mat-radio-button></mat-radio-group></ng-template>",
                     styles: [""],
                     changeDetection: ChangeDetectionStrategy.OnPush,
                     encapsulation: ViewEncapsulation.None,
