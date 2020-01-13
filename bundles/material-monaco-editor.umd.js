@@ -853,7 +853,7 @@
             { type: core.Component, args: [{encapsulation: core.ViewEncapsulation.None,
                         changeDetection: core.ChangeDetectionStrategy.OnPush,
                         selector: 'ajf-monaco-editor',
-                        styles: ["ajf-monaco-editor{display:flex;align-items:stretch}ajf-monaco-editor .ajf-monaco-editor{flex:1 0 auto}"],
+                        styles: ["ajf-monaco-editor{display:flex;align-items:stretch;overflow:hidden}ajf-monaco-editor .ajf-monaco-editor{flex:1 0 auto}"],
                         template: "<div #editor class=\"ajf-monaco-editor\"></div>",
                         host: {
                             '(window:resize)': 'onResize($event)'

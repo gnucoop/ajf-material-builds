@@ -380,11 +380,18 @@
          * @param {?} n
          * @return {?}
          */
-        function (n) { return (/** @type {?} */ ({
-            node: n,
-            children: buildFormBuilderNodesSubtree(nodes, n),
-            content: buildFormBuilderNodesContent(nodes, n)
-        })); }));
+        function (n) {
+            /** @type {?} */
+            var children = buildFormBuilderNodesSubtree(nodes, n);
+            if (children.length === 0) {
+                children.push({ parent: n, parentNode: 0 });
+            }
+            return (/** @type {?} */ ({
+                node: n,
+                children: children,
+                content: buildFormBuilderNodesContent(nodes, n)
+            }));
+        }));
         if (!ignoreConditionalBranches) {
             /** @type {?} */
             var entriesNum = entries.length;
@@ -869,12 +876,13 @@
                 });
             }
             else {
-                node = forms$1.createNode({
+                node = forms$1.createContainerNode({
                     id: id,
                     nodeType: nodeType.nodeType.node,
                     parent: parent.id,
                     parentNode: parentNode,
                     name: '',
+                    nodes: [],
                 });
             }
             this._beforeNodesUpdate.emit();
@@ -890,9 +898,14 @@
                 if (cn != null) {
                     if (!isFieldNode) {
                         /** @type {?} */
+                        var replaceNodes = cn.nodes === nodes;
+                        /** @type {?} */
                         var newNodes = cn.nodes.slice(0);
                         newNodes.push(node);
                         cn.nodes = newNodes;
+                        if (replaceNodes) {
+                            nodes = newNodes;
+                        }
                     }
                     else {
                         cn.nodes.push(node);
@@ -939,24 +952,25 @@
          * @return {?}
          */
         function () {
-            return this._form.pipe(operators.withLatestFrom(this._nodes), operators.filter((/**
-             * @param {?} r
+            return rxjs.combineLatest([this.form, this.nodes, this.attachmentsOrigins, this.choicesOrigins]).pipe(operators.filter((/**
+             * @param {?} __0
              * @return {?}
              */
-            function (r) { return r[0] != null; })), operators.map((/**
-             * @param {?} r
+            function (_a) {
+                var form = _a[0];
+                return form != null;
+            })), operators.map((/**
+             * @param {?} __0
              * @return {?}
              */
-            function (r) {
-                /** @type {?} */
-                var form = (/** @type {?} */ (r[0]));
-                /** @type {?} */
-                var nodes = r[1];
+            function (_a) {
+                var form = _a[0], nodes = _a[1], attachmentsOrigins = _a[2], choicesOrigins = _a[3];
                 return forms$1.createForm({
-                    choicesOrigins: form.choicesOrigins.slice(0),
-                    attachmentsOrigins: form.attachmentsOrigins.slice(0),
-                    stringIdentifier: form.stringIdentifier.slice(0),
+                    choicesOrigins: choicesOrigins.slice(0),
+                    attachmentsOrigins: attachmentsOrigins.slice(0),
+                    stringIdentifier: (/** @type {?} */ (form)).stringIdentifier.slice(0),
                     nodes: (/** @type {?} */ (nodes.slice(0))),
+                    supplementaryInformations: (/** @type {?} */ (form)).supplementaryInformations,
                 });
             })));
         };
@@ -1349,13 +1363,20 @@
                         // TODO: @trik check this, was always true?
                         // if (cn instanceof AjfNode) {
                         /** @type {?} */
+                        var replaceNodes = cn.nodes === nodes;
+                        /** @type {?} */
                         var idx = cn.nodes.indexOf(origNode);
                         /** @type {?} */
                         var newNodes = cn.nodes.slice(0, idx);
                         newNodes.push(node);
                         newNodes = newNodes.concat(cn.nodes.slice(idx + 1));
                         cn.nodes = newNodes;
-                        nodes = nodes.slice(0);
+                        if (replaceNodes) {
+                            nodes = newNodes;
+                        }
+                        else {
+                            nodes = nodes.slice(0);
+                        }
                         // } else {
                         //   const idx = nodes.indexOf(origNode);
                         //   nodes = nodes.slice(0, idx).concat([node]).concat(nodes.slice(idx + 1));
@@ -1397,8 +1418,6 @@
                     /** @type {?} */
                     var cn = getNodeContainer({ nodes: nodes }, node);
                     if (cn != null) {
-                        // TODO: @trik check this, was always true?
-                        // if (cn instanceof AjfNode) {
                         /** @type {?} */
                         var idx = cn.nodes.indexOf(node);
                         /** @type {?} */
@@ -1406,10 +1425,6 @@
                         newNodes = newNodes.concat(cn.nodes.slice(idx + 1));
                         cn.nodes = newNodes;
                         nodes = nodes.slice(0);
-                        // } else {
-                        //   const idx = nodes.indexOf(node);
-                        //   nodes = nodes.slice(0, idx).concat(nodes.slice(idx + 1));
-                        // }
                         nodes = deleteNodeSubtree(nodes, node);
                     }
                     return nodes;
@@ -1660,7 +1675,7 @@
         AjfFbConditionEditor.decorators = [
             { type: core.Component, args: [{selector: 'ajf-condition-editor',
                         template: "<div class=\"ajf-editor\"><ajf-monaco-editor (init)=\"onEditorInit()\" (valueChange)=\"editedValue = $event\" [value]=\"condition\" language=\"javascript\"></ajf-monaco-editor></div><div class=\"ajf-editor-panel\"><mat-nav-list dense *ngIf=\"fields?.length > 0\"><a mat-list-item (click)=\"insertVariable(field.name)\" [matTooltip]=\"field.label\" *ngFor=\"let field of fields\"><ajf-node-icon [node]=\"field\"></ajf-node-icon>{{ field.name }}</a></mat-nav-list></div>",
-                        styles: ["ajf-condition-editor{display:flex;flex-direction:row;align-items:stretch;max-height:512px}ajf-condition-editor .ajf-editor{flex:.75 0 auto;display:flex;flex-direction:row;align-items:stretch}ajf-condition-editor .ajf-editor monaco-editor{flex:1 0 auto;min-width:512px;min-height:256px}ajf-condition-editor .ajf-editor-panel{flex:.25 0 auto;overflow-y:auto}"],
+                        styles: ["ajf-condition-editor{display:flex;flex-direction:row;align-items:stretch;max-height:512px}ajf-condition-editor .ajf-editor{flex:.75 0 auto;display:flex;flex-direction:row;align-items:stretch}ajf-condition-editor .ajf-editor monaco-editor{flex:1 0 auto;min-width:512px;min-height:256px}ajf-condition-editor .ajf-editor-panel{flex:.25 0 auto;overflow-y:auto}ajf-condition-editor ajf-monaco-editor{min-width:400px}"],
                         changeDetection: core.ChangeDetectionStrategy.OnPush,
                         encapsulation: core.ViewEncapsulation.None
                     },] },
@@ -1959,13 +1974,13 @@
             this._hasContent = false;
             this._isFirst = false;
             this._isNodeEntry = false;
+            this._level = 0;
             this._branchColors = branchColors.slice(0);
             this._dropZones = ['fbdz-node'];
             this._slideDropZones = ['fbdz-slide'];
             this._originOffset = 0;
             this._originLeftMargin = '0';
             this._firstBranchColor = branchColors[0];
-            this._isSlide = false;
             this._branchLinesSubscription = rxjs.Subscription.EMPTY;
             this._childEntriesSubscription = rxjs.Subscription.EMPTY;
             this._currentEditedNode = this._service.editedNodeEntry;
@@ -2017,14 +2032,25 @@
                     /** @type {?} */
                     var node = ne.node;
                     this._hasContent = node != null && forms$1.isContainerNode(node);
-                    this._isSlide = forms$1.isSlidesNode(((/** @type {?} */ (nodeEntry))).parent);
                 }
                 else {
                     this._isNodeEntry = false;
                     this._hasContent = false;
-                    this._isSlide = false;
                 }
             },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(AjfFbNodeEntry.prototype, "level", {
+            get: /**
+             * @return {?}
+             */
+            function () { return this._level; },
+            set: /**
+             * @param {?} value
+             * @return {?}
+             */
+            function (value) { this._level = value; },
             enumerable: true,
             configurable: true
         });
@@ -2219,18 +2245,24 @@
             return !item.data.isSlide;
         };
         /**
-         * @param {?} item
          * @return {?}
          */
         AjfFbNodeEntry.prototype.emptyAreaDropPredicate = /**
-         * @param {?} item
          * @return {?}
          */
-        function (item) {
-            if (this._isSlide) {
+        function () {
+            var _this = this;
+            return (/**
+             * @param {?} item
+             * @param {?} _drop
+             * @return {?}
+             */
+            function (item, _drop) {
+                if (_this._level > 0) {
+                    return !item.data.isSlide;
+                }
                 return item.data.isSlide || false;
-            }
-            return !item.data.isSlide;
+            });
         };
         /**
          * @private
@@ -2269,7 +2301,7 @@
         };
         AjfFbNodeEntry.decorators = [
             { type: core.Component, args: [{selector: 'ajf-fb-node-entry',
-                        template: "<ng-template [ngIf]=\"nodeEntry != null\"><ng-template [ngIf]=\"isNodeEntry\"><ajf-fb-branch-line *ngFor=\"let childNodeEntry of realNodeEntry.children; let idx = index\" [offset]=\"idx\" [color]=\"branchColors[idx]\"></ajf-fb-branch-line></ng-template><div class=\"mat-card-container\" [class.ajf-highlight]=\"(currentEditedNode|async) == nodeEntry\"><div *ngIf=\"!isFirst\" class=\"ajf-origin-line\" [style.margin-left]=\"originLeftMargin\" [style.border-color]=\"firstBranchColor\"></div><ng-template [ngIf]=\"isNodeEntry\"><mat-card><div class=\"ajf-title-row\"><ajf-node-icon [node]=\"realNodeEntry.node\"></ajf-node-icon><span class=\"ajf-title\" [innerHTML]=\"(realNodeEntry.node.label || realNodeEntry.node.name)  | translate\"></span> <span class=\"ajf-actions\"><button [disabled]=\"currentEditedNode|async\" (click)=\"edit()\" mat-icon-button><mat-icon>edit</mat-icon></button> <button [disabled]=\"currentEditedNode|async\" (click)=\"delete()\" mat-icon-button><mat-icon>delete</mat-icon></button></span></div><div *ngIf=\"hasContent\"><ajf-fb-node-entry *ngFor=\"let contentEntry of realNodeEntry.content; let isFirstChild = first; let idx = index\" [isFirst]=\"isFirstChild\" [firstBranchColor]=\"branchColors[idx]\" [nodeEntry]=\"contentEntry\"></ajf-fb-node-entry><mat-card class=\"ajf-empty\" *ngIf=\"realNodeEntry.content.length === 0\" cdkDropList [cdkDropListEnterPredicate]=\"disableSlideDropPredicate\" (cdkDropListDropped)=\"onDropSuccess($event, true)\">&nbsp;</mat-card></div></mat-card></ng-template><ng-template [ngIf]=\"!isNodeEntry\"><mat-card class=\"ajf-empty\" cdkDropList [cdkDropListEnterPredicate]=\"emptyAreaDropPredicate\" (cdkDropListDropped)=\"onDropSuccess($event)\">&nbsp;</mat-card></ng-template></div><ng-template [ngIf]=\"isNodeEntry\"><ajf-fb-node-entry *ngFor=\"let childNodeEntry of realNodeEntry.children; let idx = index\" [originOffset]=\"idx\" [firstBranchColor]=\"branchColors[idx]\" [nodeEntry]=\"childNodeEntry\"></ajf-fb-node-entry></ng-template></ng-template>",
+                        template: "<ng-template [ngIf]=\"nodeEntry != null\"><ng-template [ngIf]=\"isNodeEntry\"><ajf-fb-branch-line *ngFor=\"let childNodeEntry of realNodeEntry.children; let idx = index\" [offset]=\"idx\" [color]=\"branchColors[idx]\"></ajf-fb-branch-line></ng-template><div class=\"mat-card-container\" [class.ajf-highlight]=\"(currentEditedNode|async) == nodeEntry\"><div *ngIf=\"!isFirst\" class=\"ajf-origin-line\" [style.margin-left]=\"originLeftMargin\" [style.border-color]=\"firstBranchColor\"></div><ng-template [ngIf]=\"isNodeEntry\"><mat-card><div class=\"ajf-title-row\"><ajf-node-icon [node]=\"realNodeEntry.node\"></ajf-node-icon><span class=\"ajf-title\" [innerHTML]=\"(realNodeEntry.node.label || realNodeEntry.node.name)  | translate\"></span> <span class=\"ajf-actions\"><button [disabled]=\"currentEditedNode|async\" (click)=\"edit()\" mat-icon-button><mat-icon>edit</mat-icon></button> <button [disabled]=\"currentEditedNode|async\" (click)=\"delete()\" mat-icon-button><mat-icon>delete</mat-icon></button></span></div><div *ngIf=\"hasContent\"><ajf-fb-node-entry *ngFor=\"let contentEntry of realNodeEntry.content; let isFirstChild = first; let idx = index\" [level]=\"level + 1\" [isFirst]=\"isFirstChild\" [firstBranchColor]=\"branchColors[idx]\" [nodeEntry]=\"contentEntry\"></ajf-fb-node-entry><mat-card class=\"ajf-empty\" *ngIf=\"realNodeEntry.content.length === 0\" cdkDropList [cdkDropListEnterPredicate]=\"disableSlideDropPredicate\" (cdkDropListDropped)=\"onDropSuccess($event, true)\">&nbsp;</mat-card></div></mat-card></ng-template><ng-template [ngIf]=\"!isNodeEntry\"><mat-card class=\"ajf-empty\" cdkDropList [cdkDropListEnterPredicate]=\"emptyAreaDropPredicate()\" (cdkDropListDropped)=\"onDropSuccess($event)\">&nbsp;</mat-card></ng-template></div><ng-template [ngIf]=\"isNodeEntry\"><ajf-fb-node-entry *ngFor=\"let childNodeEntry of realNodeEntry.children; let idx = index\" [level]=\"level\" [originOffset]=\"idx\" [firstBranchColor]=\"branchColors[idx]\" [nodeEntry]=\"childNodeEntry\"></ajf-fb-node-entry></ng-template></ng-template>",
                         styles: ["ajf-fb-node-entry{display:block;position:relative}ajf-fb-node-entry .mat-card-container{position:relative}ajf-fb-node-entry .mat-card-container .ajf-origin-line{position:absolute;top:0;left:25px;width:25px;height:25px;border-bottom:2px solid;border-left:2px solid;border-bottom-left-radius:.5em}ajf-fb-node-entry .mat-card-container mat-card{margin-left:50px;padding:.5em 1em;margin-top:.2em;margin-bottom:.2em;background-color:#fff}ajf-fb-node-entry .mat-card-container mat-card .ajf-title-row{display:flex;flex-direction:row;align-items:center}ajf-fb-node-entry .mat-card-container mat-card .ajf-title-row>.ajf-title{flex:1 1 auto}ajf-fb-node-entry .mat-card-container mat-card .ajf-title-row>.ajf-actions{flex:0 0 auto;white-space:nowrap}ajf-fb-node-entry .mat-card-container mat-card.ajf-empty{line-height:36px;border:2px dashed;box-shadow:none;box-sizing:border-box}ajf-fb-node-entry .mat-card-container.ajf-highlight>mat-card{background-color:#fff9c4}"],
                         host: {
                             '(window.resize)': 'onResize()'
@@ -2287,6 +2319,7 @@
             childEntries: [{ type: core.ViewChildren, args: [AjfFbNodeEntry, { read: core.ElementRef },] }],
             isFirst: [{ type: core.Input }],
             nodeEntry: [{ type: core.Input }],
+            level: [{ type: core.Input }],
             originOffset: [{ type: core.Input }],
             firstBranchColor: [{ type: core.Input }]
         };
@@ -4168,8 +4201,8 @@
         };
         AjfFbNodeProperties.decorators = [
             { type: core.Component, args: [{selector: 'ajf-fb-node-properties',
-                        template: "<div [style.display]=\"(enabled|async) ? 'none' : 'block'\" class=\"ajf-disabled-overlay\"></div><div class=\"ajf-header\"><h3 translate>Properties</h3><mat-icon (click)=\"save()\">save</mat-icon><mat-icon (click)=\"cancel()\">cancel</mat-icon></div><ng-container *ngIf=\"nodeEntry|async as ne\"><ng-container *ngIf=\"propertiesForm|async as pf\"><form [formGroup]=\"pf\" novalidate><div class=\"ajf-prop\"><mat-form-field><input matInput formControlName=\"name\" [placeholder]=\"'Name' | translate\"></mat-form-field></div><div class=\"ajf-prop\"><mat-form-field><input matInput formControlName=\"label\" [placeholder]=\"'Label' | translate\"></mat-form-field></div><div class=\"ajf-prop\"><div class=\"ajf-select-container\"><mat-select formControlName=\"visibilityOpt\" [placeholder]=\"'Visible' | translate\"><mat-option value=\"always\" translate>Always</mat-option><mat-option value=\"never\" translate>Never</mat-option><mat-option value=\"condition\" translate>Condition...</mat-option></mat-select><button (click)=\"editVisibility()\" [disabled]=\"pf.value['visibilityOpt'] != 'condition'\" mat-raised-button [matTooltip]=\"curVisibility\"><div class=\"ajf-icon-cont\"><mat-icon>edit</mat-icon><span>{{ curVisibility }}</span></div></button></div></div><div class=\"ajf-prop\"><div><label translate>Branches</label></div><div><mat-slider formControlName=\"conditionalBranchesNum\" thumbLabel tickInterval=\"auto\" min=\"1\" max=\"5\" step=\"1\"></mat-slider></div><div *ngFor=\"let branch of conditionalBranches; let idx = index\"><button (click)=\"editConditionalBranch(idx)\" mat-raised-button [matTooltip]=\"branch\"><div class=\"ajf-icon-cont\"><mat-icon>edit</mat-icon><span>{{ branch }}</span></div></button></div></div><ng-template [ngIf]=\"isRepeatingContainerNode((ne)?.node)\"><div class=\"ajf-prop\"><div><label translate>Repetitions</label></div><div><button (click)=\"editFormulaReps()\" mat-raised-button [matTooltip]=\"curFormulaReps\"><div class=\"ajf-icon-cont\"><mat-icon>edit</mat-icon><span>{{ curFormulaReps }}</span></div></button></div><div><label translate>Min repetitions</label></div><div><mat-slider formControlName=\"minReps\" thumbLabel tickInterval=\"auto\" min=\"1\" max=\"5\" step=\"1\"></mat-slider></div><div><label translate>Max repetitions</label></div><div><mat-slider formControlName=\"maxReps\" thumbLabel tickInterval=\"auto\" min=\"1\" max=\"5\" step=\"1\"></mat-slider></div></div></ng-template><ng-template [ngIf]=\"isField((ne)?.node)\"><div class=\"ajf-prop\"><div class=\"ajf-select-container\"><mat-select formControlName=\"size\" [placeholder]=\"'Size' | translate\"><mat-option *ngFor=\"let fieldSize of fieldSizes\" [value]=\"fieldSize.value\">{{ fieldSize.label }}</mat-option></mat-select></div></div><div class=\"ajf-prop\"><mat-form-field><textarea matInput formControlName=\"description\" [placeholder]=\"'Description' | translate\"></textarea></mat-form-field></div><div class=\"ajf-prop\"><mat-form-field><input matInput formControlName=\"defaultValue\" [placeholder]=\"'Default value' | translate\"></mat-form-field></div><div class=\"ajf-prop\"><div><label translate>Formula</label></div><div><button (click)=\"editFormula()\" mat-raised-button [matTooltip]=\"curFormula\"><div class=\"ajf-icon-cont\"><mat-icon>edit</mat-icon><span>{{ curFormula }}</span></div></button></div></div><div class=\"ajf-prop\"><div><label translate>Force value</label></div><div><button (click)=\"editForceValue()\" mat-raised-button [matTooltip]=\"curForceValue\"><div class=\"ajf-icon-cont\"><mat-icon>edit</mat-icon><span>{{ curForceValue }}</span></div></button></div></div><div class=\"ajf-prop\"><mat-checkbox formControlName=\"notEmpty\" translate>Not empty</mat-checkbox></div><ng-template [ngIf]=\"isNumericField((ne)?.node)\"><div class=\"ajf-prop\"><mat-form-field><input matInput formControlName=\"minValue\" [placeholder]=\"'Min value' | translate\"></mat-form-field></div><div class=\"ajf-prop\"><mat-form-field><input matInput formControlName=\"maxValue\" [placeholder]=\"'Max value' | translate\"></mat-form-field></div><div class=\"ajf-prop\"><mat-form-field><input matInput formControlName=\"minDigits\" [placeholder]=\"'Min digits' | translate\"></mat-form-field></div><div class=\"ajf-prop\"><mat-form-field><input matInput formControlName=\"maxDigits\" [placeholder]=\"'Max digits' | translate\"></mat-form-field></div></ng-template><div class=\"ajf-prop\"><div class=\"ajf-header\"><label translate>Validation</label><mat-icon class=\"ajf-pointer\" (click)=\"addValidationCondition()\">add_circle_outline</mat-icon></div><div *ngIf=\"validationConditions == null || validationConditions.length == 0\" class=\"ajf-validation-row ajf-emph\" translate>No conditions</div><div class=\"ajf-validation-row\" *ngFor=\"let validationCondition of validationConditions; let idx = index\"><button (click)=\"editValidationCondition(idx)\" mat-raised-button [matTooltip]=\"validationCondition.condition\"><div class=\"ajf-icon-cont\"><mat-icon>edit</mat-icon><span>{{ validationCondition.condition }}</span></div></button><mat-icon class=\"ajf-pointer\" (click)=\"removeValidationCondition(idx)\">remove_circle_outline</mat-icon></div></div><div class=\"ajf-prop\"><mat-checkbox formControlName=\"notEmptyWarning\" translate>Not empty warning</mat-checkbox></div><div class=\"ajf-prop\"><div class=\"ajf-header\"><label translate>Warnings</label><mat-icon class=\"ajf-pointer\" (click)=\"addWarningCondition()\">add_circle_outline</mat-icon></div><div *ngIf=\"warningConditions == null || warningConditions.length == 0\" class=\"ajf-validation-row ajf-emph\" translate>No warnings</div><div class=\"ajf-validation-row\" *ngFor=\"let warningCondition of warningConditions; let idx = index\"><button (click)=\"editWarningCondition(idx)\" mat-raised-button [matTooltip]=\"warningCondition.condition\"><div class=\"ajf-icon-cont\"><mat-icon>edit</mat-icon><span>{{ warningCondition.condition }}</span></div></button><mat-icon class=\"ajf-pointer\" (click)=\"removeWarningCondition(idx)\">remove_circle_outline</mat-icon></div></div><div class=\"ajf-prop\"><div><label translate>Go to next slide condition</label></div><div><button (click)=\"editNextSlideCondition()\" mat-raised-button [matTooltip]=\"nextSlideCondition\"><div class=\"ajf-icon-cont\"><mat-icon>edit</mat-icon><span>{{ nextSlideCondition }}</span></div></button></div></div><ng-template [ngIf]=\"isFieldWithChoices((ne)?.node)\"><div class=\"ajf-prop\"><div class=\"ajf-select-container\"><mat-select formControlName=\"choicesOrigin\" [placeholder]=\"'Choices' | translate\"><mat-option *ngFor=\"let choicesOrigin of choicesOrigins\" [value]=\"choicesOrigin.name\">{{ choicesOrigin.label || choicesOrigin.name }}</mat-option></mat-select></div></div><div class=\"ajf-prop\"><div><label translate>Choices filter</label></div><div><button (click)=\"editChoicesFilter()\" mat-raised-button [matTooltip]=\"curChoicesFilter\"><div class=\"ajf-icon-cont\"><mat-icon>edit</mat-icon><span>{{ curChoicesFilter }}</span></div></button></div></div><div class=\"ajf-prop\"><mat-checkbox formControlName=\"forceExpanded\" translate>Force expanded selection</mat-checkbox></div><div class=\"ajf-prop\"><mat-checkbox formControlName=\"forceNarrow\" translate>Force narrow selection</mat-checkbox></div><div class=\"ajf-prop\"><div class=\"ajf-header\"><label translate>Trigger selection</label><mat-icon class=\"ajf-pointer\" (click)=\"addTriggerCondition()\">add_circle_outline</mat-icon></div><div *ngIf=\"triggerConditions == null || triggerConditions.length == 0\" class=\"ajf-validation-row ajf-emph\" translate>No trigger condition</div><div class=\"ajf-validation-row\" *ngFor=\"let triggerCondition of triggerConditions; let idx = index\"><button (click)=\"editTriggerCondition(idx)\" mat-raised-button [matTooltip]=\"triggerCondition\"><div class=\"ajf-icon-cont\"><mat-icon>edit</mat-icon><span>{{ triggerCondition }}</span></div></button><mat-icon class=\"pointer\" (click)=\"removeTriggerCondition(idx)\">remove_circle_outline</mat-icon></div></div></ng-template></ng-template></form></ng-container></ng-container>",
-                        styles: ["ajf-fb-node-properties{display:block;padding:1em;position:relative}ajf-fb-node-properties mat-icon{cursor:pointer}ajf-fb-node-properties .ajf-header{display:flex;flex-direction:row;align-items:center;flex-wrap:nowrap}ajf-fb-node-properties .ajf-header>h3,ajf-fb-node-properties .ajf-header>label{flex:1 0 auto;margin-right:.5em}ajf-fb-node-properties .ajf-header>mat-icon{flex:0 0 auto;margin-left:.5em}ajf-fb-node-properties .ajf-disabled-overlay{position:absolute;top:0;right:0;bottom:0;left:0;opacity:.4;background-color:#fff}ajf-fb-node-properties .ajf-select-container{padding-top:16px;display:flex;flex-direction:column;align-items:stretch}ajf-fb-node-properties .ajf-emph{font-style:italic}ajf-fb-node-properties [mat-raised-button]{margin:.5em 0}ajf-fb-node-properties [mat-raised-button].ajf-pointer{cursor:pointer}ajf-fb-node-properties [mat-raised-button] .ajf-icon-cont{display:flex;flex-direction:row;align-items:center}ajf-fb-node-properties [mat-raised-button] .ajf-icon-cont span{flex:1 1 auto;overflow:hidden;text-overflow:ellipsis;display:block;min-height:36px}ajf-fb-node-properties .ajf-validation-row{margin:.5em 0;display:flex;flex-direction:row;align-items:center}ajf-fb-node-properties .ajf-validation-row button{flex:1 1 auto}ajf-fb-node-properties .ajf-validation-row mat-icon{flex:0 0 auto}ajf-fb-node-properties .ajf-prop{margin:.5em 0}ajf-fb-node-properties [mat-raised-button],ajf-fb-node-properties mat-form-field,ajf-fb-node-properties mat-slider{width:100%}"],
+                        template: "<div [style.display]=\"(enabled|async) ? 'none' : 'block'\" class=\"ajf-disabled-overlay\"></div><div class=\"ajf-header\"><h3 translate>Properties</h3><mat-icon (click)=\"save()\">save</mat-icon><mat-icon (click)=\"cancel()\">cancel</mat-icon></div><ng-container *ngIf=\"nodeEntry|async as ne\"><ng-container *ngIf=\"propertiesForm|async as pf\"><form [formGroup]=\"pf\" novalidate><div class=\"ajf-prop\"><mat-form-field><input matInput formControlName=\"name\" [placeholder]=\"'Name' | translate\"></mat-form-field></div><div class=\"ajf-prop\"><mat-form-field><input matInput formControlName=\"label\" [placeholder]=\"'Label' | translate\"></mat-form-field></div><div class=\"ajf-prop\"><mat-form-field><mat-label translate>Visibility</mat-label><mat-select formControlName=\"visibilityOpt\" [placeholder]=\"'Visible' | translate\"><mat-option value=\"always\" translate>Always</mat-option><mat-option value=\"never\" translate>Never</mat-option><mat-option value=\"condition\" translate>Condition...</mat-option></mat-select></mat-form-field><button (click)=\"editVisibility()\" [disabled]=\"pf.value['visibilityOpt'] != 'condition'\" mat-raised-button [matTooltip]=\"curVisibility\"><div class=\"ajf-icon-cont\"><mat-icon>edit</mat-icon><span>{{ curVisibility }}</span></div></button></div><div class=\"ajf-prop\"><div><label translate>Branches</label></div><div><mat-slider formControlName=\"conditionalBranchesNum\" thumbLabel tickInterval=\"auto\" min=\"1\" max=\"5\" step=\"1\"></mat-slider></div><div *ngFor=\"let branch of conditionalBranches; let idx = index\"><button (click)=\"editConditionalBranch(idx)\" mat-raised-button [matTooltip]=\"branch\"><div class=\"ajf-icon-cont\"><mat-icon>edit</mat-icon><span>{{ branch }}</span></div></button></div></div><ng-template [ngIf]=\"isRepeatingContainerNode((ne)?.node)\"><div class=\"ajf-prop\"><div><label translate>Repetitions</label></div><div><button (click)=\"editFormulaReps()\" mat-raised-button [matTooltip]=\"curFormulaReps\"><div class=\"ajf-icon-cont\"><mat-icon>edit</mat-icon><span>{{ curFormulaReps }}</span></div></button></div><div><label translate>Min repetitions</label></div><div><mat-slider formControlName=\"minReps\" thumbLabel tickInterval=\"auto\" min=\"1\" max=\"5\" step=\"1\"></mat-slider></div><div><label translate>Max repetitions</label></div><div><mat-slider formControlName=\"maxReps\" thumbLabel tickInterval=\"auto\" min=\"1\" max=\"5\" step=\"1\"></mat-slider></div></div></ng-template><ng-template [ngIf]=\"isField((ne)?.node)\"><div class=\"ajf-prop\"><mat-form-field><mat-label translate>Field size</mat-label><mat-select formControlName=\"size\" [placeholder]=\"'Size' | translate\"><mat-option *ngFor=\"let fieldSize of fieldSizes\" [value]=\"fieldSize.value\">{{ fieldSize.label }}</mat-option></mat-select></mat-form-field></div><div class=\"ajf-prop\"><mat-form-field><textarea matInput formControlName=\"description\" [placeholder]=\"'Description' | translate\"></textarea></mat-form-field></div><div class=\"ajf-prop\"><mat-form-field><input matInput formControlName=\"defaultValue\" [placeholder]=\"'Default value' | translate\"></mat-form-field></div><div class=\"ajf-prop\"><div><label translate>Formula</label></div><div><button (click)=\"editFormula()\" mat-raised-button [matTooltip]=\"curFormula\"><div class=\"ajf-icon-cont\"><mat-icon>edit</mat-icon><span>{{ curFormula }}</span></div></button></div></div><div class=\"ajf-prop\"><mat-checkbox formControlName=\"notEmpty\" translate>Not empty</mat-checkbox></div><ng-template [ngIf]=\"isNumericField((ne)?.node)\"><div class=\"ajf-prop\"><mat-form-field><input matInput formControlName=\"minValue\" [placeholder]=\"'Min value' | translate\"></mat-form-field></div><div class=\"ajf-prop\"><mat-form-field><input matInput formControlName=\"maxValue\" [placeholder]=\"'Max value' | translate\"></mat-form-field></div><div class=\"ajf-prop\"><mat-form-field><input matInput formControlName=\"minDigits\" [placeholder]=\"'Min digits' | translate\"></mat-form-field></div><div class=\"ajf-prop\"><mat-form-field><input matInput formControlName=\"maxDigits\" [placeholder]=\"'Max digits' | translate\"></mat-form-field></div></ng-template><div class=\"ajf-prop\"><div class=\"ajf-header\"><label translate>Validation</label><mat-icon class=\"ajf-pointer\" (click)=\"addValidationCondition()\">add_circle_outline</mat-icon></div><div *ngIf=\"validationConditions == null || validationConditions.length == 0\" class=\"ajf-validation-row ajf-emph\" translate>No conditions</div><div class=\"ajf-validation-row\" *ngFor=\"let validationCondition of validationConditions; let idx = index\"><button (click)=\"editValidationCondition(idx)\" mat-raised-button [matTooltip]=\"validationCondition.condition\"><div class=\"ajf-icon-cont\"><mat-icon>edit</mat-icon><span>{{ validationCondition.condition }}</span></div></button><mat-icon class=\"ajf-pointer\" (click)=\"removeValidationCondition(idx)\">remove_circle_outline</mat-icon></div></div><div class=\"ajf-prop\"><mat-checkbox formControlName=\"notEmptyWarning\" translate>Not empty warning</mat-checkbox></div><div class=\"ajf-prop\"><div class=\"ajf-header\"><label translate>Warnings</label><mat-icon class=\"ajf-pointer\" (click)=\"addWarningCondition()\">add_circle_outline</mat-icon></div><div *ngIf=\"warningConditions == null || warningConditions.length == 0\" class=\"ajf-validation-row ajf-emph\" translate>No warnings</div><div class=\"ajf-validation-row\" *ngFor=\"let warningCondition of warningConditions; let idx = index\"><button (click)=\"editWarningCondition(idx)\" mat-raised-button [matTooltip]=\"warningCondition.condition\"><div class=\"ajf-icon-cont\"><mat-icon>edit</mat-icon><span>{{ warningCondition.condition }}</span></div></button><mat-icon class=\"ajf-pointer\" (click)=\"removeWarningCondition(idx)\">remove_circle_outline</mat-icon></div></div><div class=\"ajf-prop\"><div><label translate>Go to next slide condition</label></div><div><button (click)=\"editNextSlideCondition()\" mat-raised-button [matTooltip]=\"nextSlideCondition\"><div class=\"ajf-icon-cont\"><mat-icon>edit</mat-icon><span>{{ nextSlideCondition }}</span></div></button></div></div><ng-template [ngIf]=\"isFieldWithChoices((ne)?.node)\"><div class=\"ajf-prop\"><mat-form-field><mat-label translate>Choices origins</mat-label><mat-select formControlName=\"choicesOrigin\" [placeholder]=\"'Choices' | translate\"><mat-option *ngFor=\"let choicesOrigin of choicesOrigins\" [value]=\"choicesOrigin.name\">{{ choicesOrigin.label || choicesOrigin.name }}</mat-option></mat-select></mat-form-field></div><div class=\"ajf-prop\"><div><label translate>Choices filter</label></div><div><button (click)=\"editChoicesFilter()\" mat-raised-button [matTooltip]=\"curChoicesFilter\"><div class=\"ajf-icon-cont\"><mat-icon>edit</mat-icon><span>{{ curChoicesFilter }}</span></div></button></div></div><div class=\"ajf-prop\"><mat-checkbox formControlName=\"forceExpanded\" translate>Force expanded selection</mat-checkbox></div><div class=\"ajf-prop\"><mat-checkbox formControlName=\"forceNarrow\" translate>Force narrow selection</mat-checkbox></div><div class=\"ajf-prop\"><div class=\"ajf-header\"><label translate>Trigger selection</label><mat-icon class=\"ajf-pointer\" (click)=\"addTriggerCondition()\">add_circle_outline</mat-icon></div><div *ngIf=\"triggerConditions == null || triggerConditions.length == 0\" class=\"ajf-validation-row ajf-emph\" translate>No trigger condition</div><div class=\"ajf-validation-row\" *ngFor=\"let triggerCondition of triggerConditions; let idx = index\"><button (click)=\"editTriggerCondition(idx)\" mat-raised-button [matTooltip]=\"triggerCondition\"><div class=\"ajf-icon-cont\"><mat-icon>edit</mat-icon><span>{{ triggerCondition }}</span></div></button><mat-icon class=\"pointer\" (click)=\"removeTriggerCondition(idx)\">remove_circle_outline</mat-icon></div></div></ng-template></ng-template></form></ng-container></ng-container>",
+                        styles: ["ajf-fb-node-properties{display:block;padding:1em;position:relative}ajf-fb-node-properties mat-icon{cursor:pointer}ajf-fb-node-properties .ajf-header{display:flex;flex-direction:row;align-items:center;flex-wrap:nowrap}ajf-fb-node-properties .ajf-header>h3,ajf-fb-node-properties .ajf-header>label{flex:1 0 auto;margin-right:.5em}ajf-fb-node-properties .ajf-header>mat-icon{flex:0 0 auto;margin-left:.5em}ajf-fb-node-properties .ajf-disabled-overlay{position:absolute;top:0;right:0;bottom:0;left:0;opacity:.4;background-color:#fff}ajf-fb-node-properties .ajf-emph{font-style:italic}ajf-fb-node-properties [mat-raised-button]{margin:.5em 0}ajf-fb-node-properties [mat-raised-button].ajf-pointer{cursor:pointer}ajf-fb-node-properties [mat-raised-button] .ajf-icon-cont{display:flex;flex-direction:row;align-items:center}ajf-fb-node-properties [mat-raised-button] .ajf-icon-cont span{flex:1 1 auto;overflow:hidden;text-overflow:ellipsis;display:block;min-height:36px}ajf-fb-node-properties .ajf-validation-row{margin:.5em 0;display:flex;flex-direction:row;align-items:center}ajf-fb-node-properties .ajf-validation-row button{flex:1 1 auto}ajf-fb-node-properties .ajf-validation-row mat-icon{flex:0 0 auto}ajf-fb-node-properties .ajf-prop{margin:.5em 0}ajf-fb-node-properties [mat-raised-button],ajf-fb-node-properties mat-form-field,ajf-fb-node-properties mat-slider{width:100%}"],
                         encapsulation: core.ViewEncapsulation.None,
                         changeDetection: core.ChangeDetectionStrategy.OnPush
                     },] },

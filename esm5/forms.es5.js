@@ -37,11 +37,11 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { TranslateModule } from '@ngx-translate/core';
 import { AjfCommonModule } from '@ajf/core/common';
-import { AjfTimeModule } from '@ajf/core/time';
 import { AjfBarcodeModule } from '@ajf/material/barcode';
 import { AjfCalendarModule } from '@ajf/material/calendar';
 import { AjfCheckboxGroupModule } from '@ajf/material/checkbox-group';
 import { AjfPageSliderModule } from '@ajf/material/page-slider';
+import { AjfTimeModule } from '@ajf/material/time';
 
 /**
  * @fileoverview added by tsickle
@@ -445,7 +445,7 @@ var AjfTableFieldComponent = /** @class */ (function (_super) {
         }
     };
     AjfTableFieldComponent.decorators = [
-        { type: Component, args: [{template: "<table class=\"ajf-table-field\"><ng-container *ngIf=\"!instance.node.editable else editableTmpl\"><ng-container *ngFor=\"let columns of (instance|ajfTableVisibleColumns); let i = index\"><tr [ngClass]=\"i | ajfTableRowClass\"><td *ngFor=\"let cellValue of columns\">{{ cellValue | ajfTranslateIfString | ajfFormatIfNumber: '.0-2' }}</td></tr></ng-container></ng-container><ng-template #editableTmpl><ng-container *ngFor=\"let columns of instance.controls; let row = index\"><tr [ngClass]=\"row | ajfTableRowClass\"><td><ng-container *ngIf=\"columns[0] != null\">{{ columns[0] | ajfTranslateIfString | ajfFormatIfNumber: '.0-2' }}</ng-container></td><td *ngFor=\"let contr of columns[1]; let column = index\"><ng-container *ngIf=\"contr != null\"><input *ngIf=\"row > 0 && contr.show; else plainTextCell\" (focusout)=\"contr.show = false\" type=\"number\" [formControl]=\"contr\" (keydown.tab)=\"goToNextCell($event, row, column)\" autoFocus><ng-template #plainTextCell><span *ngIf=\"row > 0; else labelCell\" class=\"ajf-table-cell\" (click)=\"goToCell(row, column)\">{{ contr.value | ajfTranslateIfString | ajfFormatIfNumber: '.0-2' }}</span><ng-template #labelCell>{{ contr | ajfTranslateIfString | ajfFormatIfNumber: '.0-2' }}</ng-template></ng-template></ng-container></td></tr></ng-container></ng-template></table>",
+        { type: Component, args: [{template: "<table class=\"ajf-table-field\"><ng-container *ngIf=\"instance.node as node\"><ng-container *ngFor=\"let columns of instance.controls; let row = index\"><tr [ngClass]=\"row | ajfTableRowClass\"><td><ng-container *ngIf=\"columns[0] != null\">{{ columns[0] | ajfTranslateIfString | ajfFormatIfNumber: '.0-2' }}</ng-container></td><td *ngFor=\"let contr of columns[1]; let column = index\"><ng-container *ngIf=\"contr != null\"><input *ngIf=\"row > 0 && contr.show && node.rows[row-1][column]?.editable; else plainTextCell\" (focusout)=\"contr.show = false\" type=\"number\" [formControl]=\"contr\" (keydown.tab)=\"goToNextCell($event, row, column)\" autoFocus><ng-template #plainTextCell><span *ngIf=\"row > 0; else labelCell\" class=\"ajf-table-cell\" (click)=\"goToCell(row, column)\">{{ contr.value | ajfTranslateIfString | ajfFormatIfNumber: '.0-2' }}</span><ng-template #labelCell>{{ contr | ajfTranslateIfString | ajfFormatIfNumber: '.0-2' }}</ng-template></ng-template></ng-container></td></tr></ng-container></ng-container></table>",
                     styles: ["table.ajf-table-field{border-collapse:collapse;border-spacing:0;width:100%}table.ajf-table-field tr td{position:relative}table.ajf-table-field tr td input,table.ajf-table-field tr td span{cursor:text;position:absolute;width:100%;box-sizing:border-box;outline:0;top:0;right:0;bottom:0;left:0;display:inline-block;border-top:solid 1px #ccc;border-right:solid 1px transparent;border-bottom:solid 1px transparent;border-left:solid 1px #ccc;font-family:inherit;font-size:inherit;line-height:inherit;text-align:center}table.ajf-table-field tr td:last-child input,table.ajf-table-field tr td:last-child span{border-right-color:#ccc}table.ajf-table-field tr:last-of-type td input,table.ajf-table-field tr:last-of-type td span{border-bottom-color:#ccc}"],
                     changeDetection: ChangeDetectionStrategy.OnPush,
                     encapsulation: ViewEncapsulation.None,

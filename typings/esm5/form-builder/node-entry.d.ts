@@ -19,7 +19,7 @@
  * If not, see http://www.gnu.org/licenses/.
  *
  */
-import { CdkDrag, CdkDragDrop } from '@angular/cdk/drag-drop';
+import { CdkDrag, CdkDragDrop, CdkDropList } from '@angular/cdk/drag-drop';
 import { AfterViewInit, ElementRef, OnDestroy, QueryList } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AjfFbBranchLine } from './branch-line';
@@ -36,6 +36,8 @@ export declare class AjfFbNodeEntry implements AfterViewInit, OnDestroy {
     readonly isNodeEntry: boolean;
     private _nodeEntry;
     nodeEntry: AjfFormBuilderNode;
+    private _level;
+    level: number;
     readonly realNodeEntry: AjfFormBuilderNodeEntry;
     private _branchColors;
     readonly branchColors: string[];
@@ -51,7 +53,6 @@ export declare class AjfFbNodeEntry implements AfterViewInit, OnDestroy {
     firstBranchColor: string;
     private _currentEditedNode;
     readonly currentEditedNode: Observable<AjfFormBuilderNodeEntry | null>;
-    private _isSlide;
     private _branchLinesSubscription;
     private _childEntriesSubscription;
     constructor(_service: AjfFormBuilderService);
@@ -62,6 +63,6 @@ export declare class AjfFbNodeEntry implements AfterViewInit, OnDestroy {
     ngOnDestroy(): void;
     onDropSuccess(evt: CdkDragDrop<AjfFormBuilderNodeTypeEntry>, content?: boolean): void;
     disableSlideDropPredicate(item: CdkDrag<AjfFormBuilderNodeTypeEntry>): boolean;
-    emptyAreaDropPredicate(item: CdkDrag<AjfFormBuilderNodeTypeEntry>): boolean;
+    emptyAreaDropPredicate(): (item: CdkDrag, _drop: CdkDropList) => boolean;
     private _updateBranchHeights;
 }
