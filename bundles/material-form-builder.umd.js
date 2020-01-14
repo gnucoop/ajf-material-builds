@@ -20,10 +20,10 @@
  *
  */
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/common'), require('@angular/core'), require('@angular/forms'), require('@angular/cdk/drag-drop'), require('@angular/material/button'), require('@angular/material/card'), require('@angular/material/checkbox'), require('@angular/material/dialog'), require('@angular/material/form-field'), require('@angular/material/icon'), require('@angular/material/input'), require('@angular/material/list'), require('@angular/material/menu'), require('@angular/material/select'), require('@angular/material/sidenav'), require('@angular/material/slider'), require('@angular/material/table'), require('@angular/material/toolbar'), require('@angular/material/tooltip'), require('@ngx-translate/core'), require('@ajf/material/monaco-editor'), require('@ajf/material/node-icon'), require('rxjs/operators'), require('@ajf/core/forms'), require('@angular/cdk/collections'), require('rxjs'), require('@ajf/core/models'), require('@ajf/core/utils')) :
-    typeof define === 'function' && define.amd ? define('@ajf/material/form-builder', ['exports', '@angular/common', '@angular/core', '@angular/forms', '@angular/cdk/drag-drop', '@angular/material/button', '@angular/material/card', '@angular/material/checkbox', '@angular/material/dialog', '@angular/material/form-field', '@angular/material/icon', '@angular/material/input', '@angular/material/list', '@angular/material/menu', '@angular/material/select', '@angular/material/sidenav', '@angular/material/slider', '@angular/material/table', '@angular/material/toolbar', '@angular/material/tooltip', '@ngx-translate/core', '@ajf/material/monaco-editor', '@ajf/material/node-icon', 'rxjs/operators', '@ajf/core/forms', '@angular/cdk/collections', 'rxjs', '@ajf/core/models', '@ajf/core/utils'], factory) :
-    (global = global || self, factory((global.ajf = global.ajf || {}, global.ajf.material = global.ajf.material || {}, global.ajf.material.formBuilder = {}), global.ng.common, global.ng.core, global.ng.forms, global.ng.cdk.dragDrop, global.ng.material.button, global.ng.material.card, global.ng.material.checkbox, global.ng.material.dialog, global.ng.material.formField, global.ng.material.icon, global.ng.material.input, global.ng.material.list, global.ng.material.menu, global.ng.material.select, global.ng.material.sidenav, global.ng.material.slider, global.ng.material.table, global.ng.material.toolbar, global.ng.material.tooltip, global.ngxt.core, global.ajf.material.monacoEditor, global.ajf.material.nodeIcon, global.rxjs.operators, global.ajf.core.forms, global.ng.cdk.collections, global.rxjs, global.ajf.core.models, global.ajf.core.utils));
-}(this, function (exports, common, core, forms, dragDrop, button, card, checkbox, dialog, formField, icon, input, list, menu, select, sidenav, slider, table, toolbar, tooltip, core$1, monacoEditor, nodeIcon, operators, forms$1, collections, rxjs, models, utils) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/common'), require('@angular/core'), require('@angular/forms'), require('@angular/cdk/drag-drop'), require('@angular/material/autocomplete'), require('@angular/material/button'), require('@angular/material/card'), require('@angular/material/checkbox'), require('@angular/material/chips'), require('@angular/material/dialog'), require('@angular/material/form-field'), require('@angular/material/icon'), require('@angular/material/input'), require('@angular/material/list'), require('@angular/material/menu'), require('@angular/material/select'), require('@angular/material/sidenav'), require('@angular/material/slider'), require('@angular/material/table'), require('@angular/material/toolbar'), require('@angular/material/tooltip'), require('@ngx-translate/core'), require('@ajf/material/monaco-editor'), require('@ajf/material/node-icon'), require('rxjs/operators'), require('@ajf/core/forms'), require('@angular/cdk/collections'), require('rxjs'), require('@ajf/core/models'), require('@ajf/core/utils'), require('@angular/cdk/keycodes')) :
+    typeof define === 'function' && define.amd ? define('@ajf/material/form-builder', ['exports', '@angular/common', '@angular/core', '@angular/forms', '@angular/cdk/drag-drop', '@angular/material/autocomplete', '@angular/material/button', '@angular/material/card', '@angular/material/checkbox', '@angular/material/chips', '@angular/material/dialog', '@angular/material/form-field', '@angular/material/icon', '@angular/material/input', '@angular/material/list', '@angular/material/menu', '@angular/material/select', '@angular/material/sidenav', '@angular/material/slider', '@angular/material/table', '@angular/material/toolbar', '@angular/material/tooltip', '@ngx-translate/core', '@ajf/material/monaco-editor', '@ajf/material/node-icon', 'rxjs/operators', '@ajf/core/forms', '@angular/cdk/collections', 'rxjs', '@ajf/core/models', '@ajf/core/utils', '@angular/cdk/keycodes'], factory) :
+    (global = global || self, factory((global.ajf = global.ajf || {}, global.ajf.material = global.ajf.material || {}, global.ajf.material.formBuilder = {}), global.ng.common, global.ng.core, global.ng.forms, global.ng.cdk.dragDrop, global.ng.material.autocomplete, global.ng.material.button, global.ng.material.card, global.ng.material.checkbox, global.ng.material.chips, global.ng.material.dialog, global.ng.material.formField, global.ng.material.icon, global.ng.material.input, global.ng.material.list, global.ng.material.menu, global.ng.material.select, global.ng.material.sidenav, global.ng.material.slider, global.ng.material.table, global.ng.material.toolbar, global.ng.material.tooltip, global.ngxt.core, global.ajf.material.monacoEditor, global.ajf.material.nodeIcon, global.rxjs.operators, global.ajf.core.forms, global.ng.cdk.collections, global.rxjs, global.ajf.core.models, global.ajf.core.utils, global.ng.cdk.keycodes));
+}(this, function (exports, common, core, forms, dragDrop, autocomplete, button, card, checkbox, chips, dialog, formField, icon, input, list, menu, select, sidenav, slider, table, toolbar, tooltip, core$1, monacoEditor, nodeIcon, operators, forms$1, collections, rxjs, models, utils, keycodes) { 'use strict';
 
     /*! *****************************************************************************
     Copyright (c) Microsoft Corporation. All rights reserved.
@@ -624,10 +624,12 @@
             this._nodesUpdates = new rxjs.Subject();
             this._attachmentsOriginsUpdates = new rxjs.Subject();
             this._choicesOriginsUpdates = new rxjs.Subject();
+            this._stringIdentifierUpdates = new rxjs.Subject();
             this._saveNodeEntryEvent = new core.EventEmitter();
             this._deleteNodeEntryEvent = new core.EventEmitter();
             this._initChoicesOriginsStreams();
             this._initAttachmentsOriginsStreams();
+            this._initStringIdentifierStreams();
             this._initNodesStreams();
             this._initFormStreams();
             this._initSaveNode();
@@ -685,6 +687,16 @@
              */
             function () {
                 return this._choicesOrigins;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(AjfFormBuilderService.prototype, "stringIdentifier", {
+            get: /**
+             * @return {?}
+             */
+            function () {
+                return this._stringIdentifier;
             },
             enumerable: true,
             configurable: true
@@ -952,7 +964,7 @@
          * @return {?}
          */
         function () {
-            return rxjs.combineLatest([this.form, this.nodes, this.attachmentsOrigins, this.choicesOrigins]).pipe(operators.filter((/**
+            return rxjs.combineLatest([this.form, this.nodes, this.attachmentsOrigins, this.choicesOrigins, this.stringIdentifier]).pipe(operators.filter((/**
              * @param {?} __0
              * @return {?}
              */
@@ -964,11 +976,11 @@
              * @return {?}
              */
             function (_a) {
-                var form = _a[0], nodes = _a[1], attachmentsOrigins = _a[2], choicesOrigins = _a[3];
+                var form = _a[0], nodes = _a[1], attachmentsOrigins = _a[2], choicesOrigins = _a[3], stringIdentifier = _a[4];
                 return forms$1.createForm({
                     choicesOrigins: choicesOrigins.slice(0),
                     attachmentsOrigins: attachmentsOrigins.slice(0),
-                    stringIdentifier: (/** @type {?} */ (form)).stringIdentifier.slice(0),
+                    stringIdentifier: (stringIdentifier || []).slice(0),
                     nodes: (/** @type {?} */ (nodes.slice(0))),
                     supplementaryInformations: (/** @type {?} */ (form)).supplementaryInformations,
                 });
@@ -1020,8 +1032,39 @@
                 if (forms$1.isChoicesFixedOrigin(choicesOrigin)) {
                     choicesOrigin.choices = params.choices;
                 }
+                this._choicesOriginsUpdates.next((/**
+                 * @param {?} choicesOrigins
+                 * @return {?}
+                 */
+                function (choicesOrigins) {
+                    /** @type {?} */
+                    var idx = choicesOrigins.indexOf(choicesOrigin);
+                    if (idx > -1) {
+                        choicesOrigins = choicesOrigins.slice(0, idx).concat([
+                            choicesOrigin
+                        ], choicesOrigins.slice(idx + 1));
+                    }
+                    else {
+                        choicesOrigins = choicesOrigins.concat([choicesOrigin]);
+                    }
+                    return choicesOrigins;
+                }));
             }
             this._editedChoicesOrigin.next(null);
+        };
+        /**
+         * @param {?} identifier
+         * @return {?}
+         */
+        AjfFormBuilderService.prototype.saveStringIdentifier = /**
+         * @param {?} identifier
+         * @return {?}
+         */
+        function (identifier) {
+            this._stringIdentifierUpdates.next((/**
+             * @return {?}
+             */
+            function () { return identifier.slice(); }));
         };
         /**
          * @private
@@ -1095,6 +1138,15 @@
                     return form != null && form.choicesOrigins != null ? form.choicesOrigins.slice(0) :
                         [];
                 }));
+                _this._stringIdentifierUpdates.next((/**
+                 * @param {?} _
+                 * @return {?}
+                 */
+                function (_) {
+                    return form != null && form.stringIdentifier != null
+                        ? form.stringIdentifier.slice(0)
+                        : [];
+                }));
             }));
         };
         /**
@@ -1126,16 +1178,32 @@
          * @return {?}
          */
         function () {
-            this._attachmentsOrigins =
-                ((/** @type {?} */ (this._attachmentsOriginsUpdates)))
-                    .pipe(operators.scan((/**
-                 * @param {?} attachmentsOrigins
-                 * @param {?} op
-                 * @return {?}
-                 */
-                function (attachmentsOrigins, op) {
-                    return op(attachmentsOrigins);
-                }), []), operators.publishReplay(1), operators.refCount());
+            this._attachmentsOrigins = this._attachmentsOriginsUpdates.pipe(operators.scan((/**
+             * @param {?} attachmentsOrigins
+             * @param {?} op
+             * @return {?}
+             */
+            function (attachmentsOrigins, op) {
+                return op(attachmentsOrigins);
+            }), []), operators.publishReplay(1), operators.refCount());
+        };
+        /**
+         * @private
+         * @return {?}
+         */
+        AjfFormBuilderService.prototype._initStringIdentifierStreams = /**
+         * @private
+         * @return {?}
+         */
+        function () {
+            this._stringIdentifier = this._stringIdentifierUpdates.pipe(operators.scan((/**
+             * @param {?} stringIdentifier
+             * @param {?} op
+             * @return {?}
+             */
+            function (stringIdentifier, op) {
+                return op(stringIdentifier);
+            }), []), operators.publishReplay(1), operators.refCount());
         };
         /**
          * @private
@@ -1233,9 +1301,9 @@
                     repNode.minReps = properties.minReps;
                     repNode.maxReps = properties.maxReps;
                 }
-                if (forms$1.isField(nodeEntry.node)) {
+                if (forms$1.isField(node)) {
                     /** @type {?} */
-                    var field = (/** @type {?} */ (nodeEntry.node));
+                    var field = (/** @type {?} */ (node));
                     field.description = properties.description;
                     field.defaultValue = properties.defaultValue;
                     field.formula = properties.formula != null ?
@@ -1755,6 +1823,154 @@
      * @fileoverview added by tsickle
      * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
+    var AjfFbStringIdentifierDialogComponent = /** @class */ (function () {
+        function AjfFbStringIdentifierDialogComponent(_service, _cdr) {
+            var _this = this;
+            this._service = _service;
+            this._cdr = _cdr;
+            this.dataSource = new table.MatTableDataSource();
+            this.displayedColumns = ['label', 'value', 'delete'];
+            this.separatorKeysCodes = [keycodes.ENTER, keycodes.COMMA];
+            this._stringIdentifierSub = rxjs.Subscription.EMPTY;
+            this._stringIdentifierSub = _service.stringIdentifier.subscribe((/**
+             * @param {?} identifier
+             * @return {?}
+             */
+            function (identifier) {
+                _this.dataSource.data = identifier.slice();
+            }));
+            this.fields$ = _service.flatFields.pipe(operators.map((/**
+             * @param {?} fields
+             * @return {?}
+             */
+            function (fields) {
+                return fields.sort((/**
+                 * @param {?} f1
+                 * @param {?} f2
+                 * @return {?}
+                 */
+                function (f1, f2) { return f1.name.localeCompare(f2.name); })).map((/**
+                 * @param {?} f
+                 * @return {?}
+                 */
+                function (f) { return f.name; }))
+                    .filter((/**
+                 * @param {?} f
+                 * @return {?}
+                 */
+                function (f) { return f.length > 0; }));
+            })), operators.shareReplay(1));
+        }
+        /**
+         * @return {?}
+         */
+        AjfFbStringIdentifierDialogComponent.prototype.addRow = /**
+         * @return {?}
+         */
+        function () {
+            this.dataSource.data = this.dataSource.data.concat([{ label: '', value: [] }]);
+        };
+        /**
+         * @param {?} rowIdx
+         * @return {?}
+         */
+        AjfFbStringIdentifierDialogComponent.prototype.deleteRow = /**
+         * @param {?} rowIdx
+         * @return {?}
+         */
+        function (rowIdx) {
+            this.dataSource.data = this.dataSource.data.slice(0, rowIdx).concat(this.dataSource.data.slice(rowIdx + 1));
+        };
+        /**
+         * @param {?} row
+         * @param {?} evt
+         * @param {?} valueInput
+         * @return {?}
+         */
+        AjfFbStringIdentifierDialogComponent.prototype.addValue = /**
+         * @param {?} row
+         * @param {?} evt
+         * @param {?} valueInput
+         * @return {?}
+         */
+        function (row, evt, valueInput) {
+            if (evt.value.length === 0) {
+                return;
+            }
+            row.value = row.value.concat([evt.value]);
+            valueInput.value = '';
+            this._cdr.markForCheck();
+        };
+        /**
+         * @param {?} row
+         * @param {?} value
+         * @return {?}
+         */
+        AjfFbStringIdentifierDialogComponent.prototype.removeValue = /**
+         * @param {?} row
+         * @param {?} value
+         * @return {?}
+         */
+        function (row, value) {
+            /** @type {?} */
+            var idx = row.value.indexOf(value);
+            if (idx > -1) {
+                row.value = row.value.slice(0, idx).concat(row.value.slice(idx + 1));
+                this._cdr.markForCheck();
+            }
+        };
+        /**
+         * @return {?}
+         */
+        AjfFbStringIdentifierDialogComponent.prototype.ngOnDestroy = /**
+         * @return {?}
+         */
+        function () {
+            this._stringIdentifierSub.unsubscribe();
+        };
+        /**
+         * @return {?}
+         */
+        AjfFbStringIdentifierDialogComponent.prototype.saveStringIdentifier = /**
+         * @return {?}
+         */
+        function () {
+            this._service.saveStringIdentifier(this.dataSource.data);
+        };
+        /**
+         * @param {?} row
+         * @param {?} evt
+         * @return {?}
+         */
+        AjfFbStringIdentifierDialogComponent.prototype.selected = /**
+         * @param {?} row
+         * @param {?} evt
+         * @return {?}
+         */
+        function (row, evt) {
+            row.value = row.value.concat([evt.option.value]);
+            this._cdr.markForCheck();
+        };
+        AjfFbStringIdentifierDialogComponent.decorators = [
+            { type: core.Component, args: [{selector: 'ajf-fb-string-identifier-dialog',
+                        template: "<h3 matDialogTitle translate>Edit identifier</h3><mat-dialog-content><button (click)=\"addRow()\" mat-button><mat-icon>add</mat-icon><span translate>Add value</span></button><mat-table [dataSource]=\"dataSource\"><ng-container matColumnDef=\"label\"><mat-header-cell *matHeaderCellDef translate>Label</mat-header-cell><mat-cell *matCellDef=\"let row; let idx = index\"><mat-form-field><input matInput [placeholder]=\"'Label'|translate\" autofocus [(ngModel)]=\"row.label\"></mat-form-field></mat-cell></ng-container><ng-container matColumnDef=\"value\"><mat-header-cell *matHeaderCellDef translate>Value</mat-header-cell><mat-cell *matCellDef=\"let row; let idx = index\"><mat-form-field><mat-chip-list #chipList><mat-chip *ngFor=\"let field of row.value\" (removed)=\"removeValue(row, field)\">{{ field }}<mat-icon matChipRemove>cancel</mat-icon></mat-chip></mat-chip-list><input #valueInput [ngModel]=\"row.value\" [matAutocomplete]=\"valueAc\" [matChipInputFor]=\"chipList\" [matChipInputSeparatorKeyCodes]=\"separatorKeysCodes\" [matChipInputAddOnBlur]=\"true\" (matChipInputTokenEnd)=\"addValue(row, $event, valueInput)\" [placeholder]=\"'Value'|translate\"><mat-autocomplete #valueAc=\"matAutocomplete\" (optionSelected)=\"selected(row, $event)\"><mat-option *ngFor=\"let field of fields$ | async\" [value]=\"field\">{{field}}</mat-option></mat-autocomplete></mat-form-field></mat-cell></ng-container><ng-container matColumnDef=\"delete\"><mat-header-cell *matHeaderCellDef translate>Delete</mat-header-cell><mat-cell *matCellDef=\"let row; let idx = index\"><mat-icon (click)=\"deleteRow(idx)\">delete</mat-icon></mat-cell></ng-container><mat-header-row *matHeaderRowDef=\"displayedColumns\"></mat-header-row><mat-row *matRowDef=\"let row; columns: displayedColumns;\"></mat-row></mat-table></mat-dialog-content><mat-dialog-actions><button mat-button translate matDialogClose (click)=\"saveStringIdentifier()\">Save</button></mat-dialog-actions>",
+                        styles: [""],
+                        changeDetection: core.ChangeDetectionStrategy.OnPush,
+                        encapsulation: core.ViewEncapsulation.None,
+                    },] },
+        ];
+        /** @nocollapse */
+        AjfFbStringIdentifierDialogComponent.ctorParameters = function () { return [
+            { type: AjfFormBuilderService },
+            { type: core.ChangeDetectorRef }
+        ]; };
+        return AjfFbStringIdentifierDialogComponent;
+    }());
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
     var AjfFormBuilder = /** @class */ (function () {
         function AjfFormBuilder(_service, _dialog) {
             var _this = this;
@@ -1765,6 +1981,7 @@
             this._editConditionSub = rxjs.Subscription.EMPTY;
             this._beforeNodesUpdateSub = rxjs.Subscription.EMPTY;
             this._editChoicesOriginSub = rxjs.Subscription.EMPTY;
+            this._stringIdentifierSub = rxjs.Subscription.EMPTY;
             this._nodeTypes = _service.availableNodeTypes;
             this._nodeEntriesTree = _service.nodeEntriesTree;
             this._choicesOrigins = _service.choicesOrigins;
@@ -1818,6 +2035,10 @@
                 }
                 _this.designerCont.nativeElement.scrollTop = _this._lastScrollTop;
             }));
+            this._stringIdentifierSub = this._service.stringIdentifier.subscribe((/**
+             * @return {?}
+             */
+            function () { }));
         }
         Object.defineProperty(AjfFormBuilder.prototype, "form", {
             get: /**
@@ -1891,10 +2112,11 @@
          * @return {?}
          */
         function () {
-            this._service.setForm(null);
             this._editConditionSub.unsubscribe();
             this._beforeNodesUpdateSub.unsubscribe();
             this._editChoicesOriginSub.unsubscribe();
+            this._stringIdentifierSub.unsubscribe();
+            this._service.setForm(null);
         };
         /**
          * @return {?}
@@ -1926,6 +2148,24 @@
             this._service.editChoicesOrigin(choicesOrigin);
         };
         /**
+         * @return {?}
+         */
+        AjfFormBuilder.prototype.editStringIdentifier = /**
+         * @return {?}
+         */
+        function () {
+            if (this._stringIdentifierDialog != null) {
+                this._stringIdentifierDialog.close();
+                this._stringIdentifierDialog = null;
+            }
+            this._stringIdentifierDialog =
+                this._dialog.open(AjfFbStringIdentifierDialogComponent, {
+                    disableClose: true,
+                    width: '60%',
+                    height: '60%'
+                });
+        };
+        /**
          * @private
          * @return {?}
          */
@@ -1938,7 +2178,7 @@
         };
         AjfFormBuilder.decorators = [
             { type: core.Component, args: [{selector: 'ajf-form-builder',
-                        template: "<mat-toolbar><button mat-icon-button (click)=\"leftSidenav.toggle()\"><mat-icon>add_box</mat-icon></button> <button mat-button [matMenuTriggerFor]=\"choicesMenu\" translate>Choices</button><mat-menu #choicesMenu><button (click)=\"createChoicesOrigin()\" mat-menu-item translate>New..</button><ng-container *ngIf=\"choicesOrigins|async as cos\"><button *ngFor=\"let choicesOrigin of cos\" (click)=\"editChoicesOrigin(choicesOrigin)\" mat-menu-item>{{ choicesOrigin.label || choicesOrigin.name }}</button></ng-container></mat-menu><span class=\"ajf-spacer\"></span> <button mat-icon-button (click)=\"rightSidenav.toggle()\"><mat-icon>settings</mat-icon></button></mat-toolbar><mat-drawer-container cdkDropListGroup><mat-drawer #leftSidenav position=\"start\" mode=\"over\"><div #sourceDropList cdkDropList [cdkDropListEnterPredicate]=\"disableDropPredicate\" [cdkDropListData]=\"nodeTypes\"><ajf-fb-node-type-entry *ngFor=\"let nodeType of nodeTypes\" cdkDrag [cdkDragData]=\"nodeType\" (cdkDragStarted)=\"leftSidenav.close()\" [nodeType]=\"nodeType\"></ajf-fb-node-type-entry></div></mat-drawer><mat-drawer #rightSidenav position=\"end\" mode=\"side\" [opened]=\"true\"><ajf-fb-node-properties></ajf-fb-node-properties></mat-drawer><div #designer class=\"ajf-designer\"><ajf-fb-node-entry *ngFor=\"let nodeEntry of (nodeEntriesTree|async); let isFirst = first\" [isFirst]=\"isFirst\" [nodeEntry]=\"nodeEntry\"></ajf-fb-node-entry></div></mat-drawer-container>",
+                        template: "<mat-toolbar><button mat-icon-button (click)=\"leftSidenav.toggle()\"><mat-icon>add_box</mat-icon></button> <button mat-button [matMenuTriggerFor]=\"choicesMenu\" translate>Choices</button> <button mat-button (click)=\"editStringIdentifier()\" translate>Identifier</button><mat-menu #choicesMenu><button (click)=\"createChoicesOrigin()\" mat-menu-item translate>New..</button><ng-container *ngIf=\"choicesOrigins|async as cos\"><button *ngFor=\"let choicesOrigin of cos\" (click)=\"editChoicesOrigin(choicesOrigin)\" mat-menu-item>{{ choicesOrigin.label || choicesOrigin.name }}</button></ng-container></mat-menu><span class=\"ajf-spacer\"></span> <button mat-icon-button (click)=\"rightSidenav.toggle()\"><mat-icon>settings</mat-icon></button></mat-toolbar><mat-drawer-container cdkDropListGroup><mat-drawer #leftSidenav position=\"start\" mode=\"over\"><div #sourceDropList cdkDropList [cdkDropListEnterPredicate]=\"disableDropPredicate\" [cdkDropListData]=\"nodeTypes\"><ajf-fb-node-type-entry *ngFor=\"let nodeType of nodeTypes\" cdkDrag [cdkDragData]=\"nodeType\" (cdkDragStarted)=\"leftSidenav.close()\" [nodeType]=\"nodeType\"></ajf-fb-node-type-entry></div></mat-drawer><mat-drawer #rightSidenav position=\"end\" mode=\"side\" [opened]=\"true\"><ajf-fb-node-properties></ajf-fb-node-properties></mat-drawer><div #designer class=\"ajf-designer\"><ajf-fb-node-entry *ngFor=\"let nodeEntry of (nodeEntriesTree|async); let isFirst = first\" [isFirst]=\"isFirst\" [nodeEntry]=\"nodeEntry\"></ajf-fb-node-entry></div></mat-drawer-container>",
                         styles: ["ajf-form-builder mat-toolbar mat-menu div[mat-menu-item]>button[mat-button]{flex:1 0 auto}ajf-form-builder mat-toolbar mat-menu div[mat-menu-item]>button[mat-icon-button]{flex:0 0 auto}ajf-form-builder mat-drawer-container{height:700px}ajf-form-builder mat-drawer-container mat-drawer{max-width:20%}ajf-form-builder mat-drawer-container .ajf-designer{padding:1em;position:absolute;top:0;right:0;bottom:0;left:0;overflow-y:auto}ajf-form-builder mat-toolbar .ajf-spacer{flex:1 1 auto}"],
                         changeDetection: core.ChangeDetectionStrategy.OnPush,
                         encapsulation: core.ViewEncapsulation.None
@@ -3001,8 +3241,7 @@
          */
         function () {
             var _this = this;
-            this._saveSub = ((/** @type {?} */ (this._saveEvt)))
-                .pipe(operators.withLatestFrom(this.propertiesForm))
+            this._saveSub = this._saveEvt.pipe(operators.withLatestFrom(this.propertiesForm))
                 .subscribe((/**
              * @param {?} r
              * @return {?}
@@ -4272,9 +4511,11 @@
                             forms.FormsModule,
                             forms.ReactiveFormsModule,
                             dragDrop.DragDropModule,
+                            autocomplete.MatAutocompleteModule,
                             button.MatButtonModule,
                             card.MatCardModule,
                             checkbox.MatCheckboxModule,
+                            chips.MatChipsModule,
                             dialog.MatDialogModule,
                             formField.MatFormFieldModule,
                             icon.MatIconModule,
@@ -4300,6 +4541,7 @@
                             AjfFbNodeEntry,
                             AjfFbNodeProperties,
                             AjfFbNodeTypeEntry,
+                            AjfFbStringIdentifierDialogComponent,
                             AjfFbValidationConditionEditorDialog,
                             AjfFbWarningConditionEditorDialog,
                             AjfFormBuilder,
@@ -4310,6 +4552,7 @@
                         entryComponents: [
                             AjfFbChoicesOriginEditorDialog,
                             AjfFbConditionEditorDialog,
+                            AjfFbStringIdentifierDialogComponent,
                             AjfFbValidationConditionEditorDialog,
                             AjfFbWarningConditionEditorDialog,
                         ],
@@ -4333,8 +4576,9 @@
     exports.ɵf = AjfFbNodeEntry;
     exports.ɵg = AjfFbNodeProperties;
     exports.ɵh = AjfFbNodeTypeEntry;
-    exports.ɵi = AjfFbValidationConditionEditorDialog;
-    exports.ɵj = AjfFbWarningConditionEditorDialog;
+    exports.ɵi = AjfFbStringIdentifierDialogComponent;
+    exports.ɵj = AjfFbValidationConditionEditorDialog;
+    exports.ɵk = AjfFbWarningConditionEditorDialog;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 

@@ -43,6 +43,8 @@ export declare class AjfFormBuilder implements AfterViewChecked, AfterContentIni
     private _beforeNodesUpdateSub;
     private _editChoicesOriginSub;
     private _editChoicesOriginDialog;
+    private _stringIdentifierDialog;
+    private _stringIdentifierSub;
     private _lastScrollTop;
     constructor(_service: AjfFormBuilderService, _dialog: MatDialog);
     ngAfterViewChecked(): void;
@@ -51,5 +53,6 @@ export declare class AjfFormBuilder implements AfterViewChecked, AfterContentIni
     createChoicesOrigin(): void;
     disableDropPredicate(): boolean;
     editChoicesOrigin(choicesOrigin: AjfChoicesOrigin<any>): void;
+    editStringIdentifier(): void;
     private _setCurrentForm;
 }

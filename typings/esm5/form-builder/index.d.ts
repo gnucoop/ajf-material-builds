@@ -10,5 +10,6 @@ export { AjfFbConditionEditorDialog as ɵd } from './condition-editor-dialog';
 export { AjfFbNodeEntry as ɵf } from './node-entry';
 export { AjfFbNodeProperties as ɵg } from './node-properties';
 export { AjfFbNodeTypeEntry as ɵh } from './node-type-entry';
-export { AjfFbValidationConditionEditorDialog as ɵi } from './validation-condition-editor-dialog';
-export { AjfFbWarningConditionEditorDialog as ɵj } from './warning-condition-editor-dialog';
+export { AjfFbStringIdentifierDialogComponent as ɵi } from './string-identifier-dialog';
+export { AjfFbValidationConditionEditorDialog as ɵj } from './validation-condition-editor-dialog';
+export { AjfFbWarningConditionEditorDialog as ɵk } from './warning-condition-editor-dialog';

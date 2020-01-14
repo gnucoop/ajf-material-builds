@@ -19,7 +19,7 @@
  * If not, see http://www.gnu.org/licenses/.
  *
  */
-import { AjfAttachmentsOrigin, AjfChoicesOrigin, AjfContainerNode, AjfField, AjfFieldType, AjfForm, AjfNode, AjfNodeGroup, AjfNodeType, AjfRepeatingSlide, AjfSlide } from '@ajf/core/forms';
+import { AjfAttachmentsOrigin, AjfChoicesOrigin, AjfContainerNode, AjfField, AjfFieldType, AjfForm, AjfFormStringIdentifier, AjfNode, AjfNodeGroup, AjfNodeType, AjfRepeatingSlide, AjfSlide } from '@ajf/core/forms';
 import { AjfCondition } from '@ajf/core/models';
 import { Observable } from 'rxjs';
 export interface AjfFormBuilderNodeTypeEntry {
@@ -69,6 +69,8 @@ export declare class AjfFormBuilderService {
     readonly attachmentsOrigins: Observable<AjfAttachmentsOrigin<any>[]>;
     private _choicesOrigins;
     readonly choicesOrigins: Observable<AjfChoicesOrigin<any>[]>;
+    private _stringIdentifier;
+    readonly stringIdentifier: Observable<AjfFormStringIdentifier[]>;
     private _nodes;
     readonly nodes: Observable<AjfNode[]>;
     private _flatNodes;
@@ -95,6 +97,7 @@ export declare class AjfFormBuilderService {
     private _nodesUpdates;
     private _attachmentsOriginsUpdates;
     private _choicesOriginsUpdates;
+    private _stringIdentifierUpdates;
     private _saveNodeEntryEvent;
     private _deleteNodeEntryEvent;
     constructor();
@@ -123,10 +126,12 @@ export declare class AjfFormBuilderService {
         name: string;
         choices: any[];
     }): void;
+    saveStringIdentifier(identifier: AjfFormStringIdentifier[]): void;
     private _findMaxNodeId;
     private _initFormStreams;
     private _initChoicesOriginsStreams;
     private _initAttachmentsOriginsStreams;
+    private _initStringIdentifierStreams;
     private _initNodesStreams;
     private _initSaveNode;
     private _initDeleteNode;
