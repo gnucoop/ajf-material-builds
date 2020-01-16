@@ -141,7 +141,7 @@
             return _super.call(this, cdr, service, was) || this;
         }
         AjfDateFieldComponent.decorators = [
-            { type: core.Component, args: [{template: "<ajf-calendar selectionMode=\"date\" dateOnlyForDay [minDate]=\"instance.node.minDate|ajfDateValue\" [maxDate]=\"instance.node.maxDate|ajfDateValue\" [formControl]=\"control|async\"></ajf-calendar>",
+            { type: core.Component, args: [{template: "<ajf-calendar selectionMode=\"day\" dateOnlyForDay [minDate]=\"instance.node.minDate|ajfDateValue\" [maxDate]=\"instance.node.maxDate|ajfDateValue\" [formControl]=\"control|async\"></ajf-calendar>",
                         styles: [""],
                         changeDetection: core.ChangeDetectionStrategy.OnPush,
                         encapsulation: core.ViewEncapsulation.None,
