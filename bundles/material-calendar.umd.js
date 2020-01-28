@@ -20,10 +20,10 @@
  *
  */
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/common'), require('@angular/core'), require('@angular/forms'), require('@angular/material/button'), require('@ngx-translate/core'), require('@ajf/core/calendar')) :
-    typeof define === 'function' && define.amd ? define('@ajf/material/calendar', ['exports', '@angular/common', '@angular/core', '@angular/forms', '@angular/material/button', '@ngx-translate/core', '@ajf/core/calendar'], factory) :
-    (global = global || self, factory((global.ajf = global.ajf || {}, global.ajf.material = global.ajf.material || {}, global.ajf.material.calendar = {}), global.ng.common, global.ng.core, global.ng.forms, global.ng.material.button, global.ngxt.core, global.ajf.core.calendar));
-}(this, function (exports, common, core, forms, button, core$1, calendar) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@ajf/core/calendar'), require('@angular/common'), require('@angular/core'), require('@angular/forms'), require('@angular/material/button'), require('@ngx-translate/core')) :
+    typeof define === 'function' && define.amd ? define('@ajf/material/calendar', ['exports', '@ajf/core/calendar', '@angular/common', '@angular/core', '@angular/forms', '@angular/material/button', '@ngx-translate/core'], factory) :
+    (global = global || self, factory((global.ajf = global.ajf || {}, global.ajf.material = global.ajf.material || {}, global.ajf.material.calendar = {}), global.ajf.core.calendar, global.ng.common, global.ng.core, global.ng.forms, global.ng.material.button, global.ngxt.core));
+}(this, function (exports, calendar, common, core, forms, button, core$1) { 'use strict';
 
     /*! *****************************************************************************
     Copyright (c) Microsoft Corporation. All rights reserved.
@@ -72,12 +72,12 @@
      */
     var AjfCalendarComponent = /** @class */ (function (_super) {
         __extends(AjfCalendarComponent, _super);
-        function AjfCalendarComponent(cdr) {
-            return _super.call(this, cdr) || this;
+        function AjfCalendarComponent(cdr, service) {
+            return _super.call(this, cdr, service) || this;
         }
         AjfCalendarComponent.decorators = [
             { type: core.Component, args: [{selector: 'ajf-calendar',
-                        template: "<div class=\"ajf-calendar-header\"><button (click)=\"prevPage()\" mat-mini-fab>&#8592;</button> <button (click)=\"previousViewMode()\" mat-button class=\"ajf-calendar-header-title\">{{ viewHeader | translate }}</button> <button (click)=\"nextPage()\" mat-mini-fab>&#8594;</button></div><div class=\"ajf-calendar-row\" *ngIf=\"viewMode == 'month'\"><div *ngFor=\"let weekDay of weekDays\">{{ weekDay | translate }}</div></div><div class=\"ajf-calendar-row\" *ngFor=\"let row of calendarRows\"><button *ngFor=\"let entry of row\" mat-raised-button [class.ajf-calendar-partial-selection]=\"entry.selected == 'partial'\" [disabled]=\"disabled || entry.disabled\" [color]=\"entry.selected != 'none' ? 'warn' : null\" (click)=\"selectEntry(entry)\">{{ entry }}</button></div>",
+                        template: "<div class=\"ajf-calendar-header\"><button (click)=\"prevPage()\" mat-mini-fab>&#8592;</button> <button (click)=\"previousViewMode()\" mat-button class=\"ajf-calendar-header-title\">{{ viewHeader | translate }}</button> <button (click)=\"nextPage()\" mat-mini-fab>&#8594;</button></div><div class=\"ajf-calendar-row\" *ngIf=\"calendarHeaders.length > 0\"><div *ngFor=\"let calendarHeader of calendarHeaders\">{{ calendarHeader | translate }}</div></div><div class=\"ajf-calendar-row\" *ngFor=\"let row of calendarRows\"><button *ngFor=\"let entry of row\" mat-raised-button [class.ajf-calendar-partial-selection]=\"entry.selected == 'partial'\" [disabled]=\"disabled || entry.disabled\" [color]=\"entry.selected != 'none' ? 'warn' : null\" (click)=\"selectEntry(entry)\">{{ entry|ajfCalendarEntryLabel }}</button></div>",
                         styles: ["ajf-calendar{display:flex;box-sizing:border-box;width:100%;height:320px;flex-direction:column}ajf-calendar .ajf-calendar-header,ajf-calendar .ajf-calendar-row{display:flex;box-sizing:border-box;width:100%;flex-direction:row}ajf-calendar .ajf-calendar-header{height:40px}ajf-calendar .ajf-calendar-header .ajf-calendar-header-title{flex:1;margin:0 10px}ajf-calendar .ajf-calendar-row{flex:1}ajf-calendar .ajf-calendar-row button,ajf-calendar .ajf-calendar-row div{flex:1;margin:3px}ajf-calendar .ajf-calendar-row div{line-height:40px;text-align:center}ajf-calendar .ajf-calendar-row .ajf-calendar-partial-selection ::before{content:'';position:absolute;top:0;right:0;bottom:0;left:0;background-color:rgba(255,255,255,.5)}"],
                         encapsulation: core.ViewEncapsulation.None,
                         changeDetection: core.ChangeDetectionStrategy.OnPush,
@@ -103,7 +103,8 @@
         ];
         /** @nocollapse */
         AjfCalendarComponent.ctorParameters = function () { return [
-            { type: core.ChangeDetectorRef }
+            { type: core.ChangeDetectorRef },
+            { type: calendar.AjfCalendarService }
         ]; };
         return AjfCalendarComponent;
     }(calendar.AjfCalendar));
@@ -119,9 +120,10 @@
             { type: core.NgModule, args: [{
                         imports: [
                             common.CommonModule,
+                            calendar.AjfCalendarModule,
                             forms.FormsModule,
-                            core$1.TranslateModule,
                             button.MatButtonModule,
+                            core$1.TranslateModule,
                         ],
                         declarations: [
                             AjfCalendarComponent,

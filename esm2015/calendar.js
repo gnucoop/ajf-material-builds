@@ -19,12 +19,12 @@
  * If not, see http://www.gnu.org/licenses/.
  *
  */
+import { AjfCalendar, AjfCalendarService, AjfCalendarModule as AjfCalendarModule$1 } from '@ajf/core/calendar';
 import { CommonModule } from '@angular/common';
 import { forwardRef, Component, ViewEncapsulation, ChangeDetectionStrategy, ChangeDetectorRef, NgModule } from '@angular/core';
 import { NG_VALUE_ACCESSOR, FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { TranslateModule } from '@ngx-translate/core';
-import { AjfCalendar } from '@ajf/core/calendar';
 
 /**
  * @fileoverview added by tsickle
@@ -45,14 +45,15 @@ const CALENDAR_CONTROL_VALUE_ACCESSOR = {
 class AjfCalendarComponent extends AjfCalendar {
     /**
      * @param {?} cdr
+     * @param {?} service
      */
-    constructor(cdr) {
-        super(cdr);
+    constructor(cdr, service) {
+        super(cdr, service);
     }
 }
 AjfCalendarComponent.decorators = [
     { type: Component, args: [{selector: 'ajf-calendar',
-                template: "<div class=\"ajf-calendar-header\"><button (click)=\"prevPage()\" mat-mini-fab>&#8592;</button> <button (click)=\"previousViewMode()\" mat-button class=\"ajf-calendar-header-title\">{{ viewHeader | translate }}</button> <button (click)=\"nextPage()\" mat-mini-fab>&#8594;</button></div><div class=\"ajf-calendar-row\" *ngIf=\"viewMode == 'month'\"><div *ngFor=\"let weekDay of weekDays\">{{ weekDay | translate }}</div></div><div class=\"ajf-calendar-row\" *ngFor=\"let row of calendarRows\"><button *ngFor=\"let entry of row\" mat-raised-button [class.ajf-calendar-partial-selection]=\"entry.selected == 'partial'\" [disabled]=\"disabled || entry.disabled\" [color]=\"entry.selected != 'none' ? 'warn' : null\" (click)=\"selectEntry(entry)\">{{ entry }}</button></div>",
+                template: "<div class=\"ajf-calendar-header\"><button (click)=\"prevPage()\" mat-mini-fab>&#8592;</button> <button (click)=\"previousViewMode()\" mat-button class=\"ajf-calendar-header-title\">{{ viewHeader | translate }}</button> <button (click)=\"nextPage()\" mat-mini-fab>&#8594;</button></div><div class=\"ajf-calendar-row\" *ngIf=\"calendarHeaders.length > 0\"><div *ngFor=\"let calendarHeader of calendarHeaders\">{{ calendarHeader | translate }}</div></div><div class=\"ajf-calendar-row\" *ngFor=\"let row of calendarRows\"><button *ngFor=\"let entry of row\" mat-raised-button [class.ajf-calendar-partial-selection]=\"entry.selected == 'partial'\" [disabled]=\"disabled || entry.disabled\" [color]=\"entry.selected != 'none' ? 'warn' : null\" (click)=\"selectEntry(entry)\">{{ entry|ajfCalendarEntryLabel }}</button></div>",
                 styles: ["ajf-calendar{display:flex;box-sizing:border-box;width:100%;height:320px;flex-direction:column}ajf-calendar .ajf-calendar-header,ajf-calendar .ajf-calendar-row{display:flex;box-sizing:border-box;width:100%;flex-direction:row}ajf-calendar .ajf-calendar-header{height:40px}ajf-calendar .ajf-calendar-header .ajf-calendar-header-title{flex:1;margin:0 10px}ajf-calendar .ajf-calendar-row{flex:1}ajf-calendar .ajf-calendar-row button,ajf-calendar .ajf-calendar-row div{flex:1;margin:3px}ajf-calendar .ajf-calendar-row div{line-height:40px;text-align:center}ajf-calendar .ajf-calendar-row .ajf-calendar-partial-selection ::before{content:'';position:absolute;top:0;right:0;bottom:0;left:0;background-color:rgba(255,255,255,.5)}"],
                 encapsulation: ViewEncapsulation.None,
                 changeDetection: ChangeDetectionStrategy.OnPush,
@@ -78,7 +79,8 @@ AjfCalendarComponent.decorators = [
 ];
 /** @nocollapse */
 AjfCalendarComponent.ctorParameters = () => [
-    { type: ChangeDetectorRef }
+    { type: ChangeDetectorRef },
+    { type: AjfCalendarService }
 ];
 
 /**
@@ -91,9 +93,10 @@ AjfCalendarModule.decorators = [
     { type: NgModule, args: [{
                 imports: [
                     CommonModule,
+                    AjfCalendarModule$1,
                     FormsModule,
-                    TranslateModule,
                     MatButtonModule,
+                    TranslateModule,
                 ],
                 declarations: [
                     AjfCalendarComponent,

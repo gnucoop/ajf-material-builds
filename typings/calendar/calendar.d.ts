@@ -20,11 +20,11 @@
  *
  */
 import { ChangeDetectorRef } from '@angular/core';
-import { AjfCalendar } from '@ajf/core/calendar';
+import { AjfCalendar, AjfCalendarService } from '@ajf/core/calendar';
 export declare const CALENDAR_CONTROL_VALUE_ACCESSOR: any;
 /**
  * Ajf calendar component.
  */
 export declare class AjfCalendarComponent extends AjfCalendar {
-    constructor(cdr: ChangeDetectorRef);
+    constructor(cdr: ChangeDetectorRef, service: AjfCalendarService);
 }
