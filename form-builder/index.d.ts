@@ -1,22 +1,15 @@
 /**
- * @license
- * Copyright (C) 2018 Gnucoop soc. coop.
- *
- * This file is part of the Advanced JSON forms (ajf).
- *
- * Advanced JSON forms (ajf) is free software: you can redistribute it and/or
- * modify it under the terms of the GNU Affero General Public License as
- * published by the Free Software Foundation, either version 3 of the License,
- * or (at your option) any later version.
- *
- * Advanced JSON forms (ajf) is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero
- * General Public License for more details.
- *
- * You should have received a copy of the GNU Affero General Public License
- * along with Advanced JSON forms (ajf).
- * If not, see http://www.gnu.org/licenses/.
- *
+ * Generated bundle index. Do not edit.
  */
-export * from './typings/index';
+export * from './public-api';
+export { AjfFbBranchLine as ɵajf_src_material_form_builder_form_builder_a } from './branch-line';
+export { AjfFbChoicesOriginEditor as ɵajf_src_material_form_builder_form_builder_c } from './choices-origin-editor';
+export { AjfFbChoicesOriginEditorDialog as ɵajf_src_material_form_builder_form_builder_b } from './choices-origin-editor-dialog';
+export { AjfFbConditionEditor as ɵajf_src_material_form_builder_form_builder_e } from './condition-editor';
+export { AjfFbConditionEditorDialog as ɵajf_src_material_form_builder_form_builder_d } from './condition-editor-dialog';
+export { AjfFbNodeEntry as ɵajf_src_material_form_builder_form_builder_f } from './node-entry';
+export { AjfFbNodeProperties as ɵajf_src_material_form_builder_form_builder_g } from './node-properties';
+export { AjfFbNodeTypeEntry as ɵajf_src_material_form_builder_form_builder_h } from './node-type-entry';
+export { AjfFbStringIdentifierDialogComponent as ɵajf_src_material_form_builder_form_builder_i } from './string-identifier-dialog';
+export { AjfFbValidationConditionEditorDialog as ɵajf_src_material_form_builder_form_builder_j } from './validation-condition-editor-dialog';
+export { AjfFbWarningConditionEditorDialog as ɵajf_src_material_form_builder_form_builder_k } from './warning-condition-editor-dialog';

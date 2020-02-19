@@ -1,12 +1,1 @@
-{
-  "__symbolic": "module",
-  "version": 3,
-  "metadata": {},
-  "exports": [
-    {
-      "from": "./typings/index"
-    }
-  ],
-  "flatModuleIndexRedirect": true,
-  "importAs": "@ajf/material/time"
-}
+{"__symbolic":"module","version":4,"metadata":{"AjfTimeModule":{"__symbolic":"class","decorators":[{"__symbolic":"call","expression":{"__symbolic":"reference","module":"@angular/core","name":"NgModule","line":29,"character":1},"arguments":[{"imports":[{"__symbolic":"reference","module":"@angular/forms","name":"FormsModule","line":31,"character":4},{"__symbolic":"reference","module":"@angular/material/form-field","name":"MatFormFieldModule","line":32,"character":4},{"__symbolic":"reference","module":"@angular/material/input","name":"MatInputModule","line":33,"character":4}],"declarations":[{"__symbolic":"reference","name":"AjfTime"}],"exports":[{"__symbolic":"reference","name":"AjfTime"}]}]}],"members":{}},"AJF_TIME_CONTROL_VALUE_ACCESSOR":{"provide":{"__symbolic":"reference","module":"@angular/forms","name":"NG_VALUE_ACCESSOR","line":29,"character":11},"useExisting":{"__symbolic":"reference","name":"AjfTime"},"multi":true},"AjfTime":{"__symbolic":"class","extends":{"__symbolic":"reference","module":"@ajf/core/time","name":"AjfTime","line":42,"character":29},"decorators":[{"__symbolic":"call","expression":{"__symbolic":"reference","module":"@angular/core","name":"Component","line":34,"character":1},"arguments":[{"selector":"ajf-time","providers":[{"__symbolic":"reference","name":"AJF_TIME_CONTROL_VALUE_ACCESSOR"}],"encapsulation":{"__symbolic":"select","expression":{"__symbolic":"reference","module":"@angular/core","name":"ViewEncapsulation","line":39,"character":17},"member":"None"},"changeDetection":{"__symbolic":"select","expression":{"__symbolic":"reference","module":"@angular/core","name":"ChangeDetectionStrategy","line":40,"character":19},"member":"OnPush"},"template":"<div>\n  <mat-form-field>\n    <input\n        matInput\n        min=\"0\"\n        max=\"23\"\n        (focus)=\"focusHandler()\"\n        [(ngModel)]=\"hours\"\n        type=\"number\"\n        [readonly]=\"readonly\">\n  </mat-form-field>\n  :\n  <mat-form-field>\n    <input\n        matInput\n        min=\"0\"\n        max=\"59\"\n        (focus)=\"focusHandler()\"\n        [(ngModel)]=\"minutes\"\n        type=\"number\"\n        [readonly]=\"readonly\">\n  </mat-form-field>\n</div>\n","styles":["ajf-time .mat-form-field{width:1.5em;text-align:center}\n"]}]}],"members":{"__ctor__":[{"__symbolic":"constructor"}]}}},"origins":{"AjfTimeModule":"./time-module","AJF_TIME_CONTROL_VALUE_ACCESSOR":"./time","AjfTime":"./time"},"importAs":"@ajf/material/time"}

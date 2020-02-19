@@ -1,8 +1,11 @@
 {
   "name": "@ajf/material/monaco-editor",
-  "typings": "../monaco-editor.d.ts",
   "main": "../bundles/material-monaco-editor.umd.js",
-  "module": "../esm5/monaco-editor.es5.js",
-  "es2015": "../esm2015/monaco-editor.js",
-  "sideEffects": false
+  "fesm5": "../fesm5/monaco-editor.js",
+  "fesm2015": "../fesm2015/monaco-editor.js",
+  "esm5": "../esm5/monaco-editor/index.js",
+  "esm2015": "../esm2015/monaco-editor/index.js",
+  "typings": "./index.d.ts",
+  "module": "../fesm5/monaco-editor.js",
+  "es2015": "../fesm2015/monaco-editor.js"
 }

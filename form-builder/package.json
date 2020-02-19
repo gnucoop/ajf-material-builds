@@ -1,8 +1,11 @@
 {
   "name": "@ajf/material/form-builder",
-  "typings": "../form-builder.d.ts",
   "main": "../bundles/material-form-builder.umd.js",
-  "module": "../esm5/form-builder.es5.js",
-  "es2015": "../esm2015/form-builder.js",
-  "sideEffects": false
+  "fesm5": "../fesm5/form-builder.js",
+  "fesm2015": "../fesm2015/form-builder.js",
+  "esm5": "../esm5/form-builder/index.js",
+  "esm2015": "../esm2015/form-builder/index.js",
+  "typings": "./index.d.ts",
+  "module": "../fesm5/form-builder.js",
+  "es2015": "../fesm2015/form-builder.js"
 }

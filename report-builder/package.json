@@ -1,8 +1,11 @@
 {
   "name": "@ajf/material/report-builder",
-  "typings": "../report-builder.d.ts",
   "main": "../bundles/material-report-builder.umd.js",
-  "module": "../esm5/report-builder.es5.js",
-  "es2015": "../esm2015/report-builder.js",
-  "sideEffects": false
+  "fesm5": "../fesm5/report-builder.js",
+  "fesm2015": "../fesm2015/report-builder.js",
+  "esm5": "../esm5/report-builder/index.js",
+  "esm2015": "../esm2015/report-builder/index.js",
+  "typings": "./index.d.ts",
+  "module": "../fesm5/report-builder.js",
+  "es2015": "../fesm2015/report-builder.js"
 }

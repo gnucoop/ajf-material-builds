@@ -1,73 +1,29 @@
-/**
- * @license
- * Copyright (C) 2018 Gnucoop soc. coop.
- *
- * This file is part of the Advanced JSON forms (ajf).
- *
- * Advanced JSON forms (ajf) is free software: you can redistribute it and/or
- * modify it under the terms of the GNU Affero General Public License as
- * published by the Free Software Foundation, either version 3 of the License,
- * or (at your option) any later version.
- *
- * Advanced JSON forms (ajf) is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero
- * General Public License for more details.
- *
- * You should have received a copy of the GNU Affero General Public License
- * along with Advanced JSON forms (ajf).
- * If not, see http://www.gnu.org/licenses/.
- *
- */
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/common'), require('@angular/core'), require('@angular/forms'), require('@angular/cdk/drag-drop'), require('@angular/material/autocomplete'), require('@angular/material/button'), require('@angular/material/card'), require('@angular/material/checkbox'), require('@angular/material/chips'), require('@angular/material/dialog'), require('@angular/material/form-field'), require('@angular/material/icon'), require('@angular/material/input'), require('@angular/material/list'), require('@angular/material/menu'), require('@angular/material/select'), require('@angular/material/sidenav'), require('@angular/material/slider'), require('@angular/material/table'), require('@angular/material/toolbar'), require('@angular/material/tooltip'), require('@ngx-translate/core'), require('@ajf/material/monaco-editor'), require('@ajf/material/node-icon'), require('rxjs/operators'), require('@ajf/core/forms'), require('@angular/cdk/collections'), require('rxjs'), require('@ajf/core/models'), require('@ajf/core/utils'), require('@angular/cdk/keycodes')) :
-    typeof define === 'function' && define.amd ? define('@ajf/material/form-builder', ['exports', '@angular/common', '@angular/core', '@angular/forms', '@angular/cdk/drag-drop', '@angular/material/autocomplete', '@angular/material/button', '@angular/material/card', '@angular/material/checkbox', '@angular/material/chips', '@angular/material/dialog', '@angular/material/form-field', '@angular/material/icon', '@angular/material/input', '@angular/material/list', '@angular/material/menu', '@angular/material/select', '@angular/material/sidenav', '@angular/material/slider', '@angular/material/table', '@angular/material/toolbar', '@angular/material/tooltip', '@ngx-translate/core', '@ajf/material/monaco-editor', '@ajf/material/node-icon', 'rxjs/operators', '@ajf/core/forms', '@angular/cdk/collections', 'rxjs', '@ajf/core/models', '@ajf/core/utils', '@angular/cdk/keycodes'], factory) :
-    (global = global || self, factory((global.ajf = global.ajf || {}, global.ajf.material = global.ajf.material || {}, global.ajf.material.formBuilder = {}), global.ng.common, global.ng.core, global.ng.forms, global.ng.cdk.dragDrop, global.ng.material.autocomplete, global.ng.material.button, global.ng.material.card, global.ng.material.checkbox, global.ng.material.chips, global.ng.material.dialog, global.ng.material.formField, global.ng.material.icon, global.ng.material.input, global.ng.material.list, global.ng.material.menu, global.ng.material.select, global.ng.material.sidenav, global.ng.material.slider, global.ng.material.table, global.ng.material.toolbar, global.ng.material.tooltip, global.ngxt.core, global.ajf.material.monacoEditor, global.ajf.material.nodeIcon, global.rxjs.operators, global.ajf.core.forms, global.ng.cdk.collections, global.rxjs, global.ajf.core.models, global.ajf.core.utils, global.ng.cdk.keycodes));
-}(this, function (exports, common, core, forms, dragDrop, autocomplete, button, card, checkbox, chips, dialog, formField, icon, input, list, menu, select, sidenav, slider, table, toolbar, tooltip, core$1, monacoEditor, nodeIcon, operators, forms$1, collections, rxjs, models, utils, keycodes) { 'use strict';
-
-    /*! *****************************************************************************
-    Copyright (c) Microsoft Corporation. All rights reserved.
-    Licensed under the Apache License, Version 2.0 (the "License"); you may not use
-    this file except in compliance with the License. You may obtain a copy of the
-    License at http://www.apache.org/licenses/LICENSE-2.0
-
-    THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-    KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED
-    WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE,
-    MERCHANTABLITY OR NON-INFRINGEMENT.
-
-    See the Apache Version 2.0 License for specific language governing permissions
-    and limitations under the License.
-    ***************************************************************************** */
-    /* global Reflect, Promise */
-
-    var extendStatics = function(d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-
-    function __extends(d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    }
-
-    var __assign = function() {
-        __assign = Object.assign || function __assign(t) {
-            for (var s, i = 1, n = arguments.length; i < n; i++) {
-                s = arguments[i];
-                for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
-            }
-            return t;
-        };
-        return __assign.apply(this, arguments);
-    };
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/common'), require('@angular/core'), require('@angular/forms'), require('@angular/cdk/drag-drop'), require('@angular/material/autocomplete'), require('@angular/material/button'), require('@angular/material/card'), require('@angular/material/checkbox'), require('@angular/material/chips'), require('@angular/material/dialog'), require('@angular/material/form-field'), require('@angular/material/icon'), require('@angular/material/input'), require('@angular/material/list'), require('@angular/material/menu'), require('@angular/material/select'), require('@angular/material/sidenav'), require('@angular/material/slider'), require('@angular/material/table'), require('@angular/material/toolbar'), require('@angular/material/tooltip'), require('@ngx-translate/core'), require('@ajf/material/monaco-editor'), require('@ajf/material/node-icon'), require('rxjs/operators'), require('@ajf/core/forms'), require('tslib'), require('@angular/cdk/collections'), require('rxjs'), require('@ajf/core/models'), require('@ajf/core/utils'), require('@angular/cdk/keycodes')) :
+    typeof define === 'function' && define.amd ? define('@ajf/material/form-builder', ['exports', '@angular/common', '@angular/core', '@angular/forms', '@angular/cdk/drag-drop', '@angular/material/autocomplete', '@angular/material/button', '@angular/material/card', '@angular/material/checkbox', '@angular/material/chips', '@angular/material/dialog', '@angular/material/form-field', '@angular/material/icon', '@angular/material/input', '@angular/material/list', '@angular/material/menu', '@angular/material/select', '@angular/material/sidenav', '@angular/material/slider', '@angular/material/table', '@angular/material/toolbar', '@angular/material/tooltip', '@ngx-translate/core', '@ajf/material/monaco-editor', '@ajf/material/node-icon', 'rxjs/operators', '@ajf/core/forms', 'tslib', '@angular/cdk/collections', 'rxjs', '@ajf/core/models', '@ajf/core/utils', '@angular/cdk/keycodes'], factory) :
+    (global = global || self, factory((global.ajf = global.ajf || {}, global.ajf.material = global.ajf.material || {}, global.ajf.material.formBuilder = {}), global.ng.common, global.ng.core, global.ng.forms, global.ng.cdk.dragDrop, global.ng.material.autocomplete, global.ng.material.button, global.ng.material.card, global.ng.material.checkbox, global.ng.material.chips, global.ng.material.dialog, global.ng.material.formField, global.ng.material.icon, global.ng.material.input, global.ng.material.list, global.ng.material.menu, global.ng.material.select, global.ng.material.sidenav, global.ng.material.slider, global.ng.material.table, global.ng.material.toolbar, global.ng.material.tooltip, global.ngxTranslate.core, global.ng.material.monacoEditor, global.ng.material.nodeIcon, global.rxjs.operators, global.ng.core.forms, global.tslib, global.ng.cdk.collections, global.rxjs, global.ng.core.models, global.ng.core.utils, global.ng.cdk.keycodes));
+}(this, (function (exports, common, core, forms, dragDrop, autocomplete, button, card, checkbox, chips, dialog, formField, icon, input, list, menu, select, sidenav, slider, table, toolbar, tooltip, core$1, monacoEditor, nodeIcon, operators, forms$1, tslib, collections, rxjs, models, utils, keycodes) { 'use strict';
 
     /**
-     * @fileoverview added by tsickle
-     * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     * @license
+     * Copyright (C) 2018 Gnucoop soc. coop.
+     *
+     * This file is part of the Advanced JSON forms (ajf).
+     *
+     * Advanced JSON forms (ajf) is free software: you can redistribute it and/or
+     * modify it under the terms of the GNU Affero General Public License as
+     * published by the Free Software Foundation, either version 3 of the License,
+     * or (at your option) any later version.
+     *
+     * Advanced JSON forms (ajf) is distributed in the hope that it will be useful,
+     * but WITHOUT ANY WARRANTY; without even the implied warranty of
+     * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero
+     * General Public License for more details.
+     *
+     * You should have received a copy of the GNU Affero General Public License
+     * along with Advanced JSON forms (ajf).
+     * If not, see http://www.gnu.org/licenses/.
+     *
      */
     var AjfFbBranchLine = /** @class */ (function () {
         function AjfFbBranchLine(_el, _renderer) {
@@ -77,11 +33,7 @@
             this._height = 0;
         }
         Object.defineProperty(AjfFbBranchLine.prototype, "offset", {
-            set: /**
-             * @param {?} offset
-             * @return {?}
-             */
-            function (offset) {
+            set: function (offset) {
                 this._offset = offset;
                 this._updateOffset();
             },
@@ -89,11 +41,7 @@
             configurable: true
         });
         Object.defineProperty(AjfFbBranchLine.prototype, "color", {
-            set: /**
-             * @param {?} color
-             * @return {?}
-             */
-            function (color) {
+            set: function (color) {
                 this._color = color;
                 this._updateColor();
             },
@@ -101,62 +49,33 @@
             configurable: true
         });
         Object.defineProperty(AjfFbBranchLine.prototype, "height", {
-            set: /**
-             * @param {?} height
-             * @return {?}
-             */
-            function (height) {
+            set: function (height) {
                 this._height = height;
                 this._updateHeight();
             },
             enumerable: true,
             configurable: true
         });
-        /**
-         * @private
-         * @return {?}
-         */
-        AjfFbBranchLine.prototype._updateHeight = /**
-         * @private
-         * @return {?}
-         */
-        function () {
-            /** @type {?} */
+        AjfFbBranchLine.prototype._updateHeight = function () {
             var height = Math.max(0, this._height - 25) + "px";
             this._renderer.setStyle(this._el.nativeElement, 'height', height);
         };
-        /**
-         * @private
-         * @return {?}
-         */
-        AjfFbBranchLine.prototype._updateOffset = /**
-         * @private
-         * @return {?}
-         */
-        function () {
-            /** @type {?} */
+        AjfFbBranchLine.prototype._updateOffset = function () {
             var margin = this._offset * 4 + "px";
             this._renderer.setStyle(this._el.nativeElement, 'margin-top', margin);
             this._renderer.setStyle(this._el.nativeElement, 'margin-left', margin);
         };
-        /**
-         * @private
-         * @return {?}
-         */
-        AjfFbBranchLine.prototype._updateColor = /**
-         * @private
-         * @return {?}
-         */
-        function () {
+        AjfFbBranchLine.prototype._updateColor = function () {
             this._renderer.setStyle(this._el.nativeElement, 'border-color', this._color);
         };
         AjfFbBranchLine.decorators = [
-            { type: core.Component, args: [{selector: 'ajf-fb-branch-line',
+            { type: core.Component, args: [{
+                        selector: 'ajf-fb-branch-line',
                         template: "",
-                        styles: ["ajf-fb-branch-line{display:block;position:absolute;top:25px;left:25px;width:25px;border-top:2px solid;border-left:2px solid;border-top-left-radius:6px}"],
                         encapsulation: core.ViewEncapsulation.None,
-                        changeDetection: core.ChangeDetectionStrategy.OnPush
-                    },] },
+                        changeDetection: core.ChangeDetectionStrategy.OnPush,
+                        styles: ["ajf-fb-branch-line{display:block;position:absolute;top:25px;left:25px;width:25px;border-top:2px solid;border-left:2px solid;border-top-left-radius:6px}\n"]
+                    }] }
         ];
         /** @nocollapse */
         AjfFbBranchLine.ctorParameters = function () { return [
@@ -172,50 +91,64 @@
     }());
 
     /**
-     * @fileoverview added by tsickle
-     * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     * @license
+     * Copyright (C) 2018 Gnucoop soc. coop.
+     *
+     * This file is part of the Advanced JSON forms (ajf).
+     *
+     * Advanced JSON forms (ajf) is free software: you can redistribute it and/or
+     * modify it under the terms of the GNU Affero General Public License as
+     * published by the Free Software Foundation, either version 3 of the License,
+     * or (at your option) any later version.
+     *
+     * Advanced JSON forms (ajf) is distributed in the hope that it will be useful,
+     * but WITHOUT ANY WARRANTY; without even the implied warranty of
+     * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero
+     * General Public License for more details.
+     *
+     * You should have received a copy of the GNU Affero General Public License
+     * along with Advanced JSON forms (ajf).
+     * If not, see http://www.gnu.org/licenses/.
+     *
      */
     var ChoicesOriginDataSource = /** @class */ (function (_super) {
-        __extends(ChoicesOriginDataSource, _super);
+        tslib.__extends(ChoicesOriginDataSource, _super);
         function ChoicesOriginDataSource() {
             var _this = _super.call(this) || this;
             _this._choices = new rxjs.BehaviorSubject([]);
             _this._choicesObs = _this._choices.asObservable();
             return _this;
         }
-        /**
-         * @return {?}
-         */
-        ChoicesOriginDataSource.prototype.connect = /**
-         * @return {?}
-         */
-        function () {
+        ChoicesOriginDataSource.prototype.connect = function () {
             return this._choicesObs;
         };
-        /**
-         * @return {?}
-         */
-        ChoicesOriginDataSource.prototype.disconnect = /**
-         * @return {?}
-         */
-        function () { };
-        /**
-         * @param {?} choices
-         * @return {?}
-         */
-        ChoicesOriginDataSource.prototype.updateChoices = /**
-         * @param {?} choices
-         * @return {?}
-         */
-        function (choices) {
+        ChoicesOriginDataSource.prototype.disconnect = function () { };
+        ChoicesOriginDataSource.prototype.updateChoices = function (choices) {
             this._choices.next(choices);
         };
         return ChoicesOriginDataSource;
     }(collections.DataSource));
 
     /**
-     * @fileoverview added by tsickle
-     * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     * @license
+     * Copyright (C) 2018 Gnucoop soc. coop.
+     *
+     * This file is part of the Advanced JSON forms (ajf).
+     *
+     * Advanced JSON forms (ajf) is free software: you can redistribute it and/or
+     * modify it under the terms of the GNU Affero General Public License as
+     * published by the Free Software Foundation, either version 3 of the License,
+     * or (at your option) any later version.
+     *
+     * Advanced JSON forms (ajf) is distributed in the hope that it will be useful,
+     * but WITHOUT ANY WARRANTY; without even the implied warranty of
+     * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero
+     * General Public License for more details.
+     *
+     * You should have received a copy of the GNU Affero General Public License
+     * along with Advanced JSON forms (ajf).
+     * If not, see http://www.gnu.org/licenses/.
+     *
      */
     var AjfFbChoicesOriginEditor = /** @class */ (function () {
         function AjfFbChoicesOriginEditor() {
@@ -225,25 +158,15 @@
             this._choicesArr = [];
         }
         Object.defineProperty(AjfFbChoicesOriginEditor.prototype, "displayedColumns", {
-            get: /**
-             * @return {?}
-             */
-            function () { return this._displayedColumns; },
+            get: function () { return this._displayedColumns; },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(AjfFbChoicesOriginEditor.prototype, "choicesOrigin", {
-            get: /**
-             * @return {?}
-             */
-            function () {
+            get: function () {
                 return this._choicesOrigin;
             },
-            set: /**
-             * @param {?} choicesOrigin
-             * @return {?}
-             */
-            function (choicesOrigin) {
+            set: function (choicesOrigin) {
                 this._choicesOrigin = choicesOrigin;
                 this.name = choicesOrigin.name;
                 this.label = choicesOrigin.label;
@@ -255,69 +178,36 @@
             configurable: true
         });
         Object.defineProperty(AjfFbChoicesOriginEditor.prototype, "choices", {
-            get: /**
-             * @return {?}
-             */
-            function () { return this._choices; },
+            get: function () { return this._choices; },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(AjfFbChoicesOriginEditor.prototype, "choicesArr", {
-            get: /**
-             * @return {?}
-             */
-            function () { return this._choicesArr; },
+            get: function () { return this._choicesArr; },
             enumerable: true,
             configurable: true
         });
-        /**
-         * @param {?} evt
-         * @param {?} cell
-         * @param {?} _value
-         * @param {?} rowIdx
-         * @return {?}
-         */
-        AjfFbChoicesOriginEditor.prototype.updateValue = /**
-         * @param {?} evt
-         * @param {?} cell
-         * @param {?} _value
-         * @param {?} rowIdx
-         * @return {?}
-         */
-        function (evt, cell, _value, rowIdx) {
+        AjfFbChoicesOriginEditor.prototype.updateValue = function (evt, cell, _value, rowIdx) {
             this.editing[rowIdx + '-' + cell] = false;
-            ((/** @type {?} */ (this._choicesArr[rowIdx])))[cell] = evt.target.value;
+            this._choicesArr[rowIdx][cell] = evt.target.value;
             this._choices.updateChoices(this._choicesArr);
         };
-        /**
-         * @param {?} rowIdx
-         * @return {?}
-         */
-        AjfFbChoicesOriginEditor.prototype.deleteRow = /**
-         * @param {?} rowIdx
-         * @return {?}
-         */
-        function (rowIdx) {
+        AjfFbChoicesOriginEditor.prototype.deleteRow = function (rowIdx) {
             this._choicesArr.splice(rowIdx, 1);
             this._choices.updateChoices(this._choicesArr);
         };
-        /**
-         * @return {?}
-         */
-        AjfFbChoicesOriginEditor.prototype.addRow = /**
-         * @return {?}
-         */
-        function () {
+        AjfFbChoicesOriginEditor.prototype.addRow = function () {
             this._choicesArr.push({ label: '', value: '' });
             this._choices.updateChoices(this._choicesArr);
         };
         AjfFbChoicesOriginEditor.decorators = [
-            { type: core.Component, args: [{selector: 'ajf-fb-choices-origin-editor',
-                        template: "<div><mat-form-field><input matInput [(ngModel)]=\"name\" [placeholder]=\"'Name' | translate\"></mat-form-field><mat-form-field><input matInput [(ngModel)]=\"label\" [placeholder]=\"'Label' | translate\"></mat-form-field><ng-template [ngIf]=\"canEditChoices\"><button (click)=\"addRow()\" mat-button><mat-icon>add</mat-icon><span translate>Add value</span></button><mat-table [dataSource]=\"choices\"><ng-container matColumnDef=\"label\"><mat-header-cell *matHeaderCellDef translate>Label</mat-header-cell><mat-cell *matCellDef=\"let row; let idx = index\"><input matInput [(ngModel)]=\"row.label\" type=\"text\"></mat-cell></ng-container><ng-container matColumnDef=\"value\"><mat-header-cell *matHeaderCellDef translate>Value</mat-header-cell><mat-cell *matCellDef=\"let row; let idx = index\"><input matInput [(ngModel)]=\"row.value\" type=\"text\"></mat-cell></ng-container><ng-container matColumnDef=\"delete\"><mat-header-cell *matHeaderCellDef translate>Delete</mat-header-cell><mat-cell *matCellDef=\"let row; let idx = index\"><mat-icon (click)=\"deleteRow(idx)\">delete</mat-icon></mat-cell></ng-container><mat-header-row *matHeaderRowDef=\"displayedColumns\"></mat-header-row><mat-row *matRowDef=\"let row; columns: displayedColumns;\"></mat-row></mat-table></ng-template></div>",
-                        styles: ["ajf-fb-choices-origin-editor mat-form-field+mat-form-field{margin-left:1em}ajf-fb-choices-origin-editor mat-table{max-height:300px}ajf-fb-choices-origin-editor mat-table mat-icon{cursor:pointer}"],
+            { type: core.Component, args: [{
+                        selector: 'ajf-fb-choices-origin-editor',
+                        template: "<div>\n  <mat-form-field>\n    <input matInput [(ngModel)]=\"name\"\n        [placeholder]=\"'Name' | translate\">\n  </mat-form-field>\n  <mat-form-field>\n    <input matInput [(ngModel)]=\"label\"\n        [placeholder]=\"'Label' | translate\">\n  </mat-form-field>\n  <ng-template [ngIf]=\"canEditChoices\">\n    <button (click)=\"addRow()\" mat-button>\n      <mat-icon>add</mat-icon>\n      <span translate>Add value</span>\n    </button>\n    <mat-table [dataSource]=\"choices\">\n      <ng-container matColumnDef=\"label\">\n        <mat-header-cell *matHeaderCellDef translate>Label</mat-header-cell>\n        <mat-cell *matCellDef=\"let row; let idx = index\">\n          <input matInput [(ngModel)]=\"row.label\" type=\"text\">\n        </mat-cell>\n      </ng-container>\n      <ng-container matColumnDef=\"value\">\n        <mat-header-cell *matHeaderCellDef translate>Value</mat-header-cell>\n        <mat-cell *matCellDef=\"let row; let idx = index\">\n          <input matInput [(ngModel)]=\"row.value\" type=\"text\">\n        </mat-cell>\n      </ng-container>\n      <ng-container matColumnDef=\"delete\">\n        <mat-header-cell *matHeaderCellDef translate>Delete</mat-header-cell>\n        <mat-cell *matCellDef=\"let row; let idx = index\">\n            <mat-icon (click)=\"deleteRow(idx)\">delete</mat-icon>\n        </mat-cell>\n      </ng-container>\n\n      <mat-header-row *matHeaderRowDef=\"displayedColumns\"></mat-header-row>\n      <mat-row *matRowDef=\"let row; columns: displayedColumns;\"></mat-row>\n    </mat-table>\n  </ng-template>\n</div>\n",
                         encapsulation: core.ViewEncapsulation.None,
-                        changeDetection: core.ChangeDetectionStrategy.OnPush
-                    },] },
+                        changeDetection: core.ChangeDetectionStrategy.OnPush,
+                        styles: ["ajf-fb-choices-origin-editor mat-form-field+mat-form-field{margin-left:1em}ajf-fb-choices-origin-editor mat-table{max-height:300px}ajf-fb-choices-origin-editor mat-table mat-icon{cursor:pointer}\n"]
+                    }] }
         ];
         AjfFbChoicesOriginEditor.propDecorators = {
             choicesOrigin: [{ type: core.Input }]
@@ -326,76 +216,58 @@
     }());
 
     /**
-     * @fileoverview added by tsickle
-     * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
-     */
-    /**
-     * @param {?} c
-     * @param {?} node
-     * @return {?}
+     * @license
+     * Copyright (C) 2018 Gnucoop soc. coop.
+     *
+     * This file is part of the Advanced JSON forms (ajf).
+     *
+     * Advanced JSON forms (ajf) is free software: you can redistribute it and/or
+     * modify it under the terms of the GNU Affero General Public License as
+     * published by the Free Software Foundation, either version 3 of the License,
+     * or (at your option) any later version.
+     *
+     * Advanced JSON forms (ajf) is distributed in the hope that it will be useful,
+     * but WITHOUT ANY WARRANTY; without even the implied warranty of
+     * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero
+     * General Public License for more details.
+     *
+     * You should have received a copy of the GNU Affero General Public License
+     * along with Advanced JSON forms (ajf).
+     * If not, see http://www.gnu.org/licenses/.
+     *
      */
     function getNodeContainer(c, node) {
         if (c.nodes.indexOf(node) > -1) {
             return c;
         }
-        /** @type {?} */
-        var cns = c.nodes.filter((/**
-         * @param {?} n
-         * @return {?}
-         */
-        function (n) { return forms$1.isContainerNode(n); }));
-        /** @type {?} */
+        var cns = c.nodes.filter(function (n) { return forms$1.isContainerNode(n); });
         var len = cns.length;
         for (var i = 0; i < len; i++) {
-            /** @type {?} */
-            var cn = getNodeContainer((/** @type {?} */ (cns[i])), node);
+            var cn = getNodeContainer(cns[i], node);
             if (cn != null) {
                 return cn;
             }
         }
         return null;
     }
-    /**
-     * @param {?} nodes
-     * @param {?} parent
-     * @param {?=} ignoreConditionalBranches
-     * @return {?}
-     */
     function buildFormBuilderNodesSubtree(nodes, parent, ignoreConditionalBranches) {
         if (ignoreConditionalBranches === void 0) { ignoreConditionalBranches = false; }
-        /** @type {?} */
         var entries = nodes
-            .filter((/**
-         * @param {?} n
-         * @return {?}
-         */
-        function (n) { return n.parent === parent.id; }))
-            .sort((/**
-         * @param {?} n1
-         * @param {?} n2
-         * @return {?}
-         */
-        function (n1, n2) { return n1.parentNode - n2.parentNode; }))
-            .map((/**
-         * @param {?} n
-         * @return {?}
-         */
-        function (n) {
-            /** @type {?} */
+            .filter(function (n) { return n.parent === parent.id; })
+            .sort(function (n1, n2) { return n1.parentNode - n2.parentNode; })
+            .map(function (n) {
             var children = buildFormBuilderNodesSubtree(nodes, n);
             if (children.length === 0) {
                 children.push({ parent: n, parentNode: 0 });
             }
-            return (/** @type {?} */ ({
+            return {
                 node: n,
                 children: children,
                 content: buildFormBuilderNodesContent(nodes, n)
-            }));
-        }));
+            };
+        });
         if (!ignoreConditionalBranches) {
-            /** @type {?} */
             var entriesNum = entries.length;
-            /** @type {?} */
             var cbs = parent.conditionalBranches.length;
             for (var i = entriesNum; i < cbs; i++) {
                 entries.push({
@@ -406,40 +278,24 @@
         }
         return entries;
     }
-    /**
-     * @param {?} _nodes
-     * @param {?} node
-     * @return {?}
-     */
     function buildFormBuilderNodesContent(_nodes, node) {
         if (forms$1.isContainerNode(node)) {
-            return buildFormBuilderNodesSubtree(((/** @type {?} */ (node))).nodes, node, true);
+            return buildFormBuilderNodesSubtree(node.nodes, node, true);
         }
         return [];
     }
-    /**
-     * @param {?} nodes
-     * @return {?}
-     */
     function buildFormBuilderNodesTree(nodes) {
-        /** @type {?} */
-        var rootNodes = nodes.filter((/**
-         * @param {?} n
-         * @return {?}
-         */
-        function (n) { return n.parent == null || n.parent === 0; }));
+        var rootNodes = nodes.filter(function (n) { return n.parent == null || n.parent === 0; });
         if (rootNodes.length === 1) {
-            /** @type {?} */
             var rootNode = rootNodes[0];
             if (forms$1.isSlidesNode(rootNode)) {
-                /** @type {?} */
                 var tree = [];
-                tree.push((/** @type {?} */ ({
+                tree.push({
                     node: rootNode,
                     container: null,
                     children: buildFormBuilderNodesSubtree(nodes, rootNode),
                     content: buildFormBuilderNodesContent(nodes, rootNode)
-                })));
+                });
                 return tree;
             }
         }
@@ -448,95 +304,45 @@
         }
         throw new Error('Invalid form definition');
     }
-    /**
-     * @param {?} nodes
-     * @return {?}
-     */
     function flattenNodes(nodes) {
-        /** @type {?} */
         var flatNodes = [];
-        nodes.forEach((/**
-         * @param {?} node
-         * @return {?}
-         */
-        function (node) {
+        nodes.forEach(function (node) {
             if (forms$1.isContainerNode(node)) {
-                flatNodes = flatNodes.concat(flattenNodes(((/** @type {?} */ (node))).nodes));
+                flatNodes = flatNodes.concat(flattenNodes(node.nodes));
             }
             flatNodes.push(node);
-        }));
+        });
         return flatNodes;
     }
-    /**
-     * @param {?} flatNodes
-     * @param {?} parentNode
-     * @param {?=} branch
-     * @return {?}
-     */
     function getDescendants(flatNodes, parentNode, branch) {
         if (branch === void 0) { branch = null; }
         return branch != null ?
-            flatNodes.filter((/**
-             * @param {?} n
-             * @return {?}
-             */
-            function (n) { return n.parent === parentNode.id && n.parentNode === branch; })) :
-            flatNodes.filter((/**
-             * @param {?} n
-             * @return {?}
-             */
-            function (n) { return n.parent === parentNode.id; }));
+            flatNodes.filter(function (n) { return n.parent === parentNode.id && n.parentNode === branch; }) :
+            flatNodes.filter(function (n) { return n.parent === parentNode.id; });
     }
-    /**
-     * @param {?} nodes
-     * @param {?} ids
-     * @return {?}
-     */
     function removeNodes(nodes, ids) {
-        /** @type {?} */
         var len = nodes.length;
         for (var i = 0; i < len; i++) {
-            /** @type {?} */
             var node = nodes[i];
             if (forms$1.isContainerNode(node)) {
-                /** @type {?} */
-                var container = ((/** @type {?} */ (node)));
+                var container = node;
                 container.nodes = removeNodes(container.nodes, ids);
             }
         }
-        return nodes.filter((/**
-         * @param {?} n
-         * @return {?}
-         */
-        function (n) { return ids.indexOf(n.id) === -1; }));
+        return nodes.filter(function (n) { return ids.indexOf(n.id) === -1; });
     }
-    /**
-     * @param {?} nodes
-     * @param {?} parentNode
-     * @param {?=} branch
-     * @return {?}
-     */
     function deleteNodeSubtree(nodes, parentNode, branch) {
         if (branch === void 0) { branch = null; }
-        /** @type {?} */
         var flatNodes = flattenNodes(nodes);
-        /** @type {?} */
         var delNodes = [];
-        /** @type {?} */
         var descendants = getDescendants(flatNodes, parentNode, branch);
-        /** @type {?} */
         var len = descendants.length;
         for (var i = 0; i < len; i++) {
             delNodes = delNodes.concat(getDescendants(flatNodes, descendants[i]));
         }
         delNodes = delNodes.concat(descendants);
-        return removeNodes(nodes, delNodes.map((/**
-         * @param {?} n
-         * @return {?}
-         */
-        function (n) { return n.id; })));
+        return removeNodes(nodes, delNodes.map(function (n) { return n.id; }));
     }
-    /** @type {?} */
     var nodeUniqueId = 0;
     var AjfFormBuilderService = /** @class */ (function () {
         function AjfFormBuilderService() {
@@ -642,14 +448,7 @@
              * @readonly
              * @memberOf AjfFormBuilderService
              */
-            get: /**
-             * Available node types
-             *
-             * \@readonly
-             * \@memberOf AjfFormBuilderService
-             * @return {?}
-             */
-            function () { return this._availableNodeTypes; },
+            get: function () { return this._availableNodeTypes; },
             enumerable: true,
             configurable: true
         });
@@ -660,122 +459,79 @@
              * @readonly
              * @memberOf AjfFormBuilderService
              */
-            get: /**
-             * Current edited form stream
-             *
-             * \@readonly
-             * \@memberOf AjfFormBuilderService
-             * @return {?}
-             */
-            function () { return this._formObs; },
+            get: function () { return this._formObs; },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(AjfFormBuilderService.prototype, "attachmentsOrigins", {
-            get: /**
-             * @return {?}
-             */
-            function () {
+            get: function () {
                 return this._attachmentsOrigins;
             },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(AjfFormBuilderService.prototype, "choicesOrigins", {
-            get: /**
-             * @return {?}
-             */
-            function () {
+            get: function () {
                 return this._choicesOrigins;
             },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(AjfFormBuilderService.prototype, "stringIdentifier", {
-            get: /**
-             * @return {?}
-             */
-            function () {
+            get: function () {
                 return this._stringIdentifier;
             },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(AjfFormBuilderService.prototype, "nodes", {
-            get: /**
-             * @return {?}
-             */
-            function () { return this._nodes; },
+            get: function () { return this._nodes; },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(AjfFormBuilderService.prototype, "flatNodes", {
-            get: /**
-             * @return {?}
-             */
-            function () {
+            get: function () {
                 return this._flatNodes;
             },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(AjfFormBuilderService.prototype, "flatFields", {
-            get: /**
-             * @return {?}
-             */
-            function () { return this._flatFields; },
+            get: function () { return this._flatFields; },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(AjfFormBuilderService.prototype, "nodeEntriesTree", {
-            get: /**
-             * @return {?}
-             */
-            function () { return this._nodeEntriesTree; },
+            get: function () { return this._nodeEntriesTree; },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(AjfFormBuilderService.prototype, "editedNodeEntry", {
-            get: /**
-             * @return {?}
-             */
-            function () {
+            get: function () {
                 return this._editedNodeEntryObs;
             },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(AjfFormBuilderService.prototype, "editedCondition", {
-            get: /**
-             * @return {?}
-             */
-            function () { return this._editedConditionObs; },
+            get: function () { return this._editedConditionObs; },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(AjfFormBuilderService.prototype, "editedChoicesOrigin", {
-            get: /**
-             * @return {?}
-             */
-            function () {
+            get: function () {
                 return this._editedChoicesOriginObs;
             },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(AjfFormBuilderService.prototype, "beforeNodesUpdate", {
-            get: /**
-             * @return {?}
-             */
-            function () { return this._beforeNodesUpdateObs; },
+            get: function () { return this._beforeNodesUpdateObs; },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(AjfFormBuilderService.prototype, "afterNodeUpdate", {
-            get: /**
-             * @return {?}
-             */
-            function () { return this._afterNodeUpdateObs; },
+            get: function () { return this._afterNodeUpdateObs; },
             enumerable: true,
             configurable: true
         });
@@ -786,59 +542,18 @@
          *
          * @memberOf AjfFormBuilderService
          */
-        /**
-         * Sets the current edited form
-         *
-         * \@memberOf AjfFormBuilderService
-         * @param {?} form
-         *
-         * @return {?}
-         */
-        AjfFormBuilderService.prototype.setForm = /**
-         * Sets the current edited form
-         *
-         * \@memberOf AjfFormBuilderService
-         * @param {?} form
-         *
-         * @return {?}
-         */
-        function (form) {
+        AjfFormBuilderService.prototype.setForm = function (form) {
             if (form !== this._form.getValue()) {
                 this._form.next(form);
             }
         };
-        /**
-         * @param {?} nodeEntry
-         * @return {?}
-         */
-        AjfFormBuilderService.prototype.editNodeEntry = /**
-         * @param {?} nodeEntry
-         * @return {?}
-         */
-        function (nodeEntry) {
+        AjfFormBuilderService.prototype.editNodeEntry = function (nodeEntry) {
             this._editedNodeEntry.next(nodeEntry);
         };
-        /**
-         * @param {?} condition
-         * @return {?}
-         */
-        AjfFormBuilderService.prototype.editCondition = /**
-         * @param {?} condition
-         * @return {?}
-         */
-        function (condition) {
+        AjfFormBuilderService.prototype.editCondition = function (condition) {
             this._editedCondition.next(condition);
         };
-        /**
-         * @param {?} condition
-         * @return {?}
-         */
-        AjfFormBuilderService.prototype.saveCurrentCondition = /**
-         * @param {?} condition
-         * @return {?}
-         */
-        function (condition) {
-            /** @type {?} */
+        AjfFormBuilderService.prototype.saveCurrentCondition = function (condition) {
             var c = this._editedCondition.getValue();
             if (c == null) {
                 return;
@@ -846,42 +561,19 @@
             c.condition = condition;
             this._editedCondition.next(null);
         };
-        /**
-         * @return {?}
-         */
-        AjfFormBuilderService.prototype.cancelConditionEdit = /**
-         * @return {?}
-         */
-        function () {
+        AjfFormBuilderService.prototype.cancelConditionEdit = function () {
             this._editedChoicesOrigin.next(null);
         };
-        /**
-         * @param {?} nodeType
-         * @param {?} parent
-         * @param {?} parentNode
-         * @param {?=} inContent
-         * @return {?}
-         */
-        AjfFormBuilderService.prototype.insertNode = /**
-         * @param {?} nodeType
-         * @param {?} parent
-         * @param {?} parentNode
-         * @param {?=} inContent
-         * @return {?}
-         */
-        function (nodeType, parent, parentNode, inContent) {
+        AjfFormBuilderService.prototype.insertNode = function (nodeType, parent, parentNode, inContent) {
             if (inContent === void 0) { inContent = false; }
-            /** @type {?} */
             var node;
-            /** @type {?} */
             var id = ++nodeUniqueId;
-            /** @type {?} */
             var isFieldNode = nodeType.nodeType.field != null;
             if (isFieldNode) {
                 node = forms$1.createField({
                     id: id,
                     nodeType: forms$1.AjfNodeType.AjfField,
-                    fieldType: (/** @type {?} */ (nodeType.nodeType.field)),
+                    fieldType: nodeType.nodeType.field,
                     parent: parent.id,
                     parentNode: parentNode,
                     name: '',
@@ -898,23 +590,16 @@
                 });
             }
             this._beforeNodesUpdate.emit();
-            this._nodesUpdates.next((/**
-             * @param {?} nodes
-             * @return {?}
-             */
-            function (nodes) {
+            this._nodesUpdates.next(function (nodes) {
                 if (node.parent === 0) {
                     return [node];
                 }
-                /** @type {?} */
                 var cn = forms$1.isContainerNode(parent) && inContent ?
-                    ((/** @type {?} */ (parent))) :
+                    parent :
                     getNodeContainer({ nodes: nodes }, parent);
                 if (cn != null) {
                     if (!isFieldNode) {
-                        /** @type {?} */
                         var replaceNodes = cn.nodes === nodes;
-                        /** @type {?} */
                         var newNodes = cn.nodes.slice(0);
                         newNodes.push(node);
                         cn.nodes = newNodes;
@@ -927,107 +612,42 @@
                     }
                 }
                 return nodes;
-            }));
+            });
         };
-        /**
-         * @param {?} properties
-         * @return {?}
-         */
-        AjfFormBuilderService.prototype.saveNodeEntry = /**
-         * @param {?} properties
-         * @return {?}
-         */
-        function (properties) {
+        AjfFormBuilderService.prototype.saveNodeEntry = function (properties) {
             this._saveNodeEntryEvent.emit(properties);
         };
-        /**
-         * @return {?}
-         */
-        AjfFormBuilderService.prototype.cancelNodeEntryEdit = /**
-         * @return {?}
-         */
-        function () {
+        AjfFormBuilderService.prototype.cancelNodeEntryEdit = function () {
             this._editedNodeEntry.next(null);
         };
-        /**
-         * @param {?} nodeEntry
-         * @return {?}
-         */
-        AjfFormBuilderService.prototype.deleteNodeEntry = /**
-         * @param {?} nodeEntry
-         * @return {?}
-         */
-        function (nodeEntry) {
+        AjfFormBuilderService.prototype.deleteNodeEntry = function (nodeEntry) {
             this._deleteNodeEntryEvent.next(nodeEntry);
         };
-        /**
-         * @return {?}
-         */
-        AjfFormBuilderService.prototype.getCurrentForm = /**
-         * @return {?}
-         */
-        function () {
-            return rxjs.combineLatest([this.form, this.nodes, this.attachmentsOrigins, this.choicesOrigins, this.stringIdentifier]).pipe(operators.filter((/**
-             * @param {?} __0
-             * @return {?}
-             */
-            function (_a) {
-                var form = _a[0];
+        AjfFormBuilderService.prototype.getCurrentForm = function () {
+            return rxjs.combineLatest([this.form, this.nodes, this.attachmentsOrigins, this.choicesOrigins, this.stringIdentifier]).pipe(operators.filter(function (_a) {
+                var _b = tslib.__read(_a, 1), form = _b[0];
                 return form != null;
-            })), operators.map((/**
-             * @param {?} __0
-             * @return {?}
-             */
-            function (_a) {
-                var form = _a[0], nodes = _a[1], attachmentsOrigins = _a[2], choicesOrigins = _a[3], stringIdentifier = _a[4];
+            }), operators.map(function (_a) {
+                var _b = tslib.__read(_a, 5), form = _b[0], nodes = _b[1], attachmentsOrigins = _b[2], choicesOrigins = _b[3], stringIdentifier = _b[4];
                 return forms$1.createForm({
                     choicesOrigins: choicesOrigins.slice(0),
                     attachmentsOrigins: attachmentsOrigins.slice(0),
                     stringIdentifier: (stringIdentifier || []).slice(0),
-                    nodes: (/** @type {?} */ (nodes.slice(0))),
-                    supplementaryInformations: (/** @type {?} */ (form)).supplementaryInformations,
+                    nodes: nodes.slice(0),
+                    supplementaryInformations: form.supplementaryInformations,
                 });
-            })));
+            }));
         };
-        /**
-         * @param {?} choicesOrigin
-         * @return {?}
-         */
-        AjfFormBuilderService.prototype.editChoicesOrigin = /**
-         * @param {?} choicesOrigin
-         * @return {?}
-         */
-        function (choicesOrigin) {
+        AjfFormBuilderService.prototype.editChoicesOrigin = function (choicesOrigin) {
             this._editedChoicesOrigin.next(choicesOrigin);
         };
-        /**
-         * @return {?}
-         */
-        AjfFormBuilderService.prototype.createChoicesOrigin = /**
-         * @return {?}
-         */
-        function () {
+        AjfFormBuilderService.prototype.createChoicesOrigin = function () {
             this._editedChoicesOrigin.next(forms$1.createChoicesFixedOrigin({ name: '' }));
         };
-        /**
-         * @return {?}
-         */
-        AjfFormBuilderService.prototype.cancelChoicesOriginEdit = /**
-         * @return {?}
-         */
-        function () {
+        AjfFormBuilderService.prototype.cancelChoicesOriginEdit = function () {
             this._editedChoicesOrigin.next(null);
         };
-        /**
-         * @param {?} params
-         * @return {?}
-         */
-        AjfFormBuilderService.prototype.saveChoicesOrigin = /**
-         * @param {?} params
-         * @return {?}
-         */
-        function (params) {
-            /** @type {?} */
+        AjfFormBuilderService.prototype.saveChoicesOrigin = function (params) {
             var choicesOrigin = this._editedChoicesOrigin.getValue();
             if (choicesOrigin != null) {
                 choicesOrigin.label = params.label;
@@ -1035,246 +655,100 @@
                 if (forms$1.isChoicesFixedOrigin(choicesOrigin)) {
                     choicesOrigin.choices = params.choices;
                 }
-                this._choicesOriginsUpdates.next((/**
-                 * @param {?} choicesOrigins
-                 * @return {?}
-                 */
-                function (choicesOrigins) {
-                    /** @type {?} */
+                this._choicesOriginsUpdates.next(function (choicesOrigins) {
                     var idx = choicesOrigins.indexOf(choicesOrigin);
                     if (idx > -1) {
-                        choicesOrigins = choicesOrigins.slice(0, idx).concat([
+                        choicesOrigins = tslib.__spread(choicesOrigins.slice(0, idx), [
                             choicesOrigin
                         ], choicesOrigins.slice(idx + 1));
                     }
                     else {
-                        choicesOrigins = choicesOrigins.concat([choicesOrigin]);
+                        choicesOrigins = tslib.__spread(choicesOrigins, [choicesOrigin]);
                     }
                     return choicesOrigins;
-                }));
+                });
             }
             this._editedChoicesOrigin.next(null);
         };
-        /**
-         * @param {?} identifier
-         * @return {?}
-         */
-        AjfFormBuilderService.prototype.saveStringIdentifier = /**
-         * @param {?} identifier
-         * @return {?}
-         */
-        function (identifier) {
-            this._stringIdentifierUpdates.next((/**
-             * @return {?}
-             */
-            function () { return identifier.slice(); }));
+        AjfFormBuilderService.prototype.saveStringIdentifier = function (identifier) {
+            this._stringIdentifierUpdates.next(function () { return tslib.__spread(identifier); });
         };
-        /**
-         * @private
-         * @param {?} nodes
-         * @param {?=} _curMaxId
-         * @return {?}
-         */
-        AjfFormBuilderService.prototype._findMaxNodeId = /**
-         * @private
-         * @param {?} nodes
-         * @param {?=} _curMaxId
-         * @return {?}
-         */
-        function (nodes, _curMaxId) {
+        AjfFormBuilderService.prototype._findMaxNodeId = function (nodes, _curMaxId) {
             var _this = this;
-            /** @type {?} */
+            if (_curMaxId === void 0) { _curMaxId = 0; }
             var maxId = 0;
-            nodes.forEach((/**
-             * @param {?} n
-             * @return {?}
-             */
-            function (n) {
+            nodes.forEach(function (n) {
                 maxId = Math.max(maxId, n.id);
                 if (forms$1.isContainerNode(n)) {
-                    maxId = Math.max(maxId, _this._findMaxNodeId(((/** @type {?} */ (n))).nodes));
+                    maxId = Math.max(maxId, _this._findMaxNodeId(n.nodes));
                 }
-            }));
+            });
             return maxId;
         };
-        /**
-         * @private
-         * @return {?}
-         */
-        AjfFormBuilderService.prototype._initFormStreams = /**
-         * @private
-         * @return {?}
-         */
-        function () {
+        AjfFormBuilderService.prototype._initFormStreams = function () {
             var _this = this;
             this._form
-                .subscribe((/**
-             * @param {?} form
-             * @return {?}
-             */
-            function (form) {
+                .subscribe(function (form) {
                 nodeUniqueId = 0;
                 if (form != null && form.nodes != null && form.nodes.length > 0) {
                     nodeUniqueId = _this._findMaxNodeId(form.nodes);
                 }
-                _this._nodesUpdates.next((/**
-                 * @param {?} _nodes
-                 * @return {?}
-                 */
-                function (_nodes) {
+                _this._nodesUpdates.next(function (_nodes) {
                     return form != null && form.nodes != null ? form.nodes.slice(0) : [];
-                }));
-                _this._attachmentsOriginsUpdates.next((/**
-                 * @param {?} _attachmentsOrigins
-                 * @return {?}
-                 */
-                function (_attachmentsOrigins) {
+                });
+                _this._attachmentsOriginsUpdates.next(function (_attachmentsOrigins) {
                     return form != null && form.attachmentsOrigins != null ?
                         form.attachmentsOrigins.slice(0) :
                         [];
-                }));
-                _this._choicesOriginsUpdates.next((/**
-                 * @param {?} _choicesOrigins
-                 * @return {?}
-                 */
-                function (_choicesOrigins) {
+                });
+                _this._choicesOriginsUpdates.next(function (_choicesOrigins) {
                     return form != null && form.choicesOrigins != null ? form.choicesOrigins.slice(0) :
                         [];
-                }));
-                _this._stringIdentifierUpdates.next((/**
-                 * @param {?} _
-                 * @return {?}
-                 */
-                function (_) {
+                });
+                _this._stringIdentifierUpdates.next(function (_) {
                     return form != null && form.stringIdentifier != null
                         ? form.stringIdentifier.slice(0)
                         : [];
-                }));
-            }));
+                });
+            });
         };
-        /**
-         * @private
-         * @return {?}
-         */
-        AjfFormBuilderService.prototype._initChoicesOriginsStreams = /**
-         * @private
-         * @return {?}
-         */
-        function () {
+        AjfFormBuilderService.prototype._initChoicesOriginsStreams = function () {
             this._choicesOrigins =
-                ((/** @type {?} */ (this._choicesOriginsUpdates)))
-                    .pipe(operators.scan((/**
-                 * @param {?} choicesOrigins
-                 * @param {?} op
-                 * @return {?}
-                 */
-                function (choicesOrigins, op) {
+                this._choicesOriginsUpdates
+                    .pipe(operators.scan(function (choicesOrigins, op) {
                     return op(choicesOrigins);
-                }), []), operators.publishReplay(1), operators.refCount());
+                }, []), operators.publishReplay(1), operators.refCount());
         };
-        /**
-         * @private
-         * @return {?}
-         */
-        AjfFormBuilderService.prototype._initAttachmentsOriginsStreams = /**
-         * @private
-         * @return {?}
-         */
-        function () {
-            this._attachmentsOrigins = this._attachmentsOriginsUpdates.pipe(operators.scan((/**
-             * @param {?} attachmentsOrigins
-             * @param {?} op
-             * @return {?}
-             */
-            function (attachmentsOrigins, op) {
+        AjfFormBuilderService.prototype._initAttachmentsOriginsStreams = function () {
+            this._attachmentsOrigins = this._attachmentsOriginsUpdates.pipe(operators.scan(function (attachmentsOrigins, op) {
                 return op(attachmentsOrigins);
-            }), []), operators.publishReplay(1), operators.refCount());
+            }, []), operators.publishReplay(1), operators.refCount());
         };
-        /**
-         * @private
-         * @return {?}
-         */
-        AjfFormBuilderService.prototype._initStringIdentifierStreams = /**
-         * @private
-         * @return {?}
-         */
-        function () {
-            this._stringIdentifier = this._stringIdentifierUpdates.pipe(operators.scan((/**
-             * @param {?} stringIdentifier
-             * @param {?} op
-             * @return {?}
-             */
-            function (stringIdentifier, op) {
+        AjfFormBuilderService.prototype._initStringIdentifierStreams = function () {
+            this._stringIdentifier = this._stringIdentifierUpdates.pipe(operators.scan(function (stringIdentifier, op) {
                 return op(stringIdentifier);
-            }), []), operators.publishReplay(1), operators.refCount());
+            }, []), operators.publishReplay(1), operators.refCount());
         };
-        /**
-         * @private
-         * @return {?}
-         */
-        AjfFormBuilderService.prototype._initNodesStreams = /**
-         * @private
-         * @return {?}
-         */
-        function () {
-            this._nodes = ((/** @type {?} */ (this._nodesUpdates)))
-                .pipe(operators.scan((/**
-             * @param {?} nodes
-             * @param {?} op
-             * @return {?}
-             */
-            function (nodes, op) {
+        AjfFormBuilderService.prototype._initNodesStreams = function () {
+            this._nodes = this._nodesUpdates
+                .pipe(operators.scan(function (nodes, op) {
                 return op(nodes);
-            }), []), operators.publishReplay(1), operators.refCount());
-            this._flatNodes = this._nodes.pipe(operators.map((/**
-             * @param {?} nodes
-             * @return {?}
-             */
-            function (nodes) { return flattenNodes(nodes); })), operators.publishReplay(1), operators.refCount());
-            this._flatFields = this._flatNodes.pipe(operators.map((/**
-             * @param {?} nodes
-             * @return {?}
-             */
-            function (nodes) { return (/** @type {?} */ (nodes.filter((/**
-             * @param {?} n
-             * @return {?}
-             */
-            function (n) { return !forms$1.isContainerNode(n); })))); })), operators.publishReplay(1), operators.refCount());
-            this._nodeEntriesTree = this._nodes.pipe(operators.map((/**
-             * @param {?} nodes
-             * @return {?}
-             */
-            function (nodes) { return (/** @type {?} */ (buildFormBuilderNodesTree(nodes))); })), operators.publishReplay(1), operators.refCount());
+            }, []), operators.publishReplay(1), operators.refCount());
+            this._flatNodes = this._nodes.pipe(operators.map(function (nodes) { return flattenNodes(nodes); }), operators.publishReplay(1), operators.refCount());
+            this._flatFields = this._flatNodes.pipe(operators.map(function (nodes) { return nodes.filter(function (n) { return !forms$1.isContainerNode(n); }); }), operators.publishReplay(1), operators.refCount());
+            this._nodeEntriesTree = this._nodes.pipe(operators.map(function (nodes) { return buildFormBuilderNodesTree(nodes); }), operators.publishReplay(1), operators.refCount());
         };
-        /**
-         * @private
-         * @return {?}
-         */
-        AjfFormBuilderService.prototype._initSaveNode = /**
-         * @private
-         * @return {?}
-         */
-        function () {
+        AjfFormBuilderService.prototype._initSaveNode = function () {
             var _this = this;
             this._saveNodeEntryEvent
-                .pipe(operators.withLatestFrom(this.editedNodeEntry, this.choicesOrigins, this.attachmentsOrigins), operators.filter((/**
-             * @param {?} __0
-             * @return {?}
-             */
-            function (_a) {
-                var _ = _a[0], nodeEntry = _a[1];
+                .pipe(operators.withLatestFrom(this.editedNodeEntry, this.choicesOrigins, this.attachmentsOrigins), operators.filter(function (_a) {
+                var _b = tslib.__read(_a, 2), _ = _b[0], nodeEntry = _b[1];
                 return nodeEntry != null;
-            })), operators.map((/**
-             * @param {?} __0
-             * @return {?}
-             */
-            function (_a) {
-                var properties = _a[0], nodeEntry = _a[1];
+            }), operators.map(function (_a) {
+                var _b = tslib.__read(_a, 2), properties = _b[0], nodeEntry = _b[1];
                 _this._beforeNodesUpdate.emit();
-                nodeEntry = (/** @type {?} */ (nodeEntry));
-                /** @type {?} */
+                nodeEntry = nodeEntry;
                 var origNode = nodeEntry.node;
-                /** @type {?} */
                 var node = utils.deepCopy(origNode);
                 node.id = nodeEntry.node.id;
                 node.name = properties.name;
@@ -1282,20 +756,13 @@
                 node.visibility = properties.visibility != null ?
                     models.createCondition({ condition: properties.visibility }) :
                     null;
-                /** @type {?} */
                 var oldConditionalBranches = node.conditionalBranches.length;
                 node.conditionalBranches = properties.conditionalBranches != null ?
-                    properties.conditionalBranches.map((/**
-                     * @param {?} condition
-                     * @return {?}
-                     */
-                    function (condition) { return models.createCondition({ condition: condition }); })) :
+                    properties.conditionalBranches.map(function (condition) { return models.createCondition({ condition: condition }); }) :
                     [models.alwaysCondition()];
-                /** @type {?} */
                 var newConditionalBranches = node.conditionalBranches.length;
                 if (forms$1.isRepeatingContainerNode(node)) {
-                    /** @type {?} */
-                    var repNode = (/** @type {?} */ (node));
+                    var repNode = node;
                     repNode.formulaReps = properties.formulaReps != null ?
                         models.createFormula({ formula: properties.formulaReps }) :
                         undefined;
@@ -1303,26 +770,18 @@
                     repNode.maxReps = properties.maxReps;
                 }
                 if (forms$1.isField(node)) {
-                    /** @type {?} */
-                    var field = (/** @type {?} */ (node));
+                    var field = node;
                     field.description = properties.description;
                     field.defaultValue = properties.defaultValue;
                     field.formula = properties.formula != null ?
                         models.createFormula({ formula: properties.formula }) :
                         undefined;
-                    /** @type {?} */
                     var forceValue = properties.value;
-                    /** @type {?} */
                     var notEmpty = properties.notEmpty;
-                    /** @type {?} */
                     var validationConditions = properties.validationConditions;
-                    /** @type {?} */
                     var minValue = parseInt(properties.minValue, 10);
-                    /** @type {?} */
                     var maxValue = parseInt(properties.maxValue, 10);
-                    /** @type {?} */
                     var minDigits = parseInt(properties.minDigits, 10);
-                    /** @type {?} */
                     var maxDigits = parseInt(properties.maxDigits, 10);
                     if (isNaN(minValue)) {
                         minValue = null;
@@ -1340,7 +799,6 @@
                         (validationConditions != null && validationConditions.length > 0) ||
                         minValue != null || maxValue != null || minDigits != null ||
                         maxDigits != null) {
-                        /** @type {?} */
                         var validation = field.validation || forms$1.createValidationGroup({});
                         validation.forceValue = forceValue;
                         validation.notEmpty = notEmpty ? forms$1.notEmptyValidation() : undefined;
@@ -1352,38 +810,27 @@
                             maxDigits != null ? forms$1.maxDigitsValidation(maxDigits) : undefined;
                         validation.conditions =
                             (validationConditions ||
-                                []).map((/**
-                             * @param {?} c
-                             * @return {?}
-                             */
-                            function (c) { return forms$1.createValidation({
+                                []).map(function (c) { return forms$1.createValidation({
                                 condition: c.condition,
                                 errorMessage: c.errorMessage
-                            }); }));
+                            }); });
                         field.validation = validation;
                     }
                     else {
                         field.validation = undefined;
                     }
-                    /** @type {?} */
                     var notEmptyWarn = properties.notEmptyWarning;
-                    /** @type {?} */
                     var warningConditions = properties.warningConditions;
                     if (notEmptyWarn != null ||
                         (warningConditions != null && warningConditions.length > 0)) {
-                        /** @type {?} */
                         var warning = field.warning || forms$1.createWarningGroup({});
                         warning.notEmpty = notEmptyWarn ? forms$1.notEmptyWarning() : undefined;
                         warning.conditions =
                             (warningConditions ||
-                                []).map((/**
-                             * @param {?} w
-                             * @return {?}
-                             */
-                            function (w) { return forms$1.createWarning({
+                                []).map(function (w) { return forms$1.createWarning({
                                 condition: w.condition,
                                 warningMessage: w.warningMessage
-                            }); }));
+                            }); });
                         field.warning = warning;
                     }
                     else {
@@ -1395,35 +842,22 @@
                     field.size = properties.size;
                     field.defaultValue = properties.defaultValue;
                     if (forms$1.isFieldWithChoices(field)) {
-                        /** @type {?} */
-                        var fwc = (/** @type {?} */ (field));
-                        ((/** @type {?} */ (fwc))).choicesOriginRef = properties.choicesOriginRef;
+                        var fwc = field;
+                        fwc.choicesOriginRef = properties.choicesOriginRef;
                         fwc.forceExpanded = properties.forceExpanded;
                         fwc.forceNarrow = properties.forceNarrow;
                         fwc.triggerConditions = (properties.triggerConditions ||
-                            []).map((/**
-                         * @param {?} t
-                         * @return {?}
-                         */
-                        function (t) { return models.createCondition({ condition: t }); }));
+                            []).map(function (t) { return models.createCondition({ condition: t }); });
                     }
                 }
                 _this._editedNodeEntry.next(null);
-                return (/**
-                 * @param {?} nodes
-                 * @return {?}
-                 */
-                function (nodes) {
-                    /** @type {?} */
+                return function (nodes) {
                     var cn = getNodeContainer({ nodes: nodes }, origNode);
                     if (cn != null) {
                         // TODO: @trik check this, was always true?
                         // if (cn instanceof AjfNode) {
-                        /** @type {?} */
                         var replaceNodes = cn.nodes === nodes;
-                        /** @type {?} */
                         var idx = cn.nodes.indexOf(origNode);
-                        /** @type {?} */
                         var newNodes = cn.nodes.slice(0, idx);
                         newNodes.push(node);
                         newNodes = newNodes.concat(cn.nodes.slice(idx + 1));
@@ -1445,41 +879,20 @@
                         }
                     }
                     return nodes;
-                });
-            })))
+                };
+            }))
                 .subscribe(this._nodesUpdates);
         };
-        /**
-         * @private
-         * @return {?}
-         */
-        AjfFormBuilderService.prototype._initDeleteNode = /**
-         * @private
-         * @return {?}
-         */
-        function () {
+        AjfFormBuilderService.prototype._initDeleteNode = function () {
             var _this = this;
-            ((/** @type {?} */ (this._deleteNodeEntryEvent))).pipe(operators.map((/**
-             * @param {?} nodeEntry
-             * @return {?}
-             */
-            function (nodeEntry) {
+            this._deleteNodeEntryEvent.pipe(operators.map(function (nodeEntry) {
                 _this._beforeNodesUpdate.emit();
-                return (/**
-                 * @param {?} nodes
-                 * @return {?}
-                 */
-                function (nodes) {
-                    /** @type {?} */
+                return function (nodes) {
                     var node = nodeEntry.node;
-                    /** @type {?} */
                     var cn = getNodeContainer({ nodes: nodes }, node);
                     if (cn != null) {
-                        /** @type {?} */
                         var replaceNodes = cn.nodes === nodes;
-                        /** @type {?} */
                         var idx = cn.nodes.indexOf(node);
-                        /** @type {?} */
                         var newNodes = cn.nodes.slice(0, idx);
                         newNodes = newNodes.concat(cn.nodes.slice(idx + 1));
                         cn.nodes = newNodes;
@@ -1492,11 +905,11 @@
                         nodes = deleteNodeSubtree(nodes, node);
                     }
                     return nodes;
-                });
-            }))).subscribe(this._nodesUpdates);
+                };
+            })).subscribe(this._nodesUpdates);
         };
         AjfFormBuilderService.decorators = [
-            { type: core.Injectable },
+            { type: core.Injectable }
         ];
         /** @nocollapse */
         AjfFormBuilderService.ctorParameters = function () { return []; };
@@ -1504,116 +917,107 @@
     }());
 
     /**
-     * @fileoverview added by tsickle
-     * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     * @license
+     * Copyright (C) 2018 Gnucoop soc. coop.
+     *
+     * This file is part of the Advanced JSON forms (ajf).
+     *
+     * Advanced JSON forms (ajf) is free software: you can redistribute it and/or
+     * modify it under the terms of the GNU Affero General Public License as
+     * published by the Free Software Foundation, either version 3 of the License,
+     * or (at your option) any later version.
+     *
+     * Advanced JSON forms (ajf) is distributed in the hope that it will be useful,
+     * but WITHOUT ANY WARRANTY; without even the implied warranty of
+     * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero
+     * General Public License for more details.
+     *
+     * You should have received a copy of the GNU Affero General Public License
+     * along with Advanced JSON forms (ajf).
+     * If not, see http://www.gnu.org/licenses/.
+     *
      */
     var AjfFbChoicesOriginEditorDialog = /** @class */ (function () {
         function AjfFbChoicesOriginEditorDialog(_service) {
             this._service = _service;
-            this._choicesOrigin = this._service.editedChoicesOrigin.pipe(operators.filter((/**
-             * @param {?} c
-             * @return {?}
-             */
-            function (c) { return c != null; })), operators.map((/**
-             * @param {?} c
-             * @return {?}
-             */
-            function (c) { return (/** @type {?} */ (c)); })));
+            this._choicesOrigin = this._service.editedChoicesOrigin.pipe(operators.filter(function (c) { return c != null; }), operators.map(function (c) { return c; }));
         }
         Object.defineProperty(AjfFbChoicesOriginEditorDialog.prototype, "choicesOrigin", {
-            get: /**
-             * @return {?}
-             */
-            function () {
+            get: function () {
                 return this._choicesOrigin;
             },
             enumerable: true,
             configurable: true
         });
-        /**
-         * @return {?}
-         */
-        AjfFbChoicesOriginEditorDialog.prototype.saveChoicesOrigin = /**
-         * @return {?}
-         */
-        function () {
+        AjfFbChoicesOriginEditorDialog.prototype.saveChoicesOrigin = function () {
             this._service.saveChoicesOrigin({
                 label: this.editor.label,
                 name: this.editor.name,
                 choices: this.editor.choicesArr
             });
         };
-        /**
-         * @return {?}
-         */
-        AjfFbChoicesOriginEditorDialog.prototype.cancelChoicesOriginEdit = /**
-         * @return {?}
-         */
-        function () {
+        AjfFbChoicesOriginEditorDialog.prototype.cancelChoicesOriginEdit = function () {
             this._service.cancelChoicesOriginEdit();
         };
         AjfFbChoicesOriginEditorDialog.decorators = [
-            { type: core.Component, args: [{selector: 'ajf-fb-choices-origin-editor-dialog',
-                        template: "<h3 matDialogTitle translate>Edit choices origin</h3><mat-dialog-content><ajf-fb-choices-origin-editor [choicesOrigin]=\"choicesOrigin|async\"></ajf-fb-choices-origin-editor></mat-dialog-content><mat-dialog-actions><button mat-button translate (click)=\"saveChoicesOrigin()\">Save</button> <button mat-button translate (click)=\"cancelChoicesOriginEdit()\">Close</button></mat-dialog-actions>",
-                        styles: [""],
+            { type: core.Component, args: [{
+                        selector: 'ajf-fb-choices-origin-editor-dialog',
+                        template: "<h3 matDialogTitle translate>Edit choices origin</h3>\n<mat-dialog-content>\n  <ajf-fb-choices-origin-editor\n      *ngIf=\"choicesOrigin|async as co\"\n      [choicesOrigin]=\"co!\"></ajf-fb-choices-origin-editor>\n</mat-dialog-content>\n<mat-dialog-actions>\n  <button mat-button translate (click)=\"saveChoicesOrigin()\">Save</button>\n  <button mat-button translate (click)=\"cancelChoicesOriginEdit()\">Close</button>\n</mat-dialog-actions>\n",
                         encapsulation: core.ViewEncapsulation.None,
-                        changeDetection: core.ChangeDetectionStrategy.OnPush
-                    },] },
+                        changeDetection: core.ChangeDetectionStrategy.OnPush,
+                        styles: ["\n"]
+                    }] }
         ];
         /** @nocollapse */
         AjfFbChoicesOriginEditorDialog.ctorParameters = function () { return [
             { type: AjfFormBuilderService }
         ]; };
         AjfFbChoicesOriginEditorDialog.propDecorators = {
-            editor: [{ type: core.ViewChild, args: [AjfFbChoicesOriginEditor, { static: true },] }]
+            editor: [{ type: core.ViewChild, args: [AjfFbChoicesOriginEditor, { static: false },] }]
         };
         return AjfFbChoicesOriginEditorDialog;
     }());
 
     /**
-     * @fileoverview added by tsickle
-     * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     * @license
+     * Copyright (C) 2018 Gnucoop soc. coop.
+     *
+     * This file is part of the Advanced JSON forms (ajf).
+     *
+     * Advanced JSON forms (ajf) is free software: you can redistribute it and/or
+     * modify it under the terms of the GNU Affero General Public License as
+     * published by the Free Software Foundation, either version 3 of the License,
+     * or (at your option) any later version.
+     *
+     * Advanced JSON forms (ajf) is distributed in the hope that it will be useful,
+     * but WITHOUT ANY WARRANTY; without even the implied warranty of
+     * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero
+     * General Public License for more details.
+     *
+     * You should have received a copy of the GNU Affero General Public License
+     * along with Advanced JSON forms (ajf).
+     * If not, see http://www.gnu.org/licenses/.
+     *
      */
     var AjfFbConditionEditor = /** @class */ (function () {
         function AjfFbConditionEditor(_) {
         }
         Object.defineProperty(AjfFbConditionEditor.prototype, "fields", {
-            get: /**
-             * @return {?}
-             */
-            function () { return this._fields; },
-            set: /**
-             * @param {?} fields
-             * @return {?}
-             */
-            function (fields) {
+            get: function () { return this._fields; },
+            set: function (fields) {
                 this._fields = fields;
                 this._updateVariables();
             },
             enumerable: true,
             configurable: true
         });
-        /**
-         * @param {?} variable
-         * @return {?}
-         */
-        AjfFbConditionEditor.prototype.insertVariable = /**
-         * @param {?} variable
-         * @return {?}
-         */
-        function (variable) {
+        AjfFbConditionEditor.prototype.insertVariable = function (variable) {
             if (this.monacoEditor != null && this.monacoEditor.editor != null) {
-                /** @type {?} */
                 var editor = this.monacoEditor.editor;
-                /** @type {?} */
                 var value = editor.getValue().split('\n');
-                /** @type {?} */
                 var position = editor.getPosition();
-                /** @type {?} */
                 var ln = position.lineNumber - 1;
-                /** @type {?} */
                 var line = value[ln];
-                /** @type {?} */
                 var col = position.column - 1;
                 line = line.substring(0, col) + variable + line.substring(col);
                 value[ln] = line;
@@ -1624,13 +1028,7 @@
                 this.editedValue = editor.getValue();
             }
         };
-        /**
-         * @return {?}
-         */
-        AjfFbConditionEditor.prototype.onEditorInit = /**
-         * @return {?}
-         */
-        function () {
+        AjfFbConditionEditor.prototype.onEditorInit = function () {
             monaco.languages.typescript.javascriptDefaults.setDiagnosticsOptions({
                 noSemanticValidation: false,
                 noSyntaxValidation: false
@@ -1658,15 +1056,7 @@
             this._updateVariables();
             this._updateFunctions();
         };
-        /**
-         * @private
-         * @return {?}
-         */
-        AjfFbConditionEditor.prototype._updateVariables = /**
-         * @private
-         * @return {?}
-         */
-        function () {
+        AjfFbConditionEditor.prototype._updateVariables = function () {
             var _this = this;
             if (this._fields == null) {
                 return;
@@ -1675,43 +1065,21 @@
                 monaco.languages.typescript.javascriptDefaults
                     ._extraLibs['condition-editor-variables.d.ts'] =
                     this._fields
-                        .map((/**
-                     * @param {?} field
-                     * @return {?}
-                     */
-                    function (field) {
+                        .map(function (field) {
                         return "declare const " + field.name + ": " + _this._fieldVarType(field.fieldType) + ";";
-                    }))
+                    })
                         .join('\n');
             }
             catch (e) { }
         };
-        /**
-         * @private
-         * @return {?}
-         */
-        AjfFbConditionEditor.prototype._updateFunctions = /**
-         * @private
-         * @return {?}
-         */
-        function () {
+        AjfFbConditionEditor.prototype._updateFunctions = function () {
             try {
                 monaco.languages.typescript.javascriptDefaults._extraLibs['condition-editor-functions.d.ts'] =
                     models.AjfExpressionUtils.UTIL_FUNCTIONS;
             }
             catch (e) { }
         };
-        /**
-         * @private
-         * @param {?} fieldType
-         * @return {?}
-         */
-        AjfFbConditionEditor.prototype._fieldVarType = /**
-         * @private
-         * @param {?} fieldType
-         * @return {?}
-         */
-        function (fieldType) {
+        AjfFbConditionEditor.prototype._fieldVarType = function (fieldType) {
             switch (fieldType) {
                 case forms$1.AjfFieldType.Boolean:
                     return 'boolean';
@@ -1737,12 +1105,13 @@
             return null;
         };
         AjfFbConditionEditor.decorators = [
-            { type: core.Component, args: [{selector: 'ajf-condition-editor',
-                        template: "<div class=\"ajf-editor\"><ajf-monaco-editor (init)=\"onEditorInit()\" (valueChange)=\"editedValue = $event\" [value]=\"condition\" language=\"javascript\"></ajf-monaco-editor></div><div class=\"ajf-editor-panel\"><mat-nav-list dense *ngIf=\"fields?.length > 0\"><a mat-list-item (click)=\"insertVariable(field.name)\" [matTooltip]=\"field.label\" *ngFor=\"let field of fields\"><ajf-node-icon [node]=\"field\"></ajf-node-icon>{{ field.name }}</a></mat-nav-list></div>",
-                        styles: ["ajf-condition-editor{display:flex;flex-direction:row;align-items:stretch;max-height:512px}ajf-condition-editor .ajf-editor{flex:.75 0 auto;display:flex;flex-direction:row;align-items:stretch}ajf-condition-editor .ajf-editor monaco-editor{flex:1 0 auto;min-width:512px;min-height:256px}ajf-condition-editor .ajf-editor-panel{flex:.25 0 auto;overflow-y:auto}ajf-condition-editor ajf-monaco-editor{min-width:400px}"],
+            { type: core.Component, args: [{
+                        selector: 'ajf-condition-editor',
+                        template: "<div class=\"ajf-editor\">\n  <ajf-monaco-editor\n      (init)=\"onEditorInit()\"\n      (valueChange)=\"editedValue = $event\"\n      [value]=\"condition\" language=\"javascript\"></ajf-monaco-editor>\n</div>\n<div class=\"ajf-editor-panel\">\n  <ng-container *ngIf=\"fields as curFields\">\n    <mat-nav-list dense *ngIf=\"curFields!.length > 0\">\n      <a mat-list-item\n          (click)=\"insertVariable(field.name)\"\n          [matTooltip]=\"field.label\"\n          *ngFor=\"let field of curFields!\">\n        <ajf-node-icon [node]=\"field\"></ajf-node-icon>\n        {{ field.name }}\n      </a>\n    </mat-nav-list>\n  </ng-container>\n</div>\n",
                         changeDetection: core.ChangeDetectionStrategy.OnPush,
-                        encapsulation: core.ViewEncapsulation.None
-                    },] },
+                        encapsulation: core.ViewEncapsulation.None,
+                        styles: ["ajf-condition-editor{display:flex;flex-direction:row;align-items:stretch;max-height:512px}ajf-condition-editor .ajf-editor{flex:.75 0 auto;display:flex;flex-direction:row;align-items:stretch}ajf-condition-editor .ajf-editor monaco-editor{flex:1 0 auto;min-width:512px;min-height:256px}ajf-condition-editor .ajf-editor-panel{flex:.25 0 auto;overflow-y:auto}ajf-condition-editor ajf-monaco-editor{min-width:400px}\n"]
+                    }] }
         ];
         /** @nocollapse */
         AjfFbConditionEditor.ctorParameters = function () { return [
@@ -1757,52 +1126,51 @@
     }());
 
     /**
-     * @fileoverview added by tsickle
-     * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     * @license
+     * Copyright (C) 2018 Gnucoop soc. coop.
+     *
+     * This file is part of the Advanced JSON forms (ajf).
+     *
+     * Advanced JSON forms (ajf) is free software: you can redistribute it and/or
+     * modify it under the terms of the GNU Affero General Public License as
+     * published by the Free Software Foundation, either version 3 of the License,
+     * or (at your option) any later version.
+     *
+     * Advanced JSON forms (ajf) is distributed in the hope that it will be useful,
+     * but WITHOUT ANY WARRANTY; without even the implied warranty of
+     * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero
+     * General Public License for more details.
+     *
+     * You should have received a copy of the GNU Affero General Public License
+     * along with Advanced JSON forms (ajf).
+     * If not, see http://www.gnu.org/licenses/.
+     *
      */
     var AjfFbConditionEditorDialog = /** @class */ (function () {
         function AjfFbConditionEditorDialog(service, dialogRef) {
             this.dialogRef = dialogRef;
-            this._fields = service.flatFields.pipe(operators.map((/**
-             * @param {?} fields
-             * @return {?}
-             */
-            function (fields) { return fields.sort((/**
-             * @param {?} f1
-             * @param {?} f2
-             * @return {?}
-             */
-            function (f1, f2) { return f1.name.localeCompare(f2.name); })); })));
+            this._fields = service.flatFields.pipe(operators.map(function (fields) { return fields.sort(function (f1, f2) { return f1.name.localeCompare(f2.name); }); }));
         }
         Object.defineProperty(AjfFbConditionEditorDialog.prototype, "fields", {
-            get: /**
-             * @return {?}
-             */
-            function () { return this._fields; },
+            get: function () { return this._fields; },
             enumerable: true,
             configurable: true
         });
-        /**
-         * @return {?}
-         */
-        AjfFbConditionEditorDialog.prototype.saveCondition = /**
-         * @return {?}
-         */
-        function () {
+        AjfFbConditionEditorDialog.prototype.saveCondition = function () {
             if (this.editor == null) {
                 return;
             }
-            /** @type {?} */
             var newValue = this.editor.editedValue;
             this.dialogRef.close(newValue);
         };
         AjfFbConditionEditorDialog.decorators = [
-            { type: core.Component, args: [{selector: 'ajf-condition-editor-dialog',
-                        template: "<h3 matDialogTitle translate>Edit condition</h3><mat-dialog-content><ajf-condition-editor [fields]=\"fields|async\" [condition]=\"condition\"></ajf-condition-editor></mat-dialog-content><mat-dialog-actions><button mat-button translate (click)=\"saveCondition()\">Save</button> <button mat-button translate matDialogClose>Close</button></mat-dialog-actions>",
-                        styles: ["ajf-condition-editor-dialog mat-dialog-content{overflow:visible}"],
+            { type: core.Component, args: [{
+                        selector: 'ajf-condition-editor-dialog',
+                        template: "<h3 matDialogTitle translate>Edit condition</h3>\n<mat-dialog-content>\n  <ajf-condition-editor\n      *ngIf=\"fields|async as curFields\"\n      [fields]=\"curFields!\"\n      [condition]=\"condition\"></ajf-condition-editor>\n</mat-dialog-content>\n<mat-dialog-actions>\n  <button mat-button translate (click)=\"saveCondition()\">Save</button>\n  <button mat-button translate matDialogClose>Close</button>\n</mat-dialog-actions>\n",
                         encapsulation: core.ViewEncapsulation.None,
-                        changeDetection: core.ChangeDetectionStrategy.OnPush
-                    },] },
+                        changeDetection: core.ChangeDetectionStrategy.OnPush,
+                        styles: ["ajf-condition-editor-dialog mat-dialog-content{overflow:visible}\n"]
+                    }] }
         ];
         /** @nocollapse */
         AjfFbConditionEditorDialog.ctorParameters = function () { return [
@@ -1810,14 +1178,31 @@
             { type: dialog.MatDialogRef }
         ]; };
         AjfFbConditionEditorDialog.propDecorators = {
-            editor: [{ type: core.ViewChild, args: [AjfFbConditionEditor, { static: true },] }]
+            editor: [{ type: core.ViewChild, args: [AjfFbConditionEditor, { static: false },] }]
         };
         return AjfFbConditionEditorDialog;
     }());
 
     /**
-     * @fileoverview added by tsickle
-     * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     * @license
+     * Copyright (C) 2018 Gnucoop soc. coop.
+     *
+     * This file is part of the Advanced JSON forms (ajf).
+     *
+     * Advanced JSON forms (ajf) is free software: you can redistribute it and/or
+     * modify it under the terms of the GNU Affero General Public License as
+     * published by the Free Software Foundation, either version 3 of the License,
+     * or (at your option) any later version.
+     *
+     * Advanced JSON forms (ajf) is distributed in the hope that it will be useful,
+     * but WITHOUT ANY WARRANTY; without even the implied warranty of
+     * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero
+     * General Public License for more details.
+     *
+     * You should have received a copy of the GNU Affero General Public License
+     * along with Advanced JSON forms (ajf).
+     * If not, see http://www.gnu.org/licenses/.
+     *
      */
     var AjfFbStringIdentifierDialogComponent = /** @class */ (function () {
         function AjfFbStringIdentifierDialogComponent(_service, _cdr) {
@@ -1828,132 +1213,53 @@
             this.displayedColumns = ['label', 'value', 'delete'];
             this.separatorKeysCodes = [keycodes.ENTER, keycodes.COMMA];
             this._stringIdentifierSub = rxjs.Subscription.EMPTY;
-            this._stringIdentifierSub = _service.stringIdentifier.subscribe((/**
-             * @param {?} identifier
-             * @return {?}
-             */
-            function (identifier) {
-                _this.dataSource.data = identifier.slice();
-            }));
-            this.fields$ = _service.flatFields.pipe(operators.map((/**
-             * @param {?} fields
-             * @return {?}
-             */
-            function (fields) {
-                return fields.sort((/**
-                 * @param {?} f1
-                 * @param {?} f2
-                 * @return {?}
-                 */
-                function (f1, f2) { return f1.name.localeCompare(f2.name); })).map((/**
-                 * @param {?} f
-                 * @return {?}
-                 */
-                function (f) { return f.name; }))
-                    .filter((/**
-                 * @param {?} f
-                 * @return {?}
-                 */
-                function (f) { return f.length > 0; }));
-            })), operators.shareReplay(1));
+            this._stringIdentifierSub = _service.stringIdentifier.subscribe(function (identifier) {
+                _this.dataSource.data = tslib.__spread(identifier);
+            });
+            this.fields$ = _service.flatFields.pipe(operators.map(function (fields) {
+                return fields.sort(function (f1, f2) { return f1.name.localeCompare(f2.name); }).map(function (f) { return f.name; })
+                    .filter(function (f) { return f.length > 0; });
+            }), operators.shareReplay(1));
         }
-        /**
-         * @return {?}
-         */
-        AjfFbStringIdentifierDialogComponent.prototype.addRow = /**
-         * @return {?}
-         */
-        function () {
-            this.dataSource.data = this.dataSource.data.concat([{ label: '', value: [] }]);
+        AjfFbStringIdentifierDialogComponent.prototype.addRow = function () {
+            this.dataSource.data = tslib.__spread(this.dataSource.data, [{ label: '', value: [] }]);
         };
-        /**
-         * @param {?} rowIdx
-         * @return {?}
-         */
-        AjfFbStringIdentifierDialogComponent.prototype.deleteRow = /**
-         * @param {?} rowIdx
-         * @return {?}
-         */
-        function (rowIdx) {
-            this.dataSource.data = this.dataSource.data.slice(0, rowIdx).concat(this.dataSource.data.slice(rowIdx + 1));
+        AjfFbStringIdentifierDialogComponent.prototype.deleteRow = function (rowIdx) {
+            this.dataSource.data = tslib.__spread(this.dataSource.data.slice(0, rowIdx), this.dataSource.data.slice(rowIdx + 1));
         };
-        /**
-         * @param {?} row
-         * @param {?} evt
-         * @param {?} valueInput
-         * @return {?}
-         */
-        AjfFbStringIdentifierDialogComponent.prototype.addValue = /**
-         * @param {?} row
-         * @param {?} evt
-         * @param {?} valueInput
-         * @return {?}
-         */
-        function (row, evt, valueInput) {
+        AjfFbStringIdentifierDialogComponent.prototype.addValue = function (row, evt, valueInput) {
             if (evt.value.length === 0) {
                 return;
             }
-            row.value = row.value.concat([evt.value]);
+            row.value = tslib.__spread(row.value, [evt.value]);
             valueInput.value = '';
             this._cdr.markForCheck();
         };
-        /**
-         * @param {?} row
-         * @param {?} value
-         * @return {?}
-         */
-        AjfFbStringIdentifierDialogComponent.prototype.removeValue = /**
-         * @param {?} row
-         * @param {?} value
-         * @return {?}
-         */
-        function (row, value) {
-            /** @type {?} */
+        AjfFbStringIdentifierDialogComponent.prototype.removeValue = function (row, value) {
             var idx = row.value.indexOf(value);
             if (idx > -1) {
-                row.value = row.value.slice(0, idx).concat(row.value.slice(idx + 1));
+                row.value = tslib.__spread(row.value.slice(0, idx), row.value.slice(idx + 1));
                 this._cdr.markForCheck();
             }
         };
-        /**
-         * @return {?}
-         */
-        AjfFbStringIdentifierDialogComponent.prototype.ngOnDestroy = /**
-         * @return {?}
-         */
-        function () {
+        AjfFbStringIdentifierDialogComponent.prototype.ngOnDestroy = function () {
             this._stringIdentifierSub.unsubscribe();
         };
-        /**
-         * @return {?}
-         */
-        AjfFbStringIdentifierDialogComponent.prototype.saveStringIdentifier = /**
-         * @return {?}
-         */
-        function () {
+        AjfFbStringIdentifierDialogComponent.prototype.saveStringIdentifier = function () {
             this._service.saveStringIdentifier(this.dataSource.data);
         };
-        /**
-         * @param {?} row
-         * @param {?} evt
-         * @return {?}
-         */
-        AjfFbStringIdentifierDialogComponent.prototype.selected = /**
-         * @param {?} row
-         * @param {?} evt
-         * @return {?}
-         */
-        function (row, evt) {
-            row.value = row.value.concat([evt.option.value]);
+        AjfFbStringIdentifierDialogComponent.prototype.selected = function (row, evt) {
+            row.value = tslib.__spread(row.value, [evt.option.value]);
             this._cdr.markForCheck();
         };
         AjfFbStringIdentifierDialogComponent.decorators = [
-            { type: core.Component, args: [{selector: 'ajf-fb-string-identifier-dialog',
-                        template: "<h3 matDialogTitle translate>Edit identifier</h3><mat-dialog-content><button (click)=\"addRow()\" mat-button><mat-icon>add</mat-icon><span translate>Add value</span></button><mat-table [dataSource]=\"dataSource\"><ng-container matColumnDef=\"label\"><mat-header-cell *matHeaderCellDef translate>Label</mat-header-cell><mat-cell *matCellDef=\"let row; let idx = index\"><mat-form-field><input matInput [placeholder]=\"'Label'|translate\" autofocus [(ngModel)]=\"row.label\"></mat-form-field></mat-cell></ng-container><ng-container matColumnDef=\"value\"><mat-header-cell *matHeaderCellDef translate>Value</mat-header-cell><mat-cell *matCellDef=\"let row; let idx = index\"><mat-form-field><mat-chip-list #chipList><mat-chip *ngFor=\"let field of row.value\" (removed)=\"removeValue(row, field)\">{{ field }}<mat-icon matChipRemove>cancel</mat-icon></mat-chip></mat-chip-list><input #valueInput [ngModel]=\"row.value\" [matAutocomplete]=\"valueAc\" [matChipInputFor]=\"chipList\" [matChipInputSeparatorKeyCodes]=\"separatorKeysCodes\" [matChipInputAddOnBlur]=\"true\" (matChipInputTokenEnd)=\"addValue(row, $event, valueInput)\" [placeholder]=\"'Value'|translate\"><mat-autocomplete #valueAc=\"matAutocomplete\" (optionSelected)=\"selected(row, $event)\"><mat-option *ngFor=\"let field of fields$ | async\" [value]=\"field\">{{field}}</mat-option></mat-autocomplete></mat-form-field></mat-cell></ng-container><ng-container matColumnDef=\"delete\"><mat-header-cell *matHeaderCellDef translate>Delete</mat-header-cell><mat-cell *matCellDef=\"let row; let idx = index\"><mat-icon (click)=\"deleteRow(idx)\">delete</mat-icon></mat-cell></ng-container><mat-header-row *matHeaderRowDef=\"displayedColumns\"></mat-header-row><mat-row *matRowDef=\"let row; columns: displayedColumns;\"></mat-row></mat-table></mat-dialog-content><mat-dialog-actions><button mat-button translate matDialogClose (click)=\"saveStringIdentifier()\">Save</button></mat-dialog-actions>",
-                        styles: [""],
+            { type: core.Component, args: [{
+                        selector: 'ajf-fb-string-identifier-dialog',
+                        template: "<h3 matDialogTitle translate>Edit identifier</h3>\n<mat-dialog-content>\n  <button (click)=\"addRow()\" mat-button>\n    <mat-icon>add</mat-icon>\n    <span translate>Add value</span>\n  </button>\n  <mat-table [dataSource]=\"dataSource\">\n    <ng-container matColumnDef=\"label\">\n      <mat-header-cell *matHeaderCellDef translate>Label</mat-header-cell>\n      <mat-cell *matCellDef=\"let row; let idx = index\">\n        <mat-form-field>\n          <input matInput [placeholder]=\"'Label'|translate\" autofocus [(ngModel)]=\"row.label\">\n        </mat-form-field>\n      </mat-cell>\n    </ng-container>\n    <ng-container matColumnDef=\"value\">\n      <mat-header-cell *matHeaderCellDef translate>Value</mat-header-cell>\n      <mat-cell *matCellDef=\"let row; let idx = index\">\n        <mat-form-field>\n          <mat-chip-list #chipList>\n            <mat-chip\n                *ngFor=\"let field of row.value\"\n                (removed)=\"removeValue(row, field)\"\n            >\n              {{ field }}\n              <mat-icon matChipRemove>cancel</mat-icon>\n            </mat-chip>\n          </mat-chip-list>\n          <input\n              #valueInput\n              [ngModel]=\"row.value\"\n              [matAutocomplete]=\"valueAc\"\n              [matChipInputFor]=\"chipList\"\n              [matChipInputSeparatorKeyCodes]=\"separatorKeysCodes\"\n              [matChipInputAddOnBlur]=\"true\"\n              (matChipInputTokenEnd)=\"addValue(row, $event, valueInput)\"\n              [placeholder]=\"'Value'|translate\">\n          <mat-autocomplete #valueAc=\"matAutocomplete\"\n              (optionSelected)=\"selected(row, $event)\">\n            <mat-option *ngFor=\"let field of fields$ | async\" [value]=\"field\">{{field}}</mat-option>\n          </mat-autocomplete>\n        </mat-form-field>\n      </mat-cell>\n    </ng-container>\n    <ng-container matColumnDef=\"delete\">\n      <mat-header-cell *matHeaderCellDef translate>Delete</mat-header-cell>\n      <mat-cell *matCellDef=\"let row; let idx = index\">\n          <mat-icon (click)=\"deleteRow(idx)\">delete</mat-icon>\n      </mat-cell>\n    </ng-container>\n\n    <mat-header-row *matHeaderRowDef=\"displayedColumns\"></mat-header-row>\n    <mat-row *matRowDef=\"let row; columns: displayedColumns;\"></mat-row>\n  </mat-table>\n</mat-dialog-content>\n<mat-dialog-actions>\n  <button mat-button translate matDialogClose (click)=\"saveStringIdentifier()\">Save</button>\n</mat-dialog-actions>\n",
                         changeDetection: core.ChangeDetectionStrategy.OnPush,
                         encapsulation: core.ViewEncapsulation.None,
-                    },] },
+                        styles: ["\n"]
+                    }] }
         ];
         /** @nocollapse */
         AjfFbStringIdentifierDialogComponent.ctorParameters = function () { return [
@@ -1964,8 +1270,25 @@
     }());
 
     /**
-     * @fileoverview added by tsickle
-     * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     * @license
+     * Copyright (C) 2018 Gnucoop soc. coop.
+     *
+     * This file is part of the Advanced JSON forms (ajf).
+     *
+     * Advanced JSON forms (ajf) is free software: you can redistribute it and/or
+     * modify it under the terms of the GNU Affero General Public License as
+     * published by the Free Software Foundation, either version 3 of the License,
+     * or (at your option) any later version.
+     *
+     * Advanced JSON forms (ajf) is distributed in the hope that it will be useful,
+     * but WITHOUT ANY WARRANTY; without even the implied warranty of
+     * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero
+     * General Public License for more details.
+     *
+     * You should have received a copy of the GNU Affero General Public License
+     * along with Advanced JSON forms (ajf).
+     * If not, see http://www.gnu.org/licenses/.
+     *
      */
     var AjfFormBuilder = /** @class */ (function () {
         function AjfFormBuilder(_service, _dialog) {
@@ -1982,11 +1305,7 @@
             this._nodeEntriesTree = _service.nodeEntriesTree;
             this._choicesOrigins = _service.choicesOrigins;
             this._editConditionSub = this._service.editedCondition
-                .subscribe((/**
-             * @param {?} condition
-             * @return {?}
-             */
-            function (condition) {
+                .subscribe(function (condition) {
                 if (_this._editConditionDialog != null) {
                     _this._editConditionDialog.close();
                     _this._editConditionDialog = null;
@@ -1994,13 +1313,9 @@
                 if (condition != null) {
                     _this._editConditionDialog = _this._dialog.open(AjfFbConditionEditorDialog, { disableClose: true });
                 }
-            }));
+            });
             this._editChoicesOriginSub =
-                this._service.editedChoicesOrigin.subscribe((/**
-                 * @param {?} choicesOrigin
-                 * @return {?}
-                 */
-                function (choicesOrigin) {
+                this._service.editedChoicesOrigin.subscribe(function (choicesOrigin) {
                     if (_this._editChoicesOriginDialog != null) {
                         _this._editChoicesOriginDialog.close();
                         _this._editChoicesOriginDialog = null;
@@ -2009,43 +1324,27 @@
                         _this._editChoicesOriginDialog =
                             _this._dialog.open(AjfFbChoicesOriginEditorDialog, { disableClose: true });
                     }
-                }));
+                });
             this._beforeNodesUpdateSub = this._service.beforeNodesUpdate
-                .subscribe((/**
-             * @return {?}
-             */
-            function () {
+                .subscribe(function () {
                 if (_this.designerCont == null) {
                     return;
                 }
                 _this._lastScrollTop = _this.designerCont.nativeElement.scrollTop;
-            }));
+            });
             this.nodeEntriesTree
-                .pipe(operators.sample(((/** @type {?} */ (this._vc)))))
-                .subscribe((/**
-             * @return {?}
-             */
-            function () {
+                .pipe(operators.sample(this._vc))
+                .subscribe(function () {
                 if (_this.designerCont == null) {
                     return;
                 }
                 _this.designerCont.nativeElement.scrollTop = _this._lastScrollTop;
-            }));
-            this._stringIdentifierSub = this._service.stringIdentifier.subscribe((/**
-             * @return {?}
-             */
-            function () { }));
+            });
+            this._stringIdentifierSub = this._service.stringIdentifier.subscribe(function () { });
         }
         Object.defineProperty(AjfFormBuilder.prototype, "form", {
-            get: /**
-             * @return {?}
-             */
-            function () { return this._form; },
-            set: /**
-             * @param {?} form
-             * @return {?}
-             */
-            function (form) {
+            get: function () { return this._form; },
+            set: function (form) {
                 if (this._form !== form) {
                     this._form = form;
                     if (this._init) {
@@ -2057,99 +1356,46 @@
             configurable: true
         });
         Object.defineProperty(AjfFormBuilder.prototype, "nodeTypes", {
-            get: /**
-             * @return {?}
-             */
-            function () { return this._nodeTypes; },
+            get: function () { return this._nodeTypes; },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(AjfFormBuilder.prototype, "nodeEntriesTree", {
-            get: /**
-             * @return {?}
-             */
-            function () { return this._nodeEntriesTree; },
+            get: function () { return this._nodeEntriesTree; },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(AjfFormBuilder.prototype, "choicesOrigins", {
-            get: /**
-             * @return {?}
-             */
-            function () {
+            get: function () {
                 return this._choicesOrigins;
             },
             enumerable: true,
             configurable: true
         });
-        /**
-         * @return {?}
-         */
-        AjfFormBuilder.prototype.ngAfterViewChecked = /**
-         * @return {?}
-         */
-        function () {
+        AjfFormBuilder.prototype.ngAfterViewChecked = function () {
             this._vc.emit();
         };
-        /**
-         * @return {?}
-         */
-        AjfFormBuilder.prototype.ngAfterContentInit = /**
-         * @return {?}
-         */
-        function () {
+        AjfFormBuilder.prototype.ngAfterContentInit = function () {
             this._setCurrentForm();
             this._init = true;
         };
-        /**
-         * @return {?}
-         */
-        AjfFormBuilder.prototype.ngOnDestroy = /**
-         * @return {?}
-         */
-        function () {
+        AjfFormBuilder.prototype.ngOnDestroy = function () {
             this._editConditionSub.unsubscribe();
             this._beforeNodesUpdateSub.unsubscribe();
             this._editChoicesOriginSub.unsubscribe();
             this._stringIdentifierSub.unsubscribe();
             this._service.setForm(null);
         };
-        /**
-         * @return {?}
-         */
-        AjfFormBuilder.prototype.createChoicesOrigin = /**
-         * @return {?}
-         */
-        function () {
+        AjfFormBuilder.prototype.createChoicesOrigin = function () {
             this._service.createChoicesOrigin();
         };
-        /**
-         * @return {?}
-         */
-        AjfFormBuilder.prototype.disableDropPredicate = /**
-         * @return {?}
-         */
-        function () {
+        AjfFormBuilder.prototype.disableDropPredicate = function () {
             return false;
         };
-        /**
-         * @param {?} choicesOrigin
-         * @return {?}
-         */
-        AjfFormBuilder.prototype.editChoicesOrigin = /**
-         * @param {?} choicesOrigin
-         * @return {?}
-         */
-        function (choicesOrigin) {
+        AjfFormBuilder.prototype.editChoicesOrigin = function (choicesOrigin) {
             this._service.editChoicesOrigin(choicesOrigin);
         };
-        /**
-         * @return {?}
-         */
-        AjfFormBuilder.prototype.editStringIdentifier = /**
-         * @return {?}
-         */
-        function () {
+        AjfFormBuilder.prototype.editStringIdentifier = function () {
             if (this._stringIdentifierDialog != null) {
                 this._stringIdentifierDialog.close();
                 this._stringIdentifierDialog = null;
@@ -2161,24 +1407,17 @@
                     height: '60%'
                 });
         };
-        /**
-         * @private
-         * @return {?}
-         */
-        AjfFormBuilder.prototype._setCurrentForm = /**
-         * @private
-         * @return {?}
-         */
-        function () {
+        AjfFormBuilder.prototype._setCurrentForm = function () {
             this._service.setForm(this._form);
         };
         AjfFormBuilder.decorators = [
-            { type: core.Component, args: [{selector: 'ajf-form-builder',
-                        template: "<mat-toolbar><button mat-icon-button (click)=\"leftSidenav.toggle()\"><mat-icon>add_box</mat-icon></button> <button mat-button [matMenuTriggerFor]=\"choicesMenu\" translate>Choices</button> <button mat-button (click)=\"editStringIdentifier()\" translate>Identifier</button><mat-menu #choicesMenu><button (click)=\"createChoicesOrigin()\" mat-menu-item translate>New..</button><ng-container *ngIf=\"choicesOrigins|async as cos\"><button *ngFor=\"let choicesOrigin of cos\" (click)=\"editChoicesOrigin(choicesOrigin)\" mat-menu-item>{{ choicesOrigin.label || choicesOrigin.name }}</button></ng-container></mat-menu><span class=\"ajf-spacer\"></span> <button mat-icon-button (click)=\"rightSidenav.toggle()\"><mat-icon>settings</mat-icon></button></mat-toolbar><mat-drawer-container cdkDropListGroup><mat-drawer #leftSidenav position=\"start\" mode=\"over\"><div #sourceDropList cdkDropList [cdkDropListEnterPredicate]=\"disableDropPredicate\" [cdkDropListData]=\"nodeTypes\"><ajf-fb-node-type-entry *ngFor=\"let nodeType of nodeTypes\" cdkDrag [cdkDragData]=\"nodeType\" (cdkDragStarted)=\"leftSidenav.close()\" [nodeType]=\"nodeType\"></ajf-fb-node-type-entry></div></mat-drawer><mat-drawer #rightSidenav position=\"end\" mode=\"side\" [opened]=\"true\"><ajf-fb-node-properties></ajf-fb-node-properties></mat-drawer><div #designer class=\"ajf-designer\"><ajf-fb-node-entry *ngFor=\"let nodeEntry of (nodeEntriesTree|async); let isFirst = first\" [isFirst]=\"isFirst\" [nodeEntry]=\"nodeEntry\"></ajf-fb-node-entry></div></mat-drawer-container>",
-                        styles: ["ajf-form-builder{display:flex;position:relative;min-height:300px;flex-direction:column;align-items:stretch}ajf-form-builder mat-toolbar mat-menu div[mat-menu-item]>button[mat-button]{flex:1 0 auto}ajf-form-builder mat-toolbar mat-menu div[mat-menu-item]>button[mat-icon-button]{flex:0 0 auto}ajf-form-builder mat-drawer-container{flex:1}ajf-form-builder mat-drawer-container mat-drawer{max-width:20%}ajf-form-builder mat-drawer-container .ajf-designer{padding:1em}ajf-form-builder mat-toolbar .ajf-spacer{flex:1 1 auto}"],
+            { type: core.Component, args: [{
+                        selector: 'ajf-form-builder',
+                        template: "<mat-toolbar>\n  <button mat-icon-button (click)=\"leftSidenav.toggle()\">\n    <mat-icon>add_box</mat-icon>\n  </button>\n  <button mat-button [matMenuTriggerFor]=\"choicesMenu\" translate>Choices</button>\n  <button mat-button (click)=\"editStringIdentifier()\" translate>Identifier</button>\n  <mat-menu #choicesMenu>\n    <button (click)=\"createChoicesOrigin()\" mat-menu-item translate>New..</button>\n    <ng-container *ngIf=\"choicesOrigins|async as cos\">\n      <button *ngFor=\"let choicesOrigin of cos\"\n          (click)=\"editChoicesOrigin(choicesOrigin)\" mat-menu-item>\n        {{ choicesOrigin.label || choicesOrigin.name }}\n      </button>\n    </ng-container>\n  </mat-menu>\n  <span class=\"ajf-spacer\"></span>\n  <button mat-icon-button (click)=\"rightSidenav.toggle()\">\n    <mat-icon>settings</mat-icon>\n  </button>\n</mat-toolbar>\n<mat-drawer-container cdkDropListGroup>\n  <mat-drawer #leftSidenav position=\"start\" mode=\"over\">\n    <div #sourceDropList cdkDropList\n        [cdkDropListEnterPredicate]=\"disableDropPredicate\"\n        [cdkDropListData]=\"nodeTypes\">\n      <ajf-fb-node-type-entry *ngFor=\"let nodeType of nodeTypes\"\n          cdkDrag\n          [cdkDragData]=\"nodeType\"\n          (cdkDragStarted)=\"leftSidenav.close()\"\n          [nodeType]=\"nodeType\"></ajf-fb-node-type-entry>\n    </div>\n  </mat-drawer>\n  <mat-drawer #rightSidenav position=\"end\" mode=\"side\" [opened]=\"true\">\n    <ajf-fb-node-properties></ajf-fb-node-properties>\n  </mat-drawer>\n  <div #designer class=\"ajf-designer\">\n    <ajf-fb-node-entry\n        *ngFor=\"let nodeEntry of (nodeEntriesTree|async); let isFirst = first\"\n        [isFirst]=\"isFirst\"\n        [nodeEntry]=\"nodeEntry\"></ajf-fb-node-entry>\n  </div>\n</mat-drawer-container>\n",
                         changeDetection: core.ChangeDetectionStrategy.OnPush,
-                        encapsulation: core.ViewEncapsulation.None
-                    },] },
+                        encapsulation: core.ViewEncapsulation.None,
+                        styles: ["ajf-form-builder{display:flex;position:relative;min-height:300px;flex-direction:column;align-items:stretch}ajf-form-builder mat-toolbar mat-menu div[mat-menu-item]>button[mat-button]{flex:1 0 auto}ajf-form-builder mat-toolbar mat-menu div[mat-menu-item]>button[mat-icon-button]{flex:0 0 auto}ajf-form-builder mat-drawer-container{flex:1}ajf-form-builder mat-drawer-container mat-drawer{max-width:20%}ajf-form-builder mat-drawer-container .ajf-designer{padding:1em}ajf-form-builder mat-toolbar .ajf-spacer{flex:1 1 auto}\n"]
+                    }] }
         ];
         /** @nocollapse */
         AjfFormBuilder.ctorParameters = function () { return [
@@ -2193,10 +1432,26 @@
     }());
 
     /**
-     * @fileoverview added by tsickle
-     * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     * @license
+     * Copyright (C) 2018 Gnucoop soc. coop.
+     *
+     * This file is part of the Advanced JSON forms (ajf).
+     *
+     * Advanced JSON forms (ajf) is free software: you can redistribute it and/or
+     * modify it under the terms of the GNU Affero General Public License as
+     * published by the Free Software Foundation, either version 3 of the License,
+     * or (at your option) any later version.
+     *
+     * Advanced JSON forms (ajf) is distributed in the hope that it will be useful,
+     * but WITHOUT ANY WARRANTY; without even the implied warranty of
+     * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero
+     * General Public License for more details.
+     *
+     * You should have received a copy of the GNU Affero General Public License
+     * along with Advanced JSON forms (ajf).
+     * If not, see http://www.gnu.org/licenses/.
+     *
      */
-    /** @type {?} */
     var branchColors = [
         '#F44336',
         '#4CAF50',
@@ -2222,50 +1477,28 @@
             this._currentEditedNode = this._service.editedNodeEntry;
         }
         Object.defineProperty(AjfFbNodeEntry.prototype, "hasContent", {
-            get: /**
-             * @return {?}
-             */
-            function () { return this._hasContent; },
+            get: function () { return this._hasContent; },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(AjfFbNodeEntry.prototype, "isFirst", {
-            get: /**
-             * @return {?}
-             */
-            function () { return this._isFirst; },
-            set: /**
-             * @param {?} isFirst
-             * @return {?}
-             */
-            function (isFirst) { this._isFirst = isFirst; },
+            get: function () { return this._isFirst; },
+            set: function (isFirst) { this._isFirst = isFirst; },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(AjfFbNodeEntry.prototype, "isNodeEntry", {
-            get: /**
-             * @return {?}
-             */
-            function () { return this._isNodeEntry; },
+            get: function () { return this._isNodeEntry; },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(AjfFbNodeEntry.prototype, "nodeEntry", {
-            get: /**
-             * @return {?}
-             */
-            function () { return this._nodeEntry; },
-            set: /**
-             * @param {?} nodeEntry
-             * @return {?}
-             */
-            function (nodeEntry) {
+            get: function () { return this._nodeEntry; },
+            set: function (nodeEntry) {
                 this._nodeEntry = nodeEntry;
-                if (nodeEntry != null && ((/** @type {?} */ (nodeEntry))).node !== void 0) {
-                    /** @type {?} */
-                    var ne = (/** @type {?} */ (nodeEntry));
+                if (nodeEntry != null && nodeEntry.node !== void 0) {
+                    var ne = nodeEntry;
                     this._isNodeEntry = true;
-                    /** @type {?} */
                     var node = ne.node;
                     this._hasContent = node != null && forms$1.isContainerNode(node);
                 }
@@ -2278,62 +1511,36 @@
             configurable: true
         });
         Object.defineProperty(AjfFbNodeEntry.prototype, "level", {
-            get: /**
-             * @return {?}
-             */
-            function () { return this._level; },
-            set: /**
-             * @param {?} value
-             * @return {?}
-             */
-            function (value) { this._level = value; },
+            get: function () { return this._level; },
+            set: function (value) { this._level = value; },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(AjfFbNodeEntry.prototype, "realNodeEntry", {
-            get: /**
-             * @return {?}
-             */
-            function () {
-                return (/** @type {?} */ (this._nodeEntry));
+            get: function () {
+                return this._nodeEntry;
             },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(AjfFbNodeEntry.prototype, "branchColors", {
-            get: /**
-             * @return {?}
-             */
-            function () { return this._branchColors; },
+            get: function () { return this._branchColors; },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(AjfFbNodeEntry.prototype, "dropZones", {
-            get: /**
-             * @return {?}
-             */
-            function () { return this._dropZones; },
+            get: function () { return this._dropZones; },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(AjfFbNodeEntry.prototype, "slideDropZones", {
-            get: /**
-             * @return {?}
-             */
-            function () { return this._slideDropZones; },
+            get: function () { return this._slideDropZones; },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(AjfFbNodeEntry.prototype, "originOffset", {
-            get: /**
-             * @return {?}
-             */
-            function () { return this._originOffset; },
-            set: /**
-             * @param {?} originOffset
-             * @return {?}
-             */
-            function (originOffset) {
+            get: function () { return this._originOffset; },
+            set: function (originOffset) {
                 this._originOffset = originOffset;
                 this._originLeftMargin = this._originOffset * 4 + "px";
             },
@@ -2341,24 +1548,13 @@
             configurable: true
         });
         Object.defineProperty(AjfFbNodeEntry.prototype, "originLeftMargin", {
-            get: /**
-             * @return {?}
-             */
-            function () { return this._originLeftMargin; },
+            get: function () { return this._originLeftMargin; },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(AjfFbNodeEntry.prototype, "firstBranchColor", {
-            get: /**
-             * @return {?}
-             */
-            function () { return this._firstBranchColor; },
-            set: /**
-             * @param {?} firstBranchColor
-             * @return {?}
-             */
-            function (firstBranchColor) {
-                /** @type {?} */
+            get: function () { return this._firstBranchColor; },
+            set: function (firstBranchColor) {
                 var idx = branchColors.indexOf(firstBranchColor);
                 if (idx > 0) {
                     this._firstBranchColor = firstBranchColor;
@@ -2373,179 +1569,92 @@
             configurable: true
         });
         Object.defineProperty(AjfFbNodeEntry.prototype, "currentEditedNode", {
-            get: /**
-             * @return {?}
-             */
-            function () {
+            get: function () {
                 return this._currentEditedNode;
             },
             enumerable: true,
             configurable: true
         });
-        /**
-         * @return {?}
-         */
-        AjfFbNodeEntry.prototype.onResize = /**
-         * @return {?}
-         */
-        function () {
+        AjfFbNodeEntry.prototype.onResize = function () {
         };
-        /**
-         * @return {?}
-         */
-        AjfFbNodeEntry.prototype.edit = /**
-         * @return {?}
-         */
-        function () {
+        AjfFbNodeEntry.prototype.edit = function () {
             if (this.nodeEntry == null || !this.isNodeEntry) {
                 return;
             }
-            this._service.editNodeEntry((/** @type {?} */ (this.nodeEntry)));
+            this._service.editNodeEntry(this.nodeEntry);
         };
-        /**
-         * @return {?}
-         */
-        AjfFbNodeEntry.prototype.delete = /**
-         * @return {?}
-         */
-        function () {
+        AjfFbNodeEntry.prototype.delete = function () {
             if (this.nodeEntry == null || !this.isNodeEntry) {
                 return;
             }
-            this._service.deleteNodeEntry((/** @type {?} */ (this.nodeEntry)));
+            this._service.deleteNodeEntry(this.nodeEntry);
         };
-        /**
-         * @return {?}
-         */
-        AjfFbNodeEntry.prototype.ngAfterViewInit = /**
-         * @return {?}
-         */
-        function () {
+        AjfFbNodeEntry.prototype.ngAfterViewInit = function () {
             var _this = this;
-            setTimeout((/**
-             * @return {?}
-             */
-            function () { return _this._updateBranchHeights(); }));
+            setTimeout(function () { return _this._updateBranchHeights(); });
             this._childEntriesSubscription = this.childEntries.changes
-                .subscribe((/**
-             * @return {?}
-             */
-            function () {
+                .subscribe(function () {
                 _this._updateBranchHeights();
-            }));
+            });
         };
-        /**
-         * @return {?}
-         */
-        AjfFbNodeEntry.prototype.ngOnDestroy = /**
-         * @return {?}
-         */
-        function () {
+        AjfFbNodeEntry.prototype.ngOnDestroy = function () {
             this._branchLinesSubscription.unsubscribe();
             this._childEntriesSubscription.unsubscribe();
         };
-        /**
-         * @param {?} evt
-         * @param {?=} content
-         * @return {?}
-         */
-        AjfFbNodeEntry.prototype.onDropSuccess = /**
-         * @param {?} evt
-         * @param {?=} content
-         * @return {?}
-         */
-        function (evt, content) {
+        AjfFbNodeEntry.prototype.onDropSuccess = function (evt, content) {
             if (content === void 0) { content = false; }
-            /** @type {?} */
-            var dd = (/** @type {?} */ (evt.item.data));
+            var dd = evt.item.data;
             if (this._nodeEntry == null) {
-                this._service.insertNode(dd, (/** @type {?} */ (null)), 0, content);
+                this._service.insertNode(dd, null, 0, content);
                 return;
             }
             if (dd.nodeType !== void 0 && (!this.isNodeEntry || (this.isNodeEntry && content))) {
-                /** @type {?} */
                 var emptySlot = content ?
-                    { parent: ((/** @type {?} */ (this.nodeEntry))).node, parentNode: 0 } :
-                    (/** @type {?} */ (this._nodeEntry));
-                this._service.insertNode((/** @type {?} */ (dd)), emptySlot.parent, emptySlot.parentNode, content);
+                    { parent: this.nodeEntry.node, parentNode: 0 } :
+                    this._nodeEntry;
+                this._service.insertNode(dd, emptySlot.parent, emptySlot.parentNode, content);
             }
         };
-        /**
-         * @param {?} item
-         * @return {?}
-         */
-        AjfFbNodeEntry.prototype.disableSlideDropPredicate = /**
-         * @param {?} item
-         * @return {?}
-         */
-        function (item) {
+        AjfFbNodeEntry.prototype.disableSlideDropPredicate = function (item) {
             return !item.data.isSlide;
         };
-        /**
-         * @return {?}
-         */
-        AjfFbNodeEntry.prototype.emptyAreaDropPredicate = /**
-         * @return {?}
-         */
-        function () {
+        AjfFbNodeEntry.prototype.emptyAreaDropPredicate = function () {
             var _this = this;
-            return (/**
-             * @param {?} item
-             * @param {?} _drop
-             * @return {?}
-             */
-            function (item, _drop) {
+            return function (item, _drop) {
                 if (_this._level > 0) {
                     return !item.data.isSlide;
                 }
                 return item.data.isSlide || false;
-            });
+            };
         };
-        /**
-         * @private
-         * @return {?}
-         */
-        AjfFbNodeEntry.prototype._updateBranchHeights = /**
-         * @private
-         * @return {?}
-         */
-        function () {
+        AjfFbNodeEntry.prototype._updateBranchHeights = function () {
             if (this.nodeEntry == null || !this.isNodeEntry
                 || this.branchLines == null || this.childEntries == null) {
                 return;
             }
-            /** @type {?} */
-            var nodeEntry = (/** @type {?} */ (this.nodeEntry));
-            /** @type {?} */
+            var nodeEntry = this.nodeEntry;
             var branchLines = this.branchLines.toArray();
-            /** @type {?} */
             var sliceIdx = nodeEntry.content != null ? nodeEntry.content.length : 0;
-            /** @type {?} */
             var childEntries = this.childEntries.toArray().slice(sliceIdx);
             if (branchLines.length != childEntries.length) {
                 return;
             }
-            branchLines.forEach((/**
-             * @param {?} bl
-             * @param {?} idx
-             * @return {?}
-             */
-            function (bl, idx) {
-                /** @type {?} */
+            branchLines.forEach(function (bl, idx) {
                 var ce = childEntries[idx];
                 bl.height = ce.nativeElement.offsetTop;
-            }));
+            });
         };
         AjfFbNodeEntry.decorators = [
-            { type: core.Component, args: [{selector: 'ajf-fb-node-entry',
-                        template: "<ng-container *ngIf=\"nodeEntry != null ; else rootEmpty\"><ng-template [ngIf]=\"isNodeEntry\"><ajf-fb-branch-line *ngFor=\"let childNodeEntry of realNodeEntry.children; let idx = index\" [offset]=\"idx\" [color]=\"branchColors[idx]\"></ajf-fb-branch-line></ng-template><div class=\"mat-card-container\" [class.ajf-highlight]=\"(currentEditedNode|async) == nodeEntry\"><div *ngIf=\"!isFirst\" class=\"ajf-origin-line\" [style.margin-left]=\"originLeftMargin\" [style.border-color]=\"firstBranchColor\"></div><ng-template [ngIf]=\"isNodeEntry\"><mat-card><div class=\"ajf-title-row\"><ajf-node-icon [node]=\"realNodeEntry.node\"></ajf-node-icon><span class=\"ajf-title\" [innerHTML]=\"(realNodeEntry.node.label || realNodeEntry.node.name)  | translate\"></span> <span class=\"ajf-actions\"><button [disabled]=\"currentEditedNode|async\" (click)=\"edit()\" mat-icon-button><mat-icon>edit</mat-icon></button> <button [disabled]=\"currentEditedNode|async\" (click)=\"delete()\" mat-icon-button><mat-icon>delete</mat-icon></button></span></div><div *ngIf=\"hasContent\"><ajf-fb-node-entry *ngFor=\"let contentEntry of realNodeEntry.content; let isFirstChild = first; let idx = index\" [level]=\"level + 1\" [isFirst]=\"isFirstChild\" [firstBranchColor]=\"branchColors[idx]\" [nodeEntry]=\"contentEntry\"></ajf-fb-node-entry><mat-card class=\"ajf-empty\" *ngIf=\"realNodeEntry.content.length === 0\" cdkDropList [cdkDropListEnterPredicate]=\"disableSlideDropPredicate\" (cdkDropListDropped)=\"onDropSuccess($event, true)\">&nbsp;</mat-card></div></mat-card></ng-template><ng-template [ngIf]=\"!isNodeEntry\"><mat-card class=\"ajf-empty\" cdkDropList [cdkDropListEnterPredicate]=\"emptyAreaDropPredicate()\" (cdkDropListDropped)=\"onDropSuccess($event)\">&nbsp;</mat-card></ng-template></div><ng-template [ngIf]=\"isNodeEntry\"><ajf-fb-node-entry *ngFor=\"let childNodeEntry of realNodeEntry.children; let idx = index\" [level]=\"level\" [originOffset]=\"idx\" [firstBranchColor]=\"branchColors[idx]\" [nodeEntry]=\"childNodeEntry\"></ajf-fb-node-entry></ng-template></ng-container><ng-template #rootEmpty><div class=\"mat-card-container\"><mat-card class=\"ajf-empty\" cdkDropList [cdkDropListEnterPredicate]=\"emptyAreaDropPredicate()\" (cdkDropListDropped)=\"onDropSuccess($event)\">&nbsp;</mat-card></div></ng-template>",
-                        styles: ["ajf-fb-node-entry{display:block;position:relative}ajf-fb-node-entry .mat-card-container{position:relative}ajf-fb-node-entry .mat-card-container .ajf-origin-line{position:absolute;top:0;left:25px;width:25px;height:25px;border-bottom:2px solid;border-left:2px solid;border-bottom-left-radius:.5em}ajf-fb-node-entry .mat-card-container mat-card{margin-left:50px;padding:.5em 1em;margin-top:.2em;margin-bottom:.2em;background-color:#fff}ajf-fb-node-entry .mat-card-container mat-card .ajf-title-row{display:flex;flex-direction:row;align-items:center}ajf-fb-node-entry .mat-card-container mat-card .ajf-title-row>.ajf-title{flex:1 1 auto}ajf-fb-node-entry .mat-card-container mat-card .ajf-title-row>.ajf-actions{flex:0 0 auto;white-space:nowrap}ajf-fb-node-entry .mat-card-container mat-card.ajf-empty{line-height:36px;border:2px dashed;box-shadow:none;box-sizing:border-box}ajf-fb-node-entry .mat-card-container.ajf-highlight>mat-card{background-color:#fff9c4}"],
+            { type: core.Component, args: [{
+                        selector: 'ajf-fb-node-entry',
+                        template: "<ng-container *ngIf=\"nodeEntry != null ; else rootEmpty\">\n  <ng-template [ngIf]=\"isNodeEntry\">\n    <ajf-fb-branch-line\n        *ngFor=\"let childNodeEntry of realNodeEntry.children; let idx = index\"\n        [offset]=\"idx\"\n        [color]=\"branchColors[idx]\"></ajf-fb-branch-line>\n  </ng-template>\n  <div class=\"mat-card-container\"\n      [class.ajf-highlight]=\"(currentEditedNode|async) == nodeEntry\">\n    <div *ngIf=\"!isFirst\"\n        class=\"ajf-origin-line\"\n        [style.margin-left]=\"originLeftMargin\"\n        [style.border-color]=\"firstBranchColor\"></div>\n    <ng-template [ngIf]=\"isNodeEntry\">\n      <mat-card>\n        <div class=\"ajf-title-row\">\n          <ajf-node-icon [node]=\"realNodeEntry.node\"></ajf-node-icon>\n          <span class=\"ajf-title\" [innerHTML]=\"(realNodeEntry.node.label || realNodeEntry.node.name)  | translate\"></span>\n          <span class=\"ajf-actions\">\n            <button [disabled]=\"(currentEditedNode|async) == nodeEntry\" (click)=\"edit()\" mat-icon-button>\n              <mat-icon>edit</mat-icon>\n            </button>\n            <button [disabled]=\"(currentEditedNode|async) == null\" (click)=\"delete()\" mat-icon-button>\n              <mat-icon>delete</mat-icon>\n            </button>\n          </span>\n        </div>\n        <div *ngIf=\"hasContent\">\n          <ajf-fb-node-entry\n              *ngFor=\"let contentEntry of realNodeEntry.content; let isFirstChild = first; let idx = index\"\n              [level]=\"level + 1\"\n              [isFirst]=\"isFirstChild\"\n              [firstBranchColor]=\"branchColors[idx]\"\n              [nodeEntry]=\"contentEntry\"></ajf-fb-node-entry>\n          <mat-card class=\"ajf-empty\"\n              *ngIf=\"realNodeEntry.content.length === 0\"\n              cdkDropList\n              [cdkDropListEnterPredicate]=\"disableSlideDropPredicate\"\n              (cdkDropListDropped)=\"onDropSuccess($event, true)\">&nbsp;</mat-card>\n        </div>\n      </mat-card>\n    </ng-template>\n    <ng-template [ngIf]=\"!isNodeEntry\">\n      <mat-card class=\"ajf-empty\"\n          cdkDropList\n          [cdkDropListEnterPredicate]=\"emptyAreaDropPredicate()\"\n          (cdkDropListDropped)=\"onDropSuccess($event)\">&nbsp;</mat-card>\n    </ng-template>\n  </div>\n  <ng-template [ngIf]=\"isNodeEntry\">\n    <ajf-fb-node-entry\n        *ngFor=\"let childNodeEntry of realNodeEntry.children; let idx = index\"\n        [level]=\"level\"\n        [originOffset]=\"idx\"\n        [firstBranchColor]=\"branchColors[idx]\"\n        [nodeEntry]=\"childNodeEntry\"></ajf-fb-node-entry>\n  </ng-template>\n</ng-container>\n<ng-template #rootEmpty>\n  <div class=\"mat-card-container\">\n    <mat-card class=\"ajf-empty\"\n        cdkDropList\n        [cdkDropListEnterPredicate]=\"emptyAreaDropPredicate()\"\n        (cdkDropListDropped)=\"onDropSuccess($event)\">&nbsp;</mat-card>\n  </div>\n</ng-template>\n",
                         host: {
                             '(window.resize)': 'onResize()'
                         },
                         encapsulation: core.ViewEncapsulation.None,
-                        changeDetection: core.ChangeDetectionStrategy.OnPush
-                    },] },
+                        changeDetection: core.ChangeDetectionStrategy.OnPush,
+                        styles: ["ajf-fb-node-entry{display:block;position:relative}ajf-fb-node-entry .mat-card-container{position:relative}ajf-fb-node-entry .mat-card-container .ajf-origin-line{position:absolute;top:0;left:25px;width:25px;height:25px;border-bottom:2px solid;border-left:2px solid;border-bottom-left-radius:.5em}ajf-fb-node-entry .mat-card-container mat-card{margin-left:50px;padding:.5em 1em;margin-top:.2em;margin-bottom:.2em;background-color:#fff}ajf-fb-node-entry .mat-card-container mat-card .ajf-title-row{display:flex;flex-direction:row;align-items:center}ajf-fb-node-entry .mat-card-container mat-card .ajf-title-row>.ajf-title{flex:1 1 auto}ajf-fb-node-entry .mat-card-container mat-card .ajf-title-row>.ajf-actions{flex:0 0 auto;white-space:nowrap}ajf-fb-node-entry .mat-card-container mat-card.ajf-empty{line-height:36px;border:2px dashed;box-shadow:none;box-sizing:border-box}ajf-fb-node-entry .mat-card-container.ajf-highlight>mat-card{background-color:#fff9c4}\n"]
+                    }] }
         ];
         /** @nocollapse */
         AjfFbNodeEntry.ctorParameters = function () { return [
@@ -2564,52 +1673,51 @@
     }());
 
     /**
-     * @fileoverview added by tsickle
-     * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     * @license
+     * Copyright (C) 2018 Gnucoop soc. coop.
+     *
+     * This file is part of the Advanced JSON forms (ajf).
+     *
+     * Advanced JSON forms (ajf) is free software: you can redistribute it and/or
+     * modify it under the terms of the GNU Affero General Public License as
+     * published by the Free Software Foundation, either version 3 of the License,
+     * or (at your option) any later version.
+     *
+     * Advanced JSON forms (ajf) is distributed in the hope that it will be useful,
+     * but WITHOUT ANY WARRANTY; without even the implied warranty of
+     * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero
+     * General Public License for more details.
+     *
+     * You should have received a copy of the GNU Affero General Public License
+     * along with Advanced JSON forms (ajf).
+     * If not, see http://www.gnu.org/licenses/.
+     *
      */
     var AjfFbValidationConditionEditorDialog = /** @class */ (function () {
         function AjfFbValidationConditionEditorDialog(service, dialogRef) {
             this.dialogRef = dialogRef;
-            this._fields = service.flatFields.pipe(operators.map((/**
-             * @param {?} fields
-             * @return {?}
-             */
-            function (fields) { return fields.sort((/**
-             * @param {?} f1
-             * @param {?} f2
-             * @return {?}
-             */
-            function (f1, f2) { return f1.name.localeCompare(f2.name); })); })));
+            this._fields = service.flatFields.pipe(operators.map(function (fields) { return fields.sort(function (f1, f2) { return f1.name.localeCompare(f2.name); }); }));
         }
         Object.defineProperty(AjfFbValidationConditionEditorDialog.prototype, "fields", {
-            get: /**
-             * @return {?}
-             */
-            function () { return this._fields; },
+            get: function () { return this._fields; },
             enumerable: true,
             configurable: true
         });
-        /**
-         * @return {?}
-         */
-        AjfFbValidationConditionEditorDialog.prototype.saveCondition = /**
-         * @return {?}
-         */
-        function () {
+        AjfFbValidationConditionEditorDialog.prototype.saveCondition = function () {
             if (this.editor == null) {
                 return;
             }
-            /** @type {?} */
             var newValue = this.editor.editedValue;
             this.dialogRef.close({ condition: newValue, errorMessage: this.errorMessage });
         };
         AjfFbValidationConditionEditorDialog.decorators = [
-            { type: core.Component, args: [{selector: 'ajf-fb-validation-condition-editor-dialog',
-                        template: "<h3 matDialogTitle translate>Edit condition</h3><mat-dialog-content><mat-form-field><input matInput [(ngModel)]=\"errorMessage\" [placeholder]=\"'Error message' | translate\"></mat-form-field><ajf-condition-editor [fields]=\"fields|async\" [condition]=\"condition\"></ajf-condition-editor></mat-dialog-content><mat-dialog-actions><button mat-button translate (click)=\"saveCondition()\">Save</button> <button mat-button translate matDialogClose>Close</button></mat-dialog-actions>",
-                        styles: ["ajf-fb-validation-condition-editor-dialog mat-dialog-content{overflow:visible}"],
+            { type: core.Component, args: [{
+                        selector: 'ajf-fb-validation-condition-editor-dialog',
+                        template: "<h3 matDialogTitle translate>Edit condition</h3>\n<mat-dialog-content>\n  <mat-form-field>\n    <input matInput [(ngModel)]=\"errorMessage\" [placeholder]=\"'Error message' | translate\">\n  </mat-form-field>\n  <ajf-condition-editor\n      *ngIf=\"fields|async as curFields\"\n      [fields]=\"curFields!\"\n      [condition]=\"condition\"></ajf-condition-editor>\n</mat-dialog-content>\n<mat-dialog-actions>\n  <button mat-button translate (click)=\"saveCondition()\">Save</button>\n  <button mat-button translate matDialogClose>Close</button>\n</mat-dialog-actions>\n",
                         encapsulation: core.ViewEncapsulation.None,
-                        changeDetection: core.ChangeDetectionStrategy.OnPush
-                    },] },
+                        changeDetection: core.ChangeDetectionStrategy.OnPush,
+                        styles: ["ajf-fb-validation-condition-editor-dialog mat-dialog-content{overflow:visible}\n"]
+                    }] }
         ];
         /** @nocollapse */
         AjfFbValidationConditionEditorDialog.ctorParameters = function () { return [
@@ -2617,58 +1725,57 @@
             { type: dialog.MatDialogRef }
         ]; };
         AjfFbValidationConditionEditorDialog.propDecorators = {
-            editor: [{ type: core.ViewChild, args: [AjfFbConditionEditor, { static: true },] }]
+            editor: [{ type: core.ViewChild, args: [AjfFbConditionEditor, { static: false },] }]
         };
         return AjfFbValidationConditionEditorDialog;
     }());
 
     /**
-     * @fileoverview added by tsickle
-     * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     * @license
+     * Copyright (C) 2018 Gnucoop soc. coop.
+     *
+     * This file is part of the Advanced JSON forms (ajf).
+     *
+     * Advanced JSON forms (ajf) is free software: you can redistribute it and/or
+     * modify it under the terms of the GNU Affero General Public License as
+     * published by the Free Software Foundation, either version 3 of the License,
+     * or (at your option) any later version.
+     *
+     * Advanced JSON forms (ajf) is distributed in the hope that it will be useful,
+     * but WITHOUT ANY WARRANTY; without even the implied warranty of
+     * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero
+     * General Public License for more details.
+     *
+     * You should have received a copy of the GNU Affero General Public License
+     * along with Advanced JSON forms (ajf).
+     * If not, see http://www.gnu.org/licenses/.
+     *
      */
     var AjfFbWarningConditionEditorDialog = /** @class */ (function () {
         function AjfFbWarningConditionEditorDialog(service, dialogRef) {
             this.dialogRef = dialogRef;
-            this._fields = service.flatFields.pipe(operators.map((/**
-             * @param {?} fields
-             * @return {?}
-             */
-            function (fields) { return fields.sort((/**
-             * @param {?} f1
-             * @param {?} f2
-             * @return {?}
-             */
-            function (f1, f2) { return f1.name.localeCompare(f2.name); })); })));
+            this._fields = service.flatFields.pipe(operators.map(function (fields) { return fields.sort(function (f1, f2) { return f1.name.localeCompare(f2.name); }); }));
         }
         Object.defineProperty(AjfFbWarningConditionEditorDialog.prototype, "fields", {
-            get: /**
-             * @return {?}
-             */
-            function () { return this._fields; },
+            get: function () { return this._fields; },
             enumerable: true,
             configurable: true
         });
-        /**
-         * @return {?}
-         */
-        AjfFbWarningConditionEditorDialog.prototype.saveCondition = /**
-         * @return {?}
-         */
-        function () {
+        AjfFbWarningConditionEditorDialog.prototype.saveCondition = function () {
             if (this.editor == null) {
                 return;
             }
-            /** @type {?} */
             var newValue = this.editor.editedValue;
             this.dialogRef.close({ condition: newValue, warningMessage: this.warningMessage });
         };
         AjfFbWarningConditionEditorDialog.decorators = [
-            { type: core.Component, args: [{selector: 'ajf-fb-warning-condition-editor-dialog',
-                        template: "<h3 matDialogTitle translate>Edit condition</h3><mat-dialog-content><mat-form-field><input matInput [(ngModel)]=\"warningMessage\" [placeholder]=\"'Warning message' | translate\"></mat-form-field><ajf-condition-editor [fields]=\"fields|async\" [condition]=\"condition\"></ajf-condition-editor></mat-dialog-content><mat-dialog-actions><button mat-button translate (click)=\"saveCondition()\">Save</button> <button mat-button translate matDialogClose>Close</button></mat-dialog-actions>",
-                        styles: ["ajf-fb-warning-condition-editor-dialog mat-dialog-content{overflow:visible}"],
+            { type: core.Component, args: [{
+                        selector: 'ajf-fb-warning-condition-editor-dialog',
+                        template: "<h3 matDialogTitle translate>Edit condition</h3>\n<mat-dialog-content>\n  <mat-form-field>\n    <input matInput [(ngModel)]=\"warningMessage\"\n      [placeholder]=\"'Warning message' | translate\">\n  </mat-form-field>\n  <ajf-condition-editor\n      *ngIf=\"fields|async as curFields\"\n      [fields]=\"curFields!\"\n      [condition]=\"condition\"></ajf-condition-editor>\n</mat-dialog-content>\n<mat-dialog-actions>\n  <button mat-button translate (click)=\"saveCondition()\">Save</button>\n  <button mat-button translate matDialogClose>Close</button>\n</mat-dialog-actions>\n",
                         encapsulation: core.ViewEncapsulation.None,
-                        changeDetection: core.ChangeDetectionStrategy.OnPush
-                    },] },
+                        changeDetection: core.ChangeDetectionStrategy.OnPush,
+                        styles: ["ajf-fb-warning-condition-editor-dialog mat-dialog-content{overflow:visible}\n"]
+                    }] }
         ];
         /** @nocollapse */
         AjfFbWarningConditionEditorDialog.ctorParameters = function () { return [
@@ -2676,23 +1783,34 @@
             { type: dialog.MatDialogRef }
         ]; };
         AjfFbWarningConditionEditorDialog.propDecorators = {
-            editor: [{ type: core.ViewChild, args: [AjfFbConditionEditor, { static: true },] }]
+            editor: [{ type: core.ViewChild, args: [AjfFbConditionEditor, { static: false },] }]
         };
         return AjfFbWarningConditionEditorDialog;
     }());
 
     /**
-     * @fileoverview added by tsickle
-     * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
-     */
-    /**
-     * @param {?} c
-     * @return {?}
+     * @license
+     * Copyright (C) 2018 Gnucoop soc. coop.
+     *
+     * This file is part of the Advanced JSON forms (ajf).
+     *
+     * Advanced JSON forms (ajf) is free software: you can redistribute it and/or
+     * modify it under the terms of the GNU Affero General Public License as
+     * published by the Free Software Foundation, either version 3 of the License,
+     * or (at your option) any later version.
+     *
+     * Advanced JSON forms (ajf) is distributed in the hope that it will be useful,
+     * but WITHOUT ANY WARRANTY; without even the implied warranty of
+     * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero
+     * General Public License for more details.
+     *
+     * You should have received a copy of the GNU Affero General Public License
+     * along with Advanced JSON forms (ajf).
+     * If not, see http://www.gnu.org/licenses/.
+     *
      */
     function checkRepsValidity(c) {
-        /** @type {?} */
         var minReps = c.value.minReps;
-        /** @type {?} */
         var maxReps = c.value.maxReps;
         if (minReps != null && maxReps != null && minReps > maxReps) {
             return {
@@ -2701,14 +1819,8 @@
         }
         return null;
     }
-    /**
-     * @param {?} c
-     * @return {?}
-     */
     function checkValueLimitsValidity(c) {
-        /** @type {?} */
         var minValue = c.value.minValue;
-        /** @type {?} */
         var maxValue = c.value.maxValue;
         if (minValue != null && maxValue != null && minValue > maxValue) {
             return {
@@ -2717,14 +1829,8 @@
         }
         return null;
     }
-    /**
-     * @param {?} c
-     * @return {?}
-     */
     function checkDigitsValidity(c) {
-        /** @type {?} */
         var minDigits = c.value.minDigits;
-        /** @type {?} */
         var maxDigits = c.value.maxDigits;
         if (minDigits != null && maxDigits != null && minDigits > maxDigits) {
             return {
@@ -2750,7 +1856,9 @@
             this._conditionalBranches = [];
             this._validationConditions = [];
             this._warningConditions = [];
-            this.isRepeatingContainerNode = forms$1.isRepeatingContainerNode;
+            this.isRepeatingContainerNode = function (nodeEntry) {
+                return nodeEntry != null && forms$1.isRepeatingContainerNode(nodeEntry.node);
+            };
             this._visibilitySub = rxjs.Subscription.EMPTY;
             this._conditionalBranchesSub = rxjs.Subscription.EMPTY;
             this._formulaRepsSub = rxjs.Subscription.EMPTY;
@@ -2801,16 +1909,8 @@
             this._saveSub = rxjs.Subscription.EMPTY;
             this._nodeEntry = _service.editedNodeEntry;
             this._choicesOriginsSub = _service.choicesOrigins
-                .subscribe((/**
-             * @param {?} c
-             * @return {?}
-             */
-            function (c) { return _this._choicesOrigins = c || []; }));
-            this._enabled = this._nodeEntry.pipe(operators.map((/**
-             * @param {?} n
-             * @return {?}
-             */
-            function (n) { return n != null; })));
+                .subscribe(function (c) { return _this._choicesOrigins = c || []; });
+            this._enabled = this._nodeEntry.pipe(operators.map(function (n) { return n != null; }));
             this._initForm();
             this._initVisibilityEdit();
             this._initConditionalBranchEdit();
@@ -2831,372 +1931,172 @@
             this._initSave();
         }
         Object.defineProperty(AjfFbNodeProperties.prototype, "fieldSizes", {
-            get: /**
-             * @return {?}
-             */
-            function () { return this._fieldSizes; },
+            get: function () { return this._fieldSizes; },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(AjfFbNodeProperties.prototype, "nodeEntry", {
-            get: /**
-             * @return {?}
-             */
-            function () { return this._nodeEntry; },
+            get: function () { return this._nodeEntry; },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(AjfFbNodeProperties.prototype, "choicesOrigins", {
-            get: /**
-             * @return {?}
-             */
-            function () {
+            get: function () {
                 return this._choicesOrigins;
             },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(AjfFbNodeProperties.prototype, "enabled", {
-            get: /**
-             * @return {?}
-             */
-            function () { return this._enabled; },
+            get: function () { return this._enabled; },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(AjfFbNodeProperties.prototype, "propertiesForm", {
-            get: /**
-             * @return {?}
-             */
-            function () { return this._propertiesForm; },
+            get: function () { return this._propertiesForm; },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(AjfFbNodeProperties.prototype, "hasChoices", {
-            get: /**
-             * @return {?}
-             */
-            function () { return this._hasChoices; },
+            get: function () { return this._hasChoices; },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(AjfFbNodeProperties.prototype, "curVisibility", {
-            get: /**
-             * @return {?}
-             */
-            function () { return this._curVisibility; },
+            get: function () { return this._curVisibility; },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(AjfFbNodeProperties.prototype, "curFormulaReps", {
-            get: /**
-             * @return {?}
-             */
-            function () { return this._curFormulaReps; },
+            get: function () { return this._curFormulaReps; },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(AjfFbNodeProperties.prototype, "curChoicesFilter", {
-            get: /**
-             * @return {?}
-             */
-            function () { return this._curChoicesFilter; },
+            get: function () { return this._curChoicesFilter; },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(AjfFbNodeProperties.prototype, "curForceValue", {
-            get: /**
-             * @return {?}
-             */
-            function () { return this._curForceValue; },
+            get: function () { return this._curForceValue; },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(AjfFbNodeProperties.prototype, "curFormula", {
-            get: /**
-             * @return {?}
-             */
-            function () { return this._curFormula; },
+            get: function () { return this._curFormula; },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(AjfFbNodeProperties.prototype, "conditionalBranches", {
-            get: /**
-             * @return {?}
-             */
-            function () { return this._conditionalBranches; },
+            get: function () { return this._conditionalBranches; },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(AjfFbNodeProperties.prototype, "validationConditions", {
-            get: /**
-             * @return {?}
-             */
-            function () { return this._validationConditions; },
+            get: function () { return this._validationConditions; },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(AjfFbNodeProperties.prototype, "warningConditions", {
-            get: /**
-             * @return {?}
-             */
-            function () { return this._warningConditions; },
+            get: function () { return this._warningConditions; },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(AjfFbNodeProperties.prototype, "nextSlideCondition", {
-            get: /**
-             * @return {?}
-             */
-            function () { return this._nextSlideCondition; },
+            get: function () { return this._nextSlideCondition; },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(AjfFbNodeProperties.prototype, "triggerConditions", {
-            get: /**
-             * @return {?}
-             */
-            function () { return this._triggerConditions; },
+            get: function () { return this._triggerConditions; },
             enumerable: true,
             configurable: true
         });
-        /**
-         * @return {?}
-         */
-        AjfFbNodeProperties.prototype.editVisibility = /**
-         * @return {?}
-         */
-        function () {
+        AjfFbNodeProperties.prototype.editVisibility = function () {
             this._editVisibilityEvt.emit();
         };
-        /**
-         * @param {?} idx
-         * @return {?}
-         */
-        AjfFbNodeProperties.prototype.editConditionalBranch = /**
-         * @param {?} idx
-         * @return {?}
-         */
-        function (idx) {
+        AjfFbNodeProperties.prototype.editConditionalBranch = function (idx) {
             if (idx < 0 || idx >= this._conditionalBranches.length) {
                 return;
             }
             this._editConditionalBranchEvt.emit(idx);
         };
-        /**
-         * @return {?}
-         */
-        AjfFbNodeProperties.prototype.editFormulaReps = /**
-         * @return {?}
-         */
-        function () {
+        AjfFbNodeProperties.prototype.editFormulaReps = function () {
             this._editFormulaRepsEvt.emit();
         };
-        /**
-         * @return {?}
-         */
-        AjfFbNodeProperties.prototype.editChoicesFilter = /**
-         * @return {?}
-         */
-        function () {
+        AjfFbNodeProperties.prototype.editChoicesFilter = function () {
             this._editChoicesFilterEvt.emit();
         };
-        /**
-         * @return {?}
-         */
-        AjfFbNodeProperties.prototype.editFormula = /**
-         * @return {?}
-         */
-        function () {
+        AjfFbNodeProperties.prototype.editFormula = function () {
             this._editFormulaEvt.emit();
         };
-        /**
-         * @return {?}
-         */
-        AjfFbNodeProperties.prototype.editForceValue = /**
-         * @return {?}
-         */
-        function () {
+        AjfFbNodeProperties.prototype.editForceValue = function () {
             this._editForceValueEvt.emit();
         };
-        /**
-         * @param {?} idx
-         * @return {?}
-         */
-        AjfFbNodeProperties.prototype.editValidationCondition = /**
-         * @param {?} idx
-         * @return {?}
-         */
-        function (idx) {
+        AjfFbNodeProperties.prototype.editValidationCondition = function (idx) {
             if (idx < 0 || idx >= this._validationConditions.length) {
                 return;
             }
             this._editValidationConditionEvt.emit(idx);
         };
-        /**
-         * @return {?}
-         */
-        AjfFbNodeProperties.prototype.addValidationCondition = /**
-         * @return {?}
-         */
-        function () {
+        AjfFbNodeProperties.prototype.addValidationCondition = function () {
             this._addValidationConditionEvt.emit();
         };
-        /**
-         * @param {?} idx
-         * @return {?}
-         */
-        AjfFbNodeProperties.prototype.removeValidationCondition = /**
-         * @param {?} idx
-         * @return {?}
-         */
-        function (idx) {
+        AjfFbNodeProperties.prototype.removeValidationCondition = function (idx) {
             if (idx < 0 || idx >= this._validationConditions.length) {
                 return;
             }
             this._removeValidationConditionEvt.emit(idx);
         };
-        /**
-         * @param {?} idx
-         * @return {?}
-         */
-        AjfFbNodeProperties.prototype.editWarningCondition = /**
-         * @param {?} idx
-         * @return {?}
-         */
-        function (idx) {
+        AjfFbNodeProperties.prototype.editWarningCondition = function (idx) {
             if (idx < 0 || idx >= this._warningConditions.length) {
                 return;
             }
             this._editWarningConditionEvt.emit(idx);
         };
-        /**
-         * @return {?}
-         */
-        AjfFbNodeProperties.prototype.addWarningCondition = /**
-         * @return {?}
-         */
-        function () {
+        AjfFbNodeProperties.prototype.addWarningCondition = function () {
             this._addWarningConditionEvt.emit();
         };
-        /**
-         * @param {?} idx
-         * @return {?}
-         */
-        AjfFbNodeProperties.prototype.removeWarningCondition = /**
-         * @param {?} idx
-         * @return {?}
-         */
-        function (idx) {
+        AjfFbNodeProperties.prototype.removeWarningCondition = function (idx) {
             if (idx < 0 || idx >= this._warningConditions.length) {
                 return;
             }
             this._removeWarningConditionEvt.emit(idx);
         };
-        /**
-         * @return {?}
-         */
-        AjfFbNodeProperties.prototype.editNextSlideCondition = /**
-         * @return {?}
-         */
-        function () {
+        AjfFbNodeProperties.prototype.editNextSlideCondition = function () {
             this._editNextSlideConditionEvt.emit();
         };
-        /**
-         * @param {?} idx
-         * @return {?}
-         */
-        AjfFbNodeProperties.prototype.editTriggerCondition = /**
-         * @param {?} idx
-         * @return {?}
-         */
-        function (idx) {
+        AjfFbNodeProperties.prototype.editTriggerCondition = function (idx) {
             if (idx < 0 || idx >= this._triggerConditions.length) {
                 return;
             }
             this._editTriggerConditionEvt.emit(idx);
         };
-        /**
-         * @return {?}
-         */
-        AjfFbNodeProperties.prototype.addTriggerCondition = /**
-         * @return {?}
-         */
-        function () {
+        AjfFbNodeProperties.prototype.addTriggerCondition = function () {
             this._addTriggerConditionEvt.emit();
         };
-        /**
-         * @param {?} idx
-         * @return {?}
-         */
-        AjfFbNodeProperties.prototype.removeTriggerCondition = /**
-         * @param {?} idx
-         * @return {?}
-         */
-        function (idx) {
+        AjfFbNodeProperties.prototype.removeTriggerCondition = function (idx) {
             if (idx < 0 || idx >= this._triggerConditions.length) {
                 return;
             }
             this._removeTriggerConditionEvt.emit(idx);
         };
-        /**
-         * @param {?} node
-         * @return {?}
-         */
-        AjfFbNodeProperties.prototype.isField = /**
-         * @param {?} node
-         * @return {?}
-         */
-        function (node) {
-            return forms$1.isField(node);
+        AjfFbNodeProperties.prototype.isField = function (nodeEntry) {
+            return nodeEntry != null && forms$1.isField(nodeEntry.node);
         };
-        /**
-         * @param {?} node
-         * @return {?}
-         */
-        AjfFbNodeProperties.prototype.isNumericField = /**
-         * @param {?} node
-         * @return {?}
-         */
-        function (node) {
-            return forms$1.isField(node) && forms$1.isNumberField((/** @type {?} */ (node)));
+        AjfFbNodeProperties.prototype.isNumericField = function (node) {
+            return forms$1.isField(node) && forms$1.isNumberField(node);
         };
-        /**
-         * @param {?} node
-         * @return {?}
-         */
-        AjfFbNodeProperties.prototype.isFieldWithChoices = /**
-         * @param {?} node
-         * @return {?}
-         */
-        function (node) {
-            return forms$1.isField(node) && forms$1.isFieldWithChoices((/** @type {?} */ (node)));
+        AjfFbNodeProperties.prototype.isFieldWithChoices = function (node) {
+            return forms$1.isField(node) && forms$1.isFieldWithChoices(node);
         };
-        /**
-         * @return {?}
-         */
-        AjfFbNodeProperties.prototype.save = /**
-         * @return {?}
-         */
-        function () {
+        AjfFbNodeProperties.prototype.save = function () {
             this._saveEvt.emit();
         };
-        /**
-         * @return {?}
-         */
-        AjfFbNodeProperties.prototype.cancel = /**
-         * @return {?}
-         */
-        function () {
+        AjfFbNodeProperties.prototype.cancel = function () {
             this._service.cancelNodeEntryEdit();
         };
-        /**
-         * @return {?}
-         */
-        AjfFbNodeProperties.prototype.ngOnDestroy = /**
-         * @return {?}
-         */
-        function () {
+        AjfFbNodeProperties.prototype.ngOnDestroy = function () {
             this._choicesOriginsSub.unsubscribe();
             this._visibilitySub.unsubscribe();
             this._formulaRepsSub.unsubscribe();
@@ -3228,62 +2128,29 @@
             this._removeWarningConditionSub.unsubscribe();
             this._saveSub.unsubscribe();
         };
-        /**
-         * @private
-         * @return {?}
-         */
-        AjfFbNodeProperties.prototype._initSave = /**
-         * @private
-         * @return {?}
-         */
-        function () {
+        AjfFbNodeProperties.prototype._initSave = function () {
             var _this = this;
             this._saveSub = this._saveEvt.pipe(operators.withLatestFrom(this.propertiesForm))
-                .subscribe((/**
-             * @param {?} r
-             * @return {?}
-             */
-            function (r) {
-                /** @type {?} */
+                .subscribe(function (r) {
                 var fg = r[1];
-                /** @type {?} */
-                var val = __assign({}, fg.value, { conditionalBranches: _this._conditionalBranches });
+                var val = tslib.__assign(tslib.__assign({}, fg.value), { conditionalBranches: _this._conditionalBranches });
                 _this._service.saveNodeEntry(val);
-            }));
+            });
         };
-        /**
-         * @private
-         * @return {?}
-         */
-        AjfFbNodeProperties.prototype._initForm = /**
-         * @private
-         * @return {?}
-         */
-        function () {
+        AjfFbNodeProperties.prototype._initForm = function () {
             var _this = this;
-            this._propertiesForm = this._nodeEntry.pipe(operators.filter((/**
-             * @param {?} n
-             * @return {?}
-             */
-            function (n) { return n != null; })), operators.map((/**
-             * @param {?} n
-             * @return {?}
-             */
-            function (n) {
+            this._propertiesForm = this._nodeEntry.pipe(operators.filter(function (n) { return n != null; }), operators.map(function (n) {
                 if (_this._visibilitySub != null) {
                     _this._visibilitySub.unsubscribe();
                 }
                 if (_this._conditionalBranchesSub != null) {
                     _this._conditionalBranchesSub.unsubscribe();
                 }
-                n = (/** @type {?} */ (n));
-                /** @type {?} */
+                n = n;
                 var visibility = n.node.visibility != null ?
                     n.node.visibility.condition : null;
-                /** @type {?} */
                 var visibilityOpt = n.node.visibility != null ?
                     _this._guessVisibilityOpt(n.node.visibility) : null;
-                /** @type {?} */
                 var controls = {
                     name: [n.node.name, forms.Validators.required],
                     label: n.node.label,
@@ -3291,12 +2158,9 @@
                     visibility: [visibility, forms.Validators.required],
                     conditionalBranchesNum: n.node.conditionalBranches.length
                 };
-                /** @type {?} */
                 var validators = [];
                 if (forms$1.isRepeatingContainerNode(n.node)) {
-                    /** @type {?} */
-                    var rn = (/** @type {?} */ (n.node));
-                    /** @type {?} */
+                    var rn = n.node;
                     var formulaReps = rn.formulaReps != null ? rn.formulaReps.formula : null;
                     controls.formulaReps = [formulaReps, forms.Validators.required];
                     controls.minReps = rn.minReps;
@@ -3304,14 +2168,10 @@
                     _this._curFormulaReps = formulaReps;
                     validators.push(checkRepsValidity);
                 }
-                if (_this.isField(n.node)) {
-                    /** @type {?} */
-                    var field = (/** @type {?} */ (n.node));
-                    /** @type {?} */
+                if (_this.isField(n)) {
+                    var field = n.node;
                     var forceValue = null;
-                    /** @type {?} */
                     var notEmpty = false;
-                    /** @type {?} */
                     var validationConditions = [];
                     if (field.validation != null) {
                         if (field.validation.forceValue != null) {
@@ -3319,36 +2179,25 @@
                         }
                         notEmpty = field.validation.notEmpty != null;
                         validationConditions = (field.validation.conditions || [])
-                            .map((/**
-                         * @param {?} c
-                         * @return {?}
-                         */
-                        function (c) {
+                            .map(function (c) {
                             return {
                                 condition: c.condition,
                                 errorMessage: c.errorMessage
                             };
-                        }));
+                        });
                     }
-                    /** @type {?} */
                     var notEmptyW = false;
-                    /** @type {?} */
                     var warningConditions = [];
                     if (field.warning != null) {
                         notEmptyW = field.warning.notEmpty != null;
                         warningConditions = (field.warning.conditions || [])
-                            .map((/**
-                         * @param {?} w
-                         * @return {?}
-                         */
-                        function (w) {
+                            .map(function (w) {
                             return {
                                 condition: w.condition,
                                 warningMessage: w.warningMessage
                             };
-                        }));
+                        });
                     }
-                    /** @type {?} */
                     var formula = field.formula != null ? field.formula.formula : null;
                     controls.description = field.description;
                     controls.defaultValue = field.defaultValue;
@@ -3366,15 +2215,10 @@
                     _this._warningConditions = warningConditions;
                 }
                 if (_this.isNumericField(n.node)) {
-                    /** @type {?} */
-                    var numField = (/** @type {?} */ (n.node));
-                    /** @type {?} */
+                    var numField = n.node;
                     var minValue = void 0;
-                    /** @type {?} */
                     var maxValue = void 0;
-                    /** @type {?} */
                     var minDigits = void 0;
-                    /** @type {?} */
                     var maxDigits = void 0;
                     if (numField.validation != null) {
                         if (numField.validation.minValue != null) {
@@ -3400,16 +2244,10 @@
                     validators.push(checkDigitsValidity);
                 }
                 if (_this.isFieldWithChoices(n.node)) {
-                    /** @type {?} */
-                    var fieldWithChoices = (/** @type {?} */ (n.node));
-                    /** @type {?} */
+                    var fieldWithChoices = n.node;
                     var triggerConditions = (fieldWithChoices.triggerConditions || [])
-                        .map((/**
-                     * @param {?} c
-                     * @return {?}
-                     */
-                    function (c) { return c.condition; }));
-                    controls.choicesOriginRef = ((/** @type {?} */ (fieldWithChoices))).choicesOriginRef;
+                        .map(function (c) { return c.condition; });
+                    controls.choicesOriginRef = fieldWithChoices.choicesOriginRef;
                     controls.choicesFilter = fieldWithChoices.choicesFilter != null ?
                         fieldWithChoices.choicesFilter.formula : null;
                     controls.forceExpanded = fieldWithChoices.forceExpanded;
@@ -3417,14 +2255,9 @@
                     controls.triggerConditions = triggerConditions;
                     _this._triggerConditions = triggerConditions;
                 }
-                /** @type {?} */
                 var fg = _this._fb.group(controls);
                 fg.setValidators(validators);
-                _this._conditionalBranches = n.node.conditionalBranches.map((/**
-                 * @param {?} c
-                 * @return {?}
-                 */
-                function (c) { return c.condition; }));
+                _this._conditionalBranches = n.node.conditionalBranches.map(function (c) { return c.condition; });
                 _this._curVisibility = n.node.visibility != null ? n.node.visibility.condition : null;
                 _this._handleConditionalBranchesChange(fg);
                 _this._handleVisibilityChange(fg);
@@ -3437,17 +2270,9 @@
                 _this._handleNextSlideConditionChange(fg);
                 _this._handleTriggerCondtionsChange(fg);
                 return fg;
-            })), operators.publishReplay(1), operators.refCount());
+            }), operators.publishReplay(1), operators.refCount());
         };
-        /**
-         * @private
-         * @return {?}
-         */
-        AjfFbNodeProperties.prototype._destroyConditionDialog = /**
-         * @private
-         * @return {?}
-         */
-        function () {
+        AjfFbNodeProperties.prototype._destroyConditionDialog = function () {
             if (this._editConditionDialogSub != null) {
                 this._editConditionDialogSub.unsubscribe();
                 this._editConditionDialogSub = rxjs.Subscription.EMPTY;
@@ -3457,15 +2282,7 @@
                 this._editConditionDialog = null;
             }
         };
-        /**
-         * @private
-         * @return {?}
-         */
-        AjfFbNodeProperties.prototype._destroyValidationConditionDialog = /**
-         * @private
-         * @return {?}
-         */
-        function () {
+        AjfFbNodeProperties.prototype._destroyValidationConditionDialog = function () {
             if (this._editValidationConditionDialogSub != null) {
                 this._editValidationConditionDialogSub.unsubscribe();
                 this._editValidationConditionDialogSub = rxjs.Subscription.EMPTY;
@@ -3475,15 +2292,7 @@
                 this._editValidationConditionDialog = null;
             }
         };
-        /**
-         * @private
-         * @return {?}
-         */
-        AjfFbNodeProperties.prototype._destroyWarningConditionDialog = /**
-         * @private
-         * @return {?}
-         */
-        function () {
+        AjfFbNodeProperties.prototype._destroyWarningConditionDialog = function () {
             if (this._editWarningConditionDialogSub != null) {
                 this._editWarningConditionDialogSub.unsubscribe();
                 this._editWarningConditionDialogSub = rxjs.Subscription.EMPTY;
@@ -3493,559 +2302,303 @@
                 this._editWarningConditionDialog = null;
             }
         };
-        /**
-         * @private
-         * @return {?}
-         */
-        AjfFbNodeProperties.prototype._initRemoveTriggerCondition = /**
-         * @private
-         * @return {?}
-         */
-        function () {
-            this._removeTriggerConditionSub = ((/** @type {?} */ (this._removeTriggerConditionEvt)))
+        AjfFbNodeProperties.prototype._initRemoveTriggerCondition = function () {
+            this._removeTriggerConditionSub = this._removeTriggerConditionEvt
                 .pipe(operators.withLatestFrom(this._propertiesForm))
-                .subscribe((/**
-             * @param {?} r
-             * @return {?}
-             */
-            function (r) {
-                /** @type {?} */
+                .subscribe(function (r) {
                 var vcIdx = r[0];
-                /** @type {?} */
                 var fg = r[1];
                 if (fg == null) {
                     return;
                 }
-                /** @type {?} */
                 var ctrl = fg.controls['triggerConditions'];
-                /** @type {?} */
                 var vcs = (ctrl.value || []).slice(0);
                 if (vcIdx < 0 || vcIdx >= vcs.length) {
                     return;
                 }
                 vcs.splice(vcIdx, 1);
                 ctrl.setValue(vcs);
-            }));
+            });
         };
-        /**
-         * @private
-         * @return {?}
-         */
-        AjfFbNodeProperties.prototype._initAddTriggerCondition = /**
-         * @private
-         * @return {?}
-         */
-        function () {
-            this._addTriggerConditionSub = ((/** @type {?} */ (this._addTriggerConditionEvt)))
+        AjfFbNodeProperties.prototype._initAddTriggerCondition = function () {
+            this._addTriggerConditionSub = this._addTriggerConditionEvt
                 .pipe(operators.withLatestFrom(this._propertiesForm))
-                .subscribe((/**
-             * @param {?} r
-             * @return {?}
-             */
-            function (r) {
-                /** @type {?} */
+                .subscribe(function (r) {
                 var fg = r[1];
                 if (fg == null) {
                     return;
                 }
-                /** @type {?} */
                 var ctrl = fg.controls['triggerConditions'];
-                /** @type {?} */
                 var vcs = (ctrl.value || []).slice(0);
                 vcs.push('');
                 ctrl.setValue(vcs);
-            }));
+            });
         };
-        /**
-         * @private
-         * @return {?}
-         */
-        AjfFbNodeProperties.prototype._initTriggerConditionEdit = /**
-         * @private
-         * @return {?}
-         */
-        function () {
+        AjfFbNodeProperties.prototype._initTriggerConditionEdit = function () {
             var _this = this;
-            this._editTriggerConditionSub = ((/** @type {?} */ (this._editTriggerConditionEvt)))
+            this._editTriggerConditionSub = this._editTriggerConditionEvt
                 .pipe(operators.withLatestFrom(this._propertiesForm))
-                .subscribe((/**
-             * @param {?} r
-             * @return {?}
-             */
-            function (r) {
+                .subscribe(function (r) {
                 _this._destroyConditionDialog();
-                /** @type {?} */
                 var vcIdx = r[0];
-                /** @type {?} */
                 var fg = r[1];
                 if (vcIdx < 0 || vcIdx >= _this._triggerConditions.length || fg == null) {
                     return;
                 }
                 _this._editConditionDialog = _this._dialog
                     .open(AjfFbConditionEditorDialog);
-                /** @type {?} */
                 var cmp = _this._editConditionDialog.componentInstance;
                 cmp.condition = _this._triggerConditions[vcIdx];
                 _this._editConditionDialogSub = _this._editConditionDialog.afterClosed()
-                    .subscribe((/**
-                 * @param {?} cond
-                 * @return {?}
-                 */
-                function (cond) {
+                    .subscribe(function (cond) {
                     if (cond !== void 0) {
                         _this._triggerConditions[vcIdx] = cond;
                     }
                     _this._editConditionDialogSub.unsubscribe();
                     _this._editConditionDialogSub = rxjs.Subscription.EMPTY;
-                }));
-            }));
+                });
+            });
         };
-        /**
-         * @private
-         * @return {?}
-         */
-        AjfFbNodeProperties.prototype._initRemoveWarningCondition = /**
-         * @private
-         * @return {?}
-         */
-        function () {
-            this._removeWarningConditionSub = ((/** @type {?} */ (this._removeWarningConditionEvt)))
+        AjfFbNodeProperties.prototype._initRemoveWarningCondition = function () {
+            this._removeWarningConditionSub = this._removeWarningConditionEvt
                 .pipe(operators.withLatestFrom(this._propertiesForm))
-                .subscribe((/**
-             * @param {?} r
-             * @return {?}
-             */
-            function (r) {
-                /** @type {?} */
+                .subscribe(function (r) {
                 var vcIdx = r[0];
-                /** @type {?} */
                 var fg = r[1];
                 if (fg == null) {
                     return;
                 }
-                /** @type {?} */
                 var ctrl = fg.controls['warningConditions'];
-                /** @type {?} */
                 var vcs = (ctrl.value || []).slice(0);
                 if (vcIdx < 0 || vcIdx >= vcs.length) {
                     return;
                 }
                 vcs.splice(vcIdx, 1);
                 ctrl.setValue(vcs);
-            }));
+            });
         };
-        /**
-         * @private
-         * @return {?}
-         */
-        AjfFbNodeProperties.prototype._initAddWarningCondition = /**
-         * @private
-         * @return {?}
-         */
-        function () {
-            this._addWarningConditionSub = ((/** @type {?} */ (this._addWarningConditionEvt)))
+        AjfFbNodeProperties.prototype._initAddWarningCondition = function () {
+            this._addWarningConditionSub = this._addWarningConditionEvt
                 .pipe(operators.withLatestFrom(this._propertiesForm))
-                .subscribe((/**
-             * @param {?} r
-             * @return {?}
-             */
-            function (r) {
-                /** @type {?} */
+                .subscribe(function (r) {
                 var fg = r[1];
                 if (fg == null) {
                     return;
                 }
-                /** @type {?} */
                 var ctrl = fg.controls['warningConditions'];
-                /** @type {?} */
                 var vcs = (ctrl.value || []).slice(0);
                 vcs.push({ condition: '', errorMessage: '' });
                 ctrl.setValue(vcs);
-            }));
+            });
         };
-        /**
-         * @private
-         * @return {?}
-         */
-        AjfFbNodeProperties.prototype._initWarningConditionEdit = /**
-         * @private
-         * @return {?}
-         */
-        function () {
+        AjfFbNodeProperties.prototype._initWarningConditionEdit = function () {
             var _this = this;
-            this._editWarningConditionSub = ((/** @type {?} */ (this._editWarningConditionEvt)))
+            this._editWarningConditionSub = this._editWarningConditionEvt
                 .pipe(operators.withLatestFrom(this._propertiesForm))
-                .subscribe((/**
-             * @param {?} r
-             * @return {?}
-             */
-            function (r) {
+                .subscribe(function (r) {
                 _this._destroyWarningConditionDialog();
-                /** @type {?} */
                 var vcIdx = r[0];
-                /** @type {?} */
                 var fg = r[1];
                 if (vcIdx < 0 || vcIdx >= _this._warningConditions.length || fg == null) {
                     return;
                 }
                 _this._editWarningConditionDialog = _this._dialog
                     .open(AjfFbWarningConditionEditorDialog);
-                /** @type {?} */
                 var cmp = _this._editWarningConditionDialog.componentInstance;
-                /** @type {?} */
                 var w = _this._warningConditions[vcIdx];
                 cmp.condition = w.condition;
                 cmp.warningMessage = w.warningMessage;
                 _this._editWarningConditionDialogSub = _this._editWarningConditionDialog.afterClosed()
-                    .subscribe((/**
-                 * @param {?} cond
-                 * @return {?}
-                 */
-                function (cond) {
+                    .subscribe(function (cond) {
                     if (cond !== void 0) {
                         _this._warningConditions[vcIdx] = cond;
                     }
                     _this._editWarningConditionDialogSub.unsubscribe();
                     _this._editWarningConditionDialogSub = rxjs.Subscription.EMPTY;
-                }));
-            }));
+                });
+            });
         };
-        /**
-         * @private
-         * @return {?}
-         */
-        AjfFbNodeProperties.prototype._initRemoveValidationCondition = /**
-         * @private
-         * @return {?}
-         */
-        function () {
-            this._removeValidationConditionSub = ((/** @type {?} */ (this._removeValidationConditionEvt)))
+        AjfFbNodeProperties.prototype._initRemoveValidationCondition = function () {
+            this._removeValidationConditionSub = this._removeValidationConditionEvt
                 .pipe(operators.withLatestFrom(this._propertiesForm))
-                .subscribe((/**
-             * @param {?} r
-             * @return {?}
-             */
-            function (r) {
-                /** @type {?} */
+                .subscribe(function (r) {
                 var vcIdx = r[0];
-                /** @type {?} */
                 var fg = r[1];
                 if (fg == null) {
                     return;
                 }
-                /** @type {?} */
                 var ctrl = fg.controls['validationConditions'];
-                /** @type {?} */
                 var vcs = (ctrl.value || []).slice(0);
                 if (vcIdx < 0 || vcIdx >= vcs.length) {
                     return;
                 }
                 vcs.splice(vcIdx, 1);
                 ctrl.setValue(vcs);
-            }));
+            });
         };
-        /**
-         * @private
-         * @return {?}
-         */
-        AjfFbNodeProperties.prototype._initAddValidationCondition = /**
-         * @private
-         * @return {?}
-         */
-        function () {
-            this._addValidationConditionSub = ((/** @type {?} */ (this._addValidationConditionEvt)))
+        AjfFbNodeProperties.prototype._initAddValidationCondition = function () {
+            this._addValidationConditionSub = this._addValidationConditionEvt
                 .pipe(operators.withLatestFrom(this._propertiesForm))
-                .subscribe((/**
-             * @param {?} r
-             * @return {?}
-             */
-            function (r) {
-                /** @type {?} */
+                .subscribe(function (r) {
                 var fg = r[1];
                 if (fg == null) {
                     return;
                 }
-                /** @type {?} */
                 var ctrl = fg.controls['validationConditions'];
-                /** @type {?} */
                 var vcs = (ctrl.value || []).slice(0);
                 vcs.push({ condition: '', errorMessage: '' });
                 ctrl.setValue(vcs);
-            }));
+            });
         };
-        /**
-         * @private
-         * @return {?}
-         */
-        AjfFbNodeProperties.prototype._initValidationConditionEdit = /**
-         * @private
-         * @return {?}
-         */
-        function () {
+        AjfFbNodeProperties.prototype._initValidationConditionEdit = function () {
             var _this = this;
-            this._editValidationConditionSub = ((/** @type {?} */ (this._editValidationConditionEvt)))
+            this._editValidationConditionSub = this._editValidationConditionEvt
                 .pipe(operators.withLatestFrom(this._propertiesForm))
-                .subscribe((/**
-             * @param {?} r
-             * @return {?}
-             */
-            function (r) {
+                .subscribe(function (r) {
                 _this._destroyValidationConditionDialog();
-                /** @type {?} */
                 var vcIdx = r[0];
-                /** @type {?} */
                 var fg = r[1];
                 if (vcIdx < 0 || vcIdx >= _this._validationConditions.length || fg == null) {
                     return;
                 }
                 _this._editValidationConditionDialog = _this._dialog
                     .open(AjfFbValidationConditionEditorDialog);
-                /** @type {?} */
                 var cmp = _this._editValidationConditionDialog.componentInstance;
-                /** @type {?} */
                 var v = _this._validationConditions[vcIdx];
                 cmp.condition = v.condition;
                 cmp.errorMessage = v.errorMessage;
                 _this._editValidationConditionDialogSub = _this._editValidationConditionDialog.afterClosed()
-                    .subscribe((/**
-                 * @param {?} cond
-                 * @return {?}
-                 */
-                function (cond) {
+                    .subscribe(function (cond) {
                     if (cond !== void 0) {
                         _this._validationConditions[vcIdx] = cond;
                     }
                     _this._editValidationConditionDialogSub.unsubscribe();
                     _this._editValidationConditionDialogSub = rxjs.Subscription.EMPTY;
-                }));
-            }));
+                });
+            });
         };
-        /**
-         * @private
-         * @return {?}
-         */
-        AjfFbNodeProperties.prototype._initForceValueEdit = /**
-         * @private
-         * @return {?}
-         */
-        function () {
+        AjfFbNodeProperties.prototype._initForceValueEdit = function () {
             var _this = this;
-            this._editForceValueSub = ((/** @type {?} */ (this._editForceValueEvt)))
+            this._editForceValueSub = this._editForceValueEvt
                 .pipe(operators.withLatestFrom(this._propertiesForm))
-                .subscribe((/**
-             * @param {?} r
-             * @return {?}
-             */
-            function (r) {
+                .subscribe(function (r) {
                 _this._destroyConditionDialog();
-                /** @type {?} */
                 var fg = r[1];
                 if (fg == null) {
                     return;
                 }
-                /** @type {?} */
                 var ctrl = fg.controls['forceValue'];
                 _this._editConditionDialog = _this._dialog.open(AjfFbConditionEditorDialog);
                 _this._editConditionDialog.componentInstance.condition = ctrl.value;
                 _this._editConditionDialogSub = _this._editConditionDialog.afterClosed()
-                    .subscribe((/**
-                 * @param {?} cond
-                 * @return {?}
-                 */
-                function (cond) {
+                    .subscribe(function (cond) {
                     if (cond !== void 0) {
                         ctrl.setValue(cond);
                     }
                     _this._editConditionDialogSub.unsubscribe();
                     _this._editConditionDialogSub = rxjs.Subscription.EMPTY;
-                }));
-            }));
+                });
+            });
         };
-        /**
-         * @private
-         * @return {?}
-         */
-        AjfFbNodeProperties.prototype._initNextSlideConditionEdit = /**
-         * @private
-         * @return {?}
-         */
-        function () {
+        AjfFbNodeProperties.prototype._initNextSlideConditionEdit = function () {
             var _this = this;
-            this._editNextSlideConditionSub = ((/** @type {?} */ (this._editNextSlideConditionEvt)))
+            this._editNextSlideConditionSub = this._editNextSlideConditionEvt
                 .pipe(operators.withLatestFrom(this._propertiesForm))
-                .subscribe((/**
-             * @param {?} r
-             * @return {?}
-             */
-            function (r) {
+                .subscribe(function (r) {
                 _this._destroyConditionDialog();
-                /** @type {?} */
                 var fg = r[1];
                 if (fg == null) {
                     return;
                 }
-                /** @type {?} */
                 var ctrl = fg.controls['nextSlideCondition'];
                 _this._editConditionDialog = _this._dialog.open(AjfFbConditionEditorDialog);
                 _this._editConditionDialog.componentInstance.condition = ctrl.value;
                 _this._editConditionDialogSub = _this._editConditionDialog.afterClosed()
-                    .subscribe((/**
-                 * @param {?} cond
-                 * @return {?}
-                 */
-                function (cond) {
+                    .subscribe(function (cond) {
                     if (cond !== void 0) {
                         ctrl.setValue(cond);
                     }
                     _this._editConditionDialogSub.unsubscribe();
                     _this._editConditionDialogSub = rxjs.Subscription.EMPTY;
-                }));
-            }));
+                });
+            });
         };
-        /**
-         * @private
-         * @return {?}
-         */
-        AjfFbNodeProperties.prototype._initFormulaEdit = /**
-         * @private
-         * @return {?}
-         */
-        function () {
+        AjfFbNodeProperties.prototype._initFormulaEdit = function () {
             var _this = this;
-            this._editFormulaSub = ((/** @type {?} */ (this._editFormulaEvt)))
+            this._editFormulaSub = this._editFormulaEvt
                 .pipe(operators.withLatestFrom(this._propertiesForm))
-                .subscribe((/**
-             * @param {?} r
-             * @return {?}
-             */
-            function (r) {
+                .subscribe(function (r) {
                 _this._destroyConditionDialog();
-                /** @type {?} */
                 var fg = r[1];
                 if (fg == null) {
                     return;
                 }
-                /** @type {?} */
                 var ctrl = fg.controls['formula'];
                 _this._editConditionDialog = _this._dialog.open(AjfFbConditionEditorDialog);
                 _this._editConditionDialog.componentInstance.condition = ctrl.value;
                 _this._editConditionDialogSub = _this._editConditionDialog.afterClosed()
-                    .subscribe((/**
-                 * @param {?} cond
-                 * @return {?}
-                 */
-                function (cond) {
+                    .subscribe(function (cond) {
                     if (cond !== void 0) {
                         ctrl.setValue(cond);
                     }
                     _this._editConditionDialogSub.unsubscribe();
                     _this._editConditionDialogSub = rxjs.Subscription.EMPTY;
-                }));
-            }));
+                });
+            });
         };
-        /**
-         * @private
-         * @return {?}
-         */
-        AjfFbNodeProperties.prototype._initFormulaRepsEdit = /**
-         * @private
-         * @return {?}
-         */
-        function () {
+        AjfFbNodeProperties.prototype._initFormulaRepsEdit = function () {
             var _this = this;
-            this._editFormulaRepsSub = ((/** @type {?} */ (this._editFormulaRepsEvt)))
+            this._editFormulaRepsSub = this._editFormulaRepsEvt
                 .pipe(operators.withLatestFrom(this._propertiesForm))
-                .subscribe((/**
-             * @param {?} r
-             * @return {?}
-             */
-            function (r) {
+                .subscribe(function (r) {
                 _this._destroyConditionDialog();
-                /** @type {?} */
                 var fg = r[1];
                 if (fg == null) {
                     return;
                 }
-                /** @type {?} */
                 var ctrl = fg.controls['formulaReps'];
                 _this._editConditionDialog = _this._dialog.open(AjfFbConditionEditorDialog);
                 _this._editConditionDialog.componentInstance.condition = ctrl.value;
                 _this._editConditionDialogSub = _this._editConditionDialog.afterClosed()
-                    .subscribe((/**
-                 * @param {?} cond
-                 * @return {?}
-                 */
-                function (cond) {
+                    .subscribe(function (cond) {
                     if (cond !== void 0) {
                         ctrl.setValue(cond);
                     }
                     _this._editConditionDialogSub.unsubscribe();
                     _this._editConditionDialogSub = rxjs.Subscription.EMPTY;
-                }));
-            }));
+                });
+            });
         };
-        /**
-         * @private
-         * @return {?}
-         */
-        AjfFbNodeProperties.prototype._initChoicesFilterEdit = /**
-         * @private
-         * @return {?}
-         */
-        function () {
+        AjfFbNodeProperties.prototype._initChoicesFilterEdit = function () {
             var _this = this;
-            this._editChoicesFilterSub = ((/** @type {?} */ (this._editChoicesFilterEvt)))
+            this._editChoicesFilterSub = this._editChoicesFilterEvt
                 .pipe(operators.withLatestFrom(this._propertiesForm))
-                .subscribe((/**
-             * @param {?} r
-             * @return {?}
-             */
-            function (r) {
+                .subscribe(function (r) {
                 _this._destroyConditionDialog();
-                /** @type {?} */
                 var fg = r[1];
                 if (fg == null) {
                     return;
                 }
-                /** @type {?} */
                 var ctrl = fg.controls['choicesFilter'];
                 _this._editConditionDialog = _this._dialog.open(AjfFbConditionEditorDialog);
                 _this._editConditionDialog.componentInstance.condition = ctrl.value;
                 _this._editConditionDialogSub = _this._editConditionDialog.afterClosed()
-                    .subscribe((/**
-                 * @param {?} cond
-                 * @return {?}
-                 */
-                function (cond) {
+                    .subscribe(function (cond) {
                     if (cond !== void 0) {
                         ctrl.setValue(cond);
                     }
                     _this._editConditionDialogSub.unsubscribe();
                     _this._editConditionDialogSub = rxjs.Subscription.EMPTY;
-                }));
-            }));
+                });
+            });
         };
-        /**
-         * @private
-         * @return {?}
-         */
-        AjfFbNodeProperties.prototype._initConditionalBranchEdit = /**
-         * @private
-         * @return {?}
-         */
-        function () {
+        AjfFbNodeProperties.prototype._initConditionalBranchEdit = function () {
             var _this = this;
-            this._editConditionalBranchSub = ((/** @type {?} */ (this._editConditionalBranchEvt)))
+            this._editConditionalBranchSub = this._editConditionalBranchEvt
                 .pipe(operators.withLatestFrom(this._propertiesForm))
-                .subscribe((/**
-             * @param {?} r
-             * @return {?}
-             */
-            function (r) {
+                .subscribe(function (r) {
                 _this._destroyConditionDialog();
-                /** @type {?} */
                 var cbIdx = r[0];
-                /** @type {?} */
                 var fg = r[1];
                 if (cbIdx < 0 || cbIdx >= _this._conditionalBranches.length || fg == null) {
                     return;
@@ -4053,316 +2606,119 @@
                 _this._editConditionDialog = _this._dialog.open(AjfFbConditionEditorDialog);
                 _this._editConditionDialog.componentInstance.condition = _this._conditionalBranches[cbIdx];
                 _this._editConditionDialogSub = _this._editConditionDialog.afterClosed()
-                    .subscribe((/**
-                 * @param {?} cond
-                 * @return {?}
-                 */
-                function (cond) {
+                    .subscribe(function (cond) {
                     if (cond !== void 0) {
                         _this._conditionalBranches[cbIdx] = cond;
                     }
                     _this._editConditionDialogSub.unsubscribe();
                     _this._editConditionDialogSub = rxjs.Subscription.EMPTY;
-                }));
-            }));
+                });
+            });
         };
-        /**
-         * @private
-         * @return {?}
-         */
-        AjfFbNodeProperties.prototype._initVisibilityEdit = /**
-         * @private
-         * @return {?}
-         */
-        function () {
+        AjfFbNodeProperties.prototype._initVisibilityEdit = function () {
             var _this = this;
-            this._editVisibilitySub = ((/** @type {?} */ (this._editVisibilityEvt)))
+            this._editVisibilitySub = this._editVisibilityEvt
                 .pipe(operators.withLatestFrom(this._propertiesForm))
-                .subscribe((/**
-             * @param {?} r
-             * @return {?}
-             */
-            function (r) {
+                .subscribe(function (r) {
                 _this._destroyConditionDialog();
-                /** @type {?} */
                 var fg = r[1];
                 if (fg == null) {
                     return;
                 }
-                /** @type {?} */
                 var ctrl = fg.controls['visibility'];
-                /** @type {?} */
                 var condition = ctrl.value;
                 _this._editConditionDialog = _this._dialog.open(AjfFbConditionEditorDialog);
                 _this._editConditionDialog.componentInstance.condition = condition;
                 _this._editConditionDialogSub = _this._editConditionDialog.afterClosed()
-                    .subscribe((/**
-                 * @param {?} cond
-                 * @return {?}
-                 */
-                function (cond) {
+                    .subscribe(function (cond) {
                     if (cond !== void 0) {
                         ctrl.setValue(cond);
                     }
                     _this._editConditionDialogSub.unsubscribe();
                     _this._editConditionDialogSub = rxjs.Subscription.EMPTY;
-                }));
-            }));
+                });
+            });
         };
-        /**
-         * @private
-         * @param {?} fg
-         * @return {?}
-         */
-        AjfFbNodeProperties.prototype._handleTriggerCondtionsChange = /**
-         * @private
-         * @param {?} fg
-         * @return {?}
-         */
-        function (fg) {
+        AjfFbNodeProperties.prototype._handleTriggerCondtionsChange = function (fg) {
             var _this = this;
             this._triggerConditionsSub = fg.valueChanges
-                .pipe(operators.distinctUntilChanged((/**
-             * @param {?} v1
-             * @param {?} v2
-             * @return {?}
-             */
-            function (v1, v2) {
+                .pipe(operators.distinctUntilChanged(function (v1, v2) {
                 return JSON.stringify(v1.triggerConditions) === JSON.stringify(v2.triggerConditions);
-            })))
-                .subscribe((/**
-             * @param {?} v
-             * @return {?}
-             */
-            function (v) {
+            }))
+                .subscribe(function (v) {
                 _this._triggerConditions = v.triggerConditions;
-            }));
+            });
         };
-        /**
-         * @private
-         * @param {?} fg
-         * @return {?}
-         */
-        AjfFbNodeProperties.prototype._handleWarningCondtionsChange = /**
-         * @private
-         * @param {?} fg
-         * @return {?}
-         */
-        function (fg) {
+        AjfFbNodeProperties.prototype._handleWarningCondtionsChange = function (fg) {
             var _this = this;
             this._warningConditionsSub = fg.valueChanges
-                .pipe(operators.distinctUntilChanged((/**
-             * @param {?} v1
-             * @param {?} v2
-             * @return {?}
-             */
-            function (v1, v2) {
+                .pipe(operators.distinctUntilChanged(function (v1, v2) {
                 return JSON.stringify(v1.warningConditions) === JSON.stringify(v2.warningConditions);
-            })))
-                .subscribe((/**
-             * @param {?} v
-             * @return {?}
-             */
-            function (v) {
+            }))
+                .subscribe(function (v) {
                 _this._warningConditions = v.warningConditions;
-            }));
+            });
         };
-        /**
-         * @private
-         * @param {?} fg
-         * @return {?}
-         */
-        AjfFbNodeProperties.prototype._handleValidationCondtionsChange = /**
-         * @private
-         * @param {?} fg
-         * @return {?}
-         */
-        function (fg) {
+        AjfFbNodeProperties.prototype._handleValidationCondtionsChange = function (fg) {
             var _this = this;
             this._validationConditionsSub = fg.valueChanges
-                .pipe(operators.distinctUntilChanged((/**
-             * @param {?} v1
-             * @param {?} v2
-             * @return {?}
-             */
-            function (v1, v2) {
+                .pipe(operators.distinctUntilChanged(function (v1, v2) {
                 return JSON.stringify(v1.validationConditions) === JSON.stringify(v2.validationConditions);
-            })))
-                .subscribe((/**
-             * @param {?} v
-             * @return {?}
-             */
-            function (v) {
+            }))
+                .subscribe(function (v) {
                 _this._validationConditions = v.validationConditions;
-            }));
+            });
         };
-        /**
-         * @private
-         * @param {?} fg
-         * @return {?}
-         */
-        AjfFbNodeProperties.prototype._handleForceValueChange = /**
-         * @private
-         * @param {?} fg
-         * @return {?}
-         */
-        function (fg) {
+        AjfFbNodeProperties.prototype._handleForceValueChange = function (fg) {
             var _this = this;
             this._forceValueSub = fg.valueChanges
-                .pipe(operators.distinctUntilChanged((/**
-             * @param {?} v1
-             * @param {?} v2
-             * @return {?}
-             */
-            function (v1, v2) { return v1.forceValue === v2.forceValue; })))
-                .subscribe((/**
-             * @param {?} v
-             * @return {?}
-             */
-            function (v) {
+                .pipe(operators.distinctUntilChanged(function (v1, v2) { return v1.forceValue === v2.forceValue; }))
+                .subscribe(function (v) {
                 _this._curForceValue = v.forceValue;
-            }));
+            });
         };
-        /**
-         * @private
-         * @param {?} fg
-         * @return {?}
-         */
-        AjfFbNodeProperties.prototype._handleNextSlideConditionChange = /**
-         * @private
-         * @param {?} fg
-         * @return {?}
-         */
-        function (fg) {
+        AjfFbNodeProperties.prototype._handleNextSlideConditionChange = function (fg) {
             var _this = this;
             this._formulaSub = fg.valueChanges
-                .pipe(operators.distinctUntilChanged((/**
-             * @param {?} v1
-             * @param {?} v2
-             * @return {?}
-             */
-            function (v1, v2) { return v1.nextSlideCondition === v2.nextSlideCondition; })))
-                .subscribe((/**
-             * @param {?} v
-             * @return {?}
-             */
-            function (v) {
+                .pipe(operators.distinctUntilChanged(function (v1, v2) { return v1.nextSlideCondition === v2.nextSlideCondition; }))
+                .subscribe(function (v) {
                 _this._nextSlideCondition = v.nextSlideCondition;
-            }));
+            });
         };
-        /**
-         * @private
-         * @param {?} fg
-         * @return {?}
-         */
-        AjfFbNodeProperties.prototype._handleFormulaChange = /**
-         * @private
-         * @param {?} fg
-         * @return {?}
-         */
-        function (fg) {
+        AjfFbNodeProperties.prototype._handleFormulaChange = function (fg) {
             var _this = this;
             this._formulaSub = fg.valueChanges
-                .pipe(operators.distinctUntilChanged((/**
-             * @param {?} v1
-             * @param {?} v2
-             * @return {?}
-             */
-            function (v1, v2) { return v1.formula === v2.formula; })))
-                .subscribe((/**
-             * @param {?} v
-             * @return {?}
-             */
-            function (v) {
+                .pipe(operators.distinctUntilChanged(function (v1, v2) { return v1.formula === v2.formula; }))
+                .subscribe(function (v) {
                 _this._curFormula = v.formula;
-            }));
+            });
         };
-        /**
-         * @private
-         * @param {?} fg
-         * @return {?}
-         */
-        AjfFbNodeProperties.prototype._handleFormulaRepsChange = /**
-         * @private
-         * @param {?} fg
-         * @return {?}
-         */
-        function (fg) {
+        AjfFbNodeProperties.prototype._handleFormulaRepsChange = function (fg) {
             var _this = this;
             this._formulaRepsSub = fg.valueChanges
-                .pipe(operators.distinctUntilChanged((/**
-             * @param {?} v1
-             * @param {?} v2
-             * @return {?}
-             */
-            function (v1, v2) { return v1.formulaReps === v2.formulaReps; })))
-                .subscribe((/**
-             * @param {?} v
-             * @return {?}
-             */
-            function (v) {
+                .pipe(operators.distinctUntilChanged(function (v1, v2) { return v1.formulaReps === v2.formulaReps; }))
+                .subscribe(function (v) {
                 _this._curFormulaReps = v.formulaReps;
-            }));
+            });
         };
-        /**
-         * @private
-         * @param {?} fg
-         * @return {?}
-         */
-        AjfFbNodeProperties.prototype._handleChoicesFilterChange = /**
-         * @private
-         * @param {?} fg
-         * @return {?}
-         */
-        function (fg) {
+        AjfFbNodeProperties.prototype._handleChoicesFilterChange = function (fg) {
             var _this = this;
             this._choicesFilterSub = fg.valueChanges
-                .pipe(operators.distinctUntilChanged((/**
-             * @param {?} v1
-             * @param {?} v2
-             * @return {?}
-             */
-            function (v1, v2) { return v1.choicesFilter === v2.choicesFilter; })))
-                .subscribe((/**
-             * @param {?} v
-             * @return {?}
-             */
-            function (v) {
+                .pipe(operators.distinctUntilChanged(function (v1, v2) { return v1.choicesFilter === v2.choicesFilter; }))
+                .subscribe(function (v) {
                 _this._curChoicesFilter = v.choicesFilter;
-            }));
+            });
         };
-        /**
-         * @private
-         * @param {?} fg
-         * @return {?}
-         */
-        AjfFbNodeProperties.prototype._handleConditionalBranchesChange = /**
-         * @private
-         * @param {?} fg
-         * @return {?}
-         */
-        function (fg) {
+        AjfFbNodeProperties.prototype._handleConditionalBranchesChange = function (fg) {
             var _this = this;
             this._conditionalBranchesSub = fg.valueChanges
-                .pipe(operators.distinctUntilChanged((/**
-             * @param {?} v1
-             * @param {?} v2
-             * @return {?}
-             */
-            function (v1, v2) {
+                .pipe(operators.distinctUntilChanged(function (v1, v2) {
                 return v1.conditionalBranchesNum === v2.conditionalBranchesNum;
-            })))
-                .subscribe((/**
-             * @param {?} v
-             * @return {?}
-             */
-            function (v) {
-                /** @type {?} */
+            }))
+                .subscribe(function (v) {
                 var cbNum = v.conditionalBranchesNum;
-                /** @type {?} */
                 var curCbNum = _this._conditionalBranches.length;
                 if (curCbNum < cbNum) {
-                    /** @type {?} */
                     var newCbs = [];
                     for (var i = curCbNum; i < cbNum; i++) {
                         newCbs.push(models.alwaysCondition().condition);
@@ -4372,35 +2728,14 @@
                 else if (curCbNum > cbNum) {
                     _this._conditionalBranches.splice(0, curCbNum - cbNum);
                 }
-            }));
+            });
         };
-        /**
-         * @private
-         * @param {?} fg
-         * @return {?}
-         */
-        AjfFbNodeProperties.prototype._handleVisibilityChange = /**
-         * @private
-         * @param {?} fg
-         * @return {?}
-         */
-        function (fg) {
+        AjfFbNodeProperties.prototype._handleVisibilityChange = function (fg) {
             var _this = this;
             this._visibilitySub = fg.valueChanges
-                .pipe(operators.distinctUntilChanged((/**
-             * @param {?} v1
-             * @param {?} v2
-             * @return {?}
-             */
-            function (v1, v2) { return v1.visibilityOpt === v2.visibilityOpt; })))
-                .subscribe((/**
-             * @param {?} v
-             * @return {?}
-             */
-            function (v) {
-                /** @type {?} */
+                .pipe(operators.distinctUntilChanged(function (v1, v2) { return v1.visibilityOpt === v2.visibilityOpt; }))
+                .subscribe(function (v) {
                 var visibilityOpt = v.visibilityOpt;
-                /** @type {?} */
                 var newCondition;
                 switch (visibilityOpt) {
                     case 'always':
@@ -4414,19 +2749,9 @@
                 }
                 _this._curVisibility = newCondition;
                 fg.controls['visibility'].setValue(newCondition);
-            }));
+            });
         };
-        /**
-         * @private
-         * @param {?} condition
-         * @return {?}
-         */
-        AjfFbNodeProperties.prototype._guessVisibilityOpt = /**
-         * @private
-         * @param {?} condition
-         * @return {?}
-         */
-        function (condition) {
+        AjfFbNodeProperties.prototype._guessVisibilityOpt = function (condition) {
             if (condition.condition.localeCompare(models.alwaysCondition().condition) === 0) {
                 return 'always';
             }
@@ -4436,12 +2761,13 @@
             return 'condition';
         };
         AjfFbNodeProperties.decorators = [
-            { type: core.Component, args: [{selector: 'ajf-fb-node-properties',
-                        template: "<div [style.display]=\"(enabled|async) ? 'none' : 'block'\" class=\"ajf-disabled-overlay\"></div><div class=\"ajf-header\"><h3 translate>Properties</h3><mat-icon (click)=\"save()\">save</mat-icon><mat-icon (click)=\"cancel()\">cancel</mat-icon></div><ng-container *ngIf=\"nodeEntry|async as ne\"><ng-container *ngIf=\"propertiesForm|async as pf\"><form [formGroup]=\"pf\" novalidate><div class=\"ajf-prop\"><mat-form-field><input matInput formControlName=\"name\" [placeholder]=\"'Name' | translate\"></mat-form-field></div><div class=\"ajf-prop\"><mat-form-field><input matInput formControlName=\"label\" [placeholder]=\"'Label' | translate\"></mat-form-field></div><div class=\"ajf-prop\"><mat-form-field><mat-label translate>Visibility</mat-label><mat-select formControlName=\"visibilityOpt\" [placeholder]=\"'Visible' | translate\"><mat-option value=\"always\" translate>Always</mat-option><mat-option value=\"never\" translate>Never</mat-option><mat-option value=\"condition\" translate>Condition...</mat-option></mat-select></mat-form-field><button (click)=\"editVisibility()\" [disabled]=\"pf.value['visibilityOpt'] != 'condition'\" mat-raised-button [matTooltip]=\"curVisibility\"><div class=\"ajf-icon-cont\"><mat-icon>edit</mat-icon><span>{{ curVisibility }}</span></div></button></div><div class=\"ajf-prop\"><div><label translate>Branches</label></div><div><mat-slider formControlName=\"conditionalBranchesNum\" thumbLabel tickInterval=\"auto\" min=\"1\" max=\"5\" step=\"1\"></mat-slider></div><div *ngFor=\"let branch of conditionalBranches; let idx = index\"><button (click)=\"editConditionalBranch(idx)\" mat-raised-button [matTooltip]=\"branch\"><div class=\"ajf-icon-cont\"><mat-icon>edit</mat-icon><span>{{ branch }}</span></div></button></div></div><ng-template [ngIf]=\"isRepeatingContainerNode((ne)?.node)\"><div class=\"ajf-prop\"><div><label translate>Repetitions</label></div><div><button (click)=\"editFormulaReps()\" mat-raised-button [matTooltip]=\"curFormulaReps\"><div class=\"ajf-icon-cont\"><mat-icon>edit</mat-icon><span>{{ curFormulaReps }}</span></div></button></div><div><label translate>Min repetitions</label></div><div><mat-slider formControlName=\"minReps\" thumbLabel tickInterval=\"auto\" min=\"1\" max=\"5\" step=\"1\"></mat-slider></div><div><label translate>Max repetitions</label></div><div><mat-slider formControlName=\"maxReps\" thumbLabel tickInterval=\"auto\" min=\"1\" max=\"5\" step=\"1\"></mat-slider></div></div></ng-template><ng-template [ngIf]=\"isField((ne)?.node)\"><div class=\"ajf-prop\"><mat-form-field><mat-label translate>Field size</mat-label><mat-select formControlName=\"size\" [placeholder]=\"'Size' | translate\"><mat-option *ngFor=\"let fieldSize of fieldSizes\" [value]=\"fieldSize.value\">{{ fieldSize.label }}</mat-option></mat-select></mat-form-field></div><div class=\"ajf-prop\"><mat-form-field><textarea matInput formControlName=\"description\" [placeholder]=\"'Description' | translate\"></textarea></mat-form-field></div><div class=\"ajf-prop\"><mat-form-field><input matInput formControlName=\"defaultValue\" [placeholder]=\"'Default value' | translate\"></mat-form-field></div><div class=\"ajf-prop\"><div><label translate>Formula</label></div><div><button (click)=\"editFormula()\" mat-raised-button [matTooltip]=\"curFormula\"><div class=\"ajf-icon-cont\"><mat-icon>edit</mat-icon><span>{{ curFormula }}</span></div></button></div></div><div class=\"ajf-prop\"><mat-checkbox formControlName=\"notEmpty\" translate>Not empty</mat-checkbox></div><ng-template [ngIf]=\"isNumericField((ne)?.node)\"><div class=\"ajf-prop\"><mat-form-field><input matInput formControlName=\"minValue\" [placeholder]=\"'Min value' | translate\"></mat-form-field></div><div class=\"ajf-prop\"><mat-form-field><input matInput formControlName=\"maxValue\" [placeholder]=\"'Max value' | translate\"></mat-form-field></div><div class=\"ajf-prop\"><mat-form-field><input matInput formControlName=\"minDigits\" [placeholder]=\"'Min digits' | translate\"></mat-form-field></div><div class=\"ajf-prop\"><mat-form-field><input matInput formControlName=\"maxDigits\" [placeholder]=\"'Max digits' | translate\"></mat-form-field></div></ng-template><div class=\"ajf-prop\"><div class=\"ajf-header\"><label translate>Validation</label><mat-icon class=\"ajf-pointer\" (click)=\"addValidationCondition()\">add_circle_outline</mat-icon></div><div *ngIf=\"validationConditions == null || validationConditions.length == 0\" class=\"ajf-validation-row ajf-emph\" translate>No conditions</div><div class=\"ajf-validation-row\" *ngFor=\"let validationCondition of validationConditions; let idx = index\"><button (click)=\"editValidationCondition(idx)\" mat-raised-button [matTooltip]=\"validationCondition.condition\"><div class=\"ajf-icon-cont\"><mat-icon>edit</mat-icon><span>{{ validationCondition.condition }}</span></div></button><mat-icon class=\"ajf-pointer\" (click)=\"removeValidationCondition(idx)\">remove_circle_outline</mat-icon></div></div><div class=\"ajf-prop\"><mat-checkbox formControlName=\"notEmptyWarning\" translate>Not empty warning</mat-checkbox></div><div class=\"ajf-prop\"><div class=\"ajf-header\"><label translate>Warnings</label><mat-icon class=\"ajf-pointer\" (click)=\"addWarningCondition()\">add_circle_outline</mat-icon></div><div *ngIf=\"warningConditions == null || warningConditions.length == 0\" class=\"ajf-validation-row ajf-emph\" translate>No warnings</div><div class=\"ajf-validation-row\" *ngFor=\"let warningCondition of warningConditions; let idx = index\"><button (click)=\"editWarningCondition(idx)\" mat-raised-button [matTooltip]=\"warningCondition.condition\"><div class=\"ajf-icon-cont\"><mat-icon>edit</mat-icon><span>{{ warningCondition.condition }}</span></div></button><mat-icon class=\"ajf-pointer\" (click)=\"removeWarningCondition(idx)\">remove_circle_outline</mat-icon></div></div><div class=\"ajf-prop\"><div><label translate>Go to next slide condition</label></div><div><button (click)=\"editNextSlideCondition()\" mat-raised-button [matTooltip]=\"nextSlideCondition\"><div class=\"ajf-icon-cont\"><mat-icon>edit</mat-icon><span>{{ nextSlideCondition }}</span></div></button></div></div><ng-template [ngIf]=\"isFieldWithChoices((ne)?.node)\"><div class=\"ajf-prop\"><mat-form-field><mat-label translate>Choices origins</mat-label><mat-select formControlName=\"choicesOriginRef\" [placeholder]=\"'Choices' | translate\"><mat-option *ngFor=\"let choicesOrigin of choicesOrigins\" [value]=\"choicesOrigin.name\">{{ choicesOrigin.label || choicesOrigin.name }}</mat-option></mat-select></mat-form-field></div><div class=\"ajf-prop\"><div><label translate>Choices filter</label></div><div><button (click)=\"editChoicesFilter()\" mat-raised-button [matTooltip]=\"curChoicesFilter\"><div class=\"ajf-icon-cont\"><mat-icon>edit</mat-icon><span>{{ curChoicesFilter }}</span></div></button></div></div><div class=\"ajf-prop\"><mat-checkbox formControlName=\"forceExpanded\" translate>Force expanded selection</mat-checkbox></div><div class=\"ajf-prop\"><mat-checkbox formControlName=\"forceNarrow\" translate>Force narrow selection</mat-checkbox></div><div class=\"ajf-prop\"><div class=\"ajf-header\"><label translate>Trigger selection</label><mat-icon class=\"ajf-pointer\" (click)=\"addTriggerCondition()\">add_circle_outline</mat-icon></div><div *ngIf=\"triggerConditions == null || triggerConditions.length == 0\" class=\"ajf-validation-row ajf-emph\" translate>No trigger condition</div><div class=\"ajf-validation-row\" *ngFor=\"let triggerCondition of triggerConditions; let idx = index\"><button (click)=\"editTriggerCondition(idx)\" mat-raised-button [matTooltip]=\"triggerCondition\"><div class=\"ajf-icon-cont\"><mat-icon>edit</mat-icon><span>{{ triggerCondition }}</span></div></button><mat-icon class=\"pointer\" (click)=\"removeTriggerCondition(idx)\">remove_circle_outline</mat-icon></div></div></ng-template></ng-template></form></ng-container></ng-container>",
-                        styles: ["ajf-fb-node-properties{display:block;padding:1em;position:relative}ajf-fb-node-properties mat-icon{cursor:pointer}ajf-fb-node-properties .ajf-header{display:flex;flex-direction:row;align-items:center;flex-wrap:nowrap}ajf-fb-node-properties .ajf-header>h3,ajf-fb-node-properties .ajf-header>label{flex:1 0 auto;margin-right:.5em}ajf-fb-node-properties .ajf-header>mat-icon{flex:0 0 auto;margin-left:.5em}ajf-fb-node-properties .ajf-disabled-overlay{position:absolute;top:0;right:0;bottom:0;left:0;opacity:.4;background-color:#fff}ajf-fb-node-properties .ajf-emph{font-style:italic}ajf-fb-node-properties [mat-raised-button]{margin:.5em 0}ajf-fb-node-properties [mat-raised-button].ajf-pointer{cursor:pointer}ajf-fb-node-properties [mat-raised-button] .ajf-icon-cont{display:flex;flex-direction:row;align-items:center}ajf-fb-node-properties [mat-raised-button] .ajf-icon-cont span{flex:1 1 auto;overflow:hidden;text-overflow:ellipsis;display:block;min-height:36px}ajf-fb-node-properties .ajf-validation-row{margin:.5em 0;display:flex;flex-direction:row;align-items:center}ajf-fb-node-properties .ajf-validation-row button{flex:1 1 auto}ajf-fb-node-properties .ajf-validation-row mat-icon{flex:0 0 auto}ajf-fb-node-properties .ajf-prop{margin:.5em 0}ajf-fb-node-properties [mat-raised-button],ajf-fb-node-properties mat-form-field,ajf-fb-node-properties mat-slider{width:100%}"],
+            { type: core.Component, args: [{
+                        selector: 'ajf-fb-node-properties',
+                        template: "<div [style.display]=\"(enabled|async) ? 'none' : 'block'\" class=\"ajf-disabled-overlay\"></div>\n<div class=\"ajf-header\">\n  <h3 translate>Properties</h3>\n  <mat-icon (click)=\"save()\">save</mat-icon>\n  <mat-icon (click)=\"cancel()\">cancel</mat-icon>\n</div>\n<ng-container *ngIf=\"nodeEntry|async as ne\">\n  <ng-container *ngIf=\"propertiesForm|async as pf\">\n    <form [formGroup]=\"pf!\" novalidate>\n      <div class=\"ajf-prop\">\n        <mat-form-field>\n          <input matInput formControlName=\"name\" [placeholder]=\"'Name' | translate\">\n        </mat-form-field>\n      </div>\n      <div class=\"ajf-prop\">\n        <mat-form-field>\n          <input matInput formControlName=\"label\" [placeholder]=\"'Label' | translate\">\n        </mat-form-field>\n      </div>\n      <div class=\"ajf-prop\">\n        <mat-form-field>\n          <mat-label translate>Visibility</mat-label>\n          <mat-select\n              formControlName=\"visibilityOpt\" [placeholder]=\"'Visible' | translate\">\n            <mat-option value=\"always\" translate>Always</mat-option>\n            <mat-option value=\"never\" translate>Never</mat-option>\n            <mat-option value=\"condition\" translate>Condition...</mat-option>\n          </mat-select>\n        </mat-form-field>\n        <button (click)=\"editVisibility()\"\n            [disabled]=\"pf!.value.visibilityOpt != 'condition'\"\n            mat-raised-button [matTooltip]=\"curVisibility || ''\">\n          <div class=\"ajf-icon-cont\">\n            <mat-icon>edit</mat-icon>\n            <span>{{ curVisibility }}</span>\n          </div>\n        </button>\n      </div>\n      <div class=\"ajf-prop\">\n        <div><label translate>Branches</label></div>\n        <div>\n          <mat-slider formControlName=\"conditionalBranchesNum\"\n              thumbLabel tickInterval=\"auto\" min=\"1\" max=\"5\" step=\"1\"></mat-slider>\n        </div>\n        <div *ngFor=\"let branch of conditionalBranches; let idx = index\">\n          <button (click)=\"editConditionalBranch(idx)\" mat-raised-button [matTooltip]=\"branch\">\n            <div class=\"ajf-icon-cont\">\n              <mat-icon>edit</mat-icon>\n              <span>{{ branch }}</span>\n            </div>\n          </button>\n        </div>\n      </div>\n      <ng-template [ngIf]=\"isRepeatingContainerNode(ne)\">\n        <div class=\"ajf-prop\">\n          <div><label translate>Repetitions</label></div>\n          <div>\n            <button (click)=\"editFormulaReps()\" mat-raised-button [matTooltip]=\"curFormulaReps || ''\">\n              <div class=\"ajf-icon-cont\">\n                <mat-icon>edit</mat-icon>\n                <span>{{ curFormulaReps }}</span>\n              </div>\n            </button>\n          </div>\n          <div><label translate>Min repetitions</label></div>\n          <div>\n            <mat-slider formControlName=\"minReps\"\n                thumbLabel tickInterval=\"auto\" min=\"1\" max=\"5\" step=\"1\"></mat-slider>\n          </div>\n          <div><label translate>Max repetitions</label></div>\n          <div>\n            <mat-slider formControlName=\"maxReps\"\n                thumbLabel tickInterval=\"auto\" min=\"1\" max=\"5\" step=\"1\"></mat-slider>\n          </div>\n        </div>\n      </ng-template>\n      <ng-template [ngIf]=\"isField(ne)\">\n        <div class=\"ajf-prop\">\n          <mat-form-field>\n            <mat-label translate>Field size</mat-label>\n            <mat-select formControlName=\"size\"\n                [placeholder]=\"'Size' | translate\">\n              <mat-option *ngFor=\"let fieldSize of fieldSizes\"\n                [value]=\"fieldSize.value\">\n                {{ fieldSize.label }}\n              </mat-option>\n            </mat-select>\n          </mat-form-field>\n        </div>\n        <div class=\"ajf-prop\">\n          <mat-form-field>\n            <textarea matInput formControlName=\"description\"\n                [placeholder]=\"'Description' | translate\"></textarea>\n          </mat-form-field>\n        </div>\n        <div class=\"ajf-prop\">\n          <mat-form-field>\n            <input matInput formControlName=\"defaultValue\"\n              [placeholder]=\"'Default value' | translate\">\n          </mat-form-field>\n        </div>\n        <div class=\"ajf-prop\">\n          <div><label translate>Formula</label></div>\n          <div>\n            <button (click)=\"editFormula()\" mat-raised-button [matTooltip]=\"curFormula || ''\">\n              <div class=\"ajf-icon-cont\">\n                <mat-icon>edit</mat-icon>\n                <span>{{ curFormula }}</span>\n              </div>\n            </button>\n          </div>\n        </div>\n        <!-- <div class=\"ajf-prop\">\n          <div><label translate>Force value</label></div>\n          <div>\n            <button (click)=\"editForceValue()\" mat-raised-button [matTooltip]=\"curForceValue\">\n              <div class=\"ajf-icon-cont\">\n                <mat-icon>edit</mat-icon>\n                <span>{{ curForceValue }}</span>\n              </div>\n            </button>\n          </div>\n        </div> -->\n        <div class=\"ajf-prop\">\n          <mat-checkbox formControlName=\"notEmpty\" translate>Not empty</mat-checkbox>\n        </div>\n        <ng-template [ngIf]=\"isNumericField(ne!.node)\">\n          <div class=\"ajf-prop\">\n            <mat-form-field>\n              <input matInput formControlName=\"minValue\"\n                [placeholder]=\"'Min value' | translate\">\n            </mat-form-field>\n          </div>\n          <div class=\"ajf-prop\">\n            <mat-form-field>\n              <input matInput formControlName=\"maxValue\"\n                [placeholder]=\"'Max value' | translate\">\n            </mat-form-field>\n          </div>\n          <div class=\"ajf-prop\">\n            <mat-form-field>\n              <input matInput formControlName=\"minDigits\"\n                [placeholder]=\"'Min digits' | translate\">\n            </mat-form-field>\n          </div>\n          <div class=\"ajf-prop\">\n            <mat-form-field>\n              <input matInput formControlName=\"maxDigits\"\n                [placeholder]=\"'Max digits' | translate\">\n            </mat-form-field>\n          </div>\n        </ng-template>\n        <div class=\"ajf-prop\">\n          <div class=\"ajf-header\">\n            <label translate>Validation</label>\n            <mat-icon class=\"ajf-pointer\" (click)=\"addValidationCondition()\">add_circle_outline</mat-icon>\n          </div>\n          <div *ngIf=\"validationConditions == null || validationConditions.length == 0\"\n              class=\"ajf-validation-row ajf-emph\" translate>No conditions</div>\n          <div class=\"ajf-validation-row\" *ngFor=\"let validationCondition of validationConditions; let idx = index\">\n            <button (click)=\"editValidationCondition(idx)\"\n                mat-raised-button [matTooltip]=\"validationCondition.condition\">\n              <div class=\"ajf-icon-cont\">\n                <mat-icon>edit</mat-icon>\n                <span>{{ validationCondition.condition }}</span>\n              </div>\n            </button>\n            <mat-icon class=\"ajf-pointer\" (click)=\"removeValidationCondition(idx)\">remove_circle_outline</mat-icon>\n          </div>\n        </div>\n        <div class=\"ajf-prop\">\n          <mat-checkbox formControlName=\"notEmptyWarning\" translate>Not empty warning</mat-checkbox>\n        </div>\n        <div class=\"ajf-prop\">\n          <div class=\"ajf-header\">\n            <label translate>Warnings</label>\n            <mat-icon class=\"ajf-pointer\" (click)=\"addWarningCondition()\">add_circle_outline</mat-icon>\n          </div>\n          <div  *ngIf=\"warningConditions == null || warningConditions.length == 0\"\n              class=\"ajf-validation-row ajf-emph\" translate>No warnings</div>\n          <div class=\"ajf-validation-row\" *ngFor=\"let warningCondition of warningConditions; let idx = index\">\n            <button (click)=\"editWarningCondition(idx)\"\n                mat-raised-button [matTooltip]=\"warningCondition.condition\">\n              <div class=\"ajf-icon-cont\">\n                <mat-icon>edit</mat-icon>\n                <span>{{ warningCondition.condition }}</span>\n              </div>\n            </button>\n            <mat-icon class=\"ajf-pointer\" (click)=\"removeWarningCondition(idx)\">remove_circle_outline</mat-icon>\n          </div>\n        </div>\n        <div class=\"ajf-prop\">\n          <div><label translate>Go to next slide condition</label></div>\n          <div>\n            <button (click)=\"editNextSlideCondition()\" mat-raised-button [matTooltip]=\"nextSlideCondition\">\n              <div class=\"ajf-icon-cont\">\n                <mat-icon>edit</mat-icon>\n                <span>{{ nextSlideCondition }}</span>\n              </div>\n            </button>\n          </div>\n        </div>\n        <ng-template [ngIf]=\"isFieldWithChoices(ne!.node)\">\n          <div class=\"ajf-prop\">\n            <mat-form-field>\n              <mat-label translate>Choices origins</mat-label>\n              <mat-select formControlName=\"choicesOriginRef\" [placeholder]=\"'Choices' | translate\">\n                <mat-option *ngFor=\"let choicesOrigin of choicesOrigins\" [value]=\"choicesOrigin.name\">\n                  {{ choicesOrigin.label || choicesOrigin.name }}\n                </mat-option>\n              </mat-select>\n            </mat-form-field>\n          </div>\n          <div class=\"ajf-prop\">\n            <div><label translate>Choices filter</label></div>\n            <div>\n              <button (click)=\"editChoicesFilter()\" mat-raised-button [matTooltip]=\"curChoicesFilter\">\n                <div class=\"ajf-icon-cont\">\n                  <mat-icon>edit</mat-icon>\n                  <span>{{ curChoicesFilter }}</span>\n                </div>\n              </button>\n            </div>\n          </div>\n          <div class=\"ajf-prop\">\n            <mat-checkbox formControlName=\"forceExpanded\" translate>Force expanded selection</mat-checkbox>\n          </div>\n          <div class=\"ajf-prop\">\n            <mat-checkbox formControlName=\"forceNarrow\" translate>Force narrow selection</mat-checkbox>\n          </div>\n          <div class=\"ajf-prop\">\n            <div class=\"ajf-header\">\n              <label translate>Trigger selection</label>\n              <mat-icon class=\"ajf-pointer\" (click)=\"addTriggerCondition()\">add_circle_outline</mat-icon>\n            </div>\n            <div *ngIf=\"triggerConditions == null || triggerConditions.length == 0\"\n                class=\"ajf-validation-row ajf-emph\" translate>No trigger condition </div>\n            <div class=\"ajf-validation-row\" *ngFor=\"let triggerCondition of triggerConditions; let idx = index\">\n              <button (click)=\"editTriggerCondition(idx)\"\n                  mat-raised-button [matTooltip]=\"triggerCondition\">\n                <div class=\"ajf-icon-cont\">\n                  <mat-icon>edit</mat-icon>\n                  <span>{{ triggerCondition }}</span>\n                </div>\n              </button>\n              <mat-icon class=\"pointer\" (click)=\"removeTriggerCondition(idx)\">remove_circle_outline</mat-icon>\n            </div>\n          </div>\n        </ng-template>\n      </ng-template>\n    </form>\n  </ng-container>\n</ng-container>\n",
                         encapsulation: core.ViewEncapsulation.None,
-                        changeDetection: core.ChangeDetectionStrategy.OnPush
-                    },] },
+                        changeDetection: core.ChangeDetectionStrategy.OnPush,
+                        styles: ["ajf-fb-node-properties{display:block;padding:1em;position:relative}ajf-fb-node-properties mat-icon{cursor:pointer}ajf-fb-node-properties .ajf-header{display:flex;flex-direction:row;align-items:center;flex-wrap:nowrap}ajf-fb-node-properties .ajf-header>h3,ajf-fb-node-properties .ajf-header>label{flex:1 0 auto;margin-right:.5em}ajf-fb-node-properties .ajf-header>mat-icon{flex:0 0 auto;margin-left:.5em}ajf-fb-node-properties .ajf-disabled-overlay{position:absolute;top:0;right:0;bottom:0;left:0;opacity:.4;background-color:#fff}ajf-fb-node-properties .ajf-emph{font-style:italic}ajf-fb-node-properties [mat-raised-button]{margin:.5em 0}ajf-fb-node-properties [mat-raised-button].ajf-pointer{cursor:pointer}ajf-fb-node-properties [mat-raised-button] .ajf-icon-cont{display:flex;flex-direction:row;align-items:center}ajf-fb-node-properties [mat-raised-button] .ajf-icon-cont span{flex:1 1 auto;overflow:hidden;text-overflow:ellipsis;display:block;min-height:36px}ajf-fb-node-properties .ajf-validation-row{margin:.5em 0;display:flex;flex-direction:row;align-items:center}ajf-fb-node-properties .ajf-validation-row button{flex:1 1 auto}ajf-fb-node-properties .ajf-validation-row mat-icon{flex:0 0 auto}ajf-fb-node-properties .ajf-prop{margin:.5em 0}ajf-fb-node-properties mat-form-field,ajf-fb-node-properties mat-slider,ajf-fb-node-properties [mat-raised-button]{width:100%}\n"]
+                    }] }
         ];
         /** @nocollapse */
         AjfFbNodeProperties.ctorParameters = function () { return [
@@ -4453,23 +2779,33 @@
     }());
 
     /**
-     * @fileoverview added by tsickle
-     * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     * @license
+     * Copyright (C) 2018 Gnucoop soc. coop.
+     *
+     * This file is part of the Advanced JSON forms (ajf).
+     *
+     * Advanced JSON forms (ajf) is free software: you can redistribute it and/or
+     * modify it under the terms of the GNU Affero General Public License as
+     * published by the Free Software Foundation, either version 3 of the License,
+     * or (at your option) any later version.
+     *
+     * Advanced JSON forms (ajf) is distributed in the hope that it will be useful,
+     * but WITHOUT ANY WARRANTY; without even the implied warranty of
+     * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero
+     * General Public License for more details.
+     *
+     * You should have received a copy of the GNU Affero General Public License
+     * along with Advanced JSON forms (ajf).
+     * If not, see http://www.gnu.org/licenses/.
+     *
      */
     var AjfFbNodeTypeEntry = /** @class */ (function () {
         function AjfFbNodeTypeEntry(_cdr) {
             this._cdr = _cdr;
         }
         Object.defineProperty(AjfFbNodeTypeEntry.prototype, "nodeType", {
-            get: /**
-             * @return {?}
-             */
-            function () { return this._nodeType; },
-            set: /**
-             * @param {?} nodeType
-             * @return {?}
-             */
-            function (nodeType) {
+            get: function () { return this._nodeType; },
+            set: function (nodeType) {
                 this._nodeType = nodeType;
                 this._cdr.markForCheck();
             },
@@ -4477,12 +2813,13 @@
             configurable: true
         });
         AjfFbNodeTypeEntry.decorators = [
-            { type: core.Component, args: [{selector: 'ajf-fb-node-type-entry',
-                        template: "<ng-container *ngIf=\"nodeType\"><mat-icon [fontSet]=\"nodeType.icon.fontSet\" [fontIcon]=\"nodeType.icon.fontIcon\"></mat-icon>{{ nodeType.label }}</ng-container>",
-                        styles: ["ajf-fb-node-type-entry{display:block;padding:1em 1.5em}ajf-fb-node-type-entry mat-icon{vertical-align:middle}"],
+            { type: core.Component, args: [{
+                        selector: 'ajf-fb-node-type-entry',
+                        template: "<ng-container *ngIf=\"nodeType\">\n  <mat-icon\n    [fontSet]=\"nodeType.icon.fontSet\" [fontIcon]=\"nodeType.icon.fontIcon\"></mat-icon>\n  {{ nodeType.label }}\n</ng-container>\n",
                         encapsulation: core.ViewEncapsulation.None,
-                        changeDetection: core.ChangeDetectionStrategy.OnPush
-                    },] },
+                        changeDetection: core.ChangeDetectionStrategy.OnPush,
+                        styles: ["ajf-fb-node-type-entry{display:block;padding:1em 1.5em}ajf-fb-node-type-entry mat-icon{vertical-align:middle}\n"]
+                    }] }
         ];
         /** @nocollapse */
         AjfFbNodeTypeEntry.ctorParameters = function () { return [
@@ -4495,8 +2832,25 @@
     }());
 
     /**
-     * @fileoverview added by tsickle
-     * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     * @license
+     * Copyright (C) 2018 Gnucoop soc. coop.
+     *
+     * This file is part of the Advanced JSON forms (ajf).
+     *
+     * Advanced JSON forms (ajf) is free software: you can redistribute it and/or
+     * modify it under the terms of the GNU Affero General Public License as
+     * published by the Free Software Foundation, either version 3 of the License,
+     * or (at your option) any later version.
+     *
+     * Advanced JSON forms (ajf) is distributed in the hope that it will be useful,
+     * but WITHOUT ANY WARRANTY; without even the implied warranty of
+     * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero
+     * General Public License for more details.
+     *
+     * You should have received a copy of the GNU Affero General Public License
+     * along with Advanced JSON forms (ajf).
+     * If not, see http://www.gnu.org/licenses/.
+     *
      */
     var AjfFormBuilderModule = /** @class */ (function () {
         function AjfFormBuilderModule() {
@@ -4546,38 +2900,57 @@
                         exports: [
                             AjfFormBuilder,
                         ],
-                        entryComponents: [
-                            AjfFbChoicesOriginEditorDialog,
-                            AjfFbConditionEditorDialog,
-                            AjfFbStringIdentifierDialogComponent,
-                            AjfFbValidationConditionEditorDialog,
-                            AjfFbWarningConditionEditorDialog,
-                        ],
                         providers: [
                             AjfFormBuilderService
                         ]
-                    },] },
+                    },] }
         ];
         return AjfFormBuilderModule;
     }());
+
+    /**
+     * @license
+     * Copyright (C) 2018 Gnucoop soc. coop.
+     *
+     * This file is part of the Advanced JSON forms (ajf).
+     *
+     * Advanced JSON forms (ajf) is free software: you can redistribute it and/or
+     * modify it under the terms of the GNU Affero General Public License as
+     * published by the Free Software Foundation, either version 3 of the License,
+     * or (at your option) any later version.
+     *
+     * Advanced JSON forms (ajf) is distributed in the hope that it will be useful,
+     * but WITHOUT ANY WARRANTY; without even the implied warranty of
+     * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero
+     * General Public License for more details.
+     *
+     * You should have received a copy of the GNU Affero General Public License
+     * along with Advanced JSON forms (ajf).
+     * If not, see http://www.gnu.org/licenses/.
+     *
+     */
+
+    /**
+     * Generated bundle index. Do not edit.
+     */
 
     exports.AjfFormBuilder = AjfFormBuilder;
     exports.AjfFormBuilderModule = AjfFormBuilderModule;
     exports.AjfFormBuilderService = AjfFormBuilderService;
     exports.flattenNodes = flattenNodes;
-    exports.ɵa = AjfFbBranchLine;
-    exports.ɵb = AjfFbChoicesOriginEditorDialog;
-    exports.ɵc = AjfFbChoicesOriginEditor;
-    exports.ɵd = AjfFbConditionEditorDialog;
-    exports.ɵe = AjfFbConditionEditor;
-    exports.ɵf = AjfFbNodeEntry;
-    exports.ɵg = AjfFbNodeProperties;
-    exports.ɵh = AjfFbNodeTypeEntry;
-    exports.ɵi = AjfFbStringIdentifierDialogComponent;
-    exports.ɵj = AjfFbValidationConditionEditorDialog;
-    exports.ɵk = AjfFbWarningConditionEditorDialog;
+    exports.ɵajf_src_material_form_builder_form_builder_a = AjfFbBranchLine;
+    exports.ɵajf_src_material_form_builder_form_builder_b = AjfFbChoicesOriginEditorDialog;
+    exports.ɵajf_src_material_form_builder_form_builder_c = AjfFbChoicesOriginEditor;
+    exports.ɵajf_src_material_form_builder_form_builder_d = AjfFbConditionEditorDialog;
+    exports.ɵajf_src_material_form_builder_form_builder_e = AjfFbConditionEditor;
+    exports.ɵajf_src_material_form_builder_form_builder_f = AjfFbNodeEntry;
+    exports.ɵajf_src_material_form_builder_form_builder_g = AjfFbNodeProperties;
+    exports.ɵajf_src_material_form_builder_form_builder_h = AjfFbNodeTypeEntry;
+    exports.ɵajf_src_material_form_builder_form_builder_i = AjfFbStringIdentifierDialogComponent;
+    exports.ɵajf_src_material_form_builder_form_builder_j = AjfFbValidationConditionEditorDialog;
+    exports.ɵajf_src_material_form_builder_form_builder_k = AjfFbWarningConditionEditorDialog;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 
-}));
+})));
 //# sourceMappingURL=material-form-builder.umd.js.map
