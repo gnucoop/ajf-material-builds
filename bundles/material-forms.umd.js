@@ -1108,9 +1108,9 @@
     exports.AjfTableFieldComponent = AjfTableFieldComponent;
     exports.AjfTimeFieldComponent = AjfTimeFieldComponent;
     exports.AjfWarningAlertService = AjfWarningAlertService;
-    exports.ɵajf_src_material_forms_forms_a = AjfBarcodeFieldComponent;
-    exports.ɵajf_src_material_forms_forms_b = AjfGetTableCellControlPipe;
-    exports.ɵajf_src_material_forms_forms_c = AjfIsCellEditablePipe;
+    exports.ɵgc_ajf_src_material_forms_forms_a = AjfBarcodeFieldComponent;
+    exports.ɵgc_ajf_src_material_forms_forms_b = AjfGetTableCellControlPipe;
+    exports.ɵgc_ajf_src_material_forms_forms_c = AjfIsCellEditablePipe;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 
