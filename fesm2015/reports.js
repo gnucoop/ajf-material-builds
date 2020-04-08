@@ -342,6 +342,7 @@ class AjfReportWidget extends AjfReportWidget$1 {
             [AjfWidgetType.Text]: { component: AjfTextWidgetComponent },
             [AjfWidgetType.Chart]: { component: AjfChartWidgetComponent },
             [AjfWidgetType.Table]: { component: AjfTableWidgetComponent },
+            [AjfWidgetType.DynamicTable]: { component: AjfTableWidgetComponent },
             [AjfWidgetType.Map]: { component: AjfMapWidgetComponent },
             [AjfWidgetType.Column]: { component: AjfColumnWidgetComponent },
             [AjfWidgetType.Formula]: { component: AjfFormulaWidgetComponent },

@@ -509,6 +509,7 @@ var AjfReportWidget = /** @class */ (function (_super) {
             _a[AjfWidgetType.Text] = { component: AjfTextWidgetComponent },
             _a[AjfWidgetType.Chart] = { component: AjfChartWidgetComponent },
             _a[AjfWidgetType.Table] = { component: AjfTableWidgetComponent },
+            _a[AjfWidgetType.DynamicTable] = { component: AjfTableWidgetComponent },
             _a[AjfWidgetType.Map] = { component: AjfMapWidgetComponent },
             _a[AjfWidgetType.Column] = { component: AjfColumnWidgetComponent },
             _a[AjfWidgetType.Formula] = { component: AjfFormulaWidgetComponent },

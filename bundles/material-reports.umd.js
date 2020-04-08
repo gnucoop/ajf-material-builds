@@ -688,6 +688,7 @@
                 _a[reports.AjfWidgetType.Text] = { component: AjfTextWidgetComponent },
                 _a[reports.AjfWidgetType.Chart] = { component: AjfChartWidgetComponent },
                 _a[reports.AjfWidgetType.Table] = { component: AjfTableWidgetComponent },
+                _a[reports.AjfWidgetType.DynamicTable] = { component: AjfTableWidgetComponent },
                 _a[reports.AjfWidgetType.Map] = { component: AjfMapWidgetComponent },
                 _a[reports.AjfWidgetType.Column] = { component: AjfColumnWidgetComponent },
                 _a[reports.AjfWidgetType.Formula] = { component: AjfFormulaWidgetComponent },
