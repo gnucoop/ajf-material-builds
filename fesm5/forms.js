@@ -4,6 +4,12 @@ import { Component, ChangeDetectionStrategy, ViewEncapsulation, Injectable, Chan
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { map } from 'rxjs/operators';
 import { MatInput, MatInputModule } from '@angular/material/input';
+import { AjfCommonModule } from '@ajf/core/common';
+import { AjfBarcodeModule } from '@ajf/material/barcode';
+import { AjfCalendarModule } from '@ajf/material/calendar';
+import { AjfCheckboxGroupModule } from '@ajf/material/checkbox-group';
+import { AjfPageSliderModule } from '@ajf/material/page-slider';
+import { AjfTimeModule } from '@ajf/material/time';
 import { CommonModule } from '@angular/common';
 import { FormControl as FormControl$1, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -15,12 +21,6 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { TranslateModule } from '@ngx-translate/core';
-import { AjfCommonModule } from '@ajf/core/common';
-import { AjfBarcodeModule } from '@ajf/material/barcode';
-import { AjfCalendarModule } from '@ajf/material/calendar';
-import { AjfCheckboxGroupModule } from '@ajf/material/checkbox-group';
-import { AjfPageSliderModule } from '@ajf/material/page-slider';
-import { AjfTimeModule } from '@ajf/material/time';
 
 /**
  * @license
@@ -216,8 +216,8 @@ var AjfDateInputFieldComponent = /** @class */ (function (_super) {
         }
         var val = this.input.value || '';
         if (val.length > 0) {
-            if ((this._minDateStr != null && val < this._minDateStr)
-                || (this._maxDateStr != null && val > this._maxDateStr)) {
+            if ((this._minDateStr != null && val < this._minDateStr) ||
+                (this._maxDateStr != null && val > this._maxDateStr)) {
                 this.input.value = '';
             }
         }
@@ -599,11 +599,13 @@ var AjfFieldService = /** @class */ (function (_super) {
         _this.componentsMap[AjfFieldType.String] = { component: AjfInputFieldComponent },
             _this.componentsMap[AjfFieldType.Text] = { component: AjfInputFieldComponent },
             _this.componentsMap[AjfFieldType.Number] = {
-                component: AjfInputFieldComponent, inputs: { type: 'number' }
+                component: AjfInputFieldComponent,
+                inputs: { type: 'number' }
             },
             _this.componentsMap[AjfFieldType.Boolean] = { component: AjfBooleanFieldComponent },
             _this.componentsMap[AjfFieldType.Formula] = {
-                component: AjfInputFieldComponent, inputs: { readonly: true }
+                component: AjfInputFieldComponent,
+                inputs: { readonly: true }
             },
             _this.componentsMap[AjfFieldType.Date] = { component: AjfDateFieldComponent },
             _this.componentsMap[AjfFieldType.DateInput] = { component: AjfDateInputFieldComponent },
@@ -835,26 +837,11 @@ var AjfFormsModule = /** @class */ (function () {
     AjfFormsModule.decorators = [
         { type: NgModule, args: [{
                     imports: [
-                        CommonModule,
-                        ReactiveFormsModule,
-                        MatButtonModule,
-                        MatCardModule,
-                        MatDialogModule,
-                        MatFormFieldModule,
-                        MatIconModule,
-                        MatInputModule,
-                        MatRadioModule,
-                        MatSelectModule,
-                        MatSlideToggleModule,
-                        MatToolbarModule,
-                        TranslateModule,
-                        AjfFormsModule$1,
-                        AjfCalendarModule,
-                        AjfBarcodeModule,
-                        AjfCheckboxGroupModule,
-                        AjfCommonModule,
-                        AjfPageSliderModule,
-                        AjfTimeModule
+                        AjfBarcodeModule, AjfCalendarModule, AjfCommonModule, AjfFormsModule$1,
+                        AjfCheckboxGroupModule, AjfPageSliderModule, AjfTimeModule, CommonModule,
+                        MatButtonModule, MatCardModule, MatDialogModule, MatFormFieldModule,
+                        MatIconModule, MatInputModule, MatRadioModule, MatSelectModule,
+                        MatSlideToggleModule, MatToolbarModule, ReactiveFormsModule, TranslateModule,
                     ],
                     declarations: [
                         AjfBarcodeFieldComponent,
@@ -871,7 +858,7 @@ var AjfFormsModule = /** @class */ (function () {
                         AjfMultipleChoiceFieldComponent,
                         AjfSingleChoiceFieldComponent,
                         AjfTableFieldComponent,
-                        AjfTimeFieldComponent
+                        AjfTimeFieldComponent,
                     ],
                     entryComponents: [
                         AjfBarcodeFieldComponent,
@@ -883,11 +870,11 @@ var AjfFormsModule = /** @class */ (function () {
                         AjfMultipleChoiceFieldComponent,
                         AjfSingleChoiceFieldComponent,
                         AjfTableFieldComponent,
-                        AjfTimeFieldComponent
+                        AjfTimeFieldComponent,
                     ],
                     exports: [
                         AjfFormField,
-                        AjfFormRenderer
+                        AjfFormRenderer,
                     ],
                     providers: [
                         AjfFieldService,

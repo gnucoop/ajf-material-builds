@@ -1,8 +1,8 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/animations'), require('@angular/core'), require('@ajf/core/page-slider'), require('@angular/common'), require('@angular/material/button'), require('@angular/material/icon'), require('@angular/material/toolbar')) :
-    typeof define === 'function' && define.amd ? define('@ajf/material/page-slider', ['exports', '@angular/animations', '@angular/core', '@ajf/core/page-slider', '@angular/common', '@angular/material/button', '@angular/material/icon', '@angular/material/toolbar'], factory) :
-    (global = global || self, factory((global.ajf = global.ajf || {}, global.ajf.material = global.ajf.material || {}, global.ajf.material.pageSlider = {}), global.ng.animations, global.ng.core, global.ng.core.pageSlider, global.ng.common, global.ng.material.button, global.ng.material.icon, global.ng.material.toolbar));
-}(this, (function (exports, animations, core, pageSlider, common, button, icon, toolbar) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@ajf/core/page-slider'), require('@angular/animations'), require('@angular/core'), require('@angular/common'), require('@angular/material/button'), require('@angular/material/icon'), require('@angular/material/toolbar')) :
+    typeof define === 'function' && define.amd ? define('@ajf/material/page-slider', ['exports', '@ajf/core/page-slider', '@angular/animations', '@angular/core', '@angular/common', '@angular/material/button', '@angular/material/icon', '@angular/material/toolbar'], factory) :
+    (global = global || self, factory((global.ajf = global.ajf || {}, global.ajf.material = global.ajf.material || {}, global.ajf.material.pageSlider = {}), global.ng.core.pageSlider, global.ng.animations, global.ng.core, global.ng.common, global.ng.material.button, global.ng.material.icon, global.ng.material.toolbar));
+}(this, (function (exports, pageSlider, animations, core, common, button, icon, toolbar) { 'use strict';
 
     /*! *****************************************************************************
     Copyright (c) Microsoft Corporation. All rights reserved.
@@ -262,19 +262,19 @@
         AjfPageSliderModule.decorators = [
             { type: core.NgModule, args: [{
                         imports: [
+                            pageSlider.AjfPageSliderModule,
                             common.CommonModule,
                             button.MatButtonModule,
                             icon.MatIconModule,
                             toolbar.MatToolbarModule,
-                            pageSlider.AjfPageSliderModule
                         ],
                         declarations: [
-                            AjfPageSlider
+                            AjfPageSlider,
                         ],
                         exports: [
                             pageSlider.AjfPageSliderModule,
-                            AjfPageSlider
-                        ]
+                            AjfPageSlider,
+                        ],
                     },] }
         ];
         return AjfPageSliderModule;

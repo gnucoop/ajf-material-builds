@@ -19,7 +19,7 @@
  * If not, see http://www.gnu.org/licenses/.
  *
  */
-import { AjfInputFieldComponent as CoreComponent, AjfFormRendererService } from '@ajf/core/forms';
+import { AjfFormRendererService, AjfInputFieldComponent as CoreComponent } from '@ajf/core/forms';
 import { BooleanInput } from '@angular/cdk/coercion';
 import { ChangeDetectorRef } from '@angular/core';
 import { AjfWarningAlertService } from './warning-alert-service';

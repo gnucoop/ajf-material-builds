@@ -1,12 +1,12 @@
 import { AjfBarcode } from '@ajf/core/barcode';
 import { forwardRef, Component, ViewEncapsulation, ChangeDetectionStrategy, ChangeDetectorRef, Renderer2, NgModule } from '@angular/core';
-import { NG_VALUE_ACCESSOR, FormsModule } from '@angular/forms';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { AjfCommonModule } from '@ajf/core/common';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatIconModule } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
-import { AjfCommonModule } from '@ajf/core/common';
 
 /**
  * @fileoverview added by tsickle
@@ -37,7 +37,7 @@ class AjfBarcodeComponent extends AjfBarcode {
 AjfBarcodeComponent.decorators = [
     { type: Component, args: [{
                 selector: 'ajf-barcode',
-                template: "<ng-container *ngIf=\"value; else barcode\">\n  <div class=\"ajf-code-container\">\n    <span>{{ value }}</span>\n    <button mat-raised-button (click)=\"reset()\">\n      <mat-icon style=\"transform: rotate(90deg)\">format_align_justify</mat-icon>\n    </button>\n  </div>\n</ng-container>\n<ng-template #barcode>\n  <mat-button-toggle-group [(ngModel)]=toggle>\n    <mat-button-toggle value=\"drop\" (click)=\"fileInput.click()\" [disabled]=\"readonly\">\n      <span translate>Upload image</span>\n      <mat-icon>add_circle_outline</mat-icon>\n      <input #fileInput type=\"file\" (change)=\"onSelectFile($event)\" multiple style=\"display:none;\" [disabled]=\"readonly\"/>\n    </mat-button-toggle>\n    <mat-button-toggle value=\"drop\" [disabled]=\"readonly\">\n      <span translate>Drop image</span>\n    </mat-button-toggle>\n    <mat-button-toggle value=\"camera\" [disabled]=\"readonly\">\n      <span translate>Camera</span>\n    </mat-button-toggle>\n  </mat-button-toggle-group>\n  <ng-container [ngSwitch]=\"toggle\">\n    <ng-container *ngSwitchCase=\"'drop'\">\n      <div class=\"ajf-drop-container\">\n        <div class=\"ajf-dropzone\" [attr.ajfDnd]=\"!readonly\" (file)=\"onSelectFile($event)\">\n          <div class=\"ajf-text-wrapper\">\n            <div class=\"ajf-centered\" translate>Drop your image here!</div>\n          </div>\n        </div>\n      </div>\n    </ng-container>\n    <ng-container *ngSwitchCase=\"'snapshot'\">\n      <div ajfVideoDirective [source]=\"videoSource\" class=\"left\" (isInit)=\"takeSnapshot()\"></div>\n    </ng-container>\n  </ng-container>\n</ng-template>\n",
+                template: "<ng-container *ngIf=\"value; else barcode\">\n  <div class=\"ajf-code-container\">\n    <span>{{ value }}</span>\n    <button mat-raised-button (click)=\"reset()\">\n      <mat-icon style=\"transform: rotate(90deg)\">format_align_justify</mat-icon>\n    </button>\n  </div>\n</ng-container>\n<ng-template #barcode>\n  <mat-button-toggle-group [value]=toggle>\n    <mat-button-toggle (click)=\"toggle = 'drop'; fileInput.click()\" [disabled]=\"readonly\">\n      <span translate>Upload image</span>\n      <mat-icon>add_circle_outline</mat-icon>\n      <input #fileInput type=\"file\" (change)=\"onSelectFile($event)\" multiple style=\"display:none;\"\n        [disabled]=\"readonly\" />\n    </mat-button-toggle>\n    <mat-button-toggle (click)=\"toggle = 'drop'\" [disabled]=\"readonly\">\n      <span translate>Drop image</span>\n    </mat-button-toggle>\n    <mat-button-toggle (click)=\"toggle = 'camera'\" [disabled]=\"readonly\">\n      <span translate>Camera</span>\n    </mat-button-toggle>\n  </mat-button-toggle-group>\n  <ng-container [ngSwitch]=\"toggle\">\n    <ng-container *ngSwitchCase=\"'drop'\">\n      <div class=\"ajf-drop-container\">\n        <ng-container *ngIf=\"readonly ; else activeDropZone\">\n          <div class=\"ajf-dropzone\">\n            <div class=\"ajf-text-wrapper\">\n              <div class=\"ajf-centered\" translate>Drop your image here!</div>\n            </div>\n          </div>\n        </ng-container>\n        <ng-template #activeDropZone>\n          <div class=\"ajf-dropzone\" ajfDnd (file)=\"onSelectFile($event)\">\n            <div class=\"ajf-text-wrapper\">\n              <div class=\"ajf-centered\" translate>Drop your image here!</div>\n            </div>\n          </div>\n        </ng-template>\n      </div>\n    </ng-container>\n    <ng-container *ngSwitchCase=\"'camera'\">\n      <div ajfVideoDirective [source]=\"videoSource\" class=\"left\" (isInit)=\"takeSnapshot()\"></div>\n    </ng-container>\n  </ng-container>\n</ng-template>\n",
                 encapsulation: ViewEncapsulation.None,
                 changeDetection: ChangeDetectionStrategy.OnPush,
                 providers: [BARCODE_CONTROL_VALUE_ACCESSOR],
@@ -64,13 +64,12 @@ class AjfBarcodeModule {
 AjfBarcodeModule.decorators = [
     { type: NgModule, args: [{
                 imports: [
+                    AjfCommonModule,
                     CommonModule,
-                    FormsModule,
-                    TranslateModule,
                     MatButtonModule,
                     MatButtonToggleModule,
                     MatIconModule,
-                    AjfCommonModule
+                    TranslateModule,
                 ],
                 declarations: [
                     AjfBarcodeComponent,

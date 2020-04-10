@@ -19,9 +19,9 @@
  * If not, see http://www.gnu.org/licenses/.
  *
  */
-import { ChangeDetectorRef } from '@angular/core';
-import { BooleanInput } from '@angular/cdk/coercion';
 import { AjfFormRenderer as AjfCoreFormRenderer, AjfFormRendererService } from '@ajf/core/forms';
+import { BooleanInput } from '@angular/cdk/coercion';
+import { ChangeDetectorRef } from '@angular/core';
 export declare class AjfFormRenderer extends AjfCoreFormRenderer {
     topBar: boolean;
     constructor(rendererService: AjfFormRendererService, changeDetectorRef: ChangeDetectorRef);

@@ -30,8 +30,7 @@ import { EventEmitter, Component, ViewEncapsulation, ChangeDetectionStrategy, In
  * Representation of AutoCompleteItem
  */
 class AutoCompleteItem {
-    constructor() {
-    }
+    constructor() { }
     /**
      * @param {?} label
      * @return {?}
@@ -258,8 +257,7 @@ class AutoCompleteSingleton {
              */
             function (model) {
                 // Get new autoComplete list for the current content
-                AutoCompleteSingleton.getInstance()
-                    .parseAutoCompleteValues(language, model.getValue());
+                AutoCompleteSingleton.getInstance().parseAutoCompleteValues(language, model.getValue());
                 return AutoCompleteSingleton.getInstance().autoCompleteValues[language.toString()];
             }),
         });
@@ -295,13 +293,12 @@ class AutoCompleteSingleton {
         let tags = parser.parseFromString(content, 'text/xml').getElementsByTagName('*');
         for (let i = 0; i < tags.length; i++) {
             // Add TAG only if it not already existing in autoComplete list and in tempList
-            if (!this._autoCompleteValues[IEditorLanguage.XML]
-                .find((/**
+            if (!this._autoCompleteValues[IEditorLanguage.XML].find((/**
              * @param {?} obj
              * @return {?}
              */
-            obj => obj.label === tags[i].tagName))
-                && !tempList.find((/**
+            obj => obj.label === tags[i].tagName)) &&
+                !tempList.find((/**
                  * @param {?} obj
                  * @return {?}
                  */
@@ -342,13 +339,12 @@ class AutoCompleteSingleton {
                 regex.lastIndex++;
             }
             // Add Element only if it not already existing in autoComplete list and in tempList
-            if (m[1] && !this._autoCompleteValues[IEditorLanguage.JSON]
-                .find((/**
+            if (m[1] && !this._autoCompleteValues[IEditorLanguage.JSON].find((/**
              * @param {?} obj
              * @return {?}
              */
-            obj => obj.label === m[1]))
-                && !tempList.find((/**
+            obj => obj.label === m[1])) &&
+                !tempList.find((/**
                  * @param {?} obj
                  * @return {?}
                  */
@@ -883,7 +879,9 @@ class AjfMonacoEditor {
     /**
      * @return {?}
      */
-    get editor() { return this._editor; }
+    get editor() {
+        return this._editor;
+    }
     /**
      * load Monaco lib
      * @return {?}
@@ -1130,8 +1128,7 @@ class AjfMonacoEditor {
         options.lineHeight = this.lineHeight;
         options.value = this._value;
         options.language = this.language;
-        Object.keys(options)
-            .forEach((/**
+        Object.keys(options).forEach((/**
          * @param {?} key
          * @return {?}
          */
@@ -1195,9 +1192,7 @@ AjfMonacoEditor.decorators = [
                 changeDetection: ChangeDetectionStrategy.OnPush,
                 selector: 'ajf-monaco-editor',
                 template: "<div #editor class=\"ajf-monaco-editor\"></div>\n",
-                host: {
-                    '(window:resize)': 'onResize($event)'
-                },
+                host: { '(window:resize)': 'onResize($event)' },
                 styles: ["ajf-monaco-editor{display:flex;align-items:stretch;overflow:hidden}ajf-monaco-editor .ajf-monaco-editor{flex:1 0 auto}\n"]
             }] }
 ];

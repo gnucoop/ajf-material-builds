@@ -26,7 +26,7 @@ import { AfterViewChecked, OnDestroy, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { AjfFormVariables } from './models';
 import { AjfReportBuilderService } from './report-builder-service';
-export declare enum AjfDataType {
+export declare const enum AjfDataType {
     MainData = 0,
     Dataset = 1,
     RelatedData = 2,

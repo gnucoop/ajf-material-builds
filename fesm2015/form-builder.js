@@ -1,7 +1,9 @@
+import { AjfMonacoEditor, AjfMonacoEditorModule } from '@ajf/material/monaco-editor';
+import { AjfNodeIconModule } from '@ajf/material/node-icon';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import { CommonModule } from '@angular/common';
 import { Component, ViewEncapsulation, ChangeDetectionStrategy, ElementRef, Renderer2, Input, EventEmitter, Injectable, ViewChild, ChangeDetectorRef, ViewChildren, NgModule } from '@angular/core';
 import { Validators, FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -20,12 +22,10 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { TranslateModule } from '@ngx-translate/core';
-import { AjfMonacoEditor, AjfMonacoEditorModule } from '@ajf/material/monaco-editor';
-import { AjfNodeIconModule } from '@ajf/material/node-icon';
-import { filter, map, scan, publishReplay, refCount, withLatestFrom, shareReplay, sample, distinctUntilChanged } from 'rxjs/operators';
 import { isChoicesFixedOrigin, isContainerNode, isSlidesNode, AjfNodeType, AjfFieldType, createField, createContainerNode, createForm, createChoicesFixedOrigin, isRepeatingContainerNode, isField, createValidationGroup, notEmptyValidation, minValidation, maxValidation, minDigitsValidation, maxDigitsValidation, createValidation, createWarningGroup, notEmptyWarning, createWarning, isFieldWithChoices, AjfValidationService, isNumberField } from '@ajf/core/forms';
 import { DataSource } from '@angular/cdk/collections';
 import { BehaviorSubject, Subject, combineLatest, Subscription } from 'rxjs';
+import { filter, map, scan, publishReplay, refCount, withLatestFrom, shareReplay, sample, distinctUntilChanged } from 'rxjs/operators';
 import { createCondition, alwaysCondition, createFormula, AjfExpressionUtils, neverCondition } from '@ajf/core/models';
 import { deepCopy } from '@ajf/core/utils';
 import { ENTER, COMMA } from '@angular/cdk/keycodes';
@@ -201,7 +201,9 @@ class AjfFbChoicesOriginEditor {
     /**
      * @return {?}
      */
-    get displayedColumns() { return this._displayedColumns; }
+    get displayedColumns() {
+        return this._displayedColumns;
+    }
     /**
      * @return {?}
      */
@@ -223,11 +225,15 @@ class AjfFbChoicesOriginEditor {
     /**
      * @return {?}
      */
-    get choices() { return this._choices; }
+    get choices() {
+        return this._choices;
+    }
     /**
      * @return {?}
      */
-    get choicesArr() { return this._choicesArr; }
+    get choicesArr() {
+        return this._choicesArr;
+    }
     /**
      * @param {?} evt
      * @param {?} cell
@@ -376,8 +382,7 @@ function getNodeContainer(c, node) {
  */
 function buildFormBuilderNodesSubtree(nodes, parent, ignoreConditionalBranches = false) {
     /** @type {?} */
-    const entries = nodes
-        .filter((/**
+    const entries = nodes.filter((/**
      * @param {?} n
      * @return {?}
      */
@@ -410,10 +415,7 @@ function buildFormBuilderNodesSubtree(nodes, parent, ignoreConditionalBranches =
         /** @type {?} */
         const cbs = parent.conditionalBranches.length;
         for (let i = entriesNum; i < cbs; i++) {
-            entries.push({
-                parent: parent,
-                parentNode: i
-            });
+            entries.push({ parent: parent, parentNode: i });
         }
     }
     return entries;
@@ -652,7 +654,9 @@ class AjfFormBuilderService {
      * \@memberOf AjfFormBuilderService
      * @return {?}
      */
-    get availableNodeTypes() { return this._availableNodeTypes; }
+    get availableNodeTypes() {
+        return this._availableNodeTypes;
+    }
     /**
      * Current edited form stream
      *
@@ -660,7 +664,9 @@ class AjfFormBuilderService {
      * \@memberOf AjfFormBuilderService
      * @return {?}
      */
-    get form() { return this._formObs; }
+    get form() {
+        return this._formObs;
+    }
     /**
      * @return {?}
      */
@@ -682,7 +688,9 @@ class AjfFormBuilderService {
     /**
      * @return {?}
      */
-    get nodes() { return this._nodes; }
+    get nodes() {
+        return this._nodes;
+    }
     /**
      * @return {?}
      */
@@ -692,11 +700,15 @@ class AjfFormBuilderService {
     /**
      * @return {?}
      */
-    get flatFields() { return this._flatFields; }
+    get flatFields() {
+        return this._flatFields;
+    }
     /**
      * @return {?}
      */
-    get nodeEntriesTree() { return this._nodeEntriesTree; }
+    get nodeEntriesTree() {
+        return this._nodeEntriesTree;
+    }
     /**
      * @return {?}
      */
@@ -706,7 +718,9 @@ class AjfFormBuilderService {
     /**
      * @return {?}
      */
-    get editedCondition() { return this._editedConditionObs; }
+    get editedCondition() {
+        return this._editedConditionObs;
+    }
     /**
      * @return {?}
      */
@@ -716,11 +730,15 @@ class AjfFormBuilderService {
     /**
      * @return {?}
      */
-    get beforeNodesUpdate() { return this._beforeNodesUpdateObs; }
+    get beforeNodesUpdate() {
+        return this._beforeNodesUpdateObs;
+    }
     /**
      * @return {?}
      */
-    get afterNodeUpdate() { return this._afterNodeUpdateObs; }
+    get afterNodeUpdate() {
+        return this._afterNodeUpdateObs;
+    }
     /**
      * Sets the current edited form
      *
@@ -811,8 +829,7 @@ class AjfFormBuilderService {
                 return [node];
             }
             /** @type {?} */
-            const cn = isContainerNode(parent) && inContent ?
-                ((/** @type {?} */ (parent))) :
+            const cn = isContainerNode(parent) && inContent ? ((/** @type {?} */ (parent))) :
                 getNodeContainer({ nodes }, parent);
             if (cn != null) {
                 if (!isFieldNode) {
@@ -857,7 +874,11 @@ class AjfFormBuilderService {
      * @return {?}
      */
     getCurrentForm() {
-        return combineLatest([this.form, this.nodes, this.attachmentsOrigins, this.choicesOrigins, this.stringIdentifier]).pipe(filter((/**
+        return combineLatest([
+            this.form, this.nodes, this.attachmentsOrigins, this.choicesOrigins,
+            this.stringIdentifier
+        ])
+            .pipe(filter((/**
          * @param {?} __0
          * @return {?}
          */
@@ -965,8 +986,7 @@ class AjfFormBuilderService {
      * @return {?}
      */
     _initFormStreams() {
-        this._form
-            .subscribe((/**
+        this._form.subscribe((/**
          * @param {?} form
          * @return {?}
          */
@@ -996,17 +1016,15 @@ class AjfFormBuilderService {
              * @return {?}
              */
             (_choicesOrigins) => {
-                return form != null && form.choicesOrigins != null ? form.choicesOrigins.slice(0) :
-                    [];
+                return form != null && form.choicesOrigins != null ? form.choicesOrigins.slice(0) : [];
             }));
             this._stringIdentifierUpdates.next((/**
              * @param {?} _
              * @return {?}
              */
             (_) => {
-                return form != null && form.stringIdentifier != null
-                    ? form.stringIdentifier.slice(0)
-                    : [];
+                return form != null && form.stringIdentifier != null ? form.stringIdentifier.slice(0) :
+                    [];
             }));
         }));
     }
@@ -1287,7 +1305,8 @@ class AjfFormBuilderService {
      * @return {?}
      */
     _initDeleteNode() {
-        ((/** @type {?} */ (this._deleteNodeEntryEvent))).pipe(map((/**
+        ((/** @type {?} */ (this._deleteNodeEntryEvent)))
+            .pipe(map((/**
          * @param {?} nodeEntry
          * @return {?}
          */
@@ -1321,7 +1340,8 @@ class AjfFormBuilderService {
                 }
                 return nodes;
             });
-        }))).subscribe(this._nodesUpdates);
+        })))
+            .subscribe(this._nodesUpdates);
     }
 }
 AjfFormBuilderService.decorators = [
@@ -1473,15 +1493,16 @@ class AjfFbChoicesOriginEditorDialog {
      */
     constructor(_service) {
         this._service = _service;
-        this._choicesOrigin = this._service.editedChoicesOrigin.pipe(filter((/**
-         * @param {?} c
-         * @return {?}
-         */
-        c => c != null)), map((/**
-         * @param {?} c
-         * @return {?}
-         */
-        c => (/** @type {?} */ (c)))));
+        this._choicesOrigin =
+            this._service.editedChoicesOrigin.pipe(filter((/**
+             * @param {?} c
+             * @return {?}
+             */
+            c => c != null)), map((/**
+             * @param {?} c
+             * @return {?}
+             */
+            c => (/** @type {?} */ (c)))));
     }
     /**
      * @return {?}
@@ -1493,11 +1514,7 @@ class AjfFbChoicesOriginEditorDialog {
      * @return {?}
      */
     saveChoicesOrigin() {
-        this._service.saveChoicesOrigin({
-            label: this.editor.label,
-            name: this.editor.name,
-            choices: this.editor.choicesArr
-        });
+        this._service.saveChoicesOrigin({ label: this.editor.label, name: this.editor.name, choices: this.editor.choicesArr });
     }
     /**
      * @return {?}
@@ -1551,7 +1568,9 @@ class AjfFbConditionEditor {
     /**
      * @return {?}
      */
-    get fields() { return this._fields; }
+    get fields() {
+        return this._fields;
+    }
     /**
      * @param {?} fields
      * @return {?}
@@ -1591,10 +1610,7 @@ class AjfFbConditionEditor {
      * @return {?}
      */
     onEditorInit() {
-        monaco.languages.typescript.javascriptDefaults.setDiagnosticsOptions({
-            noSemanticValidation: false,
-            noSyntaxValidation: false
-        });
+        monaco.languages.typescript.javascriptDefaults.setDiagnosticsOptions({ noSemanticValidation: false, noSyntaxValidation: false });
         monaco.languages.typescript.javascriptDefaults.setCompilerOptions({
             target: monaco.languages.typescript.ScriptTarget.ES2015,
             allowNonTsExtensions: true,
@@ -1605,15 +1621,15 @@ class AjfFbConditionEditor {
             monaco.languages.typescript.javascriptDefaults.addExtraLib('', 'condition-editor-variables.d.ts');
         }
         catch (e) {
-            monaco.languages.typescript.javascriptDefaults
-                ._extraLibs['condition-editor-variables.d.ts'] = '';
+            monaco.languages.typescript.javascriptDefaults._extraLibs['condition-editor-variables.d.ts'] =
+                '';
         }
         try {
             monaco.languages.typescript.javascriptDefaults.addExtraLib('', 'condition-editor-functions.d.ts');
         }
         catch (e) {
-            monaco.languages.typescript.javascriptDefaults
-                ._extraLibs['condition-editor-functions.d.ts'] = '';
+            monaco.languages.typescript.javascriptDefaults._extraLibs['condition-editor-functions.d.ts'] =
+                '';
         }
         this._updateVariables();
         this._updateFunctions();
@@ -1627,8 +1643,7 @@ class AjfFbConditionEditor {
             return;
         }
         try {
-            monaco.languages.typescript.javascriptDefaults
-                ._extraLibs['condition-editor-variables.d.ts'] =
+            monaco.languages.typescript.javascriptDefaults._extraLibs['condition-editor-variables.d.ts'] =
                 this._fields
                     .map((/**
                  * @param {?} field
@@ -1639,7 +1654,8 @@ class AjfFbConditionEditor {
                 }))
                     .join('\n');
         }
-        catch (e) { }
+        catch (e) {
+        }
     }
     /**
      * @private
@@ -1650,7 +1666,8 @@ class AjfFbConditionEditor {
             monaco.languages.typescript.javascriptDefaults._extraLibs['condition-editor-functions.d.ts'] =
                 AjfExpressionUtils.UTIL_FUNCTIONS;
         }
-        catch (e) { }
+        catch (e) {
+        }
     }
     /**
      * @private
@@ -1741,7 +1758,9 @@ class AjfFbConditionEditorDialog {
     /**
      * @return {?}
      */
-    get fields() { return this._fields; }
+    get fields() {
+        return this._fields;
+    }
     /**
      * @return {?}
      */
@@ -1818,7 +1837,8 @@ class AjfFbStringIdentifierDialogComponent {
          * @param {?} f2
          * @return {?}
          */
-        (f1, f2) => f1.name.localeCompare(f2.name))).map((/**
+        (f1, f2) => f1.name.localeCompare(f2.name)))
+            .map((/**
          * @param {?} f
          * @return {?}
          */
@@ -1959,20 +1979,21 @@ class AjfFormBuilder {
         this._nodeTypes = _service.availableNodeTypes;
         this._nodeEntriesTree = _service.nodeEntriesTree;
         this._choicesOrigins = _service.choicesOrigins;
-        this._editConditionSub = this._service.editedCondition
-            .subscribe((/**
-         * @param {?} condition
-         * @return {?}
-         */
-        (condition) => {
-            if (this._editConditionDialog != null) {
-                this._editConditionDialog.close();
-                this._editConditionDialog = null;
-            }
-            if (condition != null) {
-                this._editConditionDialog = this._dialog.open(AjfFbConditionEditorDialog, { disableClose: true });
-            }
-        }));
+        this._editConditionSub =
+            this._service.editedCondition.subscribe((/**
+             * @param {?} condition
+             * @return {?}
+             */
+            (condition) => {
+                if (this._editConditionDialog != null) {
+                    this._editConditionDialog.close();
+                    this._editConditionDialog = null;
+                }
+                if (condition != null) {
+                    this._editConditionDialog =
+                        this._dialog.open(AjfFbConditionEditorDialog, { disableClose: true });
+                }
+            }));
         this._editChoicesOriginSub =
             this._service.editedChoicesOrigin.subscribe((/**
              * @param {?} choicesOrigin
@@ -1988,8 +2009,7 @@ class AjfFormBuilder {
                         this._dialog.open(AjfFbChoicesOriginEditorDialog, { disableClose: true });
                 }
             }));
-        this._beforeNodesUpdateSub = this._service.beforeNodesUpdate
-            .subscribe((/**
+        this._beforeNodesUpdateSub = this._service.beforeNodesUpdate.subscribe((/**
          * @return {?}
          */
         () => {
@@ -1998,9 +2018,7 @@ class AjfFormBuilder {
             }
             this._lastScrollTop = this.designerCont.nativeElement.scrollTop;
         }));
-        this.nodeEntriesTree
-            .pipe(sample(((/** @type {?} */ (this._vc)))))
-            .subscribe((/**
+        this.nodeEntriesTree.pipe(sample(((/** @type {?} */ (this._vc))))).subscribe((/**
          * @return {?}
          */
         () => {
@@ -2017,7 +2035,9 @@ class AjfFormBuilder {
     /**
      * @return {?}
      */
-    get form() { return this._form; }
+    get form() {
+        return this._form;
+    }
     /**
      * @param {?} form
      * @return {?}
@@ -2033,11 +2053,15 @@ class AjfFormBuilder {
     /**
      * @return {?}
      */
-    get nodeTypes() { return this._nodeTypes; }
+    get nodeTypes() {
+        return this._nodeTypes;
+    }
     /**
      * @return {?}
      */
-    get nodeEntriesTree() { return this._nodeEntriesTree; }
+    get nodeEntriesTree() {
+        return this._nodeEntriesTree;
+    }
     /**
      * @return {?}
      */
@@ -2094,12 +2118,7 @@ class AjfFormBuilder {
             this._stringIdentifierDialog.close();
             this._stringIdentifierDialog = null;
         }
-        this._stringIdentifierDialog =
-            this._dialog.open(AjfFbStringIdentifierDialogComponent, {
-                disableClose: true,
-                width: '60%',
-                height: '60%'
-            });
+        this._stringIdentifierDialog = this._dialog.open(AjfFbStringIdentifierDialogComponent, { disableClose: true, width: '60%', height: '60%' });
     }
     /**
      * @private
@@ -2248,24 +2267,34 @@ class AjfFbNodeEntry {
     /**
      * @return {?}
      */
-    get hasContent() { return this._hasContent; }
+    get hasContent() {
+        return this._hasContent;
+    }
     /**
      * @return {?}
      */
-    get isFirst() { return this._isFirst; }
+    get isFirst() {
+        return this._isFirst;
+    }
     /**
      * @param {?} isFirst
      * @return {?}
      */
-    set isFirst(isFirst) { this._isFirst = isFirst; }
+    set isFirst(isFirst) {
+        this._isFirst = isFirst;
+    }
     /**
      * @return {?}
      */
-    get isNodeEntry() { return this._isNodeEntry; }
+    get isNodeEntry() {
+        return this._isNodeEntry;
+    }
     /**
      * @return {?}
      */
-    get nodeEntry() { return this._nodeEntry; }
+    get nodeEntry() {
+        return this._nodeEntry;
+    }
     /**
      * @param {?} nodeEntry
      * @return {?}
@@ -2288,12 +2317,16 @@ class AjfFbNodeEntry {
     /**
      * @return {?}
      */
-    get level() { return this._level; }
+    get level() {
+        return this._level;
+    }
     /**
      * @param {?} value
      * @return {?}
      */
-    set level(value) { this._level = value; }
+    set level(value) {
+        this._level = value;
+    }
     /**
      * @return {?}
      */
@@ -2303,19 +2336,27 @@ class AjfFbNodeEntry {
     /**
      * @return {?}
      */
-    get branchColors() { return this._branchColors; }
+    get branchColors() {
+        return this._branchColors;
+    }
     /**
      * @return {?}
      */
-    get dropZones() { return this._dropZones; }
+    get dropZones() {
+        return this._dropZones;
+    }
     /**
      * @return {?}
      */
-    get slideDropZones() { return this._slideDropZones; }
+    get slideDropZones() {
+        return this._slideDropZones;
+    }
     /**
      * @return {?}
      */
-    get originOffset() { return this._originOffset; }
+    get originOffset() {
+        return this._originOffset;
+    }
     /**
      * @param {?} originOffset
      * @return {?}
@@ -2327,11 +2368,15 @@ class AjfFbNodeEntry {
     /**
      * @return {?}
      */
-    get originLeftMargin() { return this._originLeftMargin; }
+    get originLeftMargin() {
+        return this._originLeftMargin;
+    }
     /**
      * @return {?}
      */
-    get firstBranchColor() { return this._firstBranchColor; }
+    get firstBranchColor() {
+        return this._firstBranchColor;
+    }
     /**
      * @param {?} firstBranchColor
      * @return {?}
@@ -2357,8 +2402,7 @@ class AjfFbNodeEntry {
     /**
      * @return {?}
      */
-    onResize() {
-    }
+    onResize() { }
     /**
      * @return {?}
      */
@@ -2385,8 +2429,7 @@ class AjfFbNodeEntry {
          * @return {?}
          */
         () => this._updateBranchHeights()));
-        this._childEntriesSubscription = this.childEntries.changes
-            .subscribe((/**
+        this._childEntriesSubscription = this.childEntries.changes.subscribe((/**
          * @return {?}
          */
         () => {
@@ -2448,8 +2491,8 @@ class AjfFbNodeEntry {
      * @return {?}
      */
     _updateBranchHeights() {
-        if (this.nodeEntry == null || !this.isNodeEntry
-            || this.branchLines == null || this.childEntries == null) {
+        if (this.nodeEntry == null || !this.isNodeEntry || this.branchLines == null ||
+            this.childEntries == null) {
             return;
         }
         /** @type {?} */
@@ -2479,9 +2522,7 @@ AjfFbNodeEntry.decorators = [
     { type: Component, args: [{
                 selector: 'ajf-fb-node-entry',
                 template: "<ng-container *ngIf=\"nodeEntry != null ; else rootEmpty\">\n  <ng-template [ngIf]=\"isNodeEntry\">\n    <ajf-fb-branch-line\n        *ngFor=\"let childNodeEntry of realNodeEntry.children; let idx = index\"\n        [offset]=\"idx\"\n        [color]=\"branchColors[idx]\"></ajf-fb-branch-line>\n  </ng-template>\n  <div class=\"mat-card-container\"\n      [class.ajf-highlight]=\"(currentEditedNode|async) == nodeEntry\">\n    <div *ngIf=\"!isFirst\"\n        class=\"ajf-origin-line\"\n        [style.margin-left]=\"originLeftMargin\"\n        [style.border-color]=\"firstBranchColor\"></div>\n    <ng-template [ngIf]=\"isNodeEntry\">\n      <mat-card>\n        <div class=\"ajf-title-row\">\n          <ajf-node-icon [node]=\"realNodeEntry.node\"></ajf-node-icon>\n          <span class=\"ajf-title\" [innerHTML]=\"(realNodeEntry.node.label || realNodeEntry.node.name)  | translate\"></span>\n          <span class=\"ajf-actions\">\n            <button [disabled]=\"(currentEditedNode|async) == nodeEntry\" (click)=\"edit()\" mat-icon-button>\n              <mat-icon>edit</mat-icon>\n            </button>\n            <button [disabled]=\"(currentEditedNode|async) == null\" (click)=\"delete()\" mat-icon-button>\n              <mat-icon>delete</mat-icon>\n            </button>\n          </span>\n        </div>\n        <div *ngIf=\"hasContent\">\n          <ajf-fb-node-entry\n              *ngFor=\"let contentEntry of realNodeEntry.content; let isFirstChild = first; let idx = index\"\n              [level]=\"level + 1\"\n              [isFirst]=\"isFirstChild\"\n              [firstBranchColor]=\"branchColors[idx]\"\n              [nodeEntry]=\"contentEntry\"></ajf-fb-node-entry>\n          <mat-card class=\"ajf-empty\"\n              *ngIf=\"realNodeEntry.content.length === 0\"\n              cdkDropList\n              [cdkDropListEnterPredicate]=\"disableSlideDropPredicate\"\n              (cdkDropListDropped)=\"onDropSuccess($event, true)\">&nbsp;</mat-card>\n        </div>\n      </mat-card>\n    </ng-template>\n    <ng-template [ngIf]=\"!isNodeEntry\">\n      <mat-card class=\"ajf-empty\"\n          cdkDropList\n          [cdkDropListEnterPredicate]=\"emptyAreaDropPredicate()\"\n          (cdkDropListDropped)=\"onDropSuccess($event)\">&nbsp;</mat-card>\n    </ng-template>\n  </div>\n  <ng-template [ngIf]=\"isNodeEntry\">\n    <ajf-fb-node-entry\n        *ngFor=\"let childNodeEntry of realNodeEntry.children; let idx = index\"\n        [level]=\"level\"\n        [originOffset]=\"idx\"\n        [firstBranchColor]=\"branchColors[idx]\"\n        [nodeEntry]=\"childNodeEntry\"></ajf-fb-node-entry>\n  </ng-template>\n</ng-container>\n<ng-template #rootEmpty>\n  <div class=\"mat-card-container\">\n    <mat-card class=\"ajf-empty\"\n        cdkDropList\n        [cdkDropListEnterPredicate]=\"emptyAreaDropPredicate()\"\n        (cdkDropListDropped)=\"onDropSuccess($event)\">&nbsp;</mat-card>\n  </div>\n</ng-template>\n",
-                host: {
-                    '(window.resize)': 'onResize()'
-                },
+                host: { '(window.resize)': 'onResize()' },
                 encapsulation: ViewEncapsulation.None,
                 changeDetection: ChangeDetectionStrategy.OnPush,
                 styles: ["ajf-fb-node-entry{display:block;position:relative}ajf-fb-node-entry .mat-card-container{position:relative}ajf-fb-node-entry .mat-card-container .ajf-origin-line{position:absolute;top:0;left:25px;width:25px;height:25px;border-bottom:2px solid;border-left:2px solid;border-bottom-left-radius:.5em}ajf-fb-node-entry .mat-card-container mat-card{margin-left:50px;padding:.5em 1em;margin-top:.2em;margin-bottom:.2em;background-color:#fff}ajf-fb-node-entry .mat-card-container mat-card .ajf-title-row{display:flex;flex-direction:row;align-items:center}ajf-fb-node-entry .mat-card-container mat-card .ajf-title-row>.ajf-title{flex:1 1 auto}ajf-fb-node-entry .mat-card-container mat-card .ajf-title-row>.ajf-actions{flex:0 0 auto;white-space:nowrap}ajf-fb-node-entry .mat-card-container mat-card.ajf-empty{line-height:36px;border:2px dashed;box-shadow:none;box-sizing:border-box}ajf-fb-node-entry .mat-card-container.ajf-highlight>mat-card{background-color:#fff9c4}\n"]
@@ -2608,7 +2649,9 @@ class AjfFbValidationConditionEditorDialog {
     /**
      * @return {?}
      */
-    get fields() { return this._fields; }
+    get fields() {
+        return this._fields;
+    }
     /**
      * @return {?}
      */
@@ -2680,7 +2723,9 @@ class AjfFbWarningConditionEditorDialog {
     /**
      * @return {?}
      */
-    get fields() { return this._fields; }
+    get fields() {
+        return this._fields;
+    }
     /**
      * @return {?}
      */
@@ -2741,9 +2786,7 @@ function checkRepsValidity(c) {
     /** @type {?} */
     const maxReps = c.value.maxReps;
     if (minReps != null && maxReps != null && minReps > maxReps) {
-        return {
-            reps: 'Min repetions cannot be greater than max repetitions'
-        };
+        return { reps: 'Min repetions cannot be greater than max repetitions' };
     }
     return null;
 }
@@ -2757,9 +2800,7 @@ function checkValueLimitsValidity(c) {
     /** @type {?} */
     const maxValue = c.value.maxValue;
     if (minValue != null && maxValue != null && minValue > maxValue) {
-        return {
-            valueLimit: 'Min value cannot be greater than max value'
-        };
+        return { valueLimit: 'Min value cannot be greater than max value' };
     }
     return null;
 }
@@ -2773,9 +2814,7 @@ function checkDigitsValidity(c) {
     /** @type {?} */
     const maxDigits = c.value.maxDigits;
     if (minDigits != null && maxDigits != null && minDigits > maxDigits) {
-        return {
-            digits: 'Min digits cannot be greater than max digits'
-        };
+        return { digits: 'Min digits cannot be greater than max digits' };
     }
     return null;
 }
@@ -2810,10 +2849,8 @@ class AjfFbNodeProperties {
         this._dialog = _dialog;
         this._fb = _fb;
         this._fieldSizes = [
-            { label: 'Normal', value: 'normal' },
-            { label: 'Small', value: 'small' },
-            { label: 'Smaller', value: 'smaller' },
-            { label: 'Tiny', value: 'tiny' },
+            { label: 'Normal', value: 'normal' }, { label: 'Small', value: 'small' },
+            { label: 'Smaller', value: 'smaller' }, { label: 'Tiny', value: 'tiny' },
             { label: 'Mini', value: 'mini' }
         ];
         this._choicesOrigins = [];
@@ -2876,12 +2913,12 @@ class AjfFbNodeProperties {
         this._saveEvt = new EventEmitter();
         this._saveSub = Subscription.EMPTY;
         this._nodeEntry = _service.editedNodeEntry;
-        this._choicesOriginsSub = _service.choicesOrigins
-            .subscribe((/**
-         * @param {?} c
-         * @return {?}
-         */
-        (c) => this._choicesOrigins = c || []));
+        this._choicesOriginsSub =
+            _service.choicesOrigins.subscribe((/**
+             * @param {?} c
+             * @return {?}
+             */
+            (c) => this._choicesOrigins = c || []));
         this._enabled = this._nodeEntry.pipe(map((/**
          * @param {?} n
          * @return {?}
@@ -2909,11 +2946,15 @@ class AjfFbNodeProperties {
     /**
      * @return {?}
      */
-    get fieldSizes() { return this._fieldSizes; }
+    get fieldSizes() {
+        return this._fieldSizes;
+    }
     /**
      * @return {?}
      */
-    get nodeEntry() { return this._nodeEntry; }
+    get nodeEntry() {
+        return this._nodeEntry;
+    }
     /**
      * @return {?}
      */
@@ -2923,55 +2964,81 @@ class AjfFbNodeProperties {
     /**
      * @return {?}
      */
-    get enabled() { return this._enabled; }
+    get enabled() {
+        return this._enabled;
+    }
     /**
      * @return {?}
      */
-    get propertiesForm() { return this._propertiesForm; }
+    get propertiesForm() {
+        return this._propertiesForm;
+    }
     /**
      * @return {?}
      */
-    get hasChoices() { return this._hasChoices; }
+    get hasChoices() {
+        return this._hasChoices;
+    }
     /**
      * @return {?}
      */
-    get curVisibility() { return this._curVisibility; }
+    get curVisibility() {
+        return this._curVisibility;
+    }
     /**
      * @return {?}
      */
-    get curFormulaReps() { return this._curFormulaReps; }
+    get curFormulaReps() {
+        return this._curFormulaReps;
+    }
     /**
      * @return {?}
      */
-    get curChoicesFilter() { return this._curChoicesFilter; }
+    get curChoicesFilter() {
+        return this._curChoicesFilter;
+    }
     /**
      * @return {?}
      */
-    get curForceValue() { return this._curForceValue; }
+    get curForceValue() {
+        return this._curForceValue;
+    }
     /**
      * @return {?}
      */
-    get curFormula() { return this._curFormula; }
+    get curFormula() {
+        return this._curFormula;
+    }
     /**
      * @return {?}
      */
-    get conditionalBranches() { return this._conditionalBranches; }
+    get conditionalBranches() {
+        return this._conditionalBranches;
+    }
     /**
      * @return {?}
      */
-    get validationConditions() { return this._validationConditions; }
+    get validationConditions() {
+        return this._validationConditions;
+    }
     /**
      * @return {?}
      */
-    get warningConditions() { return this._warningConditions; }
+    get warningConditions() {
+        return this._warningConditions;
+    }
     /**
      * @return {?}
      */
-    get nextSlideCondition() { return this._nextSlideCondition; }
+    get nextSlideCondition() {
+        return this._nextSlideCondition;
+    }
     /**
      * @return {?}
      */
-    get triggerConditions() { return this._triggerConditions; }
+    get triggerConditions() {
+        return this._triggerConditions;
+    }
     /**
      * @return {?}
      */
@@ -3204,11 +3271,9 @@ class AjfFbNodeProperties {
             }
             n = (/** @type {?} */ (n));
             /** @type {?} */
-            const visibility = n.node.visibility != null ?
-                n.node.visibility.condition : null;
+            const visibility = n.node.visibility != null ? n.node.visibility.condition : null;
             /** @type {?} */
-            const visibilityOpt = n.node.visibility != null ?
-                this._guessVisibilityOpt(n.node.visibility) : null;
+            const visibilityOpt = n.node.visibility != null ? this._guessVisibilityOpt(n.node.visibility) : null;
             /** @type {?} */
             let controls = {
                 name: [n.node.name, Validators.required],
@@ -3244,16 +3309,12 @@ class AjfFbNodeProperties {
                         forceValue = field.validation.forceValue.condition;
                     }
                     notEmpty = field.validation.notEmpty != null;
-                    validationConditions = (field.validation.conditions || [])
-                        .map((/**
+                    validationConditions = (field.validation.conditions || []).map((/**
                      * @param {?} c
                      * @return {?}
                      */
                     c => {
-                        return {
-                            condition: c.condition,
-                            errorMessage: c.errorMessage
-                        };
+                        return { condition: c.condition, errorMessage: c.errorMessage };
                     }));
                 }
                 /** @type {?} */
@@ -3262,16 +3323,12 @@ class AjfFbNodeProperties {
                 let warningConditions = [];
                 if (field.warning != null) {
                     notEmptyW = field.warning.notEmpty != null;
-                    warningConditions = (field.warning.conditions || [])
-                        .map((/**
+                    warningConditions = (field.warning.conditions || []).map((/**
                      * @param {?} w
                      * @return {?}
                      */
                     w => {
-                        return {
-                            condition: w.condition,
-                            warningMessage: w.warningMessage
-                        };
+                        return { condition: w.condition, warningMessage: w.warningMessage };
                     }));
                 }
                 /** @type {?} */
@@ -3310,12 +3367,12 @@ class AjfFbNodeProperties {
                         maxValue = (numField.validation.maxValue.condition || '').replace('$value <= ', '');
                     }
                     if (numField.validation.minDigits != null) {
-                        minDigits = (numField.validation.minDigits.condition || '')
-                            .replace('$value.toString().length >= ', '');
+                        minDigits = (numField.validation.minDigits.condition ||
+                            '').replace('$value.toString().length >= ', '');
                     }
                     if (numField.validation.maxDigits != null) {
-                        maxDigits = (numField.validation.maxDigits.condition || '')
-                            .replace('$value.toString().length <= ', '');
+                        maxDigits = (numField.validation.maxDigits.condition ||
+                            '').replace('$value.toString().length <= ', '');
                     }
                 }
                 controls.minValue = minValue;
@@ -3329,15 +3386,15 @@ class AjfFbNodeProperties {
                 /** @type {?} */
                 const fieldWithChoices = (/** @type {?} */ (n.node));
                 /** @type {?} */
-                let triggerConditions = (fieldWithChoices.triggerConditions || [])
-                    .map((/**
+                let triggerConditions = (fieldWithChoices.triggerConditions || []).map((/**
                  * @param {?} c
                  * @return {?}
                  */
                 (c) => c.condition));
                 controls.choicesOriginRef = ((/** @type {?} */ (fieldWithChoices))).choicesOriginRef;
                 controls.choicesFilter = fieldWithChoices.choicesFilter != null ?
-                    fieldWithChoices.choicesFilter.formula : null;
+                    fieldWithChoices.choicesFilter.formula :
+                    null;
                 controls.forceExpanded = fieldWithChoices.forceExpanded;
                 controls.forceNarrow = fieldWithChoices.forceNarrow;
                 controls.triggerConditions = triggerConditions;
@@ -3467,39 +3524,39 @@ class AjfFbNodeProperties {
      * @return {?}
      */
     _initTriggerConditionEdit() {
-        this._editTriggerConditionSub = ((/** @type {?} */ (this._editTriggerConditionEvt)))
-            .pipe(withLatestFrom(this._propertiesForm))
-            .subscribe((/**
-         * @param {?} r
-         * @return {?}
-         */
-        (r) => {
-            this._destroyConditionDialog();
-            /** @type {?} */
-            const vcIdx = r[0];
-            /** @type {?} */
-            const fg = r[1];
-            if (vcIdx < 0 || vcIdx >= this._triggerConditions.length || fg == null) {
-                return;
-            }
-            this._editConditionDialog = this._dialog
-                .open(AjfFbConditionEditorDialog);
-            /** @type {?} */
-            const cmp = this._editConditionDialog.componentInstance;
-            cmp.condition = this._triggerConditions[vcIdx];
-            this._editConditionDialogSub = this._editConditionDialog.afterClosed()
+        this._editTriggerConditionSub =
+            ((/** @type {?} */ (this._editTriggerConditionEvt)))
+                .pipe(withLatestFrom(this._propertiesForm))
                 .subscribe((/**
-             * @param {?} cond
+             * @param {?} r
              * @return {?}
              */
-            (cond) => {
-                if (cond !== void 0) {
-                    this._triggerConditions[vcIdx] = cond;
+            (r) => {
+                this._destroyConditionDialog();
+                /** @type {?} */
+                const vcIdx = r[0];
+                /** @type {?} */
+                const fg = r[1];
+                if (vcIdx < 0 || vcIdx >= this._triggerConditions.length || fg == null) {
+                    return;
                 }
-                this._editConditionDialogSub.unsubscribe();
-                this._editConditionDialogSub = Subscription.EMPTY;
+                this._editConditionDialog = this._dialog.open(AjfFbConditionEditorDialog);
+                /** @type {?} */
+                const cmp = this._editConditionDialog.componentInstance;
+                cmp.condition = this._triggerConditions[vcIdx];
+                this._editConditionDialogSub =
+                    this._editConditionDialog.afterClosed().subscribe((/**
+                     * @param {?} cond
+                     * @return {?}
+                     */
+                    (cond) => {
+                        if (cond !== void 0) {
+                            this._triggerConditions[vcIdx] = cond;
+                        }
+                        this._editConditionDialogSub.unsubscribe();
+                        this._editConditionDialogSub = Subscription.EMPTY;
+                    }));
             }));
-        }));
     }
     /**
      * @private
@@ -3561,42 +3618,43 @@ class AjfFbNodeProperties {
      * @return {?}
      */
     _initWarningConditionEdit() {
-        this._editWarningConditionSub = ((/** @type {?} */ (this._editWarningConditionEvt)))
-            .pipe(withLatestFrom(this._propertiesForm))
-            .subscribe((/**
-         * @param {?} r
-         * @return {?}
-         */
-        (r) => {
-            this._destroyWarningConditionDialog();
-            /** @type {?} */
-            const vcIdx = r[0];
-            /** @type {?} */
-            const fg = r[1];
-            if (vcIdx < 0 || vcIdx >= this._warningConditions.length || fg == null) {
-                return;
-            }
-            this._editWarningConditionDialog = this._dialog
-                .open(AjfFbWarningConditionEditorDialog);
-            /** @type {?} */
-            const cmp = this._editWarningConditionDialog.componentInstance;
-            /** @type {?} */
-            const w = this._warningConditions[vcIdx];
-            cmp.condition = w.condition;
-            cmp.warningMessage = w.warningMessage;
-            this._editWarningConditionDialogSub = this._editWarningConditionDialog.afterClosed()
+        this._editWarningConditionSub =
+            ((/** @type {?} */ (this._editWarningConditionEvt)))
+                .pipe(withLatestFrom(this._propertiesForm))
                 .subscribe((/**
-             * @param {?} cond
+             * @param {?} r
              * @return {?}
              */
-            (cond) => {
-                if (cond !== void 0) {
-                    this._warningConditions[vcIdx] = cond;
+            (r) => {
+                this._destroyWarningConditionDialog();
+                /** @type {?} */
+                const vcIdx = r[0];
+                /** @type {?} */
+                const fg = r[1];
+                if (vcIdx < 0 || vcIdx >= this._warningConditions.length || fg == null) {
+                    return;
                 }
-                this._editWarningConditionDialogSub.unsubscribe();
-                this._editWarningConditionDialogSub = Subscription.EMPTY;
+                this._editWarningConditionDialog =
+                    this._dialog.open(AjfFbWarningConditionEditorDialog);
+                /** @type {?} */
+                const cmp = this._editWarningConditionDialog.componentInstance;
+                /** @type {?} */
+                const w = this._warningConditions[vcIdx];
+                cmp.condition = w.condition;
+                cmp.warningMessage = w.warningMessage;
+                this._editWarningConditionDialogSub =
+                    this._editWarningConditionDialog.afterClosed().subscribe((/**
+                     * @param {?} cond
+                     * @return {?}
+                     */
+                    (cond) => {
+                        if (cond !== void 0) {
+                            this._warningConditions[vcIdx] = cond;
+                        }
+                        this._editWarningConditionDialogSub.unsubscribe();
+                        this._editWarningConditionDialogSub = Subscription.EMPTY;
+                    }));
             }));
-        }));
     }
     /**
      * @private
@@ -3658,296 +3716,305 @@ class AjfFbNodeProperties {
      * @return {?}
      */
     _initValidationConditionEdit() {
-        this._editValidationConditionSub = ((/** @type {?} */ (this._editValidationConditionEvt)))
-            .pipe(withLatestFrom(this._propertiesForm))
-            .subscribe((/**
-         * @param {?} r
-         * @return {?}
-         */
-        (r) => {
-            this._destroyValidationConditionDialog();
-            /** @type {?} */
-            const vcIdx = r[0];
-            /** @type {?} */
-            const fg = r[1];
-            if (vcIdx < 0 || vcIdx >= this._validationConditions.length || fg == null) {
-                return;
-            }
-            this._editValidationConditionDialog = this._dialog
-                .open(AjfFbValidationConditionEditorDialog);
-            /** @type {?} */
-            const cmp = this._editValidationConditionDialog.componentInstance;
-            /** @type {?} */
-            const v = this._validationConditions[vcIdx];
-            cmp.condition = v.condition;
-            cmp.errorMessage = v.errorMessage;
-            this._editValidationConditionDialogSub = this._editValidationConditionDialog.afterClosed()
+        this._editValidationConditionSub =
+            ((/** @type {?} */ (this._editValidationConditionEvt)))
+                .pipe(withLatestFrom(this._propertiesForm))
                 .subscribe((/**
-             * @param {?} cond
+             * @param {?} r
              * @return {?}
              */
-            (cond) => {
-                if (cond !== void 0) {
-                    this._validationConditions[vcIdx] = cond;
+            (r) => {
+                this._destroyValidationConditionDialog();
+                /** @type {?} */
+                const vcIdx = r[0];
+                /** @type {?} */
+                const fg = r[1];
+                if (vcIdx < 0 || vcIdx >= this._validationConditions.length || fg == null) {
+                    return;
                 }
-                this._editValidationConditionDialogSub.unsubscribe();
-                this._editValidationConditionDialogSub = Subscription.EMPTY;
+                this._editValidationConditionDialog =
+                    this._dialog.open(AjfFbValidationConditionEditorDialog);
+                /** @type {?} */
+                const cmp = this._editValidationConditionDialog.componentInstance;
+                /** @type {?} */
+                const v = this._validationConditions[vcIdx];
+                cmp.condition = v.condition;
+                cmp.errorMessage = v.errorMessage;
+                this._editValidationConditionDialogSub =
+                    this._editValidationConditionDialog.afterClosed().subscribe((/**
+                     * @param {?} cond
+                     * @return {?}
+                     */
+                    (cond) => {
+                        if (cond !== void 0) {
+                            this._validationConditions[vcIdx] = cond;
+                        }
+                        this._editValidationConditionDialogSub.unsubscribe();
+                        this._editValidationConditionDialogSub = Subscription.EMPTY;
+                    }));
             }));
-        }));
     }
     /**
      * @private
      * @return {?}
      */
     _initForceValueEdit() {
-        this._editForceValueSub = ((/** @type {?} */ (this._editForceValueEvt)))
-            .pipe(withLatestFrom(this._propertiesForm))
-            .subscribe((/**
-         * @param {?} r
-         * @return {?}
-         */
-        (r) => {
-            this._destroyConditionDialog();
-            /** @type {?} */
-            const fg = r[1];
-            if (fg == null) {
-                return;
-            }
-            /** @type {?} */
-            const ctrl = fg.controls['forceValue'];
-            this._editConditionDialog = this._dialog.open(AjfFbConditionEditorDialog);
-            this._editConditionDialog.componentInstance.condition = ctrl.value;
-            this._editConditionDialogSub = this._editConditionDialog.afterClosed()
+        this._editForceValueSub =
+            ((/** @type {?} */ (this._editForceValueEvt)))
+                .pipe(withLatestFrom(this._propertiesForm))
                 .subscribe((/**
-             * @param {?} cond
+             * @param {?} r
              * @return {?}
              */
-            (cond) => {
-                if (cond !== void 0) {
-                    ctrl.setValue(cond);
+            (r) => {
+                this._destroyConditionDialog();
+                /** @type {?} */
+                const fg = r[1];
+                if (fg == null) {
+                    return;
                 }
-                this._editConditionDialogSub.unsubscribe();
-                this._editConditionDialogSub = Subscription.EMPTY;
+                /** @type {?} */
+                const ctrl = fg.controls['forceValue'];
+                this._editConditionDialog = this._dialog.open(AjfFbConditionEditorDialog);
+                this._editConditionDialog.componentInstance.condition = ctrl.value;
+                this._editConditionDialogSub =
+                    this._editConditionDialog.afterClosed().subscribe((/**
+                     * @param {?} cond
+                     * @return {?}
+                     */
+                    (cond) => {
+                        if (cond !== void 0) {
+                            ctrl.setValue(cond);
+                        }
+                        this._editConditionDialogSub.unsubscribe();
+                        this._editConditionDialogSub = Subscription.EMPTY;
+                    }));
             }));
-        }));
     }
     /**
      * @private
      * @return {?}
      */
     _initNextSlideConditionEdit() {
-        this._editNextSlideConditionSub = ((/** @type {?} */ (this._editNextSlideConditionEvt)))
-            .pipe(withLatestFrom(this._propertiesForm))
-            .subscribe((/**
-         * @param {?} r
-         * @return {?}
-         */
-        (r) => {
-            this._destroyConditionDialog();
-            /** @type {?} */
-            const fg = r[1];
-            if (fg == null) {
-                return;
-            }
-            /** @type {?} */
-            const ctrl = fg.controls['nextSlideCondition'];
-            this._editConditionDialog = this._dialog.open(AjfFbConditionEditorDialog);
-            this._editConditionDialog.componentInstance.condition = ctrl.value;
-            this._editConditionDialogSub = this._editConditionDialog.afterClosed()
+        this._editNextSlideConditionSub =
+            ((/** @type {?} */ (this._editNextSlideConditionEvt)))
+                .pipe(withLatestFrom(this._propertiesForm))
                 .subscribe((/**
-             * @param {?} cond
+             * @param {?} r
              * @return {?}
              */
-            (cond) => {
-                if (cond !== void 0) {
-                    ctrl.setValue(cond);
+            (r) => {
+                this._destroyConditionDialog();
+                /** @type {?} */
+                const fg = r[1];
+                if (fg == null) {
+                    return;
                 }
-                this._editConditionDialogSub.unsubscribe();
-                this._editConditionDialogSub = Subscription.EMPTY;
+                /** @type {?} */
+                const ctrl = fg.controls['nextSlideCondition'];
+                this._editConditionDialog = this._dialog.open(AjfFbConditionEditorDialog);
+                this._editConditionDialog.componentInstance.condition = ctrl.value;
+                this._editConditionDialogSub =
+                    this._editConditionDialog.afterClosed().subscribe((/**
+                     * @param {?} cond
+                     * @return {?}
+                     */
+                    (cond) => {
+                        if (cond !== void 0) {
+                            ctrl.setValue(cond);
+                        }
+                        this._editConditionDialogSub.unsubscribe();
+                        this._editConditionDialogSub = Subscription.EMPTY;
+                    }));
             }));
-        }));
     }
     /**
      * @private
      * @return {?}
      */
     _initFormulaEdit() {
-        this._editFormulaSub = ((/** @type {?} */ (this._editFormulaEvt)))
-            .pipe(withLatestFrom(this._propertiesForm))
-            .subscribe((/**
-         * @param {?} r
-         * @return {?}
-         */
-        (r) => {
-            this._destroyConditionDialog();
-            /** @type {?} */
-            const fg = r[1];
-            if (fg == null) {
-                return;
-            }
-            /** @type {?} */
-            const ctrl = fg.controls['formula'];
-            this._editConditionDialog = this._dialog.open(AjfFbConditionEditorDialog);
-            this._editConditionDialog.componentInstance.condition = ctrl.value;
-            this._editConditionDialogSub = this._editConditionDialog.afterClosed()
+        this._editFormulaSub =
+            ((/** @type {?} */ (this._editFormulaEvt)))
+                .pipe(withLatestFrom(this._propertiesForm))
                 .subscribe((/**
-             * @param {?} cond
+             * @param {?} r
              * @return {?}
              */
-            (cond) => {
-                if (cond !== void 0) {
-                    ctrl.setValue(cond);
+            (r) => {
+                this._destroyConditionDialog();
+                /** @type {?} */
+                const fg = r[1];
+                if (fg == null) {
+                    return;
                 }
-                this._editConditionDialogSub.unsubscribe();
-                this._editConditionDialogSub = Subscription.EMPTY;
+                /** @type {?} */
+                const ctrl = fg.controls['formula'];
+                this._editConditionDialog = this._dialog.open(AjfFbConditionEditorDialog);
+                this._editConditionDialog.componentInstance.condition = ctrl.value;
+                this._editConditionDialogSub =
+                    this._editConditionDialog.afterClosed().subscribe((/**
+                     * @param {?} cond
+                     * @return {?}
+                     */
+                    (cond) => {
+                        if (cond !== void 0) {
+                            ctrl.setValue(cond);
+                        }
+                        this._editConditionDialogSub.unsubscribe();
+                        this._editConditionDialogSub = Subscription.EMPTY;
+                    }));
             }));
-        }));
     }
     /**
      * @private
      * @return {?}
      */
     _initFormulaRepsEdit() {
-        this._editFormulaRepsSub = ((/** @type {?} */ (this._editFormulaRepsEvt)))
-            .pipe(withLatestFrom(this._propertiesForm))
-            .subscribe((/**
-         * @param {?} r
-         * @return {?}
-         */
-        (r) => {
-            this._destroyConditionDialog();
-            /** @type {?} */
-            const fg = r[1];
-            if (fg == null) {
-                return;
-            }
-            /** @type {?} */
-            const ctrl = fg.controls['formulaReps'];
-            this._editConditionDialog = this._dialog.open(AjfFbConditionEditorDialog);
-            this._editConditionDialog.componentInstance.condition = ctrl.value;
-            this._editConditionDialogSub = this._editConditionDialog.afterClosed()
+        this._editFormulaRepsSub =
+            ((/** @type {?} */ (this._editFormulaRepsEvt)))
+                .pipe(withLatestFrom(this._propertiesForm))
                 .subscribe((/**
-             * @param {?} cond
+             * @param {?} r
              * @return {?}
              */
-            (cond) => {
-                if (cond !== void 0) {
-                    ctrl.setValue(cond);
+            (r) => {
+                this._destroyConditionDialog();
+                /** @type {?} */
+                const fg = r[1];
+                if (fg == null) {
+                    return;
                 }
-                this._editConditionDialogSub.unsubscribe();
-                this._editConditionDialogSub = Subscription.EMPTY;
+                /** @type {?} */
+                const ctrl = fg.controls['formulaReps'];
+                this._editConditionDialog = this._dialog.open(AjfFbConditionEditorDialog);
+                this._editConditionDialog.componentInstance.condition = ctrl.value;
+                this._editConditionDialogSub =
+                    this._editConditionDialog.afterClosed().subscribe((/**
+                     * @param {?} cond
+                     * @return {?}
+                     */
+                    (cond) => {
+                        if (cond !== void 0) {
+                            ctrl.setValue(cond);
+                        }
+                        this._editConditionDialogSub.unsubscribe();
+                        this._editConditionDialogSub = Subscription.EMPTY;
+                    }));
             }));
-        }));
     }
     /**
      * @private
      * @return {?}
      */
     _initChoicesFilterEdit() {
-        this._editChoicesFilterSub = ((/** @type {?} */ (this._editChoicesFilterEvt)))
-            .pipe(withLatestFrom(this._propertiesForm))
-            .subscribe((/**
-         * @param {?} r
-         * @return {?}
-         */
-        (r) => {
-            this._destroyConditionDialog();
-            /** @type {?} */
-            const fg = r[1];
-            if (fg == null) {
-                return;
-            }
-            /** @type {?} */
-            const ctrl = fg.controls['choicesFilter'];
-            this._editConditionDialog = this._dialog.open(AjfFbConditionEditorDialog);
-            this._editConditionDialog.componentInstance.condition = ctrl.value;
-            this._editConditionDialogSub = this._editConditionDialog.afterClosed()
+        this._editChoicesFilterSub =
+            ((/** @type {?} */ (this._editChoicesFilterEvt)))
+                .pipe(withLatestFrom(this._propertiesForm))
                 .subscribe((/**
-             * @param {?} cond
+             * @param {?} r
              * @return {?}
              */
-            (cond) => {
-                if (cond !== void 0) {
-                    ctrl.setValue(cond);
+            (r) => {
+                this._destroyConditionDialog();
+                /** @type {?} */
+                const fg = r[1];
+                if (fg == null) {
+                    return;
                 }
-                this._editConditionDialogSub.unsubscribe();
-                this._editConditionDialogSub = Subscription.EMPTY;
+                /** @type {?} */
+                const ctrl = fg.controls['choicesFilter'];
+                this._editConditionDialog = this._dialog.open(AjfFbConditionEditorDialog);
+                this._editConditionDialog.componentInstance.condition = ctrl.value;
+                this._editConditionDialogSub =
+                    this._editConditionDialog.afterClosed().subscribe((/**
+                     * @param {?} cond
+                     * @return {?}
+                     */
+                    (cond) => {
+                        if (cond !== void 0) {
+                            ctrl.setValue(cond);
+                        }
+                        this._editConditionDialogSub.unsubscribe();
+                        this._editConditionDialogSub = Subscription.EMPTY;
+                    }));
             }));
-        }));
     }
     /**
      * @private
      * @return {?}
      */
     _initConditionalBranchEdit() {
-        this._editConditionalBranchSub = ((/** @type {?} */ (this._editConditionalBranchEvt)))
-            .pipe(withLatestFrom(this._propertiesForm))
-            .subscribe((/**
-         * @param {?} r
-         * @return {?}
-         */
-        (r) => {
-            this._destroyConditionDialog();
-            /** @type {?} */
-            const cbIdx = r[0];
-            /** @type {?} */
-            const fg = r[1];
-            if (cbIdx < 0 || cbIdx >= this._conditionalBranches.length || fg == null) {
-                return;
-            }
-            this._editConditionDialog = this._dialog.open(AjfFbConditionEditorDialog);
-            this._editConditionDialog.componentInstance.condition = this._conditionalBranches[cbIdx];
-            this._editConditionDialogSub = this._editConditionDialog.afterClosed()
+        this._editConditionalBranchSub =
+            ((/** @type {?} */ (this._editConditionalBranchEvt)))
+                .pipe(withLatestFrom(this._propertiesForm))
                 .subscribe((/**
-             * @param {?} cond
+             * @param {?} r
              * @return {?}
              */
-            (cond) => {
-                if (cond !== void 0) {
-                    this._conditionalBranches[cbIdx] = cond;
+            (r) => {
+                this._destroyConditionDialog();
+                /** @type {?} */
+                const cbIdx = r[0];
+                /** @type {?} */
+                const fg = r[1];
+                if (cbIdx < 0 || cbIdx >= this._conditionalBranches.length || fg == null) {
+                    return;
                 }
-                this._editConditionDialogSub.unsubscribe();
-                this._editConditionDialogSub = Subscription.EMPTY;
+                this._editConditionDialog = this._dialog.open(AjfFbConditionEditorDialog);
+                this._editConditionDialog.componentInstance.condition =
+                    this._conditionalBranches[cbIdx];
+                this._editConditionDialogSub =
+                    this._editConditionDialog.afterClosed().subscribe((/**
+                     * @param {?} cond
+                     * @return {?}
+                     */
+                    (cond) => {
+                        if (cond !== void 0) {
+                            this._conditionalBranches[cbIdx] = cond;
+                        }
+                        this._editConditionDialogSub.unsubscribe();
+                        this._editConditionDialogSub = Subscription.EMPTY;
+                    }));
             }));
-        }));
     }
     /**
      * @private
      * @return {?}
      */
     _initVisibilityEdit() {
-        this._editVisibilitySub = ((/** @type {?} */ (this._editVisibilityEvt)))
-            .pipe(withLatestFrom(this._propertiesForm))
-            .subscribe((/**
-         * @param {?} r
-         * @return {?}
-         */
-        (r) => {
-            this._destroyConditionDialog();
-            /** @type {?} */
-            const fg = r[1];
-            if (fg == null) {
-                return;
-            }
-            /** @type {?} */
-            const ctrl = fg.controls['visibility'];
-            /** @type {?} */
-            const condition = ctrl.value;
-            this._editConditionDialog = this._dialog.open(AjfFbConditionEditorDialog);
-            this._editConditionDialog.componentInstance.condition = condition;
-            this._editConditionDialogSub = this._editConditionDialog.afterClosed()
+        this._editVisibilitySub =
+            ((/** @type {?} */ (this._editVisibilityEvt)))
+                .pipe(withLatestFrom(this._propertiesForm))
                 .subscribe((/**
-             * @param {?} cond
+             * @param {?} r
              * @return {?}
              */
-            (cond) => {
-                if (cond !== void 0) {
-                    ctrl.setValue(cond);
+            (r) => {
+                this._destroyConditionDialog();
+                /** @type {?} */
+                const fg = r[1];
+                if (fg == null) {
+                    return;
                 }
-                this._editConditionDialogSub.unsubscribe();
-                this._editConditionDialogSub = Subscription.EMPTY;
+                /** @type {?} */
+                const ctrl = fg.controls['visibility'];
+                /** @type {?} */
+                const condition = ctrl.value;
+                this._editConditionDialog = this._dialog.open(AjfFbConditionEditorDialog);
+                this._editConditionDialog.componentInstance.condition = condition;
+                this._editConditionDialogSub =
+                    this._editConditionDialog.afterClosed().subscribe((/**
+                     * @param {?} cond
+                     * @return {?}
+                     */
+                    (cond) => {
+                        if (cond !== void 0) {
+                            ctrl.setValue(cond);
+                        }
+                        this._editConditionDialogSub.unsubscribe();
+                        this._editConditionDialogSub = Subscription.EMPTY;
+                    }));
             }));
-        }));
     }
     /**
      * @private
@@ -3961,7 +4028,8 @@ class AjfFbNodeProperties {
          * @param {?} v2
          * @return {?}
          */
-        (v1, v2) => JSON.stringify(v1.triggerConditions) === JSON.stringify(v2.triggerConditions))))
+        (v1, v2) => JSON.stringify(v1.triggerConditions) ===
+            JSON.stringify(v2.triggerConditions))))
             .subscribe((/**
          * @param {?} v
          * @return {?}
@@ -3982,7 +4050,8 @@ class AjfFbNodeProperties {
          * @param {?} v2
          * @return {?}
          */
-        (v1, v2) => JSON.stringify(v1.warningConditions) === JSON.stringify(v2.warningConditions))))
+        (v1, v2) => JSON.stringify(v1.warningConditions) ===
+            JSON.stringify(v2.warningConditions))))
             .subscribe((/**
          * @param {?} v
          * @return {?}
@@ -4003,7 +4072,8 @@ class AjfFbNodeProperties {
          * @param {?} v2
          * @return {?}
          */
-        (v1, v2) => JSON.stringify(v1.validationConditions) === JSON.stringify(v2.validationConditions))))
+        (v1, v2) => JSON.stringify(v1.validationConditions) ===
+            JSON.stringify(v2.validationConditions))))
             .subscribe((/**
          * @param {?} v
          * @return {?}
@@ -4018,20 +4088,20 @@ class AjfFbNodeProperties {
      * @return {?}
      */
     _handleForceValueChange(fg) {
-        this._forceValueSub = fg.valueChanges
-            .pipe(distinctUntilChanged((/**
-         * @param {?} v1
-         * @param {?} v2
-         * @return {?}
-         */
-        (v1, v2) => v1.forceValue === v2.forceValue)))
-            .subscribe((/**
-         * @param {?} v
-         * @return {?}
-         */
-        (v) => {
-            this._curForceValue = v.forceValue;
-        }));
+        this._forceValueSub =
+            fg.valueChanges.pipe(distinctUntilChanged((/**
+             * @param {?} v1
+             * @param {?} v2
+             * @return {?}
+             */
+            (v1, v2) => v1.forceValue === v2.forceValue)))
+                .subscribe((/**
+             * @param {?} v
+             * @return {?}
+             */
+            (v) => {
+                this._curForceValue = v.forceValue;
+            }));
     }
     /**
      * @private
@@ -4039,20 +4109,21 @@ class AjfFbNodeProperties {
      * @return {?}
      */
     _handleNextSlideConditionChange(fg) {
-        this._formulaSub = fg.valueChanges
-            .pipe(distinctUntilChanged((/**
-         * @param {?} v1
-         * @param {?} v2
-         * @return {?}
-         */
-        (v1, v2) => v1.nextSlideCondition === v2.nextSlideCondition)))
-            .subscribe((/**
-         * @param {?} v
-         * @return {?}
-         */
-        (v) => {
-            this._nextSlideCondition = v.nextSlideCondition;
-        }));
+        this._formulaSub =
+            fg.valueChanges
+                .pipe(distinctUntilChanged((/**
+             * @param {?} v1
+             * @param {?} v2
+             * @return {?}
+             */
+            (v1, v2) => v1.nextSlideCondition === v2.nextSlideCondition)))
+                .subscribe((/**
+             * @param {?} v
+             * @return {?}
+             */
+            (v) => {
+                this._nextSlideCondition = v.nextSlideCondition;
+            }));
     }
     /**
      * @private
@@ -4060,20 +4131,20 @@ class AjfFbNodeProperties {
      * @return {?}
      */
     _handleFormulaChange(fg) {
-        this._formulaSub = fg.valueChanges
-            .pipe(distinctUntilChanged((/**
-         * @param {?} v1
-         * @param {?} v2
-         * @return {?}
-         */
-        (v1, v2) => v1.formula === v2.formula)))
-            .subscribe((/**
-         * @param {?} v
-         * @return {?}
-         */
-        (v) => {
-            this._curFormula = v.formula;
-        }));
+        this._formulaSub =
+            fg.valueChanges.pipe(distinctUntilChanged((/**
+             * @param {?} v1
+             * @param {?} v2
+             * @return {?}
+             */
+            (v1, v2) => v1.formula === v2.formula)))
+                .subscribe((/**
+             * @param {?} v
+             * @return {?}
+             */
+            (v) => {
+                this._curFormula = v.formula;
+            }));
     }
     /**
      * @private
@@ -4081,20 +4152,20 @@ class AjfFbNodeProperties {
      * @return {?}
      */
     _handleFormulaRepsChange(fg) {
-        this._formulaRepsSub = fg.valueChanges
-            .pipe(distinctUntilChanged((/**
-         * @param {?} v1
-         * @param {?} v2
-         * @return {?}
-         */
-        (v1, v2) => v1.formulaReps === v2.formulaReps)))
-            .subscribe((/**
-         * @param {?} v
-         * @return {?}
-         */
-        (v) => {
-            this._curFormulaReps = v.formulaReps;
-        }));
+        this._formulaRepsSub =
+            fg.valueChanges.pipe(distinctUntilChanged((/**
+             * @param {?} v1
+             * @param {?} v2
+             * @return {?}
+             */
+            (v1, v2) => v1.formulaReps === v2.formulaReps)))
+                .subscribe((/**
+             * @param {?} v
+             * @return {?}
+             */
+            (v) => {
+                this._curFormulaReps = v.formulaReps;
+            }));
     }
     /**
      * @private
@@ -4102,20 +4173,21 @@ class AjfFbNodeProperties {
      * @return {?}
      */
     _handleChoicesFilterChange(fg) {
-        this._choicesFilterSub = fg.valueChanges
-            .pipe(distinctUntilChanged((/**
-         * @param {?} v1
-         * @param {?} v2
-         * @return {?}
-         */
-        (v1, v2) => v1.choicesFilter === v2.choicesFilter)))
-            .subscribe((/**
-         * @param {?} v
-         * @return {?}
-         */
-        (v) => {
-            this._curChoicesFilter = v.choicesFilter;
-        }));
+        this._choicesFilterSub =
+            fg.valueChanges
+                .pipe(distinctUntilChanged((/**
+             * @param {?} v1
+             * @param {?} v2
+             * @return {?}
+             */
+            (v1, v2) => v1.choicesFilter === v2.choicesFilter)))
+                .subscribe((/**
+             * @param {?} v
+             * @return {?}
+             */
+            (v) => {
+                this._curChoicesFilter = v.choicesFilter;
+            }));
     }
     /**
      * @private
@@ -4123,34 +4195,35 @@ class AjfFbNodeProperties {
      * @return {?}
      */
     _handleConditionalBranchesChange(fg) {
-        this._conditionalBranchesSub = fg.valueChanges
-            .pipe(distinctUntilChanged((/**
-         * @param {?} v1
-         * @param {?} v2
-         * @return {?}
-         */
-        (v1, v2) => v1.conditionalBranchesNum === v2.conditionalBranchesNum)))
-            .subscribe((/**
-         * @param {?} v
-         * @return {?}
-         */
-        (v) => {
-            /** @type {?} */
-            const cbNum = v.conditionalBranchesNum;
-            /** @type {?} */
-            const curCbNum = this._conditionalBranches.length;
-            if (curCbNum < cbNum) {
+        this._conditionalBranchesSub =
+            fg.valueChanges
+                .pipe(distinctUntilChanged((/**
+             * @param {?} v1
+             * @param {?} v2
+             * @return {?}
+             */
+            (v1, v2) => v1.conditionalBranchesNum === v2.conditionalBranchesNum)))
+                .subscribe((/**
+             * @param {?} v
+             * @return {?}
+             */
+            (v) => {
                 /** @type {?} */
-                let newCbs = [];
-                for (let i = curCbNum; i < cbNum; i++) {
-                    newCbs.push(alwaysCondition().condition);
+                const cbNum = v.conditionalBranchesNum;
+                /** @type {?} */
+                const curCbNum = this._conditionalBranches.length;
+                if (curCbNum < cbNum) {
+                    /** @type {?} */
+                    let newCbs = [];
+                    for (let i = curCbNum; i < cbNum; i++) {
+                        newCbs.push(alwaysCondition().condition);
+                    }
+                    this._conditionalBranches = this._conditionalBranches.concat(newCbs);
                 }
-                this._conditionalBranches = this._conditionalBranches.concat(newCbs);
-            }
-            else if (curCbNum > cbNum) {
-                this._conditionalBranches.splice(0, curCbNum - cbNum);
-            }
-        }));
+                else if (curCbNum > cbNum) {
+                    this._conditionalBranches.splice(0, curCbNum - cbNum);
+                }
+            }));
     }
     /**
      * @private
@@ -4158,35 +4231,36 @@ class AjfFbNodeProperties {
      * @return {?}
      */
     _handleVisibilityChange(fg) {
-        this._visibilitySub = fg.valueChanges
-            .pipe(distinctUntilChanged((/**
-         * @param {?} v1
-         * @param {?} v2
-         * @return {?}
-         */
-        (v1, v2) => v1.visibilityOpt === v2.visibilityOpt)))
-            .subscribe((/**
-         * @param {?} v
-         * @return {?}
-         */
-        (v) => {
-            /** @type {?} */
-            const visibilityOpt = v.visibilityOpt;
-            /** @type {?} */
-            let newCondition;
-            switch (visibilityOpt) {
-                case 'always':
-                    newCondition = alwaysCondition().condition;
-                    break;
-                case 'never':
-                    newCondition = neverCondition().condition;
-                    break;
-                default:
-                    newCondition = null;
-            }
-            this._curVisibility = newCondition;
-            fg.controls['visibility'].setValue(newCondition);
-        }));
+        this._visibilitySub =
+            fg.valueChanges
+                .pipe(distinctUntilChanged((/**
+             * @param {?} v1
+             * @param {?} v2
+             * @return {?}
+             */
+            (v1, v2) => v1.visibilityOpt === v2.visibilityOpt)))
+                .subscribe((/**
+             * @param {?} v
+             * @return {?}
+             */
+            (v) => {
+                /** @type {?} */
+                const visibilityOpt = v.visibilityOpt;
+                /** @type {?} */
+                let newCondition;
+                switch (visibilityOpt) {
+                    case 'always':
+                        newCondition = alwaysCondition().condition;
+                        break;
+                    case 'never':
+                        newCondition = neverCondition().condition;
+                        break;
+                    default:
+                        newCondition = null;
+                }
+                this._curVisibility = newCondition;
+                fg.controls['visibility'].setValue(newCondition);
+            }));
     }
     /**
      * @private
@@ -4588,7 +4662,9 @@ class AjfFbNodeTypeEntry {
     /**
      * @return {?}
      */
-    get nodeType() { return this._nodeType; }
+    get nodeType() {
+        return this._nodeType;
+    }
     /**
      * @param {?} nodeType
      * @return {?}
@@ -4637,37 +4713,19 @@ class AjfFormBuilderModule {
 AjfFormBuilderModule.decorators = [
     { type: NgModule, args: [{
                 imports: [
-                    CommonModule,
-                    FormsModule,
-                    ReactiveFormsModule,
-                    DragDropModule,
-                    MatAutocompleteModule,
-                    MatButtonModule,
-                    MatCardModule,
-                    MatCheckboxModule,
-                    MatChipsModule,
-                    MatDialogModule,
-                    MatFormFieldModule,
-                    MatIconModule,
-                    MatInputModule,
-                    MatListModule,
-                    MatMenuModule,
-                    MatSelectModule,
-                    MatSidenavModule,
-                    MatSliderModule,
-                    MatTableModule,
-                    MatToolbarModule,
-                    MatTooltipModule,
-                    TranslateModule,
-                    AjfMonacoEditorModule,
-                    AjfNodeIconModule,
+                    AjfMonacoEditorModule, AjfNodeIconModule, CommonModule, DragDropModule,
+                    FormsModule, MatAutocompleteModule, MatButtonModule, MatCardModule,
+                    MatCheckboxModule, MatChipsModule, MatDialogModule, MatFormFieldModule,
+                    MatIconModule, MatInputModule, MatListModule, MatMenuModule,
+                    MatSelectModule, MatSidenavModule, MatSliderModule, MatTableModule,
+                    MatToolbarModule, MatTooltipModule, ReactiveFormsModule, TranslateModule,
                 ],
                 declarations: [
                     AjfFbBranchLine,
-                    AjfFbChoicesOriginEditorDialog,
                     AjfFbChoicesOriginEditor,
-                    AjfFbConditionEditorDialog,
+                    AjfFbChoicesOriginEditorDialog,
                     AjfFbConditionEditor,
+                    AjfFbConditionEditorDialog,
                     AjfFbNodeEntry,
                     AjfFbNodeProperties,
                     AjfFbNodeTypeEntry,
@@ -4680,8 +4738,8 @@ AjfFormBuilderModule.decorators = [
                     AjfFormBuilder,
                 ],
                 providers: [
-                    AjfFormBuilderService
-                ]
+                    AjfFormBuilderService,
+                ],
             },] }
 ];
 
@@ -4695,5 +4753,5 @@ AjfFormBuilderModule.decorators = [
  * Generated bundle index. Do not edit.
  */
 
-export { AjfFormBuilder, AjfFormBuilderModule, AjfFormBuilderService, flattenNodes, AjfFbBranchLine as ɵgc_ajf_src_material_form_builder_form_builder_a, AjfFbChoicesOriginEditorDialog as ɵgc_ajf_src_material_form_builder_form_builder_b, AjfFbChoicesOriginEditor as ɵgc_ajf_src_material_form_builder_form_builder_c, AjfFbConditionEditorDialog as ɵgc_ajf_src_material_form_builder_form_builder_d, AjfFbConditionEditor as ɵgc_ajf_src_material_form_builder_form_builder_e, AjfFbNodeEntry as ɵgc_ajf_src_material_form_builder_form_builder_f, AjfFbNodeProperties as ɵgc_ajf_src_material_form_builder_form_builder_g, AjfFbNodeTypeEntry as ɵgc_ajf_src_material_form_builder_form_builder_h, AjfFbStringIdentifierDialogComponent as ɵgc_ajf_src_material_form_builder_form_builder_i, AjfFbValidationConditionEditorDialog as ɵgc_ajf_src_material_form_builder_form_builder_j, AjfFbWarningConditionEditorDialog as ɵgc_ajf_src_material_form_builder_form_builder_k };
+export { AjfFormBuilder, AjfFormBuilderModule, AjfFormBuilderService, flattenNodes, AjfFbBranchLine as ɵgc_ajf_src_material_form_builder_form_builder_a, AjfFbChoicesOriginEditor as ɵgc_ajf_src_material_form_builder_form_builder_b, AjfFbChoicesOriginEditorDialog as ɵgc_ajf_src_material_form_builder_form_builder_c, AjfFbConditionEditor as ɵgc_ajf_src_material_form_builder_form_builder_d, AjfFbConditionEditorDialog as ɵgc_ajf_src_material_form_builder_form_builder_e, AjfFbNodeEntry as ɵgc_ajf_src_material_form_builder_form_builder_f, AjfFbNodeProperties as ɵgc_ajf_src_material_form_builder_form_builder_g, AjfFbNodeTypeEntry as ɵgc_ajf_src_material_form_builder_form_builder_h, AjfFbStringIdentifierDialogComponent as ɵgc_ajf_src_material_form_builder_form_builder_i, AjfFbValidationConditionEditorDialog as ɵgc_ajf_src_material_form_builder_form_builder_j, AjfFbWarningConditionEditorDialog as ɵgc_ajf_src_material_form_builder_form_builder_k };
 //# sourceMappingURL=form-builder.js.map

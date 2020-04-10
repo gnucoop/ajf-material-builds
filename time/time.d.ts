@@ -19,9 +19,9 @@
  * If not, see http://www.gnu.org/licenses/.
  *
  */
+import { AjfTime as Base } from '@ajf/core/time';
 import { OnDestroy } from '@angular/core';
 import { ControlValueAccessor } from '@angular/forms';
-import { AjfTime as Base } from '@ajf/core/time';
 export declare const AJF_TIME_CONTROL_VALUE_ACCESSOR: any;
 export declare class AjfTime extends Base implements ControlValueAccessor, OnDestroy {
     constructor();

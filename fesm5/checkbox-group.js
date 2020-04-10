@@ -82,18 +82,18 @@ var AjfCheckboxGroupModule = /** @class */ (function () {
     AjfCheckboxGroupModule.decorators = [
         { type: NgModule, args: [{
                     imports: [
+                        AjfCheckboxGroupModule$1,
                         CommonModule,
                         MatButtonModule,
                         MatIconModule,
-                        AjfCheckboxGroupModule$1
                     ],
                     declarations: [
-                        CheckboxGroupItem
+                        CheckboxGroupItem,
                     ],
                     exports: [
                         AjfCheckboxGroupModule$1,
-                        CheckboxGroupItem
-                    ]
+                        CheckboxGroupItem,
+                    ],
                 },] }
     ];
     return AjfCheckboxGroupModule;

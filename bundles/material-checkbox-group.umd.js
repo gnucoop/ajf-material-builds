@@ -268,18 +268,18 @@
         AjfCheckboxGroupModule.decorators = [
             { type: core.NgModule, args: [{
                         imports: [
+                            checkboxGroup.AjfCheckboxGroupModule,
                             common.CommonModule,
                             button.MatButtonModule,
                             icon.MatIconModule,
-                            checkboxGroup.AjfCheckboxGroupModule
                         ],
                         declarations: [
-                            CheckboxGroupItem
+                            CheckboxGroupItem,
                         ],
                         exports: [
                             checkboxGroup.AjfCheckboxGroupModule,
-                            CheckboxGroupItem
-                        ]
+                            CheckboxGroupItem,
+                        ],
                     },] }
         ];
         return AjfCheckboxGroupModule;

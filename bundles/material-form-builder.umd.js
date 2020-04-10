@@ -1,8 +1,8 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/common'), require('@angular/core'), require('@angular/forms'), require('@angular/cdk/drag-drop'), require('@angular/material/autocomplete'), require('@angular/material/button'), require('@angular/material/card'), require('@angular/material/checkbox'), require('@angular/material/chips'), require('@angular/material/dialog'), require('@angular/material/form-field'), require('@angular/material/icon'), require('@angular/material/input'), require('@angular/material/list'), require('@angular/material/menu'), require('@angular/material/select'), require('@angular/material/sidenav'), require('@angular/material/slider'), require('@angular/material/table'), require('@angular/material/toolbar'), require('@angular/material/tooltip'), require('@ngx-translate/core'), require('@ajf/material/monaco-editor'), require('@ajf/material/node-icon'), require('rxjs/operators'), require('@ajf/core/forms'), require('@angular/cdk/collections'), require('rxjs'), require('@ajf/core/models'), require('@ajf/core/utils'), require('@angular/cdk/keycodes')) :
-    typeof define === 'function' && define.amd ? define('@ajf/material/form-builder', ['exports', '@angular/common', '@angular/core', '@angular/forms', '@angular/cdk/drag-drop', '@angular/material/autocomplete', '@angular/material/button', '@angular/material/card', '@angular/material/checkbox', '@angular/material/chips', '@angular/material/dialog', '@angular/material/form-field', '@angular/material/icon', '@angular/material/input', '@angular/material/list', '@angular/material/menu', '@angular/material/select', '@angular/material/sidenav', '@angular/material/slider', '@angular/material/table', '@angular/material/toolbar', '@angular/material/tooltip', '@ngx-translate/core', '@ajf/material/monaco-editor', '@ajf/material/node-icon', 'rxjs/operators', '@ajf/core/forms', '@angular/cdk/collections', 'rxjs', '@ajf/core/models', '@ajf/core/utils', '@angular/cdk/keycodes'], factory) :
-    (global = global || self, factory((global.ajf = global.ajf || {}, global.ajf.material = global.ajf.material || {}, global.ajf.material.formBuilder = {}), global.ng.common, global.ng.core, global.ng.forms, global.ng.cdk.dragDrop, global.ng.material.autocomplete, global.ng.material.button, global.ng.material.card, global.ng.material.checkbox, global.ng.material.chips, global.ng.material.dialog, global.ng.material.formField, global.ng.material.icon, global.ng.material.input, global.ng.material.list, global.ng.material.menu, global.ng.material.select, global.ng.material.sidenav, global.ng.material.slider, global.ng.material.table, global.ng.material.toolbar, global.ng.material.tooltip, global.ngxTranslate.core, global.ng.material.monacoEditor, global.ng.material.nodeIcon, global.rxjs.operators, global.ng.core.forms, global.ng.cdk.collections, global.rxjs, global.ng.core.models, global.ng.core.utils, global.ng.cdk.keycodes));
-}(this, (function (exports, common, core, forms, dragDrop, autocomplete, button, card, checkbox, chips, dialog, formField, icon, input, list, menu, select, sidenav, slider, table, toolbar, tooltip, core$1, monacoEditor, nodeIcon, operators, forms$1, collections, rxjs, models, utils, keycodes) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@ajf/material/monaco-editor'), require('@ajf/material/node-icon'), require('@angular/cdk/drag-drop'), require('@angular/common'), require('@angular/core'), require('@angular/forms'), require('@angular/material/autocomplete'), require('@angular/material/button'), require('@angular/material/card'), require('@angular/material/checkbox'), require('@angular/material/chips'), require('@angular/material/dialog'), require('@angular/material/form-field'), require('@angular/material/icon'), require('@angular/material/input'), require('@angular/material/list'), require('@angular/material/menu'), require('@angular/material/select'), require('@angular/material/sidenav'), require('@angular/material/slider'), require('@angular/material/table'), require('@angular/material/toolbar'), require('@angular/material/tooltip'), require('@ngx-translate/core'), require('@ajf/core/forms'), require('@angular/cdk/collections'), require('rxjs'), require('rxjs/operators'), require('@ajf/core/models'), require('@ajf/core/utils'), require('@angular/cdk/keycodes')) :
+    typeof define === 'function' && define.amd ? define('@ajf/material/form-builder', ['exports', '@ajf/material/monaco-editor', '@ajf/material/node-icon', '@angular/cdk/drag-drop', '@angular/common', '@angular/core', '@angular/forms', '@angular/material/autocomplete', '@angular/material/button', '@angular/material/card', '@angular/material/checkbox', '@angular/material/chips', '@angular/material/dialog', '@angular/material/form-field', '@angular/material/icon', '@angular/material/input', '@angular/material/list', '@angular/material/menu', '@angular/material/select', '@angular/material/sidenav', '@angular/material/slider', '@angular/material/table', '@angular/material/toolbar', '@angular/material/tooltip', '@ngx-translate/core', '@ajf/core/forms', '@angular/cdk/collections', 'rxjs', 'rxjs/operators', '@ajf/core/models', '@ajf/core/utils', '@angular/cdk/keycodes'], factory) :
+    (global = global || self, factory((global.ajf = global.ajf || {}, global.ajf.material = global.ajf.material || {}, global.ajf.material.formBuilder = {}), global.ng.material.monacoEditor, global.ng.material.nodeIcon, global.ng.cdk.dragDrop, global.ng.common, global.ng.core, global.ng.forms, global.ng.material.autocomplete, global.ng.material.button, global.ng.material.card, global.ng.material.checkbox, global.ng.material.chips, global.ng.material.dialog, global.ng.material.formField, global.ng.material.icon, global.ng.material.input, global.ng.material.list, global.ng.material.menu, global.ng.material.select, global.ng.material.sidenav, global.ng.material.slider, global.ng.material.table, global.ng.material.toolbar, global.ng.material.tooltip, global.ngxTranslate.core, global.ng.core.forms, global.ng.cdk.collections, global.rxjs, global.rxjs.operators, global.ng.core.models, global.ng.core.utils, global.ng.cdk.keycodes));
+}(this, (function (exports, monacoEditor, nodeIcon, dragDrop, common, core, forms, autocomplete, button, card, checkbox, chips, dialog, formField, icon, input, list, menu, select, sidenav, slider, table, toolbar, tooltip, core$1, forms$1, collections, rxjs, operators, models, utils, keycodes) { 'use strict';
 
     /**
      * @license
@@ -345,7 +345,9 @@
             this._choicesArr = [];
         }
         Object.defineProperty(AjfFbChoicesOriginEditor.prototype, "displayedColumns", {
-            get: function () { return this._displayedColumns; },
+            get: function () {
+                return this._displayedColumns;
+            },
             enumerable: true,
             configurable: true
         });
@@ -365,12 +367,16 @@
             configurable: true
         });
         Object.defineProperty(AjfFbChoicesOriginEditor.prototype, "choices", {
-            get: function () { return this._choices; },
+            get: function () {
+                return this._choices;
+            },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(AjfFbChoicesOriginEditor.prototype, "choicesArr", {
-            get: function () { return this._choicesArr; },
+            get: function () {
+                return this._choicesArr;
+            },
             enumerable: true,
             configurable: true
         });
@@ -439,8 +445,7 @@
     }
     function buildFormBuilderNodesSubtree(nodes, parent, ignoreConditionalBranches) {
         if (ignoreConditionalBranches === void 0) { ignoreConditionalBranches = false; }
-        var entries = nodes
-            .filter(function (n) { return n.parent === parent.id; })
+        var entries = nodes.filter(function (n) { return n.parent === parent.id; })
             .sort(function (n1, n2) { return n1.parentNode - n2.parentNode; })
             .map(function (n) {
             var children = buildFormBuilderNodesSubtree(nodes, n);
@@ -457,10 +462,7 @@
             var entriesNum = entries.length;
             var cbs = parent.conditionalBranches.length;
             for (var i = entriesNum; i < cbs; i++) {
-                entries.push({
-                    parent: parent,
-                    parentNode: i
-                });
+                entries.push({ parent: parent, parentNode: i });
             }
         }
         return entries;
@@ -635,7 +637,9 @@
              * @readonly
              * @memberOf AjfFormBuilderService
              */
-            get: function () { return this._availableNodeTypes; },
+            get: function () {
+                return this._availableNodeTypes;
+            },
             enumerable: true,
             configurable: true
         });
@@ -646,7 +650,9 @@
              * @readonly
              * @memberOf AjfFormBuilderService
              */
-            get: function () { return this._formObs; },
+            get: function () {
+                return this._formObs;
+            },
             enumerable: true,
             configurable: true
         });
@@ -672,7 +678,9 @@
             configurable: true
         });
         Object.defineProperty(AjfFormBuilderService.prototype, "nodes", {
-            get: function () { return this._nodes; },
+            get: function () {
+                return this._nodes;
+            },
             enumerable: true,
             configurable: true
         });
@@ -684,12 +692,16 @@
             configurable: true
         });
         Object.defineProperty(AjfFormBuilderService.prototype, "flatFields", {
-            get: function () { return this._flatFields; },
+            get: function () {
+                return this._flatFields;
+            },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(AjfFormBuilderService.prototype, "nodeEntriesTree", {
-            get: function () { return this._nodeEntriesTree; },
+            get: function () {
+                return this._nodeEntriesTree;
+            },
             enumerable: true,
             configurable: true
         });
@@ -701,7 +713,9 @@
             configurable: true
         });
         Object.defineProperty(AjfFormBuilderService.prototype, "editedCondition", {
-            get: function () { return this._editedConditionObs; },
+            get: function () {
+                return this._editedConditionObs;
+            },
             enumerable: true,
             configurable: true
         });
@@ -713,12 +727,16 @@
             configurable: true
         });
         Object.defineProperty(AjfFormBuilderService.prototype, "beforeNodesUpdate", {
-            get: function () { return this._beforeNodesUpdateObs; },
+            get: function () {
+                return this._beforeNodesUpdateObs;
+            },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(AjfFormBuilderService.prototype, "afterNodeUpdate", {
-            get: function () { return this._afterNodeUpdateObs; },
+            get: function () {
+                return this._afterNodeUpdateObs;
+            },
             enumerable: true,
             configurable: true
         });
@@ -781,8 +799,7 @@
                 if (node.parent === 0) {
                     return [node];
                 }
-                var cn = forms$1.isContainerNode(parent) && inContent ?
-                    parent :
+                var cn = forms$1.isContainerNode(parent) && inContent ? parent :
                     getNodeContainer({ nodes: nodes }, parent);
                 if (cn != null) {
                     if (!isFieldNode) {
@@ -811,7 +828,11 @@
             this._deleteNodeEntryEvent.next(nodeEntry);
         };
         AjfFormBuilderService.prototype.getCurrentForm = function () {
-            return rxjs.combineLatest([this.form, this.nodes, this.attachmentsOrigins, this.choicesOrigins, this.stringIdentifier]).pipe(operators.filter(function (_a) {
+            return rxjs.combineLatest([
+                this.form, this.nodes, this.attachmentsOrigins, this.choicesOrigins,
+                this.stringIdentifier
+            ])
+                .pipe(operators.filter(function (_a) {
                 var _b = __read(_a, 1), form = _b[0];
                 return form != null;
             }), operators.map(function (_a) {
@@ -874,8 +895,7 @@
         };
         AjfFormBuilderService.prototype._initFormStreams = function () {
             var _this = this;
-            this._form
-                .subscribe(function (form) {
+            this._form.subscribe(function (form) {
                 nodeUniqueId = 0;
                 if (form != null && form.nodes != null && form.nodes.length > 0) {
                     nodeUniqueId = _this._findMaxNodeId(form.nodes);
@@ -889,13 +909,11 @@
                         [];
                 });
                 _this._choicesOriginsUpdates.next(function (_choicesOrigins) {
-                    return form != null && form.choicesOrigins != null ? form.choicesOrigins.slice(0) :
-                        [];
+                    return form != null && form.choicesOrigins != null ? form.choicesOrigins.slice(0) : [];
                 });
                 _this._stringIdentifierUpdates.next(function (_) {
-                    return form != null && form.stringIdentifier != null
-                        ? form.stringIdentifier.slice(0)
-                        : [];
+                    return form != null && form.stringIdentifier != null ? form.stringIdentifier.slice(0) :
+                        [];
                 });
             });
         };
@@ -1072,7 +1090,8 @@
         };
         AjfFormBuilderService.prototype._initDeleteNode = function () {
             var _this = this;
-            this._deleteNodeEntryEvent.pipe(operators.map(function (nodeEntry) {
+            this._deleteNodeEntryEvent
+                .pipe(operators.map(function (nodeEntry) {
                 _this._beforeNodesUpdate.emit();
                 return function (nodes) {
                     var node = nodeEntry.node;
@@ -1093,7 +1112,8 @@
                     }
                     return nodes;
                 };
-            })).subscribe(this._nodesUpdates);
+            }))
+                .subscribe(this._nodesUpdates);
         };
         AjfFormBuilderService.decorators = [
             { type: core.Injectable }
@@ -1127,7 +1147,8 @@
     var AjfFbChoicesOriginEditorDialog = /** @class */ (function () {
         function AjfFbChoicesOriginEditorDialog(_service) {
             this._service = _service;
-            this._choicesOrigin = this._service.editedChoicesOrigin.pipe(operators.filter(function (c) { return c != null; }), operators.map(function (c) { return c; }));
+            this._choicesOrigin =
+                this._service.editedChoicesOrigin.pipe(operators.filter(function (c) { return c != null; }), operators.map(function (c) { return c; }));
         }
         Object.defineProperty(AjfFbChoicesOriginEditorDialog.prototype, "choicesOrigin", {
             get: function () {
@@ -1137,11 +1158,7 @@
             configurable: true
         });
         AjfFbChoicesOriginEditorDialog.prototype.saveChoicesOrigin = function () {
-            this._service.saveChoicesOrigin({
-                label: this.editor.label,
-                name: this.editor.name,
-                choices: this.editor.choicesArr
-            });
+            this._service.saveChoicesOrigin({ label: this.editor.label, name: this.editor.name, choices: this.editor.choicesArr });
         };
         AjfFbChoicesOriginEditorDialog.prototype.cancelChoicesOriginEdit = function () {
             this._service.cancelChoicesOriginEdit();
@@ -1190,7 +1207,9 @@
         function AjfFbConditionEditor(_) {
         }
         Object.defineProperty(AjfFbConditionEditor.prototype, "fields", {
-            get: function () { return this._fields; },
+            get: function () {
+                return this._fields;
+            },
             set: function (fields) {
                 this._fields = fields;
                 this._updateVariables();
@@ -1216,10 +1235,7 @@
             }
         };
         AjfFbConditionEditor.prototype.onEditorInit = function () {
-            monaco.languages.typescript.javascriptDefaults.setDiagnosticsOptions({
-                noSemanticValidation: false,
-                noSyntaxValidation: false
-            });
+            monaco.languages.typescript.javascriptDefaults.setDiagnosticsOptions({ noSemanticValidation: false, noSyntaxValidation: false });
             monaco.languages.typescript.javascriptDefaults.setCompilerOptions({
                 target: monaco.languages.typescript.ScriptTarget.ES2015,
                 allowNonTsExtensions: true,
@@ -1230,15 +1246,15 @@
                 monaco.languages.typescript.javascriptDefaults.addExtraLib('', 'condition-editor-variables.d.ts');
             }
             catch (e) {
-                monaco.languages.typescript.javascriptDefaults
-                    ._extraLibs['condition-editor-variables.d.ts'] = '';
+                monaco.languages.typescript.javascriptDefaults._extraLibs['condition-editor-variables.d.ts'] =
+                    '';
             }
             try {
                 monaco.languages.typescript.javascriptDefaults.addExtraLib('', 'condition-editor-functions.d.ts');
             }
             catch (e) {
-                monaco.languages.typescript.javascriptDefaults
-                    ._extraLibs['condition-editor-functions.d.ts'] = '';
+                monaco.languages.typescript.javascriptDefaults._extraLibs['condition-editor-functions.d.ts'] =
+                    '';
             }
             this._updateVariables();
             this._updateFunctions();
@@ -1249,22 +1265,23 @@
                 return;
             }
             try {
-                monaco.languages.typescript.javascriptDefaults
-                    ._extraLibs['condition-editor-variables.d.ts'] =
+                monaco.languages.typescript.javascriptDefaults._extraLibs['condition-editor-variables.d.ts'] =
                     this._fields
                         .map(function (field) {
                         return "declare const " + field.name + ": " + _this._fieldVarType(field.fieldType) + ";";
                     })
                         .join('\n');
             }
-            catch (e) { }
+            catch (e) {
+            }
         };
         AjfFbConditionEditor.prototype._updateFunctions = function () {
             try {
                 monaco.languages.typescript.javascriptDefaults._extraLibs['condition-editor-functions.d.ts'] =
                     models.AjfExpressionUtils.UTIL_FUNCTIONS;
             }
-            catch (e) { }
+            catch (e) {
+            }
         };
         AjfFbConditionEditor.prototype._fieldVarType = function (fieldType) {
             switch (fieldType) {
@@ -1339,7 +1356,9 @@
             this._fields = service.flatFields.pipe(operators.map(function (fields) { return fields.sort(function (f1, f2) { return f1.name.localeCompare(f2.name); }); }));
         }
         Object.defineProperty(AjfFbConditionEditorDialog.prototype, "fields", {
-            get: function () { return this._fields; },
+            get: function () {
+                return this._fields;
+            },
             enumerable: true,
             configurable: true
         });
@@ -1403,10 +1422,9 @@
             this._stringIdentifierSub = _service.stringIdentifier.subscribe(function (identifier) {
                 _this.dataSource.data = __spread(identifier);
             });
-            this.fields$ = _service.flatFields.pipe(operators.map(function (fields) {
-                return fields.sort(function (f1, f2) { return f1.name.localeCompare(f2.name); }).map(function (f) { return f.name; })
-                    .filter(function (f) { return f.length > 0; });
-            }), operators.shareReplay(1));
+            this.fields$ = _service.flatFields.pipe(operators.map(function (fields) { return fields.sort(function (f1, f2) { return f1.name.localeCompare(f2.name); })
+                .map(function (f) { return f.name; })
+                .filter(function (f) { return f.length > 0; }); }), operators.shareReplay(1));
         }
         AjfFbStringIdentifierDialogComponent.prototype.addRow = function () {
             this.dataSource.data = __spread(this.dataSource.data, [{ label: '', value: [] }]);
@@ -1491,16 +1509,17 @@
             this._nodeTypes = _service.availableNodeTypes;
             this._nodeEntriesTree = _service.nodeEntriesTree;
             this._choicesOrigins = _service.choicesOrigins;
-            this._editConditionSub = this._service.editedCondition
-                .subscribe(function (condition) {
-                if (_this._editConditionDialog != null) {
-                    _this._editConditionDialog.close();
-                    _this._editConditionDialog = null;
-                }
-                if (condition != null) {
-                    _this._editConditionDialog = _this._dialog.open(AjfFbConditionEditorDialog, { disableClose: true });
-                }
-            });
+            this._editConditionSub =
+                this._service.editedCondition.subscribe(function (condition) {
+                    if (_this._editConditionDialog != null) {
+                        _this._editConditionDialog.close();
+                        _this._editConditionDialog = null;
+                    }
+                    if (condition != null) {
+                        _this._editConditionDialog =
+                            _this._dialog.open(AjfFbConditionEditorDialog, { disableClose: true });
+                    }
+                });
             this._editChoicesOriginSub =
                 this._service.editedChoicesOrigin.subscribe(function (choicesOrigin) {
                     if (_this._editChoicesOriginDialog != null) {
@@ -1512,16 +1531,13 @@
                             _this._dialog.open(AjfFbChoicesOriginEditorDialog, { disableClose: true });
                     }
                 });
-            this._beforeNodesUpdateSub = this._service.beforeNodesUpdate
-                .subscribe(function () {
+            this._beforeNodesUpdateSub = this._service.beforeNodesUpdate.subscribe(function () {
                 if (_this.designerCont == null) {
                     return;
                 }
                 _this._lastScrollTop = _this.designerCont.nativeElement.scrollTop;
             });
-            this.nodeEntriesTree
-                .pipe(operators.sample(this._vc))
-                .subscribe(function () {
+            this.nodeEntriesTree.pipe(operators.sample(this._vc)).subscribe(function () {
                 if (_this.designerCont == null) {
                     return;
                 }
@@ -1530,7 +1546,9 @@
             this._stringIdentifierSub = this._service.stringIdentifier.subscribe(function () { });
         }
         Object.defineProperty(AjfFormBuilder.prototype, "form", {
-            get: function () { return this._form; },
+            get: function () {
+                return this._form;
+            },
             set: function (form) {
                 if (this._form !== form) {
                     this._form = form;
@@ -1543,12 +1561,16 @@
             configurable: true
         });
         Object.defineProperty(AjfFormBuilder.prototype, "nodeTypes", {
-            get: function () { return this._nodeTypes; },
+            get: function () {
+                return this._nodeTypes;
+            },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(AjfFormBuilder.prototype, "nodeEntriesTree", {
-            get: function () { return this._nodeEntriesTree; },
+            get: function () {
+                return this._nodeEntriesTree;
+            },
             enumerable: true,
             configurable: true
         });
@@ -1587,12 +1609,7 @@
                 this._stringIdentifierDialog.close();
                 this._stringIdentifierDialog = null;
             }
-            this._stringIdentifierDialog =
-                this._dialog.open(AjfFbStringIdentifierDialogComponent, {
-                    disableClose: true,
-                    width: '60%',
-                    height: '60%'
-                });
+            this._stringIdentifierDialog = this._dialog.open(AjfFbStringIdentifierDialogComponent, { disableClose: true, width: '60%', height: '60%' });
         };
         AjfFormBuilder.prototype._setCurrentForm = function () {
             this._service.setForm(this._form);
@@ -1664,23 +1681,33 @@
             this._currentEditedNode = this._service.editedNodeEntry;
         }
         Object.defineProperty(AjfFbNodeEntry.prototype, "hasContent", {
-            get: function () { return this._hasContent; },
+            get: function () {
+                return this._hasContent;
+            },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(AjfFbNodeEntry.prototype, "isFirst", {
-            get: function () { return this._isFirst; },
-            set: function (isFirst) { this._isFirst = isFirst; },
+            get: function () {
+                return this._isFirst;
+            },
+            set: function (isFirst) {
+                this._isFirst = isFirst;
+            },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(AjfFbNodeEntry.prototype, "isNodeEntry", {
-            get: function () { return this._isNodeEntry; },
+            get: function () {
+                return this._isNodeEntry;
+            },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(AjfFbNodeEntry.prototype, "nodeEntry", {
-            get: function () { return this._nodeEntry; },
+            get: function () {
+                return this._nodeEntry;
+            },
             set: function (nodeEntry) {
                 this._nodeEntry = nodeEntry;
                 if (nodeEntry != null && nodeEntry.node !== void 0) {
@@ -1698,8 +1725,12 @@
             configurable: true
         });
         Object.defineProperty(AjfFbNodeEntry.prototype, "level", {
-            get: function () { return this._level; },
-            set: function (value) { this._level = value; },
+            get: function () {
+                return this._level;
+            },
+            set: function (value) {
+                this._level = value;
+            },
             enumerable: true,
             configurable: true
         });
@@ -1711,22 +1742,30 @@
             configurable: true
         });
         Object.defineProperty(AjfFbNodeEntry.prototype, "branchColors", {
-            get: function () { return this._branchColors; },
+            get: function () {
+                return this._branchColors;
+            },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(AjfFbNodeEntry.prototype, "dropZones", {
-            get: function () { return this._dropZones; },
+            get: function () {
+                return this._dropZones;
+            },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(AjfFbNodeEntry.prototype, "slideDropZones", {
-            get: function () { return this._slideDropZones; },
+            get: function () {
+                return this._slideDropZones;
+            },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(AjfFbNodeEntry.prototype, "originOffset", {
-            get: function () { return this._originOffset; },
+            get: function () {
+                return this._originOffset;
+            },
             set: function (originOffset) {
                 this._originOffset = originOffset;
                 this._originLeftMargin = this._originOffset * 4 + "px";
@@ -1735,12 +1774,16 @@
             configurable: true
         });
         Object.defineProperty(AjfFbNodeEntry.prototype, "originLeftMargin", {
-            get: function () { return this._originLeftMargin; },
+            get: function () {
+                return this._originLeftMargin;
+            },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(AjfFbNodeEntry.prototype, "firstBranchColor", {
-            get: function () { return this._firstBranchColor; },
+            get: function () {
+                return this._firstBranchColor;
+            },
             set: function (firstBranchColor) {
                 var idx = branchColors.indexOf(firstBranchColor);
                 if (idx > 0) {
@@ -1762,8 +1805,7 @@
             enumerable: true,
             configurable: true
         });
-        AjfFbNodeEntry.prototype.onResize = function () {
-        };
+        AjfFbNodeEntry.prototype.onResize = function () { };
         AjfFbNodeEntry.prototype.edit = function () {
             if (this.nodeEntry == null || !this.isNodeEntry) {
                 return;
@@ -1779,8 +1821,7 @@
         AjfFbNodeEntry.prototype.ngAfterViewInit = function () {
             var _this = this;
             setTimeout(function () { return _this._updateBranchHeights(); });
-            this._childEntriesSubscription = this.childEntries.changes
-                .subscribe(function () {
+            this._childEntriesSubscription = this.childEntries.changes.subscribe(function () {
                 _this._updateBranchHeights();
             });
         };
@@ -1815,8 +1856,8 @@
             };
         };
         AjfFbNodeEntry.prototype._updateBranchHeights = function () {
-            if (this.nodeEntry == null || !this.isNodeEntry
-                || this.branchLines == null || this.childEntries == null) {
+            if (this.nodeEntry == null || !this.isNodeEntry || this.branchLines == null ||
+                this.childEntries == null) {
                 return;
             }
             var nodeEntry = this.nodeEntry;
@@ -1835,9 +1876,7 @@
             { type: core.Component, args: [{
                         selector: 'ajf-fb-node-entry',
                         template: "<ng-container *ngIf=\"nodeEntry != null ; else rootEmpty\">\n  <ng-template [ngIf]=\"isNodeEntry\">\n    <ajf-fb-branch-line\n        *ngFor=\"let childNodeEntry of realNodeEntry.children; let idx = index\"\n        [offset]=\"idx\"\n        [color]=\"branchColors[idx]\"></ajf-fb-branch-line>\n  </ng-template>\n  <div class=\"mat-card-container\"\n      [class.ajf-highlight]=\"(currentEditedNode|async) == nodeEntry\">\n    <div *ngIf=\"!isFirst\"\n        class=\"ajf-origin-line\"\n        [style.margin-left]=\"originLeftMargin\"\n        [style.border-color]=\"firstBranchColor\"></div>\n    <ng-template [ngIf]=\"isNodeEntry\">\n      <mat-card>\n        <div class=\"ajf-title-row\">\n          <ajf-node-icon [node]=\"realNodeEntry.node\"></ajf-node-icon>\n          <span class=\"ajf-title\" [innerHTML]=\"(realNodeEntry.node.label || realNodeEntry.node.name)  | translate\"></span>\n          <span class=\"ajf-actions\">\n            <button [disabled]=\"(currentEditedNode|async) == nodeEntry\" (click)=\"edit()\" mat-icon-button>\n              <mat-icon>edit</mat-icon>\n            </button>\n            <button [disabled]=\"(currentEditedNode|async) == null\" (click)=\"delete()\" mat-icon-button>\n              <mat-icon>delete</mat-icon>\n            </button>\n          </span>\n        </div>\n        <div *ngIf=\"hasContent\">\n          <ajf-fb-node-entry\n              *ngFor=\"let contentEntry of realNodeEntry.content; let isFirstChild = first; let idx = index\"\n              [level]=\"level + 1\"\n              [isFirst]=\"isFirstChild\"\n              [firstBranchColor]=\"branchColors[idx]\"\n              [nodeEntry]=\"contentEntry\"></ajf-fb-node-entry>\n          <mat-card class=\"ajf-empty\"\n              *ngIf=\"realNodeEntry.content.length === 0\"\n              cdkDropList\n              [cdkDropListEnterPredicate]=\"disableSlideDropPredicate\"\n              (cdkDropListDropped)=\"onDropSuccess($event, true)\">&nbsp;</mat-card>\n        </div>\n      </mat-card>\n    </ng-template>\n    <ng-template [ngIf]=\"!isNodeEntry\">\n      <mat-card class=\"ajf-empty\"\n          cdkDropList\n          [cdkDropListEnterPredicate]=\"emptyAreaDropPredicate()\"\n          (cdkDropListDropped)=\"onDropSuccess($event)\">&nbsp;</mat-card>\n    </ng-template>\n  </div>\n  <ng-template [ngIf]=\"isNodeEntry\">\n    <ajf-fb-node-entry\n        *ngFor=\"let childNodeEntry of realNodeEntry.children; let idx = index\"\n        [level]=\"level\"\n        [originOffset]=\"idx\"\n        [firstBranchColor]=\"branchColors[idx]\"\n        [nodeEntry]=\"childNodeEntry\"></ajf-fb-node-entry>\n  </ng-template>\n</ng-container>\n<ng-template #rootEmpty>\n  <div class=\"mat-card-container\">\n    <mat-card class=\"ajf-empty\"\n        cdkDropList\n        [cdkDropListEnterPredicate]=\"emptyAreaDropPredicate()\"\n        (cdkDropListDropped)=\"onDropSuccess($event)\">&nbsp;</mat-card>\n  </div>\n</ng-template>\n",
-                        host: {
-                            '(window.resize)': 'onResize()'
-                        },
+                        host: { '(window.resize)': 'onResize()' },
                         encapsulation: core.ViewEncapsulation.None,
                         changeDetection: core.ChangeDetectionStrategy.OnPush,
                         styles: ["ajf-fb-node-entry{display:block;position:relative}ajf-fb-node-entry .mat-card-container{position:relative}ajf-fb-node-entry .mat-card-container .ajf-origin-line{position:absolute;top:0;left:25px;width:25px;height:25px;border-bottom:2px solid;border-left:2px solid;border-bottom-left-radius:.5em}ajf-fb-node-entry .mat-card-container mat-card{margin-left:50px;padding:.5em 1em;margin-top:.2em;margin-bottom:.2em;background-color:#fff}ajf-fb-node-entry .mat-card-container mat-card .ajf-title-row{display:flex;flex-direction:row;align-items:center}ajf-fb-node-entry .mat-card-container mat-card .ajf-title-row>.ajf-title{flex:1 1 auto}ajf-fb-node-entry .mat-card-container mat-card .ajf-title-row>.ajf-actions{flex:0 0 auto;white-space:nowrap}ajf-fb-node-entry .mat-card-container mat-card.ajf-empty{line-height:36px;border:2px dashed;box-shadow:none;box-sizing:border-box}ajf-fb-node-entry .mat-card-container.ajf-highlight>mat-card{background-color:#fff9c4}\n"]
@@ -1886,7 +1925,9 @@
             this._fields = service.flatFields.pipe(operators.map(function (fields) { return fields.sort(function (f1, f2) { return f1.name.localeCompare(f2.name); }); }));
         }
         Object.defineProperty(AjfFbValidationConditionEditorDialog.prototype, "fields", {
-            get: function () { return this._fields; },
+            get: function () {
+                return this._fields;
+            },
             enumerable: true,
             configurable: true
         });
@@ -1944,7 +1985,9 @@
             this._fields = service.flatFields.pipe(operators.map(function (fields) { return fields.sort(function (f1, f2) { return f1.name.localeCompare(f2.name); }); }));
         }
         Object.defineProperty(AjfFbWarningConditionEditorDialog.prototype, "fields", {
-            get: function () { return this._fields; },
+            get: function () {
+                return this._fields;
+            },
             enumerable: true,
             configurable: true
         });
@@ -2000,9 +2043,7 @@
         var minReps = c.value.minReps;
         var maxReps = c.value.maxReps;
         if (minReps != null && maxReps != null && minReps > maxReps) {
-            return {
-                reps: 'Min repetions cannot be greater than max repetitions'
-            };
+            return { reps: 'Min repetions cannot be greater than max repetitions' };
         }
         return null;
     }
@@ -2010,9 +2051,7 @@
         var minValue = c.value.minValue;
         var maxValue = c.value.maxValue;
         if (minValue != null && maxValue != null && minValue > maxValue) {
-            return {
-                valueLimit: 'Min value cannot be greater than max value'
-            };
+            return { valueLimit: 'Min value cannot be greater than max value' };
         }
         return null;
     }
@@ -2020,9 +2059,7 @@
         var minDigits = c.value.minDigits;
         var maxDigits = c.value.maxDigits;
         if (minDigits != null && maxDigits != null && minDigits > maxDigits) {
-            return {
-                digits: 'Min digits cannot be greater than max digits'
-            };
+            return { digits: 'Min digits cannot be greater than max digits' };
         }
         return null;
     }
@@ -2033,10 +2070,8 @@
             this._dialog = _dialog;
             this._fb = _fb;
             this._fieldSizes = [
-                { label: 'Normal', value: 'normal' },
-                { label: 'Small', value: 'small' },
-                { label: 'Smaller', value: 'smaller' },
-                { label: 'Tiny', value: 'tiny' },
+                { label: 'Normal', value: 'normal' }, { label: 'Small', value: 'small' },
+                { label: 'Smaller', value: 'smaller' }, { label: 'Tiny', value: 'tiny' },
                 { label: 'Mini', value: 'mini' }
             ];
             this._choicesOrigins = [];
@@ -2095,8 +2130,8 @@
             this._saveEvt = new core.EventEmitter();
             this._saveSub = rxjs.Subscription.EMPTY;
             this._nodeEntry = _service.editedNodeEntry;
-            this._choicesOriginsSub = _service.choicesOrigins
-                .subscribe(function (c) { return _this._choicesOrigins = c || []; });
+            this._choicesOriginsSub =
+                _service.choicesOrigins.subscribe(function (c) { return _this._choicesOrigins = c || []; });
             this._enabled = this._nodeEntry.pipe(operators.map(function (n) { return n != null; }));
             this._initForm();
             this._initVisibilityEdit();
@@ -2118,12 +2153,16 @@
             this._initSave();
         }
         Object.defineProperty(AjfFbNodeProperties.prototype, "fieldSizes", {
-            get: function () { return this._fieldSizes; },
+            get: function () {
+                return this._fieldSizes;
+            },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(AjfFbNodeProperties.prototype, "nodeEntry", {
-            get: function () { return this._nodeEntry; },
+            get: function () {
+                return this._nodeEntry;
+            },
             enumerable: true,
             configurable: true
         });
@@ -2135,67 +2174,93 @@
             configurable: true
         });
         Object.defineProperty(AjfFbNodeProperties.prototype, "enabled", {
-            get: function () { return this._enabled; },
+            get: function () {
+                return this._enabled;
+            },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(AjfFbNodeProperties.prototype, "propertiesForm", {
-            get: function () { return this._propertiesForm; },
+            get: function () {
+                return this._propertiesForm;
+            },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(AjfFbNodeProperties.prototype, "hasChoices", {
-            get: function () { return this._hasChoices; },
+            get: function () {
+                return this._hasChoices;
+            },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(AjfFbNodeProperties.prototype, "curVisibility", {
-            get: function () { return this._curVisibility; },
+            get: function () {
+                return this._curVisibility;
+            },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(AjfFbNodeProperties.prototype, "curFormulaReps", {
-            get: function () { return this._curFormulaReps; },
+            get: function () {
+                return this._curFormulaReps;
+            },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(AjfFbNodeProperties.prototype, "curChoicesFilter", {
-            get: function () { return this._curChoicesFilter; },
+            get: function () {
+                return this._curChoicesFilter;
+            },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(AjfFbNodeProperties.prototype, "curForceValue", {
-            get: function () { return this._curForceValue; },
+            get: function () {
+                return this._curForceValue;
+            },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(AjfFbNodeProperties.prototype, "curFormula", {
-            get: function () { return this._curFormula; },
+            get: function () {
+                return this._curFormula;
+            },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(AjfFbNodeProperties.prototype, "conditionalBranches", {
-            get: function () { return this._conditionalBranches; },
+            get: function () {
+                return this._conditionalBranches;
+            },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(AjfFbNodeProperties.prototype, "validationConditions", {
-            get: function () { return this._validationConditions; },
+            get: function () {
+                return this._validationConditions;
+            },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(AjfFbNodeProperties.prototype, "warningConditions", {
-            get: function () { return this._warningConditions; },
+            get: function () {
+                return this._warningConditions;
+            },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(AjfFbNodeProperties.prototype, "nextSlideCondition", {
-            get: function () { return this._nextSlideCondition; },
+            get: function () {
+                return this._nextSlideCondition;
+            },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(AjfFbNodeProperties.prototype, "triggerConditions", {
-            get: function () { return this._triggerConditions; },
+            get: function () {
+                return this._triggerConditions;
+            },
             enumerable: true,
             configurable: true
         });
@@ -2334,10 +2399,8 @@
                     _this._conditionalBranchesSub.unsubscribe();
                 }
                 n = n;
-                var visibility = n.node.visibility != null ?
-                    n.node.visibility.condition : null;
-                var visibilityOpt = n.node.visibility != null ?
-                    _this._guessVisibilityOpt(n.node.visibility) : null;
+                var visibility = n.node.visibility != null ? n.node.visibility.condition : null;
+                var visibilityOpt = n.node.visibility != null ? _this._guessVisibilityOpt(n.node.visibility) : null;
                 var controls = {
                     name: [n.node.name, forms.Validators.required],
                     label: n.node.label,
@@ -2365,24 +2428,16 @@
                             forceValue = field.validation.forceValue.condition;
                         }
                         notEmpty = field.validation.notEmpty != null;
-                        validationConditions = (field.validation.conditions || [])
-                            .map(function (c) {
-                            return {
-                                condition: c.condition,
-                                errorMessage: c.errorMessage
-                            };
+                        validationConditions = (field.validation.conditions || []).map(function (c) {
+                            return { condition: c.condition, errorMessage: c.errorMessage };
                         });
                     }
                     var notEmptyW = false;
                     var warningConditions = [];
                     if (field.warning != null) {
                         notEmptyW = field.warning.notEmpty != null;
-                        warningConditions = (field.warning.conditions || [])
-                            .map(function (w) {
-                            return {
-                                condition: w.condition,
-                                warningMessage: w.warningMessage
-                            };
+                        warningConditions = (field.warning.conditions || []).map(function (w) {
+                            return { condition: w.condition, warningMessage: w.warningMessage };
                         });
                     }
                     var formula = field.formula != null ? field.formula.formula : null;
@@ -2415,12 +2470,12 @@
                             maxValue = (numField.validation.maxValue.condition || '').replace('$value <= ', '');
                         }
                         if (numField.validation.minDigits != null) {
-                            minDigits = (numField.validation.minDigits.condition || '')
-                                .replace('$value.toString().length >= ', '');
+                            minDigits = (numField.validation.minDigits.condition ||
+                                '').replace('$value.toString().length >= ', '');
                         }
                         if (numField.validation.maxDigits != null) {
-                            maxDigits = (numField.validation.maxDigits.condition || '')
-                                .replace('$value.toString().length <= ', '');
+                            maxDigits = (numField.validation.maxDigits.condition ||
+                                '').replace('$value.toString().length <= ', '');
                         }
                     }
                     controls.minValue = minValue;
@@ -2432,11 +2487,11 @@
                 }
                 if (_this.isFieldWithChoices(n.node)) {
                     var fieldWithChoices = n.node;
-                    var triggerConditions = (fieldWithChoices.triggerConditions || [])
-                        .map(function (c) { return c.condition; });
+                    var triggerConditions = (fieldWithChoices.triggerConditions || []).map(function (c) { return c.condition; });
                     controls.choicesOriginRef = fieldWithChoices.choicesOriginRef;
                     controls.choicesFilter = fieldWithChoices.choicesFilter != null ?
-                        fieldWithChoices.choicesFilter.formula : null;
+                        fieldWithChoices.choicesFilter.formula :
+                        null;
                     controls.forceExpanded = fieldWithChoices.forceExpanded;
                     controls.forceNarrow = fieldWithChoices.forceNarrow;
                     controls.triggerConditions = triggerConditions;
@@ -2523,28 +2578,28 @@
         };
         AjfFbNodeProperties.prototype._initTriggerConditionEdit = function () {
             var _this = this;
-            this._editTriggerConditionSub = this._editTriggerConditionEvt
-                .pipe(operators.withLatestFrom(this._propertiesForm))
-                .subscribe(function (r) {
-                _this._destroyConditionDialog();
-                var vcIdx = r[0];
-                var fg = r[1];
-                if (vcIdx < 0 || vcIdx >= _this._triggerConditions.length || fg == null) {
-                    return;
-                }
-                _this._editConditionDialog = _this._dialog
-                    .open(AjfFbConditionEditorDialog);
-                var cmp = _this._editConditionDialog.componentInstance;
-                cmp.condition = _this._triggerConditions[vcIdx];
-                _this._editConditionDialogSub = _this._editConditionDialog.afterClosed()
-                    .subscribe(function (cond) {
-                    if (cond !== void 0) {
-                        _this._triggerConditions[vcIdx] = cond;
+            this._editTriggerConditionSub =
+                this._editTriggerConditionEvt
+                    .pipe(operators.withLatestFrom(this._propertiesForm))
+                    .subscribe(function (r) {
+                    _this._destroyConditionDialog();
+                    var vcIdx = r[0];
+                    var fg = r[1];
+                    if (vcIdx < 0 || vcIdx >= _this._triggerConditions.length || fg == null) {
+                        return;
                     }
-                    _this._editConditionDialogSub.unsubscribe();
-                    _this._editConditionDialogSub = rxjs.Subscription.EMPTY;
+                    _this._editConditionDialog = _this._dialog.open(AjfFbConditionEditorDialog);
+                    var cmp = _this._editConditionDialog.componentInstance;
+                    cmp.condition = _this._triggerConditions[vcIdx];
+                    _this._editConditionDialogSub =
+                        _this._editConditionDialog.afterClosed().subscribe(function (cond) {
+                            if (cond !== void 0) {
+                                _this._triggerConditions[vcIdx] = cond;
+                            }
+                            _this._editConditionDialogSub.unsubscribe();
+                            _this._editConditionDialogSub = rxjs.Subscription.EMPTY;
+                        });
                 });
-            });
         };
         AjfFbNodeProperties.prototype._initRemoveWarningCondition = function () {
             this._removeWarningConditionSub = this._removeWarningConditionEvt
@@ -2580,30 +2635,31 @@
         };
         AjfFbNodeProperties.prototype._initWarningConditionEdit = function () {
             var _this = this;
-            this._editWarningConditionSub = this._editWarningConditionEvt
-                .pipe(operators.withLatestFrom(this._propertiesForm))
-                .subscribe(function (r) {
-                _this._destroyWarningConditionDialog();
-                var vcIdx = r[0];
-                var fg = r[1];
-                if (vcIdx < 0 || vcIdx >= _this._warningConditions.length || fg == null) {
-                    return;
-                }
-                _this._editWarningConditionDialog = _this._dialog
-                    .open(AjfFbWarningConditionEditorDialog);
-                var cmp = _this._editWarningConditionDialog.componentInstance;
-                var w = _this._warningConditions[vcIdx];
-                cmp.condition = w.condition;
-                cmp.warningMessage = w.warningMessage;
-                _this._editWarningConditionDialogSub = _this._editWarningConditionDialog.afterClosed()
-                    .subscribe(function (cond) {
-                    if (cond !== void 0) {
-                        _this._warningConditions[vcIdx] = cond;
+            this._editWarningConditionSub =
+                this._editWarningConditionEvt
+                    .pipe(operators.withLatestFrom(this._propertiesForm))
+                    .subscribe(function (r) {
+                    _this._destroyWarningConditionDialog();
+                    var vcIdx = r[0];
+                    var fg = r[1];
+                    if (vcIdx < 0 || vcIdx >= _this._warningConditions.length || fg == null) {
+                        return;
                     }
-                    _this._editWarningConditionDialogSub.unsubscribe();
-                    _this._editWarningConditionDialogSub = rxjs.Subscription.EMPTY;
+                    _this._editWarningConditionDialog =
+                        _this._dialog.open(AjfFbWarningConditionEditorDialog);
+                    var cmp = _this._editWarningConditionDialog.componentInstance;
+                    var w = _this._warningConditions[vcIdx];
+                    cmp.condition = w.condition;
+                    cmp.warningMessage = w.warningMessage;
+                    _this._editWarningConditionDialogSub =
+                        _this._editWarningConditionDialog.afterClosed().subscribe(function (cond) {
+                            if (cond !== void 0) {
+                                _this._warningConditions[vcIdx] = cond;
+                            }
+                            _this._editWarningConditionDialogSub.unsubscribe();
+                            _this._editWarningConditionDialogSub = rxjs.Subscription.EMPTY;
+                        });
                 });
-            });
         };
         AjfFbNodeProperties.prototype._initRemoveValidationCondition = function () {
             this._removeValidationConditionSub = this._removeValidationConditionEvt
@@ -2639,199 +2695,207 @@
         };
         AjfFbNodeProperties.prototype._initValidationConditionEdit = function () {
             var _this = this;
-            this._editValidationConditionSub = this._editValidationConditionEvt
-                .pipe(operators.withLatestFrom(this._propertiesForm))
-                .subscribe(function (r) {
-                _this._destroyValidationConditionDialog();
-                var vcIdx = r[0];
-                var fg = r[1];
-                if (vcIdx < 0 || vcIdx >= _this._validationConditions.length || fg == null) {
-                    return;
-                }
-                _this._editValidationConditionDialog = _this._dialog
-                    .open(AjfFbValidationConditionEditorDialog);
-                var cmp = _this._editValidationConditionDialog.componentInstance;
-                var v = _this._validationConditions[vcIdx];
-                cmp.condition = v.condition;
-                cmp.errorMessage = v.errorMessage;
-                _this._editValidationConditionDialogSub = _this._editValidationConditionDialog.afterClosed()
-                    .subscribe(function (cond) {
-                    if (cond !== void 0) {
-                        _this._validationConditions[vcIdx] = cond;
+            this._editValidationConditionSub =
+                this._editValidationConditionEvt
+                    .pipe(operators.withLatestFrom(this._propertiesForm))
+                    .subscribe(function (r) {
+                    _this._destroyValidationConditionDialog();
+                    var vcIdx = r[0];
+                    var fg = r[1];
+                    if (vcIdx < 0 || vcIdx >= _this._validationConditions.length || fg == null) {
+                        return;
                     }
-                    _this._editValidationConditionDialogSub.unsubscribe();
-                    _this._editValidationConditionDialogSub = rxjs.Subscription.EMPTY;
+                    _this._editValidationConditionDialog =
+                        _this._dialog.open(AjfFbValidationConditionEditorDialog);
+                    var cmp = _this._editValidationConditionDialog.componentInstance;
+                    var v = _this._validationConditions[vcIdx];
+                    cmp.condition = v.condition;
+                    cmp.errorMessage = v.errorMessage;
+                    _this._editValidationConditionDialogSub =
+                        _this._editValidationConditionDialog.afterClosed().subscribe(function (cond) {
+                            if (cond !== void 0) {
+                                _this._validationConditions[vcIdx] = cond;
+                            }
+                            _this._editValidationConditionDialogSub.unsubscribe();
+                            _this._editValidationConditionDialogSub = rxjs.Subscription.EMPTY;
+                        });
                 });
-            });
         };
         AjfFbNodeProperties.prototype._initForceValueEdit = function () {
             var _this = this;
-            this._editForceValueSub = this._editForceValueEvt
-                .pipe(operators.withLatestFrom(this._propertiesForm))
-                .subscribe(function (r) {
-                _this._destroyConditionDialog();
-                var fg = r[1];
-                if (fg == null) {
-                    return;
-                }
-                var ctrl = fg.controls['forceValue'];
-                _this._editConditionDialog = _this._dialog.open(AjfFbConditionEditorDialog);
-                _this._editConditionDialog.componentInstance.condition = ctrl.value;
-                _this._editConditionDialogSub = _this._editConditionDialog.afterClosed()
-                    .subscribe(function (cond) {
-                    if (cond !== void 0) {
-                        ctrl.setValue(cond);
+            this._editForceValueSub =
+                this._editForceValueEvt
+                    .pipe(operators.withLatestFrom(this._propertiesForm))
+                    .subscribe(function (r) {
+                    _this._destroyConditionDialog();
+                    var fg = r[1];
+                    if (fg == null) {
+                        return;
                     }
-                    _this._editConditionDialogSub.unsubscribe();
-                    _this._editConditionDialogSub = rxjs.Subscription.EMPTY;
+                    var ctrl = fg.controls['forceValue'];
+                    _this._editConditionDialog = _this._dialog.open(AjfFbConditionEditorDialog);
+                    _this._editConditionDialog.componentInstance.condition = ctrl.value;
+                    _this._editConditionDialogSub =
+                        _this._editConditionDialog.afterClosed().subscribe(function (cond) {
+                            if (cond !== void 0) {
+                                ctrl.setValue(cond);
+                            }
+                            _this._editConditionDialogSub.unsubscribe();
+                            _this._editConditionDialogSub = rxjs.Subscription.EMPTY;
+                        });
                 });
-            });
         };
         AjfFbNodeProperties.prototype._initNextSlideConditionEdit = function () {
             var _this = this;
-            this._editNextSlideConditionSub = this._editNextSlideConditionEvt
-                .pipe(operators.withLatestFrom(this._propertiesForm))
-                .subscribe(function (r) {
-                _this._destroyConditionDialog();
-                var fg = r[1];
-                if (fg == null) {
-                    return;
-                }
-                var ctrl = fg.controls['nextSlideCondition'];
-                _this._editConditionDialog = _this._dialog.open(AjfFbConditionEditorDialog);
-                _this._editConditionDialog.componentInstance.condition = ctrl.value;
-                _this._editConditionDialogSub = _this._editConditionDialog.afterClosed()
-                    .subscribe(function (cond) {
-                    if (cond !== void 0) {
-                        ctrl.setValue(cond);
+            this._editNextSlideConditionSub =
+                this._editNextSlideConditionEvt
+                    .pipe(operators.withLatestFrom(this._propertiesForm))
+                    .subscribe(function (r) {
+                    _this._destroyConditionDialog();
+                    var fg = r[1];
+                    if (fg == null) {
+                        return;
                     }
-                    _this._editConditionDialogSub.unsubscribe();
-                    _this._editConditionDialogSub = rxjs.Subscription.EMPTY;
+                    var ctrl = fg.controls['nextSlideCondition'];
+                    _this._editConditionDialog = _this._dialog.open(AjfFbConditionEditorDialog);
+                    _this._editConditionDialog.componentInstance.condition = ctrl.value;
+                    _this._editConditionDialogSub =
+                        _this._editConditionDialog.afterClosed().subscribe(function (cond) {
+                            if (cond !== void 0) {
+                                ctrl.setValue(cond);
+                            }
+                            _this._editConditionDialogSub.unsubscribe();
+                            _this._editConditionDialogSub = rxjs.Subscription.EMPTY;
+                        });
                 });
-            });
         };
         AjfFbNodeProperties.prototype._initFormulaEdit = function () {
             var _this = this;
-            this._editFormulaSub = this._editFormulaEvt
-                .pipe(operators.withLatestFrom(this._propertiesForm))
-                .subscribe(function (r) {
-                _this._destroyConditionDialog();
-                var fg = r[1];
-                if (fg == null) {
-                    return;
-                }
-                var ctrl = fg.controls['formula'];
-                _this._editConditionDialog = _this._dialog.open(AjfFbConditionEditorDialog);
-                _this._editConditionDialog.componentInstance.condition = ctrl.value;
-                _this._editConditionDialogSub = _this._editConditionDialog.afterClosed()
-                    .subscribe(function (cond) {
-                    if (cond !== void 0) {
-                        ctrl.setValue(cond);
+            this._editFormulaSub =
+                this._editFormulaEvt
+                    .pipe(operators.withLatestFrom(this._propertiesForm))
+                    .subscribe(function (r) {
+                    _this._destroyConditionDialog();
+                    var fg = r[1];
+                    if (fg == null) {
+                        return;
                     }
-                    _this._editConditionDialogSub.unsubscribe();
-                    _this._editConditionDialogSub = rxjs.Subscription.EMPTY;
+                    var ctrl = fg.controls['formula'];
+                    _this._editConditionDialog = _this._dialog.open(AjfFbConditionEditorDialog);
+                    _this._editConditionDialog.componentInstance.condition = ctrl.value;
+                    _this._editConditionDialogSub =
+                        _this._editConditionDialog.afterClosed().subscribe(function (cond) {
+                            if (cond !== void 0) {
+                                ctrl.setValue(cond);
+                            }
+                            _this._editConditionDialogSub.unsubscribe();
+                            _this._editConditionDialogSub = rxjs.Subscription.EMPTY;
+                        });
                 });
-            });
         };
         AjfFbNodeProperties.prototype._initFormulaRepsEdit = function () {
             var _this = this;
-            this._editFormulaRepsSub = this._editFormulaRepsEvt
-                .pipe(operators.withLatestFrom(this._propertiesForm))
-                .subscribe(function (r) {
-                _this._destroyConditionDialog();
-                var fg = r[1];
-                if (fg == null) {
-                    return;
-                }
-                var ctrl = fg.controls['formulaReps'];
-                _this._editConditionDialog = _this._dialog.open(AjfFbConditionEditorDialog);
-                _this._editConditionDialog.componentInstance.condition = ctrl.value;
-                _this._editConditionDialogSub = _this._editConditionDialog.afterClosed()
-                    .subscribe(function (cond) {
-                    if (cond !== void 0) {
-                        ctrl.setValue(cond);
+            this._editFormulaRepsSub =
+                this._editFormulaRepsEvt
+                    .pipe(operators.withLatestFrom(this._propertiesForm))
+                    .subscribe(function (r) {
+                    _this._destroyConditionDialog();
+                    var fg = r[1];
+                    if (fg == null) {
+                        return;
                     }
-                    _this._editConditionDialogSub.unsubscribe();
-                    _this._editConditionDialogSub = rxjs.Subscription.EMPTY;
+                    var ctrl = fg.controls['formulaReps'];
+                    _this._editConditionDialog = _this._dialog.open(AjfFbConditionEditorDialog);
+                    _this._editConditionDialog.componentInstance.condition = ctrl.value;
+                    _this._editConditionDialogSub =
+                        _this._editConditionDialog.afterClosed().subscribe(function (cond) {
+                            if (cond !== void 0) {
+                                ctrl.setValue(cond);
+                            }
+                            _this._editConditionDialogSub.unsubscribe();
+                            _this._editConditionDialogSub = rxjs.Subscription.EMPTY;
+                        });
                 });
-            });
         };
         AjfFbNodeProperties.prototype._initChoicesFilterEdit = function () {
             var _this = this;
-            this._editChoicesFilterSub = this._editChoicesFilterEvt
-                .pipe(operators.withLatestFrom(this._propertiesForm))
-                .subscribe(function (r) {
-                _this._destroyConditionDialog();
-                var fg = r[1];
-                if (fg == null) {
-                    return;
-                }
-                var ctrl = fg.controls['choicesFilter'];
-                _this._editConditionDialog = _this._dialog.open(AjfFbConditionEditorDialog);
-                _this._editConditionDialog.componentInstance.condition = ctrl.value;
-                _this._editConditionDialogSub = _this._editConditionDialog.afterClosed()
-                    .subscribe(function (cond) {
-                    if (cond !== void 0) {
-                        ctrl.setValue(cond);
+            this._editChoicesFilterSub =
+                this._editChoicesFilterEvt
+                    .pipe(operators.withLatestFrom(this._propertiesForm))
+                    .subscribe(function (r) {
+                    _this._destroyConditionDialog();
+                    var fg = r[1];
+                    if (fg == null) {
+                        return;
                     }
-                    _this._editConditionDialogSub.unsubscribe();
-                    _this._editConditionDialogSub = rxjs.Subscription.EMPTY;
+                    var ctrl = fg.controls['choicesFilter'];
+                    _this._editConditionDialog = _this._dialog.open(AjfFbConditionEditorDialog);
+                    _this._editConditionDialog.componentInstance.condition = ctrl.value;
+                    _this._editConditionDialogSub =
+                        _this._editConditionDialog.afterClosed().subscribe(function (cond) {
+                            if (cond !== void 0) {
+                                ctrl.setValue(cond);
+                            }
+                            _this._editConditionDialogSub.unsubscribe();
+                            _this._editConditionDialogSub = rxjs.Subscription.EMPTY;
+                        });
                 });
-            });
         };
         AjfFbNodeProperties.prototype._initConditionalBranchEdit = function () {
             var _this = this;
-            this._editConditionalBranchSub = this._editConditionalBranchEvt
-                .pipe(operators.withLatestFrom(this._propertiesForm))
-                .subscribe(function (r) {
-                _this._destroyConditionDialog();
-                var cbIdx = r[0];
-                var fg = r[1];
-                if (cbIdx < 0 || cbIdx >= _this._conditionalBranches.length || fg == null) {
-                    return;
-                }
-                _this._editConditionDialog = _this._dialog.open(AjfFbConditionEditorDialog);
-                _this._editConditionDialog.componentInstance.condition = _this._conditionalBranches[cbIdx];
-                _this._editConditionDialogSub = _this._editConditionDialog.afterClosed()
-                    .subscribe(function (cond) {
-                    if (cond !== void 0) {
-                        _this._conditionalBranches[cbIdx] = cond;
+            this._editConditionalBranchSub =
+                this._editConditionalBranchEvt
+                    .pipe(operators.withLatestFrom(this._propertiesForm))
+                    .subscribe(function (r) {
+                    _this._destroyConditionDialog();
+                    var cbIdx = r[0];
+                    var fg = r[1];
+                    if (cbIdx < 0 || cbIdx >= _this._conditionalBranches.length || fg == null) {
+                        return;
                     }
-                    _this._editConditionDialogSub.unsubscribe();
-                    _this._editConditionDialogSub = rxjs.Subscription.EMPTY;
+                    _this._editConditionDialog = _this._dialog.open(AjfFbConditionEditorDialog);
+                    _this._editConditionDialog.componentInstance.condition =
+                        _this._conditionalBranches[cbIdx];
+                    _this._editConditionDialogSub =
+                        _this._editConditionDialog.afterClosed().subscribe(function (cond) {
+                            if (cond !== void 0) {
+                                _this._conditionalBranches[cbIdx] = cond;
+                            }
+                            _this._editConditionDialogSub.unsubscribe();
+                            _this._editConditionDialogSub = rxjs.Subscription.EMPTY;
+                        });
                 });
-            });
         };
         AjfFbNodeProperties.prototype._initVisibilityEdit = function () {
             var _this = this;
-            this._editVisibilitySub = this._editVisibilityEvt
-                .pipe(operators.withLatestFrom(this._propertiesForm))
-                .subscribe(function (r) {
-                _this._destroyConditionDialog();
-                var fg = r[1];
-                if (fg == null) {
-                    return;
-                }
-                var ctrl = fg.controls['visibility'];
-                var condition = ctrl.value;
-                _this._editConditionDialog = _this._dialog.open(AjfFbConditionEditorDialog);
-                _this._editConditionDialog.componentInstance.condition = condition;
-                _this._editConditionDialogSub = _this._editConditionDialog.afterClosed()
-                    .subscribe(function (cond) {
-                    if (cond !== void 0) {
-                        ctrl.setValue(cond);
+            this._editVisibilitySub =
+                this._editVisibilityEvt
+                    .pipe(operators.withLatestFrom(this._propertiesForm))
+                    .subscribe(function (r) {
+                    _this._destroyConditionDialog();
+                    var fg = r[1];
+                    if (fg == null) {
+                        return;
                     }
-                    _this._editConditionDialogSub.unsubscribe();
-                    _this._editConditionDialogSub = rxjs.Subscription.EMPTY;
+                    var ctrl = fg.controls['visibility'];
+                    var condition = ctrl.value;
+                    _this._editConditionDialog = _this._dialog.open(AjfFbConditionEditorDialog);
+                    _this._editConditionDialog.componentInstance.condition = condition;
+                    _this._editConditionDialogSub =
+                        _this._editConditionDialog.afterClosed().subscribe(function (cond) {
+                            if (cond !== void 0) {
+                                ctrl.setValue(cond);
+                            }
+                            _this._editConditionDialogSub.unsubscribe();
+                            _this._editConditionDialogSub = rxjs.Subscription.EMPTY;
+                        });
                 });
-            });
         };
         AjfFbNodeProperties.prototype._handleTriggerCondtionsChange = function (fg) {
             var _this = this;
             this._triggerConditionsSub = fg.valueChanges
-                .pipe(operators.distinctUntilChanged(function (v1, v2) {
-                return JSON.stringify(v1.triggerConditions) === JSON.stringify(v2.triggerConditions);
-            }))
+                .pipe(operators.distinctUntilChanged(function (v1, v2) { return JSON.stringify(v1.triggerConditions) ===
+                JSON.stringify(v2.triggerConditions); }))
                 .subscribe(function (v) {
                 _this._triggerConditions = v.triggerConditions;
             });
@@ -2839,9 +2903,8 @@
         AjfFbNodeProperties.prototype._handleWarningCondtionsChange = function (fg) {
             var _this = this;
             this._warningConditionsSub = fg.valueChanges
-                .pipe(operators.distinctUntilChanged(function (v1, v2) {
-                return JSON.stringify(v1.warningConditions) === JSON.stringify(v2.warningConditions);
-            }))
+                .pipe(operators.distinctUntilChanged(function (v1, v2) { return JSON.stringify(v1.warningConditions) ===
+                JSON.stringify(v2.warningConditions); }))
                 .subscribe(function (v) {
                 _this._warningConditions = v.warningConditions;
             });
@@ -2849,94 +2912,95 @@
         AjfFbNodeProperties.prototype._handleValidationCondtionsChange = function (fg) {
             var _this = this;
             this._validationConditionsSub = fg.valueChanges
-                .pipe(operators.distinctUntilChanged(function (v1, v2) {
-                return JSON.stringify(v1.validationConditions) === JSON.stringify(v2.validationConditions);
-            }))
+                .pipe(operators.distinctUntilChanged(function (v1, v2) { return JSON.stringify(v1.validationConditions) ===
+                JSON.stringify(v2.validationConditions); }))
                 .subscribe(function (v) {
                 _this._validationConditions = v.validationConditions;
             });
         };
         AjfFbNodeProperties.prototype._handleForceValueChange = function (fg) {
             var _this = this;
-            this._forceValueSub = fg.valueChanges
-                .pipe(operators.distinctUntilChanged(function (v1, v2) { return v1.forceValue === v2.forceValue; }))
-                .subscribe(function (v) {
-                _this._curForceValue = v.forceValue;
-            });
+            this._forceValueSub =
+                fg.valueChanges.pipe(operators.distinctUntilChanged(function (v1, v2) { return v1.forceValue === v2.forceValue; }))
+                    .subscribe(function (v) {
+                    _this._curForceValue = v.forceValue;
+                });
         };
         AjfFbNodeProperties.prototype._handleNextSlideConditionChange = function (fg) {
             var _this = this;
-            this._formulaSub = fg.valueChanges
-                .pipe(operators.distinctUntilChanged(function (v1, v2) { return v1.nextSlideCondition === v2.nextSlideCondition; }))
-                .subscribe(function (v) {
-                _this._nextSlideCondition = v.nextSlideCondition;
-            });
+            this._formulaSub =
+                fg.valueChanges
+                    .pipe(operators.distinctUntilChanged(function (v1, v2) { return v1.nextSlideCondition === v2.nextSlideCondition; }))
+                    .subscribe(function (v) {
+                    _this._nextSlideCondition = v.nextSlideCondition;
+                });
         };
         AjfFbNodeProperties.prototype._handleFormulaChange = function (fg) {
             var _this = this;
-            this._formulaSub = fg.valueChanges
-                .pipe(operators.distinctUntilChanged(function (v1, v2) { return v1.formula === v2.formula; }))
-                .subscribe(function (v) {
-                _this._curFormula = v.formula;
-            });
+            this._formulaSub =
+                fg.valueChanges.pipe(operators.distinctUntilChanged(function (v1, v2) { return v1.formula === v2.formula; }))
+                    .subscribe(function (v) {
+                    _this._curFormula = v.formula;
+                });
         };
         AjfFbNodeProperties.prototype._handleFormulaRepsChange = function (fg) {
             var _this = this;
-            this._formulaRepsSub = fg.valueChanges
-                .pipe(operators.distinctUntilChanged(function (v1, v2) { return v1.formulaReps === v2.formulaReps; }))
-                .subscribe(function (v) {
-                _this._curFormulaReps = v.formulaReps;
-            });
+            this._formulaRepsSub =
+                fg.valueChanges.pipe(operators.distinctUntilChanged(function (v1, v2) { return v1.formulaReps === v2.formulaReps; }))
+                    .subscribe(function (v) {
+                    _this._curFormulaReps = v.formulaReps;
+                });
         };
         AjfFbNodeProperties.prototype._handleChoicesFilterChange = function (fg) {
             var _this = this;
-            this._choicesFilterSub = fg.valueChanges
-                .pipe(operators.distinctUntilChanged(function (v1, v2) { return v1.choicesFilter === v2.choicesFilter; }))
-                .subscribe(function (v) {
-                _this._curChoicesFilter = v.choicesFilter;
-            });
+            this._choicesFilterSub =
+                fg.valueChanges
+                    .pipe(operators.distinctUntilChanged(function (v1, v2) { return v1.choicesFilter === v2.choicesFilter; }))
+                    .subscribe(function (v) {
+                    _this._curChoicesFilter = v.choicesFilter;
+                });
         };
         AjfFbNodeProperties.prototype._handleConditionalBranchesChange = function (fg) {
             var _this = this;
-            this._conditionalBranchesSub = fg.valueChanges
-                .pipe(operators.distinctUntilChanged(function (v1, v2) {
-                return v1.conditionalBranchesNum === v2.conditionalBranchesNum;
-            }))
-                .subscribe(function (v) {
-                var cbNum = v.conditionalBranchesNum;
-                var curCbNum = _this._conditionalBranches.length;
-                if (curCbNum < cbNum) {
-                    var newCbs = [];
-                    for (var i = curCbNum; i < cbNum; i++) {
-                        newCbs.push(models.alwaysCondition().condition);
+            this._conditionalBranchesSub =
+                fg.valueChanges
+                    .pipe(operators.distinctUntilChanged(function (v1, v2) { return v1.conditionalBranchesNum === v2.conditionalBranchesNum; }))
+                    .subscribe(function (v) {
+                    var cbNum = v.conditionalBranchesNum;
+                    var curCbNum = _this._conditionalBranches.length;
+                    if (curCbNum < cbNum) {
+                        var newCbs = [];
+                        for (var i = curCbNum; i < cbNum; i++) {
+                            newCbs.push(models.alwaysCondition().condition);
+                        }
+                        _this._conditionalBranches = _this._conditionalBranches.concat(newCbs);
                     }
-                    _this._conditionalBranches = _this._conditionalBranches.concat(newCbs);
-                }
-                else if (curCbNum > cbNum) {
-                    _this._conditionalBranches.splice(0, curCbNum - cbNum);
-                }
-            });
+                    else if (curCbNum > cbNum) {
+                        _this._conditionalBranches.splice(0, curCbNum - cbNum);
+                    }
+                });
         };
         AjfFbNodeProperties.prototype._handleVisibilityChange = function (fg) {
             var _this = this;
-            this._visibilitySub = fg.valueChanges
-                .pipe(operators.distinctUntilChanged(function (v1, v2) { return v1.visibilityOpt === v2.visibilityOpt; }))
-                .subscribe(function (v) {
-                var visibilityOpt = v.visibilityOpt;
-                var newCondition;
-                switch (visibilityOpt) {
-                    case 'always':
-                        newCondition = models.alwaysCondition().condition;
-                        break;
-                    case 'never':
-                        newCondition = models.neverCondition().condition;
-                        break;
-                    default:
-                        newCondition = null;
-                }
-                _this._curVisibility = newCondition;
-                fg.controls['visibility'].setValue(newCondition);
-            });
+            this._visibilitySub =
+                fg.valueChanges
+                    .pipe(operators.distinctUntilChanged(function (v1, v2) { return v1.visibilityOpt === v2.visibilityOpt; }))
+                    .subscribe(function (v) {
+                    var visibilityOpt = v.visibilityOpt;
+                    var newCondition;
+                    switch (visibilityOpt) {
+                        case 'always':
+                            newCondition = models.alwaysCondition().condition;
+                            break;
+                        case 'never':
+                            newCondition = models.neverCondition().condition;
+                            break;
+                        default:
+                            newCondition = null;
+                    }
+                    _this._curVisibility = newCondition;
+                    fg.controls['visibility'].setValue(newCondition);
+                });
         };
         AjfFbNodeProperties.prototype._guessVisibilityOpt = function (condition) {
             if (condition.condition.localeCompare(models.alwaysCondition().condition) === 0) {
@@ -2991,7 +3055,9 @@
             this._cdr = _cdr;
         }
         Object.defineProperty(AjfFbNodeTypeEntry.prototype, "nodeType", {
-            get: function () { return this._nodeType; },
+            get: function () {
+                return this._nodeType;
+            },
             set: function (nodeType) {
                 this._nodeType = nodeType;
                 this._cdr.markForCheck();
@@ -3045,37 +3111,19 @@
         AjfFormBuilderModule.decorators = [
             { type: core.NgModule, args: [{
                         imports: [
-                            common.CommonModule,
-                            forms.FormsModule,
-                            forms.ReactiveFormsModule,
-                            dragDrop.DragDropModule,
-                            autocomplete.MatAutocompleteModule,
-                            button.MatButtonModule,
-                            card.MatCardModule,
-                            checkbox.MatCheckboxModule,
-                            chips.MatChipsModule,
-                            dialog.MatDialogModule,
-                            formField.MatFormFieldModule,
-                            icon.MatIconModule,
-                            input.MatInputModule,
-                            list.MatListModule,
-                            menu.MatMenuModule,
-                            select.MatSelectModule,
-                            sidenav.MatSidenavModule,
-                            slider.MatSliderModule,
-                            table.MatTableModule,
-                            toolbar.MatToolbarModule,
-                            tooltip.MatTooltipModule,
-                            core$1.TranslateModule,
-                            monacoEditor.AjfMonacoEditorModule,
-                            nodeIcon.AjfNodeIconModule,
+                            monacoEditor.AjfMonacoEditorModule, nodeIcon.AjfNodeIconModule, common.CommonModule, dragDrop.DragDropModule,
+                            forms.FormsModule, autocomplete.MatAutocompleteModule, button.MatButtonModule, card.MatCardModule,
+                            checkbox.MatCheckboxModule, chips.MatChipsModule, dialog.MatDialogModule, formField.MatFormFieldModule,
+                            icon.MatIconModule, input.MatInputModule, list.MatListModule, menu.MatMenuModule,
+                            select.MatSelectModule, sidenav.MatSidenavModule, slider.MatSliderModule, table.MatTableModule,
+                            toolbar.MatToolbarModule, tooltip.MatTooltipModule, forms.ReactiveFormsModule, core$1.TranslateModule,
                         ],
                         declarations: [
                             AjfFbBranchLine,
-                            AjfFbChoicesOriginEditorDialog,
                             AjfFbChoicesOriginEditor,
-                            AjfFbConditionEditorDialog,
+                            AjfFbChoicesOriginEditorDialog,
                             AjfFbConditionEditor,
+                            AjfFbConditionEditorDialog,
                             AjfFbNodeEntry,
                             AjfFbNodeProperties,
                             AjfFbNodeTypeEntry,
@@ -3088,8 +3136,8 @@
                             AjfFormBuilder,
                         ],
                         providers: [
-                            AjfFormBuilderService
-                        ]
+                            AjfFormBuilderService,
+                        ],
                     },] }
         ];
         return AjfFormBuilderModule;
@@ -3126,10 +3174,10 @@
     exports.AjfFormBuilderService = AjfFormBuilderService;
     exports.flattenNodes = flattenNodes;
     exports.ɵgc_ajf_src_material_form_builder_form_builder_a = AjfFbBranchLine;
-    exports.ɵgc_ajf_src_material_form_builder_form_builder_b = AjfFbChoicesOriginEditorDialog;
-    exports.ɵgc_ajf_src_material_form_builder_form_builder_c = AjfFbChoicesOriginEditor;
-    exports.ɵgc_ajf_src_material_form_builder_form_builder_d = AjfFbConditionEditorDialog;
-    exports.ɵgc_ajf_src_material_form_builder_form_builder_e = AjfFbConditionEditor;
+    exports.ɵgc_ajf_src_material_form_builder_form_builder_b = AjfFbChoicesOriginEditor;
+    exports.ɵgc_ajf_src_material_form_builder_form_builder_c = AjfFbChoicesOriginEditorDialog;
+    exports.ɵgc_ajf_src_material_form_builder_form_builder_d = AjfFbConditionEditor;
+    exports.ɵgc_ajf_src_material_form_builder_form_builder_e = AjfFbConditionEditorDialog;
     exports.ɵgc_ajf_src_material_form_builder_form_builder_f = AjfFbNodeEntry;
     exports.ɵgc_ajf_src_material_form_builder_form_builder_g = AjfFbNodeProperties;
     exports.ɵgc_ajf_src_material_form_builder_form_builder_h = AjfFbNodeTypeEntry;

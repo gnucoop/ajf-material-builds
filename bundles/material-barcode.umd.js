@@ -1,8 +1,8 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@ajf/core/barcode'), require('@angular/core'), require('@angular/forms'), require('@angular/common'), require('@angular/material/button'), require('@angular/material/button-toggle'), require('@angular/material/icon'), require('@ngx-translate/core'), require('@ajf/core/common')) :
-    typeof define === 'function' && define.amd ? define('@ajf/material/barcode', ['exports', '@ajf/core/barcode', '@angular/core', '@angular/forms', '@angular/common', '@angular/material/button', '@angular/material/button-toggle', '@angular/material/icon', '@ngx-translate/core', '@ajf/core/common'], factory) :
-    (global = global || self, factory((global.ajf = global.ajf || {}, global.ajf.material = global.ajf.material || {}, global.ajf.material.barcode = {}), global.ng.core.barcode, global.ng.core, global.ng.forms, global.ng.common, global.ng.material.button, global.ng.material.buttonToggle, global.ng.material.icon, global.ngxTranslate.core, global.ng.core.common));
-}(this, (function (exports, barcode, core, forms, common, button, buttonToggle, icon, core$1, common$1) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@ajf/core/barcode'), require('@angular/core'), require('@angular/forms'), require('@ajf/core/common'), require('@angular/common'), require('@angular/material/button'), require('@angular/material/button-toggle'), require('@angular/material/icon'), require('@ngx-translate/core')) :
+    typeof define === 'function' && define.amd ? define('@ajf/material/barcode', ['exports', '@ajf/core/barcode', '@angular/core', '@angular/forms', '@ajf/core/common', '@angular/common', '@angular/material/button', '@angular/material/button-toggle', '@angular/material/icon', '@ngx-translate/core'], factory) :
+    (global = global || self, factory((global.ajf = global.ajf || {}, global.ajf.material = global.ajf.material || {}, global.ajf.material.barcode = {}), global.ng.core.barcode, global.ng.core, global.ng.forms, global.ng.core.common, global.ng.common, global.ng.material.button, global.ng.material.buttonToggle, global.ng.material.icon, global.ngxTranslate.core));
+}(this, (function (exports, barcode, core, forms, common, common$1, button, buttonToggle, icon, core$1) { 'use strict';
 
     /*! *****************************************************************************
     Copyright (c) Microsoft Corporation. All rights reserved.
@@ -228,7 +228,7 @@
         AjfBarcodeComponent.decorators = [
             { type: core.Component, args: [{
                         selector: 'ajf-barcode',
-                        template: "<ng-container *ngIf=\"value; else barcode\">\n  <div class=\"ajf-code-container\">\n    <span>{{ value }}</span>\n    <button mat-raised-button (click)=\"reset()\">\n      <mat-icon style=\"transform: rotate(90deg)\">format_align_justify</mat-icon>\n    </button>\n  </div>\n</ng-container>\n<ng-template #barcode>\n  <mat-button-toggle-group [(ngModel)]=toggle>\n    <mat-button-toggle value=\"drop\" (click)=\"fileInput.click()\" [disabled]=\"readonly\">\n      <span translate>Upload image</span>\n      <mat-icon>add_circle_outline</mat-icon>\n      <input #fileInput type=\"file\" (change)=\"onSelectFile($event)\" multiple style=\"display:none;\" [disabled]=\"readonly\"/>\n    </mat-button-toggle>\n    <mat-button-toggle value=\"drop\" [disabled]=\"readonly\">\n      <span translate>Drop image</span>\n    </mat-button-toggle>\n    <mat-button-toggle value=\"camera\" [disabled]=\"readonly\">\n      <span translate>Camera</span>\n    </mat-button-toggle>\n  </mat-button-toggle-group>\n  <ng-container [ngSwitch]=\"toggle\">\n    <ng-container *ngSwitchCase=\"'drop'\">\n      <div class=\"ajf-drop-container\">\n        <div class=\"ajf-dropzone\" [attr.ajfDnd]=\"!readonly\" (file)=\"onSelectFile($event)\">\n          <div class=\"ajf-text-wrapper\">\n            <div class=\"ajf-centered\" translate>Drop your image here!</div>\n          </div>\n        </div>\n      </div>\n    </ng-container>\n    <ng-container *ngSwitchCase=\"'snapshot'\">\n      <div ajfVideoDirective [source]=\"videoSource\" class=\"left\" (isInit)=\"takeSnapshot()\"></div>\n    </ng-container>\n  </ng-container>\n</ng-template>\n",
+                        template: "<ng-container *ngIf=\"value; else barcode\">\n  <div class=\"ajf-code-container\">\n    <span>{{ value }}</span>\n    <button mat-raised-button (click)=\"reset()\">\n      <mat-icon style=\"transform: rotate(90deg)\">format_align_justify</mat-icon>\n    </button>\n  </div>\n</ng-container>\n<ng-template #barcode>\n  <mat-button-toggle-group [value]=toggle>\n    <mat-button-toggle (click)=\"toggle = 'drop'; fileInput.click()\" [disabled]=\"readonly\">\n      <span translate>Upload image</span>\n      <mat-icon>add_circle_outline</mat-icon>\n      <input #fileInput type=\"file\" (change)=\"onSelectFile($event)\" multiple style=\"display:none;\"\n        [disabled]=\"readonly\" />\n    </mat-button-toggle>\n    <mat-button-toggle (click)=\"toggle = 'drop'\" [disabled]=\"readonly\">\n      <span translate>Drop image</span>\n    </mat-button-toggle>\n    <mat-button-toggle (click)=\"toggle = 'camera'\" [disabled]=\"readonly\">\n      <span translate>Camera</span>\n    </mat-button-toggle>\n  </mat-button-toggle-group>\n  <ng-container [ngSwitch]=\"toggle\">\n    <ng-container *ngSwitchCase=\"'drop'\">\n      <div class=\"ajf-drop-container\">\n        <ng-container *ngIf=\"readonly ; else activeDropZone\">\n          <div class=\"ajf-dropzone\">\n            <div class=\"ajf-text-wrapper\">\n              <div class=\"ajf-centered\" translate>Drop your image here!</div>\n            </div>\n          </div>\n        </ng-container>\n        <ng-template #activeDropZone>\n          <div class=\"ajf-dropzone\" ajfDnd (file)=\"onSelectFile($event)\">\n            <div class=\"ajf-text-wrapper\">\n              <div class=\"ajf-centered\" translate>Drop your image here!</div>\n            </div>\n          </div>\n        </ng-template>\n      </div>\n    </ng-container>\n    <ng-container *ngSwitchCase=\"'camera'\">\n      <div ajfVideoDirective [source]=\"videoSource\" class=\"left\" (isInit)=\"takeSnapshot()\"></div>\n    </ng-container>\n  </ng-container>\n</ng-template>\n",
                         encapsulation: core.ViewEncapsulation.None,
                         changeDetection: core.ChangeDetectionStrategy.OnPush,
                         providers: [BARCODE_CONTROL_VALUE_ACCESSOR],
@@ -270,13 +270,12 @@
         AjfBarcodeModule.decorators = [
             { type: core.NgModule, args: [{
                         imports: [
-                            common.CommonModule,
-                            forms.FormsModule,
-                            core$1.TranslateModule,
+                            common.AjfCommonModule,
+                            common$1.CommonModule,
                             button.MatButtonModule,
                             buttonToggle.MatButtonToggleModule,
                             icon.MatIconModule,
-                            common$1.AjfCommonModule
+                            core$1.TranslateModule,
                         ],
                         declarations: [
                             AjfBarcodeComponent,

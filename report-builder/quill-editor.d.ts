@@ -19,7 +19,7 @@
  * If not, see http://www.gnu.org/licenses/.
  *
  */
-import { AfterViewInit, ElementRef, EventEmitter, Renderer2, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
+import { AfterViewInit, ElementRef, EventEmitter, OnChanges, OnDestroy, Renderer2, SimpleChanges } from '@angular/core';
 import { ControlValueAccessor, FormControl, Validator } from '@angular/forms';
 import { AjfReportBuilderService } from './report-builder-service';
 export declare class AjfQuillEditor implements AfterViewInit, ControlValueAccessor, OnChanges, OnDestroy, Validator {

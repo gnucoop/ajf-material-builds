@@ -1,7 +1,7 @@
 import { __extends } from 'tslib';
+import { AjfPageSlider as AjfPageSlider$1, AjfPageSliderModule as AjfPageSliderModule$1 } from '@ajf/core/page-slider';
 import { AnimationBuilder } from '@angular/animations';
 import { Component, ViewEncapsulation, ChangeDetectionStrategy, ChangeDetectorRef, Renderer2, NgModule } from '@angular/core';
-import { AjfPageSlider as AjfPageSlider$1, AjfPageSliderModule as AjfPageSliderModule$1 } from '@ajf/core/page-slider';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -78,19 +78,19 @@ var AjfPageSliderModule = /** @class */ (function () {
     AjfPageSliderModule.decorators = [
         { type: NgModule, args: [{
                     imports: [
+                        AjfPageSliderModule$1,
                         CommonModule,
                         MatButtonModule,
                         MatIconModule,
                         MatToolbarModule,
-                        AjfPageSliderModule$1
                     ],
                     declarations: [
-                        AjfPageSlider
+                        AjfPageSlider,
                     ],
                     exports: [
                         AjfPageSliderModule$1,
-                        AjfPageSlider
-                    ]
+                        AjfPageSlider,
+                    ],
                 },] }
     ];
     return AjfPageSliderModule;

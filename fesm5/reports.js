@@ -1,6 +1,6 @@
 import { __extends } from 'tslib';
-import { Component, ChangeDetectionStrategy, ViewEncapsulation, ChangeDetectorRef, ElementRef, ComponentFactoryResolver, Renderer2, NgModule } from '@angular/core';
 import { AjfBaseWidgetComponent, AjfReportRenderer as AjfReportRenderer$1, AjfWidgetType, AjfReportWidget as AjfReportWidget$1, AjfReportsModule as AjfReportsModule$1 } from '@ajf/core/reports';
+import { Component, ChangeDetectionStrategy, ViewEncapsulation, ChangeDetectorRef, ElementRef, ComponentFactoryResolver, Renderer2, NgModule } from '@angular/core';
 import { AjfImageType } from '@ajf/core/image';
 import { AjfChartModule } from '@ajf/core/chart';
 import { AjfCommonModule } from '@ajf/core/common';
@@ -561,9 +561,6 @@ var AjfReportsModule = /** @class */ (function () {
     AjfReportsModule.decorators = [
         { type: NgModule, args: [{
                     imports: [
-                        CommonModule,
-                        TranslateModule,
-                        AjfReportsModule$1,
                         AjfChartModule,
                         AjfCommonModule,
                         AjfImageModule,
@@ -571,6 +568,9 @@ var AjfReportsModule = /** @class */ (function () {
                         AjfPageBreakModule,
                         AjfTableModule,
                         AjfTextModule,
+                        CommonModule,
+                        AjfReportsModule$1,
+                        TranslateModule,
                     ],
                     declarations: [
                         AjfChartWidgetComponent,

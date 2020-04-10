@@ -166,8 +166,7 @@ var AutoCompleteSingleton = /** @class */ (function () {
         monaco.languages.registerCompletionItemProvider(language, {
             provideCompletionItems: function (model) {
                 // Get new autoComplete list for the current content
-                AutoCompleteSingleton.getInstance()
-                    .parseAutoCompleteValues(language, model.getValue());
+                AutoCompleteSingleton.getInstance().parseAutoCompleteValues(language, model.getValue());
                 return AutoCompleteSingleton.getInstance().autoCompleteValues[language.toString()];
             },
         });
@@ -197,9 +196,8 @@ var AutoCompleteSingleton = /** @class */ (function () {
         var tags = parser.parseFromString(content, 'text/xml').getElementsByTagName('*');
         var _loop_1 = function (i) {
             // Add TAG only if it not already existing in autoComplete list and in tempList
-            if (!this_1._autoCompleteValues[IEditorLanguage.XML]
-                .find(function (obj) { return obj.label === tags[i].tagName; })
-                && !tempList.find(function (obj) { return obj.label === tags[i].tagName; })) {
+            if (!this_1._autoCompleteValues[IEditorLanguage.XML].find(function (obj) { return obj.label === tags[i].tagName; }) &&
+                !tempList.find(function (obj) { return obj.label === tags[i].tagName; })) {
                 // Create autoComplete object
                 var obj = new AutoCompleteItem()
                     .setLabel(tags[i].tagName)
@@ -231,9 +229,8 @@ var AutoCompleteSingleton = /** @class */ (function () {
                 regex.lastIndex++;
             }
             // Add Element only if it not already existing in autoComplete list and in tempList
-            if (m[1] && !this._autoCompleteValues[IEditorLanguage.JSON]
-                .find(function (obj) { return obj.label === m[1]; })
-                && !tempList.find(function (obj) { return obj.label === m[1]; })) {
+            if (m[1] && !this._autoCompleteValues[IEditorLanguage.JSON].find(function (obj) { return obj.label === m[1]; }) &&
+                !tempList.find(function (obj) { return obj.label === m[1]; })) {
                 var obj = new AutoCompleteItem()
                     .setLabel(m[1])
                     .setKind(monaco.languages.CompletionItemKind.Value)
@@ -388,7 +385,9 @@ var AjfMonacoEditor = /** @class */ (function () {
         configurable: true
     });
     Object.defineProperty(AjfMonacoEditor.prototype, "editor", {
-        get: function () { return this._editor; },
+        get: function () {
+            return this._editor;
+        },
         enumerable: true,
         configurable: true
     });
@@ -591,8 +590,7 @@ var AjfMonacoEditor = /** @class */ (function () {
         options.lineHeight = this.lineHeight;
         options.value = this._value;
         options.language = this.language;
-        Object.keys(options)
-            .forEach(function (key) {
+        Object.keys(options).forEach(function (key) {
             if (options[key] === undefined) {
                 delete options[key]; // Remove all undefined properties
             }
@@ -637,9 +635,7 @@ var AjfMonacoEditor = /** @class */ (function () {
                     changeDetection: ChangeDetectionStrategy.OnPush,
                     selector: 'ajf-monaco-editor',
                     template: "<div #editor class=\"ajf-monaco-editor\"></div>\n",
-                    host: {
-                        '(window:resize)': 'onResize($event)'
-                    },
+                    host: { '(window:resize)': 'onResize($event)' },
                     styles: ["ajf-monaco-editor{display:flex;align-items:stretch;overflow:hidden}ajf-monaco-editor .ajf-monaco-editor{flex:1 0 auto}\n"]
                 }] }
     ];

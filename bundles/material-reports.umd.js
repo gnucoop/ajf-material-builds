@@ -1,8 +1,8 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('@ajf/core/reports'), require('@ajf/core/image'), require('@ajf/core/chart'), require('@ajf/core/common'), require('@ajf/core/map'), require('@ajf/core/page-break'), require('@ajf/core/table'), require('@ajf/core/text'), require('@ajf/material/image'), require('@angular/common'), require('@ngx-translate/core')) :
-    typeof define === 'function' && define.amd ? define('@ajf/material/reports', ['exports', '@angular/core', '@ajf/core/reports', '@ajf/core/image', '@ajf/core/chart', '@ajf/core/common', '@ajf/core/map', '@ajf/core/page-break', '@ajf/core/table', '@ajf/core/text', '@ajf/material/image', '@angular/common', '@ngx-translate/core'], factory) :
-    (global = global || self, factory((global.ajf = global.ajf || {}, global.ajf.material = global.ajf.material || {}, global.ajf.material.reports = {}), global.ng.core, global.ng.core.reports, global.ng.core.image, global.ng.core.chart, global.ng.core.common, global.ng.core.map, global.ng.core.pageBreak, global.ng.core.table, global.ng.core.text, global.ng.material.image, global.ng.common, global.ngxTranslate.core));
-}(this, (function (exports, core, reports, image, chart, common, map, pageBreak, table, text, image$1, common$1, core$1) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@ajf/core/reports'), require('@angular/core'), require('@ajf/core/image'), require('@ajf/core/chart'), require('@ajf/core/common'), require('@ajf/core/map'), require('@ajf/core/page-break'), require('@ajf/core/table'), require('@ajf/core/text'), require('@ajf/material/image'), require('@angular/common'), require('@ngx-translate/core')) :
+    typeof define === 'function' && define.amd ? define('@ajf/material/reports', ['exports', '@ajf/core/reports', '@angular/core', '@ajf/core/image', '@ajf/core/chart', '@ajf/core/common', '@ajf/core/map', '@ajf/core/page-break', '@ajf/core/table', '@ajf/core/text', '@ajf/material/image', '@angular/common', '@ngx-translate/core'], factory) :
+    (global = global || self, factory((global.ajf = global.ajf || {}, global.ajf.material = global.ajf.material || {}, global.ajf.material.reports = {}), global.ng.core.reports, global.ng.core, global.ng.core.image, global.ng.core.chart, global.ng.core.common, global.ng.core.map, global.ng.core.pageBreak, global.ng.core.table, global.ng.core.text, global.ng.material.image, global.ng.common, global.ngxTranslate.core));
+}(this, (function (exports, reports, core, image, chart, common, map, pageBreak, table, text, image$1, common$1, core$1) { 'use strict';
 
     /*! *****************************************************************************
     Copyright (c) Microsoft Corporation. All rights reserved.
@@ -740,9 +740,6 @@
         AjfReportsModule.decorators = [
             { type: core.NgModule, args: [{
                         imports: [
-                            common$1.CommonModule,
-                            core$1.TranslateModule,
-                            reports.AjfReportsModule,
                             chart.AjfChartModule,
                             common.AjfCommonModule,
                             image$1.AjfImageModule,
@@ -750,6 +747,9 @@
                             pageBreak.AjfPageBreakModule,
                             table.AjfTableModule,
                             text.AjfTextModule,
+                            common$1.CommonModule,
+                            reports.AjfReportsModule,
+                            core$1.TranslateModule,
                         ],
                         declarations: [
                             AjfChartWidgetComponent,

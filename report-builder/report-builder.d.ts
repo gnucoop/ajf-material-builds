@@ -19,9 +19,9 @@
  * If not, see http://www.gnu.org/licenses/.
  *
  */
+import { AjfReport } from '@ajf/core/reports';
 import { AfterContentInit } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
-import { AjfReport } from '@ajf/core/reports';
 import { AjfReportBuilderService } from './report-builder-service';
 export declare class AjfReportBuilder implements AfterContentInit {
     private _service;

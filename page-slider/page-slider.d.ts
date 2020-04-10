@@ -19,10 +19,10 @@
  * If not, see http://www.gnu.org/licenses/.
  *
  */
+import { AjfPageSlider as AjfCorePageSlider } from '@ajf/core/page-slider';
 import { AnimationBuilder } from '@angular/animations';
 import { BooleanInput } from '@angular/cdk/coercion';
 import { ChangeDetectorRef, Renderer2 } from '@angular/core';
-import { AjfPageSlider as AjfCorePageSlider } from '@ajf/core/page-slider';
 export declare class AjfPageSlider extends AjfCorePageSlider {
     constructor(animationBuilder: AnimationBuilder, cdr: ChangeDetectorRef, renderer: Renderer2);
     static ngAcceptInputType_hideNavigationButtons: BooleanInput;
