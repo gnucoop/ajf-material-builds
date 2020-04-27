@@ -1,6 +1,6 @@
 {
   "name": "@ajf/material",
-  "version": "9.0.1-sha-4ec5962",
+  "version": "9.0.1-sha-d914bc8",
   "description": "",
   "main": "./bundles/material.umd.js",
   "fesm5": "./fesm5/material.js",
@@ -27,7 +27,7 @@
     "@angular/router": "^9.0.0 || ^10.0.0",
     "@angular/material": "^9.0.0 || ^10.0.0",
     "@ajf/icons": "^1.0.0",
-    "@ajf/core": "9.0.1-sha-4ec5962",
+    "@ajf/core": "9.0.1-sha-d914bc8",
     "flag-icon-css": "^3.4.6",
     "ngx-color-picker": "^9.0.0",
     "quill": "^1.3.7",
