@@ -19,15 +19,9 @@
  * If not, see http://www.gnu.org/licenses/.
  *
  */
-import { AjfBaseFieldComponent, AjfFormRendererService, AjfTableFieldInstance } from '@ajf/core/forms';
-import { BooleanInput } from '@angular/cdk/coercion';
+import { AjfFormRendererService, AjfTableFieldComponent as AjfCoreTableFieldComponent } from '@ajf/core/forms';
 import { ChangeDetectorRef } from '@angular/core';
 import { AjfWarningAlertService } from './warning-alert-service';
-export declare class AjfTableFieldComponent extends AjfBaseFieldComponent<AjfTableFieldInstance> {
+export declare class AjfTableFieldComponent extends AjfCoreTableFieldComponent {
     constructor(cdr: ChangeDetectorRef, service: AjfFormRendererService, was: AjfWarningAlertService);
-    goToNextCell(ev: Event, row: number, column: number): void;
-    goToCell(row: number, column: number): void;
-    private _resetControls;
-    private _showCell;
-    static ngAcceptInputType_readonly: BooleanInput;
 }

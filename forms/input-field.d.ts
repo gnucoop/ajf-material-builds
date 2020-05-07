@@ -20,10 +20,8 @@
  *
  */
 import { AjfFormRendererService, AjfInputFieldComponent as CoreComponent } from '@ajf/core/forms';
-import { BooleanInput } from '@angular/cdk/coercion';
 import { ChangeDetectorRef } from '@angular/core';
 import { AjfWarningAlertService } from './warning-alert-service';
 export declare class AjfInputFieldComponent extends CoreComponent {
     constructor(cdr: ChangeDetectorRef, service: AjfFormRendererService, was: AjfWarningAlertService);
-    static ngAcceptInputType_readonly: BooleanInput;
 }

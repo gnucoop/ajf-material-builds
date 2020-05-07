@@ -20,10 +20,8 @@
  *
  */
 import { AjfFieldWithChoicesComponent, AjfFormRendererService } from '@ajf/core/forms';
-import { BooleanInput } from '@angular/cdk/coercion';
 import { ChangeDetectorRef } from '@angular/core';
 import { AjfWarningAlertService } from './warning-alert-service';
 export declare class AjfSingleChoiceFieldComponent<T> extends AjfFieldWithChoicesComponent<T> {
     constructor(cdr: ChangeDetectorRef, service: AjfFormRendererService, was: AjfWarningAlertService, searchThreshold: number);
-    static ngAcceptInputType_readonly: BooleanInput;
 }

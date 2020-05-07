@@ -20,8 +20,6 @@
  *
  */
 import { AjfCheckboxGroup, AjfCheckboxGroupItem as AjfCoreCheckboxGroupItem } from '@ajf/core/checkbox-group';
-import { BooleanInput } from '@angular/cdk/coercion';
 export declare class CheckboxGroupItem<T> extends AjfCoreCheckboxGroupItem<T> {
     constructor(checkboxGroup: AjfCheckboxGroup<T>);
-    static ngAcceptInputType_readonly: BooleanInput;
 }

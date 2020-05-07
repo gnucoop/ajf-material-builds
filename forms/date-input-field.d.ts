@@ -20,7 +20,6 @@
  *
  */
 import { AjfBaseFieldComponent, AjfDateFieldInstance, AjfDateValueStringPipe, AjfFormRendererService } from '@ajf/core/forms';
-import { BooleanInput } from '@angular/cdk/coercion';
 import { ChangeDetectorRef } from '@angular/core';
 import { MatInput } from '@angular/material/input';
 import { AjfWarningAlertService } from './warning-alert-service';
@@ -32,5 +31,4 @@ export declare class AjfDateInputFieldComponent extends AjfBaseFieldComponent<Aj
     constructor(cdr: ChangeDetectorRef, service: AjfFormRendererService, was: AjfWarningAlertService, _dvs: AjfDateValueStringPipe);
     onChange(): void;
     protected _onInstanceChange(): void;
-    static ngAcceptInputType_readonly: BooleanInput;
 }
