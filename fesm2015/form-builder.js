@@ -1563,8 +1563,7 @@ class AjfFbConditionEditor {
     /**
      * @param {?} _
      */
-    constructor(_) {
-    }
+    constructor(_) { }
     /**
      * @return {?}
      */

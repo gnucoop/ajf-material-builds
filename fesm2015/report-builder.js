@@ -7698,8 +7698,7 @@ if (false) {
  * @implements : OnInit
  */
 class AjfReportBuilderWidgetToolbarButton {
-    constructor() {
-    }
+    constructor() { }
     /**
      * @return {?}
      */

@@ -21,5 +21,5 @@
  */
 import { ModuleWithProviders } from '@angular/core';
 export declare class AjfFormsModule {
-    static forRoot(): ModuleWithProviders;
+    static forRoot(): ModuleWithProviders<AjfFormsModule>;
 }

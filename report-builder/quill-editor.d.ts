@@ -34,33 +34,33 @@ export declare class AjfQuillEditor implements AfterViewInit, ControlValueAccess
     previewElemFormula: any;
     private _init;
     dateFormats: {
-        'label': string;
-        'value': string;
-        'validator': string;
+        label: string;
+        value: string;
+        validator: string;
     }[];
     fonts: (string | boolean)[];
     defaultModules: {
         formula: boolean;
         toolbar: (string[] | {
-            'header': number;
+            header: number;
         }[] | {
-            'list': string;
+            list: string;
         }[] | {
-            'script': string;
+            script: string;
         }[] | {
-            'size': (string | boolean)[];
+            size: (string | boolean)[];
         }[] | {
-            'header': (number | boolean)[];
+            header: (number | boolean)[];
         }[] | ({
-            'color': any[];
-            'background'?: undefined;
+            color: any[];
+            background?: undefined;
         } | {
-            'background': any[];
-            'color'?: undefined;
+            background: any[];
+            color?: undefined;
         })[] | {
-            'font': (string | boolean)[];
+            font: (string | boolean)[];
         }[] | {
-            'align': any[];
+            align: any[];
         }[])[];
     };
     font: any;

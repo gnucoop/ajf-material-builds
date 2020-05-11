@@ -115,25 +115,25 @@ export declare class AjfReportBuilderProperties implements OnInit, OnChanges, On
     currentModule: any;
     quillModules: {
         toolbar: (string[] | {
-            'header': number;
+            header: number;
         }[] | {
-            'list': string;
+            list: string;
         }[] | {
-            'script': string;
+            script: string;
         }[] | {
-            'size': (string | boolean)[];
+            size: (string | boolean)[];
         }[] | {
-            'header': (number | boolean)[];
+            header: (number | boolean)[];
         }[] | ({
-            'color': string[];
-            'background'?: undefined;
+            color: string[];
+            background?: undefined;
         } | {
-            'background': string[];
-            'color'?: undefined;
+            background: string[];
+            color?: undefined;
         })[] | {
-            'font': (string | boolean)[];
+            font: (string | boolean)[];
         }[] | {
-            'align': (string | boolean)[];
+            align: (string | boolean)[];
         }[])[];
     };
     /**
@@ -266,25 +266,25 @@ export declare class AjfReportBuilderProperties implements OnInit, OnChanges, On
      */
     getModule(): {
         toolbar: (string[] | {
-            'header': number;
+            header: number;
         }[] | {
-            'list': string;
+            list: string;
         }[] | {
-            'script': string;
+            script: string;
         }[] | {
-            'size': (string | boolean)[];
+            size: (string | boolean)[];
         }[] | {
-            'header': (number | boolean)[];
+            header: (number | boolean)[];
         }[] | ({
-            'color': string[];
-            'background'?: undefined;
+            color: string[];
+            background?: undefined;
         } | {
-            'background': string[];
-            'color'?: undefined;
+            background: string[];
+            color?: undefined;
         })[] | {
-            'font': (string | boolean)[];
+            font: (string | boolean)[];
         }[] | {
-            'align': (string | boolean)[];
+            align: (string | boolean)[];
         }[])[];
     };
     /**
