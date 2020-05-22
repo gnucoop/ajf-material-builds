@@ -4,6 +4,234 @@
     (global = global || self, factory((global.ajf = global.ajf || {}, global.ajf.material = global.ajf.material || {}, global.ajf.material.monacoEditor = {}), global.ng.core));
 }(this, (function (exports, core) { 'use strict';
 
+    /*! *****************************************************************************
+    Copyright (c) Microsoft Corporation.
+
+    Permission to use, copy, modify, and/or distribute this software for any
+    purpose with or without fee is hereby granted.
+
+    THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+    REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+    AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+    INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+    LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+    OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+    PERFORMANCE OF THIS SOFTWARE.
+    ***************************************************************************** */
+    /* global Reflect, Promise */
+
+    var extendStatics = function(d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+
+    function __extends(d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    }
+
+    var __assign = function() {
+        __assign = Object.assign || function __assign(t) {
+            for (var s, i = 1, n = arguments.length; i < n; i++) {
+                s = arguments[i];
+                for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+            }
+            return t;
+        };
+        return __assign.apply(this, arguments);
+    };
+
+    function __rest(s, e) {
+        var t = {};
+        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+            t[p] = s[p];
+        if (s != null && typeof Object.getOwnPropertySymbols === "function")
+            for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+                if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                    t[p[i]] = s[p[i]];
+            }
+        return t;
+    }
+
+    function __decorate(decorators, target, key, desc) {
+        var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+        else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+        return c > 3 && r && Object.defineProperty(target, key, r), r;
+    }
+
+    function __param(paramIndex, decorator) {
+        return function (target, key) { decorator(target, key, paramIndex); }
+    }
+
+    function __metadata(metadataKey, metadataValue) {
+        if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(metadataKey, metadataValue);
+    }
+
+    function __awaiter(thisArg, _arguments, P, generator) {
+        function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+        return new (P || (P = Promise))(function (resolve, reject) {
+            function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+            function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+            function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+            step((generator = generator.apply(thisArg, _arguments || [])).next());
+        });
+    }
+
+    function __generator(thisArg, body) {
+        var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+        return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+        function verb(n) { return function (v) { return step([n, v]); }; }
+        function step(op) {
+            if (f) throw new TypeError("Generator is already executing.");
+            while (_) try {
+                if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+                if (y = 0, t) op = [op[0] & 2, t.value];
+                switch (op[0]) {
+                    case 0: case 1: t = op; break;
+                    case 4: _.label++; return { value: op[1], done: false };
+                    case 5: _.label++; y = op[1]; op = [0]; continue;
+                    case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                    default:
+                        if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                        if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                        if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                        if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                        if (t[2]) _.ops.pop();
+                        _.trys.pop(); continue;
+                }
+                op = body.call(thisArg, _);
+            } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+            if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+        }
+    }
+
+    var __createBinding = Object.create ? (function(o, m, k, k2) {
+        if (k2 === undefined) k2 = k;
+        Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    }) : (function(o, m, k, k2) {
+        if (k2 === undefined) k2 = k;
+        o[k2] = m[k];
+    });
+
+    function __exportStar(m, exports) {
+        for (var p in m) if (p !== "default" && !exports.hasOwnProperty(p)) __createBinding(exports, m, p);
+    }
+
+    function __values(o) {
+        var s = typeof Symbol === "function" && Symbol.iterator, m = s && o[s], i = 0;
+        if (m) return m.call(o);
+        if (o && typeof o.length === "number") return {
+            next: function () {
+                if (o && i >= o.length) o = void 0;
+                return { value: o && o[i++], done: !o };
+            }
+        };
+        throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
+    }
+
+    function __read(o, n) {
+        var m = typeof Symbol === "function" && o[Symbol.iterator];
+        if (!m) return o;
+        var i = m.call(o), r, ar = [], e;
+        try {
+            while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
+        }
+        catch (error) { e = { error: error }; }
+        finally {
+            try {
+                if (r && !r.done && (m = i["return"])) m.call(i);
+            }
+            finally { if (e) throw e.error; }
+        }
+        return ar;
+    }
+
+    function __spread() {
+        for (var ar = [], i = 0; i < arguments.length; i++)
+            ar = ar.concat(__read(arguments[i]));
+        return ar;
+    }
+
+    function __spreadArrays() {
+        for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
+        for (var r = Array(s), k = 0, i = 0; i < il; i++)
+            for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
+                r[k] = a[j];
+        return r;
+    };
+
+    function __await(v) {
+        return this instanceof __await ? (this.v = v, this) : new __await(v);
+    }
+
+    function __asyncGenerator(thisArg, _arguments, generator) {
+        if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+        var g = generator.apply(thisArg, _arguments || []), i, q = [];
+        return i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i;
+        function verb(n) { if (g[n]) i[n] = function (v) { return new Promise(function (a, b) { q.push([n, v, a, b]) > 1 || resume(n, v); }); }; }
+        function resume(n, v) { try { step(g[n](v)); } catch (e) { settle(q[0][3], e); } }
+        function step(r) { r.value instanceof __await ? Promise.resolve(r.value.v).then(fulfill, reject) : settle(q[0][2], r); }
+        function fulfill(value) { resume("next", value); }
+        function reject(value) { resume("throw", value); }
+        function settle(f, v) { if (f(v), q.shift(), q.length) resume(q[0][0], q[0][1]); }
+    }
+
+    function __asyncDelegator(o) {
+        var i, p;
+        return i = {}, verb("next"), verb("throw", function (e) { throw e; }), verb("return"), i[Symbol.iterator] = function () { return this; }, i;
+        function verb(n, f) { i[n] = o[n] ? function (v) { return (p = !p) ? { value: __await(o[n](v)), done: n === "return" } : f ? f(v) : v; } : f; }
+    }
+
+    function __asyncValues(o) {
+        if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+        var m = o[Symbol.asyncIterator], i;
+        return m ? m.call(o) : (o = typeof __values === "function" ? __values(o) : o[Symbol.iterator](), i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i);
+        function verb(n) { i[n] = o[n] && function (v) { return new Promise(function (resolve, reject) { v = o[n](v), settle(resolve, reject, v.done, v.value); }); }; }
+        function settle(resolve, reject, d, v) { Promise.resolve(v).then(function(v) { resolve({ value: v, done: d }); }, reject); }
+    }
+
+    function __makeTemplateObject(cooked, raw) {
+        if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
+        return cooked;
+    };
+
+    var __setModuleDefault = Object.create ? (function(o, v) {
+        Object.defineProperty(o, "default", { enumerable: true, value: v });
+    }) : function(o, v) {
+        o["default"] = v;
+    };
+
+    function __importStar(mod) {
+        if (mod && mod.__esModule) return mod;
+        var result = {};
+        if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+        __setModuleDefault(result, mod);
+        return result;
+    }
+
+    function __importDefault(mod) {
+        return (mod && mod.__esModule) ? mod : { default: mod };
+    }
+
+    function __classPrivateFieldGet(receiver, privateMap) {
+        if (!privateMap.has(receiver)) {
+            throw new TypeError("attempted to get private field on non-instance");
+        }
+        return privateMap.get(receiver);
+    }
+
+    function __classPrivateFieldSet(receiver, privateMap, value) {
+        if (!privateMap.has(receiver)) {
+            throw new TypeError("attempted to set private field on non-instance");
+        }
+        privateMap.set(receiver, value);
+        return value;
+    }
+
     /**
      * @license
      * Copyright (C) Gnucoop soc. coop.
@@ -154,7 +382,7 @@
             get: function () {
                 return this._autoCompleteValues;
             },
-            enumerable: true,
+            enumerable: false,
             configurable: true
         });
         /**
@@ -368,7 +596,7 @@
                     }
                 }
             },
-            enumerable: true,
+            enumerable: false,
             configurable: true
         });
         Object.defineProperty(AjfMonacoEditor.prototype, "value", {
@@ -385,14 +613,14 @@
                     this._editor.setValue(this._value);
                 }
             },
-            enumerable: true,
+            enumerable: false,
             configurable: true
         });
         Object.defineProperty(AjfMonacoEditor.prototype, "editor", {
             get: function () {
                 return this._editor;
             },
-            enumerable: true,
+            enumerable: false,
             configurable: true
         });
         /**
@@ -633,87 +861,287 @@
                 return model.modified ? model.modified : null;
             }
         };
-        AjfMonacoEditor.decorators = [
-            { type: core.Component, args: [{
-                        encapsulation: core.ViewEncapsulation.None,
-                        changeDetection: core.ChangeDetectionStrategy.OnPush,
-                        selector: 'ajf-monaco-editor',
-                        template: "<div #editor class=\"ajf-monaco-editor\"></div>\n",
-                        host: { '(window:resize)': 'onResize($event)' },
-                        styles: ["ajf-monaco-editor{display:flex;align-items:stretch;overflow:hidden}ajf-monaco-editor .ajf-monaco-editor{flex:1 0 auto}\n"]
-                    }] }
-        ];
-        /** @nocollapse */
-        AjfMonacoEditor.ctorParameters = function () { return []; };
-        AjfMonacoEditor.propDecorators = {
-            experimentalScreenReader: [{ type: core.Input }],
-            ariaLabel: [{ type: core.Input }],
-            rulers: [{ type: core.Input }],
-            wordSeparators: [{ type: core.Input }],
-            selectionClipboard: [{ type: core.Input }],
-            lineNumbers: [{ type: core.Input }],
-            selectOnLineNumbers: [{ type: core.Input }],
-            lineNumbersMinChars: [{ type: core.Input }],
-            glyphMargin: [{ type: core.Input }],
-            lineDecorationsWidth: [{ type: core.Input }],
-            revealHorizontalRightPadding: [{ type: core.Input }],
-            roundedSelection: [{ type: core.Input }],
-            theme: [{ type: core.Input }],
-            readOnly: [{ type: core.Input }],
-            scrollbar: [{ type: core.Input }],
-            overviewRulerLanes: [{ type: core.Input }],
-            cursorBlinking: [{ type: core.Input }],
-            mouseWheelZoom: [{ type: core.Input }],
-            cursorStyle: [{ type: core.Input }],
-            fontLigatures: [{ type: core.Input }],
-            disableTranslate3d: [{ type: core.Input }],
-            hideCursorInOverviewRuler: [{ type: core.Input }],
-            scrollBeyondLastLine: [{ type: core.Input }],
-            automaticLayout: [{ type: core.Input }],
-            wrappingColumn: [{ type: core.Input }],
-            wordWrap: [{ type: core.Input }],
-            wrappingIndent: [{ type: core.Input }],
-            wordWrapBreakBeforeCharacters: [{ type: core.Input }],
-            wordWrapBreakAfterCharacters: [{ type: core.Input }],
-            wordWrapBreakObtrusiveCharacters: [{ type: core.Input }],
-            stopRenderingLineAfter: [{ type: core.Input }],
-            hover: [{ type: core.Input }],
-            contextmenu: [{ type: core.Input }],
-            mouseWheelScrollSensitivity: [{ type: core.Input }],
-            quickSuggestions: [{ type: core.Input }],
-            quickSuggestionsDelay: [{ type: core.Input }],
-            parameterHints: [{ type: core.Input }],
-            iconsInSuggestions: [{ type: core.Input }],
-            autoClosingBrackets: [{ type: core.Input }],
-            formatOnType: [{ type: core.Input }],
-            suggestOnTriggerCharacters: [{ type: core.Input }],
-            acceptSuggestionOnEnter: [{ type: core.Input }],
-            snippetSuggestions: [{ type: core.Input }],
-            tabCompletion: [{ type: core.Input }],
-            wordBasedSuggestions: [{ type: core.Input }],
-            selectionHighlight: [{ type: core.Input }],
-            codeLens: [{ type: core.Input }],
-            folding: [{ type: core.Input }],
-            renderWhitespace: [{ type: core.Input }],
-            renderControlCharacters: [{ type: core.Input }],
-            renderIndentGuides: [{ type: core.Input }],
-            renderLineHighlight: [{ type: core.Input }],
-            useTabStops: [{ type: core.Input }],
-            fontFamily: [{ type: core.Input }],
-            fontWeight: [{ type: core.Input }],
-            fontSize: [{ type: core.Input }],
-            lineHeight: [{ type: core.Input }],
-            language: [{ type: core.Input }],
-            disableAutocomplete: [{ type: core.Input }],
-            autoFormatOnLoad: [{ type: core.Input }],
-            monacoLibPath: [{ type: core.Input }],
-            valueToCompare: [{ type: core.Input }],
-            value: [{ type: core.Input }],
-            valueChange: [{ type: core.Output }],
-            valueToCompareChange: [{ type: core.Output }],
-            init: [{ type: core.Output }],
-            editorContent: [{ type: core.ViewChild, args: ['editor', { static: true },] }]
-        };
+        __decorate([
+            core.Input(),
+            __metadata("design:type", Boolean)
+        ], AjfMonacoEditor.prototype, "experimentalScreenReader", void 0);
+        __decorate([
+            core.Input(),
+            __metadata("design:type", String)
+        ], AjfMonacoEditor.prototype, "ariaLabel", void 0);
+        __decorate([
+            core.Input(),
+            __metadata("design:type", Array)
+        ], AjfMonacoEditor.prototype, "rulers", void 0);
+        __decorate([
+            core.Input(),
+            __metadata("design:type", String)
+        ], AjfMonacoEditor.prototype, "wordSeparators", void 0);
+        __decorate([
+            core.Input(),
+            __metadata("design:type", Boolean)
+        ], AjfMonacoEditor.prototype, "selectionClipboard", void 0);
+        __decorate([
+            core.Input(),
+            __metadata("design:type", Boolean)
+        ], AjfMonacoEditor.prototype, "lineNumbers", void 0);
+        __decorate([
+            core.Input(),
+            __metadata("design:type", Boolean)
+        ], AjfMonacoEditor.prototype, "selectOnLineNumbers", void 0);
+        __decorate([
+            core.Input(),
+            __metadata("design:type", Number)
+        ], AjfMonacoEditor.prototype, "lineNumbersMinChars", void 0);
+        __decorate([
+            core.Input(),
+            __metadata("design:type", Boolean)
+        ], AjfMonacoEditor.prototype, "glyphMargin", void 0);
+        __decorate([
+            core.Input(),
+            __metadata("design:type", Number)
+        ], AjfMonacoEditor.prototype, "lineDecorationsWidth", void 0);
+        __decorate([
+            core.Input(),
+            __metadata("design:type", Number)
+        ], AjfMonacoEditor.prototype, "revealHorizontalRightPadding", void 0);
+        __decorate([
+            core.Input(),
+            __metadata("design:type", Boolean)
+        ], AjfMonacoEditor.prototype, "roundedSelection", void 0);
+        __decorate([
+            core.Input(),
+            __metadata("design:type", IEditorTheme)
+        ], AjfMonacoEditor.prototype, "theme", void 0);
+        __decorate([
+            core.Input(),
+            __metadata("design:type", Boolean)
+        ], AjfMonacoEditor.prototype, "readOnly", void 0);
+        __decorate([
+            core.Input(),
+            __metadata("design:type", Object)
+        ], AjfMonacoEditor.prototype, "scrollbar", void 0);
+        __decorate([
+            core.Input(),
+            __metadata("design:type", Number)
+        ], AjfMonacoEditor.prototype, "overviewRulerLanes", void 0);
+        __decorate([
+            core.Input(),
+            __metadata("design:type", String)
+        ], AjfMonacoEditor.prototype, "cursorBlinking", void 0);
+        __decorate([
+            core.Input(),
+            __metadata("design:type", Boolean)
+        ], AjfMonacoEditor.prototype, "mouseWheelZoom", void 0);
+        __decorate([
+            core.Input(),
+            __metadata("design:type", String)
+        ], AjfMonacoEditor.prototype, "cursorStyle", void 0);
+        __decorate([
+            core.Input(),
+            __metadata("design:type", Boolean)
+        ], AjfMonacoEditor.prototype, "fontLigatures", void 0);
+        __decorate([
+            core.Input(),
+            __metadata("design:type", Boolean)
+        ], AjfMonacoEditor.prototype, "disableTranslate3d", void 0);
+        __decorate([
+            core.Input(),
+            __metadata("design:type", Boolean)
+        ], AjfMonacoEditor.prototype, "hideCursorInOverviewRuler", void 0);
+        __decorate([
+            core.Input(),
+            __metadata("design:type", Boolean)
+        ], AjfMonacoEditor.prototype, "scrollBeyondLastLine", void 0);
+        __decorate([
+            core.Input(),
+            __metadata("design:type", Boolean)
+        ], AjfMonacoEditor.prototype, "automaticLayout", void 0);
+        __decorate([
+            core.Input(),
+            __metadata("design:type", Number)
+        ], AjfMonacoEditor.prototype, "wrappingColumn", void 0);
+        __decorate([
+            core.Input(),
+            __metadata("design:type", Boolean)
+        ], AjfMonacoEditor.prototype, "wordWrap", void 0);
+        __decorate([
+            core.Input(),
+            __metadata("design:type", String)
+        ], AjfMonacoEditor.prototype, "wrappingIndent", void 0);
+        __decorate([
+            core.Input(),
+            __metadata("design:type", String)
+        ], AjfMonacoEditor.prototype, "wordWrapBreakBeforeCharacters", void 0);
+        __decorate([
+            core.Input(),
+            __metadata("design:type", String)
+        ], AjfMonacoEditor.prototype, "wordWrapBreakAfterCharacters", void 0);
+        __decorate([
+            core.Input(),
+            __metadata("design:type", String)
+        ], AjfMonacoEditor.prototype, "wordWrapBreakObtrusiveCharacters", void 0);
+        __decorate([
+            core.Input(),
+            __metadata("design:type", Number)
+        ], AjfMonacoEditor.prototype, "stopRenderingLineAfter", void 0);
+        __decorate([
+            core.Input(),
+            __metadata("design:type", Boolean)
+        ], AjfMonacoEditor.prototype, "hover", void 0);
+        __decorate([
+            core.Input(),
+            __metadata("design:type", Boolean)
+        ], AjfMonacoEditor.prototype, "contextmenu", void 0);
+        __decorate([
+            core.Input(),
+            __metadata("design:type", Number)
+        ], AjfMonacoEditor.prototype, "mouseWheelScrollSensitivity", void 0);
+        __decorate([
+            core.Input(),
+            __metadata("design:type", Boolean)
+        ], AjfMonacoEditor.prototype, "quickSuggestions", void 0);
+        __decorate([
+            core.Input(),
+            __metadata("design:type", Number)
+        ], AjfMonacoEditor.prototype, "quickSuggestionsDelay", void 0);
+        __decorate([
+            core.Input(),
+            __metadata("design:type", Boolean)
+        ], AjfMonacoEditor.prototype, "parameterHints", void 0);
+        __decorate([
+            core.Input(),
+            __metadata("design:type", Boolean)
+        ], AjfMonacoEditor.prototype, "iconsInSuggestions", void 0);
+        __decorate([
+            core.Input(),
+            __metadata("design:type", Boolean)
+        ], AjfMonacoEditor.prototype, "autoClosingBrackets", void 0);
+        __decorate([
+            core.Input(),
+            __metadata("design:type", Boolean)
+        ], AjfMonacoEditor.prototype, "formatOnType", void 0);
+        __decorate([
+            core.Input(),
+            __metadata("design:type", Boolean)
+        ], AjfMonacoEditor.prototype, "suggestOnTriggerCharacters", void 0);
+        __decorate([
+            core.Input(),
+            __metadata("design:type", Boolean)
+        ], AjfMonacoEditor.prototype, "acceptSuggestionOnEnter", void 0);
+        __decorate([
+            core.Input(),
+            __metadata("design:type", String)
+        ], AjfMonacoEditor.prototype, "snippetSuggestions", void 0);
+        __decorate([
+            core.Input(),
+            __metadata("design:type", Boolean)
+        ], AjfMonacoEditor.prototype, "tabCompletion", void 0);
+        __decorate([
+            core.Input(),
+            __metadata("design:type", Boolean)
+        ], AjfMonacoEditor.prototype, "wordBasedSuggestions", void 0);
+        __decorate([
+            core.Input(),
+            __metadata("design:type", Boolean)
+        ], AjfMonacoEditor.prototype, "selectionHighlight", void 0);
+        __decorate([
+            core.Input(),
+            __metadata("design:type", Boolean)
+        ], AjfMonacoEditor.prototype, "codeLens", void 0);
+        __decorate([
+            core.Input(),
+            __metadata("design:type", Boolean)
+        ], AjfMonacoEditor.prototype, "folding", void 0);
+        __decorate([
+            core.Input(),
+            __metadata("design:type", String)
+        ], AjfMonacoEditor.prototype, "renderWhitespace", void 0);
+        __decorate([
+            core.Input(),
+            __metadata("design:type", Boolean)
+        ], AjfMonacoEditor.prototype, "renderControlCharacters", void 0);
+        __decorate([
+            core.Input(),
+            __metadata("design:type", Boolean)
+        ], AjfMonacoEditor.prototype, "renderIndentGuides", void 0);
+        __decorate([
+            core.Input(),
+            __metadata("design:type", Boolean)
+        ], AjfMonacoEditor.prototype, "renderLineHighlight", void 0);
+        __decorate([
+            core.Input(),
+            __metadata("design:type", Boolean)
+        ], AjfMonacoEditor.prototype, "useTabStops", void 0);
+        __decorate([
+            core.Input(),
+            __metadata("design:type", String)
+        ], AjfMonacoEditor.prototype, "fontFamily", void 0);
+        __decorate([
+            core.Input(),
+            __metadata("design:type", String)
+        ], AjfMonacoEditor.prototype, "fontWeight", void 0);
+        __decorate([
+            core.Input(),
+            __metadata("design:type", Number)
+        ], AjfMonacoEditor.prototype, "fontSize", void 0);
+        __decorate([
+            core.Input(),
+            __metadata("design:type", Number)
+        ], AjfMonacoEditor.prototype, "lineHeight", void 0);
+        __decorate([
+            core.Input(),
+            __metadata("design:type", IEditorLanguage)
+        ], AjfMonacoEditor.prototype, "language", void 0);
+        __decorate([
+            core.Input(),
+            __metadata("design:type", Boolean)
+        ], AjfMonacoEditor.prototype, "disableAutocomplete", void 0);
+        __decorate([
+            core.Input(),
+            __metadata("design:type", Object)
+        ], AjfMonacoEditor.prototype, "autoFormatOnLoad", void 0);
+        __decorate([
+            core.Input(),
+            __metadata("design:type", Object)
+        ], AjfMonacoEditor.prototype, "monacoLibPath", void 0);
+        __decorate([
+            core.Input(),
+            __metadata("design:type", String),
+            __metadata("design:paramtypes", [String])
+        ], AjfMonacoEditor.prototype, "valueToCompare", null);
+        __decorate([
+            core.Input(),
+            __metadata("design:type", String),
+            __metadata("design:paramtypes", [String])
+        ], AjfMonacoEditor.prototype, "value", null);
+        __decorate([
+            core.Output(),
+            __metadata("design:type", Object)
+        ], AjfMonacoEditor.prototype, "valueChange", void 0);
+        __decorate([
+            core.Output(),
+            __metadata("design:type", Object)
+        ], AjfMonacoEditor.prototype, "valueToCompareChange", void 0);
+        __decorate([
+            core.Output(),
+            __metadata("design:type", Object)
+        ], AjfMonacoEditor.prototype, "init", void 0);
+        __decorate([
+            core.ViewChild('editor', { static: true }),
+            __metadata("design:type", core.ElementRef)
+        ], AjfMonacoEditor.prototype, "editorContent", void 0);
+        AjfMonacoEditor = __decorate([
+            core.Component({
+                encapsulation: core.ViewEncapsulation.None,
+                changeDetection: core.ChangeDetectionStrategy.OnPush,
+                selector: 'ajf-monaco-editor',
+                template: "<div #editor class=\"ajf-monaco-editor\"></div>\n",
+                host: { '(window:resize)': 'onResize($event)' },
+                styles: ["ajf-monaco-editor{display:flex;align-items:stretch;overflow:hidden}ajf-monaco-editor .ajf-monaco-editor{flex:1 0 auto}\n"]
+            }),
+            __metadata("design:paramtypes", [])
+        ], AjfMonacoEditor);
         return AjfMonacoEditor;
     }());
 
@@ -741,16 +1169,16 @@
     var AjfMonacoEditorModule = /** @class */ (function () {
         function AjfMonacoEditorModule() {
         }
-        AjfMonacoEditorModule.decorators = [
-            { type: core.NgModule, args: [{
-                        declarations: [
-                            AjfMonacoEditor,
-                        ],
-                        exports: [
-                            AjfMonacoEditor,
-                        ]
-                    },] }
-        ];
+        AjfMonacoEditorModule = __decorate([
+            core.NgModule({
+                declarations: [
+                    AjfMonacoEditor,
+                ],
+                exports: [
+                    AjfMonacoEditor,
+                ]
+            })
+        ], AjfMonacoEditorModule);
         return AjfMonacoEditorModule;
     }());
 
