@@ -1,8 +1,8 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@ajf/core/forms'), require('@angular/core'), require('@angular/material/dialog'), require('rxjs/operators'), require('@angular/material/input'), require('@ajf/core/common'), require('@ajf/material/barcode'), require('@ajf/material/calendar'), require('@ajf/material/checkbox-group'), require('@ajf/material/page-slider'), require('@ajf/material/time'), require('@angular/common'), require('@angular/forms'), require('@angular/material/button'), require('@angular/material/card'), require('@angular/material/form-field'), require('@angular/material/icon'), require('@angular/material/radio'), require('@angular/material/select'), require('@angular/material/slide-toggle'), require('@angular/material/toolbar'), require('@ngx-translate/core')) :
-    typeof define === 'function' && define.amd ? define('@ajf/material/forms', ['exports', '@ajf/core/forms', '@angular/core', '@angular/material/dialog', 'rxjs/operators', '@angular/material/input', '@ajf/core/common', '@ajf/material/barcode', '@ajf/material/calendar', '@ajf/material/checkbox-group', '@ajf/material/page-slider', '@ajf/material/time', '@angular/common', '@angular/forms', '@angular/material/button', '@angular/material/card', '@angular/material/form-field', '@angular/material/icon', '@angular/material/radio', '@angular/material/select', '@angular/material/slide-toggle', '@angular/material/toolbar', '@ngx-translate/core'], factory) :
-    (global = global || self, factory((global.ajf = global.ajf || {}, global.ajf.material = global.ajf.material || {}, global.ajf.material.forms = {}), global.ng.core.forms, global.ng.core, global.ng.material.dialog, global.rxjs.operators, global.ng.material.input, global.ng.core.common, global.ng.material.barcode, global.ng.material.calendar, global.ng.material.checkboxGroup, global.ng.material.pageSlider, global.ng.material.time, global.ng.common, global.ng.forms, global.ng.material.button, global.ng.material.card, global.ng.material.formField, global.ng.material.icon, global.ng.material.radio, global.ng.material.select, global.ng.material.slideToggle, global.ng.material.toolbar, global.ngxTranslate.core));
-}(this, (function (exports, forms, i0, dialog, operators, input, common, barcode, calendar, checkboxGroup, pageSlider, time, common$1, forms$1, button, card, formField, icon, radio, select, slideToggle, toolbar, core) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@ajf/core/forms'), require('@angular/core'), require('@angular/material/dialog'), require('rxjs/operators'), require('@angular/material/input'), require('@angular/common/http'), require('@angular/platform-browser'), require('@ajf/core/common'), require('@ajf/material/barcode'), require('@ajf/material/calendar'), require('@ajf/material/checkbox-group'), require('@ajf/material/page-slider'), require('@ajf/material/time'), require('@angular/common'), require('@angular/forms'), require('@angular/material/button'), require('@angular/material/card'), require('@angular/material/form-field'), require('@angular/material/icon'), require('@angular/material/radio'), require('@angular/material/select'), require('@angular/material/slide-toggle'), require('@angular/material/toolbar'), require('@ngx-translate/core')) :
+    typeof define === 'function' && define.amd ? define('@ajf/material/forms', ['exports', '@ajf/core/forms', '@angular/core', '@angular/material/dialog', 'rxjs/operators', '@angular/material/input', '@angular/common/http', '@angular/platform-browser', '@ajf/core/common', '@ajf/material/barcode', '@ajf/material/calendar', '@ajf/material/checkbox-group', '@ajf/material/page-slider', '@ajf/material/time', '@angular/common', '@angular/forms', '@angular/material/button', '@angular/material/card', '@angular/material/form-field', '@angular/material/icon', '@angular/material/radio', '@angular/material/select', '@angular/material/slide-toggle', '@angular/material/toolbar', '@ngx-translate/core'], factory) :
+    (global = global || self, factory((global.ajf = global.ajf || {}, global.ajf.material = global.ajf.material || {}, global.ajf.material.forms = {}), global.ng.core.forms, global.ng.core, global.ng.material.dialog, global.rxjs.operators, global.ng.material.input, global.ng.common.http, global.ng.platformBrowser, global.ng.core.common, global.ng.material.barcode, global.ng.material.calendar, global.ng.material.checkboxGroup, global.ng.material.pageSlider, global.ng.material.time, global.ng.common, global.ng.forms, global.ng.material.button, global.ng.material.card, global.ng.material.formField, global.ng.material.icon, global.ng.material.radio, global.ng.material.select, global.ng.material.slideToggle, global.ng.material.toolbar, global.ngxTranslate.core));
+}(this, (function (exports, forms, i0, dialog, operators, input, http, platformBrowser, common, barcode, calendar, checkboxGroup, pageSlider, time, common$1, forms$1, button, card, formField, icon, radio, select, slideToggle, toolbar, core) { 'use strict';
 
     /*! *****************************************************************************
     Copyright (c) Microsoft Corporation.
@@ -728,6 +728,47 @@
         return AjfTimeFieldComponent;
     }(forms.AjfBaseFieldComponent));
 
+    /**
+     * @license
+     * Copyright (C) Gnucoop soc. coop.
+     *
+     * This file is part of the Advanced JSON forms (ajf).
+     *
+     * Advanced JSON forms (ajf) is free software: you can redistribute it and/or
+     * modify it under the terms of the GNU Affero General Public License as
+     * published by the Free Software Foundation, either version 3 of the License,
+     * or (at your option) any later version.
+     *
+     * Advanced JSON forms (ajf) is distributed in the hope that it will be useful,
+     * but WITHOUT ANY WARRANTY; without even the implied warranty of
+     * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero
+     * General Public License for more details.
+     *
+     * You should have received a copy of the GNU Affero General Public License
+     * along with Advanced JSON forms (ajf).
+     * If not, see http://www.gnu.org/licenses/.
+     *
+     */
+    var AjfVideoUrlFieldComponent = /** @class */ (function (_super) {
+        __extends(AjfVideoUrlFieldComponent, _super);
+        function AjfVideoUrlFieldComponent(cdr, service, was, domSanitizer, httpClient) {
+            return _super.call(this, cdr, service, was, domSanitizer, httpClient) || this;
+        }
+        AjfVideoUrlFieldComponent = __decorate([
+            i0.Component({
+                template: "<ng-container *ngIf=\"control|async as ctrl\">\n  <mat-form-field class=\"ajf-video-input\">\n    <input matInput type=\"url\" [formControl]=\"ctrl!\">\n  </mat-form-field>\n  <div class=\"ajf-video-thumbnail\">\n    <ng-container *ngIf=\"validUrl|async\">\n      <a target=\"_blank\" [href]=\"ctrl.value\">\n        <img *ngIf=\"videoThumbnail|async as thumb\" [src]=\"thumb\" class=\"\" alt=\"\">\n      </a>\n    </ng-container>\n  </div>\n</ng-container>\n",
+                changeDetection: i0.ChangeDetectionStrategy.OnPush,
+                encapsulation: i0.ViewEncapsulation.None,
+                styles: [".ajf-video-input{width:100%}.ajf-video-thumbnail{width:212px;height:120px;background-color:#eee;display:flex;align-items:center;justify-content:center}.ajf-video-thumbnail img{flex:1 1 auto}\n"]
+            }),
+            __param(2, i0.Inject(forms.AJF_WARNING_ALERT_SERVICE)),
+            __metadata("design:paramtypes", [i0.ChangeDetectorRef, forms.AjfFormRendererService,
+                AjfWarningAlertService, platformBrowser.DomSanitizer,
+                http.HttpClient])
+        ], AjfVideoUrlFieldComponent);
+        return AjfVideoUrlFieldComponent;
+    }(forms.AjfVideoUrlFieldComponent));
+
     var AjfFieldService = /** @class */ (function (_super) {
         __extends(AjfFieldService, _super);
         function AjfFieldService() {
@@ -783,6 +824,18 @@
                     component: AjfBarcodeFieldComponent,
                     readOnlyComponent: forms.AjfReadOnlyFieldComponent
                 };
+            _this.componentsMap[forms.AjfFieldType.File] = {
+                component: forms.AjfFileFieldComponent,
+                readOnlyComponent: forms.AjfReadOnlyFileFieldComponent
+            };
+            _this.componentsMap[forms.AjfFieldType.Image] = {
+                component: forms.AjfImageFieldComponent,
+                readOnlyComponent: forms.AjfReadOnlyImageFieldComponent
+            };
+            _this.componentsMap[forms.AjfFieldType.VideoUrl] = {
+                component: AjfVideoUrlFieldComponent,
+                readOnlyComponent: forms.AjfReadOnlyVideoUrlFieldComponent
+            };
             return _this;
         }
         AjfFieldService.ɵprov = i0["ɵɵdefineInjectable"]({ factory: function AjfFieldService_Factory() { return new AjfFieldService(); }, token: AjfFieldService, providedIn: "root" });
@@ -939,6 +992,7 @@
                     AjfSingleChoiceFieldComponent,
                     AjfTableFieldComponent,
                     AjfTimeFieldComponent,
+                    AjfVideoUrlFieldComponent,
                 ],
                 entryComponents: [
                     AjfBarcodeFieldComponent,
@@ -951,6 +1005,7 @@
                     AjfSingleChoiceFieldComponent,
                     AjfTableFieldComponent,
                     AjfTimeFieldComponent,
+                    AjfVideoUrlFieldComponent,
                 ],
                 exports: [
                     AjfFormField,
@@ -1007,6 +1062,7 @@
     exports.AjfTimeFieldComponent = AjfTimeFieldComponent;
     exports.AjfWarningAlertService = AjfWarningAlertService;
     exports.ɵgc_ajf_src_material_forms_forms_a = AjfBarcodeFieldComponent;
+    exports.ɵgc_ajf_src_material_forms_forms_b = AjfVideoUrlFieldComponent;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 

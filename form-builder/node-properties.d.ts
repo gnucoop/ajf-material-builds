@@ -20,7 +20,7 @@
  *
  */
 import { AjfChoicesOrigin, AjfNode } from '@ajf/core/forms';
-import { OnDestroy } from '@angular/core';
+import { ChangeDetectorRef, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
@@ -34,6 +34,7 @@ export interface WarningCondition {
     warningMessage: string;
 }
 export declare class AjfFbNodeProperties implements OnDestroy {
+    private _cdr;
     private _service;
     private _dialog;
     private _fb;
@@ -73,6 +74,7 @@ export declare class AjfFbNodeProperties implements OnDestroy {
     private _triggerConditions;
     get triggerConditions(): string[];
     isRepeatingContainerNode: (nodeEntry: AjfFormBuilderNodeEntry | null) => boolean;
+    private _visibilityOptSub;
     private _visibilitySub;
     private _conditionalBranchesSub;
     private _formulaRepsSub;
@@ -124,7 +126,7 @@ export declare class AjfFbNodeProperties implements OnDestroy {
     private _removeTriggerConditionSub;
     private _saveEvt;
     private _saveSub;
-    constructor(_service: AjfFormBuilderService, _dialog: MatDialog, _fb: FormBuilder);
+    constructor(_cdr: ChangeDetectorRef, _service: AjfFormBuilderService, _dialog: MatDialog, _fb: FormBuilder);
     editVisibility(): void;
     editConditionalBranch(idx: number): void;
     editFormulaReps(): void;
