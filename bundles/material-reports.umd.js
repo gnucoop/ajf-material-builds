@@ -258,15 +258,19 @@
         function AjfChartWidgetComponent(cdr, el) {
             return _super.call(this, cdr, el) || this;
         }
-        AjfChartWidgetComponent = __decorate([
-            core.Component({
-                template: "<ajf-chart\n    [chartType]=\"instance.chartType\"\n    [options]=\"instance.widget.options\"\n    [data]=\"instance.data\"\n></ajf-chart>\n",
-                changeDetection: core.ChangeDetectionStrategy.OnPush,
-                encapsulation: core.ViewEncapsulation.None,
-                styles: ["\n"]
-            }),
-            __metadata("design:paramtypes", [core.ChangeDetectorRef, core.ElementRef])
-        ], AjfChartWidgetComponent);
+        AjfChartWidgetComponent.decorators = [
+            { type: core.Component, args: [{
+                        template: "<ajf-chart\n    [chartType]=\"instance.chartType\"\n    [options]=\"instance.widget.options\"\n    [data]=\"instance.data\"\n></ajf-chart>\n",
+                        changeDetection: core.ChangeDetectionStrategy.OnPush,
+                        encapsulation: core.ViewEncapsulation.None,
+                        styles: ["\n"]
+                    }] }
+        ];
+        /** @nocollapse */
+        AjfChartWidgetComponent.ctorParameters = function () { return [
+            { type: core.ChangeDetectorRef },
+            { type: core.ElementRef }
+        ]; };
         return AjfChartWidgetComponent;
     }(reports.AjfBaseWidgetComponent));
 
@@ -296,15 +300,19 @@
         function AjfColumnWidgetComponent(cdr, el) {
             return _super.call(this, cdr, el) || this;
         }
-        AjfColumnWidgetComponent = __decorate([
-            core.Component({
-                template: "<div class=\"ajf-column-container\">\n  <ng-container *ngFor=\"let w of instance.content\">\n    <ajf-widget [instance]=\"w\">\n    </ajf-widget>\n  </ng-container>\n</div>\n",
-                changeDetection: core.ChangeDetectionStrategy.OnPush,
-                encapsulation: core.ViewEncapsulation.None,
-                styles: [".ajf-column-container{flex:1 1 auto}\n"]
-            }),
-            __metadata("design:paramtypes", [core.ChangeDetectorRef, core.ElementRef])
-        ], AjfColumnWidgetComponent);
+        AjfColumnWidgetComponent.decorators = [
+            { type: core.Component, args: [{
+                        template: "<div class=\"ajf-column-container\">\n  <ng-container *ngFor=\"let w of instance.content\">\n    <ajf-widget [instance]=\"w\">\n    </ajf-widget>\n  </ng-container>\n</div>\n",
+                        changeDetection: core.ChangeDetectionStrategy.OnPush,
+                        encapsulation: core.ViewEncapsulation.None,
+                        styles: [".ajf-column-container{flex:1 1 auto}\n"]
+                    }] }
+        ];
+        /** @nocollapse */
+        AjfColumnWidgetComponent.ctorParameters = function () { return [
+            { type: core.ChangeDetectorRef },
+            { type: core.ElementRef }
+        ]; };
         return AjfColumnWidgetComponent;
     }(reports.AjfBaseWidgetComponent));
 
@@ -334,15 +342,19 @@
         function AjfFormulaWidgetComponent(cdr, el) {
             return _super.call(this, cdr, el) || this;
         }
-        AjfFormulaWidgetComponent = __decorate([
-            core.Component({
-                template: "<ajf-text [htmlText]=\"instance.formula\"></ajf-text>\n",
-                changeDetection: core.ChangeDetectionStrategy.OnPush,
-                encapsulation: core.ViewEncapsulation.None,
-                styles: ["\n"]
-            }),
-            __metadata("design:paramtypes", [core.ChangeDetectorRef, core.ElementRef])
-        ], AjfFormulaWidgetComponent);
+        AjfFormulaWidgetComponent.decorators = [
+            { type: core.Component, args: [{
+                        template: "<ajf-text [htmlText]=\"instance.formula\"></ajf-text>\n",
+                        changeDetection: core.ChangeDetectionStrategy.OnPush,
+                        encapsulation: core.ViewEncapsulation.None,
+                        styles: ["\n"]
+                    }] }
+        ];
+        /** @nocollapse */
+        AjfFormulaWidgetComponent.ctorParameters = function () { return [
+            { type: core.ChangeDetectorRef },
+            { type: core.ElementRef }
+        ]; };
         return AjfFormulaWidgetComponent;
     }(reports.AjfBaseWidgetComponent));
 
@@ -374,15 +386,19 @@
             _this.imageTypes = image.AjfImageType;
             return _this;
         }
-        AjfImageContainerWidgetComponent = __decorate([
-            core.Component({
-                template: "<div class=\"ajf-image-container ajf-columns\" [ngSwitch]=\"instance.widget.imageType\">\n  <ng-template [ngSwitchCase]=\"imageTypes.Image\">\n    <div *ngFor=\"let icw of instance.urls; let idx = index\" class=\"ajf-column\">\n      <ajf-image\n          [type]=\"instance.widget.imageType\"\n          [imageUrl]=\"icw\"\n          [icon]=\"null\"\n          [flag]=\"null\"\n          [applyStyles]=\"instance.widget!.styles\"\n      ></ajf-image>\n    </div>\n  </ng-template>\n  <ng-template [ngSwitchCase]=\"imageTypes.Flag\">\n      <div *ngFor=\"let icw of instance.flags; let idx = index\" class=\"ajf-column\">\n        <ajf-image\n            [type]=\"instance.widget.imageType\"\n            [imageUrl]=\"null\"\n            [icon]=\"null\"\n            [flag]=\"icw\"\n            [applyStyles]=\"instance.widget!.styles\"\n        ></ajf-image>\n      </div>\n  </ng-template>\n  <ng-template [ngSwitchCase]=\"imageTypes.Icon\">\n      <div *ngFor=\"let icw of instance.icons; let idx = index\" class=\"ajf-column\">\n        <ajf-image\n            [type]=\"instance.widget.imageType\"\n            [imageUrl]=\"null\"\n            [icon]=\"icw\"\n            [flag]=\"null\"\n            [applyStyles]=\"instance.widget!.styles\"\n        ></ajf-image>\n      </div>\n  </ng-template>\n</div>\n",
-                changeDetection: core.ChangeDetectionStrategy.OnPush,
-                encapsulation: core.ViewEncapsulation.None,
-                styles: [".ajf-image-container img{max-width:none;max-height:none}\n"]
-            }),
-            __metadata("design:paramtypes", [core.ChangeDetectorRef, core.ElementRef])
-        ], AjfImageContainerWidgetComponent);
+        AjfImageContainerWidgetComponent.decorators = [
+            { type: core.Component, args: [{
+                        template: "<div class=\"ajf-image-container ajf-columns\" [ngSwitch]=\"instance.widget.imageType\">\n  <ng-template [ngSwitchCase]=\"imageTypes.Image\">\n    <div *ngFor=\"let icw of instance.urls; let idx = index\" class=\"ajf-column\">\n      <ajf-image\n          [type]=\"instance.widget.imageType\"\n          [imageUrl]=\"icw\"\n          [icon]=\"null\"\n          [flag]=\"null\"\n          [applyStyles]=\"instance.widget!.styles\"\n      ></ajf-image>\n    </div>\n  </ng-template>\n  <ng-template [ngSwitchCase]=\"imageTypes.Flag\">\n      <div *ngFor=\"let icw of instance.flags; let idx = index\" class=\"ajf-column\">\n        <ajf-image\n            [type]=\"instance.widget.imageType\"\n            [imageUrl]=\"null\"\n            [icon]=\"null\"\n            [flag]=\"icw\"\n            [applyStyles]=\"instance.widget!.styles\"\n        ></ajf-image>\n      </div>\n  </ng-template>\n  <ng-template [ngSwitchCase]=\"imageTypes.Icon\">\n      <div *ngFor=\"let icw of instance.icons; let idx = index\" class=\"ajf-column\">\n        <ajf-image\n            [type]=\"instance.widget.imageType\"\n            [imageUrl]=\"null\"\n            [icon]=\"icw\"\n            [flag]=\"null\"\n            [applyStyles]=\"instance.widget!.styles\"\n        ></ajf-image>\n      </div>\n  </ng-template>\n</div>\n",
+                        changeDetection: core.ChangeDetectionStrategy.OnPush,
+                        encapsulation: core.ViewEncapsulation.None,
+                        styles: [".ajf-image-container img{max-width:none;max-height:none}\n"]
+                    }] }
+        ];
+        /** @nocollapse */
+        AjfImageContainerWidgetComponent.ctorParameters = function () { return [
+            { type: core.ChangeDetectorRef },
+            { type: core.ElementRef }
+        ]; };
         return AjfImageContainerWidgetComponent;
     }(reports.AjfBaseWidgetComponent));
 
@@ -412,15 +428,19 @@
         function AjfImageWidgetComponent(cdr, el) {
             return _super.call(this, cdr, el) || this;
         }
-        AjfImageWidgetComponent = __decorate([
-            core.Component({
-                template: "<ajf-image\n    [type]=\"instance.widget.imageType\"\n    [imageUrl]=\"instance.url\"\n    [icon]=\"instance.icon\"\n    [flag]=\"instance.flag\"\n></ajf-image>\n",
-                changeDetection: core.ChangeDetectionStrategy.OnPush,
-                encapsulation: core.ViewEncapsulation.None,
-                styles: ["\n"]
-            }),
-            __metadata("design:paramtypes", [core.ChangeDetectorRef, core.ElementRef])
-        ], AjfImageWidgetComponent);
+        AjfImageWidgetComponent.decorators = [
+            { type: core.Component, args: [{
+                        template: "<ajf-image\n    [type]=\"instance.widget.imageType\"\n    [imageUrl]=\"instance.url\"\n    [icon]=\"instance.icon\"\n    [flag]=\"instance.flag\"\n></ajf-image>\n",
+                        changeDetection: core.ChangeDetectionStrategy.OnPush,
+                        encapsulation: core.ViewEncapsulation.None,
+                        styles: ["\n"]
+                    }] }
+        ];
+        /** @nocollapse */
+        AjfImageWidgetComponent.ctorParameters = function () { return [
+            { type: core.ChangeDetectorRef },
+            { type: core.ElementRef }
+        ]; };
         return AjfImageWidgetComponent;
     }(reports.AjfBaseWidgetComponent));
 
@@ -450,15 +470,19 @@
         function AjfLayoutWidgetComponent(cdr, el) {
             return _super.call(this, cdr, el) || this;
         }
-        AjfLayoutWidgetComponent = __decorate([
-            core.Component({
-                template: "<div class=\"ajf-columns\">\n  <div\n      *ngFor=\"let column of instance.widget.columns; let idx = index\"\n      [ngStyle]=\"{'flex-grow': column > -1 ? 1 : null, 'flex-basis' : column > -1 ? (column * 100) + '%' : null}\"\n      class=\"ajf-column\"\n  >\n    <ajf-widget *ngIf=\"(instance|ajfGetColumnContent:idx) as cc\" [instance]=\"cc!\">\n    </ajf-widget>\n  </div>\n</div>\n",
-                changeDetection: core.ChangeDetectionStrategy.OnPush,
-                encapsulation: core.ViewEncapsulation.None,
-                styles: [".ajf-columns{flex:1 1 auto;display:flex;align-items:inherit;box-sizing:border-box}.ajf-columns>.ajf-column{box-sizing:border-box;display:flex;align-items:inherit;flex-shrink:1}\n"]
-            }),
-            __metadata("design:paramtypes", [core.ChangeDetectorRef, core.ElementRef])
-        ], AjfLayoutWidgetComponent);
+        AjfLayoutWidgetComponent.decorators = [
+            { type: core.Component, args: [{
+                        template: "<div class=\"ajf-columns\">\n  <div\n      *ngFor=\"let column of instance.widget.columns; let idx = index\"\n      [ngStyle]=\"{'flex-grow': column > -1 ? 1 : null, 'flex-basis' : column > -1 ? (column * 100) + '%' : null}\"\n      class=\"ajf-column\"\n  >\n    <ajf-widget *ngIf=\"(instance|ajfGetColumnContent:idx) as cc\" [instance]=\"cc!\">\n    </ajf-widget>\n  </div>\n</div>\n",
+                        changeDetection: core.ChangeDetectionStrategy.OnPush,
+                        encapsulation: core.ViewEncapsulation.None,
+                        styles: [".ajf-columns{flex:1 1 auto;display:flex;align-items:inherit;box-sizing:border-box}.ajf-columns>.ajf-column{box-sizing:border-box;display:flex;align-items:inherit;flex-shrink:1}\n"]
+                    }] }
+        ];
+        /** @nocollapse */
+        AjfLayoutWidgetComponent.ctorParameters = function () { return [
+            { type: core.ChangeDetectorRef },
+            { type: core.ElementRef }
+        ]; };
         return AjfLayoutWidgetComponent;
     }(reports.AjfBaseWidgetComponent));
 
@@ -488,15 +512,19 @@
         function AjfMapWidgetComponent(cdr, el) {
             return _super.call(this, cdr, el) || this;
         }
-        AjfMapWidgetComponent = __decorate([
-            core.Component({
-                template: "<ajf-map\n    [coordinate]=\"instance.coordinate\"\n    [tileLayer]=\"instance.widget.tileLayer\"\n    [attribution]=\"instance.widget.attribution\"\n    [disabled]=\"instance.widget.disabled\"\n></ajf-map>\n",
-                changeDetection: core.ChangeDetectionStrategy.OnPush,
-                encapsulation: core.ViewEncapsulation.None,
-                styles: ["\n"]
-            }),
-            __metadata("design:paramtypes", [core.ChangeDetectorRef, core.ElementRef])
-        ], AjfMapWidgetComponent);
+        AjfMapWidgetComponent.decorators = [
+            { type: core.Component, args: [{
+                        template: "<ajf-map\n    [coordinate]=\"instance.coordinate\"\n    [tileLayer]=\"instance.widget.tileLayer\"\n    [attribution]=\"instance.widget.attribution\"\n    [disabled]=\"instance.widget.disabled\"\n></ajf-map>\n",
+                        changeDetection: core.ChangeDetectionStrategy.OnPush,
+                        encapsulation: core.ViewEncapsulation.None,
+                        styles: ["\n"]
+                    }] }
+        ];
+        /** @nocollapse */
+        AjfMapWidgetComponent.ctorParameters = function () { return [
+            { type: core.ChangeDetectorRef },
+            { type: core.ElementRef }
+        ]; };
         return AjfMapWidgetComponent;
     }(reports.AjfBaseWidgetComponent));
 
@@ -526,15 +554,19 @@
         function AjfPageBreakWidgetComponent(cdr, el) {
             return _super.call(this, cdr, el) || this;
         }
-        AjfPageBreakWidgetComponent = __decorate([
-            core.Component({
-                template: "<ajf-page-break></ajf-page-break>\n",
-                changeDetection: core.ChangeDetectionStrategy.OnPush,
-                encapsulation: core.ViewEncapsulation.None,
-                styles: ["\n"]
-            }),
-            __metadata("design:paramtypes", [core.ChangeDetectorRef, core.ElementRef])
-        ], AjfPageBreakWidgetComponent);
+        AjfPageBreakWidgetComponent.decorators = [
+            { type: core.Component, args: [{
+                        template: "<ajf-page-break></ajf-page-break>\n",
+                        changeDetection: core.ChangeDetectionStrategy.OnPush,
+                        encapsulation: core.ViewEncapsulation.None,
+                        styles: ["\n"]
+                    }] }
+        ];
+        /** @nocollapse */
+        AjfPageBreakWidgetComponent.ctorParameters = function () { return [
+            { type: core.ChangeDetectorRef },
+            { type: core.ElementRef }
+        ]; };
         return AjfPageBreakWidgetComponent;
     }(reports.AjfBaseWidgetComponent));
 
@@ -564,16 +596,19 @@
         function AjfReportRenderer(cdr) {
             return _super.call(this, cdr) || this;
         }
-        AjfReportRenderer = __decorate([
-            core.Component({
-                selector: 'ajf-report',
-                template: "<ng-template [ngIf]=\"instance\">\n  <div *ngIf=\"instance.header\" @.disabled [applyStyles]=\"instance.header.styles\" class=\"ajf-report-header\">\n    <ng-template ngFor let-instance [ngForOf]=\"instance.header.content\">\n      <ajf-widget *ngIf=\"instance.visible\" [instance]=\"instance\"></ajf-widget>\n    </ng-template>\n  </div>\n  <div *ngIf=\"instance.content\" @.disabled [applyStyles]=\"instance.content.styles\" class=\"ajf-report-content\">\n    <ng-template ngFor let-instance [ngForOf]=\"instance.content.content\">\n      <ajf-widget *ngIf=\"instance.visible\" [instance]=\"instance\"></ajf-widget>\n    </ng-template>\n  </div>\n  <div *ngIf=\"instance.footer\" @.disabled [applyStyles]=\"instance.footer.styles\" class=\"ajf-report-footer\">\n    <ng-template ngFor let-instance [ngForOf]=\"instance.footer.content\">\n      <ajf-widget *ngIf=\"instance.visible\" [instance]=\"instance\"></ajf-widget>\n    </ng-template>\n  </div>\n</ng-template>\n",
-                encapsulation: core.ViewEncapsulation.None,
-                changeDetection: core.ChangeDetectionStrategy.OnPush,
-                styles: ["ajf-report{display:flex;flex-direction:column;align-items:stretch;box-sizing:border-box;position:relative;width:100%}ajf-report h1,ajf-report h2,ajf-report h3,ajf-report h4,ajf-report h5,ajf-report h6,ajf-report p{padding:0;margin:0}ajf-report .ajf-loading{position:absolute;top:0;right:0;left:0;bottom:0;min-height:300px;padding:100px;text-align:center;background-color:rgba(240,240,240,.4);display:flex;justify-content:center}\n"]
-            }),
-            __metadata("design:paramtypes", [core.ChangeDetectorRef])
-        ], AjfReportRenderer);
+        AjfReportRenderer.decorators = [
+            { type: core.Component, args: [{
+                        selector: 'ajf-report',
+                        template: "<ng-template [ngIf]=\"instance\">\n  <div *ngIf=\"instance.header\" @.disabled [applyStyles]=\"instance.header.styles\" class=\"ajf-report-header\">\n    <ng-template ngFor let-instance [ngForOf]=\"instance.header.content\">\n      <ajf-widget *ngIf=\"instance.visible\" [instance]=\"instance\"></ajf-widget>\n    </ng-template>\n  </div>\n  <div *ngIf=\"instance.content\" @.disabled [applyStyles]=\"instance.content.styles\" class=\"ajf-report-content\">\n    <ng-template ngFor let-instance [ngForOf]=\"instance.content.content\">\n      <ajf-widget *ngIf=\"instance.visible\" [instance]=\"instance\"></ajf-widget>\n    </ng-template>\n  </div>\n  <div *ngIf=\"instance.footer\" @.disabled [applyStyles]=\"instance.footer.styles\" class=\"ajf-report-footer\">\n    <ng-template ngFor let-instance [ngForOf]=\"instance.footer.content\">\n      <ajf-widget *ngIf=\"instance.visible\" [instance]=\"instance\"></ajf-widget>\n    </ng-template>\n  </div>\n</ng-template>\n",
+                        encapsulation: core.ViewEncapsulation.None,
+                        changeDetection: core.ChangeDetectionStrategy.OnPush,
+                        styles: ["ajf-report{display:flex;flex-direction:column;align-items:stretch;box-sizing:border-box;position:relative;width:100%}ajf-report h1,ajf-report h2,ajf-report h3,ajf-report h4,ajf-report h5,ajf-report h6,ajf-report p{padding:0;margin:0}ajf-report .ajf-loading{position:absolute;top:0;right:0;left:0;bottom:0;min-height:300px;padding:100px;text-align:center;background-color:rgba(240,240,240,.4);display:flex;justify-content:center}\n"]
+                    }] }
+        ];
+        /** @nocollapse */
+        AjfReportRenderer.ctorParameters = function () { return [
+            { type: core.ChangeDetectorRef }
+        ]; };
         return AjfReportRenderer;
     }(reports.AjfReportRenderer));
 
@@ -603,15 +638,19 @@
         function AjfTableWidgetComponent(cdr, el) {
             return _super.call(this, cdr, el) || this;
         }
-        AjfTableWidgetComponent = __decorate([
-            core.Component({
-                template: "<ajf-table [data]=\"instance.data\"></ajf-table>\n",
-                changeDetection: core.ChangeDetectionStrategy.OnPush,
-                encapsulation: core.ViewEncapsulation.None,
-                styles: ["\n"]
-            }),
-            __metadata("design:paramtypes", [core.ChangeDetectorRef, core.ElementRef])
-        ], AjfTableWidgetComponent);
+        AjfTableWidgetComponent.decorators = [
+            { type: core.Component, args: [{
+                        template: "<ajf-table [data]=\"instance.data\"></ajf-table>\n",
+                        changeDetection: core.ChangeDetectionStrategy.OnPush,
+                        encapsulation: core.ViewEncapsulation.None,
+                        styles: ["\n"]
+                    }] }
+        ];
+        /** @nocollapse */
+        AjfTableWidgetComponent.ctorParameters = function () { return [
+            { type: core.ChangeDetectorRef },
+            { type: core.ElementRef }
+        ]; };
         return AjfTableWidgetComponent;
     }(reports.AjfBaseWidgetComponent));
 
@@ -641,15 +680,19 @@
         function AjfTextWidgetComponent(cdr, el) {
             return _super.call(this, cdr, el) || this;
         }
-        AjfTextWidgetComponent = __decorate([
-            core.Component({
-                template: "<ajf-text [htmlText]=\"instance.htmlText | translate\"></ajf-text>\n",
-                changeDetection: core.ChangeDetectionStrategy.OnPush,
-                encapsulation: core.ViewEncapsulation.None,
-                styles: ["\n"]
-            }),
-            __metadata("design:paramtypes", [core.ChangeDetectorRef, core.ElementRef])
-        ], AjfTextWidgetComponent);
+        AjfTextWidgetComponent.decorators = [
+            { type: core.Component, args: [{
+                        template: "<ajf-text [htmlText]=\"instance.htmlText | translate\"></ajf-text>\n",
+                        changeDetection: core.ChangeDetectionStrategy.OnPush,
+                        encapsulation: core.ViewEncapsulation.None,
+                        styles: ["\n"]
+                    }] }
+        ];
+        /** @nocollapse */
+        AjfTextWidgetComponent.ctorParameters = function () { return [
+            { type: core.ChangeDetectorRef },
+            { type: core.ElementRef }
+        ]; };
         return AjfTextWidgetComponent;
     }(reports.AjfBaseWidgetComponent));
 
@@ -694,16 +737,20 @@
                 _a);
             return _this;
         }
-        AjfReportWidget = __decorate([
-            core.Component({
-                selector: 'ajf-widget',
-                template: "<ng-template ajf-widget-host></ng-template>\n",
-                encapsulation: core.ViewEncapsulation.None,
-                changeDetection: core.ChangeDetectionStrategy.OnPush,
-                styles: ["ajf-widget{display:flex;flex:1 1 auto;box-sizing:border-box}ajf-widget>ng-component{flex:1 1 auto;display:flex;align-items:center;box-sizing:border-box;background-color:transparent}\n"]
-            }),
-            __metadata("design:paramtypes", [core.ComponentFactoryResolver, core.Renderer2])
-        ], AjfReportWidget);
+        AjfReportWidget.decorators = [
+            { type: core.Component, args: [{
+                        selector: 'ajf-widget',
+                        template: "<ng-template ajf-widget-host></ng-template>\n",
+                        encapsulation: core.ViewEncapsulation.None,
+                        changeDetection: core.ChangeDetectionStrategy.OnPush,
+                        styles: ["ajf-widget{display:flex;flex:1 1 auto;box-sizing:border-box}ajf-widget>ng-component{flex:1 1 auto;display:flex;align-items:center;box-sizing:border-box;background-color:transparent}\n"]
+                    }] }
+        ];
+        /** @nocollapse */
+        AjfReportWidget.ctorParameters = function () { return [
+            { type: core.ComponentFactoryResolver },
+            { type: core.Renderer2 }
+        ]; };
         return AjfReportWidget;
     }(reports.AjfReportWidget));
 
@@ -731,40 +778,40 @@
     var AjfReportsModule = /** @class */ (function () {
         function AjfReportsModule() {
         }
-        AjfReportsModule = __decorate([
-            core.NgModule({
-                imports: [
-                    chart.AjfChartModule,
-                    common.AjfCommonModule,
-                    image$1.AjfImageModule,
-                    map.AjfMapModule,
-                    pageBreak.AjfPageBreakModule,
-                    table.AjfTableModule,
-                    text.AjfTextModule,
-                    common$1.CommonModule,
-                    reports.AjfReportsModule,
-                    core$1.TranslateModule,
-                ],
-                declarations: [
-                    AjfChartWidgetComponent,
-                    AjfColumnWidgetComponent,
-                    AjfFormulaWidgetComponent,
-                    AjfImageContainerWidgetComponent,
-                    AjfImageWidgetComponent,
-                    AjfLayoutWidgetComponent,
-                    AjfMapWidgetComponent,
-                    AjfPageBreakWidgetComponent,
-                    AjfReportRenderer,
-                    AjfReportWidget,
-                    AjfTableWidgetComponent,
-                    AjfTextWidgetComponent,
-                ],
-                exports: [
-                    AjfReportRenderer,
-                    AjfReportWidget,
-                ],
-            })
-        ], AjfReportsModule);
+        AjfReportsModule.decorators = [
+            { type: core.NgModule, args: [{
+                        imports: [
+                            chart.AjfChartModule,
+                            common.AjfCommonModule,
+                            image$1.AjfImageModule,
+                            map.AjfMapModule,
+                            pageBreak.AjfPageBreakModule,
+                            table.AjfTableModule,
+                            text.AjfTextModule,
+                            common$1.CommonModule,
+                            reports.AjfReportsModule,
+                            core$1.TranslateModule,
+                        ],
+                        declarations: [
+                            AjfChartWidgetComponent,
+                            AjfColumnWidgetComponent,
+                            AjfFormulaWidgetComponent,
+                            AjfImageContainerWidgetComponent,
+                            AjfImageWidgetComponent,
+                            AjfLayoutWidgetComponent,
+                            AjfMapWidgetComponent,
+                            AjfPageBreakWidgetComponent,
+                            AjfReportRenderer,
+                            AjfReportWidget,
+                            AjfTableWidgetComponent,
+                            AjfTextWidgetComponent,
+                        ],
+                        exports: [
+                            AjfReportRenderer,
+                            AjfReportWidget,
+                        ],
+                    },] }
+        ];
         return AjfReportsModule;
     }());
 

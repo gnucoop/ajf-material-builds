@@ -1,4 +1,3 @@
-import { __decorate, __metadata } from 'tslib';
 import { AjfCalendar, AjfCalendarService, AjfCalendarModule as AjfCalendarModule$1 } from '@ajf/core/calendar';
 import { forwardRef, Component, ViewEncapsulation, ChangeDetectionStrategy, ChangeDetectorRef, NgModule } from '@angular/core';
 import { NG_VALUE_ACCESSOR, FormsModule } from '@angular/forms';
@@ -36,25 +35,29 @@ const CALENDAR_CONTROL_VALUE_ACCESSOR = {
  * Ajf calendar component.
  */
 let AjfCalendarComponent = /** @class */ (() => {
-    let AjfCalendarComponent = class AjfCalendarComponent extends AjfCalendar {
+    class AjfCalendarComponent extends AjfCalendar {
         constructor(cdr, service) {
             super(cdr, service);
         }
-    };
-    AjfCalendarComponent = __decorate([
-        Component({
-            selector: 'ajf-calendar',
-            template: "<div class=\"ajf-calendar-header\">\n  <button (click)=\"prevPage()\" mat-mini-fab>&#8592;</button>\n  <button (click)=\"previousViewMode()\" mat-button class=\"ajf-calendar-header-title\">\n    {{ viewHeader | translate }}\n  </button>\n  <button (click)=\"nextPage()\" mat-mini-fab>&#8594;</button>\n</div>\n<div class=\"ajf-calendar-row\" *ngIf=\"calendarHeaders.length > 0\">\n  <div *ngFor=\"let calendarHeader of calendarHeaders\">\n    {{ calendarHeader | translate }}\n  </div>\n</div>\n<div class=\"ajf-calendar-row\" *ngFor=\"let row of calendarRows\">\n  <button\n      *ngFor=\"let entry of row\"\n      mat-raised-button\n      [class.ajf-calendar-partial-selection]=\"entry.selected == 'partial'\"\n      [disabled]=\"disabled || (entry.disabled || false)\"\n      [color]=\"entry.selected != 'none' ? 'warn' : undefined\"\n      (click)=\"selectEntry(entry)\"\n  >{{ entry|ajfCalendarEntryLabel }}</button>\n</div>\n",
-            encapsulation: ViewEncapsulation.None,
-            changeDetection: ChangeDetectionStrategy.OnPush,
-            outputs: ['change'],
-            providers: [
-                CALENDAR_CONTROL_VALUE_ACCESSOR,
-            ],
-            styles: ["ajf-calendar{display:flex;box-sizing:border-box;width:100%;height:320px;flex-direction:column}ajf-calendar .ajf-calendar-header,ajf-calendar .ajf-calendar-row{display:flex;box-sizing:border-box;width:100%;flex-direction:row}ajf-calendar .ajf-calendar-header{height:40px}ajf-calendar .ajf-calendar-header .ajf-calendar-header-title{flex:1;margin:0 10px}ajf-calendar .ajf-calendar-row{flex:1}ajf-calendar .ajf-calendar-row button,ajf-calendar .ajf-calendar-row div{flex:1;margin:3px}ajf-calendar .ajf-calendar-row div{line-height:40px;text-align:center}ajf-calendar .ajf-calendar-row .ajf-calendar-partial-selection ::before{content:\"\";position:absolute;top:0;right:0;bottom:0;left:0;background-color:rgba(255,255,255,.5)}\n"]
-        }),
-        __metadata("design:paramtypes", [ChangeDetectorRef, AjfCalendarService])
-    ], AjfCalendarComponent);
+    }
+    AjfCalendarComponent.decorators = [
+        { type: Component, args: [{
+                    selector: 'ajf-calendar',
+                    template: "<div class=\"ajf-calendar-header\">\n  <button (click)=\"prevPage()\" mat-mini-fab>&#8592;</button>\n  <button (click)=\"previousViewMode()\" mat-button class=\"ajf-calendar-header-title\">\n    {{ viewHeader | translate }}\n  </button>\n  <button (click)=\"nextPage()\" mat-mini-fab>&#8594;</button>\n</div>\n<div class=\"ajf-calendar-row\" *ngIf=\"calendarHeaders.length > 0\">\n  <div *ngFor=\"let calendarHeader of calendarHeaders\">\n    {{ calendarHeader | translate }}\n  </div>\n</div>\n<div class=\"ajf-calendar-row\" *ngFor=\"let row of calendarRows\">\n  <button\n      *ngFor=\"let entry of row\"\n      mat-raised-button\n      [class.ajf-calendar-partial-selection]=\"entry.selected == 'partial'\"\n      [disabled]=\"disabled || (entry.disabled || false)\"\n      [color]=\"entry.selected != 'none' ? 'warn' : undefined\"\n      (click)=\"selectEntry(entry)\"\n  >{{ entry|ajfCalendarEntryLabel }}</button>\n</div>\n",
+                    encapsulation: ViewEncapsulation.None,
+                    changeDetection: ChangeDetectionStrategy.OnPush,
+                    outputs: ['change'],
+                    providers: [
+                        CALENDAR_CONTROL_VALUE_ACCESSOR,
+                    ],
+                    styles: ["ajf-calendar{display:flex;box-sizing:border-box;width:100%;height:320px;flex-direction:column}ajf-calendar .ajf-calendar-header,ajf-calendar .ajf-calendar-row{display:flex;box-sizing:border-box;width:100%;flex-direction:row}ajf-calendar .ajf-calendar-header{height:40px}ajf-calendar .ajf-calendar-header .ajf-calendar-header-title{flex:1;margin:0 10px}ajf-calendar .ajf-calendar-row{flex:1}ajf-calendar .ajf-calendar-row button,ajf-calendar .ajf-calendar-row div{flex:1;margin:3px}ajf-calendar .ajf-calendar-row div{line-height:40px;text-align:center}ajf-calendar .ajf-calendar-row .ajf-calendar-partial-selection ::before{content:\"\";position:absolute;top:0;right:0;bottom:0;left:0;background-color:rgba(255,255,255,.5)}\n"]
+                }] }
+    ];
+    /** @nocollapse */
+    AjfCalendarComponent.ctorParameters = () => [
+        { type: ChangeDetectorRef },
+        { type: AjfCalendarService }
+    ];
     return AjfCalendarComponent;
 })();
 
@@ -80,25 +83,25 @@ let AjfCalendarComponent = /** @class */ (() => {
  *
  */
 let AjfCalendarModule = /** @class */ (() => {
-    let AjfCalendarModule = class AjfCalendarModule {
-    };
-    AjfCalendarModule = __decorate([
-        NgModule({
-            imports: [
-                CommonModule,
-                AjfCalendarModule$1,
-                FormsModule,
-                MatButtonModule,
-                TranslateModule,
-            ],
-            declarations: [
-                AjfCalendarComponent,
-            ],
-            exports: [
-                AjfCalendarComponent,
-            ],
-        })
-    ], AjfCalendarModule);
+    class AjfCalendarModule {
+    }
+    AjfCalendarModule.decorators = [
+        { type: NgModule, args: [{
+                    imports: [
+                        CommonModule,
+                        AjfCalendarModule$1,
+                        FormsModule,
+                        MatButtonModule,
+                        TranslateModule,
+                    ],
+                    declarations: [
+                        AjfCalendarComponent,
+                    ],
+                    exports: [
+                        AjfCalendarComponent,
+                    ],
+                },] }
+    ];
     return AjfCalendarModule;
 })();
 

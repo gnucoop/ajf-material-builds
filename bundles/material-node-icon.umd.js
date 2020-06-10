@@ -258,15 +258,15 @@
         function AjfNodeIcon() {
             return _super !== null && _super.apply(this, arguments) || this;
         }
-        AjfNodeIcon = __decorate([
-            core.Component({
-                selector: 'ajf-node-icon',
-                template: "<ng-template [ngIf]=\"node\">\n  <mat-icon [fontSet]=\"fontSet\" [fontIcon]=\"fontIcon\"></mat-icon>\n</ng-template>\n",
-                encapsulation: core.ViewEncapsulation.None,
-                changeDetection: core.ChangeDetectionStrategy.OnPush,
-                styles: ["\n"]
-            })
-        ], AjfNodeIcon);
+        AjfNodeIcon.decorators = [
+            { type: core.Component, args: [{
+                        selector: 'ajf-node-icon',
+                        template: "<ng-template [ngIf]=\"node\">\n  <mat-icon [fontSet]=\"fontSet\" [fontIcon]=\"fontIcon\"></mat-icon>\n</ng-template>\n",
+                        encapsulation: core.ViewEncapsulation.None,
+                        changeDetection: core.ChangeDetectionStrategy.OnPush,
+                        styles: ["\n"]
+                    }] }
+        ];
         return AjfNodeIcon;
     }(nodeIcon.AjfNodeIcon));
 
@@ -294,20 +294,20 @@
     var AjfNodeIconModule = /** @class */ (function () {
         function AjfNodeIconModule() {
         }
-        AjfNodeIconModule = __decorate([
-            core.NgModule({
-                imports: [
-                    common.CommonModule,
-                    icon.MatIconModule,
-                ],
-                declarations: [
-                    AjfNodeIcon,
-                ],
-                exports: [
-                    AjfNodeIcon,
-                ],
-            })
-        ], AjfNodeIconModule);
+        AjfNodeIconModule.decorators = [
+            { type: core.NgModule, args: [{
+                        imports: [
+                            common.CommonModule,
+                            icon.MatIconModule,
+                        ],
+                        declarations: [
+                            AjfNodeIcon,
+                        ],
+                        exports: [
+                            AjfNodeIcon,
+                        ],
+                    },] }
+        ];
         return AjfNodeIconModule;
     }());
 

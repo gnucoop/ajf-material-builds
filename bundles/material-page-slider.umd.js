@@ -258,16 +258,21 @@
         function AjfPageSlider(animationBuilder, cdr, renderer) {
             return _super.call(this, animationBuilder, cdr, renderer) || this;
         }
-        AjfPageSlider = __decorate([
-            core.Component({
-                selector: 'ajf-page-slider',
-                template: "<div class=\"ajf-page-slider-content\">\n  <div #body [ngClass]=\"'ajf-page-slider-' + orientation\" (touchstart)=\"onTouchStart($event)\"\n    (touchmove)=\"onTouchMove($event)\" (touchend)=\"onTouchEnd()\" (mousewheel)=\"onMouseWheel($event)\"\n    class=\"ajf-page-slider-body\">\n    <ng-content></ng-content>\n  </div>\n</div>\n<mat-toolbar *ngIf=\"!hideNavigationButtons\" class=\"ajf-toolbar\">\n  <ng-content select=[ajfPageSliderBar]></ng-content>\n  <div class=\"ajf-spacer\"></div>\n  <div>\n    <button aria-label=\"Switch orientation\" mat-button *ngIf=\"!fixedOrientation\" (click)=\"switchOrientation()\">\n      <mat-icon>{{ orientation == 'vertical' ? 'swap_horiz' : 'swap_vert' }}</mat-icon>\n    </button>\n    <button aria-label=\"Back\" mat-button (click)=\"slide({dir: 'up'})\" secondary>\n      <mat-icon *ngIf=\"orientation == 'horizontal'\">arrow_backward</mat-icon>\n      <mat-icon *ngIf=\"orientation == 'vertical'\">arrow_upward</mat-icon>\n    </button>\n    <button aria-label=\"Forward\" mat-button (click)=\"slide({dir: 'down'})\" secondary>\n      <mat-icon *ngIf=\"orientation == 'horizontal'\">arrow_forward</mat-icon>\n      <mat-icon *ngIf=\"orientation == 'vertical'\">arrow_downward</mat-icon>\n    </button>\n  </div>\n</mat-toolbar>\n",
-                encapsulation: core.ViewEncapsulation.None,
-                changeDetection: core.ChangeDetectionStrategy.OnPush,
-                styles: ["ajf-page-slider{display:flex;flex-direction:column;align-items:stretch}ajf-page-slider>.ajf-page-slider-content{flex:1;display:block;overflow:hidden;height:100%}ajf-page-slider>.ajf-page-slider-content>.ajf-page-slider-body{display:flex;align-items:stretch}ajf-page-slider>.ajf-page-slider-content>.ajf-page-slider-body.ajf-page-slider-vertical{flex-direction:column;width:100%}ajf-page-slider>.ajf-page-slider-content>.ajf-page-slider-body.ajf-page-slider-horizontal{flex-direction:row;height:100%}ajf-page-slider>.ajf-page-slider-content>.ajf-page-slider-body>ajf-page-slider-item{flex:1 0 auto}ajf-page-slider .ajf-spacer{flex:1 0 auto}\n"]
-            }),
-            __metadata("design:paramtypes", [animations.AnimationBuilder, core.ChangeDetectorRef, core.Renderer2])
-        ], AjfPageSlider);
+        AjfPageSlider.decorators = [
+            { type: core.Component, args: [{
+                        selector: 'ajf-page-slider',
+                        template: "<div class=\"ajf-page-slider-content\">\n  <div #body [ngClass]=\"'ajf-page-slider-' + orientation\" (touchstart)=\"onTouchStart($event)\"\n    (touchmove)=\"onTouchMove($event)\" (touchend)=\"onTouchEnd()\" (mousewheel)=\"onMouseWheel($event)\"\n    class=\"ajf-page-slider-body\">\n    <ng-content></ng-content>\n  </div>\n</div>\n<mat-toolbar *ngIf=\"!hideNavigationButtons\" class=\"ajf-toolbar\">\n  <ng-content select=[ajfPageSliderBar]></ng-content>\n  <div class=\"ajf-spacer\"></div>\n  <div>\n    <button aria-label=\"Switch orientation\" mat-button *ngIf=\"!fixedOrientation\" (click)=\"switchOrientation()\">\n      <mat-icon>{{ orientation == 'vertical' ? 'swap_horiz' : 'swap_vert' }}</mat-icon>\n    </button>\n    <button aria-label=\"Back\" mat-button (click)=\"slide({dir: 'up'})\" secondary>\n      <mat-icon *ngIf=\"orientation == 'horizontal'\">arrow_backward</mat-icon>\n      <mat-icon *ngIf=\"orientation == 'vertical'\">arrow_upward</mat-icon>\n    </button>\n    <button aria-label=\"Forward\" mat-button (click)=\"slide({dir: 'down'})\" secondary>\n      <mat-icon *ngIf=\"orientation == 'horizontal'\">arrow_forward</mat-icon>\n      <mat-icon *ngIf=\"orientation == 'vertical'\">arrow_downward</mat-icon>\n    </button>\n  </div>\n</mat-toolbar>\n",
+                        encapsulation: core.ViewEncapsulation.None,
+                        changeDetection: core.ChangeDetectionStrategy.OnPush,
+                        styles: ["ajf-page-slider{display:flex;flex-direction:column;align-items:stretch}ajf-page-slider>.ajf-page-slider-content{flex:1;display:block;overflow:hidden;height:100%}ajf-page-slider>.ajf-page-slider-content>.ajf-page-slider-body{display:flex;align-items:stretch}ajf-page-slider>.ajf-page-slider-content>.ajf-page-slider-body.ajf-page-slider-vertical{flex-direction:column;width:100%}ajf-page-slider>.ajf-page-slider-content>.ajf-page-slider-body.ajf-page-slider-horizontal{flex-direction:row;height:100%}ajf-page-slider>.ajf-page-slider-content>.ajf-page-slider-body>ajf-page-slider-item{flex:1 0 auto}ajf-page-slider .ajf-spacer{flex:1 0 auto}\n"]
+                    }] }
+        ];
+        /** @nocollapse */
+        AjfPageSlider.ctorParameters = function () { return [
+            { type: animations.AnimationBuilder },
+            { type: core.ChangeDetectorRef },
+            { type: core.Renderer2 }
+        ]; };
         return AjfPageSlider;
     }(pageSlider.AjfPageSlider));
 
@@ -295,24 +300,24 @@
     var AjfPageSliderModule = /** @class */ (function () {
         function AjfPageSliderModule() {
         }
-        AjfPageSliderModule = __decorate([
-            core.NgModule({
-                imports: [
-                    pageSlider.AjfPageSliderModule,
-                    common.CommonModule,
-                    button.MatButtonModule,
-                    icon.MatIconModule,
-                    toolbar.MatToolbarModule,
-                ],
-                declarations: [
-                    AjfPageSlider,
-                ],
-                exports: [
-                    pageSlider.AjfPageSliderModule,
-                    AjfPageSlider,
-                ],
-            })
-        ], AjfPageSliderModule);
+        AjfPageSliderModule.decorators = [
+            { type: core.NgModule, args: [{
+                        imports: [
+                            pageSlider.AjfPageSliderModule,
+                            common.CommonModule,
+                            button.MatButtonModule,
+                            icon.MatIconModule,
+                            toolbar.MatToolbarModule,
+                        ],
+                        declarations: [
+                            AjfPageSlider,
+                        ],
+                        exports: [
+                            pageSlider.AjfPageSliderModule,
+                            AjfPageSlider,
+                        ],
+                    },] }
+        ];
         return AjfPageSliderModule;
     }());
 

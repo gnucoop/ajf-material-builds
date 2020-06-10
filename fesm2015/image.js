@@ -1,4 +1,3 @@
-import { __decorate, __metadata } from 'tslib';
 import { CommonModule } from '@angular/common';
 import { Component, ChangeDetectionStrategy, ViewEncapsulation, ElementRef, Renderer2, NgModule } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
@@ -27,21 +26,26 @@ import { DomSanitizer } from '@angular/platform-browser';
  *
  */
 let AjfImage = /** @class */ (() => {
-    let AjfImage = class AjfImage extends AjfImage$1 {
+    class AjfImage extends AjfImage$1 {
         constructor(el, renderer, ds) {
             super(el, renderer, ds);
         }
-    };
-    AjfImage = __decorate([
-        Component({
-            selector: 'ajf-image',
-            template: "<ng-container [ngSwitch]=\"imageType|async\">\n  <ng-template [ngSwitchCase]=\"imageTypes.Image\">\n    <img *ngIf=\"url|async as iu\" [src]=\"iu\" alt=\"\">\n  </ng-template>\n  <ng-template [ngSwitchCase]=\"imageTypes.Icon\">\n    <mat-icon *ngIf=\"iconObj|async as io\"\n        [fontSet]=\"io!.fontSet\"\n        [fontIcon]=\"io!.fontIcon\">\n    </mat-icon>\n  </ng-template>\n  <span *ngSwitchCase=\"imageTypes.Flag\" [class]=\"flagName|async\"></span>\n</ng-container>\n",
-            changeDetection: ChangeDetectionStrategy.OnPush,
-            encapsulation: ViewEncapsulation.None,
-            styles: ["ajf-image{display:flex;box-sizing:border-box;align-items:center;position:relative;font-size:inherit;width:inherit;height:inherit}ajf-image img{vertical-align:middle;position:relative;max-height:100%;max-width:100%;height:auto;width:auto}ajf-image span{height:inherit;width:inherit}ajf-image .mat-icon{font-size:inherit}\n"]
-        }),
-        __metadata("design:paramtypes", [ElementRef, Renderer2, DomSanitizer])
-    ], AjfImage);
+    }
+    AjfImage.decorators = [
+        { type: Component, args: [{
+                    selector: 'ajf-image',
+                    template: "<ng-container [ngSwitch]=\"imageType|async\">\n  <ng-template [ngSwitchCase]=\"imageTypes.Image\">\n    <img *ngIf=\"url|async as iu\" [src]=\"iu\" alt=\"\">\n  </ng-template>\n  <ng-template [ngSwitchCase]=\"imageTypes.Icon\">\n    <mat-icon *ngIf=\"iconObj|async as io\"\n        [fontSet]=\"io!.fontSet\"\n        [fontIcon]=\"io!.fontIcon\">\n    </mat-icon>\n  </ng-template>\n  <span *ngSwitchCase=\"imageTypes.Flag\" [class]=\"flagName|async\"></span>\n</ng-container>\n",
+                    changeDetection: ChangeDetectionStrategy.OnPush,
+                    encapsulation: ViewEncapsulation.None,
+                    styles: ["ajf-image{display:flex;box-sizing:border-box;align-items:center;position:relative;font-size:inherit;width:inherit;height:inherit}ajf-image img{vertical-align:middle;position:relative;max-height:100%;max-width:100%;height:auto;width:auto}ajf-image span{height:inherit;width:inherit}ajf-image .mat-icon{font-size:inherit}\n"]
+                }] }
+    ];
+    /** @nocollapse */
+    AjfImage.ctorParameters = () => [
+        { type: ElementRef },
+        { type: Renderer2 },
+        { type: DomSanitizer }
+    ];
     return AjfImage;
 })();
 
@@ -67,22 +71,22 @@ let AjfImage = /** @class */ (() => {
  *
  */
 let AjfImageModule = /** @class */ (() => {
-    let AjfImageModule = class AjfImageModule {
-    };
-    AjfImageModule = __decorate([
-        NgModule({
-            imports: [
-                CommonModule,
-                MatIconModule,
-            ],
-            declarations: [
-                AjfImage,
-            ],
-            exports: [
-                AjfImage,
-            ],
-        })
-    ], AjfImageModule);
+    class AjfImageModule {
+    }
+    AjfImageModule.decorators = [
+        { type: NgModule, args: [{
+                    imports: [
+                        CommonModule,
+                        MatIconModule,
+                    ],
+                    declarations: [
+                        AjfImage,
+                    ],
+                    exports: [
+                        AjfImage,
+                    ],
+                },] }
+    ];
     return AjfImageModule;
 })();
 

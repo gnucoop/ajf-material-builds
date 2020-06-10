@@ -1,5 +1,4 @@
-import { __decorate, __metadata } from 'tslib';
-import { EventEmitter, Input, Output, ViewChild, ElementRef, Component, ViewEncapsulation, ChangeDetectionStrategy, NgModule } from '@angular/core';
+import { EventEmitter, Component, ViewEncapsulation, ChangeDetectionStrategy, Input, Output, ViewChild, NgModule } from '@angular/core';
 
 /**
  * @license
@@ -325,7 +324,7 @@ let IEditorTheme = /** @class */ (() => {
  *
  */
 let AjfMonacoEditor = /** @class */ (() => {
-    let AjfMonacoEditor = class AjfMonacoEditor {
+    class AjfMonacoEditor {
         constructor() {
             this.autoFormatOnLoad = true;
             this.monacoLibPath = 'vs/loader.js';
@@ -606,288 +605,88 @@ let AjfMonacoEditor = /** @class */ (() => {
                 return model.modified ? model.modified : null;
             }
         }
+    }
+    AjfMonacoEditor.decorators = [
+        { type: Component, args: [{
+                    encapsulation: ViewEncapsulation.None,
+                    changeDetection: ChangeDetectionStrategy.OnPush,
+                    selector: 'ajf-monaco-editor',
+                    template: "<div #editor class=\"ajf-monaco-editor\"></div>\n",
+                    host: { '(window:resize)': 'onResize($event)' },
+                    styles: ["ajf-monaco-editor{display:flex;align-items:stretch;overflow:hidden}ajf-monaco-editor .ajf-monaco-editor{flex:1 0 auto}\n"]
+                }] }
+    ];
+    /** @nocollapse */
+    AjfMonacoEditor.ctorParameters = () => [];
+    AjfMonacoEditor.propDecorators = {
+        experimentalScreenReader: [{ type: Input }],
+        ariaLabel: [{ type: Input }],
+        rulers: [{ type: Input }],
+        wordSeparators: [{ type: Input }],
+        selectionClipboard: [{ type: Input }],
+        lineNumbers: [{ type: Input }],
+        selectOnLineNumbers: [{ type: Input }],
+        lineNumbersMinChars: [{ type: Input }],
+        glyphMargin: [{ type: Input }],
+        lineDecorationsWidth: [{ type: Input }],
+        revealHorizontalRightPadding: [{ type: Input }],
+        roundedSelection: [{ type: Input }],
+        theme: [{ type: Input }],
+        readOnly: [{ type: Input }],
+        scrollbar: [{ type: Input }],
+        overviewRulerLanes: [{ type: Input }],
+        cursorBlinking: [{ type: Input }],
+        mouseWheelZoom: [{ type: Input }],
+        cursorStyle: [{ type: Input }],
+        fontLigatures: [{ type: Input }],
+        disableTranslate3d: [{ type: Input }],
+        hideCursorInOverviewRuler: [{ type: Input }],
+        scrollBeyondLastLine: [{ type: Input }],
+        automaticLayout: [{ type: Input }],
+        wrappingColumn: [{ type: Input }],
+        wordWrap: [{ type: Input }],
+        wrappingIndent: [{ type: Input }],
+        wordWrapBreakBeforeCharacters: [{ type: Input }],
+        wordWrapBreakAfterCharacters: [{ type: Input }],
+        wordWrapBreakObtrusiveCharacters: [{ type: Input }],
+        stopRenderingLineAfter: [{ type: Input }],
+        hover: [{ type: Input }],
+        contextmenu: [{ type: Input }],
+        mouseWheelScrollSensitivity: [{ type: Input }],
+        quickSuggestions: [{ type: Input }],
+        quickSuggestionsDelay: [{ type: Input }],
+        parameterHints: [{ type: Input }],
+        iconsInSuggestions: [{ type: Input }],
+        autoClosingBrackets: [{ type: Input }],
+        formatOnType: [{ type: Input }],
+        suggestOnTriggerCharacters: [{ type: Input }],
+        acceptSuggestionOnEnter: [{ type: Input }],
+        snippetSuggestions: [{ type: Input }],
+        tabCompletion: [{ type: Input }],
+        wordBasedSuggestions: [{ type: Input }],
+        selectionHighlight: [{ type: Input }],
+        codeLens: [{ type: Input }],
+        folding: [{ type: Input }],
+        renderWhitespace: [{ type: Input }],
+        renderControlCharacters: [{ type: Input }],
+        renderIndentGuides: [{ type: Input }],
+        renderLineHighlight: [{ type: Input }],
+        useTabStops: [{ type: Input }],
+        fontFamily: [{ type: Input }],
+        fontWeight: [{ type: Input }],
+        fontSize: [{ type: Input }],
+        lineHeight: [{ type: Input }],
+        language: [{ type: Input }],
+        disableAutocomplete: [{ type: Input }],
+        autoFormatOnLoad: [{ type: Input }],
+        monacoLibPath: [{ type: Input }],
+        valueToCompare: [{ type: Input }],
+        value: [{ type: Input }],
+        valueChange: [{ type: Output }],
+        valueToCompareChange: [{ type: Output }],
+        init: [{ type: Output }],
+        editorContent: [{ type: ViewChild, args: ['editor', { static: true },] }]
     };
-    __decorate([
-        Input(),
-        __metadata("design:type", Boolean)
-    ], AjfMonacoEditor.prototype, "experimentalScreenReader", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", String)
-    ], AjfMonacoEditor.prototype, "ariaLabel", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Array)
-    ], AjfMonacoEditor.prototype, "rulers", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", String)
-    ], AjfMonacoEditor.prototype, "wordSeparators", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Boolean)
-    ], AjfMonacoEditor.prototype, "selectionClipboard", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Boolean)
-    ], AjfMonacoEditor.prototype, "lineNumbers", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Boolean)
-    ], AjfMonacoEditor.prototype, "selectOnLineNumbers", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Number)
-    ], AjfMonacoEditor.prototype, "lineNumbersMinChars", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Boolean)
-    ], AjfMonacoEditor.prototype, "glyphMargin", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Number)
-    ], AjfMonacoEditor.prototype, "lineDecorationsWidth", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Number)
-    ], AjfMonacoEditor.prototype, "revealHorizontalRightPadding", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Boolean)
-    ], AjfMonacoEditor.prototype, "roundedSelection", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", IEditorTheme)
-    ], AjfMonacoEditor.prototype, "theme", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Boolean)
-    ], AjfMonacoEditor.prototype, "readOnly", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Object)
-    ], AjfMonacoEditor.prototype, "scrollbar", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Number)
-    ], AjfMonacoEditor.prototype, "overviewRulerLanes", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", String)
-    ], AjfMonacoEditor.prototype, "cursorBlinking", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Boolean)
-    ], AjfMonacoEditor.prototype, "mouseWheelZoom", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", String)
-    ], AjfMonacoEditor.prototype, "cursorStyle", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Boolean)
-    ], AjfMonacoEditor.prototype, "fontLigatures", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Boolean)
-    ], AjfMonacoEditor.prototype, "disableTranslate3d", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Boolean)
-    ], AjfMonacoEditor.prototype, "hideCursorInOverviewRuler", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Boolean)
-    ], AjfMonacoEditor.prototype, "scrollBeyondLastLine", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Boolean)
-    ], AjfMonacoEditor.prototype, "automaticLayout", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Number)
-    ], AjfMonacoEditor.prototype, "wrappingColumn", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Boolean)
-    ], AjfMonacoEditor.prototype, "wordWrap", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", String)
-    ], AjfMonacoEditor.prototype, "wrappingIndent", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", String)
-    ], AjfMonacoEditor.prototype, "wordWrapBreakBeforeCharacters", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", String)
-    ], AjfMonacoEditor.prototype, "wordWrapBreakAfterCharacters", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", String)
-    ], AjfMonacoEditor.prototype, "wordWrapBreakObtrusiveCharacters", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Number)
-    ], AjfMonacoEditor.prototype, "stopRenderingLineAfter", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Boolean)
-    ], AjfMonacoEditor.prototype, "hover", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Boolean)
-    ], AjfMonacoEditor.prototype, "contextmenu", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Number)
-    ], AjfMonacoEditor.prototype, "mouseWheelScrollSensitivity", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Boolean)
-    ], AjfMonacoEditor.prototype, "quickSuggestions", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Number)
-    ], AjfMonacoEditor.prototype, "quickSuggestionsDelay", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Boolean)
-    ], AjfMonacoEditor.prototype, "parameterHints", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Boolean)
-    ], AjfMonacoEditor.prototype, "iconsInSuggestions", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Boolean)
-    ], AjfMonacoEditor.prototype, "autoClosingBrackets", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Boolean)
-    ], AjfMonacoEditor.prototype, "formatOnType", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Boolean)
-    ], AjfMonacoEditor.prototype, "suggestOnTriggerCharacters", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Boolean)
-    ], AjfMonacoEditor.prototype, "acceptSuggestionOnEnter", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", String)
-    ], AjfMonacoEditor.prototype, "snippetSuggestions", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Boolean)
-    ], AjfMonacoEditor.prototype, "tabCompletion", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Boolean)
-    ], AjfMonacoEditor.prototype, "wordBasedSuggestions", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Boolean)
-    ], AjfMonacoEditor.prototype, "selectionHighlight", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Boolean)
-    ], AjfMonacoEditor.prototype, "codeLens", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Boolean)
-    ], AjfMonacoEditor.prototype, "folding", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", String)
-    ], AjfMonacoEditor.prototype, "renderWhitespace", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Boolean)
-    ], AjfMonacoEditor.prototype, "renderControlCharacters", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Boolean)
-    ], AjfMonacoEditor.prototype, "renderIndentGuides", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Boolean)
-    ], AjfMonacoEditor.prototype, "renderLineHighlight", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Boolean)
-    ], AjfMonacoEditor.prototype, "useTabStops", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", String)
-    ], AjfMonacoEditor.prototype, "fontFamily", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", String)
-    ], AjfMonacoEditor.prototype, "fontWeight", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Number)
-    ], AjfMonacoEditor.prototype, "fontSize", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Number)
-    ], AjfMonacoEditor.prototype, "lineHeight", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", IEditorLanguage)
-    ], AjfMonacoEditor.prototype, "language", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Boolean)
-    ], AjfMonacoEditor.prototype, "disableAutocomplete", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Object)
-    ], AjfMonacoEditor.prototype, "autoFormatOnLoad", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Object)
-    ], AjfMonacoEditor.prototype, "monacoLibPath", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", String),
-        __metadata("design:paramtypes", [String])
-    ], AjfMonacoEditor.prototype, "valueToCompare", null);
-    __decorate([
-        Input(),
-        __metadata("design:type", String),
-        __metadata("design:paramtypes", [String])
-    ], AjfMonacoEditor.prototype, "value", null);
-    __decorate([
-        Output(),
-        __metadata("design:type", Object)
-    ], AjfMonacoEditor.prototype, "valueChange", void 0);
-    __decorate([
-        Output(),
-        __metadata("design:type", Object)
-    ], AjfMonacoEditor.prototype, "valueToCompareChange", void 0);
-    __decorate([
-        Output(),
-        __metadata("design:type", Object)
-    ], AjfMonacoEditor.prototype, "init", void 0);
-    __decorate([
-        ViewChild('editor', { static: true }),
-        __metadata("design:type", ElementRef)
-    ], AjfMonacoEditor.prototype, "editorContent", void 0);
-    AjfMonacoEditor = __decorate([
-        Component({
-            encapsulation: ViewEncapsulation.None,
-            changeDetection: ChangeDetectionStrategy.OnPush,
-            selector: 'ajf-monaco-editor',
-            template: "<div #editor class=\"ajf-monaco-editor\"></div>\n",
-            host: { '(window:resize)': 'onResize($event)' },
-            styles: ["ajf-monaco-editor{display:flex;align-items:stretch;overflow:hidden}ajf-monaco-editor .ajf-monaco-editor{flex:1 0 auto}\n"]
-        }),
-        __metadata("design:paramtypes", [])
-    ], AjfMonacoEditor);
     return AjfMonacoEditor;
 })();
 
@@ -913,18 +712,18 @@ let AjfMonacoEditor = /** @class */ (() => {
  *
  */
 let AjfMonacoEditorModule = /** @class */ (() => {
-    let AjfMonacoEditorModule = class AjfMonacoEditorModule {
-    };
-    AjfMonacoEditorModule = __decorate([
-        NgModule({
-            declarations: [
-                AjfMonacoEditor,
-            ],
-            exports: [
-                AjfMonacoEditor,
-            ]
-        })
-    ], AjfMonacoEditorModule);
+    class AjfMonacoEditorModule {
+    }
+    AjfMonacoEditorModule.decorators = [
+        { type: NgModule, args: [{
+                    declarations: [
+                        AjfMonacoEditor,
+                    ],
+                    exports: [
+                        AjfMonacoEditor,
+                    ]
+                },] }
+    ];
     return AjfMonacoEditorModule;
 })();
 

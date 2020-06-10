@@ -263,17 +263,18 @@
         function AjfTime() {
             return _super.call(this) || this;
         }
-        AjfTime = __decorate([
-            core.Component({
-                selector: 'ajf-time',
-                template: "<div>\n  <mat-form-field>\n    <input\n        matInput\n        min=\"0\"\n        max=\"23\"\n        (focus)=\"focusHandler()\"\n        [(ngModel)]=\"hours\"\n        type=\"number\">\n  </mat-form-field>\n  :\n  <mat-form-field>\n    <input\n        matInput\n        min=\"0\"\n        max=\"59\"\n        (focus)=\"focusHandler()\"\n        [(ngModel)]=\"minutes\"\n        type=\"number\">\n  </mat-form-field>\n</div>\n",
-                providers: [AJF_TIME_CONTROL_VALUE_ACCESSOR],
-                encapsulation: core.ViewEncapsulation.None,
-                changeDetection: core.ChangeDetectionStrategy.OnPush,
-                styles: ["ajf-time .mat-form-field{width:1.5em;text-align:center}\n"]
-            }),
-            __metadata("design:paramtypes", [])
-        ], AjfTime);
+        AjfTime.decorators = [
+            { type: core.Component, args: [{
+                        selector: 'ajf-time',
+                        template: "<div>\n  <mat-form-field>\n    <input\n        matInput\n        min=\"0\"\n        max=\"23\"\n        (focus)=\"focusHandler()\"\n        [(ngModel)]=\"hours\"\n        type=\"number\">\n  </mat-form-field>\n  :\n  <mat-form-field>\n    <input\n        matInput\n        min=\"0\"\n        max=\"59\"\n        (focus)=\"focusHandler()\"\n        [(ngModel)]=\"minutes\"\n        type=\"number\">\n  </mat-form-field>\n</div>\n",
+                        providers: [AJF_TIME_CONTROL_VALUE_ACCESSOR],
+                        encapsulation: core.ViewEncapsulation.None,
+                        changeDetection: core.ChangeDetectionStrategy.OnPush,
+                        styles: ["ajf-time .mat-form-field{width:1.5em;text-align:center}\n"]
+                    }] }
+        ];
+        /** @nocollapse */
+        AjfTime.ctorParameters = function () { return []; };
         return AjfTime;
     }(time.AjfTime));
 
@@ -301,21 +302,21 @@
     var AjfTimeModule = /** @class */ (function () {
         function AjfTimeModule() {
         }
-        AjfTimeModule = __decorate([
-            core.NgModule({
-                imports: [
-                    forms.FormsModule,
-                    formField.MatFormFieldModule,
-                    input.MatInputModule,
-                ],
-                declarations: [
-                    AjfTime,
-                ],
-                exports: [
-                    AjfTime,
-                ],
-            })
-        ], AjfTimeModule);
+        AjfTimeModule.decorators = [
+            { type: core.NgModule, args: [{
+                        imports: [
+                            forms.FormsModule,
+                            formField.MatFormFieldModule,
+                            input.MatInputModule,
+                        ],
+                        declarations: [
+                            AjfTime,
+                        ],
+                        exports: [
+                            AjfTime,
+                        ],
+                    },] }
+        ];
         return AjfTimeModule;
     }());
 

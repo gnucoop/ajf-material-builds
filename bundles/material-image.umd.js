@@ -258,16 +258,21 @@
         function AjfImage(el, renderer, ds) {
             return _super.call(this, el, renderer, ds) || this;
         }
-        AjfImage = __decorate([
-            core.Component({
-                selector: 'ajf-image',
-                template: "<ng-container [ngSwitch]=\"imageType|async\">\n  <ng-template [ngSwitchCase]=\"imageTypes.Image\">\n    <img *ngIf=\"url|async as iu\" [src]=\"iu\" alt=\"\">\n  </ng-template>\n  <ng-template [ngSwitchCase]=\"imageTypes.Icon\">\n    <mat-icon *ngIf=\"iconObj|async as io\"\n        [fontSet]=\"io!.fontSet\"\n        [fontIcon]=\"io!.fontIcon\">\n    </mat-icon>\n  </ng-template>\n  <span *ngSwitchCase=\"imageTypes.Flag\" [class]=\"flagName|async\"></span>\n</ng-container>\n",
-                changeDetection: core.ChangeDetectionStrategy.OnPush,
-                encapsulation: core.ViewEncapsulation.None,
-                styles: ["ajf-image{display:flex;box-sizing:border-box;align-items:center;position:relative;font-size:inherit;width:inherit;height:inherit}ajf-image img{vertical-align:middle;position:relative;max-height:100%;max-width:100%;height:auto;width:auto}ajf-image span{height:inherit;width:inherit}ajf-image .mat-icon{font-size:inherit}\n"]
-            }),
-            __metadata("design:paramtypes", [core.ElementRef, core.Renderer2, platformBrowser.DomSanitizer])
-        ], AjfImage);
+        AjfImage.decorators = [
+            { type: core.Component, args: [{
+                        selector: 'ajf-image',
+                        template: "<ng-container [ngSwitch]=\"imageType|async\">\n  <ng-template [ngSwitchCase]=\"imageTypes.Image\">\n    <img *ngIf=\"url|async as iu\" [src]=\"iu\" alt=\"\">\n  </ng-template>\n  <ng-template [ngSwitchCase]=\"imageTypes.Icon\">\n    <mat-icon *ngIf=\"iconObj|async as io\"\n        [fontSet]=\"io!.fontSet\"\n        [fontIcon]=\"io!.fontIcon\">\n    </mat-icon>\n  </ng-template>\n  <span *ngSwitchCase=\"imageTypes.Flag\" [class]=\"flagName|async\"></span>\n</ng-container>\n",
+                        changeDetection: core.ChangeDetectionStrategy.OnPush,
+                        encapsulation: core.ViewEncapsulation.None,
+                        styles: ["ajf-image{display:flex;box-sizing:border-box;align-items:center;position:relative;font-size:inherit;width:inherit;height:inherit}ajf-image img{vertical-align:middle;position:relative;max-height:100%;max-width:100%;height:auto;width:auto}ajf-image span{height:inherit;width:inherit}ajf-image .mat-icon{font-size:inherit}\n"]
+                    }] }
+        ];
+        /** @nocollapse */
+        AjfImage.ctorParameters = function () { return [
+            { type: core.ElementRef },
+            { type: core.Renderer2 },
+            { type: platformBrowser.DomSanitizer }
+        ]; };
         return AjfImage;
     }(image.AjfImage));
 
@@ -295,20 +300,20 @@
     var AjfImageModule = /** @class */ (function () {
         function AjfImageModule() {
         }
-        AjfImageModule = __decorate([
-            core.NgModule({
-                imports: [
-                    common.CommonModule,
-                    icon.MatIconModule,
-                ],
-                declarations: [
-                    AjfImage,
-                ],
-                exports: [
-                    AjfImage,
-                ],
-            })
-        ], AjfImageModule);
+        AjfImageModule.decorators = [
+            { type: core.NgModule, args: [{
+                        imports: [
+                            common.CommonModule,
+                            icon.MatIconModule,
+                        ],
+                        declarations: [
+                            AjfImage,
+                        ],
+                        exports: [
+                            AjfImage,
+                        ],
+                    },] }
+        ];
         return AjfImageModule;
     }());
 
