@@ -38,9 +38,8 @@ let AjfImage = /** @class */ (() => {
                     changeDetection: ChangeDetectionStrategy.OnPush,
                     encapsulation: ViewEncapsulation.None,
                     styles: ["ajf-image{display:flex;box-sizing:border-box;align-items:center;position:relative;font-size:inherit;width:inherit;height:inherit}ajf-image img{vertical-align:middle;position:relative;max-height:100%;max-width:100%;height:auto;width:auto}ajf-image span{height:inherit;width:inherit}ajf-image .mat-icon{font-size:inherit}\n"]
-                }] }
+                },] }
     ];
-    /** @nocollapse */
     AjfImage.ctorParameters = () => [
         { type: ElementRef },
         { type: Renderer2 },

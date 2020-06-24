@@ -34,7 +34,7 @@ let AjfNodeIcon = /** @class */ (() => {
                     encapsulation: ViewEncapsulation.None,
                     changeDetection: ChangeDetectionStrategy.OnPush,
                     styles: ["\n"]
-                }] }
+                },] }
     ];
     return AjfNodeIcon;
 })();

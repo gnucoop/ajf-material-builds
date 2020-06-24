@@ -274,9 +274,8 @@
                         changeDetection: core.ChangeDetectionStrategy.OnPush,
                         providers: [BARCODE_CONTROL_VALUE_ACCESSOR],
                         styles: ["ajf-barcode .ajf-code-container{display:inline-flex;flex-direction:row;flex-wrap:wrap;justify-content:center;align-content:stretch;align-items:center}ajf-barcode .ajf-code-container button{margin-left:10px}ajf-barcode .ajf-drop-container{display:flex;flex-direction:row;flex-wrap:wrap;justify-content:flex-start;align-content:stretch;align-items:stretch}ajf-barcode .ajf-drop-container .ajf-dropzone{order:0;flex:1 1 auto;align-self:auto;min-height:480px;display:table;background-color:#eee;border:dotted 1px #aaa}ajf-barcode .ajf-drop-container .ajf-dropzone .ajf-text-wrapper{display:table-cell;vertical-align:middle}ajf-barcode .ajf-drop-container .ajf-dropzone .ajf-centered{font-family:sans-serif;font-size:1.3em;font-weight:bold;text-align:center}\n"]
-                    }] }
+                    },] }
         ];
-        /** @nocollapse */
         AjfBarcodeComponent.ctorParameters = function () { return [
             { type: core.ChangeDetectorRef },
             { type: core.Renderer2 }

@@ -273,9 +273,8 @@
                             '[class.ajf-checkbox-group-disable]': 'disabled'
                         },
                         styles: ["\n"]
-                    }] }
+                    },] }
         ];
-        /** @nocollapse */
         CheckboxGroupItem.ctorParameters = function () { return [
             { type: checkboxGroup.AjfCheckboxGroup, decorators: [{ type: core.Optional }] }
         ]; };

@@ -28,7 +28,7 @@ let AjfFieldWarningDialog = /** @class */ (() => {
                     template: "<mat-dialog-content><div [innerHTML]=\"message\"></div></mat-dialog-content>\n<mat-dialog-actions>\n  <button mat-button [mat-dialog-close]=\"true\">Ok</button>\n  <button mat-button [mat-dialog-close]=\"false\">Cancel</button>\n</mat-dialog-actions>\n",
                     changeDetection: ChangeDetectionStrategy.OnPush,
                     encapsulation: ViewEncapsulation.None
-                }] }
+                },] }
     ];
     return AjfFieldWarningDialog;
 })();

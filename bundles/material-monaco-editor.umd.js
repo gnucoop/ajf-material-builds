@@ -641,9 +641,8 @@
                         template: "<div #editor class=\"ajf-monaco-editor\"></div>\n",
                         host: { '(window:resize)': 'onResize($event)' },
                         styles: ["ajf-monaco-editor{display:flex;align-items:stretch;overflow:hidden}ajf-monaco-editor .ajf-monaco-editor{flex:1 0 auto}\n"]
-                    }] }
+                    },] }
         ];
-        /** @nocollapse */
         AjfMonacoEditor.ctorParameters = function () { return []; };
         AjfMonacoEditor.propDecorators = {
             experimentalScreenReader: [{ type: core.Input }],

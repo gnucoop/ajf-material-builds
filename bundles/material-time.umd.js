@@ -271,9 +271,8 @@
                         encapsulation: core.ViewEncapsulation.None,
                         changeDetection: core.ChangeDetectionStrategy.OnPush,
                         styles: ["ajf-time .mat-form-field{width:1.5em;text-align:center}\n"]
-                    }] }
+                    },] }
         ];
-        /** @nocollapse */
         AjfTime.ctorParameters = function () { return []; };
         return AjfTime;
     }(time.AjfTime));

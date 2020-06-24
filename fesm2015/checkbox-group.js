@@ -45,9 +45,8 @@ let CheckboxGroupItem = /** @class */ (() => {
                         '[class.ajf-checkbox-group-disable]': 'disabled'
                     },
                     styles: ["\n"]
-                }] }
+                },] }
     ];
-    /** @nocollapse */
     CheckboxGroupItem.ctorParameters = () => [
         { type: AjfCheckboxGroup, decorators: [{ type: Optional }] }
     ];

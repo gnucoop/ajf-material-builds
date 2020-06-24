@@ -44,9 +44,8 @@ let AjfTime = /** @class */ (() => {
                     encapsulation: ViewEncapsulation.None,
                     changeDetection: ChangeDetectionStrategy.OnPush,
                     styles: ["ajf-time .mat-form-field{width:1.5em;text-align:center}\n"]
-                }] }
+                },] }
     ];
-    /** @nocollapse */
     AjfTime.ctorParameters = () => [];
     return AjfTime;
 })();

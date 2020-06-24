@@ -44,9 +44,8 @@ let AjfChartWidgetComponent = /** @class */ (() => {
                     changeDetection: ChangeDetectionStrategy.OnPush,
                     encapsulation: ViewEncapsulation.None,
                     styles: ["\n"]
-                }] }
+                },] }
     ];
-    /** @nocollapse */
     AjfChartWidgetComponent.ctorParameters = () => [
         { type: ChangeDetectorRef },
         { type: ElementRef }
@@ -87,9 +86,8 @@ let AjfColumnWidgetComponent = /** @class */ (() => {
                     changeDetection: ChangeDetectionStrategy.OnPush,
                     encapsulation: ViewEncapsulation.None,
                     styles: [".ajf-column-container{flex:1 1 auto}\n"]
-                }] }
+                },] }
     ];
-    /** @nocollapse */
     AjfColumnWidgetComponent.ctorParameters = () => [
         { type: ChangeDetectorRef },
         { type: ElementRef }
@@ -130,9 +128,8 @@ let AjfFormulaWidgetComponent = /** @class */ (() => {
                     changeDetection: ChangeDetectionStrategy.OnPush,
                     encapsulation: ViewEncapsulation.None,
                     styles: ["\n"]
-                }] }
+                },] }
     ];
-    /** @nocollapse */
     AjfFormulaWidgetComponent.ctorParameters = () => [
         { type: ChangeDetectorRef },
         { type: ElementRef }
@@ -174,9 +171,8 @@ let AjfImageContainerWidgetComponent = /** @class */ (() => {
                     changeDetection: ChangeDetectionStrategy.OnPush,
                     encapsulation: ViewEncapsulation.None,
                     styles: [".ajf-image-container img{max-width:none;max-height:none}\n"]
-                }] }
+                },] }
     ];
-    /** @nocollapse */
     AjfImageContainerWidgetComponent.ctorParameters = () => [
         { type: ChangeDetectorRef },
         { type: ElementRef }
@@ -217,9 +213,8 @@ let AjfImageWidgetComponent = /** @class */ (() => {
                     changeDetection: ChangeDetectionStrategy.OnPush,
                     encapsulation: ViewEncapsulation.None,
                     styles: ["\n"]
-                }] }
+                },] }
     ];
-    /** @nocollapse */
     AjfImageWidgetComponent.ctorParameters = () => [
         { type: ChangeDetectorRef },
         { type: ElementRef }
@@ -260,9 +255,8 @@ let AjfLayoutWidgetComponent = /** @class */ (() => {
                     changeDetection: ChangeDetectionStrategy.OnPush,
                     encapsulation: ViewEncapsulation.None,
                     styles: [".ajf-columns{flex:1 1 auto;display:flex;align-items:inherit;box-sizing:border-box}.ajf-columns>.ajf-column{box-sizing:border-box;display:flex;align-items:inherit;flex-shrink:1}\n"]
-                }] }
+                },] }
     ];
-    /** @nocollapse */
     AjfLayoutWidgetComponent.ctorParameters = () => [
         { type: ChangeDetectorRef },
         { type: ElementRef }
@@ -303,9 +297,8 @@ let AjfMapWidgetComponent = /** @class */ (() => {
                     changeDetection: ChangeDetectionStrategy.OnPush,
                     encapsulation: ViewEncapsulation.None,
                     styles: ["\n"]
-                }] }
+                },] }
     ];
-    /** @nocollapse */
     AjfMapWidgetComponent.ctorParameters = () => [
         { type: ChangeDetectorRef },
         { type: ElementRef }
@@ -346,9 +339,8 @@ let AjfPageBreakWidgetComponent = /** @class */ (() => {
                     changeDetection: ChangeDetectionStrategy.OnPush,
                     encapsulation: ViewEncapsulation.None,
                     styles: ["\n"]
-                }] }
+                },] }
     ];
-    /** @nocollapse */
     AjfPageBreakWidgetComponent.ctorParameters = () => [
         { type: ChangeDetectorRef },
         { type: ElementRef }
@@ -390,9 +382,8 @@ let AjfReportRenderer = /** @class */ (() => {
                     encapsulation: ViewEncapsulation.None,
                     changeDetection: ChangeDetectionStrategy.OnPush,
                     styles: ["ajf-report{display:flex;flex-direction:column;align-items:stretch;box-sizing:border-box;position:relative;width:100%}ajf-report h1,ajf-report h2,ajf-report h3,ajf-report h4,ajf-report h5,ajf-report h6,ajf-report p{padding:0;margin:0}ajf-report .ajf-loading{position:absolute;top:0;right:0;left:0;bottom:0;min-height:300px;padding:100px;text-align:center;background-color:rgba(240,240,240,.4);display:flex;justify-content:center}\n"]
-                }] }
+                },] }
     ];
-    /** @nocollapse */
     AjfReportRenderer.ctorParameters = () => [
         { type: ChangeDetectorRef }
     ];
@@ -432,9 +423,8 @@ let AjfTableWidgetComponent = /** @class */ (() => {
                     changeDetection: ChangeDetectionStrategy.OnPush,
                     encapsulation: ViewEncapsulation.None,
                     styles: ["\n"]
-                }] }
+                },] }
     ];
-    /** @nocollapse */
     AjfTableWidgetComponent.ctorParameters = () => [
         { type: ChangeDetectorRef },
         { type: ElementRef }
@@ -475,9 +465,8 @@ let AjfTextWidgetComponent = /** @class */ (() => {
                     changeDetection: ChangeDetectionStrategy.OnPush,
                     encapsulation: ViewEncapsulation.None,
                     styles: ["\n"]
-                }] }
+                },] }
     ];
-    /** @nocollapse */
     AjfTextWidgetComponent.ctorParameters = () => [
         { type: ChangeDetectorRef },
         { type: ElementRef }
@@ -532,9 +521,8 @@ let AjfReportWidget = /** @class */ (() => {
                     encapsulation: ViewEncapsulation.None,
                     changeDetection: ChangeDetectionStrategy.OnPush,
                     styles: ["ajf-widget{display:flex;flex:1 1 auto;box-sizing:border-box}ajf-widget>ng-component{flex:1 1 auto;display:flex;align-items:center;box-sizing:border-box;background-color:transparent}\n"]
-                }] }
+                },] }
     ];
-    /** @nocollapse */
     AjfReportWidget.ctorParameters = () => [
         { type: ComponentFactoryResolver },
         { type: Renderer2 }

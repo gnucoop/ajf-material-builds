@@ -91,9 +91,8 @@ let AjfFbBranchLine = /** @class */ (() => {
                     encapsulation: ViewEncapsulation.None,
                     changeDetection: ChangeDetectionStrategy.OnPush,
                     styles: ["ajf-fb-branch-line{display:block;position:absolute;top:25px;left:25px;width:25px;border-top:2px solid;border-left:2px solid;border-top-left-radius:6px}\n"]
-                }] }
+                },] }
     ];
-    /** @nocollapse */
     AjfFbBranchLine.ctorParameters = () => [
         { type: ElementRef },
         { type: Renderer2 }
@@ -212,7 +211,7 @@ let AjfFbChoicesOriginEditor = /** @class */ (() => {
                     encapsulation: ViewEncapsulation.None,
                     changeDetection: ChangeDetectionStrategy.OnPush,
                     styles: ["ajf-fb-choices-origin-editor mat-form-field+mat-form-field{margin-left:1em}ajf-fb-choices-origin-editor mat-table{max-height:300px}ajf-fb-choices-origin-editor mat-table mat-icon{cursor:pointer}\n"]
-                }] }
+                },] }
     ];
     AjfFbChoicesOriginEditor.propDecorators = {
         choicesOrigin: [{ type: Input }]
@@ -861,7 +860,6 @@ let AjfFormBuilderService = /** @class */ (() => {
     AjfFormBuilderService.decorators = [
         { type: Injectable }
     ];
-    /** @nocollapse */
     AjfFormBuilderService.ctorParameters = () => [];
     return AjfFormBuilderService;
 })();
@@ -911,9 +909,8 @@ let AjfFbChoicesOriginEditorDialog = /** @class */ (() => {
                     encapsulation: ViewEncapsulation.None,
                     changeDetection: ChangeDetectionStrategy.OnPush,
                     styles: ["\n"]
-                }] }
+                },] }
     ];
-    /** @nocollapse */
     AjfFbChoicesOriginEditorDialog.ctorParameters = () => [
         { type: AjfFormBuilderService }
     ];
@@ -1052,9 +1049,8 @@ let AjfFbConditionEditor = /** @class */ (() => {
                     changeDetection: ChangeDetectionStrategy.OnPush,
                     encapsulation: ViewEncapsulation.None,
                     styles: ["ajf-condition-editor{display:flex;flex-direction:row;align-items:stretch;max-height:512px}ajf-condition-editor .ajf-editor{flex:.75 0 auto;display:flex;flex-direction:row;align-items:stretch}ajf-condition-editor .ajf-editor monaco-editor{flex:1 0 auto;min-width:512px;min-height:256px}ajf-condition-editor .ajf-editor-panel{flex:.25 0 auto;overflow-y:auto}ajf-condition-editor ajf-monaco-editor{min-width:400px}\n"]
-                }] }
+                },] }
     ];
-    /** @nocollapse */
     AjfFbConditionEditor.ctorParameters = () => [
         { type: AjfValidationService }
     ];
@@ -1111,9 +1107,8 @@ let AjfFbConditionEditorDialog = /** @class */ (() => {
                     encapsulation: ViewEncapsulation.None,
                     changeDetection: ChangeDetectionStrategy.OnPush,
                     styles: ["ajf-condition-editor-dialog mat-dialog-content{overflow:visible}\n"]
-                }] }
+                },] }
     ];
-    /** @nocollapse */
     AjfFbConditionEditorDialog.ctorParameters = () => [
         { type: AjfFormBuilderService },
         { type: MatDialogRef }
@@ -1206,9 +1201,8 @@ let AjfFbStringIdentifierDialogComponent = /** @class */ (() => {
                     changeDetection: ChangeDetectionStrategy.OnPush,
                     encapsulation: ViewEncapsulation.None,
                     styles: ["\n"]
-                }] }
+                },] }
     ];
-    /** @nocollapse */
     AjfFbStringIdentifierDialogComponent.ctorParameters = () => [
         { type: AjfFormBuilderService },
         { type: ChangeDetectorRef }
@@ -1348,9 +1342,8 @@ let AjfFormBuilder = /** @class */ (() => {
                     changeDetection: ChangeDetectionStrategy.OnPush,
                     encapsulation: ViewEncapsulation.None,
                     styles: ["ajf-form-builder{display:flex;position:relative;min-height:300px;flex-direction:column;align-items:stretch}ajf-form-builder mat-toolbar mat-menu div[mat-menu-item]>button[mat-button]{flex:1 0 auto}ajf-form-builder mat-toolbar mat-menu div[mat-menu-item]>button[mat-icon-button]{flex:0 0 auto}ajf-form-builder mat-drawer-container{flex:1}ajf-form-builder mat-drawer-container mat-drawer{max-width:20%}ajf-form-builder mat-drawer-container .ajf-designer{padding:1em}ajf-form-builder mat-toolbar .ajf-spacer{flex:1 1 auto}\n"]
-                }] }
+                },] }
     ];
-    /** @nocollapse */
     AjfFormBuilder.ctorParameters = () => [
         { type: AjfFormBuilderService },
         { type: MatDialog }
@@ -1554,9 +1547,8 @@ let AjfFbNodeEntry = /** @class */ (() => {
                     encapsulation: ViewEncapsulation.None,
                     changeDetection: ChangeDetectionStrategy.OnPush,
                     styles: ["ajf-fb-node-entry{display:block;position:relative}ajf-fb-node-entry .mat-card-container{position:relative}ajf-fb-node-entry .mat-card-container .ajf-origin-line{position:absolute;top:0;left:25px;width:25px;height:25px;border-bottom:2px solid;border-left:2px solid;border-bottom-left-radius:.5em}ajf-fb-node-entry .mat-card-container mat-card{margin-left:50px;padding:.5em 1em;margin-top:.2em;margin-bottom:.2em;background-color:#fff}ajf-fb-node-entry .mat-card-container mat-card .ajf-title-row{display:flex;flex-direction:row;align-items:center}ajf-fb-node-entry .mat-card-container mat-card .ajf-title-row>.ajf-title{flex:1 1 auto}ajf-fb-node-entry .mat-card-container mat-card .ajf-title-row>.ajf-actions{flex:0 0 auto;white-space:nowrap}ajf-fb-node-entry .mat-card-container mat-card.ajf-empty{line-height:36px;border:2px dashed;box-shadow:none;box-sizing:border-box}ajf-fb-node-entry .mat-card-container.ajf-highlight>mat-card{background-color:#fff9c4}\n"]
-                }] }
+                },] }
     ];
-    /** @nocollapse */
     AjfFbNodeEntry.ctorParameters = () => [
         { type: AjfFormBuilderService }
     ];
@@ -1617,9 +1609,8 @@ let AjfFbValidationConditionEditorDialog = /** @class */ (() => {
                     encapsulation: ViewEncapsulation.None,
                     changeDetection: ChangeDetectionStrategy.OnPush,
                     styles: ["ajf-fb-validation-condition-editor-dialog mat-dialog-content{overflow:visible}\n"]
-                }] }
+                },] }
     ];
-    /** @nocollapse */
     AjfFbValidationConditionEditorDialog.ctorParameters = () => [
         { type: AjfFormBuilderService },
         { type: MatDialogRef }
@@ -1675,9 +1666,8 @@ let AjfFbWarningConditionEditorDialog = /** @class */ (() => {
                     encapsulation: ViewEncapsulation.None,
                     changeDetection: ChangeDetectionStrategy.OnPush,
                     styles: ["ajf-fb-warning-condition-editor-dialog mat-dialog-content{overflow:visible}\n"]
-                }] }
+                },] }
     ];
-    /** @nocollapse */
     AjfFbWarningConditionEditorDialog.ctorParameters = () => [
         { type: AjfFormBuilderService },
         { type: MatDialogRef }
@@ -2646,9 +2636,8 @@ let AjfFbNodeProperties = /** @class */ (() => {
                     encapsulation: ViewEncapsulation.None,
                     changeDetection: ChangeDetectionStrategy.OnPush,
                     styles: ["ajf-fb-node-properties{display:block;padding:1em;position:relative}ajf-fb-node-properties mat-icon{cursor:pointer}ajf-fb-node-properties .ajf-header{display:flex;flex-direction:row;align-items:center;flex-wrap:nowrap}ajf-fb-node-properties .ajf-header>h3,ajf-fb-node-properties .ajf-header>label{flex:1 0 auto;margin-right:.5em}ajf-fb-node-properties .ajf-header>mat-icon{flex:0 0 auto;margin-left:.5em}ajf-fb-node-properties .ajf-disabled-overlay{position:absolute;top:0;right:0;bottom:0;left:0;opacity:.4;background-color:#fff}ajf-fb-node-properties .ajf-emph{font-style:italic}ajf-fb-node-properties [mat-raised-button]{margin:.5em 0}ajf-fb-node-properties [mat-raised-button].ajf-pointer{cursor:pointer}ajf-fb-node-properties [mat-raised-button] .ajf-icon-cont{display:flex;flex-direction:row;align-items:center}ajf-fb-node-properties [mat-raised-button] .ajf-icon-cont span{flex:1 1 auto;overflow:hidden;text-overflow:ellipsis;display:block;min-height:36px}ajf-fb-node-properties .ajf-validation-row{margin:.5em 0;display:flex;flex-direction:row;align-items:center}ajf-fb-node-properties .ajf-validation-row button{flex:1 1 auto}ajf-fb-node-properties .ajf-validation-row mat-icon{flex:0 0 auto}ajf-fb-node-properties .ajf-prop{margin:.5em 0}ajf-fb-node-properties mat-form-field,ajf-fb-node-properties mat-slider,ajf-fb-node-properties [mat-raised-button]{width:100%}\n"]
-                }] }
+                },] }
     ];
-    /** @nocollapse */
     AjfFbNodeProperties.ctorParameters = () => [
         { type: ChangeDetectorRef },
         { type: AjfFormBuilderService },
@@ -2699,9 +2688,8 @@ let AjfFbNodeTypeEntry = /** @class */ (() => {
                     encapsulation: ViewEncapsulation.None,
                     changeDetection: ChangeDetectionStrategy.OnPush,
                     styles: ["ajf-fb-node-type-entry{display:block;padding:1em 1.5em}ajf-fb-node-type-entry mat-icon{vertical-align:middle}\n"]
-                }] }
+                },] }
     ];
-    /** @nocollapse */
     AjfFbNodeTypeEntry.ctorParameters = () => [
         { type: ChangeDetectorRef }
     ];

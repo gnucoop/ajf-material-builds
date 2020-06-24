@@ -71,7 +71,7 @@ let AjfFbChoicesOriginEditor = /** @class */ (() => {
                     encapsulation: ViewEncapsulation.None,
                     changeDetection: ChangeDetectionStrategy.OnPush,
                     styles: ["ajf-fb-choices-origin-editor mat-form-field+mat-form-field{margin-left:1em}ajf-fb-choices-origin-editor mat-table{max-height:300px}ajf-fb-choices-origin-editor mat-table mat-icon{cursor:pointer}\n"]
-                }] }
+                },] }
     ];
     AjfFbChoicesOriginEditor.propDecorators = {
         choicesOrigin: [{ type: Input }]
