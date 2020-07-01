@@ -25,28 +25,25 @@ import { DomSanitizer } from '@angular/platform-browser';
  * If not, see http://www.gnu.org/licenses/.
  *
  */
-let AjfImage = /** @class */ (() => {
-    class AjfImage extends AjfImage$1 {
-        constructor(el, renderer, ds) {
-            super(el, renderer, ds);
-        }
+class AjfImage extends AjfImage$1 {
+    constructor(el, renderer, ds) {
+        super(el, renderer, ds);
     }
-    AjfImage.decorators = [
-        { type: Component, args: [{
-                    selector: 'ajf-image',
-                    template: "<ng-container [ngSwitch]=\"imageType|async\">\n  <ng-template [ngSwitchCase]=\"imageTypes.Image\">\n    <img *ngIf=\"url|async as iu\" [src]=\"iu\" alt=\"\">\n  </ng-template>\n  <ng-template [ngSwitchCase]=\"imageTypes.Icon\">\n    <mat-icon *ngIf=\"iconObj|async as io\"\n        [fontSet]=\"io!.fontSet\"\n        [fontIcon]=\"io!.fontIcon\">\n    </mat-icon>\n  </ng-template>\n  <span *ngSwitchCase=\"imageTypes.Flag\" [class]=\"flagName|async\"></span>\n</ng-container>\n",
-                    changeDetection: ChangeDetectionStrategy.OnPush,
-                    encapsulation: ViewEncapsulation.None,
-                    styles: ["ajf-image{display:flex;box-sizing:border-box;align-items:center;position:relative;font-size:inherit;width:inherit;height:inherit}ajf-image img{vertical-align:middle;position:relative;max-height:100%;max-width:100%;height:auto;width:auto}ajf-image span{height:inherit;width:inherit}ajf-image .mat-icon{font-size:inherit}\n"]
-                },] }
-    ];
-    AjfImage.ctorParameters = () => [
-        { type: ElementRef },
-        { type: Renderer2 },
-        { type: DomSanitizer }
-    ];
-    return AjfImage;
-})();
+}
+AjfImage.decorators = [
+    { type: Component, args: [{
+                selector: 'ajf-image',
+                template: "<ng-container [ngSwitch]=\"imageType|async\">\n  <ng-template [ngSwitchCase]=\"imageTypes.Image\">\n    <img *ngIf=\"url|async as iu\" [src]=\"iu\" alt=\"\">\n  </ng-template>\n  <ng-template [ngSwitchCase]=\"imageTypes.Icon\">\n    <mat-icon *ngIf=\"iconObj|async as io\"\n        [fontSet]=\"io!.fontSet\"\n        [fontIcon]=\"io!.fontIcon\">\n    </mat-icon>\n  </ng-template>\n  <span *ngSwitchCase=\"imageTypes.Flag\" [class]=\"flagName|async\"></span>\n</ng-container>\n",
+                changeDetection: ChangeDetectionStrategy.OnPush,
+                encapsulation: ViewEncapsulation.None,
+                styles: ["ajf-image{display:flex;box-sizing:border-box;align-items:center;position:relative;font-size:inherit;width:inherit;height:inherit}ajf-image img{vertical-align:middle;position:relative;max-height:100%;max-width:100%;height:auto;width:auto}ajf-image span{height:inherit;width:inherit}ajf-image .mat-icon{font-size:inherit}\n"]
+            },] }
+];
+AjfImage.ctorParameters = () => [
+    { type: ElementRef },
+    { type: Renderer2 },
+    { type: DomSanitizer }
+];
 
 /**
  * @license
@@ -69,25 +66,22 @@ let AjfImage = /** @class */ (() => {
  * If not, see http://www.gnu.org/licenses/.
  *
  */
-let AjfImageModule = /** @class */ (() => {
-    class AjfImageModule {
-    }
-    AjfImageModule.decorators = [
-        { type: NgModule, args: [{
-                    imports: [
-                        CommonModule,
-                        MatIconModule,
-                    ],
-                    declarations: [
-                        AjfImage,
-                    ],
-                    exports: [
-                        AjfImage,
-                    ],
-                },] }
-    ];
-    return AjfImageModule;
-})();
+class AjfImageModule {
+}
+AjfImageModule.decorators = [
+    { type: NgModule, args: [{
+                imports: [
+                    CommonModule,
+                    MatIconModule,
+                ],
+                declarations: [
+                    AjfImage,
+                ],
+                exports: [
+                    AjfImage,
+                ],
+            },] }
+];
 
 /**
  * @license

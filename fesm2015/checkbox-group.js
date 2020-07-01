@@ -25,33 +25,30 @@ import { MatIconModule } from '@angular/material/icon';
  * If not, see http://www.gnu.org/licenses/.
  *
  */
-let CheckboxGroupItem = /** @class */ (() => {
-    class CheckboxGroupItem extends AjfCheckboxGroupItem {
-        constructor(checkboxGroup) {
-            super(checkboxGroup);
-            this.checkedIcon = 'check_box';
-            this.notCheckedIcon = 'check_box_outline_blank';
-        }
+class CheckboxGroupItem extends AjfCheckboxGroupItem {
+    constructor(checkboxGroup) {
+        super(checkboxGroup);
+        this.checkedIcon = 'check_box';
+        this.notCheckedIcon = 'check_box_outline_blank';
     }
-    CheckboxGroupItem.decorators = [
-        { type: Component, args: [{
-                    selector: 'ajf-checkbox-group-item',
-                    template: "<button mat-button (click)=\"onInputChange($event)\"\n    type=\"button\"\n    [id]=\"checkboxId|async\"\n    [attr.aria-checked]=\"checkedState|async\"\n    [attr.aria-disabled]=\"disabledState|async\">\n  <span class=\"ajf-checkbox-group-content\">\n    <ng-content></ng-content>\n  </span>\n  <mat-icon>{{ icon|async }}</mat-icon>\n</button>\n",
-                    changeDetection: ChangeDetectionStrategy.OnPush,
-                    encapsulation: ViewEncapsulation.None,
-                    host: {
-                        '[attr.id]': 'id',
-                        '[class.ajf-checkbox-group-checked]': 'checked',
-                        '[class.ajf-checkbox-group-disable]': 'disabled'
-                    },
-                    styles: ["\n"]
-                },] }
-    ];
-    CheckboxGroupItem.ctorParameters = () => [
-        { type: AjfCheckboxGroup, decorators: [{ type: Optional }] }
-    ];
-    return CheckboxGroupItem;
-})();
+}
+CheckboxGroupItem.decorators = [
+    { type: Component, args: [{
+                selector: 'ajf-checkbox-group-item',
+                template: "<button mat-button (click)=\"onInputChange($event)\"\n    type=\"button\"\n    [id]=\"checkboxId|async\"\n    [attr.aria-checked]=\"checkedState|async\"\n    [attr.aria-disabled]=\"disabledState|async\">\n  <span class=\"ajf-checkbox-group-content\">\n    <ng-content></ng-content>\n  </span>\n  <mat-icon>{{ icon|async }}</mat-icon>\n</button>\n",
+                changeDetection: ChangeDetectionStrategy.OnPush,
+                encapsulation: ViewEncapsulation.None,
+                host: {
+                    '[attr.id]': 'id',
+                    '[class.ajf-checkbox-group-checked]': 'checked',
+                    '[class.ajf-checkbox-group-disable]': 'disabled'
+                },
+                styles: ["\n"]
+            },] }
+];
+CheckboxGroupItem.ctorParameters = () => [
+    { type: AjfCheckboxGroup, decorators: [{ type: Optional }] }
+];
 
 /**
  * @license
@@ -74,28 +71,25 @@ let CheckboxGroupItem = /** @class */ (() => {
  * If not, see http://www.gnu.org/licenses/.
  *
  */
-let AjfCheckboxGroupModule = /** @class */ (() => {
-    class AjfCheckboxGroupModule {
-    }
-    AjfCheckboxGroupModule.decorators = [
-        { type: NgModule, args: [{
-                    imports: [
-                        AjfCheckboxGroupModule$1,
-                        CommonModule,
-                        MatButtonModule,
-                        MatIconModule,
-                    ],
-                    declarations: [
-                        CheckboxGroupItem,
-                    ],
-                    exports: [
-                        AjfCheckboxGroupModule$1,
-                        CheckboxGroupItem,
-                    ],
-                },] }
-    ];
-    return AjfCheckboxGroupModule;
-})();
+class AjfCheckboxGroupModule {
+}
+AjfCheckboxGroupModule.decorators = [
+    { type: NgModule, args: [{
+                imports: [
+                    AjfCheckboxGroupModule$1,
+                    CommonModule,
+                    MatButtonModule,
+                    MatIconModule,
+                ],
+                declarations: [
+                    CheckboxGroupItem,
+                ],
+                exports: [
+                    AjfCheckboxGroupModule$1,
+                    CheckboxGroupItem,
+                ],
+            },] }
+];
 
 /**
  * @license

@@ -1,6 +1,6 @@
 {
   "name": "@ajf/material",
-  "version": "10.0.1-sha-f672211",
+  "version": "10.0.2-sha-1a9f973",
   "description": "",
   "repository": {
     "type": "git",
@@ -18,7 +18,7 @@
     "@angular/common": "^10.0.0 || ^11.0.0",
     "@angular/router": "^10.0.0 || ^11.0.0",
     "@angular/material": "^10.0.0 || ^11.0.0",
-    "@ajf/core": "10.0.1-sha-f672211",
+    "@ajf/core": "10.0.2-sha-1a9f973",
     "@ajf/icons": "^1.0.0",
     "flag-icon-css": "^3.5.0",
     "ngx-color-picker": "^9.1.0",

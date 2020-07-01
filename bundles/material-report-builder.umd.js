@@ -551,14 +551,15 @@
                 // const curRo = r[0][1];
                 // const forms = r[0][2] != null ? r[0][2] || []
                 //     : (curRo != null ? curRo.forms || [] : []);
-                obj.header = { content: r[1].widgets.map(function (w) { return utils.deepCopy(w); }), styles: r[1].styles };
-                obj.content = { content: r[2].widgets.map(function (w) { return utils.deepCopy(w); }), styles: r[2].styles };
-                obj.footer = { content: r[3].widgets.map(function (w) { return utils.deepCopy(w); }), styles: r[3].styles };
+                var _a = __read([r[1], r[2], r[3]], 3), hco = _a[0], cco = _a[1], fco = _a[2];
+                obj.header = { content: hco.widgets.map(function (w) { return utils.deepCopy(w); }), styles: hco.styles };
+                obj.content = { content: cco.widgets.map(function (w) { return utils.deepCopy(w); }), styles: cco.styles };
+                obj.footer = { content: fco.widgets.map(function (w) { return utils.deepCopy(w); }), styles: fco.styles };
                 obj.styles = r[4];
                 var ro = {
-                    header: { content: r[1].widgets, styles: r[1].styles },
-                    content: { content: r[2].widgets, styles: r[2].styles },
-                    footer: { content: r[3].widgets, styles: r[3].styles },
+                    header: { content: hco.widgets, styles: hco.styles },
+                    content: { content: cco.widgets, styles: cco.styles },
+                    footer: { content: fco.widgets, styles: fco.styles },
                     styles: r[4]
                 };
                 _this.setSaveReport(obj);
@@ -4207,22 +4208,21 @@
                     return myObj.styles['color'] || '';
                 }
             }), operators.distinctUntilChanged());
-            this._stylesUpdatesSubs =
-                this._updateWidgetMarginEvt
-                    .pipe(operators.withLatestFrom(this.getMarginWidget))
-                    .subscribe(function (r) {
-                    if (r == null) {
-                        return;
-                    }
-                    var idx = r[0].idx;
-                    var value = r[0].value;
-                    var v = r[1] || [0, 0, 0, 0];
-                    if (v == null || v.length < idx) {
-                        return;
-                    }
-                    v[idx] = value;
-                    _this.setWidgetStyles('margin', v);
-                });
+            this._stylesUpdatesSubs = this._updateWidgetMarginEvt
+                .pipe(operators.withLatestFrom(this.getMarginWidget))
+                .subscribe(function (r) {
+                if (r == null) {
+                    return;
+                }
+                var idx = r[0].idx;
+                var value = r[0].value;
+                var v = (r[1] || [0, 0, 0, 0]);
+                if (v == null || v.length < idx) {
+                    return;
+                }
+                v[idx] = value;
+                _this.setWidgetStyles('margin', v);
+            });
             this._stylesUpdatesSubs.add(this._updateWidgetPaddingEvt
                 .pipe(operators.withLatestFrom(this.getPaddingWidget))
                 .subscribe(function (r) {
@@ -4231,7 +4231,7 @@
                 }
                 var idx = r[0].idx;
                 var value = r[0].value;
-                var v = r[1] || [0, 0, 0, 0];
+                var v = (r[1] || [0, 0, 0, 0]);
                 if (v == null || v.length < idx) {
                     return;
                 }
@@ -4246,7 +4246,7 @@
                 }
                 var idx = r[0].idx;
                 var value = r[0].value;
-                var v = r[1] || [0, 0, 0, 0];
+                var v = (r[1] || [0, 0, 0, 0]);
                 if (v == null || v.length < idx) {
                     return;
                 }
@@ -4261,7 +4261,7 @@
                 }
                 var idx = r[0].idx;
                 var value = r[0].value;
-                var v = r[1] || [0, 0, 0, 0];
+                var v = (r[1] || [0, 0, 0, 0]);
                 if (v == null || v.length < idx) {
                     return;
                 }

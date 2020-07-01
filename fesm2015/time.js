@@ -30,25 +30,22 @@ const AJF_TIME_CONTROL_VALUE_ACCESSOR = {
     useExisting: forwardRef(() => AjfTime),
     multi: true
 };
-let AjfTime = /** @class */ (() => {
-    class AjfTime extends AjfTime$1 {
-        constructor() {
-            super();
-        }
+class AjfTime extends AjfTime$1 {
+    constructor() {
+        super();
     }
-    AjfTime.decorators = [
-        { type: Component, args: [{
-                    selector: 'ajf-time',
-                    template: "<div>\n  <mat-form-field>\n    <input\n        matInput\n        min=\"0\"\n        max=\"23\"\n        (focus)=\"focusHandler()\"\n        [(ngModel)]=\"hours\"\n        type=\"number\">\n  </mat-form-field>\n  :\n  <mat-form-field>\n    <input\n        matInput\n        min=\"0\"\n        max=\"59\"\n        (focus)=\"focusHandler()\"\n        [(ngModel)]=\"minutes\"\n        type=\"number\">\n  </mat-form-field>\n</div>\n",
-                    providers: [AJF_TIME_CONTROL_VALUE_ACCESSOR],
-                    encapsulation: ViewEncapsulation.None,
-                    changeDetection: ChangeDetectionStrategy.OnPush,
-                    styles: ["ajf-time .mat-form-field{width:1.5em;text-align:center}\n"]
-                },] }
-    ];
-    AjfTime.ctorParameters = () => [];
-    return AjfTime;
-})();
+}
+AjfTime.decorators = [
+    { type: Component, args: [{
+                selector: 'ajf-time',
+                template: "<div>\n  <mat-form-field>\n    <input\n        matInput\n        min=\"0\"\n        max=\"23\"\n        (focus)=\"focusHandler()\"\n        [(ngModel)]=\"hours\"\n        type=\"number\">\n  </mat-form-field>\n  :\n  <mat-form-field>\n    <input\n        matInput\n        min=\"0\"\n        max=\"59\"\n        (focus)=\"focusHandler()\"\n        [(ngModel)]=\"minutes\"\n        type=\"number\">\n  </mat-form-field>\n</div>\n",
+                providers: [AJF_TIME_CONTROL_VALUE_ACCESSOR],
+                encapsulation: ViewEncapsulation.None,
+                changeDetection: ChangeDetectionStrategy.OnPush,
+                styles: ["ajf-time .mat-form-field{width:1.5em;text-align:center}\n"]
+            },] }
+];
+AjfTime.ctorParameters = () => [];
 
 /**
  * @license
@@ -71,26 +68,23 @@ let AjfTime = /** @class */ (() => {
  * If not, see http://www.gnu.org/licenses/.
  *
  */
-let AjfTimeModule = /** @class */ (() => {
-    class AjfTimeModule {
-    }
-    AjfTimeModule.decorators = [
-        { type: NgModule, args: [{
-                    imports: [
-                        FormsModule,
-                        MatFormFieldModule,
-                        MatInputModule,
-                    ],
-                    declarations: [
-                        AjfTime,
-                    ],
-                    exports: [
-                        AjfTime,
-                    ],
-                },] }
-    ];
-    return AjfTimeModule;
-})();
+class AjfTimeModule {
+}
+AjfTimeModule.decorators = [
+    { type: NgModule, args: [{
+                imports: [
+                    FormsModule,
+                    MatFormFieldModule,
+                    MatInputModule,
+                ],
+                declarations: [
+                    AjfTime,
+                ],
+                exports: [
+                    AjfTime,
+                ],
+            },] }
+];
 
 /**
  * @license

@@ -24,20 +24,17 @@ import { AjfNodeIcon as AjfNodeIcon$1 } from '@ajf/core/node-icon';
  * If not, see http://www.gnu.org/licenses/.
  *
  */
-let AjfNodeIcon = /** @class */ (() => {
-    class AjfNodeIcon extends AjfNodeIcon$1 {
-    }
-    AjfNodeIcon.decorators = [
-        { type: Component, args: [{
-                    selector: 'ajf-node-icon',
-                    template: "<ng-template [ngIf]=\"node\">\n  <mat-icon [fontSet]=\"fontSet\" [fontIcon]=\"fontIcon\"></mat-icon>\n</ng-template>\n",
-                    encapsulation: ViewEncapsulation.None,
-                    changeDetection: ChangeDetectionStrategy.OnPush,
-                    styles: ["\n"]
-                },] }
-    ];
-    return AjfNodeIcon;
-})();
+class AjfNodeIcon extends AjfNodeIcon$1 {
+}
+AjfNodeIcon.decorators = [
+    { type: Component, args: [{
+                selector: 'ajf-node-icon',
+                template: "<ng-template [ngIf]=\"node\">\n  <mat-icon [fontSet]=\"fontSet\" [fontIcon]=\"fontIcon\"></mat-icon>\n</ng-template>\n",
+                encapsulation: ViewEncapsulation.None,
+                changeDetection: ChangeDetectionStrategy.OnPush,
+                styles: ["\n"]
+            },] }
+];
 
 /**
  * @license
@@ -60,25 +57,22 @@ let AjfNodeIcon = /** @class */ (() => {
  * If not, see http://www.gnu.org/licenses/.
  *
  */
-let AjfNodeIconModule = /** @class */ (() => {
-    class AjfNodeIconModule {
-    }
-    AjfNodeIconModule.decorators = [
-        { type: NgModule, args: [{
-                    imports: [
-                        CommonModule,
-                        MatIconModule,
-                    ],
-                    declarations: [
-                        AjfNodeIcon,
-                    ],
-                    exports: [
-                        AjfNodeIcon,
-                    ],
-                },] }
-    ];
-    return AjfNodeIconModule;
-})();
+class AjfNodeIconModule {
+}
+AjfNodeIconModule.decorators = [
+    { type: NgModule, args: [{
+                imports: [
+                    CommonModule,
+                    MatIconModule,
+                ],
+                declarations: [
+                    AjfNodeIcon,
+                ],
+                exports: [
+                    AjfNodeIcon,
+                ],
+            },] }
+];
 
 /**
  * @license

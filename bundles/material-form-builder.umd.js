@@ -990,9 +990,9 @@
                 var _b = __read(_a, 2), _ = _b[0], nodeEntry = _b[1];
                 return nodeEntry != null;
             }), operators.map(function (_a) {
-                var _b = __read(_a, 2), properties = _b[0], nodeEntry = _b[1];
+                var _b = __read(_a, 2), properties = _b[0], ne = _b[1];
                 _this._beforeNodesUpdate.emit();
-                nodeEntry = nodeEntry;
+                var nodeEntry = ne;
                 var origNode = nodeEntry.node;
                 var node = utils.deepCopy(origNode);
                 node.id = nodeEntry.node.id;
@@ -2416,9 +2416,11 @@
         };
         AjfFbNodeProperties.prototype._initSave = function () {
             var _this = this;
-            this._saveSub = this._saveEvt.pipe(operators.withLatestFrom(this.propertiesForm))
-                .subscribe(function (r) {
-                var fg = r[1];
+            this._saveSub = this._saveEvt
+                .pipe(operators.withLatestFrom(this.propertiesForm))
+                .subscribe(function (_a) {
+                var _b = __read(_a, 2), _ = _b[0], formGroup = _b[1];
+                var fg = formGroup;
                 var val = __assign(__assign({}, fg.value), { conditionalBranches: _this._conditionalBranches });
                 _this._service.saveNodeEntry(val);
             });
@@ -2584,12 +2586,12 @@
         AjfFbNodeProperties.prototype._initRemoveTriggerCondition = function () {
             this._removeTriggerConditionSub = this._removeTriggerConditionEvt
                 .pipe(operators.withLatestFrom(this._propertiesForm))
-                .subscribe(function (r) {
-                var vcIdx = r[0];
-                var fg = r[1];
-                if (fg == null) {
+                .subscribe(function (_a) {
+                var _b = __read(_a, 2), vcIdx = _b[0], formGroup = _b[1];
+                if (formGroup == null) {
                     return;
                 }
+                var fg = formGroup;
                 var ctrl = fg.controls['triggerConditions'];
                 var vcs = (ctrl.value || []).slice(0);
                 if (vcIdx < 0 || vcIdx >= vcs.length) {
@@ -2602,11 +2604,12 @@
         AjfFbNodeProperties.prototype._initAddTriggerCondition = function () {
             this._addTriggerConditionSub = this._addTriggerConditionEvt
                 .pipe(operators.withLatestFrom(this._propertiesForm))
-                .subscribe(function (r) {
-                var fg = r[1];
-                if (fg == null) {
+                .subscribe(function (_a) {
+                var _b = __read(_a, 2), _ = _b[0], formGroup = _b[1];
+                if (formGroup == null) {
                     return;
                 }
+                var fg = formGroup;
                 var ctrl = fg.controls['triggerConditions'];
                 var vcs = (ctrl.value || []).slice(0);
                 vcs.push('');
@@ -2620,10 +2623,9 @@
             this._editTriggerConditionSub =
                 this._editTriggerConditionEvt
                     .pipe(operators.withLatestFrom(this._propertiesForm))
-                    .subscribe(function (r) {
+                    .subscribe(function (_a) {
+                    var _b = __read(_a, 2), vcIdx = _b[0], fg = _b[1];
                     _this._destroyConditionDialog();
-                    var vcIdx = r[0];
-                    var fg = r[1];
                     if (vcIdx < 0 || vcIdx >= _this._triggerConditions.length || fg == null) {
                         return;
                     }
@@ -2644,12 +2646,12 @@
         AjfFbNodeProperties.prototype._initRemoveWarningCondition = function () {
             this._removeWarningConditionSub = this._removeWarningConditionEvt
                 .pipe(operators.withLatestFrom(this._propertiesForm))
-                .subscribe(function (r) {
-                var vcIdx = r[0];
-                var fg = r[1];
-                if (fg == null) {
+                .subscribe(function (_a) {
+                var _b = __read(_a, 2), vcIdx = _b[0], formGroup = _b[1];
+                if (formGroup == null) {
                     return;
                 }
+                var fg = formGroup;
                 var ctrl = fg.controls['warningConditions'];
                 var vcs = (ctrl.value || []).slice(0);
                 if (vcIdx < 0 || vcIdx >= vcs.length) {
@@ -2662,11 +2664,12 @@
         AjfFbNodeProperties.prototype._initAddWarningCondition = function () {
             this._addWarningConditionSub = this._addWarningConditionEvt
                 .pipe(operators.withLatestFrom(this._propertiesForm))
-                .subscribe(function (r) {
-                var fg = r[1];
-                if (fg == null) {
+                .subscribe(function (_a) {
+                var _b = __read(_a, 2), _ = _b[0], formGroup = _b[1];
+                if (formGroup == null) {
                     return;
                 }
+                var fg = formGroup;
                 var ctrl = fg.controls['warningConditions'];
                 var vcs = (ctrl.value || []).slice(0);
                 vcs.push({ condition: '', errorMessage: '' });
@@ -2678,10 +2681,9 @@
             this._editWarningConditionSub =
                 this._editWarningConditionEvt
                     .pipe(operators.withLatestFrom(this._propertiesForm))
-                    .subscribe(function (r) {
+                    .subscribe(function (_a) {
+                    var _b = __read(_a, 2), vcIdx = _b[0], fg = _b[1];
                     _this._destroyWarningConditionDialog();
-                    var vcIdx = r[0];
-                    var fg = r[1];
                     if (vcIdx < 0 || vcIdx >= _this._warningConditions.length || fg == null) {
                         return;
                     }
@@ -2705,12 +2707,12 @@
         AjfFbNodeProperties.prototype._initRemoveValidationCondition = function () {
             this._removeValidationConditionSub = this._removeValidationConditionEvt
                 .pipe(operators.withLatestFrom(this._propertiesForm))
-                .subscribe(function (r) {
-                var vcIdx = r[0];
-                var fg = r[1];
-                if (fg == null) {
+                .subscribe(function (_a) {
+                var _b = __read(_a, 2), vcIdx = _b[0], formGroup = _b[1];
+                if (formGroup == null) {
                     return;
                 }
+                var fg = formGroup;
                 var ctrl = fg.controls['validationConditions'];
                 var vcs = (ctrl.value || []).slice(0);
                 if (vcIdx < 0 || vcIdx >= vcs.length) {
@@ -2723,11 +2725,12 @@
         AjfFbNodeProperties.prototype._initAddValidationCondition = function () {
             this._addValidationConditionSub = this._addValidationConditionEvt
                 .pipe(operators.withLatestFrom(this._propertiesForm))
-                .subscribe(function (r) {
-                var fg = r[1];
-                if (fg == null) {
+                .subscribe(function (_a) {
+                var _b = __read(_a, 2), _ = _b[0], formGroup = _b[1];
+                if (formGroup == null) {
                     return;
                 }
+                var fg = formGroup;
                 var ctrl = fg.controls['validationConditions'];
                 var vcs = (ctrl.value || []).slice(0);
                 vcs.push({ condition: '', errorMessage: '' });
@@ -2739,10 +2742,9 @@
             this._editValidationConditionSub =
                 this._editValidationConditionEvt
                     .pipe(operators.withLatestFrom(this._propertiesForm))
-                    .subscribe(function (r) {
+                    .subscribe(function (_a) {
+                    var _b = __read(_a, 2), vcIdx = _b[0], fg = _b[1];
                     _this._destroyValidationConditionDialog();
-                    var vcIdx = r[0];
-                    var fg = r[1];
                     if (vcIdx < 0 || vcIdx >= _this._validationConditions.length || fg == null) {
                         return;
                     }
@@ -2768,12 +2770,13 @@
             this._editForceValueSub =
                 this._editForceValueEvt
                     .pipe(operators.withLatestFrom(this._propertiesForm))
-                    .subscribe(function (r) {
+                    .subscribe(function (_a) {
+                    var _b = __read(_a, 2), _ = _b[0], formGroup = _b[1];
                     _this._destroyConditionDialog();
-                    var fg = r[1];
-                    if (fg == null) {
+                    if (formGroup == null) {
                         return;
                     }
+                    var fg = formGroup;
                     var ctrl = fg.controls['forceValue'];
                     _this._editConditionDialog = _this._dialog.open(AjfFbConditionEditorDialog);
                     _this._editConditionDialog.componentInstance.condition = ctrl.value;
@@ -2793,12 +2796,13 @@
             this._editNextSlideConditionSub =
                 this._editNextSlideConditionEvt
                     .pipe(operators.withLatestFrom(this._propertiesForm))
-                    .subscribe(function (r) {
+                    .subscribe(function (_a) {
+                    var _b = __read(_a, 2), _ = _b[0], formGroup = _b[1];
                     _this._destroyConditionDialog();
-                    var fg = r[1];
-                    if (fg == null) {
+                    if (formGroup == null) {
                         return;
                     }
+                    var fg = formGroup;
                     var ctrl = fg.controls['nextSlideCondition'];
                     _this._editConditionDialog = _this._dialog.open(AjfFbConditionEditorDialog);
                     _this._editConditionDialog.componentInstance.condition = ctrl.value;
@@ -2820,12 +2824,13 @@
             this._editFormulaSub =
                 this._editFormulaEvt
                     .pipe(operators.withLatestFrom(this._propertiesForm))
-                    .subscribe(function (r) {
+                    .subscribe(function (_a) {
+                    var _b = __read(_a, 2), _ = _b[0], formGroup = _b[1];
                     _this._destroyConditionDialog();
-                    var fg = r[1];
-                    if (fg == null) {
+                    if (formGroup == null) {
                         return;
                     }
+                    var fg = formGroup;
                     var ctrl = fg.controls['formula'];
                     _this._editConditionDialog = _this._dialog.open(AjfFbConditionEditorDialog);
                     _this._editConditionDialog.componentInstance.condition = ctrl.value;
@@ -2845,12 +2850,13 @@
             this._editFormulaRepsSub =
                 this._editFormulaRepsEvt
                     .pipe(operators.withLatestFrom(this._propertiesForm))
-                    .subscribe(function (r) {
+                    .subscribe(function (_a) {
+                    var _b = __read(_a, 2), _ = _b[0], formGroup = _b[1];
                     _this._destroyConditionDialog();
-                    var fg = r[1];
-                    if (fg == null) {
+                    if (formGroup == null) {
                         return;
                     }
+                    var fg = formGroup;
                     var ctrl = fg.controls['formulaReps'];
                     _this._editConditionDialog = _this._dialog.open(AjfFbConditionEditorDialog);
                     _this._editConditionDialog.componentInstance.condition = ctrl.value;
@@ -2870,12 +2876,13 @@
             this._editChoicesFilterSub =
                 this._editChoicesFilterEvt
                     .pipe(operators.withLatestFrom(this._propertiesForm))
-                    .subscribe(function (r) {
+                    .subscribe(function (_a) {
+                    var _b = __read(_a, 2), _ = _b[0], formGroup = _b[1];
                     _this._destroyConditionDialog();
-                    var fg = r[1];
-                    if (fg == null) {
+                    if (formGroup == null) {
                         return;
                     }
+                    var fg = formGroup;
                     var ctrl = fg.controls['choicesFilter'];
                     _this._editConditionDialog = _this._dialog.open(AjfFbConditionEditorDialog);
                     _this._editConditionDialog.componentInstance.condition = ctrl.value;
@@ -2895,10 +2902,9 @@
             this._editConditionalBranchSub =
                 this._editConditionalBranchEvt
                     .pipe(operators.withLatestFrom(this._propertiesForm))
-                    .subscribe(function (r) {
+                    .subscribe(function (_a) {
+                    var _b = __read(_a, 2), cbIdx = _b[0], fg = _b[1];
                     _this._destroyConditionDialog();
-                    var cbIdx = r[0];
-                    var fg = r[1];
                     if (cbIdx < 0 || cbIdx >= _this._conditionalBranches.length || fg == null) {
                         return;
                     }
@@ -2921,12 +2927,13 @@
             this._editVisibilitySub =
                 this._editVisibilityEvt
                     .pipe(operators.withLatestFrom(this._propertiesForm))
-                    .subscribe(function (r) {
+                    .subscribe(function (_a) {
+                    var _b = __read(_a, 2), _ = _b[0], formGroup = _b[1];
                     _this._destroyConditionDialog();
-                    var fg = r[1];
-                    if (fg == null) {
+                    if (formGroup == null) {
                         return;
                     }
+                    var fg = formGroup;
                     var ctrl = fg.controls['visibility'];
                     var condition = ctrl.value;
                     _this._editConditionDialog = _this._dialog.open(AjfFbConditionEditorDialog);
