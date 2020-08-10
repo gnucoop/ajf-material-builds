@@ -26,7 +26,10 @@ import { MatIconModule } from '@angular/material/icon';
  *
  */
 class CheckboxGroupItem extends AjfCheckboxGroupItem {
-    constructor(checkboxGroup) {
+    constructor(
+    // `AjfCheckboxGroupItem` is commonly used in combination with a `AjfCheckboxGroup`.
+    // tslint:disable-next-line: lightweight-tokens
+    checkboxGroup) {
         super(checkboxGroup);
         this.checkedIcon = 'check_box';
         this.notCheckedIcon = 'check_box_outline_blank';

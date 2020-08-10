@@ -77,41 +77,41 @@
     var IEditorLanguage = /** @class */ (function () {
         function IEditorLanguage() {
         }
-        IEditorLanguage.BAT = 'bat';
-        IEditorLanguage.C = 'c';
-        IEditorLanguage.CPP = 'cpp';
-        IEditorLanguage.CSHARP = 'csharp';
-        IEditorLanguage.CSS = 'css';
-        IEditorLanguage.DOCKERFILE = 'dockerfile';
-        IEditorLanguage.FSHARP = 'fsharp';
-        IEditorLanguage.GO = 'go';
-        IEditorLanguage.HANDLEBARS = 'handlebars';
-        IEditorLanguage.HTML = 'html';
-        IEditorLanguage.INI = 'ini';
-        IEditorLanguage.JADE = 'jade';
-        IEditorLanguage.JAVASCRIPT = 'javascript';
-        IEditorLanguage.JSON = 'json';
-        IEditorLanguage.LESS = 'less';
-        IEditorLanguage.LUA = 'lua';
-        IEditorLanguage.MARKDOWN = 'markdown';
-        IEditorLanguage.OBJECTIVEC = 'objective-c';
-        IEditorLanguage.PHP = 'php';
-        IEditorLanguage.PLAINTEXT = 'plaintext';
-        IEditorLanguage.POSTIATS = 'postiats';
-        IEditorLanguage.POWERSHELL = 'powershell';
-        IEditorLanguage.PYTHON = 'python';
-        IEditorLanguage.R = 'r';
-        IEditorLanguage.RAZOR = 'razor';
-        IEditorLanguage.RUBY = 'ruby';
-        IEditorLanguage.SCSS = 'scss';
-        IEditorLanguage.SQL = 'sql';
-        IEditorLanguage.SWIFT = 'swift';
-        IEditorLanguage.TYPESCRIPT = 'typescript';
-        IEditorLanguage.VB = 'vb';
-        IEditorLanguage.XML = 'xml';
-        IEditorLanguage.YAML = 'yaml';
         return IEditorLanguage;
     }());
+    IEditorLanguage.BAT = 'bat';
+    IEditorLanguage.C = 'c';
+    IEditorLanguage.CPP = 'cpp';
+    IEditorLanguage.CSHARP = 'csharp';
+    IEditorLanguage.CSS = 'css';
+    IEditorLanguage.DOCKERFILE = 'dockerfile';
+    IEditorLanguage.FSHARP = 'fsharp';
+    IEditorLanguage.GO = 'go';
+    IEditorLanguage.HANDLEBARS = 'handlebars';
+    IEditorLanguage.HTML = 'html';
+    IEditorLanguage.INI = 'ini';
+    IEditorLanguage.JADE = 'jade';
+    IEditorLanguage.JAVASCRIPT = 'javascript';
+    IEditorLanguage.JSON = 'json';
+    IEditorLanguage.LESS = 'less';
+    IEditorLanguage.LUA = 'lua';
+    IEditorLanguage.MARKDOWN = 'markdown';
+    IEditorLanguage.OBJECTIVEC = 'objective-c';
+    IEditorLanguage.PHP = 'php';
+    IEditorLanguage.PLAINTEXT = 'plaintext';
+    IEditorLanguage.POSTIATS = 'postiats';
+    IEditorLanguage.POWERSHELL = 'powershell';
+    IEditorLanguage.PYTHON = 'python';
+    IEditorLanguage.R = 'r';
+    IEditorLanguage.RAZOR = 'razor';
+    IEditorLanguage.RUBY = 'ruby';
+    IEditorLanguage.SCSS = 'scss';
+    IEditorLanguage.SQL = 'sql';
+    IEditorLanguage.SWIFT = 'swift';
+    IEditorLanguage.TYPESCRIPT = 'typescript';
+    IEditorLanguage.VB = 'vb';
+    IEditorLanguage.XML = 'xml';
+    IEditorLanguage.YAML = 'yaml';
 
     /**
      * @license
@@ -250,9 +250,9 @@
             }
             return tempList;
         };
-        AutoCompleteSingleton._instance = null;
         return AutoCompleteSingleton;
     }());
+    AutoCompleteSingleton._instance = null;
 
     /**
      * @license
@@ -282,39 +282,6 @@
         function IEditorOptions() {
         }
         return IEditorOptions;
-    }());
-
-    /**
-     * @license
-     * Copyright (C) Gnucoop soc. coop.
-     *
-     * This file is part of the Advanced JSON forms (ajf).
-     *
-     * Advanced JSON forms (ajf) is free software: you can redistribute it and/or
-     * modify it under the terms of the GNU Affero General Public License as
-     * published by the Free Software Foundation, either version 3 of the License,
-     * or (at your option) any later version.
-     *
-     * Advanced JSON forms (ajf) is distributed in the hope that it will be useful,
-     * but WITHOUT ANY WARRANTY; without even the implied warranty of
-     * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero
-     * General Public License for more details.
-     *
-     * You should have received a copy of the GNU Affero General Public License
-     * along with Advanced JSON forms (ajf).
-     * If not, see http://www.gnu.org/licenses/.
-     *
-     */
-    /**
-     * List of theme available for Monaco Editor
-     */
-    var IEditorTheme = /** @class */ (function () {
-        function IEditorTheme() {
-        }
-        IEditorTheme.VISUAL_STUDIO = 'vs';
-        IEditorTheme.VISUAL_STUDIO_DARK = 'vs-dark';
-        IEditorTheme.HIGH_CONTRAST_DARK = 'hc-black';
-        return IEditorTheme;
     }());
 
     /**
@@ -633,88 +600,88 @@
                 return model.modified ? model.modified : null;
             }
         };
-        AjfMonacoEditor.decorators = [
-            { type: core.Component, args: [{
-                        encapsulation: core.ViewEncapsulation.None,
-                        changeDetection: core.ChangeDetectionStrategy.OnPush,
-                        selector: 'ajf-monaco-editor',
-                        template: "<div #editor class=\"ajf-monaco-editor\"></div>\n",
-                        host: { '(window:resize)': 'onResize($event)' },
-                        styles: ["ajf-monaco-editor{display:flex;align-items:stretch;overflow:hidden}ajf-monaco-editor .ajf-monaco-editor{flex:1 0 auto}\n"]
-                    },] }
-        ];
-        AjfMonacoEditor.ctorParameters = function () { return []; };
-        AjfMonacoEditor.propDecorators = {
-            experimentalScreenReader: [{ type: core.Input }],
-            ariaLabel: [{ type: core.Input }],
-            rulers: [{ type: core.Input }],
-            wordSeparators: [{ type: core.Input }],
-            selectionClipboard: [{ type: core.Input }],
-            lineNumbers: [{ type: core.Input }],
-            selectOnLineNumbers: [{ type: core.Input }],
-            lineNumbersMinChars: [{ type: core.Input }],
-            glyphMargin: [{ type: core.Input }],
-            lineDecorationsWidth: [{ type: core.Input }],
-            revealHorizontalRightPadding: [{ type: core.Input }],
-            roundedSelection: [{ type: core.Input }],
-            theme: [{ type: core.Input }],
-            readOnly: [{ type: core.Input }],
-            scrollbar: [{ type: core.Input }],
-            overviewRulerLanes: [{ type: core.Input }],
-            cursorBlinking: [{ type: core.Input }],
-            mouseWheelZoom: [{ type: core.Input }],
-            cursorStyle: [{ type: core.Input }],
-            fontLigatures: [{ type: core.Input }],
-            disableTranslate3d: [{ type: core.Input }],
-            hideCursorInOverviewRuler: [{ type: core.Input }],
-            scrollBeyondLastLine: [{ type: core.Input }],
-            automaticLayout: [{ type: core.Input }],
-            wrappingColumn: [{ type: core.Input }],
-            wordWrap: [{ type: core.Input }],
-            wrappingIndent: [{ type: core.Input }],
-            wordWrapBreakBeforeCharacters: [{ type: core.Input }],
-            wordWrapBreakAfterCharacters: [{ type: core.Input }],
-            wordWrapBreakObtrusiveCharacters: [{ type: core.Input }],
-            stopRenderingLineAfter: [{ type: core.Input }],
-            hover: [{ type: core.Input }],
-            contextmenu: [{ type: core.Input }],
-            mouseWheelScrollSensitivity: [{ type: core.Input }],
-            quickSuggestions: [{ type: core.Input }],
-            quickSuggestionsDelay: [{ type: core.Input }],
-            parameterHints: [{ type: core.Input }],
-            iconsInSuggestions: [{ type: core.Input }],
-            autoClosingBrackets: [{ type: core.Input }],
-            formatOnType: [{ type: core.Input }],
-            suggestOnTriggerCharacters: [{ type: core.Input }],
-            acceptSuggestionOnEnter: [{ type: core.Input }],
-            snippetSuggestions: [{ type: core.Input }],
-            tabCompletion: [{ type: core.Input }],
-            wordBasedSuggestions: [{ type: core.Input }],
-            selectionHighlight: [{ type: core.Input }],
-            codeLens: [{ type: core.Input }],
-            folding: [{ type: core.Input }],
-            renderWhitespace: [{ type: core.Input }],
-            renderControlCharacters: [{ type: core.Input }],
-            renderIndentGuides: [{ type: core.Input }],
-            renderLineHighlight: [{ type: core.Input }],
-            useTabStops: [{ type: core.Input }],
-            fontFamily: [{ type: core.Input }],
-            fontWeight: [{ type: core.Input }],
-            fontSize: [{ type: core.Input }],
-            lineHeight: [{ type: core.Input }],
-            language: [{ type: core.Input }],
-            disableAutocomplete: [{ type: core.Input }],
-            autoFormatOnLoad: [{ type: core.Input }],
-            monacoLibPath: [{ type: core.Input }],
-            valueToCompare: [{ type: core.Input }],
-            value: [{ type: core.Input }],
-            valueChange: [{ type: core.Output }],
-            valueToCompareChange: [{ type: core.Output }],
-            init: [{ type: core.Output }],
-            editorContent: [{ type: core.ViewChild, args: ['editor', { static: true },] }]
-        };
         return AjfMonacoEditor;
     }());
+    AjfMonacoEditor.decorators = [
+        { type: core.Component, args: [{
+                    encapsulation: core.ViewEncapsulation.None,
+                    changeDetection: core.ChangeDetectionStrategy.OnPush,
+                    selector: 'ajf-monaco-editor',
+                    template: "<div #editor class=\"ajf-monaco-editor\"></div>\n",
+                    host: { '(window:resize)': 'onResize($event)' },
+                    styles: ["ajf-monaco-editor{display:flex;align-items:stretch;overflow:hidden}ajf-monaco-editor .ajf-monaco-editor{flex:1 0 auto}\n"]
+                },] }
+    ];
+    AjfMonacoEditor.ctorParameters = function () { return []; };
+    AjfMonacoEditor.propDecorators = {
+        experimentalScreenReader: [{ type: core.Input }],
+        ariaLabel: [{ type: core.Input }],
+        rulers: [{ type: core.Input }],
+        wordSeparators: [{ type: core.Input }],
+        selectionClipboard: [{ type: core.Input }],
+        lineNumbers: [{ type: core.Input }],
+        selectOnLineNumbers: [{ type: core.Input }],
+        lineNumbersMinChars: [{ type: core.Input }],
+        glyphMargin: [{ type: core.Input }],
+        lineDecorationsWidth: [{ type: core.Input }],
+        revealHorizontalRightPadding: [{ type: core.Input }],
+        roundedSelection: [{ type: core.Input }],
+        theme: [{ type: core.Input }],
+        readOnly: [{ type: core.Input }],
+        scrollbar: [{ type: core.Input }],
+        overviewRulerLanes: [{ type: core.Input }],
+        cursorBlinking: [{ type: core.Input }],
+        mouseWheelZoom: [{ type: core.Input }],
+        cursorStyle: [{ type: core.Input }],
+        fontLigatures: [{ type: core.Input }],
+        disableTranslate3d: [{ type: core.Input }],
+        hideCursorInOverviewRuler: [{ type: core.Input }],
+        scrollBeyondLastLine: [{ type: core.Input }],
+        automaticLayout: [{ type: core.Input }],
+        wrappingColumn: [{ type: core.Input }],
+        wordWrap: [{ type: core.Input }],
+        wrappingIndent: [{ type: core.Input }],
+        wordWrapBreakBeforeCharacters: [{ type: core.Input }],
+        wordWrapBreakAfterCharacters: [{ type: core.Input }],
+        wordWrapBreakObtrusiveCharacters: [{ type: core.Input }],
+        stopRenderingLineAfter: [{ type: core.Input }],
+        hover: [{ type: core.Input }],
+        contextmenu: [{ type: core.Input }],
+        mouseWheelScrollSensitivity: [{ type: core.Input }],
+        quickSuggestions: [{ type: core.Input }],
+        quickSuggestionsDelay: [{ type: core.Input }],
+        parameterHints: [{ type: core.Input }],
+        iconsInSuggestions: [{ type: core.Input }],
+        autoClosingBrackets: [{ type: core.Input }],
+        formatOnType: [{ type: core.Input }],
+        suggestOnTriggerCharacters: [{ type: core.Input }],
+        acceptSuggestionOnEnter: [{ type: core.Input }],
+        snippetSuggestions: [{ type: core.Input }],
+        tabCompletion: [{ type: core.Input }],
+        wordBasedSuggestions: [{ type: core.Input }],
+        selectionHighlight: [{ type: core.Input }],
+        codeLens: [{ type: core.Input }],
+        folding: [{ type: core.Input }],
+        renderWhitespace: [{ type: core.Input }],
+        renderControlCharacters: [{ type: core.Input }],
+        renderIndentGuides: [{ type: core.Input }],
+        renderLineHighlight: [{ type: core.Input }],
+        useTabStops: [{ type: core.Input }],
+        fontFamily: [{ type: core.Input }],
+        fontWeight: [{ type: core.Input }],
+        fontSize: [{ type: core.Input }],
+        lineHeight: [{ type: core.Input }],
+        language: [{ type: core.Input }],
+        disableAutocomplete: [{ type: core.Input }],
+        autoFormatOnLoad: [{ type: core.Input }],
+        monacoLibPath: [{ type: core.Input }],
+        valueToCompare: [{ type: core.Input }],
+        value: [{ type: core.Input }],
+        valueChange: [{ type: core.Output }],
+        valueToCompareChange: [{ type: core.Output }],
+        init: [{ type: core.Output }],
+        editorContent: [{ type: core.ViewChild, args: ['editor', { static: true },] }]
+    };
 
     /**
      * @license
@@ -740,18 +707,18 @@
     var AjfMonacoEditorModule = /** @class */ (function () {
         function AjfMonacoEditorModule() {
         }
-        AjfMonacoEditorModule.decorators = [
-            { type: core.NgModule, args: [{
-                        declarations: [
-                            AjfMonacoEditor,
-                        ],
-                        exports: [
-                            AjfMonacoEditor,
-                        ]
-                    },] }
-        ];
         return AjfMonacoEditorModule;
     }());
+    AjfMonacoEditorModule.decorators = [
+        { type: core.NgModule, args: [{
+                    declarations: [
+                        AjfMonacoEditor,
+                    ],
+                    exports: [
+                        AjfMonacoEditor,
+                    ]
+                },] }
+    ];
 
     /**
      * @license

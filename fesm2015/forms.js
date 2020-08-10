@@ -11,6 +11,7 @@ import { AjfCalendarModule } from '@ajf/material/calendar';
 import { AjfCheckboxGroupModule } from '@ajf/material/checkbox-group';
 import { AjfPageSliderModule } from '@ajf/material/page-slider';
 import { AjfTimeModule } from '@ajf/material/time';
+import { TextFieldModule } from '@angular/cdk/text-field';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -496,6 +497,46 @@ AjfTableFieldComponent.ctorParameters = () => [
  * If not, see http://www.gnu.org/licenses/.
  *
  */
+class AjfTextFieldComponent extends AjfInputFieldComponent$1 {
+    constructor(cdr, service, was) {
+        super(cdr, service, was);
+    }
+}
+AjfTextFieldComponent.decorators = [
+    { type: Component, args: [{
+                template: "<mat-form-field *ngIf=\"control|async as ctrl\">\n  <textarea matInput cdkTextareaAutosize [formControl]=\"ctrl!\"></textarea>\n</mat-form-field>\n",
+                changeDetection: ChangeDetectionStrategy.OnPush,
+                encapsulation: ViewEncapsulation.None,
+                styles: ["\n"]
+            },] }
+];
+AjfTextFieldComponent.ctorParameters = () => [
+    { type: ChangeDetectorRef },
+    { type: AjfFormRendererService },
+    { type: AjfWarningAlertService, decorators: [{ type: Inject, args: [AJF_WARNING_ALERT_SERVICE,] }] }
+];
+
+/**
+ * @license
+ * Copyright (C) Gnucoop soc. coop.
+ *
+ * This file is part of the Advanced JSON forms (ajf).
+ *
+ * Advanced JSON forms (ajf) is free software: you can redistribute it and/or
+ * modify it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the License,
+ * or (at your option) any later version.
+ *
+ * Advanced JSON forms (ajf) is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero
+ * General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with Advanced JSON forms (ajf).
+ * If not, see http://www.gnu.org/licenses/.
+ *
+ */
 class AjfTimeFieldComponent extends AjfBaseFieldComponent {
     constructor(cdr, service, was) {
         super(cdr, service, was);
@@ -586,7 +627,7 @@ class AjfFieldService extends AjfFieldService$1 {
             readOnlyComponent: AjfReadOnlyFieldComponent
         },
             this.componentsMap[AjfFieldType.Text] = {
-                component: AjfInputFieldComponent,
+                component: AjfTextFieldComponent,
                 readOnlyComponent: AjfReadOnlyFieldComponent
             },
             this.componentsMap[AjfFieldType.Number] = {
@@ -779,7 +820,8 @@ AjfFormsModule.decorators = [
                     AjfCheckboxGroupModule, AjfPageSliderModule, AjfTimeModule, CommonModule,
                     MatButtonModule, MatCardModule, MatDialogModule, MatFormFieldModule,
                     MatIconModule, MatInputModule, MatRadioModule, MatSelectModule,
-                    MatSlideToggleModule, MatToolbarModule, ReactiveFormsModule, TranslateModule,
+                    MatSlideToggleModule, MatToolbarModule, ReactiveFormsModule, TextFieldModule,
+                    TranslateModule,
                 ],
                 declarations: [
                     AjfBarcodeFieldComponent,
@@ -794,6 +836,7 @@ AjfFormsModule.decorators = [
                     AjfMultipleChoiceFieldComponent,
                     AjfSingleChoiceFieldComponent,
                     AjfTableFieldComponent,
+                    AjfTextFieldComponent,
                     AjfTimeFieldComponent,
                     AjfVideoUrlFieldComponent,
                 ],
@@ -807,6 +850,7 @@ AjfFormsModule.decorators = [
                     AjfMultipleChoiceFieldComponent,
                     AjfSingleChoiceFieldComponent,
                     AjfTableFieldComponent,
+                    AjfTextFieldComponent,
                     AjfTimeFieldComponent,
                     AjfVideoUrlFieldComponent,
                 ],
@@ -847,5 +891,5 @@ AjfFormsModule.decorators = [
  * Generated bundle index. Do not edit.
  */
 
-export { AjfBooleanFieldComponent, AjfDateFieldComponent, AjfDateInputFieldComponent, AjfEmptyFieldComponent, AjfFieldService, AjfFieldWarningDialog, AjfFormField, AjfFormRenderer, AjfFormsModule, AjfInputFieldComponent, AjfMultipleChoiceFieldComponent, AjfSingleChoiceFieldComponent, AjfTableFieldComponent, AjfTimeFieldComponent, AjfWarningAlertService, AjfBarcodeFieldComponent as ɵgc_ajf_src_material_forms_forms_a, AjfVideoUrlFieldComponent as ɵgc_ajf_src_material_forms_forms_b };
+export { AjfBooleanFieldComponent, AjfDateFieldComponent, AjfDateInputFieldComponent, AjfEmptyFieldComponent, AjfFieldService, AjfFieldWarningDialog, AjfFormField, AjfFormRenderer, AjfFormsModule, AjfInputFieldComponent, AjfMultipleChoiceFieldComponent, AjfSingleChoiceFieldComponent, AjfTableFieldComponent, AjfTimeFieldComponent, AjfWarningAlertService, AjfBarcodeFieldComponent as ɵgc_ajf_src_material_forms_forms_a, AjfTextFieldComponent as ɵgc_ajf_src_material_forms_forms_b, AjfVideoUrlFieldComponent as ɵgc_ajf_src_material_forms_forms_c };
 //# sourceMappingURL=forms.js.map
