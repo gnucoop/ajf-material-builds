@@ -32,3 +32,4 @@ export * from './reports-module';
 export * from './table-widget';
 export * from './text-widget';
 export * from './widget';
+export * from './widget-service';
