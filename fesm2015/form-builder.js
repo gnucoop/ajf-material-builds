@@ -127,7 +127,7 @@ class ChoicesOriginDataSource extends DataSource {
     constructor() {
         super();
         this._choices = new BehaviorSubject([]);
-        this._choicesObs = this._choices.asObservable();
+        this._choicesObs = this._choices;
     }
     connect() {
         return this._choicesObs;
@@ -407,17 +407,17 @@ class AjfFormBuilderService {
             }
         ];
         this._form = new BehaviorSubject(null);
-        this._formObs = this._form.asObservable();
+        this._formObs = this._form;
         this._editedNodeEntry = new BehaviorSubject(null);
-        this._editedNodeEntryObs = this._editedNodeEntry.asObservable();
+        this._editedNodeEntryObs = this._editedNodeEntry;
         this._editedCondition = new BehaviorSubject(null);
-        this._editedConditionObs = this._editedCondition.asObservable();
+        this._editedConditionObs = this._editedCondition;
         this._editedChoicesOrigin = new BehaviorSubject(null);
-        this._editedChoicesOriginObs = this._editedChoicesOrigin.asObservable();
+        this._editedChoicesOriginObs = this._editedChoicesOrigin;
         this._beforeNodesUpdate = new EventEmitter();
-        this._beforeNodesUpdateObs = this._beforeNodesUpdate.asObservable();
+        this._beforeNodesUpdateObs = this._beforeNodesUpdate;
         this._afterNodeUpdate = new EventEmitter();
-        this._afterNodeUpdateObs = this._afterNodeUpdate.asObservable();
+        this._afterNodeUpdateObs = this._afterNodeUpdate;
         this._nodesUpdates = new Subject();
         this._attachmentsOriginsUpdates = new Subject();
         this._choicesOriginsUpdates = new Subject();

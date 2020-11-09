@@ -108,7 +108,7 @@
         extendStatics = Object.setPrototypeOf ||
             ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
             function (d, b) { for (var p in b)
-                if (b.hasOwnProperty(p))
+                if (Object.prototype.hasOwnProperty.call(b, p))
                     d[p] = b[p]; };
         return extendStatics(d, b);
     };
@@ -255,10 +255,10 @@
             k2 = k;
         o[k2] = m[k];
     });
-    function __exportStar(m, exports) {
+    function __exportStar(m, o) {
         for (var p in m)
-            if (p !== "default" && !exports.hasOwnProperty(p))
-                __createBinding(exports, m, p);
+            if (p !== "default" && !Object.prototype.hasOwnProperty.call(o, p))
+                __createBinding(o, m, p);
     }
     function __values(o) {
         var s = typeof Symbol === "function" && Symbol.iterator, m = s && o[s], i = 0;
@@ -368,7 +368,7 @@
         var result = {};
         if (mod != null)
             for (var k in mod)
-                if (Object.hasOwnProperty.call(mod, k))
+                if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k))
                     __createBinding(result, mod, k);
         __setModuleDefault(result, mod);
         return result;
@@ -395,7 +395,7 @@
         function ChoicesOriginDataSource() {
             var _this = _super.call(this) || this;
             _this._choices = new rxjs.BehaviorSubject([]);
-            _this._choicesObs = _this._choices.asObservable();
+            _this._choicesObs = _this._choices;
             return _this;
         }
         ChoicesOriginDataSource.prototype.connect = function () {
@@ -676,17 +676,17 @@
                 }
             ];
             this._form = new rxjs.BehaviorSubject(null);
-            this._formObs = this._form.asObservable();
+            this._formObs = this._form;
             this._editedNodeEntry = new rxjs.BehaviorSubject(null);
-            this._editedNodeEntryObs = this._editedNodeEntry.asObservable();
+            this._editedNodeEntryObs = this._editedNodeEntry;
             this._editedCondition = new rxjs.BehaviorSubject(null);
-            this._editedConditionObs = this._editedCondition.asObservable();
+            this._editedConditionObs = this._editedCondition;
             this._editedChoicesOrigin = new rxjs.BehaviorSubject(null);
-            this._editedChoicesOriginObs = this._editedChoicesOrigin.asObservable();
+            this._editedChoicesOriginObs = this._editedChoicesOrigin;
             this._beforeNodesUpdate = new core.EventEmitter();
-            this._beforeNodesUpdateObs = this._beforeNodesUpdate.asObservable();
+            this._beforeNodesUpdateObs = this._beforeNodesUpdate;
             this._afterNodeUpdate = new core.EventEmitter();
-            this._afterNodeUpdateObs = this._afterNodeUpdate.asObservable();
+            this._afterNodeUpdateObs = this._afterNodeUpdate;
             this._nodesUpdates = new rxjs.Subject();
             this._attachmentsOriginsUpdates = new rxjs.Subject();
             this._choicesOriginsUpdates = new rxjs.Subject();

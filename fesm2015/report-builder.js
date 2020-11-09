@@ -366,7 +366,7 @@ class AjfReportBuilderService {
         });
     }
     getFormulaToHtmlEvent() {
-        return this._saveFormulaTOHtml.asObservable();
+        return this._saveFormulaTOHtml;
     }
     get iconSets() {
         return this._iconSets;
@@ -595,7 +595,7 @@ class AjfReportBuilderService {
      * @memberOf AjfReportBuilderService
      */
     get report() {
-        return this._report.asObservable();
+        return this._report;
     }
     /**
      * emit save report event
@@ -793,7 +793,7 @@ class AjfReportBuilderService {
      * @memberOf AjfReportBuilderService
      */
     get getSaveReport() {
-        return this._saveReport.asObservable();
+        return this._saveReport;
     }
     /**
      * get _jsonSavedReport obeservable
