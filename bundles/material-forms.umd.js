@@ -697,11 +697,11 @@
                 _this.componentsMap[forms.AjfFieldType.Empty] = { component: AjfEmptyFieldComponent },
                 _this.componentsMap[forms.AjfFieldType.SingleChoice] = {
                     component: AjfSingleChoiceFieldComponent,
-                    readOnlyComponent: forms.AjfReadOnlyFieldComponent
+                    readOnlyComponent: forms.AjfReadOnlySelectFieldComponent
                 },
                 _this.componentsMap[forms.AjfFieldType.MultipleChoice] = {
                     component: AjfMultipleChoiceFieldComponent,
-                    readOnlyComponent: forms.AjfReadOnlyFieldComponent
+                    readOnlyComponent: forms.AjfReadOnlySelectFieldComponent
                 },
                 _this.componentsMap[forms.AjfFieldType.Time] = {
                     component: AjfTimeFieldComponent,
