@@ -39,7 +39,7 @@ class AjfChartWidgetComponent extends AjfBaseWidgetComponent {
 }
 AjfChartWidgetComponent.decorators = [
     { type: Component, args: [{
-                template: "<ajf-chart\n    [chartType]=\"instance.chartType\"\n    [options]=\"instance.widget.options\"\n    [data]=\"instance.data\"\n></ajf-chart>\n",
+                template: "<ajf-chart\n    [chartType]=\"instance.chartType\"\n    [options]=\"instance.widget.options\"\n    [data]=\"instance.data\"\n    [instance]=\"instance\"\n></ajf-chart>\n",
                 changeDetection: ChangeDetectionStrategy.OnPush,
                 encapsulation: ViewEncapsulation.None,
                 styles: ["\n"]

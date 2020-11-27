@@ -1,7 +1,7 @@
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@ajf/core/calendar'), require('@angular/core'), require('@angular/forms'), require('@angular/common'), require('@angular/material/button'), require('@ngx-translate/core')) :
     typeof define === 'function' && define.amd ? define('@ajf/material/calendar', ['exports', '@ajf/core/calendar', '@angular/core', '@angular/forms', '@angular/common', '@angular/material/button', '@ngx-translate/core'], factory) :
-    (global = global || self, factory((global.ajf = global.ajf || {}, global.ajf.material = global.ajf.material || {}, global.ajf.material.calendar = {}), global.ng.core.calendar, global.ng.core, global.ng.forms, global.ng.common, global.ng.material.button, global.ngxTranslate.core));
+    (global = global || self, factory((global.ajf = global.ajf || {}, global.ajf.material = global.ajf.material || {}, global.ajf.material.calendar = {}), global.ajf.core.calendar, global.ng.core, global.ng.forms, global.ng.common, global.ng.material.button, global.ngxTranslate.core));
 }(this, (function (exports, calendar, core, forms, common, button, core$1) { 'use strict';
 
     /*! *****************************************************************************

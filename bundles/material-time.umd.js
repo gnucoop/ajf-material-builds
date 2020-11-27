@@ -1,7 +1,7 @@
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('@angular/forms'), require('@angular/material/form-field'), require('@angular/material/input'), require('@ajf/core/time')) :
     typeof define === 'function' && define.amd ? define('@ajf/material/time', ['exports', '@angular/core', '@angular/forms', '@angular/material/form-field', '@angular/material/input', '@ajf/core/time'], factory) :
-    (global = global || self, factory((global.ajf = global.ajf || {}, global.ajf.material = global.ajf.material || {}, global.ajf.material.time = {}), global.ng.core, global.ng.forms, global.ng.material.formField, global.ng.material.input, global.ng.core.time));
+    (global = global || self, factory((global.ajf = global.ajf || {}, global.ajf.material = global.ajf.material || {}, global.ajf.material.time = {}), global.ng.core, global.ng.forms, global.ng.material.formField, global.ng.material.input, global.ajf.core.time));
 }(this, (function (exports, core, forms, formField, input, time) { 'use strict';
 
     /*! *****************************************************************************

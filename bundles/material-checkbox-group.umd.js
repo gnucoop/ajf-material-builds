@@ -1,7 +1,7 @@
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@ajf/core/checkbox-group'), require('@angular/core'), require('@angular/common'), require('@angular/material/button'), require('@angular/material/icon')) :
     typeof define === 'function' && define.amd ? define('@ajf/material/checkbox-group', ['exports', '@ajf/core/checkbox-group', '@angular/core', '@angular/common', '@angular/material/button', '@angular/material/icon'], factory) :
-    (global = global || self, factory((global.ajf = global.ajf || {}, global.ajf.material = global.ajf.material || {}, global.ajf.material.checkboxGroup = {}), global.ng.core.checkboxGroup, global.ng.core, global.ng.common, global.ng.material.button, global.ng.material.icon));
+    (global = global || self, factory((global.ajf = global.ajf || {}, global.ajf.material = global.ajf.material || {}, global.ajf.material.checkboxGroup = {}), global.ajf.core.checkboxGroup, global.ng.core, global.ng.common, global.ng.material.button, global.ng.material.icon));
 }(this, (function (exports, checkboxGroup, core, common, button, icon) { 'use strict';
 
     /*! *****************************************************************************

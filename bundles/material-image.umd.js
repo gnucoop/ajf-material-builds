@@ -1,7 +1,7 @@
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/common'), require('@angular/core'), require('@angular/material/icon'), require('@ajf/core/image'), require('@angular/platform-browser')) :
     typeof define === 'function' && define.amd ? define('@ajf/material/image', ['exports', '@angular/common', '@angular/core', '@angular/material/icon', '@ajf/core/image', '@angular/platform-browser'], factory) :
-    (global = global || self, factory((global.ajf = global.ajf || {}, global.ajf.material = global.ajf.material || {}, global.ajf.material.image = {}), global.ng.common, global.ng.core, global.ng.material.icon, global.ng.core.image, global.ng.platformBrowser));
+    (global = global || self, factory((global.ajf = global.ajf || {}, global.ajf.material = global.ajf.material || {}, global.ajf.material.image = {}), global.ng.common, global.ng.core, global.ng.material.icon, global.ajf.core.image, global.ng.platformBrowser));
 }(this, (function (exports, common, core, icon, image, platformBrowser) { 'use strict';
 
     /*! *****************************************************************************

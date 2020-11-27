@@ -1,7 +1,7 @@
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@ajf/core/barcode'), require('@angular/core'), require('@angular/forms'), require('@ajf/core/common'), require('@angular/common'), require('@angular/material/button'), require('@angular/material/button-toggle'), require('@angular/material/icon'), require('@ngx-translate/core')) :
     typeof define === 'function' && define.amd ? define('@ajf/material/barcode', ['exports', '@ajf/core/barcode', '@angular/core', '@angular/forms', '@ajf/core/common', '@angular/common', '@angular/material/button', '@angular/material/button-toggle', '@angular/material/icon', '@ngx-translate/core'], factory) :
-    (global = global || self, factory((global.ajf = global.ajf || {}, global.ajf.material = global.ajf.material || {}, global.ajf.material.barcode = {}), global.ng.core.barcode, global.ng.core, global.ng.forms, global.ng.core.common, global.ng.common, global.ng.material.button, global.ng.material.buttonToggle, global.ng.material.icon, global.ngxTranslate.core));
+    (global = global || self, factory((global.ajf = global.ajf || {}, global.ajf.material = global.ajf.material || {}, global.ajf.material.barcode = {}), global.ajf.core.barcode, global.ng.core, global.ng.forms, global.ajf.core.common, global.ng.common, global.ng.material.button, global.ng.material.buttonToggle, global.ng.material.icon, global.ngxTranslate.core));
 }(this, (function (exports, barcode, core, forms, common, common$1, button, buttonToggle, icon, core$1) { 'use strict';
 
     /*! *****************************************************************************

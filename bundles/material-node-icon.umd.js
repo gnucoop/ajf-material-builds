@@ -1,7 +1,7 @@
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/common'), require('@angular/core'), require('@angular/material/icon'), require('@ajf/core/node-icon')) :
     typeof define === 'function' && define.amd ? define('@ajf/material/node-icon', ['exports', '@angular/common', '@angular/core', '@angular/material/icon', '@ajf/core/node-icon'], factory) :
-    (global = global || self, factory((global.ajf = global.ajf || {}, global.ajf.material = global.ajf.material || {}, global.ajf.material.nodeIcon = {}), global.ng.common, global.ng.core, global.ng.material.icon, global.ng.core.nodeIcon));
+    (global = global || self, factory((global.ajf = global.ajf || {}, global.ajf.material = global.ajf.material || {}, global.ajf.material.nodeIcon = {}), global.ng.common, global.ng.core, global.ng.material.icon, global.ajf.core.nodeIcon));
 }(this, (function (exports, common, core, icon, nodeIcon) { 'use strict';
 
     /*! *****************************************************************************
