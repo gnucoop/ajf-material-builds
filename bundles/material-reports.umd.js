@@ -1,8 +1,8 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@ajf/core/reports'), require('@angular/core'), require('@ajf/core/image'), require('@ajf/core/chart'), require('@ajf/core/common'), require('@ajf/core/map'), require('@ajf/core/page-break'), require('@ajf/core/table'), require('@ajf/core/text'), require('@ajf/material/image'), require('@angular/common'), require('@ngx-translate/core')) :
-    typeof define === 'function' && define.amd ? define('@ajf/material/reports', ['exports', '@ajf/core/reports', '@angular/core', '@ajf/core/image', '@ajf/core/chart', '@ajf/core/common', '@ajf/core/map', '@ajf/core/page-break', '@ajf/core/table', '@ajf/core/text', '@ajf/material/image', '@angular/common', '@ngx-translate/core'], factory) :
-    (global = global || self, factory((global.ajf = global.ajf || {}, global.ajf.material = global.ajf.material || {}, global.ajf.material.reports = {}), global.ajf.core.reports, global.ng.core, global.ajf.core.image, global.ajf.core.chart, global.ajf.core.common, global.ajf.core.map, global.ajf.core.pageBreak, global.ajf.core.table, global.ajf.core.text, global.ajf.material.image, global.ng.common, global.ngxTranslate.core));
-}(this, (function (exports, reports, i0, image, chart, common, map, pageBreak, table, text, image$1, common$1, core) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@ajf/core/reports'), require('@angular/core'), require('@ajf/core/image'), require('rxjs'), require('@ajf/core/chart'), require('@ajf/core/common'), require('@ajf/core/map'), require('@ajf/core/page-break'), require('@ajf/core/table'), require('@ajf/core/text'), require('@ajf/material/image'), require('@angular/common'), require('@ngx-translate/core')) :
+    typeof define === 'function' && define.amd ? define('@ajf/material/reports', ['exports', '@ajf/core/reports', '@angular/core', '@ajf/core/image', 'rxjs', '@ajf/core/chart', '@ajf/core/common', '@ajf/core/map', '@ajf/core/page-break', '@ajf/core/table', '@ajf/core/text', '@ajf/material/image', '@angular/common', '@ngx-translate/core'], factory) :
+    (global = global || self, factory((global.ajf = global.ajf || {}, global.ajf.material = global.ajf.material || {}, global.ajf.material.reports = {}), global.ajf.core.reports, global.ng.core, global.ajf.core.image, global.rxjs, global.ajf.core.chart, global.ajf.core.common, global.ajf.core.map, global.ajf.core.pageBreak, global.ajf.core.table, global.ajf.core.text, global.ajf.material.image, global.ng.common, global.ngxTranslate.core));
+}(this, (function (exports, reports, i0, image, rxjs, chart, common, map, pageBreak, table, text, image$1, common$1, core) { 'use strict';
 
     /*! *****************************************************************************
     Copyright (c) Microsoft Corporation.
@@ -314,7 +314,7 @@
     }(reports.AjfBaseWidgetComponent));
     AjfChartWidgetComponent.decorators = [
         { type: i0.Component, args: [{
-                    template: "<ajf-chart\n    [chartType]=\"instance.chartType\"\n    [options]=\"instance.widget.options\"\n    [data]=\"instance.data\"\n    [instance]=\"instance\"\n></ajf-chart>\n",
+                    template: "<ajf-widget-export \n    [widgetType]=\"instance.widgetType\"  \n    [data]=\"instance.data\" \n    [enable]=\"instance.exportable\"\n    [overlay]=\"true\">\n  <ajf-chart\n      [chartType]=\"instance.chartType\"\n      [options]=\"instance.widget.options\"\n      [data]=\"instance.data\"></ajf-chart>\n</ajf-widget-export>\n",
                     changeDetection: i0.ChangeDetectionStrategy.OnPush,
                     encapsulation: i0.ViewEncapsulation.None,
                     styles: ["\n"]
@@ -410,13 +410,19 @@
     var AjfLayoutWidgetComponent = /** @class */ (function (_super) {
         __extends(AjfLayoutWidgetComponent, _super);
         function AjfLayoutWidgetComponent(cdr, el) {
-            return _super.call(this, cdr, el) || this;
+            var _this = _super.call(this, cdr, el) || this;
+            _this._allcolumnsRendered$ = new rxjs.BehaviorSubject(false);
+            _this.allcolumnsRendered$ = _this._allcolumnsRendered$;
+            return _this;
         }
+        AjfLayoutWidgetComponent.prototype.ngAfterContentChecked = function () {
+            this._allcolumnsRendered$.next(true);
+        };
         return AjfLayoutWidgetComponent;
     }(reports.AjfBaseWidgetComponent));
     AjfLayoutWidgetComponent.decorators = [
         { type: i0.Component, args: [{
-                    template: "<div class=\"ajf-columns\">\n  <div\n      *ngFor=\"let column of instance.widget.columns; let idx = index\"\n      [ngStyle]=\"{'flex-grow': column > -1 ? 1 : null, 'flex-basis' : column > -1 ? (column * 100) + '%' : null}\"\n      class=\"ajf-column\"\n  >\n    <ajf-widget *ngIf=\"(instance|ajfGetColumnContent:idx) as cc\" [instance]=\"cc!\">\n    </ajf-widget>\n  </div>\n</div>\n",
+                    template: "<div class=\"ajf-columns\">\n  <div\n      *ngFor=\"let column of instance.widget.columns; let idx = index\"\n      [ngStyle]=\"{'flex-grow': column > -1 ? 1 : null, 'flex-basis' : column > -1 ? (column * 100) + '%' : null}\"\n      class=\"ajf-column\"\n  >\n  <ng-container *ngIf=\"allcolumnsRendered$|async\">\n    <ajf-widget *ngIf=\"(instance|ajfGetColumnContent:idx) as cc\" [instance]=\"cc!\">\n    </ajf-widget>\n  </ng-container>\n </div>\n</div>\n",
                     changeDetection: i0.ChangeDetectionStrategy.OnPush,
                     encapsulation: i0.ViewEncapsulation.None,
                     styles: [".ajf-columns{flex:1 1 auto;display:flex;align-items:inherit;box-sizing:border-box}.ajf-columns>.ajf-column{box-sizing:border-box;display:flex;align-items:inherit;flex-shrink:1}\n"]
@@ -496,7 +502,7 @@
     }(reports.AjfBaseWidgetComponent));
     AjfTableWidgetComponent.decorators = [
         { type: i0.Component, args: [{
-                    template: "<ajf-table [data]=\"instance.data\"></ajf-table>\n",
+                    template: "<ajf-widget-export \n[widgetType]=\"instance.widgetType\" \n[data]=\"instance.data\"\n[enable]=\"instance.exportable\"\n>\n    <ajf-table [data]=\"instance.data\"></ajf-table>\n</ajf-widget-export>\n",
                     changeDetection: i0.ChangeDetectionStrategy.OnPush,
                     encapsulation: i0.ViewEncapsulation.None,
                     styles: ["\n"]
