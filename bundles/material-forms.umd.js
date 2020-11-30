@@ -514,7 +514,7 @@
     }(forms.AjfInputFieldComponent));
     AjfInputFieldComponent.decorators = [
         { type: i0.Component, args: [{
-                    template: "<mat-form-field *ngIf=\"control|async as ctrl\">\n  <input matInput *ngIf=\"type === 'text'\" type=\"text\" [formControl]=\"ctrl!\">\n  <input matInput *ngIf=\"type === 'number'\" type=\"number\" [formControl]=\"ctrl!\">\n</mat-form-field>\n",
+                    template: "<mat-form-field *ngIf=\"control|async as ctrl\">\n  <input matInput [type]=\"type\" [formControl]=\"ctrl!\" [readonly]=\"instance|ajfIsReadonlyInputField\">\n</mat-form-field>\n",
                     changeDetection: i0.ChangeDetectionStrategy.OnPush,
                     encapsulation: i0.ViewEncapsulation.None,
                     styles: ["\n"]
