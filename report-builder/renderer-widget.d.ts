@@ -22,7 +22,7 @@
 import { AjfImageType } from '@ajf/core/image';
 import { AjfColumnWidget, AjfDataset, AjfLayoutWidget, AjfWidget, AjfWidgetType } from '@ajf/core/reports';
 import { CdkDrag, CdkDragDrop } from '@angular/cdk/drag-drop';
-import { OnChanges, OnDestroy, OnInit } from '@angular/core';
+import { OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AjfReportBuilderDragData } from './report-builder-drag-data';
 import { AjfReportBuilderService } from './report-builder-service';
@@ -75,6 +75,6 @@ export declare class AjfReportBuilderRendererWidget implements OnInit, OnDestroy
     getAttribution(): string;
     addToList(event: CdkDragDrop<AjfReportBuilderDragData>, toColumn: AjfColumnWidget): void;
     ngOnInit(): void;
-    ngOnChanges(changes: any): void;
+    ngOnChanges(changes: SimpleChanges): void;
     ngOnDestroy(): void;
 }

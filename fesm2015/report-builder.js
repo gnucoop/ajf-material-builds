@@ -4461,8 +4461,9 @@ class AjfReportBuilderRendererWidget {
         this._service.updateCurrentWidget(this.widget);
     }
     ngOnChanges(changes) {
-        if (changes.widget && changes.widget.currentValue != null) {
-            this.widget = changes.widget.currentValue;
+        const widget = changes['widget'];
+        if (widget && widget.currentValue != null) {
+            this.widget = widget.currentValue;
         }
     }
     ngOnDestroy() {

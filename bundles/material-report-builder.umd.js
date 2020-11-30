@@ -4876,8 +4876,9 @@
             this._service.updateCurrentWidget(this.widget);
         };
         AjfReportBuilderRendererWidget.prototype.ngOnChanges = function (changes) {
-            if (changes.widget && changes.widget.currentValue != null) {
-                this.widget = changes.widget.currentValue;
+            var widget = changes['widget'];
+            if (widget && widget.currentValue != null) {
+                this.widget = widget.currentValue;
             }
         };
         AjfReportBuilderRendererWidget.prototype.ngOnDestroy = function () {
