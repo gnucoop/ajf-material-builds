@@ -40,7 +40,7 @@ class AjfChartWidgetComponent extends AjfBaseWidgetComponent {
 }
 AjfChartWidgetComponent.decorators = [
     { type: Component, args: [{
-                template: "<ajf-widget-export \n    [widgetType]=\"instance.widgetType\"  \n    [data]=\"instance.data\" \n    [enable]=\"instance.exportable\"\n    [overlay]=\"true\">\n  <ajf-chart\n      [chartType]=\"instance.chartType\"\n      [options]=\"instance.widget.options\"\n      [data]=\"instance.data\"></ajf-chart>\n</ajf-widget-export>\n",
+                template: "<ajf-widget-export \n    [widgetType]=\"instance.widgetType\"  \n    [data]=\"instance.data\" \n    [enable]=\"instance.exportable\"\n    [overlay]=\"true\">\n  <ajf-chart\n      [chartType]=\"instance.chartType\"\n      [options]=\"instance.widget.options\"\n      [data]=\"instance.data\"\n      [instance]=\"instance\">\n  </ajf-chart>\n</ajf-widget-export>\n",
                 changeDetection: ChangeDetectionStrategy.OnPush,
                 encapsulation: ViewEncapsulation.None,
                 styles: ["\n"]
