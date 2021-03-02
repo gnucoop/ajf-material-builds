@@ -900,8 +900,8 @@
         };
         AjfFormBuilderService.prototype.getCurrentForm = function () {
             return rxjs.combineLatest([
-                this.form, this.nodes, this.attachmentsOrigins, this.choicesOrigins,
-                this.stringIdentifier
+                this.form, this._nodesWithoutChoiceOrigins, this.attachmentsOrigins,
+                this.choicesOrigins, this.stringIdentifier
             ])
                 .pipe(operators.filter(function (_a) {
                 var _b = __read(_a, 1), form = _b[0];
@@ -1010,6 +1010,23 @@
                 .pipe(operators.scan(function (nodes, op) {
                 return op(nodes);
             }, []), operators.publishReplay(1), operators.refCount());
+            this._nodesWithoutChoiceOrigins =
+                this._nodes.pipe(operators.map(function (slides) { return slides.map(function (slide) {
+                    slide.nodes = slide.nodes.map(function (node) {
+                        if (forms$1.isFieldWithChoices(node)) {
+                            var fwc = utils.deepCopy(node);
+                            if (fwc && fwc.choices) {
+                                delete fwc.choices;
+                            }
+                            if (fwc && fwc.choicesOrigin) {
+                                delete fwc.choicesOrigin;
+                            }
+                            return fwc;
+                        }
+                        return node;
+                    });
+                    return slide;
+                }); }));
             this._flatNodes = this._nodes.pipe(operators.map(function (nodes) { return flattenNodes(nodes); }), operators.publishReplay(1), operators.refCount());
             this._flatFields = this._flatNodes.pipe(operators.map(function (nodes) { return nodes.filter(function (n) { return !forms$1.isContainerNode(n); }); }), operators.publishReplay(1), operators.refCount());
             this._nodeEntriesTree = this._nodes.pipe(operators.map(function (nodes) { return buildFormBuilderNodesTree(nodes); }), operators.publishReplay(1), operators.refCount());

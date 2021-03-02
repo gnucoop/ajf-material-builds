@@ -22,7 +22,7 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { TranslateModule } from '@ngx-translate/core';
-import { isChoicesFixedOrigin, isContainerNode, isSlidesNode, AjfNodeType, AjfFieldType, createField, createContainerNode, createForm, createChoicesFixedOrigin, isRepeatingContainerNode, isField, createValidationGroup, notEmptyValidation, minValidation, maxValidation, minDigitsValidation, maxDigitsValidation, createValidation, createWarningGroup, notEmptyWarning, createWarning, isFieldWithChoices, AjfValidationService, isNumberField } from '@ajf/core/forms';
+import { isChoicesFixedOrigin, isContainerNode, isSlidesNode, AjfNodeType, AjfFieldType, createField, createContainerNode, createForm, createChoicesFixedOrigin, isFieldWithChoices, isRepeatingContainerNode, isField, createValidationGroup, notEmptyValidation, minValidation, maxValidation, minDigitsValidation, maxDigitsValidation, createValidation, createWarningGroup, notEmptyWarning, createWarning, AjfValidationService, isNumberField } from '@ajf/core/forms';
 import { DataSource } from '@angular/cdk/collections';
 import { BehaviorSubject, Subject, combineLatest, Subscription } from 'rxjs';
 import { filter, map, scan, publishReplay, refCount, withLatestFrom, shareReplay, sample, distinctUntilChanged } from 'rxjs/operators';
@@ -574,8 +574,8 @@ class AjfFormBuilderService {
     }
     getCurrentForm() {
         return combineLatest([
-            this.form, this.nodes, this.attachmentsOrigins, this.choicesOrigins,
-            this.stringIdentifier
+            this.form, this._nodesWithoutChoiceOrigins, this.attachmentsOrigins,
+            this.choicesOrigins, this.stringIdentifier
         ])
             .pipe(filter(([form]) => form != null), map(([form, nodes, attachmentsOrigins, choicesOrigins, stringIdentifier]) => {
             return createForm({
@@ -679,6 +679,23 @@ class AjfFormBuilderService {
             .pipe(scan((nodes, op) => {
             return op(nodes);
         }, []), publishReplay(1), refCount());
+        this._nodesWithoutChoiceOrigins =
+            this._nodes.pipe(map(slides => slides.map(slide => {
+                slide.nodes = slide.nodes.map((node) => {
+                    if (isFieldWithChoices(node)) {
+                        const fwc = deepCopy(node);
+                        if (fwc && fwc.choices) {
+                            delete fwc.choices;
+                        }
+                        if (fwc && fwc.choicesOrigin) {
+                            delete fwc.choicesOrigin;
+                        }
+                        return fwc;
+                    }
+                    return node;
+                });
+                return slide;
+            })));
         this._flatNodes = this._nodes.pipe(map((nodes) => flattenNodes(nodes)), publishReplay(1), refCount());
         this._flatFields = this._flatNodes.pipe(map((nodes) => nodes.filter(n => !isContainerNode(n))), publishReplay(1), refCount());
         this._nodeEntriesTree = this._nodes.pipe(map(nodes => buildFormBuilderNodesTree(nodes)), publishReplay(1), refCount());

@@ -71,6 +71,7 @@ export declare class AjfFormBuilderService {
     get choicesOrigins(): Observable<AjfChoicesOrigin<any>[]>;
     private _stringIdentifier;
     get stringIdentifier(): Observable<AjfFormStringIdentifier[]>;
+    private _nodesWithoutChoiceOrigins;
     private _nodes;
     get nodes(): Observable<AjfNode[]>;
     private _flatNodes;
