@@ -735,7 +735,7 @@
         }
         return AjfFieldService;
     }(forms.AjfFieldService));
-    AjfFieldService.ɵprov = i0["ɵɵdefineInjectable"]({ factory: function AjfFieldService_Factory() { return new AjfFieldService(); }, token: AjfFieldService, providedIn: "root" });
+    AjfFieldService.ɵprov = i0.ɵɵdefineInjectable({ factory: function AjfFieldService_Factory() { return new AjfFieldService(); }, token: AjfFieldService, providedIn: "root" });
     AjfFieldService.decorators = [
         { type: i0.Injectable, args: [{ providedIn: 'root' },] }
     ];

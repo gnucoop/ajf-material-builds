@@ -560,7 +560,7 @@
         }
         return AjfWidgetService;
     }(reports.AjfWidgetService));
-    AjfWidgetService.ɵprov = i0["ɵɵdefineInjectable"]({ factory: function AjfWidgetService_Factory() { return new AjfWidgetService(); }, token: AjfWidgetService, providedIn: "root" });
+    AjfWidgetService.ɵprov = i0.ɵɵdefineInjectable({ factory: function AjfWidgetService_Factory() { return new AjfWidgetService(); }, token: AjfWidgetService, providedIn: "root" });
     AjfWidgetService.decorators = [
         { type: i0.Injectable, args: [{ providedIn: 'root' },] }
     ];

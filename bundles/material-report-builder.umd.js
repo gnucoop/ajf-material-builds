@@ -4,7 +4,7 @@
     (global = global || self, factory((global.ajf = global.ajf || {}, global.ajf.material = global.ajf.material || {}, global.ajf.material.reportBuilder = {}), global.ajf.core.common, global.ajf.core.map, global.ajf.core.table, global.ajf.core.text, global.ajf.material.image, global.ajf.material.monacoEditor, global.ng.cdk.dragDrop, global.ng.common, global.ng.core, global.ng.forms, global.ng.material.button, global.ng.material.buttonToggle, global.ng.material.card, global.ng.material.dialog, global.ng.material.gridList, global.ng.material.icon, global.ng.material.list, global.ng.material.select, global.ng.material.sidenav, global.ng.material.slideToggle, global.ng.material.slider, global.ng.material.tabs, global.ng.material.toolbar, global.ng.material.tooltip, global.ngxTranslate.core, global.ngxColorPicker, global.rxjs, global.ajf.core.forms, global.ajf.core.models, global.ajf.core.reports, global.ajf.core.utils, global.rxjs.operators, global.ajf.core.image, global.quill));
 }(this, (function (exports, common, map, table, text, image, monacoEditor, dragDrop, common$1, core, forms, button, buttonToggle, card, dialog, gridList, icon, list, select, sidenav, slideToggle, slider, tabs, toolbar, tooltip, core$1, ngxColorPicker, rxjs, forms$1, models, reports, utils, operators, image$1, Quill) { 'use strict';
 
-    Quill = Quill && Object.prototype.hasOwnProperty.call(Quill, 'default') ? Quill['default'] : Quill;
+    Quill = Quill && Quill.hasOwnProperty('default') ? Quill['default'] : Quill;
 
     /*! *****************************************************************************
     Copyright (c) Microsoft Corporation.
