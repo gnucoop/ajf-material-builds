@@ -1,8 +1,8 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@ajf/material/monaco-editor'), require('@ajf/material/node-icon'), require('@angular/cdk/drag-drop'), require('@angular/common'), require('@angular/core'), require('@angular/forms'), require('@angular/material/autocomplete'), require('@angular/material/button'), require('@angular/material/card'), require('@angular/material/checkbox'), require('@angular/material/chips'), require('@angular/material/dialog'), require('@angular/material/form-field'), require('@angular/material/icon'), require('@angular/material/input'), require('@angular/material/list'), require('@angular/material/menu'), require('@angular/material/select'), require('@angular/material/sidenav'), require('@angular/material/slider'), require('@angular/material/table'), require('@angular/material/toolbar'), require('@angular/material/tooltip'), require('@ngx-translate/core'), require('@ajf/core/forms'), require('@angular/cdk/collections'), require('rxjs'), require('rxjs/operators'), require('@ajf/core/models'), require('@ajf/core/utils'), require('@angular/cdk/keycodes')) :
-    typeof define === 'function' && define.amd ? define('@ajf/material/form-builder', ['exports', '@ajf/material/monaco-editor', '@ajf/material/node-icon', '@angular/cdk/drag-drop', '@angular/common', '@angular/core', '@angular/forms', '@angular/material/autocomplete', '@angular/material/button', '@angular/material/card', '@angular/material/checkbox', '@angular/material/chips', '@angular/material/dialog', '@angular/material/form-field', '@angular/material/icon', '@angular/material/input', '@angular/material/list', '@angular/material/menu', '@angular/material/select', '@angular/material/sidenav', '@angular/material/slider', '@angular/material/table', '@angular/material/toolbar', '@angular/material/tooltip', '@ngx-translate/core', '@ajf/core/forms', '@angular/cdk/collections', 'rxjs', 'rxjs/operators', '@ajf/core/models', '@ajf/core/utils', '@angular/cdk/keycodes'], factory) :
-    (global = global || self, factory((global.ajf = global.ajf || {}, global.ajf.material = global.ajf.material || {}, global.ajf.material.formBuilder = {}), global.ajf.material.monacoEditor, global.ajf.material.nodeIcon, global.ng.cdk.dragDrop, global.ng.common, global.ng.core, global.ng.forms, global.ng.material.autocomplete, global.ng.material.button, global.ng.material.card, global.ng.material.checkbox, global.ng.material.chips, global.ng.material.dialog, global.ng.material.formField, global.ng.material.icon, global.ng.material.input, global.ng.material.list, global.ng.material.menu, global.ng.material.select, global.ng.material.sidenav, global.ng.material.slider, global.ng.material.table, global.ng.material.toolbar, global.ng.material.tooltip, global.ngxTranslate.core, global.ajf.core.forms, global.ng.cdk.collections, global.rxjs, global.rxjs.operators, global.ajf.core.models, global.ajf.core.utils, global.ng.cdk.keycodes));
-}(this, (function (exports, monacoEditor, nodeIcon, dragDrop, common, core, forms, autocomplete, button, card, checkbox, chips, dialog, formField, icon, input, list, menu, select, sidenav, slider, table, toolbar, tooltip, core$1, forms$1, collections, rxjs, operators, models, utils, keycodes) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@ajf/material/monaco-editor'), require('@ajf/material/node-icon'), require('@angular/cdk/drag-drop'), require('@angular/common'), require('@angular/core'), require('@angular/forms'), require('@angular/material/autocomplete'), require('@angular/material/button'), require('@angular/material/card'), require('@angular/material/checkbox'), require('@angular/material/chips'), require('@angular/material/dialog'), require('@angular/material/expansion'), require('@angular/material/form-field'), require('@angular/material/icon'), require('@angular/material/input'), require('@angular/material/list'), require('@angular/material/menu'), require('@angular/material/select'), require('@angular/material/sidenav'), require('@angular/material/slide-toggle'), require('@angular/material/slider'), require('@angular/material/table'), require('@angular/material/toolbar'), require('@angular/material/tooltip'), require('@ngx-translate/core'), require('@ajf/core/forms'), require('@angular/cdk/collections'), require('rxjs'), require('rxjs/operators'), require('@ajf/core/models'), require('@ajf/core/utils'), require('@angular/cdk/keycodes')) :
+    typeof define === 'function' && define.amd ? define('@ajf/material/form-builder', ['exports', '@ajf/material/monaco-editor', '@ajf/material/node-icon', '@angular/cdk/drag-drop', '@angular/common', '@angular/core', '@angular/forms', '@angular/material/autocomplete', '@angular/material/button', '@angular/material/card', '@angular/material/checkbox', '@angular/material/chips', '@angular/material/dialog', '@angular/material/expansion', '@angular/material/form-field', '@angular/material/icon', '@angular/material/input', '@angular/material/list', '@angular/material/menu', '@angular/material/select', '@angular/material/sidenav', '@angular/material/slide-toggle', '@angular/material/slider', '@angular/material/table', '@angular/material/toolbar', '@angular/material/tooltip', '@ngx-translate/core', '@ajf/core/forms', '@angular/cdk/collections', 'rxjs', 'rxjs/operators', '@ajf/core/models', '@ajf/core/utils', '@angular/cdk/keycodes'], factory) :
+    (global = global || self, factory((global.ajf = global.ajf || {}, global.ajf.material = global.ajf.material || {}, global.ajf.material.formBuilder = {}), global.ajf.material.monacoEditor, global.ajf.material.nodeIcon, global.ng.cdk.dragDrop, global.ng.common, global.ng.core, global.ng.forms, global.ng.material.autocomplete, global.ng.material.button, global.ng.material.card, global.ng.material.checkbox, global.ng.material.chips, global.ng.material.dialog, global.ng.material.expansionPanel, global.ng.material.formField, global.ng.material.icon, global.ng.material.input, global.ng.material.list, global.ng.material.menu, global.ng.material.select, global.ng.material.sidenav, global.ng.material.slideToggle, global.ng.material.slider, global.ng.material.table, global.ng.material.toolbar, global.ng.material.tooltip, global.ngxTranslate.core, global.ajf.core.forms, global.ng.cdk.collections, global.rxjs, global.rxjs.operators, global.ajf.core.models, global.ajf.core.utils, global.ng.cdk.keycodes));
+}(this, (function (exports, monacoEditor, nodeIcon, dragDrop, common, core, forms, autocomplete, button, card, checkbox, chips, dialog, expansion, formField, icon, input, list, menu, select, sidenav, slideToggle, slider, table, toolbar, tooltip, core$1, forms$1, collections, rxjs, operators, models, utils, keycodes) { 'use strict';
 
     /**
      * @license
@@ -76,7 +76,7 @@
                     template: "",
                     encapsulation: core.ViewEncapsulation.None,
                     changeDetection: core.ChangeDetectionStrategy.OnPush,
-                    styles: ["ajf-fb-branch-line{display:block;position:absolute;top:25px;left:25px;width:25px;border-top:2px solid;border-left:2px solid;border-top-left-radius:6px}\n"]
+                    styles: ["ajf-fb-branch-line{display:block;position:absolute;top:25px;left:25px;width:25px;border-top:2px solid;border-left:2px solid;border-top-left-radius:6px;transition:height .5s ease-in-out}\n"]
                 },] }
     ];
     AjfFbBranchLine.ctorParameters = function () { return [
@@ -552,26 +552,6 @@
         }
         return [];
     }
-    function buildFormBuilderNodesTree(nodes) {
-        var rootNodes = nodes.filter(function (n) { return n.parent == null || n.parent === 0; });
-        if (rootNodes.length === 1) {
-            var rootNode = rootNodes[0];
-            if (forms$1.isSlidesNode(rootNode)) {
-                var tree = [];
-                tree.push({
-                    node: rootNode,
-                    container: null,
-                    children: buildFormBuilderNodesSubtree(nodes, rootNode),
-                    content: buildFormBuilderNodesContent(nodes, rootNode)
-                });
-                return tree;
-            }
-        }
-        else if (rootNodes.length === 0) {
-            return [null];
-        }
-        throw new Error('Invalid form definition');
-    }
     function flattenNodes(nodes) {
         var flatNodes = [];
         nodes.forEach(function (node) {
@@ -685,6 +665,10 @@
             ];
             this._form = new rxjs.BehaviorSubject(null);
             this._formObs = this._form;
+            /**
+             * A list of the ids of the dropLists connected to the source list.
+             */
+            this._connectedDropLists = new rxjs.BehaviorSubject([]);
             this._editedNodeEntry = new rxjs.BehaviorSubject(null);
             this._editedNodeEntryObs = this._editedNodeEntry;
             this._editedCondition = new rxjs.BehaviorSubject(null);
@@ -701,12 +685,21 @@
             this._stringIdentifierUpdates = new rxjs.Subject();
             this._saveNodeEntryEvent = new core.EventEmitter();
             this._deleteNodeEntryEvent = new core.EventEmitter();
+            /**
+             * Event fired when the position of a node in a tree changes.
+             */
+            this._moveNodeEntryEvent = new core.EventEmitter();
+            /**
+             * Subscribes to the moveNodeEntryEvent event emitter;
+             */
+            this._moveNodeSub = rxjs.Subscription.EMPTY;
             this._initChoicesOriginsStreams();
             this._initAttachmentsOriginsStreams();
             this._initStringIdentifierStreams();
             this._initNodesStreams();
             this._initFormStreams();
             this._initSaveNode();
+            this._initMoveNode();
             this._initDeleteNode();
         }
         Object.defineProperty(AjfFormBuilderService.prototype, "availableNodeTypes", {
@@ -784,6 +777,13 @@
             enumerable: false,
             configurable: true
         });
+        Object.defineProperty(AjfFormBuilderService.prototype, "connectedDropLists", {
+            get: function () {
+                return this._connectedDropLists;
+            },
+            enumerable: false,
+            configurable: true
+        });
         Object.defineProperty(AjfFormBuilderService.prototype, "editedNodeEntry", {
             get: function () {
                 return this._editedNodeEntryObs;
@@ -848,11 +848,25 @@
         AjfFormBuilderService.prototype.cancelConditionEdit = function () {
             this._editedChoicesOrigin.next(null);
         };
-        AjfFormBuilderService.prototype.insertNode = function (nodeType, parent, parentNode, inContent) {
+        AjfFormBuilderService.prototype.assignListId = function (node, empty) {
+            if (empty === void 0) { empty = false; }
+            if (node.nodeType === forms$1.AjfNodeType.AjfSlide || node.nodeType === forms$1.AjfNodeType.AjfRepeatingSlide) {
+                var listId = empty ? "empty_fields_list_" + node.id : "fields_list_" + node.id;
+                if (this._connectedDropLists.value.indexOf(listId) == -1) {
+                    this._connectDropList(listId);
+                }
+                return listId;
+            }
+            return '';
+        };
+        AjfFormBuilderService.prototype.insertNode = function (nodeType, parent, parentNode, inContent, insertInIndex) {
+            var _this = this;
             if (inContent === void 0) { inContent = false; }
+            if (insertInIndex === void 0) { insertInIndex = 0; }
+            var _a;
             var node;
             var id = ++nodeUniqueId;
-            var isFieldNode = nodeType.nodeType.field != null;
+            var isFieldNode = ((_a = nodeType.nodeType) === null || _a === void 0 ? void 0 : _a.field) != null;
             if (isFieldNode) {
                 node = forms$1.createField({
                     id: id,
@@ -867,7 +881,7 @@
                 node = forms$1.createContainerNode({
                     id: id,
                     nodeType: nodeType.nodeType.node,
-                    parent: parent != null ? parent.id : 0,
+                    parent: 0,
                     parentNode: parentNode,
                     name: '',
                     nodes: [],
@@ -875,24 +889,20 @@
             }
             this._beforeNodesUpdate.emit();
             this._nodesUpdates.next(function (nodes) {
-                if (node.parent === 0) {
-                    return [node];
-                }
-                var cn = forms$1.isContainerNode(parent) && inContent ? parent :
+                var cn = forms$1.isContainerNode(parent) && inContent ?
+                    parent :
                     getNodeContainer({ nodes: nodes }, parent);
-                if (cn != null) {
-                    if (!isFieldNode) {
-                        var replaceNodes = cn.nodes === nodes;
-                        var newNodes = cn.nodes.slice(0);
-                        newNodes.push(node);
-                        cn.nodes = newNodes;
-                        if (replaceNodes) {
-                            nodes = newNodes;
-                        }
-                    }
-                    else {
-                        cn.nodes.push(node);
-                    }
+                if (!isFieldNode) {
+                    var newNodes = nodes.slice(0);
+                    newNodes.splice(insertInIndex, 0, node);
+                    newNodes = _this._updateNodesList(0, newNodes);
+                    return newNodes;
+                }
+                else {
+                    var newNodes = cn.nodes.slice(0);
+                    newNodes.splice(insertInIndex, 0, node);
+                    newNodes = _this._updateNodesList(cn.id, newNodes);
+                    cn.nodes = newNodes;
                 }
                 return nodes;
             });
@@ -906,16 +916,24 @@
         AjfFormBuilderService.prototype.deleteNodeEntry = function (nodeEntry) {
             this._deleteNodeEntryEvent.next(nodeEntry);
         };
+        /**
+         * Triggers the moveNode event when a node is moved in the formbuilder.
+         * @param nodeEntry The node to be moved.
+         */
+        AjfFormBuilderService.prototype.moveNodeEntry = function (nodeEntry, from, to) {
+            var moveEvent = { nodeEntry: nodeEntry, fromIndex: from, toIndex: to };
+            this._moveNodeEntryEvent.next(moveEvent);
+        };
         AjfFormBuilderService.prototype.getCurrentForm = function () {
             return rxjs.combineLatest([
                 this.form, this._nodesWithoutChoiceOrigins, this.attachmentsOrigins,
                 this.choicesOrigins, this.stringIdentifier
             ])
-                .pipe(operators.filter(function (_a) {
-                var _b = __read(_a, 1), form = _b[0];
+                .pipe(operators.filter(function (_b) {
+                var _c = __read(_b, 1), form = _c[0];
                 return form != null;
-            }), operators.map(function (_a) {
-                var _b = __read(_a, 5), form = _b[0], nodes = _b[1], attachmentsOrigins = _b[2], choicesOrigins = _b[3], stringIdentifier = _b[4];
+            }), operators.map(function (_b) {
+                var _c = __read(_b, 5), form = _c[0], nodes = _c[1], attachmentsOrigins = _c[2], choicesOrigins = _c[3], stringIdentifier = _c[4];
                 return forms$1.createForm({
                     choicesOrigins: choicesOrigins.slice(0),
                     attachmentsOrigins: attachmentsOrigins.slice(0),
@@ -959,6 +977,33 @@
         };
         AjfFormBuilderService.prototype.saveStringIdentifier = function (identifier) {
             this._stringIdentifierUpdates.next(function () { return __spread(identifier); });
+        };
+        AjfFormBuilderService.prototype._buildFormBuilderNodesTree = function (nodes) {
+            this._updateNodesList(0, nodes);
+            var rootNodes = nodes.filter(function (n) { return n.nodeType == forms$1.AjfNodeType.AjfSlide || n.nodeType == forms$1.AjfNodeType.AjfRepeatingSlide; });
+            if (rootNodes.length === 0) {
+                return [null];
+            }
+            var rootNode = rootNodes[0];
+            if (forms$1.isSlidesNode(rootNode)) {
+                var tree = [];
+                tree.push({
+                    node: rootNode,
+                    container: null,
+                    children: buildFormBuilderNodesSubtree(nodes, rootNode),
+                    content: buildFormBuilderNodesContent(nodes, rootNode)
+                });
+                return tree;
+            }
+            throw new Error('Invalid form definition');
+        };
+        /**
+         * Adds the id of a dropList to be connected with the FormBuilder source list.
+         * @param listId The id of the list to connect.
+         */
+        AjfFormBuilderService.prototype._connectDropList = function (listId) {
+            var connectedLists = this._connectedDropLists.value.slice(0);
+            this._connectedDropLists.next(__spread(connectedLists, [listId]));
         };
         AjfFormBuilderService.prototype._findMaxNodeId = function (nodes, _curMaxId) {
             var _this = this;
@@ -1014,6 +1059,7 @@
             }, []), operators.publishReplay(1), operators.refCount());
         };
         AjfFormBuilderService.prototype._initNodesStreams = function () {
+            var _this = this;
             this._nodes = this._nodesUpdates
                 .pipe(operators.scan(function (nodes, op) {
                 return op(nodes);
@@ -1037,16 +1083,16 @@
                 }); }));
             this._flatNodes = this._nodes.pipe(operators.map(function (nodes) { return flattenNodes(nodes); }), operators.publishReplay(1), operators.refCount());
             this._flatFields = this._flatNodes.pipe(operators.map(function (nodes) { return nodes.filter(function (n) { return !forms$1.isContainerNode(n); }); }), operators.publishReplay(1), operators.refCount());
-            this._nodeEntriesTree = this._nodes.pipe(operators.map(function (nodes) { return buildFormBuilderNodesTree(nodes); }), operators.publishReplay(1), operators.refCount());
+            this._nodeEntriesTree = this._nodes.pipe(operators.map(function (nodes) { return _this._buildFormBuilderNodesTree(nodes); }), operators.publishReplay(1), operators.refCount());
         };
         AjfFormBuilderService.prototype._initSaveNode = function () {
             var _this = this;
             this._saveNodeEntryEvent
-                .pipe(operators.withLatestFrom(this.editedNodeEntry, this.choicesOrigins, this.attachmentsOrigins), operators.filter(function (_a) {
-                var _b = __read(_a, 2), _ = _b[0], nodeEntry = _b[1];
+                .pipe(operators.withLatestFrom(this.editedNodeEntry, this.choicesOrigins, this.attachmentsOrigins), operators.filter(function (_b) {
+                var _c = __read(_b, 2), _ = _c[0], nodeEntry = _c[1];
                 return nodeEntry != null;
-            }), operators.map(function (_a) {
-                var _b = __read(_a, 2), properties = _b[0], ne = _b[1];
+            }), operators.map(function (_b) {
+                var _c = __read(_b, 2), properties = _c[0], ne = _c[1];
                 _this._beforeNodesUpdate.emit();
                 var nodeEntry = ne;
                 var origNode = nodeEntry.node;
@@ -1204,12 +1250,68 @@
                         else {
                             nodes = nodes.slice(0);
                         }
-                        nodes = deleteNodeSubtree(nodes, node);
                     }
                     return nodes;
                 };
             }))
                 .subscribe(this._nodesUpdates);
+        };
+        /**
+         * Initializes the subscription to the moveNodeEntryEvent.
+         */
+        AjfFormBuilderService.prototype._initMoveNode = function () {
+            var _this = this;
+            this._moveNodeSub.unsubscribe();
+            this._moveNodeSub =
+                this._moveNodeEntryEvent
+                    .pipe(operators.map(function (moveEvent) {
+                    _this._beforeNodesUpdate.emit();
+                    return function (nodes) {
+                        var nodeEntry = moveEvent.nodeEntry;
+                        var node = nodeEntry.node;
+                        var cn = getNodeContainer({ nodes: nodes }, node);
+                        var newNodes = nodes;
+                        if (cn != null) {
+                            var replaceNodes = cn.nodes === nodes;
+                            newNodes = cn.nodes;
+                            dragDrop.moveItemInArray(newNodes, moveEvent.fromIndex, moveEvent.toIndex);
+                            newNodes = _this._updateNodesList(cn.id, newNodes);
+                            cn.nodes = newNodes;
+                            if (replaceNodes) {
+                                nodes = newNodes;
+                            }
+                            else {
+                                nodes = nodes.slice(0);
+                            }
+                        }
+                        return nodes;
+                    };
+                }))
+                    .subscribe(this._nodesUpdates);
+        };
+        /**
+         * Updates the "id" and "parent" fields of a modified or rearranged list of nodes.
+         * @param containerId The id of the parent container of the list.
+         * @param nodesList The list of nodes to be updated.
+         */
+        AjfFormBuilderService.prototype._updateNodesList = function (containerId, nodesList) {
+            if (!nodesList.length) {
+                return [];
+            }
+            var contId = containerId != undefined ? containerId : 0;
+            for (var idx = 0; idx < nodesList.length; idx++) {
+                var currentNode = nodesList[idx];
+                currentNode.id = (contId * 1000) + idx + 1;
+                currentNode.parent = idx == 0 ? contId : (contId * 1000) + idx;
+                if (currentNode.nodeType == forms$1.AjfNodeType.AjfSlide ||
+                    currentNode.nodeType == forms$1.AjfNodeType.AjfRepeatingSlide) {
+                    var currentSlide = currentNode;
+                    if (currentSlide.nodes) {
+                        this._updateNodesList(currentSlide.id, currentSlide.nodes);
+                    }
+                }
+            }
+            return nodesList;
         };
         return AjfFormBuilderService;
     }());
@@ -1481,6 +1583,70 @@
         editor: [{ type: core.ViewChild, args: [AjfFbConditionEditor, { static: false },] }]
     };
 
+    /**
+     * @license
+     * Copyright (C) Gnucoop soc. coop.
+     *
+     * This file is part of the Advanced JSON forms (ajf).
+     *
+     * Advanced JSON forms (ajf) is free software: you can redistribute it and/or
+     * modify it under the terms of the GNU Affero General Public License as
+     * published by the Free Software Foundation, either version 3 of the License,
+     * or (at your option) any later version.
+     *
+     * Advanced JSON forms (ajf) is distributed in the hope that it will be useful,
+     * but WITHOUT ANY WARRANTY; without even the implied warranty of
+     * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero
+     * General Public License for more details.
+     *
+     * You should have received a copy of the GNU Affero General Public License
+     * along with Advanced JSON forms (ajf).
+     * If not, see http://www.gnu.org/licenses/.
+     *
+     */
+    /**
+     * Triggers when a field or slide node is moved or inserted by drag&dropping in the formbuilder.
+     * @param event The drop event.
+     * @param fbService The AjfFormBuilderService.
+     * @param nodeEntry The current nodeEntry, if present.
+     * @param content True if the current nodeEntry contains other nodeEntries.
+     */
+    function onDropProcess(event, fbService, nodeEntry, content) {
+        if (content === void 0) { content = false; }
+        var itemData = event.item.data;
+        var containerId = event.container.id;
+        if (!itemData.node) {
+            if (nodeEntry == null && containerId === 'slides-list') {
+                fbService.insertNode(itemData, null, 0, content, event.currentIndex);
+                return;
+            }
+            var emptySlot = content ? { parent: nodeEntry.node, parentNode: 0 } :
+                nodeEntry;
+            fbService.insertNode(itemData, emptySlot.parent, emptySlot.parentNode, content, event.currentIndex);
+            return;
+        }
+        var previousIndex = event.previousIndex;
+        var currentIndex = event.currentIndex;
+        fbService.moveNodeEntry(event.item.data, previousIndex, currentIndex);
+    }
+    /**
+     * Disables the drag&drop of Slide items.
+     * @param item The dragged item.
+     */
+    function disableSlideDropPredicate(item) {
+        return !item.data.isSlide;
+    }
+    /**
+     * Disables the drag&drop of Field items.
+     * @param item The dragged item.
+     */
+    function disableFieldDropPredicate(item) {
+        if (!item.data.isSlide) {
+            return false;
+        }
+        return true;
+    }
+
     var AjfFbStringIdentifierDialogComponent = /** @class */ (function () {
         function AjfFbStringIdentifierDialogComponent(_service, _cdr) {
             var _this = this;
@@ -1570,6 +1736,11 @@
             var _this = this;
             this._service = _service;
             this._dialog = _dialog;
+            this._globalExpanded = false;
+            /**
+             * The list of the ids of all the dropLists connected to the formbuilder source list.
+             */
+            this._connectedDropLists = this._service.connectedDropLists;
             this._vc = new core.EventEmitter();
             this._init = false;
             this._editConditionSub = rxjs.Subscription.EMPTY;
@@ -1651,6 +1822,20 @@
             enumerable: false,
             configurable: true
         });
+        Object.defineProperty(AjfFormBuilder.prototype, "isGlobalExpanded", {
+            get: function () {
+                return this._globalExpanded;
+            },
+            enumerable: false,
+            configurable: true
+        });
+        Object.defineProperty(AjfFormBuilder.prototype, "connectedDropLists", {
+            get: function () {
+                return this._connectedDropLists;
+            },
+            enumerable: false,
+            configurable: true
+        });
         AjfFormBuilder.prototype.ngAfterViewChecked = function () {
             this._vc.emit();
         };
@@ -1668,8 +1853,20 @@
         AjfFormBuilder.prototype.createChoicesOrigin = function () {
             this._service.createChoicesOrigin();
         };
-        AjfFormBuilder.prototype.disableDropPredicate = function () {
+        AjfFormBuilder.prototype.disableDrop = function () {
             return false;
+        };
+        AjfFormBuilder.prototype.disableFieldDrop = function (item) {
+            return disableFieldDropPredicate(item);
+        };
+        /**
+         * Triggers when a field or slide node is moved or inserted by drag&dropping in the formbuilder.
+         * @param event The drop event.
+         * @param content True if the current nodeEntry contains other nodeEntries.
+         */
+        AjfFormBuilder.prototype.onDrop = function (event, content) {
+            if (content === void 0) { content = false; }
+            onDropProcess(event, this._service, null, content);
         };
         AjfFormBuilder.prototype.editChoicesOrigin = function (choicesOrigin) {
             this._service.editChoicesOrigin(choicesOrigin);
@@ -1681,6 +1878,20 @@
             }
             this._stringIdentifierDialog = this._dialog.open(AjfFbStringIdentifierDialogComponent, { disableClose: true, width: '60%', height: '60%' });
         };
+        AjfFormBuilder.prototype.expandAll = function () {
+            this._globalExpanded = true;
+        };
+        AjfFormBuilder.prototype.collapseAll = function () {
+            this._globalExpanded = false;
+        };
+        AjfFormBuilder.prototype.expandToggle = function (evt) {
+            if (evt.checked) {
+                this.expandAll();
+            }
+            else {
+                this.collapseAll();
+            }
+        };
         AjfFormBuilder.prototype._setCurrentForm = function () {
             this._service.setForm(this._form);
         };
@@ -1689,7 +1900,7 @@
     AjfFormBuilder.decorators = [
         { type: core.Component, args: [{
                     selector: 'ajf-form-builder',
-                    template: "<mat-toolbar>\n  <button mat-icon-button (click)=\"leftSidenav.toggle()\">\n    <mat-icon>add_box</mat-icon>\n  </button>\n  <button mat-button [matMenuTriggerFor]=\"choicesMenu\" translate>Choices</button>\n  <button mat-button (click)=\"editStringIdentifier()\" translate>Identifier</button>\n  <mat-menu #choicesMenu>\n    <button (click)=\"createChoicesOrigin()\" mat-menu-item translate>New..</button>\n    <ng-container *ngIf=\"choicesOrigins|async as cos\">\n      <button *ngFor=\"let choicesOrigin of cos\"\n          (click)=\"editChoicesOrigin(choicesOrigin)\" mat-menu-item>\n        {{ choicesOrigin.label || choicesOrigin.name }}\n      </button>\n    </ng-container>\n  </mat-menu>\n  <span class=\"ajf-spacer\"></span>\n  <button mat-icon-button (click)=\"rightSidenav.toggle()\">\n    <mat-icon>settings</mat-icon>\n  </button>\n</mat-toolbar>\n<mat-drawer-container cdkDropListGroup>\n  <mat-drawer #leftSidenav position=\"start\" mode=\"over\">\n    <div #sourceDropList cdkDropList\n        [cdkDropListEnterPredicate]=\"disableDropPredicate\"\n        [cdkDropListData]=\"nodeTypes\">\n      <ajf-fb-node-type-entry *ngFor=\"let nodeType of nodeTypes\"\n          cdkDrag\n          [cdkDragData]=\"nodeType\"\n          (cdkDragStarted)=\"leftSidenav.close()\"\n          [nodeType]=\"nodeType\"></ajf-fb-node-type-entry>\n    </div>\n  </mat-drawer>\n  <mat-drawer #rightSidenav position=\"end\" mode=\"side\" [opened]=\"true\">\n    <ajf-fb-node-properties></ajf-fb-node-properties>\n  </mat-drawer>\n  <div #designer class=\"ajf-designer\">\n    <ajf-fb-node-entry\n        *ngFor=\"let nodeEntry of (nodeEntriesTree|async); let isFirst = first\"\n        [isFirst]=\"isFirst\"\n        [nodeEntry]=\"nodeEntry\"></ajf-fb-node-entry>\n  </div>\n</mat-drawer-container>\n",
+                    template: "<mat-toolbar>\n  <button mat-icon-button (click)=\"leftSidenav.toggle()\">\n    <mat-icon>add_box</mat-icon>\n  </button>\n  <button mat-button [matMenuTriggerFor]=\"choicesMenu\" translate>Choices</button>\n  <button mat-button (click)=\"editStringIdentifier()\" translate>Identifier</button>\n  <button mat-icon-button aria-label=\"Collapsed\" matTooltip=\"Keep slides collapsed\">\n    <mat-icon>unfold_less</mat-icon>\n  </button>\n  <mat-slide-toggle color=\"primary\" (change)=\"expandToggle($event)\"></mat-slide-toggle> \n  <button mat-icon-button aria-label=\"Expanded\" matTooltip=\"Keep slides expanded\">\n    <mat-icon>unfold_more</mat-icon>\n  </button>\n  <mat-menu #choicesMenu>\n    <button (click)=\"createChoicesOrigin()\" mat-menu-item translate>New..</button>\n    <ng-container *ngIf=\"choicesOrigins|async as cos\">\n      <button *ngFor=\"let choicesOrigin of cos\"\n          (click)=\"editChoicesOrigin(choicesOrigin)\" mat-menu-item>\n        {{ choicesOrigin.label || choicesOrigin.name }}\n      </button>\n    </ng-container>\n  </mat-menu>\n  <span class=\"ajf-spacer\"></span>\n  <button mat-icon-button (click)=\"rightSidenav.toggle()\">\n    <mat-icon>settings</mat-icon>\n  </button>\n</mat-toolbar>\n<mat-drawer-container cdkDropListGroup>\n  <mat-drawer #leftSidenav position=\"start\" mode=\"over\">\n    <div #sourceDropList cdkDropList\n        [cdkDropListConnectedTo]=\"(connectedDropLists|async)!\"\n        [cdkDropListEnterPredicate]=\"disableDrop\"\n        [cdkDropListData]=\"nodeTypes\">\n      <ajf-fb-node-type-entry *ngFor=\"let nodeType of nodeTypes\"\n          cdkDrag\n          [cdkDragData]=\"nodeType\"\n          (cdkDragStarted)=\"leftSidenav.close()\"\n          [nodeType]=\"nodeType\"></ajf-fb-node-type-entry>\n    </div>\n  </mat-drawer>\n  <mat-drawer #rightSidenav position=\"end\" mode=\"side\" [opened]=\"true\">\n    <ajf-fb-node-properties></ajf-fb-node-properties>\n  </mat-drawer>\n  <div #designer class=\"ajf-designer\">\n    <ajf-fb-node-entry id=\"slides-list\"\n        cdkDropList\n        (cdkDropListDropped)=\"onDrop($event)\"\n        [cdkDropListEnterPredicate]=\"disableFieldDrop\"\n        *ngFor=\"let nodeEntry of (nodeEntriesTree|async); let isFirst = first\"\n        [isExpanded]=\"isGlobalExpanded\"\n        [isFirst]=\"isFirst\"\n        [nodeEntry]=\"nodeEntry\"></ajf-fb-node-entry>\n  </div>\n</mat-drawer-container>\n",
                     changeDetection: core.ChangeDetectionStrategy.OnPush,
                     encapsulation: core.ViewEncapsulation.None,
                     styles: ["ajf-form-builder{display:flex;position:relative;min-height:300px;flex-direction:column;align-items:stretch}ajf-form-builder mat-toolbar mat-menu div[mat-menu-item]>button[mat-button]{flex:1 0 auto}ajf-form-builder mat-toolbar mat-menu div[mat-menu-item]>button[mat-icon-button]{flex:0 0 auto}ajf-form-builder mat-drawer-container{flex:1}ajf-form-builder mat-drawer-container mat-drawer{max-width:20%}ajf-form-builder mat-drawer-container .ajf-designer{padding:1em}ajf-form-builder mat-toolbar .ajf-spacer{flex:1 1 auto}\n"]
@@ -1738,7 +1949,9 @@
             this._hasContent = false;
             this._isFirst = false;
             this._isNodeEntry = false;
+            this._isExpanded = false;
             this._level = 0;
+            this._isDraggable = true;
             this._branchColors = branchColors.slice(0);
             this._dropZones = ['fbdz-node'];
             this._slideDropZones = ['fbdz-slide'];
@@ -1773,6 +1986,18 @@
             enumerable: false,
             configurable: true
         });
+        Object.defineProperty(AjfFbNodeEntry.prototype, "isExpanded", {
+            get: function () {
+                return this._isExpanded;
+            },
+            set: function (exp) {
+                var _this = this;
+                this._isExpanded = exp;
+                setTimeout(function () { return _this._updateBranchHeights(); }, 400);
+            },
+            enumerable: false,
+            configurable: true
+        });
         Object.defineProperty(AjfFbNodeEntry.prototype, "nodeEntry", {
             get: function () {
                 return this._nodeEntry;
@@ -1799,6 +2024,16 @@
             },
             set: function (value) {
                 this._level = value;
+            },
+            enumerable: false,
+            configurable: true
+        });
+        Object.defineProperty(AjfFbNodeEntry.prototype, "isDraggable", {
+            get: function () {
+                return this._isDraggable;
+            },
+            set: function (draggable) {
+                this._isDraggable = draggable;
             },
             enumerable: false,
             configurable: true
@@ -1875,17 +2110,28 @@
             configurable: true
         });
         AjfFbNodeEntry.prototype.onResize = function () { };
-        AjfFbNodeEntry.prototype.edit = function () {
+        AjfFbNodeEntry.prototype.edit = function (evt) {
+            evt.stopPropagation();
             if (this.nodeEntry == null || !this.isNodeEntry) {
                 return;
             }
             this._service.editNodeEntry(this.nodeEntry);
         };
-        AjfFbNodeEntry.prototype.delete = function () {
+        AjfFbNodeEntry.prototype.delete = function (evt) {
+            evt.stopPropagation();
             if (this.nodeEntry == null || !this.isNodeEntry) {
                 return;
             }
             this._service.deleteNodeEntry(this.nodeEntry);
+        };
+        AjfFbNodeEntry.prototype.isLastNode = function () {
+            if (!this.realNodeEntry || !this.realNodeEntry.children) {
+                return false;
+            }
+            return !this.realNodeEntry.children[0].children;
+        };
+        AjfFbNodeEntry.prototype.isSlide = function (node) {
+            return forms$1.isSlidesNode(node);
         };
         AjfFbNodeEntry.prototype.ngAfterViewInit = function () {
             var _this = this;
@@ -1898,22 +2144,28 @@
             this._branchLinesSubscription.unsubscribe();
             this._childEntriesSubscription.unsubscribe();
         };
-        AjfFbNodeEntry.prototype.onDropSuccess = function (evt, content) {
+        /**
+         * Triggers when a field or slide node is moved or inserted by drag&dropping in the formbuilder.
+         * @param event The drop event.
+         * @param content True if the current nodeEntry contains other nodeEntries.
+         */
+        AjfFbNodeEntry.prototype.onDrop = function (event, content) {
             if (content === void 0) { content = false; }
-            var dd = evt.item.data;
-            if (this._nodeEntry == null) {
-                this._service.insertNode(dd, null, 0, content);
-                return;
-            }
-            if (dd.nodeType !== void 0 && (!this.isNodeEntry || (this.isNodeEntry && content))) {
-                var emptySlot = content ?
-                    { parent: this.nodeEntry.node, parentNode: 0 } :
-                    this._nodeEntry;
-                this._service.insertNode(dd, emptySlot.parent, emptySlot.parentNode, content);
-            }
+            onDropProcess(event, this._service, this._nodeEntry, content);
         };
-        AjfFbNodeEntry.prototype.disableSlideDropPredicate = function (item) {
-            return !item.data.isSlide;
+        /**
+         * Assigns a progressive id to the dropList, to connect it to the FormBuilder source list.
+         * @param empty True if the list is marked as empty.
+         */
+        AjfFbNodeEntry.prototype.assignId = function (empty) {
+            if (empty === void 0) { empty = false; }
+            return this._service.assignListId(this.realNodeEntry.node, empty);
+        };
+        AjfFbNodeEntry.prototype.disableSlideDrop = function (item) {
+            return disableSlideDropPredicate(item);
+        };
+        AjfFbNodeEntry.prototype.disableFieldDrop = function (item) {
+            return disableFieldDropPredicate(item);
         };
         AjfFbNodeEntry.prototype.emptyAreaDropPredicate = function () {
             var _this = this;
@@ -1946,11 +2198,11 @@
     AjfFbNodeEntry.decorators = [
         { type: core.Component, args: [{
                     selector: 'ajf-fb-node-entry',
-                    template: "<ng-container *ngIf=\"nodeEntry != null ; else rootEmpty\">\n  <ng-template [ngIf]=\"isNodeEntry\">\n    <ajf-fb-branch-line\n        *ngFor=\"let childNodeEntry of realNodeEntry.children; let idx = index\"\n        [offset]=\"idx\"\n        [color]=\"branchColors[idx]\"></ajf-fb-branch-line>\n  </ng-template>\n  <div class=\"mat-card-container\"\n      [class.ajf-highlight]=\"(currentEditedNode|async) == nodeEntry\">\n    <div *ngIf=\"!isFirst\"\n        class=\"ajf-origin-line\"\n        [style.margin-left]=\"originLeftMargin\"\n        [style.border-color]=\"firstBranchColor\"></div>\n    <ng-template [ngIf]=\"isNodeEntry\">\n      <mat-card>\n        <div class=\"ajf-title-row\">\n          <ajf-node-icon [node]=\"realNodeEntry.node\"></ajf-node-icon>\n          <span class=\"ajf-title\" [innerHTML]=\"(realNodeEntry.node.label || realNodeEntry.node.name)  | translate\"></span>\n          <span class=\"ajf-actions\">\n            <button [disabled]=\"(currentEditedNode|async) == nodeEntry\" (click)=\"edit()\" mat-icon-button>\n              <mat-icon>edit</mat-icon>\n            </button>\n            <button [disabled]=\"(currentEditedNode|async) == null\" (click)=\"delete()\" mat-icon-button>\n              <mat-icon>delete</mat-icon>\n            </button>\n          </span>\n        </div>\n        <div *ngIf=\"hasContent\">\n          <ajf-fb-node-entry\n              *ngFor=\"let contentEntry of realNodeEntry.content; let isFirstChild = first; let idx = index\"\n              [level]=\"level + 1\"\n              [isFirst]=\"isFirstChild\"\n              [firstBranchColor]=\"branchColors[idx]\"\n              [nodeEntry]=\"contentEntry\"></ajf-fb-node-entry>\n          <mat-card class=\"ajf-empty\"\n              *ngIf=\"realNodeEntry.content.length === 0\"\n              cdkDropList\n              [cdkDropListEnterPredicate]=\"disableSlideDropPredicate\"\n              (cdkDropListDropped)=\"onDropSuccess($event, true)\">&nbsp;</mat-card>\n        </div>\n      </mat-card>\n    </ng-template>\n    <ng-template [ngIf]=\"!isNodeEntry\">\n      <mat-card class=\"ajf-empty\"\n          cdkDropList\n          [cdkDropListEnterPredicate]=\"emptyAreaDropPredicate()\"\n          (cdkDropListDropped)=\"onDropSuccess($event)\">&nbsp;</mat-card>\n    </ng-template>\n  </div>\n  <ng-template [ngIf]=\"isNodeEntry\">\n    <ajf-fb-node-entry\n        *ngFor=\"let childNodeEntry of realNodeEntry.children; let idx = index\"\n        [level]=\"level\"\n        [originOffset]=\"idx\"\n        [firstBranchColor]=\"branchColors[idx]\"\n        [nodeEntry]=\"childNodeEntry\"></ajf-fb-node-entry>\n  </ng-template>\n</ng-container>\n<ng-template #rootEmpty>\n  <div class=\"mat-card-container\">\n    <mat-card class=\"ajf-empty\"\n        cdkDropList\n        [cdkDropListEnterPredicate]=\"emptyAreaDropPredicate()\"\n        (cdkDropListDropped)=\"onDropSuccess($event)\">&nbsp;</mat-card>\n  </div>\n</ng-template>\n",
+                    template: "<ng-container *ngIf=\"nodeEntry != null ; else rootEmpty\">\n  <ng-template [ngIf]=\"isNodeEntry && !isLastNode()\">\n    <ajf-fb-branch-line\n      *ngFor=\"let childNodeEntry of realNodeEntry.children; let idx = index\"\n      [offset]=\"idx\"\n      [color]=\"branchColors[idx]\"\n    ></ajf-fb-branch-line>\n  </ng-template>\n\n  <div\n    class=\"mat-card-container\"\n    [class.ajf-highlight]=\"(currentEditedNode|async) == nodeEntry\"\n  >\n    <div\n      *ngIf=\"!isFirst\"\n      class=\"ajf-origin-line\"\n      [style.margin-left]=\"originLeftMargin\"\n      [style.border-color]=\"firstBranchColor\"\n    ></div>\n    <ng-template [ngIf]=\"isNodeEntry\">\n      <ng-container *ngIf=\"!isDraggable; else draggable\">\n        <mat-card>\n          <ng-container *ngTemplateOutlet=\"cardTitle\"></ng-container>\n          <ng-container *ngTemplateOutlet=\"cardContent\"></ng-container>\n        </mat-card>\n      </ng-container>\n\n      <ng-template #draggable>\n        <mat-card cdkDrag [cdkDragData]=\"realNodeEntry\" class=\"ajf-draggable-box\">\n          <ng-container\n            *ngIf=\"isSlide(realNodeEntry.node); else fieldPanel\"\n          >\n            <ng-container *ngTemplateOutlet=\"slidePanel\"></ng-container>\n          </ng-container>\n        </mat-card>\n      </ng-template>\n\n      <ng-template #slidePanel>\n        <mat-expansion-panel\n          [expanded]=\"isExpanded\"\n          (opened)=\"isExpanded = true\"\n          (closed)=\"isExpanded = false\"\n          class=\"mat-elevation-z\"\n        >\n          <mat-expansion-panel-header>\n            <ng-container *ngTemplateOutlet=\"cardTitle\"></ng-container>\n          </mat-expansion-panel-header>\n          <ng-container *ngTemplateOutlet=\"cardContent\"></ng-container>\n        </mat-expansion-panel>\n      </ng-template>\n\n      <ng-template #fieldPanel>\n        <ng-container *ngTemplateOutlet=\"cardTitle\"></ng-container>\n        <ng-container *ngTemplateOutlet=\"cardContent\"></ng-container>\n      </ng-template>\n\n      <ng-template #cardTitle>\n        <div class=\"ajf-title-row\">\n          <ajf-node-icon [node]=\"realNodeEntry.node\"></ajf-node-icon>\n          <span\n            class=\"ajf-title\"\n            [innerHTML]=\"(realNodeEntry.node.label || realNodeEntry.node.name)  | translate\"\n          ></span>\n          <span\n            *ngIf=\"realNodeEntry.node.visibility && realNodeEntry.node.visibility?.condition !== 'true'\"\n            class=\"ajf-visibility-condition\"\n            [innerHTML]=\"'Condition: (' + realNodeEntry.node.visibility?.condition + ')'\"\n          >\n          </span>\n          <span class=\"ajf-actions\">\n            <button\n              [disabled]=\"(currentEditedNode|async) == nodeEntry\"\n              (click)=\"edit($event)\"\n              mat-icon-button\n            >\n              <mat-icon>edit</mat-icon>\n            </button>\n            <button\n              [disabled]=\"(currentEditedNode|async) == null\"\n              (click)=\"delete($event)\"\n              mat-icon-button\n            >\n              <mat-icon>delete</mat-icon>\n            </button>\n          </span>\n        </div>\n      </ng-template>\n\n      <ng-template #cardContent>\n        <div *ngIf=\"hasContent\">\n          <ajf-fb-node-entry\n            cdkDropList\n            class=\"ajf-fields-list\"\n            *ngFor=\"let contentEntry of realNodeEntry.content; let isFirstChild = first; let idx = index\"\n            [id]=\"assignId()\"\n            [level]=\"level + 1\"\n            [isFirst]=\"isFirstChild\"\n            [firstBranchColor]=\"branchColors[idx]\"\n            [nodeEntry]=\"contentEntry\"\n            [cdkDropListEnterPredicate]=\"disableSlideDrop\"\n            (cdkDropListDropped)=\"onDrop($event, true)\"\n            [isExpanded]=\"isExpanded\"\n          ></ajf-fb-node-entry>\n          <mat-card\n            class=\"ajf-empty\"\n            *ngIf=\"realNodeEntry.content.length === 0\"\n            cdkDropList\n            [id]=\"assignId(true)\"\n            [cdkDropListEnterPredicate]=\"disableSlideDrop\"\n            (cdkDropListDropped)=\"onDrop($event, true)\"\n            ><mat-card-title>Drop your fields here</mat-card-title></mat-card\n          >\n        </div>\n      </ng-template>\n    </ng-template>\n  </div>\n\n  <ng-template [ngIf]=\"isNodeEntry\">\n    <ng-container\n      *ngFor=\"let childNodeEntry of realNodeEntry.children; let idx = index\"\n    >\n      <ajf-fb-node-entry\n        *ngIf=\"!isLastNode()\"\n        [level]=\"level\"\n        [originOffset]=\"idx\"\n        [firstBranchColor]=\"branchColors[idx]\"\n        [nodeEntry]=\"childNodeEntry\"\n        [isExpanded]=\"isExpanded\"\n      ></ajf-fb-node-entry>\n    </ng-container>\n  </ng-template>\n</ng-container>\n\n<ng-template #rootEmpty>\n  <div class=\"mat-card-container\">\n    <mat-card\n      class=\"ajf-empty\"\n      cdkDropList\n      [cdkDropListEnterPredicate]=\"emptyAreaDropPredicate()\"\n      (cdkDropListDropped)=\"onDrop($event)\"\n      ><mat-card-title>Drop your slides here</mat-card-title>\n    </mat-card>\n  </div>\n</ng-template>\n",
                     host: { '(window.resize)': 'onResize()' },
                     encapsulation: core.ViewEncapsulation.None,
                     changeDetection: core.ChangeDetectionStrategy.OnPush,
-                    styles: ["ajf-fb-node-entry{display:block;position:relative}ajf-fb-node-entry .mat-card-container{position:relative}ajf-fb-node-entry .mat-card-container .ajf-origin-line{position:absolute;top:0;left:25px;width:25px;height:25px;border-bottom:2px solid;border-left:2px solid;border-bottom-left-radius:.5em}ajf-fb-node-entry .mat-card-container mat-card{margin-left:50px;padding:.5em 1em;margin-top:.2em;margin-bottom:.2em;background-color:#fff}ajf-fb-node-entry .mat-card-container mat-card .ajf-title-row{display:flex;flex-direction:row;align-items:center}ajf-fb-node-entry .mat-card-container mat-card .ajf-title-row>.ajf-title{flex:1 1 auto}ajf-fb-node-entry .mat-card-container mat-card .ajf-title-row>.ajf-actions{flex:0 0 auto;white-space:nowrap}ajf-fb-node-entry .mat-card-container mat-card.ajf-empty{line-height:36px;border:2px dashed;box-shadow:none;box-sizing:border-box}ajf-fb-node-entry .mat-card-container.ajf-highlight>mat-card{background-color:#fff9c4}\n"]
+                    styles: ["ajf-fb-node-entry{display:block;position:relative}ajf-fb-node-entry .mat-card-container{position:relative}ajf-fb-node-entry .mat-card-container .ajf-origin-line{position:absolute;top:0;left:25px;width:25px;height:25px;border-bottom:2px solid;border-left:2px solid;border-bottom-left-radius:.5em}ajf-fb-node-entry .mat-card-container mat-card{margin-left:50px;padding:.5em 1em;margin-top:.2em;margin-bottom:.2em;background-color:#fff}ajf-fb-node-entry .mat-card-container mat-card .ajf-title-row{display:flex;flex:1 1 auto;flex-direction:row;align-items:center}ajf-fb-node-entry .mat-card-container mat-card .ajf-title-row>.ajf-title{flex:1 1 auto}ajf-fb-node-entry .mat-card-container mat-card .ajf-title-row>.ajf-visibility-condition{flex:1 1 auto;font-size:10px;color:#999}ajf-fb-node-entry .mat-card-container mat-card .ajf-title-row>.ajf-actions{flex:0 0 auto;white-space:nowrap}ajf-fb-node-entry .mat-card-container mat-card.ajf-empty{line-height:36px;border:2px dashed;box-shadow:none;box-sizing:border-box;text-align:center;color:#ccc}ajf-fb-node-entry .mat-card-container mat-card.ajf-draggable-box{padding:20px 10px;border-bottom:solid 1px #ccc;border-right:solid 1px #ccc;color:rgba(0,0,0,.87);box-sizing:border-box;cursor:move;background:#fff;font-size:14px}ajf-fb-node-entry .mat-card-container.ajf-highlight>mat-card{background-color:#fff9c4}ajf-fb-node-entry.ajf-fields-list{max-width:80%;min-height:60px;display:block;background:#fff;border-radius:4px;overflow:hidden}ajf-fb-node-entry .cdk-drag-placeholder{opacity:0;min-height:60px}ajf-fb-node-entry .ajf-fields-list.cdk-drop-list-dragging .ajf-draggable-box:not(.cdk-drag-placeholder),ajf-fb-node-entry .cdk-drag-animating{transition:transform 250ms cubic-bezier(0, 0, 0.2, 1)}\n"]
                 },] }
     ];
     AjfFbNodeEntry.ctorParameters = function () { return [
@@ -1960,8 +2212,10 @@
         branchLines: [{ type: core.ViewChildren, args: [AjfFbBranchLine,] }],
         childEntries: [{ type: core.ViewChildren, args: [AjfFbNodeEntry, { read: core.ElementRef },] }],
         isFirst: [{ type: core.Input }],
+        isExpanded: [{ type: core.Input }],
         nodeEntry: [{ type: core.Input }],
         level: [{ type: core.Input }],
+        isDraggable: [{ type: core.Input }],
         originOffset: [{ type: core.Input }],
         firstBranchColor: [{ type: core.Input }]
     };
@@ -3214,6 +3468,7 @@
                         icon.MatIconModule, input.MatInputModule, list.MatListModule, menu.MatMenuModule,
                         select.MatSelectModule, sidenav.MatSidenavModule, slider.MatSliderModule, table.MatTableModule,
                         toolbar.MatToolbarModule, tooltip.MatTooltipModule, forms.ReactiveFormsModule, core$1.TranslateModule,
+                        expansion.MatExpansionModule, slideToggle.MatSlideToggleModule,
                     ],
                     declarations: [
                         AjfFbBranchLine,
@@ -3267,7 +3522,10 @@
     exports.AjfFormBuilder = AjfFormBuilder;
     exports.AjfFormBuilderModule = AjfFormBuilderModule;
     exports.AjfFormBuilderService = AjfFormBuilderService;
+    exports.disableFieldDropPredicate = disableFieldDropPredicate;
+    exports.disableSlideDropPredicate = disableSlideDropPredicate;
     exports.flattenNodes = flattenNodes;
+    exports.onDropProcess = onDropProcess;
     exports.ɵgc_ajf_src_material_form_builder_form_builder_a = AjfFbBranchLine;
     exports.ɵgc_ajf_src_material_form_builder_form_builder_b = AjfFbChoicesOriginEditor;
     exports.ɵgc_ajf_src_material_form_builder_form_builder_c = AjfFbChoicesOriginEditorDialog;

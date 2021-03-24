@@ -20,8 +20,10 @@
  *
  */
 import { AjfChoicesOrigin, AjfForm } from '@ajf/core/forms';
+import { CdkDrag, CdkDragDrop } from '@angular/cdk/drag-drop';
 import { AfterContentInit, AfterViewChecked, ElementRef, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { Observable } from 'rxjs';
 import { AjfFormBuilderNodeEntry, AjfFormBuilderNodeTypeEntry, AjfFormBuilderService } from './form-builder-service';
 export declare class AjfFormBuilder implements AfterViewChecked, AfterContentInit, OnDestroy {
@@ -37,6 +39,13 @@ export declare class AjfFormBuilder implements AfterViewChecked, AfterContentIni
     get nodeEntriesTree(): Observable<AjfFormBuilderNodeEntry[]>;
     private _choicesOrigins;
     get choicesOrigins(): Observable<AjfChoicesOrigin<any>[]>;
+    private _globalExpanded;
+    get isGlobalExpanded(): boolean;
+    /**
+     * The list of the ids of all the dropLists connected to the formbuilder source list.
+     */
+    private _connectedDropLists;
+    get connectedDropLists(): Observable<string[]>;
     private _vc;
     private _init;
     private _editConditionSub;
@@ -52,8 +61,18 @@ export declare class AjfFormBuilder implements AfterViewChecked, AfterContentIni
     ngAfterContentInit(): void;
     ngOnDestroy(): void;
     createChoicesOrigin(): void;
-    disableDropPredicate(): boolean;
+    disableDrop(): boolean;
+    disableFieldDrop(item: CdkDrag<AjfFormBuilderNodeTypeEntry>): boolean;
+    /**
+     * Triggers when a field or slide node is moved or inserted by drag&dropping in the formbuilder.
+     * @param event The drop event.
+     * @param content True if the current nodeEntry contains other nodeEntries.
+     */
+    onDrop(event: CdkDragDrop<AjfFormBuilderNodeEntry> | CdkDragDrop<AjfFormBuilderNodeTypeEntry>, content?: boolean): void;
     editChoicesOrigin(choicesOrigin: AjfChoicesOrigin<any>): void;
     editStringIdentifier(): void;
+    expandAll(): void;
+    collapseAll(): void;
+    expandToggle(evt: MatSlideToggleChange): void;
     private _setCurrentForm;
 }

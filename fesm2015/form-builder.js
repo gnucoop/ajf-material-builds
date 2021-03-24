@@ -1,6 +1,6 @@
 import { AjfMonacoEditor, AjfMonacoEditorModule } from '@ajf/material/monaco-editor';
 import { AjfNodeIconModule } from '@ajf/material/node-icon';
-import { DragDropModule } from '@angular/cdk/drag-drop';
+import { moveItemInArray, DragDropModule } from '@angular/cdk/drag-drop';
 import { CommonModule } from '@angular/common';
 import { Component, ViewEncapsulation, ChangeDetectionStrategy, ElementRef, Renderer2, Input, EventEmitter, Injectable, ViewChild, ChangeDetectorRef, ViewChildren, NgModule } from '@angular/core';
 import { Validators, FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -10,6 +10,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatDialogRef, MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -17,14 +18,15 @@ import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { TranslateModule } from '@ngx-translate/core';
-import { isChoicesFixedOrigin, isContainerNode, isSlidesNode, AjfNodeType, AjfFieldType, createField, createContainerNode, createForm, createChoicesFixedOrigin, isFieldWithChoices, isRepeatingContainerNode, isField, createValidationGroup, notEmptyValidation, minValidation, maxValidation, minDigitsValidation, maxDigitsValidation, createValidation, createWarningGroup, notEmptyWarning, createWarning, AjfValidationService, isNumberField } from '@ajf/core/forms';
+import { isChoicesFixedOrigin, isContainerNode, AjfNodeType, AjfFieldType, createField, createContainerNode, createForm, createChoicesFixedOrigin, isSlidesNode, isFieldWithChoices, isRepeatingContainerNode, isField, createValidationGroup, notEmptyValidation, minValidation, maxValidation, minDigitsValidation, maxDigitsValidation, createValidation, createWarningGroup, notEmptyWarning, createWarning, AjfValidationService, isNumberField } from '@ajf/core/forms';
 import { DataSource } from '@angular/cdk/collections';
-import { BehaviorSubject, Subject, combineLatest, Subscription } from 'rxjs';
+import { BehaviorSubject, Subject, Subscription, combineLatest } from 'rxjs';
 import { filter, map, scan, publishReplay, refCount, withLatestFrom, shareReplay, sample, distinctUntilChanged } from 'rxjs/operators';
 import { createCondition, alwaysCondition, createFormula, AjfExpressionUtils, neverCondition } from '@ajf/core/models';
 import { deepCopy } from '@ajf/core/utils';
@@ -89,7 +91,7 @@ AjfFbBranchLine.decorators = [
                 template: "",
                 encapsulation: ViewEncapsulation.None,
                 changeDetection: ChangeDetectionStrategy.OnPush,
-                styles: ["ajf-fb-branch-line{display:block;position:absolute;top:25px;left:25px;width:25px;border-top:2px solid;border-left:2px solid;border-top-left-radius:6px}\n"]
+                styles: ["ajf-fb-branch-line{display:block;position:absolute;top:25px;left:25px;width:25px;border-top:2px solid;border-left:2px solid;border-top-left-radius:6px;transition:height .5s ease-in-out}\n"]
             },] }
 ];
 AjfFbBranchLine.ctorParameters = () => [
@@ -277,26 +279,6 @@ function buildFormBuilderNodesContent(_nodes, node) {
     }
     return [];
 }
-function buildFormBuilderNodesTree(nodes) {
-    const rootNodes = nodes.filter(n => n.parent == null || n.parent === 0);
-    if (rootNodes.length === 1) {
-        const rootNode = rootNodes[0];
-        if (isSlidesNode(rootNode)) {
-            const tree = [];
-            tree.push({
-                node: rootNode,
-                container: null,
-                children: buildFormBuilderNodesSubtree(nodes, rootNode),
-                content: buildFormBuilderNodesContent(nodes, rootNode)
-            });
-            return tree;
-        }
-    }
-    else if (rootNodes.length === 0) {
-        return [null];
-    }
-    throw new Error('Invalid form definition');
-}
 function flattenNodes(nodes) {
     let flatNodes = [];
     nodes.forEach((node) => {
@@ -408,6 +390,10 @@ class AjfFormBuilderService {
         ];
         this._form = new BehaviorSubject(null);
         this._formObs = this._form;
+        /**
+         * A list of the ids of the dropLists connected to the source list.
+         */
+        this._connectedDropLists = new BehaviorSubject([]);
         this._editedNodeEntry = new BehaviorSubject(null);
         this._editedNodeEntryObs = this._editedNodeEntry;
         this._editedCondition = new BehaviorSubject(null);
@@ -424,12 +410,21 @@ class AjfFormBuilderService {
         this._stringIdentifierUpdates = new Subject();
         this._saveNodeEntryEvent = new EventEmitter();
         this._deleteNodeEntryEvent = new EventEmitter();
+        /**
+         * Event fired when the position of a node in a tree changes.
+         */
+        this._moveNodeEntryEvent = new EventEmitter();
+        /**
+         * Subscribes to the moveNodeEntryEvent event emitter;
+         */
+        this._moveNodeSub = Subscription.EMPTY;
         this._initChoicesOriginsStreams();
         this._initAttachmentsOriginsStreams();
         this._initStringIdentifierStreams();
         this._initNodesStreams();
         this._initFormStreams();
         this._initSaveNode();
+        this._initMoveNode();
         this._initDeleteNode();
     }
     /**
@@ -470,6 +465,9 @@ class AjfFormBuilderService {
     }
     get nodeEntriesTree() {
         return this._nodeEntriesTree;
+    }
+    get connectedDropLists() {
+        return this._connectedDropLists;
     }
     get editedNodeEntry() {
         return this._editedNodeEntryObs;
@@ -515,10 +513,21 @@ class AjfFormBuilderService {
     cancelConditionEdit() {
         this._editedChoicesOrigin.next(null);
     }
-    insertNode(nodeType, parent, parentNode, inContent = false) {
+    assignListId(node, empty = false) {
+        if (node.nodeType === AjfNodeType.AjfSlide || node.nodeType === AjfNodeType.AjfRepeatingSlide) {
+            const listId = empty ? `empty_fields_list_${node.id}` : `fields_list_${node.id}`;
+            if (this._connectedDropLists.value.indexOf(listId) == -1) {
+                this._connectDropList(listId);
+            }
+            return listId;
+        }
+        return '';
+    }
+    insertNode(nodeType, parent, parentNode, inContent = false, insertInIndex = 0) {
+        var _a;
         let node;
         const id = ++nodeUniqueId;
-        const isFieldNode = nodeType.nodeType.field != null;
+        const isFieldNode = ((_a = nodeType.nodeType) === null || _a === void 0 ? void 0 : _a.field) != null;
         if (isFieldNode) {
             node = createField({
                 id,
@@ -533,7 +542,7 @@ class AjfFormBuilderService {
             node = createContainerNode({
                 id,
                 nodeType: nodeType.nodeType.node,
-                parent: parent != null ? parent.id : 0,
+                parent: 0,
                 parentNode,
                 name: '',
                 nodes: [],
@@ -541,24 +550,20 @@ class AjfFormBuilderService {
         }
         this._beforeNodesUpdate.emit();
         this._nodesUpdates.next((nodes) => {
-            if (node.parent === 0) {
-                return [node];
-            }
-            const cn = isContainerNode(parent) && inContent ? parent :
+            const cn = isContainerNode(parent) && inContent ?
+                parent :
                 getNodeContainer({ nodes }, parent);
-            if (cn != null) {
-                if (!isFieldNode) {
-                    const replaceNodes = cn.nodes === nodes;
-                    const newNodes = cn.nodes.slice(0);
-                    newNodes.push(node);
-                    cn.nodes = newNodes;
-                    if (replaceNodes) {
-                        nodes = newNodes;
-                    }
-                }
-                else {
-                    cn.nodes.push(node);
-                }
+            if (!isFieldNode) {
+                let newNodes = nodes.slice(0);
+                newNodes.splice(insertInIndex, 0, node);
+                newNodes = this._updateNodesList(0, newNodes);
+                return newNodes;
+            }
+            else {
+                let newNodes = cn.nodes.slice(0);
+                newNodes.splice(insertInIndex, 0, node);
+                newNodes = this._updateNodesList(cn.id, newNodes);
+                cn.nodes = newNodes;
             }
             return nodes;
         });
@@ -571,6 +576,14 @@ class AjfFormBuilderService {
     }
     deleteNodeEntry(nodeEntry) {
         this._deleteNodeEntryEvent.next(nodeEntry);
+    }
+    /**
+     * Triggers the moveNode event when a node is moved in the formbuilder.
+     * @param nodeEntry The node to be moved.
+     */
+    moveNodeEntry(nodeEntry, from, to) {
+        const moveEvent = { nodeEntry: nodeEntry, fromIndex: from, toIndex: to };
+        this._moveNodeEntryEvent.next(moveEvent);
     }
     getCurrentForm() {
         return combineLatest([
@@ -623,6 +636,33 @@ class AjfFormBuilderService {
     }
     saveStringIdentifier(identifier) {
         this._stringIdentifierUpdates.next(() => [...identifier]);
+    }
+    _buildFormBuilderNodesTree(nodes) {
+        this._updateNodesList(0, nodes);
+        const rootNodes = nodes.filter(n => n.nodeType == AjfNodeType.AjfSlide || n.nodeType == AjfNodeType.AjfRepeatingSlide);
+        if (rootNodes.length === 0) {
+            return [null];
+        }
+        const rootNode = rootNodes[0];
+        if (isSlidesNode(rootNode)) {
+            const tree = [];
+            tree.push({
+                node: rootNode,
+                container: null,
+                children: buildFormBuilderNodesSubtree(nodes, rootNode),
+                content: buildFormBuilderNodesContent(nodes, rootNode)
+            });
+            return tree;
+        }
+        throw new Error('Invalid form definition');
+    }
+    /**
+     * Adds the id of a dropList to be connected with the FormBuilder source list.
+     * @param listId The id of the list to connect.
+     */
+    _connectDropList(listId) {
+        let connectedLists = this._connectedDropLists.value.slice(0);
+        this._connectedDropLists.next([...connectedLists, listId]);
     }
     _findMaxNodeId(nodes, _curMaxId = 0) {
         let maxId = 0;
@@ -698,7 +738,7 @@ class AjfFormBuilderService {
             })));
         this._flatNodes = this._nodes.pipe(map((nodes) => flattenNodes(nodes)), publishReplay(1), refCount());
         this._flatFields = this._flatNodes.pipe(map((nodes) => nodes.filter(n => !isContainerNode(n))), publishReplay(1), refCount());
-        this._nodeEntriesTree = this._nodes.pipe(map(nodes => buildFormBuilderNodesTree(nodes)), publishReplay(1), refCount());
+        this._nodeEntriesTree = this._nodes.pipe(map(nodes => this._buildFormBuilderNodesTree(nodes)), publishReplay(1), refCount());
     }
     _initSaveNode() {
         this._saveNodeEntryEvent
@@ -859,12 +899,67 @@ class AjfFormBuilderService {
                     else {
                         nodes = nodes.slice(0);
                     }
-                    nodes = deleteNodeSubtree(nodes, node);
                 }
                 return nodes;
             };
         }))
             .subscribe(this._nodesUpdates);
+    }
+    /**
+     * Initializes the subscription to the moveNodeEntryEvent.
+     */
+    _initMoveNode() {
+        this._moveNodeSub.unsubscribe();
+        this._moveNodeSub =
+            this._moveNodeEntryEvent
+                .pipe(map((moveEvent) => {
+                this._beforeNodesUpdate.emit();
+                return (nodes) => {
+                    const nodeEntry = moveEvent.nodeEntry;
+                    const node = nodeEntry.node;
+                    let cn = getNodeContainer({ nodes }, node);
+                    let newNodes = nodes;
+                    if (cn != null) {
+                        const replaceNodes = cn.nodes === nodes;
+                        newNodes = cn.nodes;
+                        moveItemInArray(newNodes, moveEvent.fromIndex, moveEvent.toIndex);
+                        newNodes = this._updateNodesList(cn.id, newNodes);
+                        cn.nodes = newNodes;
+                        if (replaceNodes) {
+                            nodes = newNodes;
+                        }
+                        else {
+                            nodes = nodes.slice(0);
+                        }
+                    }
+                    return nodes;
+                };
+            }))
+                .subscribe(this._nodesUpdates);
+    }
+    /**
+     * Updates the "id" and "parent" fields of a modified or rearranged list of nodes.
+     * @param containerId The id of the parent container of the list.
+     * @param nodesList The list of nodes to be updated.
+     */
+    _updateNodesList(containerId, nodesList) {
+        if (!nodesList.length) {
+            return [];
+        }
+        const contId = containerId != undefined ? containerId : 0;
+        for (let idx = 0; idx < nodesList.length; idx++) {
+            let currentNode = nodesList[idx];
+            currentNode.id = (contId * 1000) + idx + 1;
+            currentNode.parent = idx == 0 ? contId : (contId * 1000) + idx;
+            if (currentNode.nodeType == AjfNodeType.AjfSlide ||
+                currentNode.nodeType == AjfNodeType.AjfRepeatingSlide) {
+                const currentSlide = currentNode;
+                if (currentSlide.nodes) {
+                    this._updateNodesList(currentSlide.id, currentSlide.nodes);
+                }
+            }
+        }
+        return nodesList;
     }
 }
 AjfFormBuilderService.decorators = [
@@ -1139,6 +1234,69 @@ AjfFbConditionEditorDialog.propDecorators = {
  * If not, see http://www.gnu.org/licenses/.
  *
  */
+/**
+ * Triggers when a field or slide node is moved or inserted by drag&dropping in the formbuilder.
+ * @param event The drop event.
+ * @param fbService The AjfFormBuilderService.
+ * @param nodeEntry The current nodeEntry, if present.
+ * @param content True if the current nodeEntry contains other nodeEntries.
+ */
+function onDropProcess(event, fbService, nodeEntry, content = false) {
+    const itemData = event.item.data;
+    const containerId = event.container.id;
+    if (!itemData.node) {
+        if (nodeEntry == null && containerId === 'slides-list') {
+            fbService.insertNode(itemData, null, 0, content, event.currentIndex);
+            return;
+        }
+        const emptySlot = content ? { parent: nodeEntry.node, parentNode: 0 } :
+            nodeEntry;
+        fbService.insertNode(itemData, emptySlot.parent, emptySlot.parentNode, content, event.currentIndex);
+        return;
+    }
+    const previousIndex = event.previousIndex;
+    const currentIndex = event.currentIndex;
+    fbService.moveNodeEntry(event.item.data, previousIndex, currentIndex);
+}
+/**
+ * Disables the drag&drop of Slide items.
+ * @param item The dragged item.
+ */
+function disableSlideDropPredicate(item) {
+    return !item.data.isSlide;
+}
+/**
+ * Disables the drag&drop of Field items.
+ * @param item The dragged item.
+ */
+function disableFieldDropPredicate(item) {
+    if (!item.data.isSlide) {
+        return false;
+    }
+    return true;
+}
+
+/**
+ * @license
+ * Copyright (C) Gnucoop soc. coop.
+ *
+ * This file is part of the Advanced JSON forms (ajf).
+ *
+ * Advanced JSON forms (ajf) is free software: you can redistribute it and/or
+ * modify it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the License,
+ * or (at your option) any later version.
+ *
+ * Advanced JSON forms (ajf) is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero
+ * General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with Advanced JSON forms (ajf).
+ * If not, see http://www.gnu.org/licenses/.
+ *
+ */
 class AjfFbStringIdentifierDialogComponent {
     constructor(_service, _cdr) {
         this._service = _service;
@@ -1231,6 +1389,11 @@ class AjfFormBuilder {
     constructor(_service, _dialog) {
         this._service = _service;
         this._dialog = _dialog;
+        this._globalExpanded = false;
+        /**
+         * The list of the ids of all the dropLists connected to the formbuilder source list.
+         */
+        this._connectedDropLists = this._service.connectedDropLists;
         this._vc = new EventEmitter();
         this._init = false;
         this._editConditionSub = Subscription.EMPTY;
@@ -1296,6 +1459,12 @@ class AjfFormBuilder {
     get choicesOrigins() {
         return this._choicesOrigins;
     }
+    get isGlobalExpanded() {
+        return this._globalExpanded;
+    }
+    get connectedDropLists() {
+        return this._connectedDropLists;
+    }
     ngAfterViewChecked() {
         this._vc.emit();
     }
@@ -1313,8 +1482,19 @@ class AjfFormBuilder {
     createChoicesOrigin() {
         this._service.createChoicesOrigin();
     }
-    disableDropPredicate() {
+    disableDrop() {
         return false;
+    }
+    disableFieldDrop(item) {
+        return disableFieldDropPredicate(item);
+    }
+    /**
+     * Triggers when a field or slide node is moved or inserted by drag&dropping in the formbuilder.
+     * @param event The drop event.
+     * @param content True if the current nodeEntry contains other nodeEntries.
+     */
+    onDrop(event, content = false) {
+        onDropProcess(event, this._service, null, content);
     }
     editChoicesOrigin(choicesOrigin) {
         this._service.editChoicesOrigin(choicesOrigin);
@@ -1326,6 +1506,20 @@ class AjfFormBuilder {
         }
         this._stringIdentifierDialog = this._dialog.open(AjfFbStringIdentifierDialogComponent, { disableClose: true, width: '60%', height: '60%' });
     }
+    expandAll() {
+        this._globalExpanded = true;
+    }
+    collapseAll() {
+        this._globalExpanded = false;
+    }
+    expandToggle(evt) {
+        if (evt.checked) {
+            this.expandAll();
+        }
+        else {
+            this.collapseAll();
+        }
+    }
     _setCurrentForm() {
         this._service.setForm(this._form);
     }
@@ -1333,7 +1527,7 @@ class AjfFormBuilder {
 AjfFormBuilder.decorators = [
     { type: Component, args: [{
                 selector: 'ajf-form-builder',
-                template: "<mat-toolbar>\n  <button mat-icon-button (click)=\"leftSidenav.toggle()\">\n    <mat-icon>add_box</mat-icon>\n  </button>\n  <button mat-button [matMenuTriggerFor]=\"choicesMenu\" translate>Choices</button>\n  <button mat-button (click)=\"editStringIdentifier()\" translate>Identifier</button>\n  <mat-menu #choicesMenu>\n    <button (click)=\"createChoicesOrigin()\" mat-menu-item translate>New..</button>\n    <ng-container *ngIf=\"choicesOrigins|async as cos\">\n      <button *ngFor=\"let choicesOrigin of cos\"\n          (click)=\"editChoicesOrigin(choicesOrigin)\" mat-menu-item>\n        {{ choicesOrigin.label || choicesOrigin.name }}\n      </button>\n    </ng-container>\n  </mat-menu>\n  <span class=\"ajf-spacer\"></span>\n  <button mat-icon-button (click)=\"rightSidenav.toggle()\">\n    <mat-icon>settings</mat-icon>\n  </button>\n</mat-toolbar>\n<mat-drawer-container cdkDropListGroup>\n  <mat-drawer #leftSidenav position=\"start\" mode=\"over\">\n    <div #sourceDropList cdkDropList\n        [cdkDropListEnterPredicate]=\"disableDropPredicate\"\n        [cdkDropListData]=\"nodeTypes\">\n      <ajf-fb-node-type-entry *ngFor=\"let nodeType of nodeTypes\"\n          cdkDrag\n          [cdkDragData]=\"nodeType\"\n          (cdkDragStarted)=\"leftSidenav.close()\"\n          [nodeType]=\"nodeType\"></ajf-fb-node-type-entry>\n    </div>\n  </mat-drawer>\n  <mat-drawer #rightSidenav position=\"end\" mode=\"side\" [opened]=\"true\">\n    <ajf-fb-node-properties></ajf-fb-node-properties>\n  </mat-drawer>\n  <div #designer class=\"ajf-designer\">\n    <ajf-fb-node-entry\n        *ngFor=\"let nodeEntry of (nodeEntriesTree|async); let isFirst = first\"\n        [isFirst]=\"isFirst\"\n        [nodeEntry]=\"nodeEntry\"></ajf-fb-node-entry>\n  </div>\n</mat-drawer-container>\n",
+                template: "<mat-toolbar>\n  <button mat-icon-button (click)=\"leftSidenav.toggle()\">\n    <mat-icon>add_box</mat-icon>\n  </button>\n  <button mat-button [matMenuTriggerFor]=\"choicesMenu\" translate>Choices</button>\n  <button mat-button (click)=\"editStringIdentifier()\" translate>Identifier</button>\n  <button mat-icon-button aria-label=\"Collapsed\" matTooltip=\"Keep slides collapsed\">\n    <mat-icon>unfold_less</mat-icon>\n  </button>\n  <mat-slide-toggle color=\"primary\" (change)=\"expandToggle($event)\"></mat-slide-toggle> \n  <button mat-icon-button aria-label=\"Expanded\" matTooltip=\"Keep slides expanded\">\n    <mat-icon>unfold_more</mat-icon>\n  </button>\n  <mat-menu #choicesMenu>\n    <button (click)=\"createChoicesOrigin()\" mat-menu-item translate>New..</button>\n    <ng-container *ngIf=\"choicesOrigins|async as cos\">\n      <button *ngFor=\"let choicesOrigin of cos\"\n          (click)=\"editChoicesOrigin(choicesOrigin)\" mat-menu-item>\n        {{ choicesOrigin.label || choicesOrigin.name }}\n      </button>\n    </ng-container>\n  </mat-menu>\n  <span class=\"ajf-spacer\"></span>\n  <button mat-icon-button (click)=\"rightSidenav.toggle()\">\n    <mat-icon>settings</mat-icon>\n  </button>\n</mat-toolbar>\n<mat-drawer-container cdkDropListGroup>\n  <mat-drawer #leftSidenav position=\"start\" mode=\"over\">\n    <div #sourceDropList cdkDropList\n        [cdkDropListConnectedTo]=\"(connectedDropLists|async)!\"\n        [cdkDropListEnterPredicate]=\"disableDrop\"\n        [cdkDropListData]=\"nodeTypes\">\n      <ajf-fb-node-type-entry *ngFor=\"let nodeType of nodeTypes\"\n          cdkDrag\n          [cdkDragData]=\"nodeType\"\n          (cdkDragStarted)=\"leftSidenav.close()\"\n          [nodeType]=\"nodeType\"></ajf-fb-node-type-entry>\n    </div>\n  </mat-drawer>\n  <mat-drawer #rightSidenav position=\"end\" mode=\"side\" [opened]=\"true\">\n    <ajf-fb-node-properties></ajf-fb-node-properties>\n  </mat-drawer>\n  <div #designer class=\"ajf-designer\">\n    <ajf-fb-node-entry id=\"slides-list\"\n        cdkDropList\n        (cdkDropListDropped)=\"onDrop($event)\"\n        [cdkDropListEnterPredicate]=\"disableFieldDrop\"\n        *ngFor=\"let nodeEntry of (nodeEntriesTree|async); let isFirst = first\"\n        [isExpanded]=\"isGlobalExpanded\"\n        [isFirst]=\"isFirst\"\n        [nodeEntry]=\"nodeEntry\"></ajf-fb-node-entry>\n  </div>\n</mat-drawer-container>\n",
                 changeDetection: ChangeDetectionStrategy.OnPush,
                 encapsulation: ViewEncapsulation.None,
                 styles: ["ajf-form-builder{display:flex;position:relative;min-height:300px;flex-direction:column;align-items:stretch}ajf-form-builder mat-toolbar mat-menu div[mat-menu-item]>button[mat-button]{flex:1 0 auto}ajf-form-builder mat-toolbar mat-menu div[mat-menu-item]>button[mat-icon-button]{flex:0 0 auto}ajf-form-builder mat-drawer-container{flex:1}ajf-form-builder mat-drawer-container mat-drawer{max-width:20%}ajf-form-builder mat-drawer-container .ajf-designer{padding:1em}ajf-form-builder mat-toolbar .ajf-spacer{flex:1 1 auto}\n"]
@@ -1382,7 +1576,9 @@ class AjfFbNodeEntry {
         this._hasContent = false;
         this._isFirst = false;
         this._isNodeEntry = false;
+        this._isExpanded = false;
         this._level = 0;
+        this._isDraggable = true;
         this._branchColors = branchColors.slice(0);
         this._dropZones = ['fbdz-node'];
         this._slideDropZones = ['fbdz-slide'];
@@ -1405,6 +1601,13 @@ class AjfFbNodeEntry {
     get isNodeEntry() {
         return this._isNodeEntry;
     }
+    get isExpanded() {
+        return this._isExpanded;
+    }
+    set isExpanded(exp) {
+        this._isExpanded = exp;
+        setTimeout(() => this._updateBranchHeights(), 400);
+    }
     get nodeEntry() {
         return this._nodeEntry;
     }
@@ -1426,6 +1629,12 @@ class AjfFbNodeEntry {
     }
     set level(value) {
         this._level = value;
+    }
+    get isDraggable() {
+        return this._isDraggable;
+    }
+    set isDraggable(draggable) {
+        this._isDraggable = draggable;
     }
     get realNodeEntry() {
         return this._nodeEntry;
@@ -1467,17 +1676,28 @@ class AjfFbNodeEntry {
         return this._currentEditedNode;
     }
     onResize() { }
-    edit() {
+    edit(evt) {
+        evt.stopPropagation();
         if (this.nodeEntry == null || !this.isNodeEntry) {
             return;
         }
         this._service.editNodeEntry(this.nodeEntry);
     }
-    delete() {
+    delete(evt) {
+        evt.stopPropagation();
         if (this.nodeEntry == null || !this.isNodeEntry) {
             return;
         }
         this._service.deleteNodeEntry(this.nodeEntry);
+    }
+    isLastNode() {
+        if (!this.realNodeEntry || !this.realNodeEntry.children) {
+            return false;
+        }
+        return !this.realNodeEntry.children[0].children;
+    }
+    isSlide(node) {
+        return isSlidesNode(node);
     }
     ngAfterViewInit() {
         setTimeout(() => this._updateBranchHeights());
@@ -1489,21 +1709,26 @@ class AjfFbNodeEntry {
         this._branchLinesSubscription.unsubscribe();
         this._childEntriesSubscription.unsubscribe();
     }
-    onDropSuccess(evt, content = false) {
-        const dd = evt.item.data;
-        if (this._nodeEntry == null) {
-            this._service.insertNode(dd, null, 0, content);
-            return;
-        }
-        if (dd.nodeType !== void 0 && (!this.isNodeEntry || (this.isNodeEntry && content))) {
-            const emptySlot = content ?
-                { parent: this.nodeEntry.node, parentNode: 0 } :
-                this._nodeEntry;
-            this._service.insertNode(dd, emptySlot.parent, emptySlot.parentNode, content);
-        }
+    /**
+     * Triggers when a field or slide node is moved or inserted by drag&dropping in the formbuilder.
+     * @param event The drop event.
+     * @param content True if the current nodeEntry contains other nodeEntries.
+     */
+    onDrop(event, content = false) {
+        onDropProcess(event, this._service, this._nodeEntry, content);
     }
-    disableSlideDropPredicate(item) {
-        return !item.data.isSlide;
+    /**
+     * Assigns a progressive id to the dropList, to connect it to the FormBuilder source list.
+     * @param empty True if the list is marked as empty.
+     */
+    assignId(empty = false) {
+        return this._service.assignListId(this.realNodeEntry.node, empty);
+    }
+    disableSlideDrop(item) {
+        return disableSlideDropPredicate(item);
+    }
+    disableFieldDrop(item) {
+        return disableFieldDropPredicate(item);
     }
     emptyAreaDropPredicate() {
         return (item, _drop) => {
@@ -1534,11 +1759,11 @@ class AjfFbNodeEntry {
 AjfFbNodeEntry.decorators = [
     { type: Component, args: [{
                 selector: 'ajf-fb-node-entry',
-                template: "<ng-container *ngIf=\"nodeEntry != null ; else rootEmpty\">\n  <ng-template [ngIf]=\"isNodeEntry\">\n    <ajf-fb-branch-line\n        *ngFor=\"let childNodeEntry of realNodeEntry.children; let idx = index\"\n        [offset]=\"idx\"\n        [color]=\"branchColors[idx]\"></ajf-fb-branch-line>\n  </ng-template>\n  <div class=\"mat-card-container\"\n      [class.ajf-highlight]=\"(currentEditedNode|async) == nodeEntry\">\n    <div *ngIf=\"!isFirst\"\n        class=\"ajf-origin-line\"\n        [style.margin-left]=\"originLeftMargin\"\n        [style.border-color]=\"firstBranchColor\"></div>\n    <ng-template [ngIf]=\"isNodeEntry\">\n      <mat-card>\n        <div class=\"ajf-title-row\">\n          <ajf-node-icon [node]=\"realNodeEntry.node\"></ajf-node-icon>\n          <span class=\"ajf-title\" [innerHTML]=\"(realNodeEntry.node.label || realNodeEntry.node.name)  | translate\"></span>\n          <span class=\"ajf-actions\">\n            <button [disabled]=\"(currentEditedNode|async) == nodeEntry\" (click)=\"edit()\" mat-icon-button>\n              <mat-icon>edit</mat-icon>\n            </button>\n            <button [disabled]=\"(currentEditedNode|async) == null\" (click)=\"delete()\" mat-icon-button>\n              <mat-icon>delete</mat-icon>\n            </button>\n          </span>\n        </div>\n        <div *ngIf=\"hasContent\">\n          <ajf-fb-node-entry\n              *ngFor=\"let contentEntry of realNodeEntry.content; let isFirstChild = first; let idx = index\"\n              [level]=\"level + 1\"\n              [isFirst]=\"isFirstChild\"\n              [firstBranchColor]=\"branchColors[idx]\"\n              [nodeEntry]=\"contentEntry\"></ajf-fb-node-entry>\n          <mat-card class=\"ajf-empty\"\n              *ngIf=\"realNodeEntry.content.length === 0\"\n              cdkDropList\n              [cdkDropListEnterPredicate]=\"disableSlideDropPredicate\"\n              (cdkDropListDropped)=\"onDropSuccess($event, true)\">&nbsp;</mat-card>\n        </div>\n      </mat-card>\n    </ng-template>\n    <ng-template [ngIf]=\"!isNodeEntry\">\n      <mat-card class=\"ajf-empty\"\n          cdkDropList\n          [cdkDropListEnterPredicate]=\"emptyAreaDropPredicate()\"\n          (cdkDropListDropped)=\"onDropSuccess($event)\">&nbsp;</mat-card>\n    </ng-template>\n  </div>\n  <ng-template [ngIf]=\"isNodeEntry\">\n    <ajf-fb-node-entry\n        *ngFor=\"let childNodeEntry of realNodeEntry.children; let idx = index\"\n        [level]=\"level\"\n        [originOffset]=\"idx\"\n        [firstBranchColor]=\"branchColors[idx]\"\n        [nodeEntry]=\"childNodeEntry\"></ajf-fb-node-entry>\n  </ng-template>\n</ng-container>\n<ng-template #rootEmpty>\n  <div class=\"mat-card-container\">\n    <mat-card class=\"ajf-empty\"\n        cdkDropList\n        [cdkDropListEnterPredicate]=\"emptyAreaDropPredicate()\"\n        (cdkDropListDropped)=\"onDropSuccess($event)\">&nbsp;</mat-card>\n  </div>\n</ng-template>\n",
+                template: "<ng-container *ngIf=\"nodeEntry != null ; else rootEmpty\">\n  <ng-template [ngIf]=\"isNodeEntry && !isLastNode()\">\n    <ajf-fb-branch-line\n      *ngFor=\"let childNodeEntry of realNodeEntry.children; let idx = index\"\n      [offset]=\"idx\"\n      [color]=\"branchColors[idx]\"\n    ></ajf-fb-branch-line>\n  </ng-template>\n\n  <div\n    class=\"mat-card-container\"\n    [class.ajf-highlight]=\"(currentEditedNode|async) == nodeEntry\"\n  >\n    <div\n      *ngIf=\"!isFirst\"\n      class=\"ajf-origin-line\"\n      [style.margin-left]=\"originLeftMargin\"\n      [style.border-color]=\"firstBranchColor\"\n    ></div>\n    <ng-template [ngIf]=\"isNodeEntry\">\n      <ng-container *ngIf=\"!isDraggable; else draggable\">\n        <mat-card>\n          <ng-container *ngTemplateOutlet=\"cardTitle\"></ng-container>\n          <ng-container *ngTemplateOutlet=\"cardContent\"></ng-container>\n        </mat-card>\n      </ng-container>\n\n      <ng-template #draggable>\n        <mat-card cdkDrag [cdkDragData]=\"realNodeEntry\" class=\"ajf-draggable-box\">\n          <ng-container\n            *ngIf=\"isSlide(realNodeEntry.node); else fieldPanel\"\n          >\n            <ng-container *ngTemplateOutlet=\"slidePanel\"></ng-container>\n          </ng-container>\n        </mat-card>\n      </ng-template>\n\n      <ng-template #slidePanel>\n        <mat-expansion-panel\n          [expanded]=\"isExpanded\"\n          (opened)=\"isExpanded = true\"\n          (closed)=\"isExpanded = false\"\n          class=\"mat-elevation-z\"\n        >\n          <mat-expansion-panel-header>\n            <ng-container *ngTemplateOutlet=\"cardTitle\"></ng-container>\n          </mat-expansion-panel-header>\n          <ng-container *ngTemplateOutlet=\"cardContent\"></ng-container>\n        </mat-expansion-panel>\n      </ng-template>\n\n      <ng-template #fieldPanel>\n        <ng-container *ngTemplateOutlet=\"cardTitle\"></ng-container>\n        <ng-container *ngTemplateOutlet=\"cardContent\"></ng-container>\n      </ng-template>\n\n      <ng-template #cardTitle>\n        <div class=\"ajf-title-row\">\n          <ajf-node-icon [node]=\"realNodeEntry.node\"></ajf-node-icon>\n          <span\n            class=\"ajf-title\"\n            [innerHTML]=\"(realNodeEntry.node.label || realNodeEntry.node.name)  | translate\"\n          ></span>\n          <span\n            *ngIf=\"realNodeEntry.node.visibility && realNodeEntry.node.visibility?.condition !== 'true'\"\n            class=\"ajf-visibility-condition\"\n            [innerHTML]=\"'Condition: (' + realNodeEntry.node.visibility?.condition + ')'\"\n          >\n          </span>\n          <span class=\"ajf-actions\">\n            <button\n              [disabled]=\"(currentEditedNode|async) == nodeEntry\"\n              (click)=\"edit($event)\"\n              mat-icon-button\n            >\n              <mat-icon>edit</mat-icon>\n            </button>\n            <button\n              [disabled]=\"(currentEditedNode|async) == null\"\n              (click)=\"delete($event)\"\n              mat-icon-button\n            >\n              <mat-icon>delete</mat-icon>\n            </button>\n          </span>\n        </div>\n      </ng-template>\n\n      <ng-template #cardContent>\n        <div *ngIf=\"hasContent\">\n          <ajf-fb-node-entry\n            cdkDropList\n            class=\"ajf-fields-list\"\n            *ngFor=\"let contentEntry of realNodeEntry.content; let isFirstChild = first; let idx = index\"\n            [id]=\"assignId()\"\n            [level]=\"level + 1\"\n            [isFirst]=\"isFirstChild\"\n            [firstBranchColor]=\"branchColors[idx]\"\n            [nodeEntry]=\"contentEntry\"\n            [cdkDropListEnterPredicate]=\"disableSlideDrop\"\n            (cdkDropListDropped)=\"onDrop($event, true)\"\n            [isExpanded]=\"isExpanded\"\n          ></ajf-fb-node-entry>\n          <mat-card\n            class=\"ajf-empty\"\n            *ngIf=\"realNodeEntry.content.length === 0\"\n            cdkDropList\n            [id]=\"assignId(true)\"\n            [cdkDropListEnterPredicate]=\"disableSlideDrop\"\n            (cdkDropListDropped)=\"onDrop($event, true)\"\n            ><mat-card-title>Drop your fields here</mat-card-title></mat-card\n          >\n        </div>\n      </ng-template>\n    </ng-template>\n  </div>\n\n  <ng-template [ngIf]=\"isNodeEntry\">\n    <ng-container\n      *ngFor=\"let childNodeEntry of realNodeEntry.children; let idx = index\"\n    >\n      <ajf-fb-node-entry\n        *ngIf=\"!isLastNode()\"\n        [level]=\"level\"\n        [originOffset]=\"idx\"\n        [firstBranchColor]=\"branchColors[idx]\"\n        [nodeEntry]=\"childNodeEntry\"\n        [isExpanded]=\"isExpanded\"\n      ></ajf-fb-node-entry>\n    </ng-container>\n  </ng-template>\n</ng-container>\n\n<ng-template #rootEmpty>\n  <div class=\"mat-card-container\">\n    <mat-card\n      class=\"ajf-empty\"\n      cdkDropList\n      [cdkDropListEnterPredicate]=\"emptyAreaDropPredicate()\"\n      (cdkDropListDropped)=\"onDrop($event)\"\n      ><mat-card-title>Drop your slides here</mat-card-title>\n    </mat-card>\n  </div>\n</ng-template>\n",
                 host: { '(window.resize)': 'onResize()' },
                 encapsulation: ViewEncapsulation.None,
                 changeDetection: ChangeDetectionStrategy.OnPush,
-                styles: ["ajf-fb-node-entry{display:block;position:relative}ajf-fb-node-entry .mat-card-container{position:relative}ajf-fb-node-entry .mat-card-container .ajf-origin-line{position:absolute;top:0;left:25px;width:25px;height:25px;border-bottom:2px solid;border-left:2px solid;border-bottom-left-radius:.5em}ajf-fb-node-entry .mat-card-container mat-card{margin-left:50px;padding:.5em 1em;margin-top:.2em;margin-bottom:.2em;background-color:#fff}ajf-fb-node-entry .mat-card-container mat-card .ajf-title-row{display:flex;flex-direction:row;align-items:center}ajf-fb-node-entry .mat-card-container mat-card .ajf-title-row>.ajf-title{flex:1 1 auto}ajf-fb-node-entry .mat-card-container mat-card .ajf-title-row>.ajf-actions{flex:0 0 auto;white-space:nowrap}ajf-fb-node-entry .mat-card-container mat-card.ajf-empty{line-height:36px;border:2px dashed;box-shadow:none;box-sizing:border-box}ajf-fb-node-entry .mat-card-container.ajf-highlight>mat-card{background-color:#fff9c4}\n"]
+                styles: ["ajf-fb-node-entry{display:block;position:relative}ajf-fb-node-entry .mat-card-container{position:relative}ajf-fb-node-entry .mat-card-container .ajf-origin-line{position:absolute;top:0;left:25px;width:25px;height:25px;border-bottom:2px solid;border-left:2px solid;border-bottom-left-radius:.5em}ajf-fb-node-entry .mat-card-container mat-card{margin-left:50px;padding:.5em 1em;margin-top:.2em;margin-bottom:.2em;background-color:#fff}ajf-fb-node-entry .mat-card-container mat-card .ajf-title-row{display:flex;flex:1 1 auto;flex-direction:row;align-items:center}ajf-fb-node-entry .mat-card-container mat-card .ajf-title-row>.ajf-title{flex:1 1 auto}ajf-fb-node-entry .mat-card-container mat-card .ajf-title-row>.ajf-visibility-condition{flex:1 1 auto;font-size:10px;color:#999}ajf-fb-node-entry .mat-card-container mat-card .ajf-title-row>.ajf-actions{flex:0 0 auto;white-space:nowrap}ajf-fb-node-entry .mat-card-container mat-card.ajf-empty{line-height:36px;border:2px dashed;box-shadow:none;box-sizing:border-box;text-align:center;color:#ccc}ajf-fb-node-entry .mat-card-container mat-card.ajf-draggable-box{padding:20px 10px;border-bottom:solid 1px #ccc;border-right:solid 1px #ccc;color:rgba(0,0,0,.87);box-sizing:border-box;cursor:move;background:#fff;font-size:14px}ajf-fb-node-entry .mat-card-container.ajf-highlight>mat-card{background-color:#fff9c4}ajf-fb-node-entry.ajf-fields-list{max-width:80%;min-height:60px;display:block;background:#fff;border-radius:4px;overflow:hidden}ajf-fb-node-entry .cdk-drag-placeholder{opacity:0;min-height:60px}ajf-fb-node-entry .ajf-fields-list.cdk-drop-list-dragging .ajf-draggable-box:not(.cdk-drag-placeholder),ajf-fb-node-entry .cdk-drag-animating{transition:transform 250ms cubic-bezier(0, 0, 0.2, 1)}\n"]
             },] }
 ];
 AjfFbNodeEntry.ctorParameters = () => [
@@ -1548,8 +1773,10 @@ AjfFbNodeEntry.propDecorators = {
     branchLines: [{ type: ViewChildren, args: [AjfFbBranchLine,] }],
     childEntries: [{ type: ViewChildren, args: [AjfFbNodeEntry, { read: ElementRef },] }],
     isFirst: [{ type: Input }],
+    isExpanded: [{ type: Input }],
     nodeEntry: [{ type: Input }],
     level: [{ type: Input }],
+    isDraggable: [{ type: Input }],
     originOffset: [{ type: Input }],
     firstBranchColor: [{ type: Input }]
 };
@@ -2700,6 +2927,7 @@ AjfFormBuilderModule.decorators = [
                     MatIconModule, MatInputModule, MatListModule, MatMenuModule,
                     MatSelectModule, MatSidenavModule, MatSliderModule, MatTableModule,
                     MatToolbarModule, MatTooltipModule, ReactiveFormsModule, TranslateModule,
+                    MatExpansionModule, MatSlideToggleModule,
                 ],
                 declarations: [
                     AjfFbBranchLine,
@@ -2750,5 +2978,5 @@ AjfFormBuilderModule.decorators = [
  * Generated bundle index. Do not edit.
  */
 
-export { AjfFormBuilder, AjfFormBuilderModule, AjfFormBuilderService, flattenNodes, AjfFbBranchLine as ɵgc_ajf_src_material_form_builder_form_builder_a, AjfFbChoicesOriginEditor as ɵgc_ajf_src_material_form_builder_form_builder_b, AjfFbChoicesOriginEditorDialog as ɵgc_ajf_src_material_form_builder_form_builder_c, AjfFbConditionEditor as ɵgc_ajf_src_material_form_builder_form_builder_d, AjfFbConditionEditorDialog as ɵgc_ajf_src_material_form_builder_form_builder_e, AjfFbNodeEntry as ɵgc_ajf_src_material_form_builder_form_builder_f, AjfFbNodeProperties as ɵgc_ajf_src_material_form_builder_form_builder_g, AjfFbNodeTypeEntry as ɵgc_ajf_src_material_form_builder_form_builder_h, AjfFbStringIdentifierDialogComponent as ɵgc_ajf_src_material_form_builder_form_builder_i, AjfFbValidationConditionEditorDialog as ɵgc_ajf_src_material_form_builder_form_builder_j, AjfFbWarningConditionEditorDialog as ɵgc_ajf_src_material_form_builder_form_builder_k };
+export { AjfFormBuilder, AjfFormBuilderModule, AjfFormBuilderService, disableFieldDropPredicate, disableSlideDropPredicate, flattenNodes, onDropProcess, AjfFbBranchLine as ɵgc_ajf_src_material_form_builder_form_builder_a, AjfFbChoicesOriginEditor as ɵgc_ajf_src_material_form_builder_form_builder_b, AjfFbChoicesOriginEditorDialog as ɵgc_ajf_src_material_form_builder_form_builder_c, AjfFbConditionEditor as ɵgc_ajf_src_material_form_builder_form_builder_d, AjfFbConditionEditorDialog as ɵgc_ajf_src_material_form_builder_form_builder_e, AjfFbNodeEntry as ɵgc_ajf_src_material_form_builder_form_builder_f, AjfFbNodeProperties as ɵgc_ajf_src_material_form_builder_form_builder_g, AjfFbNodeTypeEntry as ɵgc_ajf_src_material_form_builder_form_builder_h, AjfFbStringIdentifierDialogComponent as ɵgc_ajf_src_material_form_builder_form_builder_i, AjfFbValidationConditionEditorDialog as ɵgc_ajf_src_material_form_builder_form_builder_j, AjfFbWarningConditionEditorDialog as ɵgc_ajf_src_material_form_builder_form_builder_k };
 //# sourceMappingURL=form-builder.js.map

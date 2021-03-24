@@ -19,6 +19,7 @@
  * If not, see http://www.gnu.org/licenses/.
  *
  */
+import { AjfNode } from '@ajf/core/forms';
 import { CdkDrag, CdkDragDrop, CdkDropList } from '@angular/cdk/drag-drop';
 import { AfterViewInit, ElementRef, OnDestroy, QueryList } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -35,12 +36,18 @@ export declare class AjfFbNodeEntry implements AfterViewInit, OnDestroy {
     set isFirst(isFirst: boolean);
     private _isNodeEntry;
     get isNodeEntry(): boolean;
+    private _isExpanded;
+    get isExpanded(): boolean;
+    set isExpanded(exp: boolean);
     private _nodeEntry;
     get nodeEntry(): AjfFormBuilderNode;
     set nodeEntry(nodeEntry: AjfFormBuilderNode);
     private _level;
     get level(): number;
     set level(value: number);
+    private _isDraggable;
+    get isDraggable(): boolean;
+    set isDraggable(draggable: boolean);
     get realNodeEntry(): AjfFormBuilderNodeEntry;
     private _branchColors;
     get branchColors(): string[];
@@ -62,12 +69,25 @@ export declare class AjfFbNodeEntry implements AfterViewInit, OnDestroy {
     private _childEntriesSubscription;
     constructor(_service: AjfFormBuilderService);
     onResize(): void;
-    edit(): void;
-    delete(): void;
+    edit(evt: Event): void;
+    delete(evt: Event): void;
+    isLastNode(): boolean;
+    isSlide(node: AjfNode): boolean;
     ngAfterViewInit(): void;
     ngOnDestroy(): void;
-    onDropSuccess(evt: CdkDragDrop<AjfFormBuilderNodeTypeEntry>, content?: boolean): void;
-    disableSlideDropPredicate(item: CdkDrag<AjfFormBuilderNodeTypeEntry>): boolean;
+    /**
+     * Triggers when a field or slide node is moved or inserted by drag&dropping in the formbuilder.
+     * @param event The drop event.
+     * @param content True if the current nodeEntry contains other nodeEntries.
+     */
+    onDrop(event: CdkDragDrop<AjfFormBuilderNodeEntry> | CdkDragDrop<AjfFormBuilderNodeTypeEntry>, content?: boolean): void;
+    /**
+     * Assigns a progressive id to the dropList, to connect it to the FormBuilder source list.
+     * @param empty True if the list is marked as empty.
+     */
+    assignId(empty?: boolean): string;
+    disableSlideDrop(item: CdkDrag<AjfFormBuilderNodeTypeEntry>): boolean;
+    disableFieldDrop(item: CdkDrag<AjfFormBuilderNodeTypeEntry>): boolean;
     emptyAreaDropPredicate(): (item: CdkDrag, _drop: CdkDropList) => boolean;
     private _updateBranchHeights;
 }

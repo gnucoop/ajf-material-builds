@@ -21,7 +21,7 @@
  */
 import { AjfAttachmentsOrigin, AjfChoicesOrigin, AjfField, AjfFieldType, AjfForm, AjfFormStringIdentifier, AjfNode, AjfNodeGroup, AjfNodeType, AjfRepeatingSlide, AjfSlide } from '@ajf/core/forms';
 import { AjfCondition } from '@ajf/core/models';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 export interface AjfFormBuilderNodeTypeEntry {
     label: string;
     icon: {
@@ -43,6 +43,23 @@ export interface AjfFormBuilderNodeEntry {
 export interface AjfFormBuilderEmptySlot {
     parent: AjfNode;
     parentNode: number;
+}
+/**
+ * Represents a node's position change in the formbuilder.
+ */
+export interface AjfFormBuilderMoveEvent {
+    /**
+     * The node being moved.
+     */
+    nodeEntry: AjfFormBuilderNode;
+    /**
+     * The index of the node previous position.
+     */
+    fromIndex: number;
+    /**
+     * The index of the node new position.
+     */
+    toIndex: number;
 }
 export declare type AjfFormBuilderNode = AjfFormBuilderNodeEntry | AjfFormBuilderEmptySlot;
 export declare type AjfContainerNode = AjfSlide | AjfRepeatingSlide | AjfNodeGroup;
@@ -80,6 +97,11 @@ export declare class AjfFormBuilderService {
     get flatFields(): Observable<AjfField[]>;
     private _nodeEntriesTree;
     get nodeEntriesTree(): Observable<AjfFormBuilderNodeEntry[]>;
+    /**
+     * A list of the ids of the dropLists connected to the source list.
+     */
+    private _connectedDropLists;
+    get connectedDropLists(): BehaviorSubject<string[]>;
     private _editedNodeEntry;
     private _editedNodeEntryObs;
     get editedNodeEntry(): Observable<AjfFormBuilderNodeEntry | null>;
@@ -101,6 +123,14 @@ export declare class AjfFormBuilderService {
     private _stringIdentifierUpdates;
     private _saveNodeEntryEvent;
     private _deleteNodeEntryEvent;
+    /**
+     * Event fired when the position of a node in a tree changes.
+     */
+    private _moveNodeEntryEvent;
+    /**
+     * Subscribes to the moveNodeEntryEvent event emitter;
+     */
+    private _moveNodeSub;
     constructor();
     /**
      * Sets the current edited form
@@ -114,10 +144,16 @@ export declare class AjfFormBuilderService {
     editCondition(condition: AjfCondition): void;
     saveCurrentCondition(condition: string): void;
     cancelConditionEdit(): void;
-    insertNode(nodeType: AjfFormBuilderNodeTypeEntry, parent: AjfNode, parentNode: number, inContent?: boolean): void;
+    assignListId(node: AjfNode, empty?: boolean): string;
+    insertNode(nodeType: AjfFormBuilderNodeTypeEntry, parent: AjfNode, parentNode: number, inContent?: boolean, insertInIndex?: number): void;
     saveNodeEntry(properties: any): void;
     cancelNodeEntryEdit(): void;
     deleteNodeEntry(nodeEntry: AjfFormBuilderNodeEntry): void;
+    /**
+     * Triggers the moveNode event when a node is moved in the formbuilder.
+     * @param nodeEntry The node to be moved.
+     */
+    moveNodeEntry(nodeEntry: AjfFormBuilderNodeEntry, from: number, to: number): void;
     getCurrentForm(): Observable<AjfForm>;
     editChoicesOrigin(choicesOrigin: AjfChoicesOrigin<any>): void;
     createChoicesOrigin(): void;
@@ -128,6 +164,12 @@ export declare class AjfFormBuilderService {
         choices: any[];
     }): void;
     saveStringIdentifier(identifier: AjfFormStringIdentifier[]): void;
+    private _buildFormBuilderNodesTree;
+    /**
+     * Adds the id of a dropList to be connected with the FormBuilder source list.
+     * @param listId The id of the list to connect.
+     */
+    private _connectDropList;
     private _findMaxNodeId;
     private _initFormStreams;
     private _initChoicesOriginsStreams;
@@ -136,4 +178,14 @@ export declare class AjfFormBuilderService {
     private _initNodesStreams;
     private _initSaveNode;
     private _initDeleteNode;
+    /**
+     * Initializes the subscription to the moveNodeEntryEvent.
+     */
+    private _initMoveNode;
+    /**
+     * Updates the "id" and "parent" fields of a modified or rearranged list of nodes.
+     * @param containerId The id of the parent container of the list.
+     * @param nodesList The list of nodes to be updated.
+     */
+    private _updateNodesList;
 }
