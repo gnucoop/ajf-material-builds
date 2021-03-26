@@ -1812,6 +1812,7 @@
                 // TODO: @trik what's value?!?
                 var columnObj = reports.createWidget({
                     widgetType: 7,
+                    // value: myObj.columns[myObj.columns.length - 1],
                 });
                 myObj.content.push(columnObj);
                 _this._saveReportEvent.emit();
@@ -3685,7 +3686,8 @@
                     [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
                     [{ 'color': this.colors }, { 'background': this.colors }],
                     [{ 'font': this.fonts }], [{ 'align': this.align }],
-                    ['clean'],
+                    ['clean'], // remove formatting button
+                    // ['link', 'class', 'video']                         // link and image, video
                 ]
             };
             this.chartBorderColor = [];
@@ -4188,7 +4190,8 @@
                                 { 'color': _this.colors }, { 'background': _this.colors }
                             ],
                             [{ 'font': _this.fonts }], [{ 'align': _this.align }], ['formula'],
-                            ['clean'],
+                            ['clean'], // remove formatting button
+                            // ['link', 'class', 'video']                         // link and image, video
                         ]
                     };
                 }
@@ -4434,7 +4437,8 @@
                         { 'color': this.emptyArray.slice() }, { 'background': this.emptyArray.slice() }
                     ],
                     [{ 'font': this.fonts }], [{ 'align': this.emptyArray.slice() }],
-                    ['clean'],
+                    ['clean'], // remove formatting button
+                    // ['link', 'image', 'video']                         // link and image, video
                 ]
             };
             this.font = Quill.import('formats/font');

@@ -1,6 +1,6 @@
 {
   "name": "@ajf/material",
-  "version": "12.0.0-next.1-sha-252984847",
+  "version": "12.0.0-next.1-sha-c2390f2e9",
   "description": "",
   "repository": {
     "type": "git",
@@ -18,14 +18,14 @@
     "@angular/common": "^12.0.0-0 || ^13.0.0-0",
     "@angular/router": "^12.0.0-0 || ^13.0.0-0",
     "@angular/material": "^12.0.0-0 || ^13.0.0-0",
-    "@ajf/core": "12.0.0-next.1-sha-252984847",
+    "@ajf/core": "12.0.0-next.1-sha-c2390f2e9",
     "@ajf/icons": "^1.0.0",
     "flag-icon-css": "^3.5.0",
     "ngx-color-picker": "^10.0.0",
     "quill": "^1.3.7"
   },
   "dependencies": {
-    "tslib": "^2.0.0"
+    "tslib": "^2.1.0"
   },
   "sideEffects": false,
   "main": "./bundles/material.umd.js",

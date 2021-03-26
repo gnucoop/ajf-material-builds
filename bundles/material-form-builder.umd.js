@@ -963,12 +963,12 @@
                 this._choicesOriginsUpdates.next(function (choicesOrigins) {
                     var idx = choicesOrigins.indexOf(choicesOrigin);
                     if (idx > -1) {
-                        choicesOrigins = __spread(choicesOrigins.slice(0, idx), [
+                        choicesOrigins = __spreadArray(__spreadArray(__spreadArray([], __read(choicesOrigins.slice(0, idx))), [
                             choicesOrigin
-                        ], choicesOrigins.slice(idx + 1));
+                        ]), __read(choicesOrigins.slice(idx + 1)));
                     }
                     else {
-                        choicesOrigins = __spread(choicesOrigins, [choicesOrigin]);
+                        choicesOrigins = __spreadArray(__spreadArray([], __read(choicesOrigins)), [choicesOrigin]);
                     }
                     return choicesOrigins;
                 });
@@ -976,7 +976,7 @@
             this._editedChoicesOrigin.next(null);
         };
         AjfFormBuilderService.prototype.saveStringIdentifier = function (identifier) {
-            this._stringIdentifierUpdates.next(function () { return __spread(identifier); });
+            this._stringIdentifierUpdates.next(function () { return __spreadArray([], __read(identifier)); });
         };
         AjfFormBuilderService.prototype._buildFormBuilderNodesTree = function (nodes) {
             this._updateNodesList(0, nodes);
@@ -1003,7 +1003,7 @@
          */
         AjfFormBuilderService.prototype._connectDropList = function (listId) {
             var connectedLists = this._connectedDropLists.value.slice(0);
-            this._connectedDropLists.next(__spread(connectedLists, [listId]));
+            this._connectedDropLists.next(__spreadArray(__spreadArray([], __read(connectedLists)), [listId]));
         };
         AjfFormBuilderService.prototype._findMaxNodeId = function (nodes, _curMaxId) {
             var _this = this;
@@ -1657,30 +1657,30 @@
             this.separatorKeysCodes = [keycodes.ENTER, keycodes.COMMA];
             this._stringIdentifierSub = rxjs.Subscription.EMPTY;
             this._stringIdentifierSub = _service.stringIdentifier.subscribe(function (identifier) {
-                _this.dataSource.data = __spread(identifier);
+                _this.dataSource.data = __spreadArray([], __read(identifier));
             });
             this.fields$ = _service.flatFields.pipe(operators.map(function (fields) { return fields.sort(function (f1, f2) { return f1.name.localeCompare(f2.name); })
                 .map(function (f) { return f.name; })
                 .filter(function (f) { return f.length > 0; }); }), operators.shareReplay(1));
         }
         AjfFbStringIdentifierDialogComponent.prototype.addRow = function () {
-            this.dataSource.data = __spread(this.dataSource.data, [{ label: '', value: [] }]);
+            this.dataSource.data = __spreadArray(__spreadArray([], __read(this.dataSource.data)), [{ label: '', value: [] }]);
         };
         AjfFbStringIdentifierDialogComponent.prototype.deleteRow = function (rowIdx) {
-            this.dataSource.data = __spread(this.dataSource.data.slice(0, rowIdx), this.dataSource.data.slice(rowIdx + 1));
+            this.dataSource.data = __spreadArray(__spreadArray([], __read(this.dataSource.data.slice(0, rowIdx))), __read(this.dataSource.data.slice(rowIdx + 1)));
         };
         AjfFbStringIdentifierDialogComponent.prototype.addValue = function (row, evt, valueInput) {
             if (evt.value.length === 0) {
                 return;
             }
-            row.value = __spread(row.value, [evt.value]);
+            row.value = __spreadArray(__spreadArray([], __read(row.value)), [evt.value]);
             valueInput.value = '';
             this._cdr.markForCheck();
         };
         AjfFbStringIdentifierDialogComponent.prototype.removeValue = function (row, value) {
             var idx = row.value.indexOf(value);
             if (idx > -1) {
-                row.value = __spread(row.value.slice(0, idx), row.value.slice(idx + 1));
+                row.value = __spreadArray(__spreadArray([], __read(row.value.slice(0, idx))), __read(row.value.slice(idx + 1)));
                 this._cdr.markForCheck();
             }
         };
@@ -1691,7 +1691,7 @@
             this._service.saveStringIdentifier(this.dataSource.data);
         };
         AjfFbStringIdentifierDialogComponent.prototype.selected = function (row, evt) {
-            row.value = __spread(row.value, [evt.option.value]);
+            row.value = __spreadArray(__spreadArray([], __read(row.value)), [evt.option.value]);
             this._cdr.markForCheck();
         };
         return AjfFbStringIdentifierDialogComponent;
@@ -1941,7 +1941,7 @@
         '#4CAF50',
         '#3F51B5',
         '#FFC107',
-        '#795548',
+        '#795548', // BROWN
     ];
     var AjfFbNodeEntry = /** @class */ (function () {
         function AjfFbNodeEntry(_service) {

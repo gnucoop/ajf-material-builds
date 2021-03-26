@@ -68,7 +68,7 @@ export declare class AjfReportBuilderRendererWidget implements OnInit, OnDestroy
     getFlag(): string | null;
     getPercent(index: number): string;
     getImageUrl(): string | null;
-    getImageType(): AjfImageType.Image | AjfImageType;
+    getImageType(): AjfImageType;
     getHtmlText(): string;
     getCoordinate(): number[];
     getTileLayer(): string;

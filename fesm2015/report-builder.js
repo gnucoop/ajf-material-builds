@@ -1449,6 +1449,7 @@ class AjfReportBuilderService {
             // TODO: @trik what's value?!?
             const columnObj = createWidget({
                 widgetType: 7,
+                // value: myObj.columns[myObj.columns.length - 1],
             });
             myObj.content.push(columnObj);
             this._saveReportEvent.emit();
@@ -3289,7 +3290,8 @@ class AjfReportBuilderProperties {
                 [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
                 [{ 'color': this.colors }, { 'background': this.colors }],
                 [{ 'font': this.fonts }], [{ 'align': this.align }],
-                ['clean'],
+                ['clean'], // remove formatting button
+                // ['link', 'class', 'video']                         // link and image, video
             ]
         };
         this.chartBorderColor = [];
@@ -3778,7 +3780,8 @@ class AjfReportBuilderProperties {
                             { 'color': this.colors }, { 'background': this.colors }
                         ],
                         [{ 'font': this.fonts }], [{ 'align': this.align }], ['formula'],
-                        ['clean'],
+                        ['clean'], // remove formatting button
+                        // ['link', 'class', 'video']                         // link and image, video
                     ]
                 };
             }
@@ -4022,7 +4025,8 @@ class AjfQuillEditor {
                     { 'color': this.emptyArray.slice() }, { 'background': this.emptyArray.slice() }
                 ],
                 [{ 'font': this.fonts }], [{ 'align': this.emptyArray.slice() }],
-                ['clean'],
+                ['clean'], // remove formatting button
+                // ['link', 'image', 'video']                         // link and image, video
             ]
         };
         this.font = Quill.import('formats/font');
