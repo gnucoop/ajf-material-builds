@@ -322,7 +322,7 @@
     }(reports.AjfBaseWidgetComponent));
     AjfChartWidgetComponent.decorators = [
         { type: i0.Component, args: [{
-                    template: "<ajf-widget-export \n    [widgetType]=\"instance.widgetType\"  \n    [data]=\"instance.data\" \n    [enable]=\"instance.exportable\"\n    [overlay]=\"true\">\n  <ajf-chart\n      [chartType]=\"instance.chartType\"\n      [options]=\"instance.widget.options\"\n      [data]=\"instance.data\"\n      [instance]=\"instance\">\n  </ajf-chart>\n</ajf-widget-export>\n",
+                    template: "<ajf-widget-export \n    [widgetType]=\"instance.widgetType\"  \n    [data]=\"instance.data\" \n    [enable]=\"instance.exportable\">\n  <ajf-chart\n      [chartType]=\"instance.chartType\"\n      [options]=\"instance.widget.options\"\n      [data]=\"instance.data\"\n      [instance]=\"instance\">\n  </ajf-chart>\n</ajf-widget-export>\n",
                     changeDetection: i0.ChangeDetectionStrategy.OnPush,
                     encapsulation: i0.ViewEncapsulation.None,
                     styles: ["\n"]
