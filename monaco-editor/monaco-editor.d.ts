@@ -87,9 +87,9 @@ export declare class AjfMonacoEditor implements OnDestroy, AfterViewInit, OnChan
     monacoLibPath: string;
     set valueToCompare(v: string);
     set value(v: string);
-    valueChange: EventEmitter<any>;
-    valueToCompareChange: EventEmitter<any>;
-    init: EventEmitter<any>;
+    readonly valueChange: EventEmitter<any>;
+    readonly valueToCompareChange: EventEmitter<any>;
+    readonly init: EventEmitter<any>;
     editorContent: ElementRef;
     private _editor;
     get editor(): any;

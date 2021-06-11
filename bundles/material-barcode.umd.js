@@ -1,7 +1,7 @@
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@ajf/core/barcode'), require('@angular/core'), require('@angular/forms'), require('@ajf/core/common'), require('@angular/common'), require('@angular/material/button'), require('@angular/material/button-toggle'), require('@angular/material/icon'), require('@ngx-translate/core')) :
     typeof define === 'function' && define.amd ? define('@ajf/material/barcode', ['exports', '@ajf/core/barcode', '@angular/core', '@angular/forms', '@ajf/core/common', '@angular/common', '@angular/material/button', '@angular/material/button-toggle', '@angular/material/icon', '@ngx-translate/core'], factory) :
-    (global = global || self, factory((global.ajf = global.ajf || {}, global.ajf.material = global.ajf.material || {}, global.ajf.material.barcode = {}), global.ajf.core.barcode, global.ng.core, global.ng.forms, global.ajf.core.common, global.ng.common, global.ng.material.button, global.ng.material.buttonToggle, global.ng.material.icon, global.ngxTranslate.core));
+    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory((global.ajf = global.ajf || {}, global.ajf.material = global.ajf.material || {}, global.ajf.material.barcode = {}), global.ajf.core.barcode, global.ng.core, global.ng.forms, global.ajf.core.common, global.ng.common, global.ng.material.button, global.ng.material.buttonToggle, global.ng.material.icon, global.ngxTranslate.core));
 }(this, (function (exports, barcode, core, forms, common, common$1, button, buttonToggle, icon, core$1) { 'use strict';
 
     /*! *****************************************************************************
@@ -299,18 +299,21 @@
     function __importDefault(mod) {
         return (mod && mod.__esModule) ? mod : { default: mod };
     }
-    function __classPrivateFieldGet(receiver, privateMap) {
-        if (!privateMap.has(receiver)) {
-            throw new TypeError("attempted to get private field on non-instance");
-        }
-        return privateMap.get(receiver);
+    function __classPrivateFieldGet(receiver, state, kind, f) {
+        if (kind === "a" && !f)
+            throw new TypeError("Private accessor was defined without a getter");
+        if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver))
+            throw new TypeError("Cannot read private member from an object whose class did not declare it");
+        return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
     }
-    function __classPrivateFieldSet(receiver, privateMap, value) {
-        if (!privateMap.has(receiver)) {
-            throw new TypeError("attempted to set private field on non-instance");
-        }
-        privateMap.set(receiver, value);
-        return value;
+    function __classPrivateFieldSet(receiver, state, value, kind, f) {
+        if (kind === "m")
+            throw new TypeError("Private method is not writable");
+        if (kind === "a" && !f)
+            throw new TypeError("Private accessor was defined without a setter");
+        if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver))
+            throw new TypeError("Cannot write private member to an object whose class did not declare it");
+        return (kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value)), value;
     }
 
     var BARCODE_CONTROL_VALUE_ACCESSOR = {

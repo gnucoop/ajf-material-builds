@@ -1,10 +1,12 @@
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@ajf/core/common'), require('@ajf/core/map'), require('@ajf/core/table'), require('@ajf/core/text'), require('@ajf/material/image'), require('@ajf/material/monaco-editor'), require('@angular/cdk/drag-drop'), require('@angular/common'), require('@angular/core'), require('@angular/forms'), require('@angular/material/button'), require('@angular/material/button-toggle'), require('@angular/material/card'), require('@angular/material/dialog'), require('@angular/material/grid-list'), require('@angular/material/icon'), require('@angular/material/list'), require('@angular/material/select'), require('@angular/material/sidenav'), require('@angular/material/slide-toggle'), require('@angular/material/slider'), require('@angular/material/tabs'), require('@angular/material/toolbar'), require('@angular/material/tooltip'), require('@ngx-translate/core'), require('ngx-color-picker'), require('rxjs'), require('@ajf/core/forms'), require('@ajf/core/models'), require('@ajf/core/reports'), require('@ajf/core/utils'), require('rxjs/operators'), require('@ajf/core/image'), require('quill')) :
     typeof define === 'function' && define.amd ? define('@ajf/material/report-builder', ['exports', '@ajf/core/common', '@ajf/core/map', '@ajf/core/table', '@ajf/core/text', '@ajf/material/image', '@ajf/material/monaco-editor', '@angular/cdk/drag-drop', '@angular/common', '@angular/core', '@angular/forms', '@angular/material/button', '@angular/material/button-toggle', '@angular/material/card', '@angular/material/dialog', '@angular/material/grid-list', '@angular/material/icon', '@angular/material/list', '@angular/material/select', '@angular/material/sidenav', '@angular/material/slide-toggle', '@angular/material/slider', '@angular/material/tabs', '@angular/material/toolbar', '@angular/material/tooltip', '@ngx-translate/core', 'ngx-color-picker', 'rxjs', '@ajf/core/forms', '@ajf/core/models', '@ajf/core/reports', '@ajf/core/utils', 'rxjs/operators', '@ajf/core/image', 'quill'], factory) :
-    (global = global || self, factory((global.ajf = global.ajf || {}, global.ajf.material = global.ajf.material || {}, global.ajf.material.reportBuilder = {}), global.ajf.core.common, global.ajf.core.map, global.ajf.core.table, global.ajf.core.text, global.ajf.material.image, global.ajf.material.monacoEditor, global.ng.cdk.dragDrop, global.ng.common, global.ng.core, global.ng.forms, global.ng.material.button, global.ng.material.buttonToggle, global.ng.material.card, global.ng.material.dialog, global.ng.material.gridList, global.ng.material.icon, global.ng.material.list, global.ng.material.select, global.ng.material.sidenav, global.ng.material.slideToggle, global.ng.material.slider, global.ng.material.tabs, global.ng.material.toolbar, global.ng.material.tooltip, global.ngxTranslate.core, global.ngxColorPicker, global.rxjs, global.ajf.core.forms, global.ajf.core.models, global.ajf.core.reports, global.ajf.core.utils, global.rxjs.operators, global.ajf.core.image, global.quill));
-}(this, (function (exports, common, map, table, text, image, monacoEditor, dragDrop, common$1, core, forms, button, buttonToggle, card, dialog, gridList, icon, list, select, sidenav, slideToggle, slider, tabs, toolbar, tooltip, core$1, ngxColorPicker, rxjs, forms$1, models, reports, utils, operators, image$1, Quill) { 'use strict';
+    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory((global.ajf = global.ajf || {}, global.ajf.material = global.ajf.material || {}, global.ajf.material.reportBuilder = {}), global.ajf.core.common, global.ajf.core.map, global.ajf.core.table, global.ajf.core.text, global.ajf.material.image, global.ajf.material.monacoEditor, global.ng.cdk.dragDrop, global.ng.common, global.ng.core, global.ng.forms, global.ng.material.button, global.ng.material.buttonToggle, global.ng.material.card, global.ng.material.dialog, global.ng.material.gridList, global.ng.material.icon, global.ng.material.list, global.ng.material.select, global.ng.material.sidenav, global.ng.material.slideToggle, global.ng.material.slider, global.ng.material.tabs, global.ng.material.toolbar, global.ng.material.tooltip, global.ngxTranslate.core, global.ngxColorPicker, global.rxjs, global.ajf.core.forms, global.ajf.core.models, global.ajf.core.reports, global.ajf.core.utils, global.rxjs.operators, global.ajf.core.image, global.quill));
+}(this, (function (exports, common, map, table, text, image$1, monacoEditor, dragDrop, common$1, core, forms$1, button, buttonToggle, card, dialog, gridList, icon, list, select, sidenav, slideToggle, slider, tabs, toolbar, tooltip, core$1, ngxColorPicker, rxjs, forms, models, reports, utils, operators, image, Quill) { 'use strict';
 
-    Quill = Quill && Quill.hasOwnProperty('default') ? Quill['default'] : Quill;
+    function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+
+    var Quill__default = /*#__PURE__*/_interopDefaultLegacy(Quill);
 
     /*! *****************************************************************************
     Copyright (c) Microsoft Corporation.
@@ -301,18 +303,21 @@
     function __importDefault(mod) {
         return (mod && mod.__esModule) ? mod : { default: mod };
     }
-    function __classPrivateFieldGet(receiver, privateMap) {
-        if (!privateMap.has(receiver)) {
-            throw new TypeError("attempted to get private field on non-instance");
-        }
-        return privateMap.get(receiver);
+    function __classPrivateFieldGet(receiver, state, kind, f) {
+        if (kind === "a" && !f)
+            throw new TypeError("Private accessor was defined without a getter");
+        if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver))
+            throw new TypeError("Cannot read private member from an object whose class did not declare it");
+        return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
     }
-    function __classPrivateFieldSet(receiver, privateMap, value) {
-        if (!privateMap.has(receiver)) {
-            throw new TypeError("attempted to set private field on non-instance");
-        }
-        privateMap.set(receiver, value);
-        return value;
+    function __classPrivateFieldSet(receiver, state, value, kind, f) {
+        if (kind === "m")
+            throw new TypeError("Private method is not writable");
+        if (kind === "a" && !f)
+            throw new TypeError("Private accessor was defined without a setter");
+        if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver))
+            throw new TypeError("Cannot write private member to an object whose class did not declare it");
+        return (kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value)), value;
     }
 
     /**
@@ -653,10 +658,10 @@
         AjfReportBuilderService.prototype.filterNodes = function (nodes) {
             for (var i = 0; i < nodes.length; i++) {
                 var node = nodes[i];
-                if (node.nodeType === forms$1.AjfNodeType.AjfNodeGroup || node.nodeType === forms$1.AjfNodeType.AjfSlide ||
-                    node.nodeType === forms$1.AjfNodeType.AjfRepeatingSlide ||
-                    (node.nodeType === forms$1.AjfNodeType.AjfField &&
-                        node.fieldType === forms$1.AjfFieldType.String)) {
+                if (node.nodeType === forms.AjfNodeType.AjfNodeGroup || node.nodeType === forms.AjfNodeType.AjfSlide ||
+                    node.nodeType === forms.AjfNodeType.AjfRepeatingSlide ||
+                    (node.nodeType === forms.AjfNodeType.AjfField &&
+                        node.fieldType === forms.AjfFieldType.String)) {
                     nodes.splice(i, 1);
                     i--;
                 }
@@ -671,12 +676,12 @@
                 }
             });
         };
-        AjfReportBuilderService.prototype.fillFormsVariables = function (forms) {
+        AjfReportBuilderService.prototype.fillFormsVariables = function (forms$1) {
             var variables = [];
-            for (var i = 0; i < forms.length; i++) {
+            for (var i = 0; i < forms$1.length; i++) {
                 variables[i] = { nodes: [], labels: [], names: [], types: [] };
-                if (forms[i].nodes != null && forms[i].nodes.length > 0) {
-                    variables[i].nodes = this.filterNodes(forms$1.flattenNodes(forms[i].nodes));
+                if (forms$1[i].nodes != null && forms$1[i].nodes.length > 0) {
+                    variables[i].nodes = this.filterNodes(forms.flattenNodes(forms$1[i].nodes));
                 }
                 variables[i].labels = this.extractLabelsNodes(variables[i].nodes);
                 variables[i].names = this.extractNamesNodes(variables[i].nodes);
@@ -2946,7 +2951,7 @@
                     _this.currentWidget = x;
                     if (_this.currentWidget.widgetType == 2) {
                         var myObj = _this.currentWidget;
-                        if (myObj.imageType == image$1.AjfImageType.Flag) {
+                        if (myObj.imageType == image.AjfImageType.Flag) {
                             _this.formula = (myObj.flag) ? myObj.flag.formula : '';
                         }
                         else {
@@ -3024,25 +3029,25 @@
         };
         AjfReportBuilderFormsAnalyzerDialog.prototype._fieldVarType = function (fieldType) {
             switch (fieldType) {
-                case forms$1.AjfFieldType.Boolean:
+                case forms.AjfFieldType.Boolean:
                     return 'boolean';
-                case forms$1.AjfFieldType.Date:
-                case forms$1.AjfFieldType.DateInput:
-                case forms$1.AjfFieldType.Time:
+                case forms.AjfFieldType.Date:
+                case forms.AjfFieldType.DateInput:
+                case forms.AjfFieldType.Time:
                     return 'Date';
-                case forms$1.AjfFieldType.Empty:
+                case forms.AjfFieldType.Empty:
                     return 'void';
-                case forms$1.AjfFieldType.Formula:
+                case forms.AjfFieldType.Formula:
                     return 'number';
-                case forms$1.AjfFieldType.MultipleChoice:
-                case forms$1.AjfFieldType.SingleChoice:
+                case forms.AjfFieldType.MultipleChoice:
+                case forms.AjfFieldType.SingleChoice:
                     return 'any';
-                case forms$1.AjfFieldType.Number:
+                case forms.AjfFieldType.Number:
                     return 'number';
-                case forms$1.AjfFieldType.Table:
+                case forms.AjfFieldType.Table:
                     return 'Array';
-                case forms$1.AjfFieldType.String:
-                case forms$1.AjfFieldType.Text:
+                case forms.AjfFieldType.String:
+                case forms.AjfFieldType.Text:
                     return 'string';
             }
             return null;
@@ -3183,7 +3188,7 @@
     AjfReportBuilderFormsAnalyzerDialog.ctorParameters = function () { return [
         { type: AjfReportBuilderService },
         { type: dialog.MatDialogRef },
-        { type: forms$1.AjfValidationService }
+        { type: forms.AjfValidationService }
     ]; };
     AjfReportBuilderFormsAnalyzerDialog.propDecorators = {
         formula: [{ type: core.Input }],
@@ -4441,7 +4446,7 @@
                     // ['link', 'image', 'video']                         // link and image, video
                 ]
             };
-            this.font = Quill.import('formats/font');
+            this.font = Quill__default['default'].import('formats/font');
             this.editorCreated = new core.EventEmitter();
             this.contentChanged = new core.EventEmitter();
             this.selectionChanged = new core.EventEmitter();
@@ -4520,14 +4525,14 @@
             var _this = this;
             var toolbarElem = this._elementRef.nativeElement.querySelector('[ajf-quill-editor-toolbar]');
             var modules = this.modules || this.defaultModules;
-            Quill.register(this.font, true);
+            Quill__default['default'].register(this.font, true);
             if (toolbarElem) {
                 modules['toolbar'] = toolbarElem;
                 modules['formula'] = true;
             }
             this._elementRef.nativeElement.insertAdjacentHTML('beforeend', '<div quill-editor-element></div>');
             this.editorElem = this._elementRef.nativeElement.querySelector('[quill-editor-element]');
-            this.quillEditor = new Quill(this.editorElem, {
+            this.quillEditor = new Quill__default['default'](this.editorElem, {
                 modules: modules,
                 placeholder: this.placeholder || 'Insert text here ...',
                 readOnly: this.readOnly || false,
@@ -4619,8 +4624,8 @@
                 this.quillEditor.enable(!changes['readOnly'].currentValue);
             }
             if (changes['modules'] && this.quillEditor) {
-                Quill.register(this.font, true);
-                this.quillEditor = new Quill(this.editorElem, {
+                Quill__default['default'].register(this.font, true);
+                this.quillEditor = new Quill__default['default'](this.editorElem, {
                     modules: changes['modules']['currentValue'],
                     placeholder: this.placeholder || 'Insert text here ...',
                     readOnly: this.readOnly || false,
@@ -4646,8 +4651,8 @@
                     selector: 'ajf-quill-editor',
                     template: "\n    <ng-content select=\"[ajf-quill-editor-toolbar]\"></ng-content>\n  ",
                     providers: [
-                        { provide: forms.NG_VALUE_ACCESSOR, useExisting: core.forwardRef(function () { return AjfQuillEditor; }), multi: true },
-                        { provide: forms.NG_VALIDATORS, useExisting: core.forwardRef(function () { return AjfQuillEditor; }), multi: true }
+                        { provide: forms$1.NG_VALUE_ACCESSOR, useExisting: core.forwardRef(function () { return AjfQuillEditor; }), multi: true },
+                        { provide: forms$1.NG_VALIDATORS, useExisting: core.forwardRef(function () { return AjfQuillEditor; }), multi: true }
                     ],
                     encapsulation: core.ViewEncapsulation.None,
                     changeDetection: core.ChangeDetectionStrategy.OnPush,
@@ -4779,7 +4784,7 @@
             return models.evaluateExpression(myObj.url.formula) || defVal;
         };
         AjfReportBuilderRendererWidget.prototype.getImageType = function () {
-            return this.widget != null ? this.widget.imageType : image$1.AjfImageType.Image;
+            return this.widget != null ? this.widget.imageType : image.AjfImageType.Image;
         };
         AjfReportBuilderRendererWidget.prototype.getHtmlText = function () {
             var myObj = this.widget;
@@ -4901,7 +4906,7 @@
     AjfReportBuilderRendererWidget.decorators = [
         { type: core.Component, args: [{
                     selector: 'ajf-report-builder-renderer-widget',
-                    template: "<div class=\"ajf-container\"\n    [ngSwitch]=\"widget?.widgetType\"\n    [ngClass]=\"{'ajf-drag-mode': (onDragged || fixedZoom)}\">\n  <div *ngSwitchCase=\"widgetTypes.Layout\" class=\"ajf-row ajf-layout\"\n    [applyStyles]=\"widget.styles\">\n      <div class=\"ajf-columns\">\n        <ng-template ngFor let-clm [ngForOf]=\"getColumnContent()\" let-idx=\"index\">\n          <div class=\"ajf-column\"\n            [ngClass]=\"{'ajf-fixed': layoutWidget.columns[idx] == -1}\"\n            [style.width]=getPercent(idx)\n            [applyStyles]=\"layoutWidget.content[idx].styles\">\n            <ajf-report-builder-widgets-row-buttons\n              [from]=\"'layout'\"\n              [fromWidget]=\"widget\"\n              [widget]=\"clm\"\n              [position]=\"idx\"\n              (onDragStart)=\"onDragStartHandler();\"\n              (onDragEnd)=\"onDragEndHandler();\"\n              [child]=\"true\">\n            </ajf-report-builder-widgets-row-buttons>\n            <ajf-column\n              [column]=\"clm\"\n              [applyStyles]=\"widget.styles\">\n            </ajf-column>\n            <ng-template [ngIf]=\"onDragged === true\">\n              <div cdkDropList\n                [cdkDropListEnterPredicate]=\"canDropPredicate\"\n                [style.display]=\"onDragged ? 'block' : 'none'\"\n                (cdkDropListDropped)=\"addToList($event, clm)\"\n                class=\"ajf-column-drop-zone\"\n                (dragover)=\"layoutShow = true;\"\n                (dragleave)=\"layoutShow = false;\">\n              </div>\n            </ng-template>\n          </div>\n        </ng-template>\n      </div>\n  </div>\n  <div *ngSwitchCase=\"widgetTypes.Image\" class=\"ajf-row\">\n    <ajf-image\n      [applyStyles]=\"widget.styles\"\n      [type]=\"getImageType()\"\n      [imageUrl]=\"getImageUrl()\"\n      [icon]=\"getIcon()\"\n      [flag]=\"getFlag()\">\n    </ajf-image>\n  </div>\n  <div *ngSwitchCase=\"widgetTypes.Text\" class=\"ajf-row ajf-text\">\n    <ajf-text [htmlText]=\"getHtmlText() | translate\"  [applyStyles]=\"widget.styles\"></ajf-text>\n  </div>\n  <div *ngSwitchCase=\"widgetTypes.Chart\" class=\"ajf-row\" [applyStyles]=\"widget.styles\">\n  </div>\n  <!-- <div *ngSwitchCase=\"widgetTypes.Table\" class=\"ajf-row\" [applyStyles]=\"widget.styles\">\n    <ajf-table *ngIf=\"getTableContent|async as tc\" [data]=\"tc!\" ></ajf-table>\n  </div> -->\n  <div *ngSwitchCase=\"widgetTypes.Map\" class=\"ajf-row\" [applyStyles]=\"widget.styles\">\n    <ajf-map [coordinate]=\"getCoordinate()\" [tileLayer]=\"getTileLayer()\" [attribution]=\"getAttribution()\">\n    </ajf-map>\n  </div>\n</div>\n",
+                    template: "<div class=\"ajf-container\"\n    [ngSwitch]=\"widget?.widgetType\"\n    [ngClass]=\"{'ajf-drag-mode': (onDragged || fixedZoom)}\">\n  <div *ngSwitchCase=\"widgetTypes.Layout\" class=\"ajf-row ajf-layout\"\n    [applyStyles]=\"widget.styles\">\n      <div class=\"ajf-columns\">\n        <ng-template ngFor let-clm [ngForOf]=\"getColumnContent()\" let-idx=\"index\">\n          <div class=\"ajf-column\"\n            [ngClass]=\"{'ajf-fixed': layoutWidget.columns[idx] == -1}\"\n            [style.width]=getPercent(idx)\n            [applyStyles]=\"layoutWidget.content[idx].styles\">\n            <ajf-report-builder-widgets-row-buttons\n              [from]=\"'layout'\"\n              [fromWidget]=\"widget\"\n              [widget]=\"clm\"\n              [position]=\"idx\"\n              (onDragStart)=\"onDragStartHandler();\"\n              (onDragEnd)=\"onDragEndHandler();\"\n              [child]=\"true\">\n            </ajf-report-builder-widgets-row-buttons>\n            <!-- temporarily disabled for ivy partial build -->\n            <!-- <ajf-column\n              [column]=\"clm\"\n              [applyStyles]=\"widget.styles\">\n            </ajf-column> -->\n            <ng-template [ngIf]=\"onDragged === true\">\n              <div cdkDropList\n                [cdkDropListEnterPredicate]=\"canDropPredicate\"\n                [style.display]=\"onDragged ? 'block' : 'none'\"\n                (cdkDropListDropped)=\"addToList($event, clm)\"\n                class=\"ajf-column-drop-zone\"\n                (dragover)=\"layoutShow = true;\"\n                (dragleave)=\"layoutShow = false;\">\n              </div>\n            </ng-template>\n          </div>\n        </ng-template>\n      </div>\n  </div>\n  <div *ngSwitchCase=\"widgetTypes.Image\" class=\"ajf-row\">\n    <ajf-image\n      [applyStyles]=\"widget.styles\"\n      [type]=\"getImageType()\"\n      [imageUrl]=\"getImageUrl()\"\n      [icon]=\"getIcon()\"\n      [flag]=\"getFlag()\">\n    </ajf-image>\n  </div>\n  <div *ngSwitchCase=\"widgetTypes.Text\" class=\"ajf-row ajf-text\">\n    <ajf-text [htmlText]=\"getHtmlText() | translate\"  [applyStyles]=\"widget.styles\"></ajf-text>\n  </div>\n  <div *ngSwitchCase=\"widgetTypes.Chart\" class=\"ajf-row\" [applyStyles]=\"widget.styles\">\n  </div>\n  <!-- <div *ngSwitchCase=\"widgetTypes.Table\" class=\"ajf-row\" [applyStyles]=\"widget.styles\">\n    <ajf-table *ngIf=\"getTableContent|async as tc\" [data]=\"tc!\" ></ajf-table>\n  </div> -->\n  <div *ngSwitchCase=\"widgetTypes.Map\" class=\"ajf-row\" [applyStyles]=\"widget.styles\">\n    <ajf-map [coordinate]=\"getCoordinate()\" [tileLayer]=\"getTileLayer()\" [attribution]=\"getAttribution()\">\n    </ajf-map>\n  </div>\n</div>\n",
                     encapsulation: core.ViewEncapsulation.None,
                     changeDetection: core.ChangeDetectionStrategy.OnPush,
                     styles: ["ajf-report-builder-renderer-widget .ajf-drag-mode .ajf-layout{border:none !important}ajf-report-builder-renderer-widget .ajf-drag-mode .ajf-row{border:9px solid blue;border-radius:36px;height:100%}ajf-report-builder-renderer-widget .ajf-drag-mode .ajf-row .ajf-columns{border:9px solid red !important;height:100%;margin-bottom:20px;padding-bottom:20px;padding-top:20px}ajf-report-builder-renderer-widget .ajf-drag-mode .ajf-row .ajf-columns .ajf-fixed{border:9px solid #ff0 !important}ajf-report-builder-renderer-widget .ajf-drag-mode .ajf-row .ajf-columns .ajf-column{border:9px solid #9acd32;margin-left:10px;margin-right:10px;border-radius:36px;height:100%}ajf-report-builder-renderer-widget .ajf-drag-mode .ajf-row .ajf-columns .ajf-column ajf-report-builder-widgets-row-buttons{visibility:visible !important;display:block !important}ajf-report-builder-renderer-widget .ajf-drag-mode .ajf-row .ajf-columns .ajf-column .ajf-container{min-height:50px}ajf-report-builder-renderer-widget .ajf-container{height:inherit;display:block;min-height:50px}ajf-report-builder-renderer-widget .ajf-row-button{width:100%}ajf-report-builder-renderer-widget .ajf-container:hover{border:3px dotted blue;border-radius:16px;opacity:1;min-height:50px}ajf-report-builder-renderer-widget .ajf-on-dragged{border:23px dotted blue}ajf-report-builder-renderer-widget .ajf-selected{background-color:red}ajf-report-builder-renderer-widget .ajf-show,ajf-report-builder-renderer-widget .ajf-on-drag-over{border:33px dotted blue;opacity:1 !important;z-index:10}ajf-report-builder-renderer-widget .ajf-no-obj{max-width:200px;max-height:200px;width:auto;height:auto}ajf-report-builder-renderer-widget .ajf-row{display:flex;flex-direction:column;height:100%}ajf-report-builder-renderer-widget .ajf-columns{display:flex;flex-direction:row}ajf-report-builder-renderer-widget .ajf-column{min-height:50px}ajf-report-builder-renderer-widget .ajf-column ajf-report-builder-widgets-row-buttons{visibility:hidden !important;display:none !important}ajf-report-builder-renderer-widget .ajf-column:hover{border:3px dashed #9acd32;border-radius:16px}ajf-report-builder-renderer-widget .ajf-column:hover ajf-report-builder-widgets-row-buttons{visibility:visible !important;display:block !important}ajf-report-builder-renderer-widget .ajf-column:hover .ajf-container{min-height:50px}ajf-report-builder-renderer-widget .ajf-fixed:hover{border:3px dashed red !important}ajf-report-builder-renderer-widget .ajf-fixed{min-width:100px}ajf-report-builder-renderer-widget .ajf-column-drop-zone{margin:10%;height:50px;background-color:#fff;border:9px solid rgba(66,134,244,.6);border-radius:16px}ajf-report-builder-renderer-widget .ajf-text{min-height:20px}ajf-report-builder-renderer-widget ajf-map{z-index:30}ajf-report-builder-renderer-widget ajf-column{width:100%}ajf-report-builder-renderer-widget button{width:100%}ajf-report-builder-renderer-widget mat-list{height:100%;padding:0}ajf-report-builder-renderer-widget .ajf-ui.ajf-fluid.ajf-image{max-width:100%;height:auto}ajf-report-builder-renderer-widget .ajf-column-right{float:right;width:33%;background-color:#8b4513}ajf-report-builder-renderer-widget .ajf-column-center{display:inline-block;width:33%;background-color:olive}\n"]
@@ -5706,9 +5711,9 @@
     AjfReportBuilderModule.decorators = [
         { type: core.NgModule, args: [{
                     imports: [
-                        common.AjfCommonModule, image.AjfImageModule, map.AjfMapModule, monacoEditor.AjfMonacoEditorModule,
+                        common.AjfCommonModule, image$1.AjfImageModule, map.AjfMapModule, monacoEditor.AjfMonacoEditorModule,
                         table.AjfTableModule, text.AjfTextModule, ngxColorPicker.ColorPickerModule, common$1.CommonModule,
-                        dragDrop.DragDropModule, forms.FormsModule, button.MatButtonModule, buttonToggle.MatButtonToggleModule,
+                        dragDrop.DragDropModule, forms$1.FormsModule, button.MatButtonModule, buttonToggle.MatButtonToggleModule,
                         card.MatCardModule, dialog.MatDialogModule, gridList.MatGridListModule, icon.MatIconModule,
                         list.MatListModule, select.MatSelectModule, sidenav.MatSidenavModule, slideToggle.MatSlideToggleModule,
                         slider.MatSliderModule, tabs.MatTabsModule, toolbar.MatToolbarModule, tooltip.MatTooltipModule,

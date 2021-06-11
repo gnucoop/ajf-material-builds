@@ -1,5 +1,7 @@
-import { AjfBaseWidgetComponent, AjfReportRenderer as AjfReportRenderer$1, AjfWidgetService as AjfWidgetService$1, AjfWidgetType, AjfReportWidget as AjfReportWidget$1, AjfReportsModule as AjfReportsModule$1 } from '@ajf/core/reports';
-import { Component, ChangeDetectionStrategy, ViewEncapsulation, ChangeDetectorRef, ElementRef, ɵɵdefineInjectable, Injectable, ComponentFactoryResolver, Renderer2, NgModule } from '@angular/core';
+import * as i1 from '@ajf/core/reports';
+import { AjfBaseWidgetComponent, AjfReportRenderer as AjfReportRenderer$1, AjfWidgetService as AjfWidgetService$1, AjfReportWidget as AjfReportWidget$1, AjfWidgetType, AjfReportsModule as AjfReportsModule$1, AJF_DEFAULT_WIDGETS } from '@ajf/core/reports';
+import * as i0 from '@angular/core';
+import { Component, ChangeDetectionStrategy, ViewEncapsulation, ChangeDetectorRef, ElementRef, Injectable, ComponentFactoryResolver, Renderer2, NgModule } from '@angular/core';
 import { AjfImageType } from '@ajf/core/image';
 import { BehaviorSubject } from 'rxjs';
 import { AjfChartModule } from '@ajf/core/chart';
@@ -469,26 +471,11 @@ AjfTextWidgetComponent.ctorParameters = () => [
  *
  */
 class AjfWidgetService extends AjfWidgetService$1 {
-    constructor() {
-        super();
-        this.componentsMap[AjfWidgetType.Layout] = { component: AjfLayoutWidgetComponent };
-        this.componentsMap[AjfWidgetType.PageBreak] = { component: AjfPageBreakWidgetComponent };
-        this.componentsMap[AjfWidgetType.Image] = { component: AjfImageWidgetComponent };
-        this.componentsMap[AjfWidgetType.Text] = { component: AjfTextWidgetComponent };
-        this.componentsMap[AjfWidgetType.Chart] = { component: AjfChartWidgetComponent };
-        this.componentsMap[AjfWidgetType.Table] = { component: AjfTableWidgetComponent };
-        this.componentsMap[AjfWidgetType.DynamicTable] = { component: AjfTableWidgetComponent };
-        this.componentsMap[AjfWidgetType.Map] = { component: AjfMapWidgetComponent };
-        this.componentsMap[AjfWidgetType.Column] = { component: AjfColumnWidgetComponent };
-        this.componentsMap[AjfWidgetType.Formula] = { component: AjfFormulaWidgetComponent };
-        this.componentsMap[AjfWidgetType.ImageContainer] = { component: AjfImageContainerWidgetComponent };
-    }
 }
-AjfWidgetService.ɵprov = ɵɵdefineInjectable({ factory: function AjfWidgetService_Factory() { return new AjfWidgetService(); }, token: AjfWidgetService, providedIn: "root" });
+AjfWidgetService.ɵprov = i0.ɵɵdefineInjectable({ factory: function AjfWidgetService_Factory() { return new AjfWidgetService(i0.ɵɵinject(i1.AJF_DEFAULT_WIDGETS, 8)); }, token: AjfWidgetService, providedIn: "root" });
 AjfWidgetService.decorators = [
     { type: Injectable, args: [{ providedIn: 'root' },] }
 ];
-AjfWidgetService.ctorParameters = () => [];
 
 /**
  * @license
@@ -553,6 +540,41 @@ AjfReportWidget.ctorParameters = () => [
  * If not, see http://www.gnu.org/licenses/.
  *
  */
+const defaultWidgets = {};
+defaultWidgets[AjfWidgetType.Layout] = {
+    component: AjfLayoutWidgetComponent
+};
+defaultWidgets[AjfWidgetType.PageBreak] = {
+    component: AjfPageBreakWidgetComponent
+};
+defaultWidgets[AjfWidgetType.Image] = {
+    component: AjfImageWidgetComponent
+};
+defaultWidgets[AjfWidgetType.Text] = {
+    component: AjfTextWidgetComponent
+};
+defaultWidgets[AjfWidgetType.Chart] = {
+    component: AjfChartWidgetComponent
+};
+defaultWidgets[AjfWidgetType.Table] = {
+    component: AjfTableWidgetComponent
+};
+defaultWidgets[AjfWidgetType.DynamicTable] = {
+    component: AjfTableWidgetComponent
+};
+defaultWidgets[AjfWidgetType.Map] = {
+    component: AjfMapWidgetComponent
+};
+defaultWidgets[AjfWidgetType.Column] = {
+    component: AjfColumnWidgetComponent
+};
+defaultWidgets[AjfWidgetType.Formula] = {
+    component: AjfFormulaWidgetComponent
+};
+defaultWidgets[AjfWidgetType.ImageContainer] = {
+    component: AjfImageContainerWidgetComponent
+};
+const ɵ0 = defaultWidgets;
 class AjfReportsModule {
 }
 AjfReportsModule.decorators = [
@@ -587,6 +609,9 @@ AjfReportsModule.decorators = [
                     AjfReportRenderer,
                     AjfReportWidget,
                 ],
+                providers: [
+                    { provide: AJF_DEFAULT_WIDGETS, useValue: ɵ0 },
+                ],
             },] }
 ];
 
@@ -616,5 +641,5 @@ AjfReportsModule.decorators = [
  * Generated bundle index. Do not edit.
  */
 
-export { AjfChartWidgetComponent, AjfColumnWidgetComponent, AjfFormulaWidgetComponent, AjfImageContainerWidgetComponent, AjfImageWidgetComponent, AjfLayoutWidgetComponent, AjfMapWidgetComponent, AjfPageBreakWidgetComponent, AjfReportRenderer, AjfReportWidget, AjfReportsModule, AjfTableWidgetComponent, AjfTextWidgetComponent, AjfWidgetService };
+export { AjfChartWidgetComponent, AjfColumnWidgetComponent, AjfFormulaWidgetComponent, AjfImageContainerWidgetComponent, AjfImageWidgetComponent, AjfLayoutWidgetComponent, AjfMapWidgetComponent, AjfPageBreakWidgetComponent, AjfReportRenderer, AjfReportWidget, AjfReportsModule, AjfTableWidgetComponent, AjfTextWidgetComponent, AjfWidgetService, ɵ0 };
 //# sourceMappingURL=reports.js.map

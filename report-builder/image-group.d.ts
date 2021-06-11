@@ -58,7 +58,7 @@ export declare class AjfReportBuilderImageGroup {
      *
      * @memberof QuillEditorComponent
      */
-    formulaClick: EventEmitter<any>;
+    readonly formulaClick: EventEmitter<any>;
     constructor(_service: AjfReportBuilderService);
     setIcon(fontSet: string, fontIcon: string): void;
     setFlag(value: string): void;

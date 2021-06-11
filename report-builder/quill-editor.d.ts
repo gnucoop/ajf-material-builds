@@ -72,15 +72,15 @@ export declare class AjfQuillEditor implements AfterViewInit, ControlValueAccess
     minLength: number;
     formats: string[];
     initHTML: string;
-    editorCreated: EventEmitter<any>;
-    contentChanged: EventEmitter<any>;
-    selectionChanged: EventEmitter<any>;
+    readonly editorCreated: EventEmitter<any>;
+    readonly contentChanged: EventEmitter<any>;
+    readonly selectionChanged: EventEmitter<any>;
     /**
      * this event is fired when the user click on formula button on quill editor rool barƒ
      *
      * @memberof QuillEditorComponent
      */
-    formulaClick: EventEmitter<any>;
+    readonly formulaClick: EventEmitter<any>;
     onModelChange: Function;
     onModelTouched: Function;
     private _formulas;

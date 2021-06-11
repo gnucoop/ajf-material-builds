@@ -1,5 +1,6 @@
 import { AjfBaseFieldComponent, AjfFormRendererService, AJF_WARNING_ALERT_SERVICE, AjfDateValueStringPipe, AjfInputFieldComponent as AjfInputFieldComponent$1, AjfFieldWithChoicesComponent, AJF_SEARCH_ALERT_THRESHOLD, AjfTableFieldComponent as AjfTableFieldComponent$1, AjfVideoUrlFieldComponent as AjfVideoUrlFieldComponent$1, AjfFieldService as AjfFieldService$1, AjfFieldType, AjfReadOnlyFieldComponent, AjfReadOnlyTableFieldComponent, AjfReadOnlySelectFieldComponent, AjfFileFieldComponent, AjfReadOnlyFileFieldComponent, AjfImageFieldComponent, AjfReadOnlyImageFieldComponent, AjfReadOnlyVideoUrlFieldComponent, AjfFormField as AjfFormField$1, AjfFormRenderer as AjfFormRenderer$1, AjfFormsModule as AjfFormsModule$1 } from '@ajf/core/forms';
-import { Component, ChangeDetectionStrategy, ViewEncapsulation, Injectable, ChangeDetectorRef, Inject, ViewChild, Optional, ɵɵdefineInjectable, ComponentFactoryResolver, Input, NgModule } from '@angular/core';
+import * as i0 from '@angular/core';
+import { Component, ChangeDetectionStrategy, ViewEncapsulation, Injectable, ChangeDetectorRef, Inject, ViewChild, Optional, ComponentFactoryResolver, Input, NgModule } from '@angular/core';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { map } from 'rxjs/operators';
 import { MatInput, MatInputModule } from '@angular/material/input';
@@ -688,7 +689,7 @@ class AjfFieldService extends AjfFieldService$1 {
         };
     }
 }
-AjfFieldService.ɵprov = ɵɵdefineInjectable({ factory: function AjfFieldService_Factory() { return new AjfFieldService(); }, token: AjfFieldService, providedIn: "root" });
+AjfFieldService.ɵprov = i0.ɵɵdefineInjectable({ factory: function AjfFieldService_Factory() { return new AjfFieldService(); }, token: AjfFieldService, providedIn: "root" });
 AjfFieldService.decorators = [
     { type: Injectable, args: [{ providedIn: 'root' },] }
 ];

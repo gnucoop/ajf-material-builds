@@ -21,5 +21,4 @@
  */
 import { AjfWidgetService as CoreService } from '@ajf/core/reports';
 export declare class AjfWidgetService extends CoreService {
-    constructor();
 }
