@@ -19,10 +19,22 @@
  * If not, see http://www.gnu.org/licenses/.
  *
  */
-import { AjfReportWidget as CoreComponent, AjfWidgetComponentsMap } from '@ajf/core/reports';
-import { ComponentFactoryResolver, Renderer2 } from '@angular/core';
-import { AjfWidgetService } from './widget-service';
+import { AjfBaseWidgetComponent, AjfColumnWidgetInstance, AjfLayoutWidgetInstance, AjfReportWidget as CoreComponent, AjfWidgetComponentsMap, AjfWidgetService as CoreService } from '@ajf/core/reports';
+import { AfterContentChecked, ChangeDetectorRef, ComponentFactoryResolver, ElementRef, Renderer2 } from '@angular/core';
+import { Observable } from 'rxjs';
+export declare class AjfWidgetService extends CoreService {
+    constructor();
+}
 export declare class AjfReportWidget extends CoreComponent {
     readonly widgetsMap: AjfWidgetComponentsMap;
     constructor(cfr: ComponentFactoryResolver, renderer: Renderer2, widgetService: AjfWidgetService);
+}
+export declare class AjfColumnWidgetComponent extends AjfBaseWidgetComponent<AjfColumnWidgetInstance> {
+    constructor(cdr: ChangeDetectorRef, el: ElementRef);
+}
+export declare class AjfLayoutWidgetComponent extends AjfBaseWidgetComponent<AjfLayoutWidgetInstance> implements AfterContentChecked {
+    private _allcolumnsRendered$;
+    readonly allcolumnsRendered$: Observable<boolean>;
+    constructor(cdr: ChangeDetectorRef, el: ElementRef);
+    ngAfterContentChecked(): void;
 }

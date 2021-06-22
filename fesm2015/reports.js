@@ -1,9 +1,7 @@
-import * as i1 from '@ajf/core/reports';
-import { AjfBaseWidgetComponent, AjfReportRenderer as AjfReportRenderer$1, AjfWidgetService as AjfWidgetService$1, AjfReportWidget as AjfReportWidget$1, AjfWidgetType, AjfReportsModule as AjfReportsModule$1, AJF_DEFAULT_WIDGETS } from '@ajf/core/reports';
+import { AjfBaseWidgetComponent, AjfReportRenderer as AjfReportRenderer$1, AjfWidgetType, AjfWidgetService as AjfWidgetService$1, AjfReportWidget as AjfReportWidget$1, AjfReportsModule as AjfReportsModule$1 } from '@ajf/core/reports';
 import * as i0 from '@angular/core';
 import { Component, ChangeDetectionStrategy, ViewEncapsulation, ChangeDetectorRef, ElementRef, Injectable, ComponentFactoryResolver, Renderer2, NgModule } from '@angular/core';
 import { AjfImageType } from '@ajf/core/image';
-import { BehaviorSubject } from 'rxjs';
 import { AjfChartModule } from '@ajf/core/chart';
 import { AjfCommonModule } from '@ajf/core/common';
 import { AjfMapModule } from '@ajf/core/map';
@@ -13,6 +11,7 @@ import { AjfTextModule } from '@ajf/core/text';
 import { AjfImageModule } from '@ajf/material/image';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
+import { BehaviorSubject } from 'rxjs';
 
 /**
  * @license
@@ -49,45 +48,6 @@ AjfChartWidgetComponent.decorators = [
             },] }
 ];
 AjfChartWidgetComponent.ctorParameters = () => [
-    { type: ChangeDetectorRef },
-    { type: ElementRef }
-];
-
-/**
- * @license
- * Copyright (C) Gnucoop soc. coop.
- *
- * This file is part of the Advanced JSON forms (ajf).
- *
- * Advanced JSON forms (ajf) is free software: you can redistribute it and/or
- * modify it under the terms of the GNU Affero General Public License as
- * published by the Free Software Foundation, either version 3 of the License,
- * or (at your option) any later version.
- *
- * Advanced JSON forms (ajf) is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero
- * General Public License for more details.
- *
- * You should have received a copy of the GNU Affero General Public License
- * along with Advanced JSON forms (ajf).
- * If not, see http://www.gnu.org/licenses/.
- *
- */
-class AjfColumnWidgetComponent extends AjfBaseWidgetComponent {
-    constructor(cdr, el) {
-        super(cdr, el);
-    }
-}
-AjfColumnWidgetComponent.decorators = [
-    { type: Component, args: [{
-                template: "<div class=\"ajf-column-container\">\n  <ng-container *ngFor=\"let w of instance.content\">\n    <ajf-widget [instance]=\"w\">\n    </ajf-widget>\n  </ng-container>\n</div>\n",
-                changeDetection: ChangeDetectionStrategy.OnPush,
-                encapsulation: ViewEncapsulation.None,
-                styles: [".ajf-column-container{flex:1 1 auto}\n"]
-            },] }
-];
-AjfColumnWidgetComponent.ctorParameters = () => [
     { type: ChangeDetectorRef },
     { type: ElementRef }
 ];
@@ -206,50 +166,6 @@ AjfImageWidgetComponent.decorators = [
             },] }
 ];
 AjfImageWidgetComponent.ctorParameters = () => [
-    { type: ChangeDetectorRef },
-    { type: ElementRef }
-];
-
-/**
- * @license
- * Copyright (C) Gnucoop soc. coop.
- *
- * This file is part of the Advanced JSON forms (ajf).
- *
- * Advanced JSON forms (ajf) is free software: you can redistribute it and/or
- * modify it under the terms of the GNU Affero General Public License as
- * published by the Free Software Foundation, either version 3 of the License,
- * or (at your option) any later version.
- *
- * Advanced JSON forms (ajf) is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero
- * General Public License for more details.
- *
- * You should have received a copy of the GNU Affero General Public License
- * along with Advanced JSON forms (ajf).
- * If not, see http://www.gnu.org/licenses/.
- *
- */
-class AjfLayoutWidgetComponent extends AjfBaseWidgetComponent {
-    constructor(cdr, el) {
-        super(cdr, el);
-        this._allcolumnsRendered$ = new BehaviorSubject(false);
-        this.allcolumnsRendered$ = this._allcolumnsRendered$;
-    }
-    ngAfterContentChecked() {
-        this._allcolumnsRendered$.next(true);
-    }
-}
-AjfLayoutWidgetComponent.decorators = [
-    { type: Component, args: [{
-                template: "<div class=\"ajf-columns\">\n  <div\n      *ngFor=\"let column of instance.widget.columns; let idx = index\"\n      [ngStyle]=\"{'flex-grow': column > -1 ? 1 : null, 'flex-basis' : column > -1 ? (column * 100) + '%' : null}\"\n      class=\"ajf-column\"\n  >\n  <ng-container *ngIf=\"allcolumnsRendered$|async\">\n    <ajf-widget *ngIf=\"(instance|ajfGetColumnContent:idx) as cc\" [instance]=\"cc!\">\n    </ajf-widget>\n  </ng-container>\n </div>\n</div>\n",
-                changeDetection: ChangeDetectionStrategy.OnPush,
-                encapsulation: ViewEncapsulation.None,
-                styles: [".ajf-columns{flex:1 1 auto;display:flex;align-items:inherit;box-sizing:border-box}.ajf-columns>.ajf-column{box-sizing:border-box;display:flex;align-items:inherit;flex-shrink:1}\n"]
-            },] }
-];
-AjfLayoutWidgetComponent.ctorParameters = () => [
     { type: ChangeDetectorRef },
     { type: ElementRef }
 ];
@@ -470,34 +386,31 @@ AjfTextWidgetComponent.ctorParameters = () => [
  * If not, see http://www.gnu.org/licenses/.
  *
  */
+const defaultWidgetsFactory = () => {
+    const defaultWidgets = {};
+    defaultWidgets[AjfWidgetType.PageBreak] = { component: AjfPageBreakWidgetComponent };
+    defaultWidgets[AjfWidgetType.Image] = { component: AjfImageWidgetComponent };
+    defaultWidgets[AjfWidgetType.Text] = { component: AjfTextWidgetComponent };
+    defaultWidgets[AjfWidgetType.Chart] = { component: AjfChartWidgetComponent };
+    defaultWidgets[AjfWidgetType.Table] = { component: AjfTableWidgetComponent };
+    defaultWidgets[AjfWidgetType.DynamicTable] = { component: AjfTableWidgetComponent };
+    defaultWidgets[AjfWidgetType.Map] = { component: AjfMapWidgetComponent };
+    defaultWidgets[AjfWidgetType.Column] = { component: AjfColumnWidgetComponent };
+    defaultWidgets[AjfWidgetType.Formula] = { component: AjfFormulaWidgetComponent };
+    defaultWidgets[AjfWidgetType.ImageContainer] = { component: AjfImageContainerWidgetComponent };
+    return defaultWidgets;
+};
+const ɵ0 = defaultWidgetsFactory;
 class AjfWidgetService extends AjfWidgetService$1 {
+    constructor() {
+        super(defaultWidgetsFactory());
+    }
 }
-AjfWidgetService.ɵprov = i0.ɵɵdefineInjectable({ factory: function AjfWidgetService_Factory() { return new AjfWidgetService(i0.ɵɵinject(i1.AJF_DEFAULT_WIDGETS, 8)); }, token: AjfWidgetService, providedIn: "root" });
+AjfWidgetService.ɵprov = i0.ɵɵdefineInjectable({ factory: function AjfWidgetService_Factory() { return new AjfWidgetService(); }, token: AjfWidgetService, providedIn: "root" });
 AjfWidgetService.decorators = [
     { type: Injectable, args: [{ providedIn: 'root' },] }
 ];
-
-/**
- * @license
- * Copyright (C) Gnucoop soc. coop.
- *
- * This file is part of the Advanced JSON forms (ajf).
- *
- * Advanced JSON forms (ajf) is free software: you can redistribute it and/or
- * modify it under the terms of the GNU Affero General Public License as
- * published by the Free Software Foundation, either version 3 of the License,
- * or (at your option) any later version.
- *
- * Advanced JSON forms (ajf) is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero
- * General Public License for more details.
- *
- * You should have received a copy of the GNU Affero General Public License
- * along with Advanced JSON forms (ajf).
- * If not, see http://www.gnu.org/licenses/.
- *
- */
+AjfWidgetService.ctorParameters = () => [];
 class AjfReportWidget extends AjfReportWidget$1 {
     constructor(cfr, renderer, widgetService) {
         super(cfr, renderer);
@@ -518,6 +431,45 @@ AjfReportWidget.ctorParameters = () => [
     { type: Renderer2 },
     { type: AjfWidgetService }
 ];
+class AjfColumnWidgetComponent extends AjfBaseWidgetComponent {
+    constructor(cdr, el) {
+        super(cdr, el);
+    }
+}
+AjfColumnWidgetComponent.decorators = [
+    { type: Component, args: [{
+                template: "<div class=\"ajf-column-container\">\n  <ng-container *ngFor=\"let w of instance.content\">\n    <ajf-widget [instance]=\"w\">\n    </ajf-widget>\n  </ng-container>\n</div>\n",
+                changeDetection: ChangeDetectionStrategy.OnPush,
+                encapsulation: ViewEncapsulation.None,
+                styles: [".ajf-column-container{flex:1 1 auto}\n"]
+            },] }
+];
+AjfColumnWidgetComponent.ctorParameters = () => [
+    { type: ChangeDetectorRef },
+    { type: ElementRef }
+];
+class AjfLayoutWidgetComponent extends AjfBaseWidgetComponent {
+    constructor(cdr, el) {
+        super(cdr, el);
+        this._allcolumnsRendered$ = new BehaviorSubject(false);
+        this.allcolumnsRendered$ = this._allcolumnsRendered$;
+    }
+    ngAfterContentChecked() {
+        this._allcolumnsRendered$.next(true);
+    }
+}
+AjfLayoutWidgetComponent.decorators = [
+    { type: Component, args: [{
+                template: "<div class=\"ajf-columns\">\n  <div\n      *ngFor=\"let column of instance.widget.columns; let idx = index\"\n      [ngStyle]=\"{'flex-grow': column > -1 ? 1 : null, 'flex-basis' : column > -1 ? (column * 100) + '%' : null}\"\n      class=\"ajf-column\"\n  >\n  <ng-container *ngIf=\"allcolumnsRendered$|async\">\n    <ajf-widget *ngIf=\"(instance|ajfGetColumnContent:idx) as cc\" [instance]=\"cc!\">\n    </ajf-widget>\n  </ng-container>\n </div>\n</div>\n",
+                changeDetection: ChangeDetectionStrategy.OnPush,
+                encapsulation: ViewEncapsulation.None,
+                styles: [".ajf-columns{flex:1 1 auto;display:flex;align-items:inherit;box-sizing:border-box}.ajf-columns>.ajf-column{box-sizing:border-box;display:flex;align-items:inherit;flex-shrink:1}\n"]
+            },] }
+];
+AjfLayoutWidgetComponent.ctorParameters = () => [
+    { type: ChangeDetectorRef },
+    { type: ElementRef }
+];
 
 /**
  * @license
@@ -540,41 +492,6 @@ AjfReportWidget.ctorParameters = () => [
  * If not, see http://www.gnu.org/licenses/.
  *
  */
-const defaultWidgets = {};
-defaultWidgets[AjfWidgetType.Layout] = {
-    component: AjfLayoutWidgetComponent
-};
-defaultWidgets[AjfWidgetType.PageBreak] = {
-    component: AjfPageBreakWidgetComponent
-};
-defaultWidgets[AjfWidgetType.Image] = {
-    component: AjfImageWidgetComponent
-};
-defaultWidgets[AjfWidgetType.Text] = {
-    component: AjfTextWidgetComponent
-};
-defaultWidgets[AjfWidgetType.Chart] = {
-    component: AjfChartWidgetComponent
-};
-defaultWidgets[AjfWidgetType.Table] = {
-    component: AjfTableWidgetComponent
-};
-defaultWidgets[AjfWidgetType.DynamicTable] = {
-    component: AjfTableWidgetComponent
-};
-defaultWidgets[AjfWidgetType.Map] = {
-    component: AjfMapWidgetComponent
-};
-defaultWidgets[AjfWidgetType.Column] = {
-    component: AjfColumnWidgetComponent
-};
-defaultWidgets[AjfWidgetType.Formula] = {
-    component: AjfFormulaWidgetComponent
-};
-defaultWidgets[AjfWidgetType.ImageContainer] = {
-    component: AjfImageContainerWidgetComponent
-};
-const ɵ0 = defaultWidgets;
 class AjfReportsModule {
 }
 AjfReportsModule.decorators = [
@@ -608,9 +525,6 @@ AjfReportsModule.decorators = [
                 exports: [
                     AjfReportRenderer,
                     AjfReportWidget,
-                ],
-                providers: [
-                    { provide: AJF_DEFAULT_WIDGETS, useValue: ɵ0 },
                 ],
             },] }
 ];

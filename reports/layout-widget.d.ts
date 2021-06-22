@@ -19,12 +19,3 @@
  * If not, see http://www.gnu.org/licenses/.
  *
  */
-import { AjfBaseWidgetComponent, AjfLayoutWidgetInstance } from '@ajf/core/reports';
-import { AfterContentChecked, ChangeDetectorRef, ElementRef } from '@angular/core';
-import { Observable } from 'rxjs';
-export declare class AjfLayoutWidgetComponent extends AjfBaseWidgetComponent<AjfLayoutWidgetInstance> implements AfterContentChecked {
-    private _allcolumnsRendered$;
-    readonly allcolumnsRendered$: Observable<boolean>;
-    constructor(cdr: ChangeDetectorRef, el: ElementRef);
-    ngAfterContentChecked(): void;
-}
