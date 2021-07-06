@@ -1,8 +1,8 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@ajf/core/reports'), require('@angular/core'), require('@ajf/core/image'), require('@ajf/core/chart'), require('@ajf/core/common'), require('@ajf/core/map'), require('@ajf/core/page-break'), require('@ajf/core/table'), require('@ajf/core/text'), require('@ajf/material/image'), require('@angular/common'), require('@ngx-translate/core'), require('rxjs')) :
-    typeof define === 'function' && define.amd ? define('@ajf/material/reports', ['exports', '@ajf/core/reports', '@angular/core', '@ajf/core/image', '@ajf/core/chart', '@ajf/core/common', '@ajf/core/map', '@ajf/core/page-break', '@ajf/core/table', '@ajf/core/text', '@ajf/material/image', '@angular/common', '@ngx-translate/core', 'rxjs'], factory) :
-    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory((global.ajf = global.ajf || {}, global.ajf.material = global.ajf.material || {}, global.ajf.material.reports = {}), global.ajf.core.reports, global.ng.core, global.ajf.core.image, global.ajf.core.chart, global.ajf.core.common, global.ajf.core.map, global.ajf.core.pageBreak, global.ajf.core.table, global.ajf.core.text, global.ajf.material.image, global.ng.common, global.ngxTranslate.core, global.rxjs));
-}(this, (function (exports, reports, i0, image, chart, common, map, pageBreak, table, text, image$1, common$1, core, rxjs) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@ajf/core/reports'), require('@angular/core'), require('@ajf/core/image'), require('@ajf/core/chart'), require('@ajf/core/common'), require('@ajf/core/map'), require('@ajf/core/page-break'), require('@ajf/core/table'), require('@ajf/core/text'), require('@ajf/core/transloco'), require('@ajf/material/image'), require('@angular/common'), require('rxjs')) :
+    typeof define === 'function' && define.amd ? define('@ajf/material/reports', ['exports', '@ajf/core/reports', '@angular/core', '@ajf/core/image', '@ajf/core/chart', '@ajf/core/common', '@ajf/core/map', '@ajf/core/page-break', '@ajf/core/table', '@ajf/core/text', '@ajf/core/transloco', '@ajf/material/image', '@angular/common', 'rxjs'], factory) :
+    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory((global.ajf = global.ajf || {}, global.ajf.material = global.ajf.material || {}, global.ajf.material.reports = {}), global.ajf.core.reports, global.ng.core, global.ajf.core.image, global.ajf.core.chart, global.ajf.core.common, global.ajf.core.map, global.ajf.core.pageBreak, global.ajf.core.table, global.ajf.core.text, global.ajf.core.transloco, global.ajf.material.image, global.ng.common, global.rxjs));
+}(this, (function (exports, reports, i0, image, chart, common, map, pageBreak, table, text, transloco, image$1, common$1, rxjs) { 'use strict';
 
     function _interopNamespace(e) {
         if (e && e.__esModule) return e;
@@ -509,7 +509,7 @@
     }(reports.AjfBaseWidgetComponent));
     AjfTextWidgetComponent.decorators = [
         { type: i0.Component, args: [{
-                    template: "<ajf-text [htmlText]=\"instance.htmlText | translate\"></ajf-text>\n",
+                    template: "<ajf-text [htmlText]=\"instance.htmlText | transloco\"></ajf-text>\n",
                     changeDetection: i0.ChangeDetectionStrategy.OnPush,
                     encapsulation: i0.ViewEncapsulation.None,
                     styles: ["\n"]
@@ -653,7 +653,7 @@
                         text.AjfTextModule,
                         common$1.CommonModule,
                         reports.AjfReportsModule,
-                        core.TranslateModule,
+                        transloco.AjfTranslocoModule,
                     ],
                     declarations: [
                         AjfChartWidgetComponent,

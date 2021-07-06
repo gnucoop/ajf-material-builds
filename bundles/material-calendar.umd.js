@@ -1,8 +1,8 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@ajf/core/calendar'), require('@angular/core'), require('@angular/forms'), require('@angular/common'), require('@angular/material/button'), require('@ngx-translate/core')) :
-    typeof define === 'function' && define.amd ? define('@ajf/material/calendar', ['exports', '@ajf/core/calendar', '@angular/core', '@angular/forms', '@angular/common', '@angular/material/button', '@ngx-translate/core'], factory) :
-    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory((global.ajf = global.ajf || {}, global.ajf.material = global.ajf.material || {}, global.ajf.material.calendar = {}), global.ajf.core.calendar, global.ng.core, global.ng.forms, global.ng.common, global.ng.material.button, global.ngxTranslate.core));
-}(this, (function (exports, calendar, core, forms, common, button, core$1) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@ajf/core/calendar'), require('@angular/core'), require('@angular/forms'), require('@ajf/core/transloco'), require('@angular/common'), require('@angular/material/button')) :
+    typeof define === 'function' && define.amd ? define('@ajf/material/calendar', ['exports', '@ajf/core/calendar', '@angular/core', '@angular/forms', '@ajf/core/transloco', '@angular/common', '@angular/material/button'], factory) :
+    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory((global.ajf = global.ajf || {}, global.ajf.material = global.ajf.material || {}, global.ajf.material.calendar = {}), global.ajf.core.calendar, global.ng.core, global.ng.forms, global.ajf.core.transloco, global.ng.common, global.ng.material.button));
+}(this, (function (exports, calendar, core, forms, transloco, common, button) { 'use strict';
 
     /*! *****************************************************************************
     Copyright (c) Microsoft Corporation.
@@ -334,7 +334,7 @@
     AjfCalendarComponent.decorators = [
         { type: core.Component, args: [{
                     selector: 'ajf-calendar',
-                    template: "<div class=\"ajf-calendar-header\">\n  <button (click)=\"prevPage()\" mat-mini-fab>&#8592;</button>\n  <button (click)=\"previousViewMode()\" mat-button class=\"ajf-calendar-header-title\">\n    {{ viewHeader | translate }}\n  </button>\n  <button (click)=\"nextPage()\" mat-mini-fab>&#8594;</button>\n</div>\n<div class=\"ajf-calendar-row\" *ngIf=\"calendarHeaders.length > 0\">\n  <div *ngFor=\"let calendarHeader of calendarHeaders\">\n    {{ calendarHeader | translate }}\n  </div>\n</div>\n<div class=\"ajf-calendar-row\" *ngFor=\"let row of calendarRows\">\n  <button\n      *ngFor=\"let entry of row\"\n      mat-raised-button\n      [class.ajf-calendar-partial-selection]=\"entry.selected == 'partial'\"\n      [disabled]=\"disabled || (entry.disabled || false)\"\n      [color]=\"entry.selected != 'none' ? 'warn' : undefined\"\n      (click)=\"selectEntry(entry)\"\n  >{{ entry|ajfCalendarEntryLabel }}</button>\n</div>\n",
+                    template: "<div class=\"ajf-calendar-header\">\n  <button (click)=\"prevPage()\" mat-mini-fab>&#8592;</button>\n  <button (click)=\"previousViewMode()\" mat-button class=\"ajf-calendar-header-title\">\n    {{ viewHeader | transloco }}\n  </button>\n  <button (click)=\"nextPage()\" mat-mini-fab>&#8594;</button>\n</div>\n<div class=\"ajf-calendar-row\" *ngIf=\"calendarHeaders.length > 0\">\n  <div *ngFor=\"let calendarHeader of calendarHeaders\">\n    {{ calendarHeader | transloco }}\n  </div>\n</div>\n<div class=\"ajf-calendar-row\" *ngFor=\"let row of calendarRows\">\n  <button\n      *ngFor=\"let entry of row\"\n      mat-raised-button\n      [class.ajf-calendar-partial-selection]=\"entry.selected == 'partial'\"\n      [disabled]=\"disabled || (entry.disabled || false)\"\n      [color]=\"entry.selected != 'none' ? 'warn' : undefined\"\n      (click)=\"selectEntry(entry)\"\n  >{{ entry|ajfCalendarEntryLabel }}</button>\n</div>\n",
                     encapsulation: core.ViewEncapsulation.None,
                     changeDetection: core.ChangeDetectionStrategy.OnPush,
                     outputs: ['change'],
@@ -382,7 +382,7 @@
                         calendar.AjfCalendarModule,
                         forms.FormsModule,
                         button.MatButtonModule,
-                        core$1.TranslateModule,
+                        transloco.AjfTranslocoModule,
                     ],
                     declarations: [
                         AjfCalendarComponent,

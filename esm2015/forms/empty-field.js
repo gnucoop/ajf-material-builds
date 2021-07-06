@@ -29,7 +29,7 @@ export class AjfEmptyFieldComponent extends AjfBaseFieldComponent {
 }
 AjfEmptyFieldComponent.decorators = [
     { type: Component, args: [{
-                template: "<h1 [innerHTML]=\"instance.node.label | translate\"></h1>\n<div [innerHTML]=\"instance.node.HTML | translate\"></div>\n",
+                template: "<h1 [innerHTML]=\"instance.node.label | transloco\"></h1>\n<div [innerHTML]=\"instance.node.HTML | transloco\"></div>\n",
                 changeDetection: ChangeDetectionStrategy.OnPush,
                 encapsulation: ViewEncapsulation.None,
                 styles: ["\n"]

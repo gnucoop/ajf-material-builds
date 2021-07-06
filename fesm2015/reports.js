@@ -8,9 +8,9 @@ import { AjfMapModule } from '@ajf/core/map';
 import { AjfPageBreakModule } from '@ajf/core/page-break';
 import { AjfTableModule } from '@ajf/core/table';
 import { AjfTextModule } from '@ajf/core/text';
+import { AjfTranslocoModule } from '@ajf/core/transloco';
 import { AjfImageModule } from '@ajf/material/image';
 import { CommonModule } from '@angular/common';
-import { TranslateModule } from '@ngx-translate/core';
 import { BehaviorSubject } from 'rxjs';
 
 /**
@@ -354,7 +354,7 @@ class AjfTextWidgetComponent extends AjfBaseWidgetComponent {
 }
 AjfTextWidgetComponent.decorators = [
     { type: Component, args: [{
-                template: "<ajf-text [htmlText]=\"instance.htmlText | translate\"></ajf-text>\n",
+                template: "<ajf-text [htmlText]=\"instance.htmlText | transloco\"></ajf-text>\n",
                 changeDetection: ChangeDetectionStrategy.OnPush,
                 encapsulation: ViewEncapsulation.None,
                 styles: ["\n"]
@@ -506,7 +506,7 @@ AjfReportsModule.decorators = [
                     AjfTextModule,
                     CommonModule,
                     AjfReportsModule$1,
-                    TranslateModule,
+                    AjfTranslocoModule,
                 ],
                 declarations: [
                     AjfChartWidgetComponent,

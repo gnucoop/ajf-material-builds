@@ -28,7 +28,7 @@ export class AjfTextWidgetComponent extends AjfBaseWidgetComponent {
 }
 AjfTextWidgetComponent.decorators = [
     { type: Component, args: [{
-                template: "<ajf-text [htmlText]=\"instance.htmlText | translate\"></ajf-text>\n",
+                template: "<ajf-text [htmlText]=\"instance.htmlText | transloco\"></ajf-text>\n",
                 changeDetection: ChangeDetectionStrategy.OnPush,
                 encapsulation: ViewEncapsulation.None,
                 styles: ["\n"]
