@@ -388,6 +388,7 @@ AjfTextWidgetComponent.ctorParameters = () => [
  */
 const defaultWidgetsFactory = () => {
     const defaultWidgets = {};
+    defaultWidgets[AjfWidgetType.Layout] = { component: AjfLayoutWidgetComponent };
     defaultWidgets[AjfWidgetType.PageBreak] = { component: AjfPageBreakWidgetComponent };
     defaultWidgets[AjfWidgetType.Image] = { component: AjfImageWidgetComponent };
     defaultWidgets[AjfWidgetType.Text] = { component: AjfTextWidgetComponent };

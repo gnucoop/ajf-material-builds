@@ -522,6 +522,7 @@
 
     var defaultWidgetsFactory = function () {
         var defaultWidgets = {};
+        defaultWidgets[reports.AjfWidgetType.Layout] = { component: AjfLayoutWidgetComponent };
         defaultWidgets[reports.AjfWidgetType.PageBreak] = { component: AjfPageBreakWidgetComponent };
         defaultWidgets[reports.AjfWidgetType.Image] = { component: AjfImageWidgetComponent };
         defaultWidgets[reports.AjfWidgetType.Text] = { component: AjfTextWidgetComponent };
