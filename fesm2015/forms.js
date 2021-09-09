@@ -4,6 +4,7 @@ import { Component, ChangeDetectionStrategy, ViewEncapsulation, Injectable, Chan
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { map } from 'rxjs/operators';
 import { MatInput, MatInputModule } from '@angular/material/input';
+import { AjfRange } from '@ajf/core/range';
 import { HttpClient } from '@angular/common/http';
 import { DomSanitizer } from '@angular/platform-browser';
 import { AjfCommonModule } from '@ajf/core/common';
@@ -23,6 +24,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatSliderModule } from '@angular/material/slider';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
@@ -418,6 +420,47 @@ AjfMultipleChoiceFieldComponent.ctorParameters = () => [
  * If not, see http://www.gnu.org/licenses/.
  *
  */
+class AjfRangeFieldComponent extends AjfRange {
+    constructor(cdr, service, was) {
+        super(cdr, service, was);
+    }
+}
+AjfRangeFieldComponent.decorators = [
+    { type: Component, args: [{
+                selector: 'ajf-range',
+                template: "<mat-slider\n  *ngIf=\"control|async as ctrl\"\n  thumbLabel\n  [formControl]=\"ctrl!\"\n  [tickInterval]=\"step\"\n  [step]=\"step\"\n  [min]=\"start\"\n  [max]=\"end\"\n  [attr.aria-label]=\"name\"\n  [attr.name]=\"name\"\n></mat-slider>\n",
+                changeDetection: ChangeDetectionStrategy.OnPush,
+                encapsulation: ViewEncapsulation.None,
+                styles: ["\n"]
+            },] }
+];
+AjfRangeFieldComponent.ctorParameters = () => [
+    { type: ChangeDetectorRef },
+    { type: AjfFormRendererService },
+    { type: AjfWarningAlertService, decorators: [{ type: Inject, args: [AJF_WARNING_ALERT_SERVICE,] }] }
+];
+
+/**
+ * @license
+ * Copyright (C) Gnucoop soc. coop.
+ *
+ * This file is part of the Advanced JSON forms (ajf).
+ *
+ * Advanced JSON forms (ajf) is free software: you can redistribute it and/or
+ * modify it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the License,
+ * or (at your option) any later version.
+ *
+ * Advanced JSON forms (ajf) is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero
+ * General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with Advanced JSON forms (ajf).
+ * If not, see http://www.gnu.org/licenses/.
+ *
+ */
 class AjfSingleChoiceFieldComponent extends AjfFieldWithChoicesComponent {
     constructor(cdr, service, was, searchThreshold) {
         super(cdr, service, was, searchThreshold);
@@ -687,6 +730,10 @@ class AjfFieldService extends AjfFieldService$1 {
             component: AjfVideoUrlFieldComponent,
             readOnlyComponent: AjfReadOnlyVideoUrlFieldComponent
         };
+        this.componentsMap[AjfFieldType.Range] = {
+            component: AjfRangeFieldComponent,
+            readOnlyComponent: AjfReadOnlyFieldComponent
+        };
     }
 }
 AjfFieldService.ɵprov = i0.ɵɵdefineInjectable({ factory: function AjfFieldService_Factory() { return new AjfFieldService(); }, token: AjfFieldService, providedIn: "root" });
@@ -816,42 +863,24 @@ AjfFormsModule.decorators = [
     { type: NgModule, args: [{
                 imports: [
                     AjfBarcodeModule, AjfCalendarModule, AjfCommonModule, AjfFormsModule$1,
-                    AjfCheckboxGroupModule, AjfPageSliderModule, AjfTimeModule, CommonModule,
-                    MatButtonModule, MatCardModule, MatDialogModule, MatFormFieldModule,
-                    MatIconModule, MatInputModule, MatRadioModule, MatSelectModule,
-                    MatSlideToggleModule, MatToolbarModule, MatTooltipModule, ReactiveFormsModule,
-                    TextFieldModule, AjfTranslocoModule,
+                    AjfCheckboxGroupModule, AjfPageSliderModule, AjfTimeModule, AjfTranslocoModule,
+                    CommonModule, MatButtonModule, MatCardModule, MatDialogModule,
+                    MatFormFieldModule, MatIconModule, MatInputModule, MatRadioModule,
+                    MatSelectModule, MatSlideToggleModule, MatToolbarModule, MatTooltipModule,
+                    ReactiveFormsModule, TextFieldModule, MatSliderModule
                 ],
                 declarations: [
-                    AjfBarcodeFieldComponent,
-                    AjfBooleanFieldComponent,
-                    AjfDateFieldComponent,
-                    AjfDateInputFieldComponent,
-                    AjfEmptyFieldComponent,
-                    AjfFieldWarningDialog,
-                    AjfFormField,
-                    AjfFormRenderer,
-                    AjfInputFieldComponent,
-                    AjfMultipleChoiceFieldComponent,
-                    AjfSingleChoiceFieldComponent,
-                    AjfTableFieldComponent,
-                    AjfTextFieldComponent,
-                    AjfTimeFieldComponent,
-                    AjfVideoUrlFieldComponent,
+                    AjfBarcodeFieldComponent, AjfBooleanFieldComponent, AjfDateFieldComponent,
+                    AjfDateInputFieldComponent, AjfEmptyFieldComponent, AjfFieldWarningDialog, AjfFormField,
+                    AjfFormRenderer, AjfInputFieldComponent, AjfMultipleChoiceFieldComponent,
+                    AjfRangeFieldComponent, AjfSingleChoiceFieldComponent, AjfTableFieldComponent,
+                    AjfTextFieldComponent, AjfTimeFieldComponent, AjfVideoUrlFieldComponent
                 ],
                 entryComponents: [
-                    AjfBarcodeFieldComponent,
-                    AjfBooleanFieldComponent,
-                    AjfDateFieldComponent,
-                    AjfDateInputFieldComponent,
-                    AjfEmptyFieldComponent,
-                    AjfInputFieldComponent,
-                    AjfMultipleChoiceFieldComponent,
-                    AjfSingleChoiceFieldComponent,
-                    AjfTableFieldComponent,
-                    AjfTextFieldComponent,
-                    AjfTimeFieldComponent,
-                    AjfVideoUrlFieldComponent,
+                    AjfBarcodeFieldComponent, AjfBooleanFieldComponent, AjfDateFieldComponent,
+                    AjfDateInputFieldComponent, AjfEmptyFieldComponent, AjfInputFieldComponent,
+                    AjfMultipleChoiceFieldComponent, AjfRangeFieldComponent, AjfSingleChoiceFieldComponent,
+                    AjfTableFieldComponent, AjfTextFieldComponent, AjfTimeFieldComponent, AjfVideoUrlFieldComponent
                 ],
                 exports: [
                     AjfFormField,
@@ -890,5 +919,5 @@ AjfFormsModule.decorators = [
  * Generated bundle index. Do not edit.
  */
 
-export { AjfBooleanFieldComponent, AjfDateFieldComponent, AjfDateInputFieldComponent, AjfEmptyFieldComponent, AjfFieldService, AjfFieldWarningDialog, AjfFormField, AjfFormRenderer, AjfFormsModule, AjfInputFieldComponent, AjfMultipleChoiceFieldComponent, AjfSingleChoiceFieldComponent, AjfTableFieldComponent, AjfTimeFieldComponent, AjfWarningAlertService, AjfBarcodeFieldComponent as ɵgc_ajf_src_material_forms_forms_a, AjfTextFieldComponent as ɵgc_ajf_src_material_forms_forms_b, AjfVideoUrlFieldComponent as ɵgc_ajf_src_material_forms_forms_c };
+export { AjfBooleanFieldComponent, AjfDateFieldComponent, AjfDateInputFieldComponent, AjfEmptyFieldComponent, AjfFieldService, AjfFieldWarningDialog, AjfFormField, AjfFormRenderer, AjfFormsModule, AjfInputFieldComponent, AjfMultipleChoiceFieldComponent, AjfSingleChoiceFieldComponent, AjfTableFieldComponent, AjfTimeFieldComponent, AjfWarningAlertService, AjfBarcodeFieldComponent as ɵgc_ajf_src_material_forms_forms_a, AjfRangeFieldComponent as ɵgc_ajf_src_material_forms_forms_b, AjfTextFieldComponent as ɵgc_ajf_src_material_forms_forms_c, AjfVideoUrlFieldComponent as ɵgc_ajf_src_material_forms_forms_d };
 //# sourceMappingURL=forms.js.map

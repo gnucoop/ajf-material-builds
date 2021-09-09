@@ -664,6 +664,11 @@
                     label: 'Table',
                     icon: { fontSet: 'ajf-icon', fontIcon: 'field-table' },
                     nodeType: { node: forms.AjfNodeType.AjfField, field: forms.AjfFieldType.Table }
+                },
+                {
+                    label: 'Range',
+                    icon: { fontSet: 'ajf-icon', fontIcon: 'field-range' },
+                    nodeType: { node: forms.AjfNodeType.AjfField, field: forms.AjfFieldType.Range }
                 }
             ];
             this._form = new rxjs.BehaviorSubject(null);

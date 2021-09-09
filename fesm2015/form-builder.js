@@ -386,6 +386,11 @@ class AjfFormBuilderService {
                 label: 'Table',
                 icon: { fontSet: 'ajf-icon', fontIcon: 'field-table' },
                 nodeType: { node: AjfNodeType.AjfField, field: AjfFieldType.Table }
+            },
+            {
+                label: 'Range',
+                icon: { fontSet: 'ajf-icon', fontIcon: 'field-range' },
+                nodeType: { node: AjfNodeType.AjfField, field: AjfFieldType.Range }
             }
         ];
         this._form = new BehaviorSubject(null);
