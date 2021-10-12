@@ -1,23 +1,43 @@
-/**
- * @license
- * Copyright (C) Gnucoop soc. coop.
- *
- * This file is part of the Advanced JSON forms (ajf).
- *
- * Advanced JSON forms (ajf) is free software: you can redistribute it and/or
- * modify it under the terms of the GNU Affero General Public License as
- * published by the Free Software Foundation, either version 3 of the License,
- * or (at your option) any later version.
- *
- * Advanced JSON forms (ajf) is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero
- * General Public License for more details.
- *
- * You should have received a copy of the GNU Affero General Public License
- * along with Advanced JSON forms (ajf).
- * If not, see http://www.gnu.org/licenses/.
- *
- */
+import * as i0 from "@angular/core";
+import * as i1 from "./branch-line";
+import * as i2 from "./choices-origin-editor";
+import * as i3 from "./choices-origin-editor-dialog";
+import * as i4 from "./condition-editor";
+import * as i5 from "./condition-editor-dialog";
+import * as i6 from "./node-entry";
+import * as i7 from "./node-properties";
+import * as i8 from "./node-type-entry";
+import * as i9 from "./string-identifier-dialog";
+import * as i10 from "./validation-condition-editor-dialog";
+import * as i11 from "./warning-condition-editor-dialog";
+import * as i12 from "./form-builder";
+import * as i13 from "@ajf/material/monaco-editor";
+import * as i14 from "@ajf/material/node-icon";
+import * as i15 from "@angular/common";
+import * as i16 from "@angular/cdk/drag-drop";
+import * as i17 from "@angular/forms";
+import * as i18 from "@angular/material/autocomplete";
+import * as i19 from "@angular/material/button";
+import * as i20 from "@angular/material/card";
+import * as i21 from "@angular/material/checkbox";
+import * as i22 from "@angular/material/chips";
+import * as i23 from "@angular/material/dialog";
+import * as i24 from "@angular/material/form-field";
+import * as i25 from "@angular/material/icon";
+import * as i26 from "@angular/material/input";
+import * as i27 from "@angular/material/list";
+import * as i28 from "@angular/material/menu";
+import * as i29 from "@angular/material/select";
+import * as i30 from "@angular/material/sidenav";
+import * as i31 from "@angular/material/slider";
+import * as i32 from "@angular/material/table";
+import * as i33 from "@angular/material/toolbar";
+import * as i34 from "@angular/material/tooltip";
+import * as i35 from "@ajf/core/transloco";
+import * as i36 from "@angular/material/expansion";
+import * as i37 from "@angular/material/slide-toggle";
 export declare class AjfFormBuilderModule {
+    static ɵfac: i0.ɵɵFactoryDeclaration<AjfFormBuilderModule, never>;
+    static ɵmod: i0.ɵɵNgModuleDeclaration<AjfFormBuilderModule, [typeof i1.AjfFbBranchLine, typeof i2.AjfFbChoicesOriginEditor, typeof i3.AjfFbChoicesOriginEditorDialog, typeof i4.AjfFbConditionEditor, typeof i5.AjfFbConditionEditorDialog, typeof i6.AjfFbNodeEntry, typeof i7.AjfFbNodeProperties, typeof i8.AjfFbNodeTypeEntry, typeof i9.AjfFbStringIdentifierDialogComponent, typeof i10.AjfFbValidationConditionEditorDialog, typeof i11.AjfFbWarningConditionEditorDialog, typeof i12.AjfFormBuilder], [typeof i13.AjfMonacoEditorModule, typeof i14.AjfNodeIconModule, typeof i15.CommonModule, typeof i16.DragDropModule, typeof i17.FormsModule, typeof i18.MatAutocompleteModule, typeof i19.MatButtonModule, typeof i20.MatCardModule, typeof i21.MatCheckboxModule, typeof i22.MatChipsModule, typeof i23.MatDialogModule, typeof i24.MatFormFieldModule, typeof i25.MatIconModule, typeof i26.MatInputModule, typeof i27.MatListModule, typeof i28.MatMenuModule, typeof i29.MatSelectModule, typeof i30.MatSidenavModule, typeof i31.MatSliderModule, typeof i32.MatTableModule, typeof i33.MatToolbarModule, typeof i34.MatTooltipModule, typeof i17.ReactiveFormsModule, typeof i35.AjfTranslocoModule, typeof i36.MatExpansionModule, typeof i37.MatSlideToggleModule], [typeof i12.AjfFormBuilder]>;
+    static ɵinj: i0.ɵɵInjectorDeclaration<AjfFormBuilderModule>;
 }

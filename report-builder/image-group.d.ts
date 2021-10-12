@@ -21,6 +21,7 @@
  */
 import { EventEmitter } from '@angular/core';
 import { AjfReportBuilderService } from './report-builder-service';
+import * as i0 from "@angular/core";
 /**
  * this component handle a group of image object
  * there are 2 types of view
@@ -66,4 +67,6 @@ export declare class AjfReportBuilderImageGroup {
     emitFormula(): void;
     getFlag(value: string): string;
     toggle(): void;
+    static ɵfac: i0.ɵɵFactoryDeclaration<AjfReportBuilderImageGroup, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfReportBuilderImageGroup, "ajf-image-group", never, { "data": "data"; }, { "formulaClick": "formulaClick"; }, never, never>;
 }

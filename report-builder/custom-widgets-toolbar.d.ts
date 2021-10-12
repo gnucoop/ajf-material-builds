@@ -22,6 +22,7 @@
 import { OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AjfReportBuilderService } from './report-builder-service';
+import * as i0 from "@angular/core";
 export interface AjfStyles {
     [style: string]: any;
 }
@@ -68,4 +69,6 @@ export declare class AjfReportBuilderCustomWidgetsToolbar implements OnDestroy, 
     onDragLeaveHandler(): void;
     ngOnInit(): void;
     ngOnDestroy(): void;
+    static ɵfac: i0.ɵɵFactoryDeclaration<AjfReportBuilderCustomWidgetsToolbar, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfReportBuilderCustomWidgetsToolbar, "ajf-report-builder-custom-widgets-toolbar", never, {}, {}, never, never>;
 }

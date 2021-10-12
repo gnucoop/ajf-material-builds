@@ -25,6 +25,7 @@ import { AfterViewInit, ElementRef, OnDestroy, QueryList } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AjfFbBranchLine } from './branch-line';
 import { AjfFormBuilderNode, AjfFormBuilderNodeEntry, AjfFormBuilderNodeTypeEntry, AjfFormBuilderService } from './form-builder-service';
+import * as i0 from "@angular/core";
 export declare class AjfFbNodeEntry implements AfterViewInit, OnDestroy {
     private _service;
     branchLines: QueryList<AjfFbBranchLine>;
@@ -90,4 +91,6 @@ export declare class AjfFbNodeEntry implements AfterViewInit, OnDestroy {
     disableFieldDrop(item: CdkDrag<AjfFormBuilderNodeTypeEntry>): boolean;
     emptyAreaDropPredicate(): (item: CdkDrag, _drop: CdkDropList) => boolean;
     private _updateBranchHeights;
+    static ɵfac: i0.ɵɵFactoryDeclaration<AjfFbNodeEntry, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfFbNodeEntry, "ajf-fb-node-entry", never, { "isFirst": "isFirst"; "isExpanded": "isExpanded"; "nodeEntry": "nodeEntry"; "level": "level"; "isDraggable": "isDraggable"; "originOffset": "originOffset"; "firstBranchColor": "firstBranchColor"; }, {}, never, never>;
 }

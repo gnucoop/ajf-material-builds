@@ -22,7 +22,10 @@
 import { AjfImageType } from '@ajf/core/image';
 import { AjfBaseWidgetComponent, AjfImageContainerWidgetInstance } from '@ajf/core/reports';
 import { ChangeDetectorRef, ElementRef } from '@angular/core';
+import * as i0 from "@angular/core";
 export declare class AjfImageContainerWidgetComponent extends AjfBaseWidgetComponent<AjfImageContainerWidgetInstance> {
     readonly imageTypes: typeof AjfImageType;
     constructor(cdr: ChangeDetectorRef, el: ElementRef);
+    static ɵfac: i0.ɵɵFactoryDeclaration<AjfImageContainerWidgetComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfImageContainerWidgetComponent, "ng-component", never, {}, {}, never, never>;
 }

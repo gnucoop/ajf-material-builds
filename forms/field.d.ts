@@ -23,8 +23,11 @@ import { AjfFieldComponentsMap, AjfFormField as CoreFormField } from '@ajf/core/
 import { BooleanInput } from '@angular/cdk/coercion';
 import { ChangeDetectorRef, ComponentFactoryResolver } from '@angular/core';
 import { AjfFieldService } from './field-service';
+import * as i0 from "@angular/core";
 export declare class AjfFormField extends CoreFormField {
     readonly componentsMap: AjfFieldComponentsMap;
     constructor(cdr: ChangeDetectorRef, cfr: ComponentFactoryResolver, fieldService: AjfFieldService);
     static ngAcceptInputType_readonly: BooleanInput;
+    static ɵfac: i0.ɵɵFactoryDeclaration<AjfFormField, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfFormField, "ajf-field,ajf-form-field", never, {}, {}, never, never>;
 }

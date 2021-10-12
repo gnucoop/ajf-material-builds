@@ -1,23 +1,26 @@
-/**
- * @license
- * Copyright (C) Gnucoop soc. coop.
- *
- * This file is part of the Advanced JSON forms (ajf).
- *
- * Advanced JSON forms (ajf) is free software: you can redistribute it and/or
- * modify it under the terms of the GNU Affero General Public License as
- * published by the Free Software Foundation, either version 3 of the License,
- * or (at your option) any later version.
- *
- * Advanced JSON forms (ajf) is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero
- * General Public License for more details.
- *
- * You should have received a copy of the GNU Affero General Public License
- * along with Advanced JSON forms (ajf).
- * If not, see http://www.gnu.org/licenses/.
- *
- */
+import * as i0 from "@angular/core";
+import * as i1 from "./chart-widget";
+import * as i2 from "./widget";
+import * as i3 from "./formula-widget";
+import * as i4 from "./image-container-widget";
+import * as i5 from "./image-widget";
+import * as i6 from "./map-widget";
+import * as i7 from "./page-break-widget";
+import * as i8 from "./report";
+import * as i9 from "./table-widget";
+import * as i10 from "./text-widget";
+import * as i11 from "@ajf/core/chart";
+import * as i12 from "@ajf/core/common";
+import * as i13 from "@ajf/material/image";
+import * as i14 from "@ajf/core/map";
+import * as i15 from "@ajf/core/page-break";
+import * as i16 from "@ajf/core/table";
+import * as i17 from "@ajf/core/text";
+import * as i18 from "@angular/common";
+import * as i19 from "@ajf/core/reports";
+import * as i20 from "@ajf/core/transloco";
 export declare class AjfReportsModule {
+    static ɵfac: i0.ɵɵFactoryDeclaration<AjfReportsModule, never>;
+    static ɵmod: i0.ɵɵNgModuleDeclaration<AjfReportsModule, [typeof i1.AjfChartWidgetComponent, typeof i2.AjfColumnWidgetComponent, typeof i3.AjfFormulaWidgetComponent, typeof i4.AjfImageContainerWidgetComponent, typeof i5.AjfImageWidgetComponent, typeof i2.AjfLayoutWidgetComponent, typeof i6.AjfMapWidgetComponent, typeof i7.AjfPageBreakWidgetComponent, typeof i8.AjfReportRenderer, typeof i2.AjfReportWidget, typeof i9.AjfTableWidgetComponent, typeof i10.AjfTextWidgetComponent], [typeof i11.AjfChartModule, typeof i12.AjfCommonModule, typeof i13.AjfImageModule, typeof i14.AjfMapModule, typeof i15.AjfPageBreakModule, typeof i16.AjfTableModule, typeof i17.AjfTextModule, typeof i18.CommonModule, typeof i19.AjfReportsModule, typeof i20.AjfTranslocoModule], [typeof i8.AjfReportRenderer, typeof i2.AjfReportWidget]>;
+    static ɵinj: i0.ɵɵInjectorDeclaration<AjfReportsModule>;
 }

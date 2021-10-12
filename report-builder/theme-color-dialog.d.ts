@@ -23,6 +23,7 @@ import { AjfWidget } from '@ajf/core/reports';
 import { AfterViewInit, OnDestroy, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { AjfReportBuilderService } from './report-builder-service';
+import * as i0 from "@angular/core";
 export declare class AjfReportBuilderThemeColorDialog implements OnInit, AfterViewInit, OnDestroy {
     private _service;
     private _dialogRef;
@@ -39,4 +40,6 @@ export declare class AjfReportBuilderThemeColorDialog implements OnInit, AfterVi
     ngOnInit(): void;
     ngAfterViewInit(): void;
     ngOnDestroy(): void;
+    static ɵfac: i0.ɵɵFactoryDeclaration<AjfReportBuilderThemeColorDialog, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfReportBuilderThemeColorDialog, "theme-color-dialog", never, {}, {}, never, never>;
 }

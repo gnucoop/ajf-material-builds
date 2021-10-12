@@ -23,6 +23,7 @@ import { AjfChoicesOrigin } from '@ajf/core/forms';
 import { Observable } from 'rxjs';
 import { AjfFbChoicesOriginEditor } from './choices-origin-editor';
 import { AjfFormBuilderService } from './form-builder-service';
+import * as i0 from "@angular/core";
 export declare class AjfFbChoicesOriginEditorDialog {
     private _service;
     editor: AjfFbChoicesOriginEditor;
@@ -31,4 +32,6 @@ export declare class AjfFbChoicesOriginEditorDialog {
     constructor(_service: AjfFormBuilderService);
     saveChoicesOrigin(): void;
     cancelChoicesOriginEdit(): void;
+    static ɵfac: i0.ɵɵFactoryDeclaration<AjfFbChoicesOriginEditorDialog, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfFbChoicesOriginEditorDialog, "ajf-fb-choices-origin-editor-dialog", never, {}, {}, never, never>;
 }

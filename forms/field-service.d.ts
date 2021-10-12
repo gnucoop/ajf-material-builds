@@ -20,6 +20,9 @@
  *
  */
 import { AjfFieldService as CoreService } from '@ajf/core/forms';
+import * as i0 from "@angular/core";
 export declare class AjfFieldService extends CoreService {
     constructor();
+    static ɵfac: i0.ɵɵFactoryDeclaration<AjfFieldService, never>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<AjfFieldService>;
 }

@@ -23,6 +23,7 @@ import { AjfReport } from '@ajf/core/reports';
 import { AfterContentInit } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { AjfReportBuilderService } from './report-builder-service';
+import * as i0 from "@angular/core";
 export declare class AjfReportBuilder implements AfterContentInit {
     private _service;
     startSidenav: MatSidenav;
@@ -33,4 +34,6 @@ export declare class AjfReportBuilder implements AfterContentInit {
     constructor(_service: AjfReportBuilderService);
     ngAfterContentInit(): void;
     private _setCurrentReport;
+    static ɵfac: i0.ɵɵFactoryDeclaration<AjfReportBuilder, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfReportBuilder, "ajf-report-builder", never, { "report": "report"; }, {}, never, never>;
 }

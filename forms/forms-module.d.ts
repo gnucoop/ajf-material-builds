@@ -1,25 +1,47 @@
-/**
- * @license
- * Copyright (C) Gnucoop soc. coop.
- *
- * This file is part of the Advanced JSON forms (ajf).
- *
- * Advanced JSON forms (ajf) is free software: you can redistribute it and/or
- * modify it under the terms of the GNU Affero General Public License as
- * published by the Free Software Foundation, either version 3 of the License,
- * or (at your option) any later version.
- *
- * Advanced JSON forms (ajf) is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero
- * General Public License for more details.
- *
- * You should have received a copy of the GNU Affero General Public License
- * along with Advanced JSON forms (ajf).
- * If not, see http://www.gnu.org/licenses/.
- *
- */
 import { ModuleWithProviders } from '@angular/core';
+import * as i0 from "@angular/core";
+import * as i1 from "./barcode-field";
+import * as i2 from "./boolean-field";
+import * as i3 from "./date-field";
+import * as i4 from "./date-input-field";
+import * as i5 from "./empty-field";
+import * as i6 from "./field-warning-dialog";
+import * as i7 from "./field";
+import * as i8 from "./form";
+import * as i9 from "./input-field";
+import * as i10 from "./multiple-choice-field";
+import * as i11 from "./range-field";
+import * as i12 from "./single-choice-field";
+import * as i13 from "./table-field";
+import * as i14 from "./text-field";
+import * as i15 from "./time-field";
+import * as i16 from "./video-url-field";
+import * as i17 from "@ajf/material/barcode";
+import * as i18 from "@ajf/material/calendar";
+import * as i19 from "@ajf/core/common";
+import * as i20 from "@ajf/core/forms";
+import * as i21 from "@ajf/material/checkbox-group";
+import * as i22 from "@ajf/material/page-slider";
+import * as i23 from "@ajf/material/time";
+import * as i24 from "@ajf/core/transloco";
+import * as i25 from "@angular/common";
+import * as i26 from "@angular/material/button";
+import * as i27 from "@angular/material/card";
+import * as i28 from "@angular/material/dialog";
+import * as i29 from "@angular/material/form-field";
+import * as i30 from "@angular/material/icon";
+import * as i31 from "@angular/material/input";
+import * as i32 from "@angular/material/radio";
+import * as i33 from "@angular/material/select";
+import * as i34 from "@angular/material/slide-toggle";
+import * as i35 from "@angular/material/toolbar";
+import * as i36 from "@angular/material/tooltip";
+import * as i37 from "@angular/forms";
+import * as i38 from "@angular/cdk/text-field";
+import * as i39 from "@angular/material/slider";
 export declare class AjfFormsModule {
     static forRoot(): ModuleWithProviders<AjfFormsModule>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<AjfFormsModule, never>;
+    static ɵmod: i0.ɵɵNgModuleDeclaration<AjfFormsModule, [typeof i1.AjfBarcodeFieldComponent, typeof i2.AjfBooleanFieldComponent, typeof i3.AjfDateFieldComponent, typeof i4.AjfDateInputFieldComponent, typeof i5.AjfEmptyFieldComponent, typeof i6.AjfFieldWarningDialog, typeof i7.AjfFormField, typeof i8.AjfFormRenderer, typeof i9.AjfInputFieldComponent, typeof i10.AjfMultipleChoiceFieldComponent, typeof i11.AjfRangeFieldComponent, typeof i12.AjfSingleChoiceFieldComponent, typeof i13.AjfTableFieldComponent, typeof i14.AjfTextFieldComponent, typeof i15.AjfTimeFieldComponent, typeof i16.AjfVideoUrlFieldComponent], [typeof i17.AjfBarcodeModule, typeof i18.AjfCalendarModule, typeof i19.AjfCommonModule, typeof i20.AjfFormsModule, typeof i21.AjfCheckboxGroupModule, typeof i22.AjfPageSliderModule, typeof i23.AjfTimeModule, typeof i24.AjfTranslocoModule, typeof i25.CommonModule, typeof i26.MatButtonModule, typeof i27.MatCardModule, typeof i28.MatDialogModule, typeof i29.MatFormFieldModule, typeof i30.MatIconModule, typeof i31.MatInputModule, typeof i32.MatRadioModule, typeof i33.MatSelectModule, typeof i34.MatSlideToggleModule, typeof i35.MatToolbarModule, typeof i36.MatTooltipModule, typeof i37.ReactiveFormsModule, typeof i38.TextFieldModule, typeof i39.MatSliderModule], [typeof i7.AjfFormField, typeof i8.AjfFormRenderer]>;
+    static ɵinj: i0.ɵɵInjectorDeclaration<AjfFormsModule>;
 }

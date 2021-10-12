@@ -23,6 +23,7 @@ import { AjfBaseFieldComponent, AjfDateFieldInstance, AjfDateValueStringPipe, Aj
 import { ChangeDetectorRef } from '@angular/core';
 import { MatInput } from '@angular/material/input';
 import { AjfWarningAlertService } from './warning-alert-service';
+import * as i0 from "@angular/core";
 export declare class AjfDateInputFieldComponent extends AjfBaseFieldComponent<AjfDateFieldInstance> {
     private _dvs;
     input: MatInput;
@@ -31,4 +32,6 @@ export declare class AjfDateInputFieldComponent extends AjfBaseFieldComponent<Aj
     constructor(cdr: ChangeDetectorRef, service: AjfFormRendererService, was: AjfWarningAlertService, _dvs: AjfDateValueStringPipe);
     onChange(): void;
     protected _onInstanceChange(): void;
+    static ɵfac: i0.ɵɵFactoryDeclaration<AjfDateInputFieldComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfDateInputFieldComponent, "ng-component", never, {}, {}, never, never>;
 }

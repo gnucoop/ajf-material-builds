@@ -1,23 +1,11 @@
-/**
- * @license
- * Copyright (C) Gnucoop soc. coop.
- *
- * This file is part of the Advanced JSON forms (ajf).
- *
- * Advanced JSON forms (ajf) is free software: you can redistribute it and/or
- * modify it under the terms of the GNU Affero General Public License as
- * published by the Free Software Foundation, either version 3 of the License,
- * or (at your option) any later version.
- *
- * Advanced JSON forms (ajf) is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero
- * General Public License for more details.
- *
- * You should have received a copy of the GNU Affero General Public License
- * along with Advanced JSON forms (ajf).
- * If not, see http://www.gnu.org/licenses/.
- *
- */
+import * as i0 from "@angular/core";
+import * as i1 from "./checkbox-group-item";
+import * as i2 from "@ajf/core/checkbox-group";
+import * as i3 from "@angular/common";
+import * as i4 from "@angular/material/button";
+import * as i5 from "@angular/material/icon";
 export declare class AjfCheckboxGroupModule {
+    static ɵfac: i0.ɵɵFactoryDeclaration<AjfCheckboxGroupModule, never>;
+    static ɵmod: i0.ɵɵNgModuleDeclaration<AjfCheckboxGroupModule, [typeof i1.CheckboxGroupItem], [typeof i2.AjfCheckboxGroupModule, typeof i3.CommonModule, typeof i4.MatButtonModule, typeof i5.MatIconModule], [typeof i2.AjfCheckboxGroupModule, typeof i1.CheckboxGroupItem]>;
+    static ɵinj: i0.ɵɵInjectorDeclaration<AjfCheckboxGroupModule>;
 }

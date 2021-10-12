@@ -21,6 +21,7 @@
  */
 import { OnInit } from '@angular/core';
 import { AjfReportBuilderService } from './report-builder-service';
+import * as i0 from "@angular/core";
 export declare class AjfReportBuilderCustomWidgetToolbarButton implements OnInit {
     private _service;
     widgetType: string;
@@ -42,4 +43,6 @@ export declare class AjfReportBuilderCustomWidgetToolbarButton implements OnInit
      * this method will init  fieldIcon and fieldLabel
      */
     ngOnInit(): void;
+    static ɵfac: i0.ɵɵFactoryDeclaration<AjfReportBuilderCustomWidgetToolbarButton, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfReportBuilderCustomWidgetToolbarButton, "ajf-report-builder-custom-widget-toolbar-button", never, { "widgetType": "widgetType"; "position": "position"; }, {}, never, never>;
 }

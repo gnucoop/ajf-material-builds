@@ -24,6 +24,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { AjfFbConditionEditor } from './condition-editor';
 import { AjfFormBuilderService } from './form-builder-service';
+import * as i0 from "@angular/core";
 export declare class AjfFbWarningConditionEditorDialog {
     dialogRef: MatDialogRef<AjfFbWarningConditionEditorDialog>;
     editor: AjfFbConditionEditor;
@@ -33,4 +34,6 @@ export declare class AjfFbWarningConditionEditorDialog {
     warningMessage: string;
     constructor(service: AjfFormBuilderService, dialogRef: MatDialogRef<AjfFbWarningConditionEditorDialog>);
     saveCondition(): void;
+    static ɵfac: i0.ɵɵFactoryDeclaration<AjfFbWarningConditionEditorDialog, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfFbWarningConditionEditorDialog, "ajf-fb-warning-condition-editor-dialog", never, {}, {}, never, never>;
 }

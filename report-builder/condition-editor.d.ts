@@ -23,6 +23,7 @@ import { AjfCondition } from '@ajf/core/models';
 import { OnDestroy, OnInit } from '@angular/core';
 import { AjfFormVariables } from './models';
 import { AjfReportBuilderService } from './report-builder-service';
+import * as i0 from "@angular/core";
 export declare class AjfReportBuilderConditionEditor implements OnInit, OnDestroy {
     private _service;
     visibility: AjfCondition;
@@ -64,4 +65,6 @@ export declare class AjfReportBuilderConditionEditor implements OnInit, OnDestro
      * this method will destroy a conditionSubscriptions
      */
     ngOnDestroy(): void;
+    static ɵfac: i0.ɵɵFactoryDeclaration<AjfReportBuilderConditionEditor, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfReportBuilderConditionEditor, "ajf-report-builder-condition-editor", never, { "visibility": "visibility"; }, {}, never, never>;
 }

@@ -22,8 +22,11 @@
 import { AjfFieldWarningAlertResult, AjfWarningAlertService as CoreWarningAlertService } from '@ajf/core/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
+import * as i0 from "@angular/core";
 export declare class AjfWarningAlertService implements CoreWarningAlertService {
     private _dialog;
     constructor(_dialog: MatDialog);
     showWarningAlertPrompt(warnings: string[]): Observable<AjfFieldWarningAlertResult>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<AjfWarningAlertService, never>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<AjfWarningAlertService>;
 }

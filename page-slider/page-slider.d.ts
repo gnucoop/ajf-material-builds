@@ -23,8 +23,11 @@ import { AjfPageSlider as AjfCorePageSlider } from '@ajf/core/page-slider';
 import { AnimationBuilder } from '@angular/animations';
 import { BooleanInput } from '@angular/cdk/coercion';
 import { ChangeDetectorRef, Renderer2 } from '@angular/core';
+import * as i0 from "@angular/core";
 export declare class AjfPageSlider extends AjfCorePageSlider {
     constructor(animationBuilder: AnimationBuilder, cdr: ChangeDetectorRef, renderer: Renderer2);
     static ngAcceptInputType_hideNavigationButtons: BooleanInput;
     static ngAcceptInputType_fixedOrientation: BooleanInput;
+    static ɵfac: i0.ɵɵFactoryDeclaration<AjfPageSlider, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfPageSlider, "ajf-page-slider", never, {}, {}, never, ["*", "[ajfPageSliderBar]"]>;
 }

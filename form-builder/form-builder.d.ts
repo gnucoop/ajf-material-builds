@@ -26,6 +26,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { Observable } from 'rxjs';
 import { AjfFormBuilderNodeEntry, AjfFormBuilderNodeTypeEntry, AjfFormBuilderService } from './form-builder-service';
+import * as i0 from "@angular/core";
 export declare class AjfFormBuilder implements AfterViewChecked, AfterContentInit, OnDestroy {
     private _service;
     private _dialog;
@@ -75,4 +76,6 @@ export declare class AjfFormBuilder implements AfterViewChecked, AfterContentIni
     collapseAll(): void;
     expandToggle(evt: MatSlideToggleChange): void;
     private _setCurrentForm;
+    static ɵfac: i0.ɵɵFactoryDeclaration<AjfFormBuilder, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfFormBuilder, "ajf-form-builder", never, { "form": "form"; }, {}, never, never>;
 }

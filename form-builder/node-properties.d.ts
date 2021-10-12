@@ -25,6 +25,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { AjfFormBuilderNodeEntry, AjfFormBuilderService } from './form-builder-service';
+import * as i0 from "@angular/core";
 export interface ValidationCondition {
     condition: string;
     errorMessage: string;
@@ -181,4 +182,6 @@ export declare class AjfFbNodeProperties implements OnDestroy {
     private _handleConditionalBranchesChange;
     private _handleVisibilityChange;
     private _guessVisibilityOpt;
+    static ɵfac: i0.ɵɵFactoryDeclaration<AjfFbNodeProperties, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfFbNodeProperties, "ajf-fb-node-properties", never, {}, {}, never, never>;
 }

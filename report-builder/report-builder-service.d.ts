@@ -25,6 +25,7 @@ import { AjfColumnWidget, AjfCustomWidget, AjfLayoutWidget, AjfReport, AjfStyles
 import { EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AjfFormVariables, AjfReportIcons, AjfReportsConfig, AjfWidgetsContainer } from './models';
+import * as i0 from "@angular/core";
 /**
  * This service contains all the logic to model the report widget.
  *
@@ -719,4 +720,6 @@ export declare class AjfReportBuilderService {
     private _setCurrentWidgetProperty;
     private _addToCurrentWidgetArrayProperty;
     private _removeFromCurrentWidgetArrayProperty;
+    static ɵfac: i0.ɵɵFactoryDeclaration<AjfReportBuilderService, [{ optional: true; }]>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<AjfReportBuilderService>;
 }

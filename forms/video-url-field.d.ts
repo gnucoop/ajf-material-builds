@@ -24,6 +24,9 @@ import { HttpClient } from '@angular/common/http';
 import { ChangeDetectorRef } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { AjfWarningAlertService } from './warning-alert-service';
+import * as i0 from "@angular/core";
 export declare class AjfVideoUrlFieldComponent extends CoreComponent {
     constructor(cdr: ChangeDetectorRef, service: AjfFormRendererService, was: AjfWarningAlertService, domSanitizer: DomSanitizer, httpClient: HttpClient);
+    static ɵfac: i0.ɵɵFactoryDeclaration<AjfVideoUrlFieldComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfVideoUrlFieldComponent, "ng-component", never, {}, {}, never, never>;
 }

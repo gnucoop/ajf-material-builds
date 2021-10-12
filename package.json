@@ -1,6 +1,6 @@
 {
   "name": "@ajf/material",
-  "version": "13.0.0-next.2-90e4539",
+  "version": "13.0.0-next.8-a5cea26",
   "description": "",
   "repository": {
     "type": "git",
@@ -18,10 +18,10 @@
     "@angular/common": "^13.0.0-0 || ^14.0.0-0",
     "@angular/router": "^13.0.0-0 || ^14.0.0-0",
     "@angular/material": "^13.0.0-0 || ^14.0.0-0",
-    "@ajf/core": "13.0.0-next.2",
+    "@ajf/core": "13.0.0-next.8",
     "@ajf/icons": "^1.0.0",
+    "@gnucoop/ngx-color-picker": "^12.0.0",
     "flag-icon-css": "^3.5.0",
-    "ngx-color-picker": "^10.0.0",
     "quill": "^1.3.7",
     "rxjs": "^6.5.3"
   },
@@ -29,10 +29,120 @@
     "tslib": "^2.2.0"
   },
   "sideEffects": false,
-  "main": "./bundles/material.umd.js",
-  "fesm2015": "./fesm2015/material.js",
-  "esm2015": "./esm2015/index.js",
+  "fesm2020": "./fesm2020/material.mjs",
+  "fesm2015": "./fesm2015/material.mjs",
+  "esm2020": "./esm2020/index.mjs",
   "typings": "./index.d.ts",
-  "module": "./fesm2015/material.js",
-  "es2015": "./fesm2015/material.js"
+  "module": "./fesm2015/material.mjs",
+  "es2020": "./fesm2020/material.mjs",
+  "type": "module",
+  "exports": {
+    "./package.json": {
+      "default": "./package.json"
+    },
+    ".": {
+      "types": "./index.d.ts",
+      "esm2020": "./esm2020/index.mjs",
+      "es2020": "./fesm2020/material.mjs",
+      "es2015": "./fesm2015/material.mjs",
+      "node": "./fesm2015/material.mjs",
+      "default": "./fesm2020/material.mjs"
+    },
+    "./barcode": {
+      "types": "./barcode/index.d.ts",
+      "esm2020": "./esm2020/barcode/index.mjs",
+      "es2020": "./fesm2020/barcode.mjs",
+      "es2015": "./fesm2015/barcode.mjs",
+      "node": "./fesm2015/barcode.mjs",
+      "default": "./fesm2020/barcode.mjs"
+    },
+    "./calendar": {
+      "types": "./calendar/index.d.ts",
+      "esm2020": "./esm2020/calendar/index.mjs",
+      "es2020": "./fesm2020/calendar.mjs",
+      "es2015": "./fesm2015/calendar.mjs",
+      "node": "./fesm2015/calendar.mjs",
+      "default": "./fesm2020/calendar.mjs"
+    },
+    "./checkbox-group": {
+      "types": "./checkbox-group/index.d.ts",
+      "esm2020": "./esm2020/checkbox-group/index.mjs",
+      "es2020": "./fesm2020/checkbox-group.mjs",
+      "es2015": "./fesm2015/checkbox-group.mjs",
+      "node": "./fesm2015/checkbox-group.mjs",
+      "default": "./fesm2020/checkbox-group.mjs"
+    },
+    "./form-builder": {
+      "types": "./form-builder/index.d.ts",
+      "esm2020": "./esm2020/form-builder/index.mjs",
+      "es2020": "./fesm2020/form-builder.mjs",
+      "es2015": "./fesm2015/form-builder.mjs",
+      "node": "./fesm2015/form-builder.mjs",
+      "default": "./fesm2020/form-builder.mjs"
+    },
+    "./forms": {
+      "types": "./forms/index.d.ts",
+      "esm2020": "./esm2020/forms/index.mjs",
+      "es2020": "./fesm2020/forms.mjs",
+      "es2015": "./fesm2015/forms.mjs",
+      "node": "./fesm2015/forms.mjs",
+      "default": "./fesm2020/forms.mjs"
+    },
+    "./image": {
+      "types": "./image/index.d.ts",
+      "esm2020": "./esm2020/image/index.mjs",
+      "es2020": "./fesm2020/image.mjs",
+      "es2015": "./fesm2015/image.mjs",
+      "node": "./fesm2015/image.mjs",
+      "default": "./fesm2020/image.mjs"
+    },
+    "./monaco-editor": {
+      "types": "./monaco-editor/index.d.ts",
+      "esm2020": "./esm2020/monaco-editor/index.mjs",
+      "es2020": "./fesm2020/monaco-editor.mjs",
+      "es2015": "./fesm2015/monaco-editor.mjs",
+      "node": "./fesm2015/monaco-editor.mjs",
+      "default": "./fesm2020/monaco-editor.mjs"
+    },
+    "./node-icon": {
+      "types": "./node-icon/index.d.ts",
+      "esm2020": "./esm2020/node-icon/index.mjs",
+      "es2020": "./fesm2020/node-icon.mjs",
+      "es2015": "./fesm2015/node-icon.mjs",
+      "node": "./fesm2015/node-icon.mjs",
+      "default": "./fesm2020/node-icon.mjs"
+    },
+    "./page-slider": {
+      "types": "./page-slider/index.d.ts",
+      "esm2020": "./esm2020/page-slider/index.mjs",
+      "es2020": "./fesm2020/page-slider.mjs",
+      "es2015": "./fesm2015/page-slider.mjs",
+      "node": "./fesm2015/page-slider.mjs",
+      "default": "./fesm2020/page-slider.mjs"
+    },
+    "./report-builder": {
+      "types": "./report-builder/index.d.ts",
+      "esm2020": "./esm2020/report-builder/index.mjs",
+      "es2020": "./fesm2020/report-builder.mjs",
+      "es2015": "./fesm2015/report-builder.mjs",
+      "node": "./fesm2015/report-builder.mjs",
+      "default": "./fesm2020/report-builder.mjs"
+    },
+    "./reports": {
+      "types": "./reports/index.d.ts",
+      "esm2020": "./esm2020/reports/index.mjs",
+      "es2020": "./fesm2020/reports.mjs",
+      "es2015": "./fesm2015/reports.mjs",
+      "node": "./fesm2015/reports.mjs",
+      "default": "./fesm2020/reports.mjs"
+    },
+    "./time": {
+      "types": "./time/index.d.ts",
+      "esm2020": "./esm2020/time/index.mjs",
+      "es2020": "./fesm2020/time.mjs",
+      "es2015": "./fesm2015/time.mjs",
+      "node": "./fesm2015/time.mjs",
+      "default": "./fesm2020/time.mjs"
+    }
+  }
 }

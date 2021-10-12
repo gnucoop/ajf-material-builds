@@ -22,6 +22,7 @@
 import { AjfColumnWidget } from '@ajf/core/reports';
 import { OnDestroy, OnInit } from '@angular/core';
 import { AjfReportBuilderService } from './report-builder-service';
+import * as i0 from "@angular/core";
 /**
  * this component manages the report text
  *
@@ -60,4 +61,6 @@ export declare class AjfReportBuilderColumn implements OnDestroy, OnInit {
     constructor(_service: AjfReportBuilderService);
     ngOnInit(): void;
     ngOnDestroy(): void;
+    static ɵfac: i0.ɵɵFactoryDeclaration<AjfReportBuilderColumn, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfReportBuilderColumn, "ajf-column", never, { "column": "column"; }, {}, never, never>;
 }

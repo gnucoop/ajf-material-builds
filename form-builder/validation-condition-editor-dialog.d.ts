@@ -24,6 +24,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { AjfFbConditionEditor } from './condition-editor';
 import { AjfFormBuilderService } from './form-builder-service';
+import * as i0 from "@angular/core";
 export declare class AjfFbValidationConditionEditorDialog {
     dialogRef: MatDialogRef<AjfFbValidationConditionEditorDialog>;
     editor: AjfFbConditionEditor;
@@ -33,4 +34,6 @@ export declare class AjfFbValidationConditionEditorDialog {
     errorMessage: string;
     constructor(service: AjfFormBuilderService, dialogRef: MatDialogRef<AjfFbValidationConditionEditorDialog>);
     saveCondition(): void;
+    static ɵfac: i0.ɵɵFactoryDeclaration<AjfFbValidationConditionEditorDialog, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfFbValidationConditionEditorDialog, "ajf-fb-validation-condition-editor-dialog", never, {}, {}, never, never>;
 }

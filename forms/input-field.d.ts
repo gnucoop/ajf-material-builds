@@ -22,6 +22,9 @@
 import { AjfFormRendererService, AjfInputFieldComponent as CoreComponent } from '@ajf/core/forms';
 import { ChangeDetectorRef } from '@angular/core';
 import { AjfWarningAlertService } from './warning-alert-service';
+import * as i0 from "@angular/core";
 export declare class AjfInputFieldComponent extends CoreComponent {
     constructor(cdr: ChangeDetectorRef, service: AjfFormRendererService, was: AjfWarningAlertService);
+    static ɵfac: i0.ɵɵFactoryDeclaration<AjfInputFieldComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfInputFieldComponent, "ng-component", never, {}, {}, never, never>;
 }

@@ -26,6 +26,7 @@ import { MatChipInputEvent } from '@angular/material/chips';
 import { MatTableDataSource } from '@angular/material/table';
 import { Observable } from 'rxjs';
 import { AjfFormBuilderService } from './form-builder-service';
+import * as i0 from "@angular/core";
 export declare class AjfFbStringIdentifierDialogComponent implements OnDestroy {
     private _service;
     private _cdr;
@@ -42,4 +43,6 @@ export declare class AjfFbStringIdentifierDialogComponent implements OnDestroy {
     ngOnDestroy(): void;
     saveStringIdentifier(): void;
     selected(row: AjfFormStringIdentifier, evt: MatAutocompleteSelectedEvent): void;
+    static ɵfac: i0.ɵɵFactoryDeclaration<AjfFbStringIdentifierDialogComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfFbStringIdentifierDialogComponent, "ajf-fb-string-identifier-dialog", never, {}, {}, never, never>;
 }

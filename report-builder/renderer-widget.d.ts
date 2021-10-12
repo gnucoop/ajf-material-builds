@@ -26,6 +26,7 @@ import { OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AjfReportBuilderDragData } from './report-builder-drag-data';
 import { AjfReportBuilderService } from './report-builder-service';
+import * as i0 from "@angular/core";
 export declare class AjfReportBuilderRendererWidget implements OnInit, OnDestroy, OnChanges {
     private _service;
     get widgetTypes(): typeof AjfWidgetType;
@@ -77,4 +78,6 @@ export declare class AjfReportBuilderRendererWidget implements OnInit, OnDestroy
     ngOnInit(): void;
     ngOnChanges(changes: SimpleChanges): void;
     ngOnDestroy(): void;
+    static ɵfac: i0.ɵɵFactoryDeclaration<AjfReportBuilderRendererWidget, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfReportBuilderRendererWidget, "ajf-report-builder-renderer-widget", never, { "widget": "widget"; "position": "position"; "section": "section"; }, {}, never, never>;
 }

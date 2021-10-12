@@ -22,19 +22,28 @@
 import { AjfBaseWidgetComponent, AjfColumnWidgetInstance, AjfLayoutWidgetInstance, AjfReportWidget as CoreComponent, AjfWidgetComponentsMap, AjfWidgetService as CoreService } from '@ajf/core/reports';
 import { AfterContentChecked, ChangeDetectorRef, ComponentFactoryResolver, ElementRef, Renderer2 } from '@angular/core';
 import { Observable } from 'rxjs';
+import * as i0 from "@angular/core";
 export declare class AjfWidgetService extends CoreService {
     constructor();
+    static ɵfac: i0.ɵɵFactoryDeclaration<AjfWidgetService, never>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<AjfWidgetService>;
 }
 export declare class AjfReportWidget extends CoreComponent {
     readonly widgetsMap: AjfWidgetComponentsMap;
     constructor(cfr: ComponentFactoryResolver, renderer: Renderer2, widgetService: AjfWidgetService);
+    static ɵfac: i0.ɵɵFactoryDeclaration<AjfReportWidget, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfReportWidget, "ajf-widget", never, {}, {}, never, never>;
 }
 export declare class AjfColumnWidgetComponent extends AjfBaseWidgetComponent<AjfColumnWidgetInstance> {
     constructor(cdr: ChangeDetectorRef, el: ElementRef);
+    static ɵfac: i0.ɵɵFactoryDeclaration<AjfColumnWidgetComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfColumnWidgetComponent, "ng-component", never, {}, {}, never, never>;
 }
 export declare class AjfLayoutWidgetComponent extends AjfBaseWidgetComponent<AjfLayoutWidgetInstance> implements AfterContentChecked {
     private _allcolumnsRendered$;
     readonly allcolumnsRendered$: Observable<boolean>;
     constructor(cdr: ChangeDetectorRef, el: ElementRef);
     ngAfterContentChecked(): void;
+    static ɵfac: i0.ɵɵFactoryDeclaration<AjfLayoutWidgetComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfLayoutWidgetComponent, "ng-component", never, {}, {}, never, never>;
 }

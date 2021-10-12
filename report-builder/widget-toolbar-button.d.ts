@@ -20,9 +20,12 @@
  *
  */
 import { OnInit } from '@angular/core';
+import * as i0 from "@angular/core";
 export declare class AjfReportBuilderWidgetToolbarButton implements OnInit {
     widgetType: string;
     widgetIcon: string;
     constructor();
     ngOnInit(): void;
+    static ɵfac: i0.ɵɵFactoryDeclaration<AjfReportBuilderWidgetToolbarButton, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfReportBuilderWidgetToolbarButton, "ajf-report-builder-widget-toolbar-button", never, { "widgetType": "widgetType"; }, {}, never, never>;
 }

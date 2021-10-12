@@ -27,6 +27,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { AjfReportBuilderFormsAnalyzerDialog } from './forms-analyzer-dialog';
 import { AjfFormVariables } from './models';
 import { AjfReportBuilderService } from './report-builder-service';
+import * as i0 from "@angular/core";
 /**
  * this component provides the support for connect the form fields with the report
  *
@@ -99,4 +100,6 @@ export declare class AjfReportBuilderFormsAnalyzer implements OnDestroy {
     openDialogTableEditDataset(index: number): void;
     openDialogChartEditDataOfDataset(index: number): void;
     ngOnDestroy(): void;
+    static ɵfac: i0.ɵɵFactoryDeclaration<AjfReportBuilderFormsAnalyzer, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfReportBuilderFormsAnalyzer, "ajf-report-builder-forms-analyzer", never, {}, {}, never, never>;
 }

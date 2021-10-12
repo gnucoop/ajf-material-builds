@@ -26,6 +26,7 @@ import { AfterViewChecked, OnDestroy, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { AjfFormVariables } from './models';
 import { AjfReportBuilderService } from './report-builder-service';
+import * as i0 from "@angular/core";
 export declare const enum AjfDataType {
     MainData = 0,
     Dataset = 1,
@@ -88,4 +89,6 @@ export declare class AjfReportBuilderFormsAnalyzerDialog implements OnInit, Afte
     ngOnInit(): void;
     ngAfterViewChecked(): void;
     ngOnDestroy(): void;
+    static ɵfac: i0.ɵɵFactoryDeclaration<AjfReportBuilderFormsAnalyzerDialog, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfReportBuilderFormsAnalyzerDialog, "forms-analyzer-dialog", never, { "formula": "formula"; "isFormula": "isFormula"; "labelText": "labelText"; "aggregation": "aggregation"; "init": "init"; "level": "level"; "index": "index"; "mainIndex": "mainIndex"; "reference": "reference"; }, {}, never, never>;
 }

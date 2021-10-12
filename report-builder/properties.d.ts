@@ -28,6 +28,7 @@ import { Observable } from 'rxjs';
 import { AjfReportBuilderFormsAnalyzerDialog } from './forms-analyzer-dialog';
 import { AjfFormVariables } from './models';
 import { AjfReportBuilderService } from './report-builder-service';
+import * as i0 from "@angular/core";
 export declare class AjfReportBuilderProperties implements OnInit, OnChanges, OnDestroy {
     private _dialog;
     private _service;
@@ -362,4 +363,6 @@ export declare class AjfReportBuilderProperties implements OnInit, OnChanges, On
     ngOnInit(): void;
     ngOnChanges(changes: any): void;
     ngOnDestroy(): void;
+    static ɵfac: i0.ɵɵFactoryDeclaration<AjfReportBuilderProperties, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfReportBuilderProperties, "ajf-report-builder-properties", never, {}, {}, never, never>;
 }

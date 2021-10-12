@@ -21,6 +21,9 @@
  */
 import { AjfBaseWidgetComponent, AjfFormulaWidgetInstance } from '@ajf/core/reports';
 import { ChangeDetectorRef, ElementRef } from '@angular/core';
+import * as i0 from "@angular/core";
 export declare class AjfFormulaWidgetComponent extends AjfBaseWidgetComponent<AjfFormulaWidgetInstance> {
     constructor(cdr: ChangeDetectorRef, el: ElementRef);
+    static ɵfac: i0.ɵɵFactoryDeclaration<AjfFormulaWidgetComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfFormulaWidgetComponent, "ng-component", never, {}, {}, never, never>;
 }

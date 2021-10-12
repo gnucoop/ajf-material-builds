@@ -22,6 +22,7 @@
 import { AjfWidget } from '@ajf/core/reports';
 import { OnDestroy, OnInit } from '@angular/core';
 import { AjfReportBuilderService } from './report-builder-service';
+import * as i0 from "@angular/core";
 export declare class AjfReportBuilderWidgetsRowButtons implements OnDestroy, OnInit {
     private _service;
     from: string;
@@ -54,4 +55,6 @@ export declare class AjfReportBuilderWidgetsRowButtons implements OnDestroy, OnI
     isOneColumn(): boolean;
     ngOnInit(): void;
     ngOnDestroy(): void;
+    static ɵfac: i0.ɵɵFactoryDeclaration<AjfReportBuilderWidgetsRowButtons, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfReportBuilderWidgetsRowButtons, "ajf-report-builder-widgets-row-buttons", never, { "from": "from"; "fromWidget": "fromWidget"; "position": "position"; "widget": "widget"; "child": "child"; "isOver": "isOver"; }, {}, never, never>;
 }

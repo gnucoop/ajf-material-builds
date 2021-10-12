@@ -25,6 +25,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { AjfReportBuilderService } from './report-builder-service';
 import { AjfReportBuilderThemeColorDialog } from './theme-color-dialog';
+import * as i0 from "@angular/core";
 /**
  * this component manages the report text
  *
@@ -105,4 +106,6 @@ export declare class AjfReportBuilderThemeColor implements OnInit, OnDestroy {
     openDialog(): void;
     ngOnInit(): void;
     ngOnDestroy(): void;
+    static ɵfac: i0.ɵɵFactoryDeclaration<AjfReportBuilderThemeColor, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfReportBuilderThemeColor, "ajf-theme-color", never, { "section": "section"; "label": "label"; "init": "init"; }, {}, never, never>;
 }

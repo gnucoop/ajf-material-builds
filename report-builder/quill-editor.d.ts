@@ -22,6 +22,7 @@
 import { AfterViewInit, ElementRef, EventEmitter, OnChanges, OnDestroy, Renderer2, SimpleChanges } from '@angular/core';
 import { ControlValueAccessor, FormControl, Validator } from '@angular/forms';
 import { AjfReportBuilderService } from './report-builder-service';
+import * as i0 from "@angular/core";
 export declare class AjfQuillEditor implements AfterViewInit, ControlValueAccessor, OnChanges, OnDestroy, Validator {
     private _elementRef;
     private _renderer;
@@ -110,4 +111,6 @@ export declare class AjfQuillEditor implements AfterViewInit, ControlValueAccess
     } | null;
     ngOnChanges(changes: SimpleChanges): void;
     ngOnDestroy(): void;
+    static ɵfac: i0.ɵɵFactoryDeclaration<AjfQuillEditor, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfQuillEditor, "ajf-quill-editor", never, { "theme": "theme"; "modules": "modules"; "readOnly": "readOnly"; "placeholder": "placeholder"; "maxLength": "maxLength"; "minLength": "minLength"; "formats": "formats"; "initHTML": "initHTML"; }, { "editorCreated": "editorCreated"; "contentChanged": "contentChanged"; "selectionChanged": "selectionChanged"; "formulaClick": "formulaClick"; }, never, ["[ajf-quill-editor-toolbar]"]>;
 }

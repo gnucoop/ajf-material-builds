@@ -20,6 +20,9 @@
  *
  */
 import { AjfCheckboxGroup, AjfCheckboxGroupItem as AjfCoreCheckboxGroupItem } from '@ajf/core/checkbox-group';
+import * as i0 from "@angular/core";
 export declare class CheckboxGroupItem<T> extends AjfCoreCheckboxGroupItem<T> {
     constructor(checkboxGroup: AjfCheckboxGroup<T>);
+    static ɵfac: i0.ɵɵFactoryDeclaration<CheckboxGroupItem<any>, [{ optional: true; }]>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<CheckboxGroupItem<any>, "ajf-checkbox-group-item", never, {}, {}, never, ["*"]>;
 }

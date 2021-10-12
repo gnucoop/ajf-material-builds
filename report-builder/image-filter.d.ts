@@ -20,6 +20,10 @@
  *
  */
 import { PipeTransform } from '@angular/core';
+import * as i0 from "@angular/core";
 export declare class AjfImageFilterPipe implements PipeTransform {
     transform(items: any[], args: any): any;
+    static ɵfac: i0.ɵɵFactoryDeclaration<AjfImageFilterPipe, never>;
+    static ɵpipe: i0.ɵɵPipeDeclaration<AjfImageFilterPipe, "ajfImageFilter">;
+    static ɵprov: i0.ɵɵInjectableDeclaration<AjfImageFilterPipe>;
 }

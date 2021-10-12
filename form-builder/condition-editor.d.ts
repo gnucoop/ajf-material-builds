@@ -21,6 +21,7 @@
  */
 import { AjfField, AjfValidationService } from '@ajf/core/forms';
 import { AjfMonacoEditor } from '@ajf/material/monaco-editor';
+import * as i0 from "@angular/core";
 export declare class AjfFbConditionEditor {
     monacoEditor: AjfMonacoEditor;
     private _fields;
@@ -34,4 +35,6 @@ export declare class AjfFbConditionEditor {
     private _updateVariables;
     private _updateFunctions;
     private _fieldVarType;
+    static ɵfac: i0.ɵɵFactoryDeclaration<AjfFbConditionEditor, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfFbConditionEditor, "ajf-condition-editor", never, { "fields": "fields"; "condition": "condition"; }, {}, never, never>;
 }

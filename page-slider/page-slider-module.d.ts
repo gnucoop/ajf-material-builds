@@ -1,23 +1,12 @@
-/**
- * @license
- * Copyright (C) Gnucoop soc. coop.
- *
- * This file is part of the Advanced JSON forms (ajf).
- *
- * Advanced JSON forms (ajf) is free software: you can redistribute it and/or
- * modify it under the terms of the GNU Affero General Public License as
- * published by the Free Software Foundation, either version 3 of the License,
- * or (at your option) any later version.
- *
- * Advanced JSON forms (ajf) is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero
- * General Public License for more details.
- *
- * You should have received a copy of the GNU Affero General Public License
- * along with Advanced JSON forms (ajf).
- * If not, see http://www.gnu.org/licenses/.
- *
- */
+import * as i0 from "@angular/core";
+import * as i1 from "./page-slider";
+import * as i2 from "@ajf/core/page-slider";
+import * as i3 from "@angular/common";
+import * as i4 from "@angular/material/button";
+import * as i5 from "@angular/material/icon";
+import * as i6 from "@angular/material/toolbar";
 export declare class AjfPageSliderModule {
+    static ɵfac: i0.ɵɵFactoryDeclaration<AjfPageSliderModule, never>;
+    static ɵmod: i0.ɵɵNgModuleDeclaration<AjfPageSliderModule, [typeof i1.AjfPageSlider], [typeof i2.AjfPageSliderModule, typeof i3.CommonModule, typeof i4.MatButtonModule, typeof i5.MatIconModule, typeof i6.MatToolbarModule], [typeof i2.AjfPageSliderModule, typeof i1.AjfPageSlider]>;
+    static ɵinj: i0.ɵɵInjectorDeclaration<AjfPageSliderModule>;
 }

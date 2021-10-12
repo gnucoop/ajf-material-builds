@@ -21,6 +21,9 @@
  */
 import { AjfBaseWidgetComponent, AjfTextWidgetInstance } from '@ajf/core/reports';
 import { ChangeDetectorRef, ElementRef } from '@angular/core';
+import * as i0 from "@angular/core";
 export declare class AjfTextWidgetComponent extends AjfBaseWidgetComponent<AjfTextWidgetInstance> {
     constructor(cdr: ChangeDetectorRef, el: ElementRef);
+    static ɵfac: i0.ɵɵFactoryDeclaration<AjfTextWidgetComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfTextWidgetComponent, "ng-component", never, {}, {}, never, never>;
 }

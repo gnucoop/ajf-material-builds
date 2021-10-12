@@ -22,6 +22,7 @@
 import { AjfAttachmentsOrigin, AjfChoicesOrigin, AjfField, AjfFieldType, AjfForm, AjfFormStringIdentifier, AjfNode, AjfNodeGroup, AjfNodeType, AjfRepeatingSlide, AjfSlide } from '@ajf/core/forms';
 import { AjfCondition } from '@ajf/core/models';
 import { BehaviorSubject, Observable } from 'rxjs';
+import * as i0 from "@angular/core";
 export interface AjfFormBuilderNodeTypeEntry {
     label: string;
     icon: {
@@ -188,4 +189,6 @@ export declare class AjfFormBuilderService {
      * @param nodesList The list of nodes to be updated.
      */
     private _updateNodesList;
+    static ɵfac: i0.ɵɵFactoryDeclaration<AjfFormBuilderService, never>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<AjfFormBuilderService>;
 }

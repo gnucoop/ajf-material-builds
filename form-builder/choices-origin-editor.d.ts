@@ -21,6 +21,7 @@
  */
 import { AjfChoicesOrigin } from '@ajf/core/forms';
 import { ChoicesOriginChoiceEntry, ChoicesOriginDataSource } from './choices-origin-data-source';
+import * as i0 from "@angular/core";
 export declare class AjfFbChoicesOriginEditor {
     private _displayedColumns;
     get displayedColumns(): string[];
@@ -40,4 +41,6 @@ export declare class AjfFbChoicesOriginEditor {
     updateValue(evt: any, cell: string, _value: any, rowIdx: number): void;
     deleteRow(rowIdx: number): void;
     addRow(): void;
+    static ɵfac: i0.ɵɵFactoryDeclaration<AjfFbChoicesOriginEditor, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfFbChoicesOriginEditor, "ajf-fb-choices-origin-editor", never, { "choicesOrigin": "choicesOrigin"; }, {}, never, never>;
 }

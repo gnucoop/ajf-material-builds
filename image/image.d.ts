@@ -22,6 +22,9 @@
 import { AjfImage as AjfCoreImage } from '@ajf/core/image';
 import { ElementRef, Renderer2 } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import * as i0 from "@angular/core";
 export declare class AjfImage extends AjfCoreImage {
     constructor(el: ElementRef, renderer: Renderer2, ds: DomSanitizer);
+    static ɵfac: i0.ɵɵFactoryDeclaration<AjfImage, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfImage, "ajf-image", never, {}, {}, never, never>;
 }

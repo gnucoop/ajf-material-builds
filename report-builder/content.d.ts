@@ -25,6 +25,7 @@ import { AfterViewChecked, ChangeDetectorRef, OnDestroy, OnInit } from '@angular
 import { Observable } from 'rxjs';
 import { AjfReportBuilderDragData } from './report-builder-drag-data';
 import { AjfReportBuilderService } from './report-builder-service';
+import * as i0 from "@angular/core";
 /**
  *  manage the content page
  *
@@ -139,4 +140,6 @@ export declare class AjfReportBuilderContent implements OnInit, AfterViewChecked
     ngOnInit(): void;
     ngAfterViewChecked(): void;
     ngOnDestroy(): void;
+    static ɵfac: i0.ɵɵFactoryDeclaration<AjfReportBuilderContent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfReportBuilderContent, "ajf-report-builder-content", never, {}, {}, never, never>;
 }

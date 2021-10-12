@@ -1,9 +1,9 @@
 {
   "name": "@ajf/material/monaco-editor",
-  "main": "../bundles/material-monaco-editor.umd.js",
-  "fesm2015": "../fesm2015/monaco-editor.js",
-  "esm2015": "../esm2015/monaco-editor/index.js",
+  "fesm2020": "../fesm2020/monaco-editor.mjs",
+  "fesm2015": "../fesm2015/monaco-editor.mjs",
+  "esm2020": "../esm2020/monaco-editor/index.mjs",
   "typings": "./index.d.ts",
-  "module": "../fesm2015/monaco-editor.js",
-  "es2015": "../fesm2015/monaco-editor.js"
+  "module": "../fesm2015/monaco-editor.mjs",
+  "es2020": "../fesm2020/monaco-editor.mjs"
 }

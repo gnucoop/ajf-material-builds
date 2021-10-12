@@ -22,6 +22,7 @@
 import { AjfFormRenderer as AjfCoreFormRenderer, AjfFormRendererService } from '@ajf/core/forms';
 import { BooleanInput } from '@angular/cdk/coercion';
 import { ChangeDetectorRef } from '@angular/core';
+import * as i0 from "@angular/core";
 export declare class AjfFormRenderer extends AjfCoreFormRenderer {
     topBar: boolean;
     constructor(rendererService: AjfFormRendererService, changeDetectorRef: ChangeDetectorRef);
@@ -33,4 +34,6 @@ export declare class AjfFormRenderer extends AjfCoreFormRenderer {
     static ngAcceptInputType_hideTopToolbar: BooleanInput;
     static ngAcceptInputType_readonly: BooleanInput;
     static ngAcceptInputType_saveDisabled: BooleanInput;
+    static ɵfac: i0.ɵɵFactoryDeclaration<AjfFormRenderer, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfFormRenderer, "ajf-form", never, { "topBar": "topBar"; }, {}, never, ["[ajfFormTopToolbarButtons]", "[ajfFormSaveButton]", "[ajfFormStartMessageTitle]", "[ajfFormStartMessage]", "[ajfFormEndMessageTitle]", "[ajfFormEndMessage]"]>;
 }

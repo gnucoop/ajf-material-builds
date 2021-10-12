@@ -24,6 +24,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { AjfFbConditionEditor } from './condition-editor';
 import { AjfFormBuilderService } from './form-builder-service';
+import * as i0 from "@angular/core";
 export declare class AjfFbConditionEditorDialog {
     dialogRef: MatDialogRef<AjfFbConditionEditorDialog>;
     editor: AjfFbConditionEditor;
@@ -32,4 +33,6 @@ export declare class AjfFbConditionEditorDialog {
     condition: string;
     constructor(service: AjfFormBuilderService, dialogRef: MatDialogRef<AjfFbConditionEditorDialog>);
     saveCondition(): void;
+    static ɵfac: i0.ɵɵFactoryDeclaration<AjfFbConditionEditorDialog, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfFbConditionEditorDialog, "ajf-condition-editor-dialog", never, {}, {}, never, never>;
 }

@@ -22,6 +22,9 @@
 import { AjfBaseFieldComponent, AjfDateFieldInstance, AjfFormRendererService } from '@ajf/core/forms';
 import { ChangeDetectorRef } from '@angular/core';
 import { AjfWarningAlertService } from './warning-alert-service';
+import * as i0 from "@angular/core";
 export declare class AjfDateFieldComponent extends AjfBaseFieldComponent<AjfDateFieldInstance> {
     constructor(cdr: ChangeDetectorRef, service: AjfFormRendererService, was: AjfWarningAlertService);
+    static ɵfac: i0.ɵɵFactoryDeclaration<AjfDateFieldComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfDateFieldComponent, "ng-component", never, {}, {}, never, never>;
 }
