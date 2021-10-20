@@ -1,6 +1,6 @@
 {
   "name": "@ajf/material",
-  "version": "13.0.0-next.9-876ca1b5",
+  "version": "13.0.0-next.9-3a699675",
   "description": "",
   "repository": {
     "type": "git",
@@ -20,9 +20,7 @@
     "@angular/material": "^13.0.0-0 || ^14.0.0-0",
     "@ajf/core": "13.0.0-next.9",
     "@ajf/icons": "^1.0.0",
-    "@gnucoop/ngx-color-picker": "^12.0.0",
     "flag-icon-css": "^3.5.0",
-    "quill": "^1.3.7",
     "rxjs": "^6.5.3 || ^7.0.0"
   },
   "dependencies": {
@@ -119,14 +117,6 @@
       "es2015": "./fesm2015/page-slider.mjs",
       "node": "./fesm2015/page-slider.mjs",
       "default": "./fesm2020/page-slider.mjs"
-    },
-    "./report-builder": {
-      "types": "./report-builder/index.d.ts",
-      "esm2020": "./esm2020/report-builder/index.mjs",
-      "es2020": "./fesm2020/report-builder.mjs",
-      "es2015": "./fesm2015/report-builder.mjs",
-      "node": "./fesm2015/report-builder.mjs",
-      "default": "./fesm2020/report-builder.mjs"
     },
     "./reports": {
       "types": "./reports/index.d.ts",
