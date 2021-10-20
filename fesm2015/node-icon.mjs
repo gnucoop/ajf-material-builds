@@ -60,25 +60,14 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.0.0-next.15",
 class AjfNodeIconModule {
 }
 AjfNodeIconModule.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "13.0.0-next.15", ngImport: i0, type: AjfNodeIconModule, deps: [], target: i0.ɵɵFactoryTarget.NgModule });
-AjfNodeIconModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "12.0.0", version: "13.0.0-next.15", ngImport: i0, type: AjfNodeIconModule, declarations: [AjfNodeIcon], imports: [CommonModule,
-        MatIconModule], exports: [AjfNodeIcon] });
-AjfNodeIconModule.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "13.0.0-next.15", ngImport: i0, type: AjfNodeIconModule, imports: [[
-            CommonModule,
-            MatIconModule,
-        ]] });
+AjfNodeIconModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "12.0.0", version: "13.0.0-next.15", ngImport: i0, type: AjfNodeIconModule, declarations: [AjfNodeIcon], imports: [CommonModule, MatIconModule], exports: [AjfNodeIcon] });
+AjfNodeIconModule.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "13.0.0-next.15", ngImport: i0, type: AjfNodeIconModule, imports: [[CommonModule, MatIconModule]] });
 i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.0.0-next.15", ngImport: i0, type: AjfNodeIconModule, decorators: [{
             type: NgModule,
             args: [{
-                    imports: [
-                        CommonModule,
-                        MatIconModule,
-                    ],
-                    declarations: [
-                        AjfNodeIcon,
-                    ],
-                    exports: [
-                        AjfNodeIcon,
-                    ],
+                    imports: [CommonModule, MatIconModule],
+                    declarations: [AjfNodeIcon],
+                    exports: [AjfNodeIcon],
                 }]
         }] });
 

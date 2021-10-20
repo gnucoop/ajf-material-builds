@@ -269,7 +269,8 @@ function getNodeContainer(c, node) {
     return null;
 }
 function buildFormBuilderNodesSubtree(nodes, parent, ignoreConditionalBranches = false) {
-    const entries = nodes.filter(n => n.parent === parent.id)
+    const entries = nodes
+        .filter(n => n.parent === parent.id)
         .sort((n1, n2) => n1.parentNode - n2.parentNode)
         .map(n => {
         const children = buildFormBuilderNodesSubtree(nodes, n);
@@ -279,7 +280,7 @@ function buildFormBuilderNodesSubtree(nodes, parent, ignoreConditionalBranches =
         return {
             node: n,
             children,
-            content: buildFormBuilderNodesContent(nodes, n)
+            content: buildFormBuilderNodesContent(nodes, n),
         };
     });
     if (!ignoreConditionalBranches) {
@@ -308,9 +309,9 @@ function flattenNodes(nodes) {
     return flatNodes;
 }
 function getDescendants(flatNodes, parentNode, branch = null) {
-    return branch != null ?
-        flatNodes.filter(n => n.parent === parentNode.id && n.parentNode === branch) :
-        flatNodes.filter(n => n.parent === parentNode.id);
+    return branch != null
+        ? flatNodes.filter(n => n.parent === parentNode.id && n.parentNode === branch)
+        : flatNodes.filter(n => n.parent === parentNode.id);
 }
 function removeNodes(nodes, ids) {
     const len = nodes.length;
@@ -342,74 +343,74 @@ class AjfFormBuilderService {
                 label: 'Slide',
                 icon: { fontSet: 'ajf-icon', fontIcon: 'field-slide' },
                 nodeType: { node: AjfNodeType.AjfSlide },
-                isSlide: true
+                isSlide: true,
             },
             {
                 label: 'Repeating slide',
                 icon: { fontSet: 'ajf-icon', fontIcon: 'field-repeatingslide' },
                 nodeType: { node: AjfNodeType.AjfRepeatingSlide },
-                isSlide: true
+                isSlide: true,
             },
             {
                 label: 'String',
                 icon: { fontSet: 'ajf-icon', fontIcon: 'field-string' },
-                nodeType: { node: AjfNodeType.AjfField, field: AjfFieldType.String }
+                nodeType: { node: AjfNodeType.AjfField, field: AjfFieldType.String },
             },
             {
                 label: 'Text',
                 icon: { fontSet: 'ajf-icon', fontIcon: 'field-text' },
-                nodeType: { node: AjfNodeType.AjfField, field: AjfFieldType.Text }
+                nodeType: { node: AjfNodeType.AjfField, field: AjfFieldType.Text },
             },
             {
                 label: 'Number',
                 icon: { fontSet: 'ajf-icon', fontIcon: 'field-number' },
-                nodeType: { node: AjfNodeType.AjfField, field: AjfFieldType.Number }
+                nodeType: { node: AjfNodeType.AjfField, field: AjfFieldType.Number },
             },
             {
                 label: 'Boolean',
                 icon: { fontSet: 'ajf-icon', fontIcon: 'field-boolean' },
-                nodeType: { node: AjfNodeType.AjfField, field: AjfFieldType.Boolean }
+                nodeType: { node: AjfNodeType.AjfField, field: AjfFieldType.Boolean },
             },
             {
                 label: 'Single choice',
                 icon: { fontSet: 'ajf-icon', fontIcon: 'field-singlechoice' },
-                nodeType: { node: AjfNodeType.AjfField, field: AjfFieldType.SingleChoice }
+                nodeType: { node: AjfNodeType.AjfField, field: AjfFieldType.SingleChoice },
             },
             {
                 label: 'Multiple choice',
                 icon: { fontSet: 'ajf-icon', fontIcon: 'field-multiplechoice' },
-                nodeType: { node: AjfNodeType.AjfField, field: AjfFieldType.MultipleChoice }
+                nodeType: { node: AjfNodeType.AjfField, field: AjfFieldType.MultipleChoice },
             },
             {
                 label: 'Formula',
                 icon: { fontSet: 'ajf-icon', fontIcon: 'field-formula' },
-                nodeType: { node: AjfNodeType.AjfField, field: AjfFieldType.Formula }
+                nodeType: { node: AjfNodeType.AjfField, field: AjfFieldType.Formula },
             },
             {
                 label: 'Date',
                 icon: { fontSet: 'ajf-icon', fontIcon: 'field-date' },
-                nodeType: { node: AjfNodeType.AjfField, field: AjfFieldType.Date }
+                nodeType: { node: AjfNodeType.AjfField, field: AjfFieldType.Date },
             },
             {
                 label: 'Date input',
                 icon: { fontSet: 'ajf-icon', fontIcon: 'field-dateinput' },
-                nodeType: { node: AjfNodeType.AjfField, field: AjfFieldType.DateInput }
+                nodeType: { node: AjfNodeType.AjfField, field: AjfFieldType.DateInput },
             },
             {
                 label: 'Time',
                 icon: { fontSet: 'ajf-icon', fontIcon: 'field-time' },
-                nodeType: { node: AjfNodeType.AjfField, field: AjfFieldType.Time }
+                nodeType: { node: AjfNodeType.AjfField, field: AjfFieldType.Time },
             },
             {
                 label: 'Table',
                 icon: { fontSet: 'ajf-icon', fontIcon: 'field-table' },
-                nodeType: { node: AjfNodeType.AjfField, field: AjfFieldType.Table }
+                nodeType: { node: AjfNodeType.AjfField, field: AjfFieldType.Table },
             },
             {
                 label: 'Range',
                 icon: { fontSet: 'ajf-icon', fontIcon: 'field-range' },
-                nodeType: { node: AjfNodeType.AjfField, field: AjfFieldType.Range }
-            }
+                nodeType: { node: AjfNodeType.AjfField, field: AjfFieldType.Range },
+            },
         ];
         this._form = new BehaviorSubject(null);
         this._formObs = this._form;
@@ -418,11 +419,14 @@ class AjfFormBuilderService {
          */
         this._connectedDropLists = new BehaviorSubject([]);
         this._editedNodeEntry = new BehaviorSubject(null);
-        this._editedNodeEntryObs = this._editedNodeEntry;
+        this._editedNodeEntryObs = this
+            ._editedNodeEntry;
         this._editedCondition = new BehaviorSubject(null);
-        this._editedConditionObs = this._editedCondition;
+        this._editedConditionObs = this
+            ._editedCondition;
         this._editedChoicesOrigin = new BehaviorSubject(null);
-        this._editedChoicesOriginObs = this._editedChoicesOrigin;
+        this._editedChoicesOriginObs = this
+            ._editedChoicesOrigin;
         this._beforeNodesUpdate = new EventEmitter();
         this._beforeNodesUpdateObs = this._beforeNodesUpdate;
         this._afterNodeUpdate = new EventEmitter();
@@ -572,9 +576,9 @@ class AjfFormBuilderService {
         }
         this._beforeNodesUpdate.emit();
         this._nodesUpdates.next((nodes) => {
-            const cn = isContainerNode(parent) && inContent ?
-                parent :
-                getNodeContainer({ nodes }, parent);
+            const cn = isContainerNode(parent) && inContent
+                ? parent
+                : getNodeContainer({ nodes }, parent);
             if (!isFieldNode) {
                 let newNodes = nodes.slice(0);
                 newNodes.splice(insertInIndex, 0, node);
@@ -609,10 +613,12 @@ class AjfFormBuilderService {
     }
     getCurrentForm() {
         return combineLatest([
-            this.form, this._nodesWithoutChoiceOrigins, this.attachmentsOrigins,
-            this.choicesOrigins, this.stringIdentifier
-        ])
-            .pipe(filter(([form]) => form != null), map(([form, nodes, attachmentsOrigins, choicesOrigins, stringIdentifier]) => {
+            this.form,
+            this._nodesWithoutChoiceOrigins,
+            this.attachmentsOrigins,
+            this.choicesOrigins,
+            this.stringIdentifier,
+        ]).pipe(filter(([form]) => form != null), map(([form, nodes, attachmentsOrigins, choicesOrigins, stringIdentifier]) => {
             return createForm({
                 choicesOrigins: choicesOrigins.slice(0),
                 attachmentsOrigins: attachmentsOrigins.slice(0),
@@ -639,7 +645,7 @@ class AjfFormBuilderService {
             if (isChoicesFixedOrigin(choicesOrigin)) {
                 choicesOrigin.choices = params.choices;
             }
-            this._choicesOriginsUpdates.next((choicesOrigins) => {
+            this._choicesOriginsUpdates.next(choicesOrigins => {
                 const idx = choicesOrigins.indexOf(choicesOrigin);
                 if (idx > -1) {
                     choicesOrigins = [
@@ -672,7 +678,7 @@ class AjfFormBuilderService {
                 node: rootNode,
                 container: null,
                 children: buildFormBuilderNodesSubtree(nodes, rootNode),
-                content: buildFormBuilderNodesContent(nodes, rootNode)
+                content: buildFormBuilderNodesContent(nodes, rootNode),
             });
             return tree;
         }
@@ -688,7 +694,7 @@ class AjfFormBuilderService {
     }
     _findMaxNodeId(nodes, _curMaxId = 0) {
         let maxId = 0;
-        nodes.forEach((n) => {
+        nodes.forEach(n => {
             maxId = Math.max(maxId, n.id);
             if (isContainerNode(n)) {
                 maxId = Math.max(maxId, this._findMaxNodeId(n.nodes));
@@ -706,25 +712,24 @@ class AjfFormBuilderService {
                 return form != null && form.nodes != null ? form.nodes.slice(0) : [];
             });
             this._attachmentsOriginsUpdates.next((_attachmentsOrigins) => {
-                return form != null && form.attachmentsOrigins != null ?
-                    form.attachmentsOrigins.slice(0) :
-                    [];
+                return form != null && form.attachmentsOrigins != null
+                    ? form.attachmentsOrigins.slice(0)
+                    : [];
             });
             this._choicesOriginsUpdates.next((_choicesOrigins) => {
                 return form != null && form.choicesOrigins != null ? form.choicesOrigins.slice(0) : [];
             });
             this._stringIdentifierUpdates.next((_) => {
-                return form != null && form.stringIdentifier != null ? form.stringIdentifier.slice(0) :
-                    [];
+                return form != null && form.stringIdentifier != null
+                    ? form.stringIdentifier.slice(0)
+                    : [];
             });
         });
     }
     _initChoicesOriginsStreams() {
-        this._choicesOrigins =
-            this._choicesOriginsUpdates
-                .pipe(scan((choicesOrigins, op) => {
-                return op(choicesOrigins);
-            }, []), publishReplay(1), refCount());
+        this._choicesOrigins = (this._choicesOriginsUpdates).pipe(scan((choicesOrigins, op) => {
+            return op(choicesOrigins);
+        }, []), publishReplay(1), refCount());
     }
     _initAttachmentsOriginsStreams() {
         this._attachmentsOrigins = this._attachmentsOriginsUpdates.pipe(scan((attachmentsOrigins, op) => {
@@ -737,27 +742,25 @@ class AjfFormBuilderService {
         }, []), publishReplay(1), refCount());
     }
     _initNodesStreams() {
-        this._nodes = this._nodesUpdates
-            .pipe(scan((nodes, op) => {
+        this._nodes = this._nodesUpdates.pipe(scan((nodes, op) => {
             return op(nodes);
         }, []), publishReplay(1), refCount());
-        this._nodesWithoutChoiceOrigins =
-            this._nodes.pipe(map(slides => slides.map(slide => {
-                slide.nodes = slide.nodes.map((node) => {
-                    if (isFieldWithChoices(node)) {
-                        const fwc = deepCopy(node);
-                        if (fwc && fwc.choices) {
-                            delete fwc.choices;
-                        }
-                        if (fwc && fwc.choicesOrigin) {
-                            delete fwc.choicesOrigin;
-                        }
-                        return fwc;
+        this._nodesWithoutChoiceOrigins = this._nodes.pipe(map(slides => slides.map(slide => {
+            slide.nodes = slide.nodes.map((node) => {
+                if (isFieldWithChoices(node)) {
+                    const fwc = deepCopy(node);
+                    if (fwc && fwc.choices) {
+                        delete fwc.choices;
                     }
-                    return node;
-                });
-                return slide;
-            })));
+                    if (fwc && fwc.choicesOrigin) {
+                        delete fwc.choicesOrigin;
+                    }
+                    return fwc;
+                }
+                return node;
+            });
+            return slide;
+        })));
         this._flatNodes = this._nodes.pipe(map((nodes) => flattenNodes(nodes)), publishReplay(1), refCount());
         this._flatFields = this._flatNodes.pipe(map((nodes) => nodes.filter(n => !isContainerNode(n))), publishReplay(1), refCount());
         this._nodeEntriesTree = this._nodes.pipe(map(nodes => this._buildFormBuilderNodesTree(nodes)), publishReplay(1), refCount());
@@ -772,19 +775,22 @@ class AjfFormBuilderService {
             node.id = nodeEntry.node.id;
             node.name = properties.name;
             node.label = properties.label;
-            node.visibility = properties.visibility != null ?
-                createCondition({ condition: properties.visibility }) :
-                null;
+            node.visibility =
+                properties.visibility != null
+                    ? createCondition({ condition: properties.visibility })
+                    : null;
             const oldConditionalBranches = node.conditionalBranches.length;
-            node.conditionalBranches = properties.conditionalBranches != null ?
-                properties.conditionalBranches.map((condition) => createCondition({ condition })) :
-                [alwaysCondition()];
+            node.conditionalBranches =
+                properties.conditionalBranches != null
+                    ? properties.conditionalBranches.map((condition) => createCondition({ condition }))
+                    : [alwaysCondition()];
             const newConditionalBranches = node.conditionalBranches.length;
             if (isRepeatingContainerNode(node)) {
                 const repNode = node;
-                repNode.formulaReps = properties.formulaReps != null ?
-                    createFormula({ formula: properties.formulaReps }) :
-                    undefined;
+                repNode.formulaReps =
+                    properties.formulaReps != null
+                        ? createFormula({ formula: properties.formulaReps })
+                        : undefined;
                 repNode.minReps = properties.minReps;
                 repNode.maxReps = properties.maxReps;
             }
@@ -792,9 +798,8 @@ class AjfFormBuilderService {
                 const field = node;
                 field.description = properties.description;
                 field.defaultValue = properties.defaultValue;
-                field.formula = properties.formula != null ?
-                    createFormula({ formula: properties.formula }) :
-                    undefined;
+                field.formula =
+                    properties.formula != null ? createFormula({ formula: properties.formula }) : undefined;
                 const forceValue = properties.value;
                 const notEmpty = properties.notEmpty;
                 const validationConditions = properties.validationConditions;
@@ -814,25 +819,24 @@ class AjfFormBuilderService {
                 if (isNaN(maxDigits)) {
                     maxDigits = null;
                 }
-                if (forceValue != null || notEmpty != null ||
+                if (forceValue != null ||
+                    notEmpty != null ||
                     (validationConditions != null && validationConditions.length > 0) ||
-                    minValue != null || maxValue != null || minDigits != null ||
+                    minValue != null ||
+                    maxValue != null ||
+                    minDigits != null ||
                     maxDigits != null) {
                     const validation = field.validation || createValidationGroup({});
                     validation.forceValue = forceValue;
                     validation.notEmpty = notEmpty ? notEmptyValidation() : undefined;
                     validation.minValue = minValue != null ? minValidation(minValue) : undefined;
                     validation.maxValue = maxValue != null ? maxValidation(maxValue) : undefined;
-                    validation.minDigits =
-                        minDigits != null ? minDigitsValidation(minDigits) : undefined;
-                    validation.maxDigits =
-                        maxDigits != null ? maxDigitsValidation(maxDigits) : undefined;
-                    validation.conditions =
-                        (validationConditions ||
-                            []).map((c) => createValidation({
-                            condition: c.condition,
-                            errorMessage: c.errorMessage
-                        }));
+                    validation.minDigits = minDigits != null ? minDigitsValidation(minDigits) : undefined;
+                    validation.maxDigits = maxDigits != null ? maxDigitsValidation(maxDigits) : undefined;
+                    validation.conditions = (validationConditions || []).map((c) => createValidation({
+                        condition: c.condition,
+                        errorMessage: c.errorMessage,
+                    }));
                     field.validation = validation;
                 }
                 else {
@@ -844,20 +848,19 @@ class AjfFormBuilderService {
                     (warningConditions != null && warningConditions.length > 0)) {
                     const warning = field.warning || createWarningGroup({});
                     warning.notEmpty = notEmptyWarn ? notEmptyWarning() : undefined;
-                    warning.conditions =
-                        (warningConditions ||
-                            []).map((w) => createWarning({
-                            condition: w.condition,
-                            warningMessage: w.warningMessage
-                        }));
+                    warning.conditions = (warningConditions || []).map((w) => createWarning({
+                        condition: w.condition,
+                        warningMessage: w.warningMessage,
+                    }));
                     field.warning = warning;
                 }
                 else {
                     field.warning = undefined;
                 }
-                field.nextSlideCondition = properties.nextSlideCondition != null ?
-                    createCondition({ condition: properties.nextSlideCondition }) :
-                    undefined;
+                field.nextSlideCondition =
+                    properties.nextSlideCondition != null
+                        ? createCondition({ condition: properties.nextSlideCondition })
+                        : undefined;
                 field.size = properties.size;
                 field.defaultValue = properties.defaultValue;
                 if (isFieldWithChoices(field)) {
@@ -865,8 +868,7 @@ class AjfFormBuilderService {
                     fwc.choicesOriginRef = properties.choicesOriginRef;
                     fwc.forceExpanded = properties.forceExpanded;
                     fwc.forceNarrow = properties.forceNarrow;
-                    fwc.triggerConditions = (properties.triggerConditions ||
-                        []).map((t) => createCondition({ condition: t }));
+                    fwc.triggerConditions = (properties.triggerConditions || []).map((t) => createCondition({ condition: t }));
                 }
             }
             this._editedNodeEntry.next(null);
@@ -932,32 +934,31 @@ class AjfFormBuilderService {
      */
     _initMoveNode() {
         this._moveNodeSub.unsubscribe();
-        this._moveNodeSub =
-            this._moveNodeEntryEvent
-                .pipe(map((moveEvent) => {
-                this._beforeNodesUpdate.emit();
-                return (nodes) => {
-                    const nodeEntry = moveEvent.nodeEntry;
-                    const node = nodeEntry.node;
-                    let cn = getNodeContainer({ nodes }, node);
-                    let newNodes = nodes;
-                    if (cn != null) {
-                        const replaceNodes = cn.nodes === nodes;
-                        newNodes = cn.nodes;
-                        moveItemInArray(newNodes, moveEvent.fromIndex, moveEvent.toIndex);
-                        newNodes = this._updateNodesList(cn.id, newNodes);
-                        cn.nodes = newNodes;
-                        if (replaceNodes) {
-                            nodes = newNodes;
-                        }
-                        else {
-                            nodes = nodes.slice(0);
-                        }
+        this._moveNodeSub = this._moveNodeEntryEvent
+            .pipe(map((moveEvent) => {
+            this._beforeNodesUpdate.emit();
+            return (nodes) => {
+                const nodeEntry = moveEvent.nodeEntry;
+                const node = nodeEntry.node;
+                let cn = getNodeContainer({ nodes }, node);
+                let newNodes = nodes;
+                if (cn != null) {
+                    const replaceNodes = cn.nodes === nodes;
+                    newNodes = cn.nodes;
+                    moveItemInArray(newNodes, moveEvent.fromIndex, moveEvent.toIndex);
+                    newNodes = this._updateNodesList(cn.id, newNodes);
+                    cn.nodes = newNodes;
+                    if (replaceNodes) {
+                        nodes = newNodes;
                     }
-                    return nodes;
-                };
-            }))
-                .subscribe(this._nodesUpdates);
+                    else {
+                        nodes = nodes.slice(0);
+                    }
+                }
+                return nodes;
+            };
+        }))
+            .subscribe(this._nodesUpdates);
     }
     /**
      * Updates the "id" and "parent" fields of a modified or rearranged list of nodes.
@@ -971,8 +972,8 @@ class AjfFormBuilderService {
         const contId = containerId != undefined ? containerId : 0;
         for (let idx = 0; idx < nodesList.length; idx++) {
             let currentNode = nodesList[idx];
-            currentNode.id = (contId * 1000) + idx + 1;
-            currentNode.parent = idx == 0 ? contId : (contId * 1000) + idx;
+            currentNode.id = contId * 1000 + idx + 1;
+            currentNode.parent = idx == 0 ? contId : contId * 1000 + idx;
             if (currentNode.nodeType == AjfNodeType.AjfSlide ||
                 currentNode.nodeType == AjfNodeType.AjfRepeatingSlide) {
                 const currentSlide = currentNode;
@@ -993,14 +994,17 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.0.0-next.15",
 class AjfFbChoicesOriginEditorDialog {
     constructor(_service) {
         this._service = _service;
-        this._choicesOrigin =
-            this._service.editedChoicesOrigin.pipe(filter(c => c != null), map(c => c));
+        this._choicesOrigin = this._service.editedChoicesOrigin.pipe(filter(c => c != null), map(c => c));
     }
     get choicesOrigin() {
         return this._choicesOrigin;
     }
     saveChoicesOrigin() {
-        this._service.saveChoicesOrigin({ label: this.editor.label, name: this.editor.name, choices: this.editor.choicesArr });
+        this._service.saveChoicesOrigin({
+            label: this.editor.label,
+            name: this.editor.name,
+            choices: this.editor.choicesArr,
+        });
     }
     cancelChoicesOriginEdit() {
         this._service.cancelChoicesOriginEdit();
@@ -1064,12 +1068,15 @@ class AjfFbConditionEditor {
         }
     }
     onEditorInit() {
-        monaco.languages.typescript.javascriptDefaults.setDiagnosticsOptions({ noSemanticValidation: false, noSyntaxValidation: false });
+        monaco.languages.typescript.javascriptDefaults.setDiagnosticsOptions({
+            noSemanticValidation: false,
+            noSyntaxValidation: false,
+        });
         monaco.languages.typescript.javascriptDefaults.setCompilerOptions({
             target: monaco.languages.typescript.ScriptTarget.ES2015,
             allowNonTsExtensions: true,
             allowJs: true,
-            module: monaco.languages.typescript.ModuleKind.None
+            module: monaco.languages.typescript.ModuleKind.None,
         });
         try {
             monaco.languages.typescript.javascriptDefaults.addExtraLib('', 'condition-editor-variables.d.ts');
@@ -1100,16 +1107,14 @@ class AjfFbConditionEditor {
                 })
                     .join('\n');
         }
-        catch (e) {
-        }
+        catch (e) { }
     }
     _updateFunctions() {
         try {
             monaco.languages.typescript.javascriptDefaults._extraLibs['condition-editor-functions.d.ts'] =
                 AjfExpressionUtils.UTIL_FUNCTIONS;
         }
-        catch (e) {
-        }
+        catch (e) { }
     }
     _fieldVarType(fieldType) {
         switch (fieldType) {
@@ -1213,8 +1218,9 @@ function onDropProcess(event, fbService, nodeEntry, content = false) {
             fbService.insertNode(itemData, null, 0, content, event.currentIndex);
             return;
         }
-        const emptySlot = content ? { parent: nodeEntry.node, parentNode: 0 } :
-            nodeEntry;
+        const emptySlot = content
+            ? { parent: nodeEntry.node, parentNode: 0 }
+            : nodeEntry;
         fbService.insertNode(itemData, emptySlot.parent, emptySlot.parentNode, content, event.currentIndex);
         return;
     }
@@ -1251,7 +1257,8 @@ class AjfFbStringIdentifierDialogComponent {
         this._stringIdentifierSub = _service.stringIdentifier.subscribe(identifier => {
             this.dataSource.data = [...identifier];
         });
-        this.fields$ = _service.flatFields.pipe(map(fields => fields.sort((f1, f2) => f1.name.localeCompare(f2.name))
+        this.fields$ = _service.flatFields.pipe(map(fields => fields
+            .sort((f1, f2) => f1.name.localeCompare(f2.name))
             .map(f => f.name)
             .filter(f => f.length > 0)), shareReplay(1));
     }
@@ -1275,10 +1282,7 @@ class AjfFbStringIdentifierDialogComponent {
     removeValue(row, value) {
         const idx = row.value.indexOf(value);
         if (idx > -1) {
-            row.value = [
-                ...row.value.slice(0, idx),
-                ...row.value.slice(idx + 1),
-            ];
+            row.value = [...row.value.slice(0, idx), ...row.value.slice(idx + 1)];
             this._cdr.markForCheck();
         }
     }
@@ -1446,15 +1450,17 @@ class AjfFbNodeProperties {
         this._dialog = _dialog;
         this._fb = _fb;
         this._fieldSizes = [
-            { label: 'Normal', value: 'normal' }, { label: 'Small', value: 'small' },
-            { label: 'Smaller', value: 'smaller' }, { label: 'Tiny', value: 'tiny' },
-            { label: 'Mini', value: 'mini' }
+            { label: 'Normal', value: 'normal' },
+            { label: 'Small', value: 'small' },
+            { label: 'Smaller', value: 'smaller' },
+            { label: 'Tiny', value: 'tiny' },
+            { label: 'Mini', value: 'mini' },
         ];
         this._choicesOrigins = [];
         this._conditionalBranches = [];
         this._validationConditions = [];
         this._warningConditions = [];
-        this.isRepeatingContainerNode = (nodeEntry) => {
+        this.isRepeatingContainerNode = nodeEntry => {
             return nodeEntry != null && isRepeatingContainerNode(nodeEntry.node);
         };
         this._visibilityOptSub = Subscription.EMPTY;
@@ -1507,9 +1513,8 @@ class AjfFbNodeProperties {
         this._saveEvt = new EventEmitter();
         this._saveSub = Subscription.EMPTY;
         this._nodeEntry = _service.editedNodeEntry;
-        this._choicesOriginsSub =
-            _service.choicesOrigins.subscribe((c) => this._choicesOrigins = c || []);
-        this._enabled = this._nodeEntry.pipe(map((n) => n != null));
+        this._choicesOriginsSub = _service.choicesOrigins.subscribe(c => (this._choicesOrigins = c || []));
+        this._enabled = this._nodeEntry.pipe(map(n => n != null));
         this._initForm();
         this._initVisibilityEdit();
         this._initConditionalBranchEdit();
@@ -1704,7 +1709,7 @@ class AjfFbNodeProperties {
         });
     }
     _initForm() {
-        this._propertiesForm = this._nodeEntry.pipe(filter((n) => n != null), map((n) => {
+        this._propertiesForm = this._nodeEntry.pipe(filter(n => n != null), map(n => {
             if (this._visibilityOptSub != null) {
                 this._visibilityOptSub.unsubscribe();
             }
@@ -1722,7 +1727,7 @@ class AjfFbNodeProperties {
                 label: n.node.label,
                 visibilityOpt: [visibilityOpt, Validators.required],
                 visibility: [visibility, Validators.required],
-                conditionalBranchesNum: n.node.conditionalBranches.length
+                conditionalBranchesNum: n.node.conditionalBranches.length,
             };
             const validators = [];
             if (isRepeatingContainerNode(n.node)) {
@@ -1787,12 +1792,10 @@ class AjfFbNodeProperties {
                         maxValue = (numField.validation.maxValue.condition || '').replace('$value <= ', '');
                     }
                     if (numField.validation.minDigits != null) {
-                        minDigits = (numField.validation.minDigits.condition ||
-                            '').replace('$value.toString().length >= ', '');
+                        minDigits = (numField.validation.minDigits.condition || '').replace('$value.toString().length >= ', '');
                     }
                     if (numField.validation.maxDigits != null) {
-                        maxDigits = (numField.validation.maxDigits.condition ||
-                            '').replace('$value.toString().length <= ', '');
+                        maxDigits = (numField.validation.maxDigits.condition || '').replace('$value.toString().length <= ', '');
                     }
                 }
                 controls.minValue = minValue;
@@ -1804,11 +1807,10 @@ class AjfFbNodeProperties {
             }
             if (this.isFieldWithChoices(n.node)) {
                 const fieldWithChoices = n.node;
-                let triggerConditions = (fieldWithChoices.triggerConditions || []).map((c) => c.condition);
+                let triggerConditions = (fieldWithChoices.triggerConditions || []).map(c => c.condition);
                 controls.choicesOriginRef = fieldWithChoices.choicesOriginRef;
-                controls.choicesFilter = fieldWithChoices.choicesFilter != null ?
-                    fieldWithChoices.choicesFilter.formula :
-                    null;
+                controls.choicesFilter =
+                    fieldWithChoices.choicesFilter != null ? fieldWithChoices.choicesFilter.formula : null;
                 controls.forceExpanded = fieldWithChoices.forceExpanded;
                 controls.forceNarrow = fieldWithChoices.forceNarrow;
                 controls.triggerConditions = triggerConditions;
@@ -1895,27 +1897,27 @@ class AjfFbNodeProperties {
     _initTriggerConditionEdit() {
         this._editConditionDialogSub = Subscription.EMPTY;
         this._cdr.markForCheck();
-        this._editTriggerConditionSub =
-            this._editTriggerConditionEvt
-                .pipe(withLatestFrom(this._propertiesForm))
-                .subscribe(([vcIdx, fg]) => {
-                this._destroyConditionDialog();
-                if (vcIdx < 0 || vcIdx >= this._triggerConditions.length || fg == null) {
-                    return;
+        this._editTriggerConditionSub = this._editTriggerConditionEvt
+            .pipe(withLatestFrom(this._propertiesForm))
+            .subscribe(([vcIdx, fg]) => {
+            this._destroyConditionDialog();
+            if (vcIdx < 0 || vcIdx >= this._triggerConditions.length || fg == null) {
+                return;
+            }
+            this._editConditionDialog = this._dialog.open(AjfFbConditionEditorDialog);
+            const cmp = this._editConditionDialog.componentInstance;
+            cmp.condition = this._triggerConditions[vcIdx];
+            this._editConditionDialogSub = this._editConditionDialog
+                .afterClosed()
+                .subscribe((cond) => {
+                if (cond !== void 0) {
+                    this._triggerConditions[vcIdx] = cond;
                 }
-                this._editConditionDialog = this._dialog.open(AjfFbConditionEditorDialog);
-                const cmp = this._editConditionDialog.componentInstance;
-                cmp.condition = this._triggerConditions[vcIdx];
-                this._editConditionDialogSub =
-                    this._editConditionDialog.afterClosed().subscribe((cond) => {
-                        if (cond !== void 0) {
-                            this._triggerConditions[vcIdx] = cond;
-                        }
-                        this._editConditionDialogSub.unsubscribe();
-                        this._editConditionDialogSub = Subscription.EMPTY;
-                        this._cdr.markForCheck();
-                    });
+                this._editConditionDialogSub.unsubscribe();
+                this._editConditionDialogSub = Subscription.EMPTY;
+                this._cdr.markForCheck();
             });
+        });
     }
     _initRemoveWarningCondition() {
         this._removeWarningConditionSub = this._removeWarningConditionEvt
@@ -1949,30 +1951,29 @@ class AjfFbNodeProperties {
         });
     }
     _initWarningConditionEdit() {
-        this._editWarningConditionSub =
-            this._editWarningConditionEvt
-                .pipe(withLatestFrom(this._propertiesForm))
-                .subscribe(([vcIdx, fg]) => {
-                this._destroyWarningConditionDialog();
-                if (vcIdx < 0 || vcIdx >= this._warningConditions.length || fg == null) {
-                    return;
+        this._editWarningConditionSub = this._editWarningConditionEvt
+            .pipe(withLatestFrom(this._propertiesForm))
+            .subscribe(([vcIdx, fg]) => {
+            this._destroyWarningConditionDialog();
+            if (vcIdx < 0 || vcIdx >= this._warningConditions.length || fg == null) {
+                return;
+            }
+            this._editWarningConditionDialog = this._dialog.open(AjfFbWarningConditionEditorDialog);
+            const cmp = this._editWarningConditionDialog.componentInstance;
+            const w = this._warningConditions[vcIdx];
+            cmp.condition = w.condition;
+            cmp.warningMessage = w.warningMessage;
+            this._editWarningConditionDialogSub = this._editWarningConditionDialog
+                .afterClosed()
+                .subscribe((cond) => {
+                if (cond !== void 0) {
+                    this._warningConditions[vcIdx] = cond;
                 }
-                this._editWarningConditionDialog =
-                    this._dialog.open(AjfFbWarningConditionEditorDialog);
-                const cmp = this._editWarningConditionDialog.componentInstance;
-                const w = this._warningConditions[vcIdx];
-                cmp.condition = w.condition;
-                cmp.warningMessage = w.warningMessage;
-                this._editWarningConditionDialogSub =
-                    this._editWarningConditionDialog.afterClosed().subscribe((cond) => {
-                        if (cond !== void 0) {
-                            this._warningConditions[vcIdx] = cond;
-                        }
-                        this._editWarningConditionDialogSub.unsubscribe();
-                        this._editWarningConditionDialogSub = Subscription.EMPTY;
-                        this._cdr.markForCheck();
-                    });
+                this._editWarningConditionDialogSub.unsubscribe();
+                this._editWarningConditionDialogSub = Subscription.EMPTY;
+                this._cdr.markForCheck();
             });
+        });
     }
     _initRemoveValidationCondition() {
         this._removeValidationConditionSub = this._removeValidationConditionEvt
@@ -2006,205 +2007,202 @@ class AjfFbNodeProperties {
         });
     }
     _initValidationConditionEdit() {
-        this._editValidationConditionSub =
-            this._editValidationConditionEvt
-                .pipe(withLatestFrom(this._propertiesForm))
-                .subscribe(([vcIdx, fg]) => {
-                this._destroyValidationConditionDialog();
-                if (vcIdx < 0 || vcIdx >= this._validationConditions.length || fg == null) {
-                    return;
+        this._editValidationConditionSub = this._editValidationConditionEvt
+            .pipe(withLatestFrom(this._propertiesForm))
+            .subscribe(([vcIdx, fg]) => {
+            this._destroyValidationConditionDialog();
+            if (vcIdx < 0 || vcIdx >= this._validationConditions.length || fg == null) {
+                return;
+            }
+            this._editValidationConditionDialog = this._dialog.open(AjfFbValidationConditionEditorDialog);
+            const cmp = this._editValidationConditionDialog.componentInstance;
+            const v = this._validationConditions[vcIdx];
+            cmp.condition = v.condition;
+            cmp.errorMessage = v.errorMessage;
+            this._editValidationConditionDialogSub = this._editValidationConditionDialog
+                .afterClosed()
+                .subscribe((cond) => {
+                if (cond !== void 0) {
+                    this._validationConditions[vcIdx] = cond;
                 }
-                this._editValidationConditionDialog =
-                    this._dialog.open(AjfFbValidationConditionEditorDialog);
-                const cmp = this._editValidationConditionDialog.componentInstance;
-                const v = this._validationConditions[vcIdx];
-                cmp.condition = v.condition;
-                cmp.errorMessage = v.errorMessage;
-                this._editValidationConditionDialogSub =
-                    this._editValidationConditionDialog.afterClosed().subscribe((cond) => {
-                        if (cond !== void 0) {
-                            this._validationConditions[vcIdx] = cond;
-                        }
-                        this._editValidationConditionDialogSub.unsubscribe();
-                        this._editValidationConditionDialogSub = Subscription.EMPTY;
-                        this._cdr.markForCheck();
-                    });
+                this._editValidationConditionDialogSub.unsubscribe();
+                this._editValidationConditionDialogSub = Subscription.EMPTY;
+                this._cdr.markForCheck();
             });
+        });
     }
     _initForceValueEdit() {
-        this._editForceValueSub =
-            this._editForceValueEvt
-                .pipe(withLatestFrom(this._propertiesForm))
-                .subscribe(([_, formGroup]) => {
-                this._destroyConditionDialog();
-                if (formGroup == null) {
-                    return;
+        this._editForceValueSub = this._editForceValueEvt
+            .pipe(withLatestFrom(this._propertiesForm))
+            .subscribe(([_, formGroup]) => {
+            this._destroyConditionDialog();
+            if (formGroup == null) {
+                return;
+            }
+            const fg = formGroup;
+            const ctrl = fg.controls['forceValue'];
+            this._editConditionDialog = this._dialog.open(AjfFbConditionEditorDialog);
+            this._editConditionDialog.componentInstance.condition = ctrl.value;
+            this._editConditionDialogSub = this._editConditionDialog
+                .afterClosed()
+                .subscribe((cond) => {
+                if (cond !== void 0) {
+                    ctrl.setValue(cond);
                 }
-                const fg = formGroup;
-                const ctrl = fg.controls['forceValue'];
-                this._editConditionDialog = this._dialog.open(AjfFbConditionEditorDialog);
-                this._editConditionDialog.componentInstance.condition = ctrl.value;
-                this._editConditionDialogSub =
-                    this._editConditionDialog.afterClosed().subscribe((cond) => {
-                        if (cond !== void 0) {
-                            ctrl.setValue(cond);
-                        }
-                        this._editConditionDialogSub.unsubscribe();
-                        this._editConditionDialogSub = Subscription.EMPTY;
-                        this._cdr.markForCheck();
-                    });
+                this._editConditionDialogSub.unsubscribe();
+                this._editConditionDialogSub = Subscription.EMPTY;
+                this._cdr.markForCheck();
             });
+        });
     }
     _initNextSlideConditionEdit() {
-        this._editNextSlideConditionSub =
-            this._editNextSlideConditionEvt
-                .pipe(withLatestFrom(this._propertiesForm))
-                .subscribe(([_, formGroup]) => {
-                this._destroyConditionDialog();
-                if (formGroup == null) {
-                    return;
+        this._editNextSlideConditionSub = this._editNextSlideConditionEvt
+            .pipe(withLatestFrom(this._propertiesForm))
+            .subscribe(([_, formGroup]) => {
+            this._destroyConditionDialog();
+            if (formGroup == null) {
+                return;
+            }
+            const fg = formGroup;
+            const ctrl = fg.controls['nextSlideCondition'];
+            this._editConditionDialog = this._dialog.open(AjfFbConditionEditorDialog);
+            this._editConditionDialog.componentInstance.condition = ctrl.value;
+            this._editConditionDialogSub = this._editConditionDialog
+                .afterClosed()
+                .subscribe((cond) => {
+                if (cond !== void 0) {
+                    ctrl.setValue(cond);
                 }
-                const fg = formGroup;
-                const ctrl = fg.controls['nextSlideCondition'];
-                this._editConditionDialog = this._dialog.open(AjfFbConditionEditorDialog);
-                this._editConditionDialog.componentInstance.condition = ctrl.value;
-                this._editConditionDialogSub =
-                    this._editConditionDialog.afterClosed().subscribe((cond) => {
-                        if (cond !== void 0) {
-                            ctrl.setValue(cond);
-                        }
-                        this._editConditionDialogSub.unsubscribe();
-                        this._editConditionDialogSub = Subscription.EMPTY;
-                        this._cdr.markForCheck();
-                    });
+                this._editConditionDialogSub.unsubscribe();
+                this._editConditionDialogSub = Subscription.EMPTY;
+                this._cdr.markForCheck();
             });
+        });
     }
     _initFormulaEdit() {
         this._editConditionDialogSub = Subscription.EMPTY;
         this._cdr.markForCheck();
-        this._editFormulaSub =
-            this._editFormulaEvt
-                .pipe(withLatestFrom(this._propertiesForm))
-                .subscribe(([_, formGroup]) => {
-                this._destroyConditionDialog();
-                if (formGroup == null) {
-                    return;
+        this._editFormulaSub = this._editFormulaEvt
+            .pipe(withLatestFrom(this._propertiesForm))
+            .subscribe(([_, formGroup]) => {
+            this._destroyConditionDialog();
+            if (formGroup == null) {
+                return;
+            }
+            const fg = formGroup;
+            const ctrl = fg.controls['formula'];
+            this._editConditionDialog = this._dialog.open(AjfFbConditionEditorDialog);
+            this._editConditionDialog.componentInstance.condition = ctrl.value;
+            this._editConditionDialogSub = this._editConditionDialog
+                .afterClosed()
+                .subscribe((cond) => {
+                if (cond !== void 0) {
+                    ctrl.setValue(cond);
                 }
-                const fg = formGroup;
-                const ctrl = fg.controls['formula'];
-                this._editConditionDialog = this._dialog.open(AjfFbConditionEditorDialog);
-                this._editConditionDialog.componentInstance.condition = ctrl.value;
-                this._editConditionDialogSub =
-                    this._editConditionDialog.afterClosed().subscribe((cond) => {
-                        if (cond !== void 0) {
-                            ctrl.setValue(cond);
-                        }
-                        this._editConditionDialogSub.unsubscribe();
-                        this._editConditionDialogSub = Subscription.EMPTY;
-                        this._cdr.markForCheck();
-                    });
+                this._editConditionDialogSub.unsubscribe();
+                this._editConditionDialogSub = Subscription.EMPTY;
+                this._cdr.markForCheck();
             });
+        });
     }
     _initFormulaRepsEdit() {
-        this._editFormulaRepsSub =
-            this._editFormulaRepsEvt
-                .pipe(withLatestFrom(this._propertiesForm))
-                .subscribe(([_, formGroup]) => {
-                this._destroyConditionDialog();
-                if (formGroup == null) {
-                    return;
+        this._editFormulaRepsSub = this._editFormulaRepsEvt
+            .pipe(withLatestFrom(this._propertiesForm))
+            .subscribe(([_, formGroup]) => {
+            this._destroyConditionDialog();
+            if (formGroup == null) {
+                return;
+            }
+            const fg = formGroup;
+            const ctrl = fg.controls['formulaReps'];
+            this._editConditionDialog = this._dialog.open(AjfFbConditionEditorDialog);
+            this._editConditionDialog.componentInstance.condition = ctrl.value;
+            this._editConditionDialogSub = this._editConditionDialog
+                .afterClosed()
+                .subscribe((cond) => {
+                if (cond !== void 0) {
+                    ctrl.setValue(cond);
                 }
-                const fg = formGroup;
-                const ctrl = fg.controls['formulaReps'];
-                this._editConditionDialog = this._dialog.open(AjfFbConditionEditorDialog);
-                this._editConditionDialog.componentInstance.condition = ctrl.value;
-                this._editConditionDialogSub =
-                    this._editConditionDialog.afterClosed().subscribe((cond) => {
-                        if (cond !== void 0) {
-                            ctrl.setValue(cond);
-                        }
-                        this._editConditionDialogSub.unsubscribe();
-                        this._editConditionDialogSub = Subscription.EMPTY;
-                        this._cdr.markForCheck();
-                    });
+                this._editConditionDialogSub.unsubscribe();
+                this._editConditionDialogSub = Subscription.EMPTY;
+                this._cdr.markForCheck();
             });
+        });
     }
     _initChoicesFilterEdit() {
-        this._editChoicesFilterSub =
-            this._editChoicesFilterEvt
-                .pipe(withLatestFrom(this._propertiesForm))
-                .subscribe(([_, formGroup]) => {
-                this._destroyConditionDialog();
-                if (formGroup == null) {
-                    return;
+        this._editChoicesFilterSub = this._editChoicesFilterEvt
+            .pipe(withLatestFrom(this._propertiesForm))
+            .subscribe(([_, formGroup]) => {
+            this._destroyConditionDialog();
+            if (formGroup == null) {
+                return;
+            }
+            const fg = formGroup;
+            const ctrl = fg.controls['choicesFilter'];
+            this._editConditionDialog = this._dialog.open(AjfFbConditionEditorDialog);
+            this._editConditionDialog.componentInstance.condition = ctrl.value;
+            this._editConditionDialogSub = this._editConditionDialog
+                .afterClosed()
+                .subscribe((cond) => {
+                if (cond !== void 0) {
+                    ctrl.setValue(cond);
                 }
-                const fg = formGroup;
-                const ctrl = fg.controls['choicesFilter'];
-                this._editConditionDialog = this._dialog.open(AjfFbConditionEditorDialog);
-                this._editConditionDialog.componentInstance.condition = ctrl.value;
-                this._editConditionDialogSub =
-                    this._editConditionDialog.afterClosed().subscribe((cond) => {
-                        if (cond !== void 0) {
-                            ctrl.setValue(cond);
-                        }
-                        this._editConditionDialogSub.unsubscribe();
-                        this._editConditionDialogSub = Subscription.EMPTY;
-                        this._cdr.markForCheck();
-                    });
+                this._editConditionDialogSub.unsubscribe();
+                this._editConditionDialogSub = Subscription.EMPTY;
+                this._cdr.markForCheck();
             });
+        });
     }
     _initConditionalBranchEdit() {
-        this._editConditionalBranchSub =
-            this._editConditionalBranchEvt
-                .pipe(withLatestFrom(this._propertiesForm))
-                .subscribe(([cbIdx, fg]) => {
-                this._destroyConditionDialog();
-                if (cbIdx < 0 || cbIdx >= this._conditionalBranches.length || fg == null) {
-                    return;
+        this._editConditionalBranchSub = this._editConditionalBranchEvt
+            .pipe(withLatestFrom(this._propertiesForm))
+            .subscribe(([cbIdx, fg]) => {
+            this._destroyConditionDialog();
+            if (cbIdx < 0 || cbIdx >= this._conditionalBranches.length || fg == null) {
+                return;
+            }
+            this._editConditionDialog = this._dialog.open(AjfFbConditionEditorDialog);
+            this._editConditionDialog.componentInstance.condition = this._conditionalBranches[cbIdx];
+            this._editConditionDialogSub = this._editConditionDialog
+                .afterClosed()
+                .subscribe((cond) => {
+                if (cond !== void 0) {
+                    this._conditionalBranches[cbIdx] = cond;
                 }
-                this._editConditionDialog = this._dialog.open(AjfFbConditionEditorDialog);
-                this._editConditionDialog.componentInstance.condition =
-                    this._conditionalBranches[cbIdx];
-                this._editConditionDialogSub =
-                    this._editConditionDialog.afterClosed().subscribe((cond) => {
-                        if (cond !== void 0) {
-                            this._conditionalBranches[cbIdx] = cond;
-                        }
-                        this._editConditionDialogSub.unsubscribe();
-                        this._editConditionDialogSub = Subscription.EMPTY;
-                        this._cdr.markForCheck();
-                    });
+                this._editConditionDialogSub.unsubscribe();
+                this._editConditionDialogSub = Subscription.EMPTY;
+                this._cdr.markForCheck();
             });
+        });
     }
     _initVisibilityEdit() {
-        this._editVisibilitySub =
-            this._editVisibilityEvt
-                .pipe(withLatestFrom(this._propertiesForm))
-                .subscribe(([_, formGroup]) => {
-                this._destroyConditionDialog();
-                if (formGroup == null) {
-                    return;
+        this._editVisibilitySub = this._editVisibilityEvt
+            .pipe(withLatestFrom(this._propertiesForm))
+            .subscribe(([_, formGroup]) => {
+            this._destroyConditionDialog();
+            if (formGroup == null) {
+                return;
+            }
+            const fg = formGroup;
+            const ctrl = fg.controls['visibility'];
+            const condition = ctrl.value;
+            this._editConditionDialog = this._dialog.open(AjfFbConditionEditorDialog);
+            this._editConditionDialog.componentInstance.condition = condition;
+            this._editConditionDialogSub = this._editConditionDialog
+                .afterClosed()
+                .subscribe((cond) => {
+                if (cond !== void 0) {
+                    ctrl.setValue(cond);
                 }
-                const fg = formGroup;
-                const ctrl = fg.controls['visibility'];
-                const condition = ctrl.value;
-                this._editConditionDialog = this._dialog.open(AjfFbConditionEditorDialog);
-                this._editConditionDialog.componentInstance.condition = condition;
-                this._editConditionDialogSub =
-                    this._editConditionDialog.afterClosed().subscribe((cond) => {
-                        if (cond !== void 0) {
-                            ctrl.setValue(cond);
-                        }
-                        this._editConditionDialogSub.unsubscribe();
-                        this._editConditionDialogSub = Subscription.EMPTY;
-                        this._cdr.markForCheck();
-                    });
+                this._editConditionDialogSub.unsubscribe();
+                this._editConditionDialogSub = Subscription.EMPTY;
+                this._cdr.markForCheck();
             });
+        });
     }
     _handleTriggerCondtionsChange(fg) {
         this._triggerConditionsSub = fg.valueChanges
-            .pipe(distinctUntilChanged((v1, v2) => JSON.stringify(v1.triggerConditions) ===
-            JSON.stringify(v2.triggerConditions)))
+            .pipe(distinctUntilChanged((v1, v2) => JSON.stringify(v1.triggerConditions) === JSON.stringify(v2.triggerConditions)))
             .subscribe((v) => {
             this._triggerConditions = v.triggerConditions;
             this._cdr.markForCheck();
@@ -2212,112 +2210,104 @@ class AjfFbNodeProperties {
     }
     _handleWarningCondtionsChange(fg) {
         this._warningConditionsSub = fg.valueChanges
-            .pipe(distinctUntilChanged((v1, v2) => JSON.stringify(v1.warningConditions) ===
-            JSON.stringify(v2.warningConditions)))
+            .pipe(distinctUntilChanged((v1, v2) => JSON.stringify(v1.warningConditions) === JSON.stringify(v2.warningConditions)))
             .subscribe((v) => {
             this._warningConditions = v.warningConditions;
             this._cdr.markForCheck();
         });
     }
     _handleValidationCondtionsChange(fg) {
-        this._validationConditionsSub =
-            fg.valueChanges
-                .pipe(distinctUntilChanged((v1, v2) => JSON.stringify(v1.validationConditions) ===
-                JSON.stringify(v2.validationConditions)))
-                .subscribe((v) => {
-                this._validationConditions = v.validationConditions;
-                this._cdr.markForCheck();
-            });
+        this._validationConditionsSub = fg.valueChanges
+            .pipe(distinctUntilChanged((v1, v2) => JSON.stringify(v1.validationConditions) === JSON.stringify(v2.validationConditions)))
+            .subscribe((v) => {
+            this._validationConditions = v.validationConditions;
+            this._cdr.markForCheck();
+        });
     }
     _handleForceValueChange(fg) {
-        this._forceValueSub =
-            fg.valueChanges.pipe(distinctUntilChanged((v1, v2) => v1.forceValue === v2.forceValue))
-                .subscribe((v) => {
-                this._curForceValue = v.forceValue;
-                this._cdr.markForCheck();
-            });
+        this._forceValueSub = fg.valueChanges
+            .pipe(distinctUntilChanged((v1, v2) => v1.forceValue === v2.forceValue))
+            .subscribe((v) => {
+            this._curForceValue = v.forceValue;
+            this._cdr.markForCheck();
+        });
     }
     _handleNextSlideConditionChange(fg) {
-        this._formulaSub =
-            fg.valueChanges
-                .pipe(distinctUntilChanged((v1, v2) => v1.nextSlideCondition === v2.nextSlideCondition))
-                .subscribe((v) => {
-                this._nextSlideCondition = v.nextSlideCondition;
-                this._cdr.markForCheck();
-            });
-        this._formulaSub =
-            fg.valueChanges
-                .pipe(distinctUntilChanged((v1, v2) => v1.nextSlideCondition === v2.nextSlideCondition))
-                .subscribe((v) => {
-                this._nextSlideCondition = v.nextSlideCondition;
-                this._cdr.markForCheck();
-            });
+        this._formulaSub = fg.valueChanges
+            .pipe(distinctUntilChanged((v1, v2) => v1.nextSlideCondition === v2.nextSlideCondition))
+            .subscribe((v) => {
+            this._nextSlideCondition = v.nextSlideCondition;
+            this._cdr.markForCheck();
+        });
+        this._formulaSub = fg.valueChanges
+            .pipe(distinctUntilChanged((v1, v2) => v1.nextSlideCondition === v2.nextSlideCondition))
+            .subscribe((v) => {
+            this._nextSlideCondition = v.nextSlideCondition;
+            this._cdr.markForCheck();
+        });
     }
     _handleFormulaChange(fg) {
-        this._formulaSub =
-            fg.valueChanges.pipe(distinctUntilChanged((v1, v2) => v1.formula === v2.formula))
-                .subscribe((v) => {
-                this._curFormula = v.formula;
-                this._cdr.markForCheck();
-            });
+        this._formulaSub = fg.valueChanges
+            .pipe(distinctUntilChanged((v1, v2) => v1.formula === v2.formula))
+            .subscribe((v) => {
+            this._curFormula = v.formula;
+            this._cdr.markForCheck();
+        });
     }
     _handleFormulaRepsChange(fg) {
-        this._formulaRepsSub =
-            fg.valueChanges.pipe(distinctUntilChanged((v1, v2) => v1.formulaReps === v2.formulaReps))
-                .subscribe((v) => {
-                this._curFormulaReps = v.formulaReps;
-                this._cdr.markForCheck();
-            });
+        this._formulaRepsSub = fg.valueChanges
+            .pipe(distinctUntilChanged((v1, v2) => v1.formulaReps === v2.formulaReps))
+            .subscribe((v) => {
+            this._curFormulaReps = v.formulaReps;
+            this._cdr.markForCheck();
+        });
     }
     _handleChoicesFilterChange(fg) {
-        this._choicesFilterSub =
-            fg.valueChanges
-                .pipe(distinctUntilChanged((v1, v2) => v1.choicesFilter === v2.choicesFilter))
-                .subscribe((v) => {
-                this._curChoicesFilter = v.choicesFilter;
-                this._cdr.markForCheck();
-            });
+        this._choicesFilterSub = fg.valueChanges
+            .pipe(distinctUntilChanged((v1, v2) => v1.choicesFilter === v2.choicesFilter))
+            .subscribe((v) => {
+            this._curChoicesFilter = v.choicesFilter;
+            this._cdr.markForCheck();
+        });
     }
     _handleConditionalBranchesChange(fg) {
-        this._conditionalBranchesSub =
-            fg.valueChanges
-                .pipe(distinctUntilChanged((v1, v2) => v1.conditionalBranchesNum === v2.conditionalBranchesNum))
-                .subscribe((v) => {
-                const cbNum = v.conditionalBranchesNum;
-                const curCbNum = this._conditionalBranches.length;
-                if (curCbNum < cbNum) {
-                    let newCbs = [];
-                    for (let i = curCbNum; i < cbNum; i++) {
-                        newCbs.push(alwaysCondition().condition);
-                    }
-                    this._conditionalBranches = this._conditionalBranches.concat(newCbs);
+        this._conditionalBranchesSub = fg.valueChanges
+            .pipe(distinctUntilChanged((v1, v2) => v1.conditionalBranchesNum === v2.conditionalBranchesNum))
+            .subscribe((v) => {
+            const cbNum = v.conditionalBranchesNum;
+            const curCbNum = this._conditionalBranches.length;
+            if (curCbNum < cbNum) {
+                let newCbs = [];
+                for (let i = curCbNum; i < cbNum; i++) {
+                    newCbs.push(alwaysCondition().condition);
                 }
-                else if (curCbNum > cbNum) {
-                    this._conditionalBranches.splice(0, curCbNum - cbNum);
-                }
-                this._cdr.markForCheck();
-            });
+                this._conditionalBranches = this._conditionalBranches.concat(newCbs);
+            }
+            else if (curCbNum > cbNum) {
+                this._conditionalBranches.splice(0, curCbNum - cbNum);
+            }
+            this._cdr.markForCheck();
+        });
     }
     _handleVisibilityChange(fg) {
-        this._visibilitySub =
-            fg.valueChanges
-                .pipe(distinctUntilChanged((v1, v2) => v1.visibilityOpt === v2.visibilityOpt))
-                .subscribe((v) => {
-                const visibilityOpt = v.visibilityOpt;
-                let newCondition;
-                switch (visibilityOpt) {
-                    case 'always':
-                        newCondition = alwaysCondition().condition;
-                        break;
-                    case 'never':
-                        newCondition = neverCondition().condition;
-                        break;
-                    default:
-                        newCondition = null;
-                }
-                this._curVisibility = newCondition;
-                fg.controls['visibility'].setValue(newCondition);
-            });
+        this._visibilitySub = fg.valueChanges
+            .pipe(distinctUntilChanged((v1, v2) => v1.visibilityOpt === v2.visibilityOpt))
+            .subscribe(v => {
+            const visibilityOpt = v.visibilityOpt;
+            let newCondition;
+            switch (visibilityOpt) {
+                case 'always':
+                    newCondition = alwaysCondition().condition;
+                    break;
+                case 'never':
+                    newCondition = neverCondition().condition;
+                    break;
+                default:
+                    newCondition = null;
+            }
+            this._curVisibility = newCondition;
+            fg.controls['visibility'].setValue(newCondition);
+        });
         this._visibilitySub = fg.valueChanges
             .pipe(filter(v => v.visibilityOpt === 'condition'), distinctUntilChanged((v1, v2) => v1.visibility === v2.visibility))
             .subscribe(v => {
@@ -2539,7 +2529,9 @@ class AjfFbNodeEntry {
         };
     }
     _updateBranchHeights() {
-        if (this.nodeEntry == null || !this.isNodeEntry || this.branchLines == null ||
+        if (this.nodeEntry == null ||
+            !this.isNodeEntry ||
+            this.branchLines == null ||
             this.childEntries == null) {
             return;
         }
@@ -2601,28 +2593,28 @@ class AjfFormBuilder {
         this._nodeTypes = _service.availableNodeTypes;
         this._nodeEntriesTree = _service.nodeEntriesTree;
         this._choicesOrigins = _service.choicesOrigins;
-        this._editConditionSub =
-            this._service.editedCondition.subscribe((condition) => {
-                if (this._editConditionDialog != null) {
-                    this._editConditionDialog.close();
-                    this._editConditionDialog = null;
-                }
-                if (condition != null) {
-                    this._editConditionDialog =
-                        this._dialog.open(AjfFbConditionEditorDialog, { disableClose: true });
-                }
-            });
-        this._editChoicesOriginSub =
-            this._service.editedChoicesOrigin.subscribe((choicesOrigin) => {
-                if (this._editChoicesOriginDialog != null) {
-                    this._editChoicesOriginDialog.close();
-                    this._editChoicesOriginDialog = null;
-                }
-                if (choicesOrigin != null) {
-                    this._editChoicesOriginDialog =
-                        this._dialog.open(AjfFbChoicesOriginEditorDialog, { disableClose: true });
-                }
-            });
+        this._editConditionSub = this._service.editedCondition.subscribe((condition) => {
+            if (this._editConditionDialog != null) {
+                this._editConditionDialog.close();
+                this._editConditionDialog = null;
+            }
+            if (condition != null) {
+                this._editConditionDialog = this._dialog.open(AjfFbConditionEditorDialog, {
+                    disableClose: true,
+                });
+            }
+        });
+        this._editChoicesOriginSub = this._service.editedChoicesOrigin.subscribe((choicesOrigin) => {
+            if (this._editChoicesOriginDialog != null) {
+                this._editChoicesOriginDialog.close();
+                this._editChoicesOriginDialog = null;
+            }
+            if (choicesOrigin != null) {
+                this._editChoicesOriginDialog = this._dialog.open(AjfFbChoicesOriginEditorDialog, {
+                    disableClose: true,
+                });
+            }
+        });
         this._beforeNodesUpdateSub = this._service.beforeNodesUpdate.subscribe(() => {
             if (this.designerCont == null) {
                 return;
@@ -2702,7 +2694,11 @@ class AjfFormBuilder {
             this._stringIdentifierDialog.close();
             this._stringIdentifierDialog = null;
         }
-        this._stringIdentifierDialog = this._dialog.open(AjfFbStringIdentifierDialogComponent, { disableClose: true, width: '60%', height: '60%' });
+        this._stringIdentifierDialog = this._dialog.open(AjfFbStringIdentifierDialogComponent, {
+            disableClose: true,
+            width: '60%',
+            height: '60%',
+        });
     }
     expandAll() {
         this._globalExpanded = true;
@@ -2769,35 +2765,90 @@ AjfFormBuilderModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "12.0.0", ve
         AjfFbStringIdentifierDialogComponent,
         AjfFbValidationConditionEditorDialog,
         AjfFbWarningConditionEditorDialog,
-        AjfFormBuilder], imports: [AjfMonacoEditorModule, AjfNodeIconModule, CommonModule, DragDropModule,
-        FormsModule, MatAutocompleteModule, MatButtonModule, MatCardModule,
-        MatCheckboxModule, MatChipsModule, MatDialogModule, MatFormFieldModule,
-        MatIconModule, MatInputModule, MatListModule, MatMenuModule,
-        MatSelectModule, MatSidenavModule, MatSliderModule, MatTableModule,
-        MatToolbarModule, MatTooltipModule, ReactiveFormsModule, AjfTranslocoModule,
-        MatExpansionModule, MatSlideToggleModule], exports: [AjfFormBuilder] });
-AjfFormBuilderModule.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "13.0.0-next.15", ngImport: i0, type: AjfFormBuilderModule, providers: [
-        AjfFormBuilderService,
-    ], imports: [[
-            AjfMonacoEditorModule, AjfNodeIconModule, CommonModule, DragDropModule,
-            FormsModule, MatAutocompleteModule, MatButtonModule, MatCardModule,
-            MatCheckboxModule, MatChipsModule, MatDialogModule, MatFormFieldModule,
-            MatIconModule, MatInputModule, MatListModule, MatMenuModule,
-            MatSelectModule, MatSidenavModule, MatSliderModule, MatTableModule,
-            MatToolbarModule, MatTooltipModule, ReactiveFormsModule, AjfTranslocoModule,
-            MatExpansionModule, MatSlideToggleModule,
+        AjfFormBuilder], imports: [AjfMonacoEditorModule,
+        AjfNodeIconModule,
+        CommonModule,
+        DragDropModule,
+        FormsModule,
+        MatAutocompleteModule,
+        MatButtonModule,
+        MatCardModule,
+        MatCheckboxModule,
+        MatChipsModule,
+        MatDialogModule,
+        MatFormFieldModule,
+        MatIconModule,
+        MatInputModule,
+        MatListModule,
+        MatMenuModule,
+        MatSelectModule,
+        MatSidenavModule,
+        MatSliderModule,
+        MatTableModule,
+        MatToolbarModule,
+        MatTooltipModule,
+        ReactiveFormsModule,
+        AjfTranslocoModule,
+        MatExpansionModule,
+        MatSlideToggleModule], exports: [AjfFormBuilder] });
+AjfFormBuilderModule.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "13.0.0-next.15", ngImport: i0, type: AjfFormBuilderModule, providers: [AjfFormBuilderService], imports: [[
+            AjfMonacoEditorModule,
+            AjfNodeIconModule,
+            CommonModule,
+            DragDropModule,
+            FormsModule,
+            MatAutocompleteModule,
+            MatButtonModule,
+            MatCardModule,
+            MatCheckboxModule,
+            MatChipsModule,
+            MatDialogModule,
+            MatFormFieldModule,
+            MatIconModule,
+            MatInputModule,
+            MatListModule,
+            MatMenuModule,
+            MatSelectModule,
+            MatSidenavModule,
+            MatSliderModule,
+            MatTableModule,
+            MatToolbarModule,
+            MatTooltipModule,
+            ReactiveFormsModule,
+            AjfTranslocoModule,
+            MatExpansionModule,
+            MatSlideToggleModule,
         ]] });
 i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.0.0-next.15", ngImport: i0, type: AjfFormBuilderModule, decorators: [{
             type: NgModule,
             args: [{
                     imports: [
-                        AjfMonacoEditorModule, AjfNodeIconModule, CommonModule, DragDropModule,
-                        FormsModule, MatAutocompleteModule, MatButtonModule, MatCardModule,
-                        MatCheckboxModule, MatChipsModule, MatDialogModule, MatFormFieldModule,
-                        MatIconModule, MatInputModule, MatListModule, MatMenuModule,
-                        MatSelectModule, MatSidenavModule, MatSliderModule, MatTableModule,
-                        MatToolbarModule, MatTooltipModule, ReactiveFormsModule, AjfTranslocoModule,
-                        MatExpansionModule, MatSlideToggleModule,
+                        AjfMonacoEditorModule,
+                        AjfNodeIconModule,
+                        CommonModule,
+                        DragDropModule,
+                        FormsModule,
+                        MatAutocompleteModule,
+                        MatButtonModule,
+                        MatCardModule,
+                        MatCheckboxModule,
+                        MatChipsModule,
+                        MatDialogModule,
+                        MatFormFieldModule,
+                        MatIconModule,
+                        MatInputModule,
+                        MatListModule,
+                        MatMenuModule,
+                        MatSelectModule,
+                        MatSidenavModule,
+                        MatSliderModule,
+                        MatTableModule,
+                        MatToolbarModule,
+                        MatTooltipModule,
+                        ReactiveFormsModule,
+                        AjfTranslocoModule,
+                        MatExpansionModule,
+                        MatSlideToggleModule,
                     ],
                     declarations: [
                         AjfFbBranchLine,
@@ -2813,12 +2864,8 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.0.0-next.15",
                         AjfFbWarningConditionEditorDialog,
                         AjfFormBuilder,
                     ],
-                    exports: [
-                        AjfFormBuilder,
-                    ],
-                    providers: [
-                        AjfFormBuilderService,
-                    ],
+                    exports: [AjfFormBuilder],
+                    providers: [AjfFormBuilderService],
                 }]
         }] });
 

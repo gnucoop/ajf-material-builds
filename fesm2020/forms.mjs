@@ -622,72 +622,72 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.0.0-next.15",
 class AjfFieldService extends AjfFieldService$1 {
     constructor() {
         super();
-        this.componentsMap[AjfFieldType.String] = {
+        (this.componentsMap[AjfFieldType.String] = {
             component: AjfInputFieldComponent,
-            readOnlyComponent: AjfReadOnlyFieldComponent
-        },
-            this.componentsMap[AjfFieldType.Text] = {
+            readOnlyComponent: AjfReadOnlyFieldComponent,
+        }),
+            (this.componentsMap[AjfFieldType.Text] = {
                 component: AjfTextFieldComponent,
-                readOnlyComponent: AjfReadOnlyFieldComponent
-            },
-            this.componentsMap[AjfFieldType.Number] = {
+                readOnlyComponent: AjfReadOnlyFieldComponent,
+            }),
+            (this.componentsMap[AjfFieldType.Number] = {
                 component: AjfInputFieldComponent,
                 readOnlyComponent: AjfReadOnlyFieldComponent,
-                inputs: { type: 'number' }
-            },
-            this.componentsMap[AjfFieldType.Boolean] = {
+                inputs: { type: 'number' },
+            }),
+            (this.componentsMap[AjfFieldType.Boolean] = {
                 component: AjfBooleanFieldComponent,
-                readOnlyComponent: AjfReadOnlyFieldComponent
-            },
-            this.componentsMap[AjfFieldType.Formula] = {
+                readOnlyComponent: AjfReadOnlyFieldComponent,
+            }),
+            (this.componentsMap[AjfFieldType.Formula] = {
                 component: AjfInputFieldComponent,
                 readOnlyComponent: AjfReadOnlyFieldComponent,
-                inputs: { readonly: true }
-            },
-            this.componentsMap[AjfFieldType.Date] = {
+                inputs: { readonly: true },
+            }),
+            (this.componentsMap[AjfFieldType.Date] = {
                 component: AjfDateFieldComponent,
-                readOnlyComponent: AjfReadOnlyFieldComponent
-            },
-            this.componentsMap[AjfFieldType.DateInput] = {
+                readOnlyComponent: AjfReadOnlyFieldComponent,
+            }),
+            (this.componentsMap[AjfFieldType.DateInput] = {
                 component: AjfDateInputFieldComponent,
-                readOnlyComponent: AjfReadOnlyFieldComponent
-            },
-            this.componentsMap[AjfFieldType.Table] = {
+                readOnlyComponent: AjfReadOnlyFieldComponent,
+            }),
+            (this.componentsMap[AjfFieldType.Table] = {
                 component: AjfTableFieldComponent,
-                readOnlyComponent: AjfReadOnlyTableFieldComponent
-            },
-            this.componentsMap[AjfFieldType.Empty] = { component: AjfEmptyFieldComponent },
-            this.componentsMap[AjfFieldType.SingleChoice] = {
+                readOnlyComponent: AjfReadOnlyTableFieldComponent,
+            }),
+            (this.componentsMap[AjfFieldType.Empty] = { component: AjfEmptyFieldComponent }),
+            (this.componentsMap[AjfFieldType.SingleChoice] = {
                 component: AjfSingleChoiceFieldComponent,
-                readOnlyComponent: AjfReadOnlySelectFieldComponent
-            },
-            this.componentsMap[AjfFieldType.MultipleChoice] = {
+                readOnlyComponent: AjfReadOnlySelectFieldComponent,
+            }),
+            (this.componentsMap[AjfFieldType.MultipleChoice] = {
                 component: AjfMultipleChoiceFieldComponent,
-                readOnlyComponent: AjfReadOnlySelectFieldComponent
-            },
-            this.componentsMap[AjfFieldType.Time] = {
+                readOnlyComponent: AjfReadOnlySelectFieldComponent,
+            }),
+            (this.componentsMap[AjfFieldType.Time] = {
                 component: AjfTimeFieldComponent,
-                readOnlyComponent: AjfReadOnlyFieldComponent
-            },
-            this.componentsMap[AjfFieldType.Barcode] = {
+                readOnlyComponent: AjfReadOnlyFieldComponent,
+            }),
+            (this.componentsMap[AjfFieldType.Barcode] = {
                 component: AjfBarcodeFieldComponent,
-                readOnlyComponent: AjfReadOnlyFieldComponent
-            };
+                readOnlyComponent: AjfReadOnlyFieldComponent,
+            });
         this.componentsMap[AjfFieldType.File] = {
             component: AjfFileFieldComponent,
-            readOnlyComponent: AjfReadOnlyFileFieldComponent
+            readOnlyComponent: AjfReadOnlyFileFieldComponent,
         };
         this.componentsMap[AjfFieldType.Image] = {
             component: AjfImageFieldComponent,
-            readOnlyComponent: AjfReadOnlyImageFieldComponent
+            readOnlyComponent: AjfReadOnlyImageFieldComponent,
         };
         this.componentsMap[AjfFieldType.VideoUrl] = {
             component: AjfVideoUrlFieldComponent,
-            readOnlyComponent: AjfReadOnlyVideoUrlFieldComponent
+            readOnlyComponent: AjfReadOnlyVideoUrlFieldComponent,
         };
         this.componentsMap[AjfFieldType.Range] = {
             component: AjfRangeFieldComponent,
-            readOnlyComponent: AjfReadOnlyFieldComponent
+            readOnlyComponent: AjfReadOnlyFieldComponent,
         };
     }
 }
@@ -793,63 +793,139 @@ class AjfFormsModule {
     static forRoot() {
         return {
             ngModule: AjfFormsModule,
-            providers: [
-                AjfFieldService,
-            ],
+            providers: [AjfFieldService],
         };
     }
 }
 AjfFormsModule.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "13.0.0-next.15", ngImport: i0, type: AjfFormsModule, deps: [], target: i0.ɵɵFactoryTarget.NgModule });
-AjfFormsModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "12.0.0", version: "13.0.0-next.15", ngImport: i0, type: AjfFormsModule, declarations: [AjfBarcodeFieldComponent, AjfBooleanFieldComponent, AjfDateFieldComponent,
-        AjfDateInputFieldComponent, AjfEmptyFieldComponent, AjfFieldWarningDialog, AjfFormField,
-        AjfFormRenderer, AjfInputFieldComponent, AjfMultipleChoiceFieldComponent,
-        AjfRangeFieldComponent, AjfSingleChoiceFieldComponent, AjfTableFieldComponent,
-        AjfTextFieldComponent, AjfTimeFieldComponent, AjfVideoUrlFieldComponent], imports: [AjfBarcodeModule, AjfCalendarModule, AjfCommonModule, AjfFormsModule$1,
-        AjfCheckboxGroupModule, AjfPageSliderModule, AjfTimeModule, AjfTranslocoModule,
-        CommonModule, MatButtonModule, MatCardModule, MatDialogModule,
-        MatFormFieldModule, MatIconModule, MatInputModule, MatRadioModule,
-        MatSelectModule, MatSlideToggleModule, MatToolbarModule, MatTooltipModule,
-        ReactiveFormsModule, TextFieldModule, MatSliderModule], exports: [AjfFormField,
-        AjfFormRenderer] });
+AjfFormsModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "12.0.0", version: "13.0.0-next.15", ngImport: i0, type: AjfFormsModule, declarations: [AjfBarcodeFieldComponent,
+        AjfBooleanFieldComponent,
+        AjfDateFieldComponent,
+        AjfDateInputFieldComponent,
+        AjfEmptyFieldComponent,
+        AjfFieldWarningDialog,
+        AjfFormField,
+        AjfFormRenderer,
+        AjfInputFieldComponent,
+        AjfMultipleChoiceFieldComponent,
+        AjfRangeFieldComponent,
+        AjfSingleChoiceFieldComponent,
+        AjfTableFieldComponent,
+        AjfTextFieldComponent,
+        AjfTimeFieldComponent,
+        AjfVideoUrlFieldComponent], imports: [AjfBarcodeModule,
+        AjfCalendarModule,
+        AjfCommonModule,
+        AjfFormsModule$1,
+        AjfCheckboxGroupModule,
+        AjfPageSliderModule,
+        AjfTimeModule,
+        AjfTranslocoModule,
+        CommonModule,
+        MatButtonModule,
+        MatCardModule,
+        MatDialogModule,
+        MatFormFieldModule,
+        MatIconModule,
+        MatInputModule,
+        MatRadioModule,
+        MatSelectModule,
+        MatSlideToggleModule,
+        MatToolbarModule,
+        MatTooltipModule,
+        ReactiveFormsModule,
+        TextFieldModule,
+        MatSliderModule], exports: [AjfFormField, AjfFormRenderer] });
 AjfFormsModule.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "13.0.0-next.15", ngImport: i0, type: AjfFormsModule, providers: [
         AjfFieldService,
         { provide: AJF_WARNING_ALERT_SERVICE, useClass: AjfWarningAlertService },
     ], imports: [[
-            AjfBarcodeModule, AjfCalendarModule, AjfCommonModule, AjfFormsModule$1,
-            AjfCheckboxGroupModule, AjfPageSliderModule, AjfTimeModule, AjfTranslocoModule,
-            CommonModule, MatButtonModule, MatCardModule, MatDialogModule,
-            MatFormFieldModule, MatIconModule, MatInputModule, MatRadioModule,
-            MatSelectModule, MatSlideToggleModule, MatToolbarModule, MatTooltipModule,
-            ReactiveFormsModule, TextFieldModule, MatSliderModule
+            AjfBarcodeModule,
+            AjfCalendarModule,
+            AjfCommonModule,
+            AjfFormsModule$1,
+            AjfCheckboxGroupModule,
+            AjfPageSliderModule,
+            AjfTimeModule,
+            AjfTranslocoModule,
+            CommonModule,
+            MatButtonModule,
+            MatCardModule,
+            MatDialogModule,
+            MatFormFieldModule,
+            MatIconModule,
+            MatInputModule,
+            MatRadioModule,
+            MatSelectModule,
+            MatSlideToggleModule,
+            MatToolbarModule,
+            MatTooltipModule,
+            ReactiveFormsModule,
+            TextFieldModule,
+            MatSliderModule,
         ]] });
 i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.0.0-next.15", ngImport: i0, type: AjfFormsModule, decorators: [{
             type: NgModule,
             args: [{
                     imports: [
-                        AjfBarcodeModule, AjfCalendarModule, AjfCommonModule, AjfFormsModule$1,
-                        AjfCheckboxGroupModule, AjfPageSliderModule, AjfTimeModule, AjfTranslocoModule,
-                        CommonModule, MatButtonModule, MatCardModule, MatDialogModule,
-                        MatFormFieldModule, MatIconModule, MatInputModule, MatRadioModule,
-                        MatSelectModule, MatSlideToggleModule, MatToolbarModule, MatTooltipModule,
-                        ReactiveFormsModule, TextFieldModule, MatSliderModule
+                        AjfBarcodeModule,
+                        AjfCalendarModule,
+                        AjfCommonModule,
+                        AjfFormsModule$1,
+                        AjfCheckboxGroupModule,
+                        AjfPageSliderModule,
+                        AjfTimeModule,
+                        AjfTranslocoModule,
+                        CommonModule,
+                        MatButtonModule,
+                        MatCardModule,
+                        MatDialogModule,
+                        MatFormFieldModule,
+                        MatIconModule,
+                        MatInputModule,
+                        MatRadioModule,
+                        MatSelectModule,
+                        MatSlideToggleModule,
+                        MatToolbarModule,
+                        MatTooltipModule,
+                        ReactiveFormsModule,
+                        TextFieldModule,
+                        MatSliderModule,
                     ],
                     declarations: [
-                        AjfBarcodeFieldComponent, AjfBooleanFieldComponent, AjfDateFieldComponent,
-                        AjfDateInputFieldComponent, AjfEmptyFieldComponent, AjfFieldWarningDialog, AjfFormField,
-                        AjfFormRenderer, AjfInputFieldComponent, AjfMultipleChoiceFieldComponent,
-                        AjfRangeFieldComponent, AjfSingleChoiceFieldComponent, AjfTableFieldComponent,
-                        AjfTextFieldComponent, AjfTimeFieldComponent, AjfVideoUrlFieldComponent
-                    ],
-                    entryComponents: [
-                        AjfBarcodeFieldComponent, AjfBooleanFieldComponent, AjfDateFieldComponent,
-                        AjfDateInputFieldComponent, AjfEmptyFieldComponent, AjfInputFieldComponent,
-                        AjfMultipleChoiceFieldComponent, AjfRangeFieldComponent, AjfSingleChoiceFieldComponent,
-                        AjfTableFieldComponent, AjfTextFieldComponent, AjfTimeFieldComponent, AjfVideoUrlFieldComponent
-                    ],
-                    exports: [
+                        AjfBarcodeFieldComponent,
+                        AjfBooleanFieldComponent,
+                        AjfDateFieldComponent,
+                        AjfDateInputFieldComponent,
+                        AjfEmptyFieldComponent,
+                        AjfFieldWarningDialog,
                         AjfFormField,
                         AjfFormRenderer,
+                        AjfInputFieldComponent,
+                        AjfMultipleChoiceFieldComponent,
+                        AjfRangeFieldComponent,
+                        AjfSingleChoiceFieldComponent,
+                        AjfTableFieldComponent,
+                        AjfTextFieldComponent,
+                        AjfTimeFieldComponent,
+                        AjfVideoUrlFieldComponent,
                     ],
+                    entryComponents: [
+                        AjfBarcodeFieldComponent,
+                        AjfBooleanFieldComponent,
+                        AjfDateFieldComponent,
+                        AjfDateInputFieldComponent,
+                        AjfEmptyFieldComponent,
+                        AjfInputFieldComponent,
+                        AjfMultipleChoiceFieldComponent,
+                        AjfRangeFieldComponent,
+                        AjfSingleChoiceFieldComponent,
+                        AjfTableFieldComponent,
+                        AjfTextFieldComponent,
+                        AjfTimeFieldComponent,
+                        AjfVideoUrlFieldComponent,
+                    ],
+                    exports: [AjfFormField, AjfFormRenderer],
                     providers: [
                         AjfFieldService,
                         { provide: AJF_WARNING_ALERT_SERVICE, useClass: AjfWarningAlertService },

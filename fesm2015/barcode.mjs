@@ -39,7 +39,7 @@ import { AjfTranslocoModule } from '@ajf/core/transloco';
 const BARCODE_CONTROL_VALUE_ACCESSOR = {
     provide: NG_VALUE_ACCESSOR,
     useExisting: forwardRef(() => AjfBarcodeComponent),
-    multi: true
+    multi: true,
 };
 /**
  * Ajf barcode component.
@@ -105,12 +105,8 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.0.0-next.15",
                         MatIconModule,
                         AjfTranslocoModule,
                     ],
-                    declarations: [
-                        AjfBarcodeComponent,
-                    ],
-                    exports: [
-                        AjfBarcodeComponent,
-                    ],
+                    declarations: [AjfBarcodeComponent],
+                    exports: [AjfBarcodeComponent],
                 }]
         }] });
 

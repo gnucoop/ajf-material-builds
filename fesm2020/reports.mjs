@@ -362,7 +362,8 @@ class AjfLayoutWidgetComponent extends AjfBaseWidgetComponent {
     constructor(cdr, el) {
         super(cdr, el);
         this._allcolumnsRendered$ = new BehaviorSubject(false);
-        this.allcolumnsRendered$ = this._allcolumnsRendered$;
+        this.allcolumnsRendered$ = this
+            ._allcolumnsRendered$;
     }
     ngAfterContentChecked() {
         this._allcolumnsRendered$.next(true);
@@ -452,8 +453,7 @@ AjfReportsModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "12.0.0", versio
         AjfTextModule,
         CommonModule,
         AjfReportsModule$1,
-        AjfTranslocoModule], exports: [AjfReportRenderer,
-        AjfReportWidget] });
+        AjfTranslocoModule], exports: [AjfReportRenderer, AjfReportWidget] });
 AjfReportsModule.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "13.0.0-next.15", ngImport: i0, type: AjfReportsModule, imports: [[
             AjfChartModule,
             AjfCommonModule,
@@ -495,10 +495,7 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.0.0-next.15",
                         AjfTableWidgetComponent,
                         AjfTextWidgetComponent,
                     ],
-                    exports: [
-                        AjfReportRenderer,
-                        AjfReportWidget,
-                    ],
+                    exports: [AjfReportRenderer, AjfReportWidget],
                 }]
         }] });
 

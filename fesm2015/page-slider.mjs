@@ -72,8 +72,7 @@ AjfPageSliderModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "12.0.0", ver
         CommonModule,
         MatButtonModule,
         MatIconModule,
-        MatToolbarModule], exports: [AjfPageSliderModule$1,
-        AjfPageSlider] });
+        MatToolbarModule], exports: [AjfPageSliderModule$1, AjfPageSlider] });
 AjfPageSliderModule.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "13.0.0-next.15", ngImport: i0, type: AjfPageSliderModule, imports: [[
             AjfPageSliderModule$1,
             CommonModule,
@@ -91,13 +90,8 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.0.0-next.15",
                         MatIconModule,
                         MatToolbarModule,
                     ],
-                    declarations: [
-                        AjfPageSlider,
-                    ],
-                    exports: [
-                        AjfPageSliderModule$1,
-                        AjfPageSlider,
-                    ],
+                    declarations: [AjfPageSlider],
+                    exports: [AjfPageSliderModule$1, AjfPageSlider],
                 }]
         }] });
 

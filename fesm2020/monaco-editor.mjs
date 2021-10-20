@@ -217,7 +217,8 @@ class AutoCompleteSingleton {
                 regex.lastIndex++;
             }
             // Add Element only if it not already existing in autoComplete list and in tempList
-            if (m[1] && !this._autoCompleteValues[IEditorLanguage.JSON].find(obj => obj.label === m[1]) &&
+            if (m[1] &&
+                !this._autoCompleteValues[IEditorLanguage.JSON].find(obj => obj.label === m[1]) &&
                 !tempList.find(obj => obj.label === m[1])) {
                 let obj = new AutoCompleteItem()
                     .setLabel(m[1])
@@ -557,7 +558,7 @@ class AjfMonacoEditor {
         options.lineHeight = this.lineHeight;
         options.value = this._value;
         options.language = this.language;
-        Object.keys(options).forEach((key) => {
+        Object.keys(options).forEach(key => {
             if (options[key] === undefined) {
                 delete options[key]; // Remove all undefined properties
             }
@@ -768,12 +769,8 @@ AjfMonacoEditorModule.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", v
 i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.0.0-next.15", ngImport: i0, type: AjfMonacoEditorModule, decorators: [{
             type: NgModule,
             args: [{
-                    declarations: [
-                        AjfMonacoEditor,
-                    ],
-                    exports: [
-                        AjfMonacoEditor,
-                    ]
+                    declarations: [AjfMonacoEditor],
+                    exports: [AjfMonacoEditor],
                 }]
         }] });
 

@@ -47,7 +47,7 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.0.0-next.15",
             args: [{ selector: 'ajf-checkbox-group-item', changeDetection: ChangeDetectionStrategy.OnPush, encapsulation: ViewEncapsulation.None, host: {
                         '[attr.id]': 'id',
                         '[class.ajf-checkbox-group-checked]': 'checked',
-                        '[class.ajf-checkbox-group-disable]': 'disabled'
+                        '[class.ajf-checkbox-group-disable]': 'disabled',
                     }, template: "<button mat-button (click)=\"onInputChange($event)\"\n    type=\"button\"\n    [id]=\"checkboxId|async\"\n    [attr.aria-checked]=\"checkedState|async\"\n    [attr.aria-disabled]=\"disabledState|async\">\n  <span class=\"ajf-checkbox-group-content\">\n    <ng-content></ng-content>\n  </span>\n  <mat-icon>{{ icon|async }}</mat-icon>\n</button>\n", styles: ["\n"] }]
         }], ctorParameters: function () {
         return [{ type: i1.AjfCheckboxGroup, decorators: [{
@@ -79,33 +79,14 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.0.0-next.15",
 class AjfCheckboxGroupModule {
 }
 AjfCheckboxGroupModule.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "13.0.0-next.15", ngImport: i0, type: AjfCheckboxGroupModule, deps: [], target: i0.ɵɵFactoryTarget.NgModule });
-AjfCheckboxGroupModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "12.0.0", version: "13.0.0-next.15", ngImport: i0, type: AjfCheckboxGroupModule, declarations: [CheckboxGroupItem], imports: [AjfCheckboxGroupModule$1,
-        CommonModule,
-        MatButtonModule,
-        MatIconModule], exports: [AjfCheckboxGroupModule$1,
-        CheckboxGroupItem] });
-AjfCheckboxGroupModule.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "13.0.0-next.15", ngImport: i0, type: AjfCheckboxGroupModule, imports: [[
-            AjfCheckboxGroupModule$1,
-            CommonModule,
-            MatButtonModule,
-            MatIconModule,
-        ], AjfCheckboxGroupModule$1] });
+AjfCheckboxGroupModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "12.0.0", version: "13.0.0-next.15", ngImport: i0, type: AjfCheckboxGroupModule, declarations: [CheckboxGroupItem], imports: [AjfCheckboxGroupModule$1, CommonModule, MatButtonModule, MatIconModule], exports: [AjfCheckboxGroupModule$1, CheckboxGroupItem] });
+AjfCheckboxGroupModule.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "13.0.0-next.15", ngImport: i0, type: AjfCheckboxGroupModule, imports: [[AjfCheckboxGroupModule$1, CommonModule, MatButtonModule, MatIconModule], AjfCheckboxGroupModule$1] });
 i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.0.0-next.15", ngImport: i0, type: AjfCheckboxGroupModule, decorators: [{
             type: NgModule,
             args: [{
-                    imports: [
-                        AjfCheckboxGroupModule$1,
-                        CommonModule,
-                        MatButtonModule,
-                        MatIconModule,
-                    ],
-                    declarations: [
-                        CheckboxGroupItem,
-                    ],
-                    exports: [
-                        AjfCheckboxGroupModule$1,
-                        CheckboxGroupItem,
-                    ],
+                    imports: [AjfCheckboxGroupModule$1, CommonModule, MatButtonModule, MatIconModule],
+                    declarations: [CheckboxGroupItem],
+                    exports: [AjfCheckboxGroupModule$1, CheckboxGroupItem],
                 }]
         }] });
 

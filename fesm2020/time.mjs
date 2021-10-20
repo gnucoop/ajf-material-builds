@@ -32,7 +32,7 @@ import { AjfTime as AjfTime$1 } from '@ajf/core/time';
 const AJF_TIME_CONTROL_VALUE_ACCESSOR = {
     provide: NG_VALUE_ACCESSOR,
     useExisting: forwardRef(() => AjfTime),
-    multi: true
+    multi: true,
 };
 class AjfTime extends AjfTime$1 {
     constructor() {
@@ -70,28 +70,14 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.0.0-next.15",
 class AjfTimeModule {
 }
 AjfTimeModule.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "13.0.0-next.15", ngImport: i0, type: AjfTimeModule, deps: [], target: i0.ɵɵFactoryTarget.NgModule });
-AjfTimeModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "12.0.0", version: "13.0.0-next.15", ngImport: i0, type: AjfTimeModule, declarations: [AjfTime], imports: [FormsModule,
-        MatFormFieldModule,
-        MatInputModule], exports: [AjfTime] });
-AjfTimeModule.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "13.0.0-next.15", ngImport: i0, type: AjfTimeModule, imports: [[
-            FormsModule,
-            MatFormFieldModule,
-            MatInputModule,
-        ]] });
+AjfTimeModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "12.0.0", version: "13.0.0-next.15", ngImport: i0, type: AjfTimeModule, declarations: [AjfTime], imports: [FormsModule, MatFormFieldModule, MatInputModule], exports: [AjfTime] });
+AjfTimeModule.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "13.0.0-next.15", ngImport: i0, type: AjfTimeModule, imports: [[FormsModule, MatFormFieldModule, MatInputModule]] });
 i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.0.0-next.15", ngImport: i0, type: AjfTimeModule, decorators: [{
             type: NgModule,
             args: [{
-                    imports: [
-                        FormsModule,
-                        MatFormFieldModule,
-                        MatInputModule,
-                    ],
-                    declarations: [
-                        AjfTime,
-                    ],
-                    exports: [
-                        AjfTime,
-                    ],
+                    imports: [FormsModule, MatFormFieldModule, MatInputModule],
+                    declarations: [AjfTime],
+                    exports: [AjfTime],
                 }]
         }] });
 
