@@ -2,8 +2,8 @@
   "name": "@ajf/material/form-builder",
   "fesm2020": "../fesm2020/form-builder.mjs",
   "fesm2015": "../fesm2015/form-builder.mjs",
-  "esm2020": "../esm2020/form-builder/index.mjs",
-  "typings": "./index.d.ts",
+  "esm2020": "../esm2020/form-builder/form-builder_public_index.mjs",
+  "typings": "./form-builder_public_index.d.ts",
   "module": "../fesm2015/form-builder.mjs",
   "es2020": "../fesm2020/form-builder.mjs"
 }

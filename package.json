@@ -1,6 +1,6 @@
 {
   "name": "@ajf/material",
-  "version": "13.0.0-next.10-6504f607",
+  "version": "13.0.0-next.10-d8cf3a9a",
   "description": "",
   "repository": {
     "type": "git",
@@ -47,88 +47,88 @@
       "default": "./fesm2020/material.mjs"
     },
     "./barcode": {
-      "types": "./barcode/index.d.ts",
-      "esm2020": "./esm2020/barcode/index.mjs",
+      "types": "./barcode/barcode_public_index.d.ts",
+      "esm2020": "./esm2020/barcode/barcode_public_index.mjs",
       "es2020": "./fesm2020/barcode.mjs",
       "es2015": "./fesm2015/barcode.mjs",
       "node": "./fesm2015/barcode.mjs",
       "default": "./fesm2020/barcode.mjs"
     },
     "./calendar": {
-      "types": "./calendar/index.d.ts",
-      "esm2020": "./esm2020/calendar/index.mjs",
+      "types": "./calendar/calendar_public_index.d.ts",
+      "esm2020": "./esm2020/calendar/calendar_public_index.mjs",
       "es2020": "./fesm2020/calendar.mjs",
       "es2015": "./fesm2015/calendar.mjs",
       "node": "./fesm2015/calendar.mjs",
       "default": "./fesm2020/calendar.mjs"
     },
     "./checkbox-group": {
-      "types": "./checkbox-group/index.d.ts",
-      "esm2020": "./esm2020/checkbox-group/index.mjs",
+      "types": "./checkbox-group/checkbox-group_public_index.d.ts",
+      "esm2020": "./esm2020/checkbox-group/checkbox-group_public_index.mjs",
       "es2020": "./fesm2020/checkbox-group.mjs",
       "es2015": "./fesm2015/checkbox-group.mjs",
       "node": "./fesm2015/checkbox-group.mjs",
       "default": "./fesm2020/checkbox-group.mjs"
     },
     "./form-builder": {
-      "types": "./form-builder/index.d.ts",
-      "esm2020": "./esm2020/form-builder/index.mjs",
+      "types": "./form-builder/form-builder_public_index.d.ts",
+      "esm2020": "./esm2020/form-builder/form-builder_public_index.mjs",
       "es2020": "./fesm2020/form-builder.mjs",
       "es2015": "./fesm2015/form-builder.mjs",
       "node": "./fesm2015/form-builder.mjs",
       "default": "./fesm2020/form-builder.mjs"
     },
     "./forms": {
-      "types": "./forms/index.d.ts",
-      "esm2020": "./esm2020/forms/index.mjs",
+      "types": "./forms/forms_public_index.d.ts",
+      "esm2020": "./esm2020/forms/forms_public_index.mjs",
       "es2020": "./fesm2020/forms.mjs",
       "es2015": "./fesm2015/forms.mjs",
       "node": "./fesm2015/forms.mjs",
       "default": "./fesm2020/forms.mjs"
     },
     "./image": {
-      "types": "./image/index.d.ts",
-      "esm2020": "./esm2020/image/index.mjs",
+      "types": "./image/image_public_index.d.ts",
+      "esm2020": "./esm2020/image/image_public_index.mjs",
       "es2020": "./fesm2020/image.mjs",
       "es2015": "./fesm2015/image.mjs",
       "node": "./fesm2015/image.mjs",
       "default": "./fesm2020/image.mjs"
     },
     "./monaco-editor": {
-      "types": "./monaco-editor/index.d.ts",
-      "esm2020": "./esm2020/monaco-editor/index.mjs",
+      "types": "./monaco-editor/monaco-editor_public_index.d.ts",
+      "esm2020": "./esm2020/monaco-editor/monaco-editor_public_index.mjs",
       "es2020": "./fesm2020/monaco-editor.mjs",
       "es2015": "./fesm2015/monaco-editor.mjs",
       "node": "./fesm2015/monaco-editor.mjs",
       "default": "./fesm2020/monaco-editor.mjs"
     },
     "./node-icon": {
-      "types": "./node-icon/index.d.ts",
-      "esm2020": "./esm2020/node-icon/index.mjs",
+      "types": "./node-icon/node-icon_public_index.d.ts",
+      "esm2020": "./esm2020/node-icon/node-icon_public_index.mjs",
       "es2020": "./fesm2020/node-icon.mjs",
       "es2015": "./fesm2015/node-icon.mjs",
       "node": "./fesm2015/node-icon.mjs",
       "default": "./fesm2020/node-icon.mjs"
     },
     "./page-slider": {
-      "types": "./page-slider/index.d.ts",
-      "esm2020": "./esm2020/page-slider/index.mjs",
+      "types": "./page-slider/page-slider_public_index.d.ts",
+      "esm2020": "./esm2020/page-slider/page-slider_public_index.mjs",
       "es2020": "./fesm2020/page-slider.mjs",
       "es2015": "./fesm2015/page-slider.mjs",
       "node": "./fesm2015/page-slider.mjs",
       "default": "./fesm2020/page-slider.mjs"
     },
     "./reports": {
-      "types": "./reports/index.d.ts",
-      "esm2020": "./esm2020/reports/index.mjs",
+      "types": "./reports/reports_public_index.d.ts",
+      "esm2020": "./esm2020/reports/reports_public_index.mjs",
       "es2020": "./fesm2020/reports.mjs",
       "es2015": "./fesm2015/reports.mjs",
       "node": "./fesm2015/reports.mjs",
       "default": "./fesm2020/reports.mjs"
     },
     "./time": {
-      "types": "./time/index.d.ts",
-      "esm2020": "./esm2020/time/index.mjs",
+      "types": "./time/time_public_index.d.ts",
+      "esm2020": "./esm2020/time/time_public_index.mjs",
       "es2020": "./fesm2020/time.mjs",
       "es2015": "./fesm2015/time.mjs",
       "node": "./fesm2015/time.mjs",
