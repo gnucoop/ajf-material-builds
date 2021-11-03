@@ -1,6 +1,6 @@
 {
   "name": "@ajf/material",
-  "version": "13.1.0-next.0-4dbfbf4a",
+  "version": "13.1.0-next.0-9ef65dd2",
   "description": "",
   "repository": {
     "type": "git",
@@ -20,7 +20,7 @@
     "@angular/material": "^13.0.0-0 || ^14.0.0-0",
     "@ajf/core": "13.1.0-next.0",
     "@ajf/icons": "^1.0.0",
-    "flag-icon-css": "^3.5.0",
+    "flag-icon-css": "^4.0.0",
     "rxjs": "^6.5.3 || ^7.0.0"
   },
   "dependencies": {
