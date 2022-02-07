@@ -20,6 +20,7 @@
  *
  */
 export * from './chart-widget';
+export * from './filter-widget';
 export * from './formula-widget';
 export * from './image-container-widget';
 export * from './image-widget';
