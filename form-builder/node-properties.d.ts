@@ -147,6 +147,7 @@ export declare class AjfFbNodeProperties implements OnDestroy {
     isField(nodeEntry: AjfFormBuilderNodeEntry | null): boolean;
     isNumericField(node: AjfNode): boolean;
     isFieldWithChoices(node: AjfNode): boolean;
+    isRangeField(node: AjfNode): boolean;
     save(): void;
     cancel(): void;
     ngOnDestroy(): void;
