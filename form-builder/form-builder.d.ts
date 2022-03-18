@@ -32,8 +32,8 @@ export declare class AjfFormBuilder implements AfterViewChecked, AfterContentIni
     private _dialog;
     designerCont: ElementRef;
     private _form;
-    get form(): AjfForm;
-    set form(form: AjfForm);
+    get form(): AjfForm | undefined;
+    set form(form: AjfForm | undefined);
     private _nodeTypes;
     get nodeTypes(): AjfFormBuilderNodeTypeEntry[];
     private _nodeEntriesTree;

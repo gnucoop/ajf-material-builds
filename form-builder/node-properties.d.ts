@@ -53,13 +53,13 @@ export declare class AjfFbNodeProperties implements OnDestroy {
     private _propertiesForm;
     get propertiesForm(): Observable<FormGroup>;
     private _hasChoices;
-    get hasChoices(): Observable<boolean>;
+    get hasChoices(): Observable<boolean> | undefined;
     private _curVisibility;
     get curVisibility(): string | null;
     private _curFormulaReps;
     get curFormulaReps(): string | null;
     private _curChoicesFilter;
-    get curChoicesFilter(): string;
+    get curChoicesFilter(): string | null;
     private _curForceValue;
     get curForceValue(): string | null;
     private _curFormula;
@@ -71,7 +71,7 @@ export declare class AjfFbNodeProperties implements OnDestroy {
     private _warningConditions;
     get warningConditions(): WarningCondition[];
     private _nextSlideCondition;
-    get nextSlideCondition(): string;
+    get nextSlideCondition(): string | undefined;
     private _triggerConditions;
     get triggerConditions(): string[];
     isRepeatingContainerNode: (nodeEntry: AjfFormBuilderNodeEntry | null) => boolean;
@@ -147,7 +147,6 @@ export declare class AjfFbNodeProperties implements OnDestroy {
     isField(nodeEntry: AjfFormBuilderNodeEntry | null): boolean;
     isNumericField(node: AjfNode): boolean;
     isFieldWithChoices(node: AjfNode): boolean;
-    isRangeField(node: AjfNode): boolean;
     save(): void;
     cancel(): void;
     ngOnDestroy(): void;

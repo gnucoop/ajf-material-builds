@@ -26,8 +26,8 @@ export declare class AjfFbChoicesOriginEditor {
     private _displayedColumns;
     get displayedColumns(): string[];
     private _choicesOrigin;
-    get choicesOrigin(): AjfChoicesOrigin<any>;
-    set choicesOrigin(choicesOrigin: AjfChoicesOrigin<any>);
+    get choicesOrigin(): AjfChoicesOrigin<any> | undefined;
+    set choicesOrigin(choicesOrigin: AjfChoicesOrigin<any> | undefined);
     editing: {
         [key: string]: boolean;
     };

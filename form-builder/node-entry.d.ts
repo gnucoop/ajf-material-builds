@@ -41,8 +41,8 @@ export declare class AjfFbNodeEntry implements AfterViewInit, OnDestroy {
     get isExpanded(): boolean;
     set isExpanded(exp: boolean);
     private _nodeEntry;
-    get nodeEntry(): AjfFormBuilderNode;
-    set nodeEntry(nodeEntry: AjfFormBuilderNode);
+    get nodeEntry(): AjfFormBuilderNode | undefined;
+    set nodeEntry(nodeEntry: AjfFormBuilderNode | undefined);
     private _level;
     get level(): number;
     set level(value: number);

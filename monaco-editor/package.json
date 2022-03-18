@@ -1,9 +1,10 @@
 {
-  "name": "@ajf/material/monaco-editor",
-  "fesm2020": "../fesm2020/monaco-editor.mjs",
-  "fesm2015": "../fesm2015/monaco-editor.mjs",
-  "esm2020": "../esm2020/monaco-editor/monaco-editor_public_index.mjs",
-  "typings": "./monaco-editor_public_index.d.ts",
-  "module": "../fesm2015/monaco-editor.mjs",
-  "es2020": "../fesm2020/monaco-editor.mjs"
+  "module": "../fesm2015/ajf-material-monaco-editor.mjs",
+  "es2020": "../fesm2020/ajf-material-monaco-editor.mjs",
+  "esm2020": "../esm2020/monaco-editor/ajf-material-monaco-editor.mjs",
+  "fesm2020": "../fesm2020/ajf-material-monaco-editor.mjs",
+  "fesm2015": "../fesm2015/ajf-material-monaco-editor.mjs",
+  "typings": "ajf-material-monaco-editor.d.ts",
+  "sideEffects": false,
+  "name": "@ajf/material/monaco-editor"
 }

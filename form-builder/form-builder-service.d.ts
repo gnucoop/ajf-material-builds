@@ -93,7 +93,7 @@ export declare class AjfFormBuilderService {
     private _nodes;
     get nodes(): Observable<AjfNode[]>;
     private _flatNodes;
-    get flatNodes(): Observable<AjfNode[]>;
+    get flatNodes(): Observable<AjfNode[]> | undefined;
     private _flatFields;
     get flatFields(): Observable<AjfField[]>;
     private _nodeEntriesTree;

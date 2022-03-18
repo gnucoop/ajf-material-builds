@@ -25,8 +25,8 @@ import * as i0 from "@angular/core";
 export declare class AjfFbNodeTypeEntry {
     private _cdr;
     private _nodeType;
-    get nodeType(): AjfFormBuilderNodeTypeEntry;
-    set nodeType(nodeType: AjfFormBuilderNodeTypeEntry);
+    get nodeType(): AjfFormBuilderNodeTypeEntry | undefined;
+    set nodeType(nodeType: AjfFormBuilderNodeTypeEntry | undefined);
     constructor(_cdr: ChangeDetectorRef);
     static ɵfac: i0.ɵɵFactoryDeclaration<AjfFbNodeTypeEntry, never>;
     static ɵcmp: i0.ɵɵComponentDeclaration<AjfFbNodeTypeEntry, "ajf-fb-node-type-entry", never, { "nodeType": "nodeType"; }, {}, never, never>;
