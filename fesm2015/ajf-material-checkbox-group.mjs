@@ -79,14 +79,14 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.2.5", ngImpor
 class AjfCheckboxGroupModule {
 }
 AjfCheckboxGroupModule.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "13.2.5", ngImport: i0, type: AjfCheckboxGroupModule, deps: [], target: i0.ɵɵFactoryTarget.NgModule });
-AjfCheckboxGroupModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "12.0.0", version: "13.2.5", ngImport: i0, type: AjfCheckboxGroupModule, declarations: [CheckboxGroupItem], imports: [AjfCheckboxGroupModule$1, CommonModule, MatButtonModule, MatIconModule], exports: [AjfCheckboxGroupModule$1, CheckboxGroupItem] });
-AjfCheckboxGroupModule.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "13.2.5", ngImport: i0, type: AjfCheckboxGroupModule, imports: [[AjfCheckboxGroupModule$1, CommonModule, MatButtonModule, MatIconModule], AjfCheckboxGroupModule$1] });
+AjfCheckboxGroupModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "12.0.0", version: "13.2.5", ngImport: i0, type: AjfCheckboxGroupModule, declarations: [CheckboxGroupItem], imports: [CommonModule, AjfCheckboxGroupModule$1, MatButtonModule, MatIconModule], exports: [CheckboxGroupItem, AjfCheckboxGroupModule$1] });
+AjfCheckboxGroupModule.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "13.2.5", ngImport: i0, type: AjfCheckboxGroupModule, imports: [[CommonModule, AjfCheckboxGroupModule$1, MatButtonModule, MatIconModule], AjfCheckboxGroupModule$1] });
 i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.2.5", ngImport: i0, type: AjfCheckboxGroupModule, decorators: [{
             type: NgModule,
             args: [{
-                    imports: [AjfCheckboxGroupModule$1, CommonModule, MatButtonModule, MatIconModule],
+                    imports: [CommonModule, AjfCheckboxGroupModule$1, MatButtonModule, MatIconModule],
                     declarations: [CheckboxGroupItem],
-                    exports: [AjfCheckboxGroupModule$1, CheckboxGroupItem],
+                    exports: [CheckboxGroupItem, AjfCheckboxGroupModule$1],
                 }]
         }] });
 

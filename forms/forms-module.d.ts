@@ -19,12 +19,12 @@ import * as i16 from "./video-url-field";
 import * as i17 from "@ajf/material/barcode";
 import * as i18 from "@ajf/material/calendar";
 import * as i19 from "@ajf/core/common";
-import * as i20 from "@ajf/core/forms";
-import * as i21 from "@ajf/material/checkbox-group";
-import * as i22 from "@ajf/material/page-slider";
-import * as i23 from "@ajf/material/time";
-import * as i24 from "@ajf/core/transloco";
-import * as i25 from "@angular/common";
+import * as i20 from "@ajf/material/checkbox-group";
+import * as i21 from "@ajf/material/page-slider";
+import * as i22 from "@ajf/material/time";
+import * as i23 from "@ajf/core/transloco";
+import * as i24 from "@angular/common";
+import * as i25 from "@ajf/core/forms";
 import * as i26 from "@angular/material/button";
 import * as i27 from "@angular/material/button-toggle";
 import * as i28 from "@angular/material/card";
@@ -43,6 +43,6 @@ import * as i40 from "@angular/material/slider";
 export declare class AjfFormsModule {
     static forRoot(): ModuleWithProviders<AjfFormsModule>;
     static ɵfac: i0.ɵɵFactoryDeclaration<AjfFormsModule, never>;
-    static ɵmod: i0.ɵɵNgModuleDeclaration<AjfFormsModule, [typeof i1.AjfBarcodeFieldComponent, typeof i2.AjfBooleanFieldComponent, typeof i3.AjfDateFieldComponent, typeof i4.AjfDateInputFieldComponent, typeof i5.AjfEmptyFieldComponent, typeof i6.AjfFieldWarningDialog, typeof i7.AjfFormField, typeof i8.AjfFormRenderer, typeof i9.AjfInputFieldComponent, typeof i10.AjfMultipleChoiceFieldComponent, typeof i11.AjfRangeFieldComponent, typeof i12.AjfSingleChoiceFieldComponent, typeof i13.AjfTableFieldComponent, typeof i14.AjfTextFieldComponent, typeof i15.AjfTimeFieldComponent, typeof i16.AjfVideoUrlFieldComponent], [typeof i17.AjfBarcodeModule, typeof i18.AjfCalendarModule, typeof i19.AjfCommonModule, typeof i20.AjfFormsModule, typeof i21.AjfCheckboxGroupModule, typeof i22.AjfPageSliderModule, typeof i23.AjfTimeModule, typeof i24.AjfTranslocoModule, typeof i25.CommonModule, typeof i26.MatButtonModule, typeof i27.MatButtonToggleModule, typeof i28.MatCardModule, typeof i29.MatDialogModule, typeof i30.MatFormFieldModule, typeof i31.MatIconModule, typeof i32.MatInputModule, typeof i33.MatRadioModule, typeof i34.MatSelectModule, typeof i35.MatSlideToggleModule, typeof i36.MatToolbarModule, typeof i37.MatTooltipModule, typeof i38.ReactiveFormsModule, typeof i39.TextFieldModule, typeof i40.MatSliderModule], [typeof i7.AjfFormField, typeof i8.AjfFormRenderer]>;
+    static ɵmod: i0.ɵɵNgModuleDeclaration<AjfFormsModule, [typeof i1.AjfBarcodeFieldComponent, typeof i2.AjfBooleanFieldComponent, typeof i3.AjfDateFieldComponent, typeof i4.AjfDateInputFieldComponent, typeof i5.AjfEmptyFieldComponent, typeof i6.AjfFieldWarningDialog, typeof i7.AjfFormField, typeof i8.AjfFormRenderer, typeof i9.AjfInputFieldComponent, typeof i10.AjfMultipleChoiceFieldComponent, typeof i11.AjfRangeFieldComponent, typeof i12.AjfSingleChoiceFieldComponent, typeof i13.AjfTableFieldComponent, typeof i14.AjfTextFieldComponent, typeof i15.AjfTimeFieldComponent, typeof i16.AjfVideoUrlFieldComponent], [typeof i17.AjfBarcodeModule, typeof i18.AjfCalendarModule, typeof i19.AjfCommonModule, typeof i20.AjfCheckboxGroupModule, typeof i21.AjfPageSliderModule, typeof i22.AjfTimeModule, typeof i23.AjfTranslocoModule, typeof i24.CommonModule, typeof i25.AjfFormsModule, typeof i26.MatButtonModule, typeof i27.MatButtonToggleModule, typeof i28.MatCardModule, typeof i29.MatDialogModule, typeof i30.MatFormFieldModule, typeof i31.MatIconModule, typeof i32.MatInputModule, typeof i33.MatRadioModule, typeof i34.MatSelectModule, typeof i35.MatSlideToggleModule, typeof i36.MatToolbarModule, typeof i37.MatTooltipModule, typeof i38.ReactiveFormsModule, typeof i39.TextFieldModule, typeof i40.MatSliderModule], [typeof i7.AjfFormField, typeof i8.AjfFormRenderer]>;
     static ɵinj: i0.ɵɵInjectorDeclaration<AjfFormsModule>;
 }

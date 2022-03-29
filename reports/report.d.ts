@@ -19,10 +19,10 @@
  * If not, see http://www.gnu.org/licenses/.
  *
  */
-import { AjfReportRenderer as AjfCoreReportRenderer } from '@ajf/core/reports';
+import { AjfReportRenderer as CoreReportRenderer } from '@ajf/core/reports';
 import { ChangeDetectorRef } from '@angular/core';
 import * as i0 from "@angular/core";
-export declare class AjfReportRenderer extends AjfCoreReportRenderer {
+export declare class AjfReportRenderer extends CoreReportRenderer {
     constructor(cdr: ChangeDetectorRef);
     static ɵfac: i0.ɵɵFactoryDeclaration<AjfReportRenderer, never>;
     static ɵcmp: i0.ɵɵComponentDeclaration<AjfReportRenderer, "ajf-report", never, {}, {}, never, never>;

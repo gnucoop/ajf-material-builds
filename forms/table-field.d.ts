@@ -19,11 +19,11 @@
  * If not, see http://www.gnu.org/licenses/.
  *
  */
-import { AjfFormRendererService, AjfTableFieldComponent as AjfCoreTableFieldComponent } from '@ajf/core/forms';
+import { AjfFormRendererService, AjfTableFieldComponent as CoreTableFieldComponent } from '@ajf/core/forms';
 import { ChangeDetectorRef } from '@angular/core';
 import { AjfWarningAlertService } from './warning-alert-service';
 import * as i0 from "@angular/core";
-export declare class AjfTableFieldComponent extends AjfCoreTableFieldComponent {
+export declare class AjfTableFieldComponent extends CoreTableFieldComponent {
     constructor(cdr: ChangeDetectorRef, service: AjfFormRendererService, was: AjfWarningAlertService);
     static ɵfac: i0.ɵɵFactoryDeclaration<AjfTableFieldComponent, never>;
     static ɵcmp: i0.ɵɵComponentDeclaration<AjfTableFieldComponent, "ng-component", never, {}, {}, never, never>;

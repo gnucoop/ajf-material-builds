@@ -19,11 +19,11 @@
  * If not, see http://www.gnu.org/licenses/.
  *
  */
-import { AjfFormRenderer as AjfCoreFormRenderer, AjfFormRendererService } from '@ajf/core/forms';
+import { AjfFormRenderer as CoreFormRenderer, AjfFormRendererService } from '@ajf/core/forms';
 import { BooleanInput } from '@angular/cdk/coercion';
 import { ChangeDetectorRef } from '@angular/core';
 import * as i0 from "@angular/core";
-export declare class AjfFormRenderer extends AjfCoreFormRenderer {
+export declare class AjfFormRenderer extends CoreFormRenderer {
     topBar: boolean;
     constructor(rendererService: AjfFormRendererService, changeDetectorRef: ChangeDetectorRef);
     static ngAcceptInputType_fixedOrientation: BooleanInput;
