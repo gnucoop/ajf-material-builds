@@ -54,7 +54,7 @@ import { isChoicesFixedOrigin, isContainerNode, AjfNodeType, AjfFieldType, creat
 import { DataSource } from '@angular/cdk/collections';
 import { BehaviorSubject, of, Subject, Subscription, combineLatest } from 'rxjs';
 import * as i6$1 from '@ngneat/transloco';
-import { filter, map, scan, publishReplay, refCount, withLatestFrom, shareReplay, distinctUntilChanged, sample } from 'rxjs/operators';
+import { filter, map, scan, shareReplay, withLatestFrom, distinctUntilChanged, sample } from 'rxjs/operators';
 import { createCondition, alwaysCondition, createFormula, AjfExpressionUtils, neverCondition } from '@ajf/core/models';
 import { deepCopy } from '@ajf/core/utils';
 import { ENTER, COMMA } from '@angular/cdk/keycodes';
@@ -750,22 +750,22 @@ class AjfFormBuilderService {
     _initChoicesOriginsStreams() {
         this._choicesOrigins = (this._choicesOriginsUpdates).pipe(scan((choicesOrigins, op) => {
             return op(choicesOrigins);
-        }, []), publishReplay(1), refCount());
+        }, []), shareReplay(1));
     }
     _initAttachmentsOriginsStreams() {
         this._attachmentsOrigins = this._attachmentsOriginsUpdates.pipe(scan((attachmentsOrigins, op) => {
             return op(attachmentsOrigins);
-        }, []), publishReplay(1), refCount());
+        }, []), shareReplay(1));
     }
     _initStringIdentifierStreams() {
         this._stringIdentifier = this._stringIdentifierUpdates.pipe(scan((stringIdentifier, op) => {
             return op(stringIdentifier);
-        }, []), publishReplay(1), refCount());
+        }, []), shareReplay(1));
     }
     _initNodesStreams() {
         this._nodes = this._nodesUpdates.pipe(scan((nodes, op) => {
             return op(nodes);
-        }, []), publishReplay(1), refCount());
+        }, []), shareReplay(1));
         this._nodesWithoutChoiceOrigins = this._nodes.pipe(map(slides => slides.map(slide => {
             slide.nodes = slide.nodes.map((node) => {
                 if (isFieldWithChoices(node)) {
@@ -782,9 +782,9 @@ class AjfFormBuilderService {
             });
             return slide;
         })));
-        this._flatNodes = this._nodes.pipe(map((nodes) => flattenNodes(nodes)), publishReplay(1), refCount());
-        this._flatFields = this._flatNodes.pipe(map((nodes) => nodes.filter(n => !isContainerNode(n))), publishReplay(1), refCount());
-        this._nodeEntriesTree = this._nodes.pipe(map(nodes => this._buildFormBuilderNodesTree(nodes)), publishReplay(1), refCount());
+        this._flatNodes = this._nodes.pipe(map((nodes) => flattenNodes(nodes)), shareReplay(1));
+        this._flatFields = this._flatNodes.pipe(map((nodes) => nodes.filter(n => !isContainerNode(n))), shareReplay(1));
+        this._nodeEntriesTree = this._nodes.pipe(map(nodes => this._buildFormBuilderNodesTree(nodes)), shareReplay(1));
     }
     _initSaveNode() {
         this._saveNodeEntryEvent
@@ -1887,7 +1887,7 @@ class AjfFbNodeProperties {
             this._handleNextSlideConditionChange(fg);
             this._handleTriggerCondtionsChange(fg);
             return fg;
-        }), publishReplay(1), refCount());
+        }), shareReplay(1));
     }
     _destroyConditionDialog() {
         if (this._editConditionDialogSub != null) {

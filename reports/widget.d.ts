@@ -20,7 +20,7 @@
  *
  */
 import { AjfBaseWidgetComponent, AjfColumnWidgetInstance, AjfLayoutWidgetInstance, AjfReportWidget as CoreComponent, AjfWidgetComponentsMap, AjfWidgetService as CoreService } from '@ajf/core/reports';
-import { AfterContentChecked, ChangeDetectorRef, ComponentFactoryResolver, ElementRef, Renderer2 } from '@angular/core';
+import { AfterContentChecked, ChangeDetectorRef, ElementRef, Renderer2 } from '@angular/core';
 import { Observable } from 'rxjs';
 import * as i0 from "@angular/core";
 export declare class AjfWidgetService extends CoreService {
@@ -30,7 +30,7 @@ export declare class AjfWidgetService extends CoreService {
 }
 export declare class AjfReportWidget extends CoreComponent {
     readonly widgetsMap: AjfWidgetComponentsMap;
-    constructor(cfr: ComponentFactoryResolver, renderer: Renderer2, widgetService: AjfWidgetService);
+    constructor(renderer: Renderer2, widgetService: AjfWidgetService);
     static ɵfac: i0.ɵɵFactoryDeclaration<AjfReportWidget, never>;
     static ɵcmp: i0.ɵɵComponentDeclaration<AjfReportWidget, "ajf-widget", never, {}, {}, never, never>;
 }
