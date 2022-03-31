@@ -19,7 +19,7 @@
  * If not, see http://www.gnu.org/licenses/.
  *
  */
-import { AjfChoicesOrigin, AjfNode } from '@ajf/core/forms';
+import { AjfChoicesOrigin, AjfFieldWithChoices, AjfNode, AjfNumberField, AjfRangeField, AjfTableField } from '@ajf/core/forms';
 import { ChangeDetectorRef, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
@@ -145,9 +145,10 @@ export declare class AjfFbNodeProperties implements OnDestroy {
     addTriggerCondition(): void;
     removeTriggerCondition(idx: number): void;
     isField(nodeEntry: AjfFormBuilderNodeEntry | null): boolean;
-    isNumericField(node: AjfNode): boolean;
-    isFieldWithChoices(node: AjfNode): boolean;
-    isRangeField(node: AjfNode): boolean;
+    isNumericField(node: AjfNode): node is AjfNumberField;
+    isFieldWithChoices(node: AjfNode): node is AjfFieldWithChoices<any>;
+    isRangeField(node: AjfNode): node is AjfRangeField;
+    isTableField(node: AjfNode): node is AjfTableField;
     save(): void;
     cancel(): void;
     ngOnDestroy(): void;
