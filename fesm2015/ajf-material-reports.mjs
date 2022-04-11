@@ -26,6 +26,8 @@ import { AjfMapModule } from '@ajf/core/map';
 import * as i1$5 from '@ajf/core/page-break';
 import { AjfPageBreakModule } from '@ajf/core/page-break';
 import { BehaviorSubject } from 'rxjs';
+import * as i1$6 from '@ajf/core/graph';
+import { AjfGraphModule } from '@ajf/core/graph';
 import * as i2$3 from '@ajf/core/table';
 import { AjfTableModule } from '@ajf/core/table';
 import * as i3$2 from '@ngneat/transloco';
@@ -299,6 +301,39 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.2.5", ngImpor
  * If not, see http://www.gnu.org/licenses/.
  *
  */
+class AjfGraphWidgetComponent extends AjfBaseWidgetComponent {
+    constructor(cdr, el) {
+        super(cdr, el);
+    }
+}
+AjfGraphWidgetComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "13.2.5", ngImport: i0, type: AjfGraphWidgetComponent, deps: [{ token: i0.ChangeDetectorRef }, { token: i0.ElementRef }], target: i0.ɵɵFactoryTarget.Component });
+AjfGraphWidgetComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "13.2.5", type: AjfGraphWidgetComponent, selector: "ajf-graph-widget", usesInheritance: true, ngImport: i0, template: "<div *ngIf=\"instance\" class=\"ajf-graph-container\">\n  <ajf-graph [nodes]=\"instance.nodes\"></ajf-graph>\n</div>\n", styles: ["ajf-graph-widget{width:100%;height:600px}\n"], components: [{ type: i1$6.AjfGraphComponent, selector: "ajf-graph", inputs: ["nodes"] }], directives: [{ type: i2$1.NgIf, selector: "[ngIf]", inputs: ["ngIf", "ngIfThen", "ngIfElse"] }], changeDetection: i0.ChangeDetectionStrategy.OnPush, encapsulation: i0.ViewEncapsulation.None });
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.2.5", ngImport: i0, type: AjfGraphWidgetComponent, decorators: [{
+            type: Component,
+            args: [{ selector: 'ajf-graph-widget', changeDetection: ChangeDetectionStrategy.OnPush, encapsulation: ViewEncapsulation.None, template: "<div *ngIf=\"instance\" class=\"ajf-graph-container\">\n  <ajf-graph [nodes]=\"instance.nodes\"></ajf-graph>\n</div>\n", styles: ["ajf-graph-widget{width:100%;height:600px}\n"] }]
+        }], ctorParameters: function () { return [{ type: i0.ChangeDetectorRef }, { type: i0.ElementRef }]; } });
+
+/**
+ * @license
+ * Copyright (C) Gnucoop soc. coop.
+ *
+ * This file is part of the Advanced JSON forms (ajf).
+ *
+ * Advanced JSON forms (ajf) is free software: you can redistribute it and/or
+ * modify it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the License,
+ * or (at your option) any later version.
+ *
+ * Advanced JSON forms (ajf) is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero
+ * General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with Advanced JSON forms (ajf).
+ * If not, see http://www.gnu.org/licenses/.
+ *
+ */
 class AjfTableWidgetComponent extends AjfBaseWidgetComponent {
     constructor(cdr, el) {
         super(cdr, el);
@@ -378,6 +413,7 @@ const defaultWidgetsFactory = () => {
     defaultWidgets[AjfWidgetType.Column] = { component: AjfColumnWidgetComponent };
     defaultWidgets[AjfWidgetType.Formula] = { component: AjfFormulaWidgetComponent };
     defaultWidgets[AjfWidgetType.ImageContainer] = { component: AjfImageContainerWidgetComponent };
+    defaultWidgets[AjfWidgetType.Graph] = { component: AjfGraphWidgetComponent };
     return defaultWidgets;
 };
 class AjfWidgetService extends AjfWidgetService$1 {
@@ -495,6 +531,7 @@ AjfReportsModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "12.0.0", versio
         AjfFormulaWidgetComponent,
         AjfImageContainerWidgetComponent,
         AjfImageWidgetComponent,
+        AjfGraphWidgetComponent,
         AjfLayoutWidgetComponent,
         AjfMapWidgetComponent,
         AjfPageBreakWidgetComponent,
@@ -504,6 +541,7 @@ AjfReportsModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "12.0.0", versio
         AjfTextWidgetComponent], imports: [AjfChartModule,
         AjfCommonModule,
         AjfImageModule,
+        AjfGraphModule,
         AjfMapModule,
         AjfPageBreakModule,
         AjfTableModule,
@@ -516,6 +554,7 @@ AjfReportsModule.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", versio
             AjfChartModule,
             AjfCommonModule,
             AjfImageModule,
+            AjfGraphModule,
             AjfMapModule,
             AjfPageBreakModule,
             AjfTableModule,
@@ -532,6 +571,7 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.2.5", ngImpor
                         AjfChartModule,
                         AjfCommonModule,
                         AjfImageModule,
+                        AjfGraphModule,
                         AjfMapModule,
                         AjfPageBreakModule,
                         AjfTableModule,
@@ -548,6 +588,7 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.2.5", ngImpor
                         AjfFormulaWidgetComponent,
                         AjfImageContainerWidgetComponent,
                         AjfImageWidgetComponent,
+                        AjfGraphWidgetComponent,
                         AjfLayoutWidgetComponent,
                         AjfMapWidgetComponent,
                         AjfPageBreakWidgetComponent,
