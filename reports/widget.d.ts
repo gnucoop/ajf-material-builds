@@ -19,8 +19,9 @@
  * If not, see http://www.gnu.org/licenses/.
  *
  */
-import { AjfBaseWidgetComponent, AjfColumnWidgetInstance, AjfLayoutWidgetInstance, AjfReportWidget as CoreComponent, AjfWidgetComponentsMap, AjfWidgetService as CoreService } from '@ajf/core/reports';
-import { AfterContentChecked, ChangeDetectorRef, ElementRef, Renderer2 } from '@angular/core';
+import { AjfBaseWidgetComponent, AjfColumnWidgetInstance, AjfDialogWidgetInstance, AjfLayoutWidgetInstance, AjfPaginatedListWidgetInstance, AjfReportWidget as CoreComponent, AjfWidgetComponentsMap, AjfWidgetInstance, AjfWidgetService as CoreService } from '@ajf/core/reports';
+import { AfterContentChecked, ChangeDetectorRef, ElementRef, OnChanges, OnInit, Renderer2, SimpleChanges, TemplateRef } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import * as i0 from "@angular/core";
 export declare class AjfWidgetService extends CoreService {
@@ -46,4 +47,32 @@ export declare class AjfLayoutWidgetComponent extends AjfBaseWidgetComponent<Ajf
     ngAfterContentChecked(): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<AjfLayoutWidgetComponent, never>;
     static ɵcmp: i0.ɵɵComponentDeclaration<AjfLayoutWidgetComponent, "ng-component", never, {}, {}, never, never>;
+}
+export declare class AjfDialogWidgetComponent extends AjfBaseWidgetComponent<AjfDialogWidgetInstance> {
+    private _dialog;
+    dialogContent: TemplateRef<HTMLElement>;
+    constructor(cdr: ChangeDetectorRef, el: ElementRef, _dialog: MatDialog);
+    openDialog(): void;
+    static ɵfac: i0.ɵɵFactoryDeclaration<AjfDialogWidgetComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfDialogWidgetComponent, "ng-component", never, {}, {}, never, never>;
+}
+export declare class AjfPaginatedListWidgetComponent extends AjfBaseWidgetComponent<AjfPaginatedListWidgetInstance> implements OnChanges, OnInit {
+    get currentPage(): number;
+    private _currentPage;
+    get pages(): number;
+    private _pages;
+    get currentContent(): AjfWidgetInstance[];
+    private _currentContent;
+    get canGoForward(): boolean;
+    private _canGoForward;
+    get canGoBackward(): boolean;
+    private _canGoBackward;
+    constructor(cdr: ChangeDetectorRef, el: ElementRef);
+    ngOnChanges(changes: SimpleChanges): void;
+    ngOnInit(): void;
+    goToPage(direction: 'next' | 'previous'): void;
+    private _updateCurrentContent;
+    private _fillCurrentContent;
+    static ɵfac: i0.ɵɵFactoryDeclaration<AjfPaginatedListWidgetComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfPaginatedListWidgetComponent, "ng-component", never, {}, {}, never, never>;
 }

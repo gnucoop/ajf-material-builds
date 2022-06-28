@@ -19,16 +19,11 @@
  * If not, see http://www.gnu.org/licenses/.
  *
  */
-export * from './chart-widget';
-export * from './filter-widget';
-export * from './formula-widget';
-export * from './heat-map-widget';
-export * from './image-container-widget';
-export * from './image-widget';
-export * from './map-widget';
-export * from './page-break-widget';
-export * from './report';
-export * from './reports-module';
-export * from './table-widget';
-export * from './text-widget';
-export * from './widget';
+import { AjfBaseWidgetComponent, AjfHeatMapWidgetInstance } from '@ajf/core/reports';
+import { ChangeDetectorRef, ElementRef } from '@angular/core';
+import * as i0 from "@angular/core";
+export declare class AjfHeatMapWidgetComponent extends AjfBaseWidgetComponent<AjfHeatMapWidgetInstance> {
+    constructor(cdr: ChangeDetectorRef, el: ElementRef);
+    static ɵfac: i0.ɵɵFactoryDeclaration<AjfHeatMapWidgetComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfHeatMapWidgetComponent, "ng-component", never, {}, {}, never, never>;
+}
