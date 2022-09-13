@@ -35,6 +35,10 @@ import { AjfTableModule } from '@ajf/core/table';
 import * as i3$2 from '@ngneat/transloco';
 import * as i4 from '@angular/material/dialog';
 import { MatDialogModule } from '@angular/material/dialog';
+import * as i5 from '@angular/material/select';
+import { MatSelectModule } from '@angular/material/select';
+import * as i6 from '@angular/material/core';
+import * as i8 from '@angular/material/form-field';
 
 /**
  * @license
@@ -377,10 +381,10 @@ class AjfTableWidgetComponent extends AjfBaseWidgetComponent {
     }
 }
 AjfTableWidgetComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "13.2.5", ngImport: i0, type: AjfTableWidgetComponent, deps: [{ token: i0.ChangeDetectorRef }, { token: i0.ElementRef }], target: i0.ɵɵFactoryTarget.Component });
-AjfTableWidgetComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "13.2.5", type: AjfTableWidgetComponent, selector: "ng-component", usesInheritance: true, ngImport: i0, template: "<ajf-widget-export *ngIf=\"instance\"\n  [widgetType]=\"instance.widgetType\"\n  [data]=\"instance.data\"\n  [enable]=\"instance.exportable\"\n>\n    <ajf-table [data]=\"instance.data\"></ajf-table>\n</ajf-widget-export>\n", styles: ["table{border-spacing:0}table td{padding:10px}\n"], components: [{ type: i1.AjfWidgetExport, selector: "ajf-widget-export", inputs: ["widgetType", "data", "overlay", "enable"] }, { type: i2$3.AjfTable, selector: "ajf-table", inputs: ["data", "cellpadding"] }], directives: [{ type: i2$1.NgIf, selector: "[ngIf]", inputs: ["ngIf", "ngIfThen", "ngIfElse"] }], changeDetection: i0.ChangeDetectionStrategy.OnPush, encapsulation: i0.ViewEncapsulation.None });
+AjfTableWidgetComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "13.2.5", type: AjfTableWidgetComponent, selector: "ng-component", usesInheritance: true, ngImport: i0, template: "<ajf-widget-export *ngIf=\"instance\"\n  [widgetType]=\"instance.widgetType\"\n  [data]=\"instance.data\"\n  [enable]=\"instance.exportable\"\n>\n    <ajf-table [data]=\"instance.data\"></ajf-table>\n</ajf-widget-export>\n", styles: ["table{border-spacing:0}table th,table td{padding:10px}\n"], components: [{ type: i1.AjfWidgetExport, selector: "ajf-widget-export", inputs: ["widgetType", "data", "overlay", "enable"] }, { type: i2$3.AjfTable, selector: "ajf-table", inputs: ["data", "cellpadding"], outputs: ["sortSelected"] }], directives: [{ type: i2$1.NgIf, selector: "[ngIf]", inputs: ["ngIf", "ngIfThen", "ngIfElse"] }], changeDetection: i0.ChangeDetectionStrategy.OnPush, encapsulation: i0.ViewEncapsulation.None });
 i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.2.5", ngImport: i0, type: AjfTableWidgetComponent, decorators: [{
             type: Component,
-            args: [{ changeDetection: ChangeDetectionStrategy.OnPush, encapsulation: ViewEncapsulation.None, template: "<ajf-widget-export *ngIf=\"instance\"\n  [widgetType]=\"instance.widgetType\"\n  [data]=\"instance.data\"\n  [enable]=\"instance.exportable\"\n>\n    <ajf-table [data]=\"instance.data\"></ajf-table>\n</ajf-widget-export>\n", styles: ["table{border-spacing:0}table td{padding:10px}\n"] }]
+            args: [{ changeDetection: ChangeDetectionStrategy.OnPush, encapsulation: ViewEncapsulation.None, template: "<ajf-widget-export *ngIf=\"instance\"\n  [widgetType]=\"instance.widgetType\"\n  [data]=\"instance.data\"\n  [enable]=\"instance.exportable\"\n>\n    <ajf-table [data]=\"instance.data\"></ajf-table>\n</ajf-widget-export>\n", styles: ["table{border-spacing:0}table th,table td{padding:10px}\n"] }]
         }], ctorParameters: function () { return [{ type: i0.ChangeDetectorRef }, { type: i0.ElementRef }]; } });
 
 /**
@@ -452,6 +456,7 @@ const defaultWidgetsFactory = () => {
     defaultWidgets[AjfWidgetType.ImageContainer] = { component: AjfImageContainerWidgetComponent };
     defaultWidgets[AjfWidgetType.Graph] = { component: AjfGraphWidgetComponent };
     defaultWidgets[AjfWidgetType.PaginatedList] = { component: AjfPaginatedListWidgetComponent };
+    defaultWidgets[AjfWidgetType.PaginatedTable] = { component: AjfPaginatedTableWidgetComponent };
     defaultWidgets[AjfWidgetType.Dialog] = { component: AjfDialogWidgetComponent };
     defaultWidgets[AjfWidgetType.HeatMap] = { component: AjfHeatMapWidgetComponent };
     return defaultWidgets;
@@ -601,6 +606,152 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.2.5", ngImpor
             type: Component,
             args: [{ changeDetection: ChangeDetectionStrategy.OnPush, encapsulation: ViewEncapsulation.None, template: "<div class=\"ajf-paginated-list\" *ngIf=\"instance && pages > 0\">\n  <div class=\"ajf-paginated-list-title-container\">\n    <div class=\"ajf-paginated-list-title\">{{ instance.widget.title }}</div>\n    <div class=\"ajf-spacer\"></div>\n    <div class=\"ajf-paginated-list-paginator\">\n      <a (click)=\"goToPage('previous')\" class=\"ajf-paginated-list-btn ajf-paginated-list-back-btn\"\n          [class.ajf-paginated-list-btn-disabled]=\"canGoBackward === false\"></a>\n      <div class=\"ajf-paginated-list-paginator-page\">{{ currentPage }}</div>\n      <div class=\"ajf-paginated-list-paginator-separator\"></div>\n      <div class=\"ajf-paginated-list-paginator-pages\">{{ pages }}</div>\n      <a (click)=\"goToPage('next')\" class=\"ajf-paginated-list-btn ajf-paginated-list-forward-btn\"\n        [class.ajf-paginated-list-btn-disabled]=\"canGoForward === false\"></a>\n    </div>\n  </div>\n  <div class=\"ajf-paginated-list-item\" *ngFor=\"let item of currentContent\">\n    <ajf-widget [instance]=\"item\"></ajf-widget>\n  </div>\n</div>\n", styles: [".ajf-paginated-list-title-container{display:flex;align-items:center}.ajf-spacer{flex:1 0 auto}.ajf-paginated-list-btn{cursor:pointer;display:block;width:32px;height:32px;position:relative}.ajf-paginated-list-btn:after{width:100%;height:100%;display:flex;justify-content:center;align-items:center}.ajf-paginated-list-paginator-separator{width:16px;height:32px;position:relative}.ajf-paginated-list-paginator-separator:after{width:100%;height:100%;display:flex;justify-content:center;align-items:center;content:\"/\"}.ajf-paginated-list-btn-disabled{opacity:.5;cursor:default}.ajf-paginated-list-back-btn:after{content:\"<\"}.ajf-paginated-list-forward-btn:after{content:\">\"}.ajf-paginated-list-paginator{display:flex;align-items:center}.ajf-paginated-list-paginator>*{margin:0 .5em}\n"] }]
         }], ctorParameters: function () { return [{ type: i0.ChangeDetectorRef }, { type: i0.ElementRef }]; } });
+class AjfPaginatedTableWidgetComponent extends AjfBaseWidgetComponent {
+    constructor(cdr, el) {
+        super(cdr, el);
+        this.paginatorConfig = {
+            pageSize: 10,
+            pageSizeOptions: [5, 10, 15, 20, 25, 30, 50, 100, 500],
+        };
+        this._currentPage = 0;
+        this._pages = 0;
+        this._orderBy = 0;
+        this._currentContent = [];
+        this._allDataContent = [];
+        this._headerContent = [];
+        this._canGoForward = false;
+        this._canGoBackward = false;
+    }
+    get currentPage() {
+        return this._currentPage;
+    }
+    get pages() {
+        return this._pages;
+    }
+    get orderBy() {
+        return this._orderBy;
+    }
+    get currentContent() {
+        return this._currentContent;
+    }
+    get headerContent() {
+        return this._headerContent;
+    }
+    get canGoForward() {
+        return this._canGoForward;
+    }
+    get canGoBackward() {
+        return this._canGoBackward;
+    }
+    /**
+     * Set initial data for the table on instance changes
+     * @param changes
+     */
+    ngOnChanges(changes) {
+        if (changes['instance']) {
+            if (this.instance != null &&
+                this.instance.widget.pageSize &&
+                this.instance.widget.pageSize > 0) {
+                this.paginatorConfig.pageSize = this.instance.widget.pageSize;
+            }
+            this._updateCurrentContent();
+        }
+    }
+    ngOnInit() {
+        if (this.instance != null &&
+            this.instance.widget.pageSize &&
+            this.instance.widget.pageSize > 0) {
+            this.paginatorConfig.pageSize = this.instance.widget.pageSize;
+        }
+        this._updateCurrentContent();
+    }
+    /**
+     * Got to next or previous page
+     * @param direction
+     * @returns
+     */
+    goToPage(direction) {
+        const diff = direction === 'next' ? 1 : -1;
+        const newPage = this._currentPage + diff;
+        if (newPage <= 0 || newPage > this._pages) {
+            return;
+        }
+        this._currentPage = newPage;
+        this._canGoForward = newPage < this._pages;
+        this._canGoBackward = newPage > 1;
+        this._fillCurrentContent();
+    }
+    onPageSizeChange(_pageSize) {
+        this.paginatorConfig.pageSize = _pageSize;
+        this._updateCurrentContent();
+    }
+    /**
+     * Sort all data for the table, not only current page data
+     * @param sort
+     * @returns
+     */
+    sortPaginatedData(sort) {
+        if (!sort.active || sort.direction === '') {
+            return;
+        }
+        if (this._allDataContent.length > 1) {
+            this._currentPage = 1;
+            this._canGoForward = this._currentPage < this._pages;
+            this._canGoBackward = false;
+            this._allDataContent = this._allDataContent.sort((a, b) => {
+                const isAsc = sort.direction === 'asc';
+                return this._compare(a[0], b[0], isAsc);
+            });
+            this._fillCurrentContent();
+        }
+    }
+    _compare(a, b, isAsc) {
+        return (a.value < b.value ? -1 : 1) * (isAsc ? 1 : -1);
+    }
+    /**
+     * Set current header and data for the table, starting from page 1
+     */
+    _updateCurrentContent() {
+        this._canGoBackward = false;
+        if (this.instance == null || this.instance.data.length === 0) {
+            this._currentPage = 0;
+            this._pages = 0;
+            this._headerContent = [];
+            this._currentContent = [];
+            this._allDataContent = [];
+        }
+        else {
+            this._headerContent = this.instance.data[0];
+            this._allDataContent = this.instance.data.slice(1);
+            this._currentPage = 1;
+            this._pages = Math.ceil(this._allDataContent.length / this.paginatorConfig.pageSize);
+            this._canGoForward = this._pages > 1;
+        }
+        this._fillCurrentContent();
+    }
+    /**
+     * Update current data for the table, using page and sorted data
+     */
+    _fillCurrentContent() {
+        if (this._allDataContent.length === 0 && this._headerContent.length > 0) {
+            this._currentContent = [this._headerContent];
+        }
+        else {
+            const start = (this._currentPage - 1) * this.paginatorConfig.pageSize;
+            this._currentContent = [
+                this._headerContent,
+                ...this._allDataContent.slice(start, start + this.paginatorConfig.pageSize),
+            ];
+        }
+        this._cdr.markForCheck();
+    }
+}
+AjfPaginatedTableWidgetComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "13.2.5", ngImport: i0, type: AjfPaginatedTableWidgetComponent, deps: [{ token: i0.ChangeDetectorRef }, { token: i0.ElementRef }], target: i0.ɵɵFactoryTarget.Component });
+AjfPaginatedTableWidgetComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "13.2.5", type: AjfPaginatedTableWidgetComponent, selector: "ng-component", usesInheritance: true, usesOnChanges: true, ngImport: i0, template: "<div class=\"ajf-paginated-table\" *ngIf=\"instance\">\n  <div class=\"ajf-paginated-table-title-container\" *ngIf=\"pages > 0\">\n    <div class=\"ajf-paginated-table-page-selector\">\n      <mat-label class=\"ajf-paginated-table-page-selector-label\"\n        >{{'Items per page:'|transloco}}</mat-label\n      >\n      <mat-select\n        [value]=\"paginatorConfig.pageSize\"\n        (selectionChange)=\"onPageSizeChange($event.value)\"\n      >\n        <mat-option\n          [value]=\"pageSizeOpt\"\n          *ngFor=\"let pageSizeOpt of paginatorConfig.pageSizeOptions\"\n        >\n          {{ pageSizeOpt }}\n        </mat-option>\n      </mat-select>\n    </div>\n    <div class=\"ajf-spacer\"></div>\n    <div class=\"ajf-paginated-table-paginator\">\n      <a\n        (click)=\"goToPage('previous')\"\n        class=\"ajf-paginated-table-btn ajf-paginated-table-back-btn\"\n        [class.ajf-paginated-table-btn-disabled]=\"canGoBackward === false\"\n      ></a>\n      <div class=\"ajf-paginated-table-paginator-page\">{{ currentPage }}</div>\n      <div class=\"ajf-paginated-table-paginator-separator\"></div>\n      <div class=\"ajf-paginated-table-paginator-pages\">{{ pages }}</div>\n      <a\n        (click)=\"goToPage('next')\"\n        class=\"ajf-paginated-table-btn ajf-paginated-table-forward-btn\"\n        [class.ajf-paginated-table-btn-disabled]=\"canGoForward === false\"\n      ></a>\n    </div>\n  </div>\n  <div class=\"ajf-paginated-table-item\">\n    <ajf-table [data]=\"currentContent\" (sortSelected)=\"sortPaginatedData($event)\"></ajf-table>\n  </div>\n</div>\n", styles: ["table{border-spacing:0}table td{padding:10px}.ajf-paginated-table,.ajf-paginated-table table{width:100%}.ajf-paginated-table-page-selector{display:flex;align-items:baseline}.ajf-paginated-table-page-selector .ajf-paginated-table-page-selector-label{white-space:nowrap;margin-right:4px;font-size:.9em}.ajf-paginated-table-page-selector mat-select{width:50px;font-size:.9em}.ajf-paginated-table-title-container{display:flex;align-items:center}.ajf-spacer{flex:1 0 auto}.ajf-paginated-table-btn{cursor:pointer;display:block;width:32px;height:32px;position:relative}.ajf-paginated-table-btn:after{width:100%;height:100%;display:flex;justify-content:center;align-items:center}.ajf-paginated-table-paginator-separator{width:16px;height:32px;position:relative}.ajf-paginated-table-paginator-separator:after{width:100%;height:100%;display:flex;justify-content:center;align-items:center;content:\"/\"}.ajf-paginated-table-btn-disabled{opacity:.5;cursor:default}.ajf-paginated-table-back-btn:after{content:\"<\"}.ajf-paginated-table-forward-btn:after{content:\">\"}.ajf-paginated-table-paginator{display:flex;align-items:center;font-size:.9em}.ajf-paginated-table-paginator>*{margin:0 .5em}\n"], components: [{ type: i5.MatSelect, selector: "mat-select", inputs: ["disabled", "disableRipple", "tabIndex"], exportAs: ["matSelect"] }, { type: i6.MatOption, selector: "mat-option", exportAs: ["matOption"] }, { type: i2$3.AjfTable, selector: "ajf-table", inputs: ["data", "cellpadding"], outputs: ["sortSelected"] }], directives: [{ type: i2$1.NgIf, selector: "[ngIf]", inputs: ["ngIf", "ngIfThen", "ngIfElse"] }, { type: i8.MatLabel, selector: "mat-label" }, { type: i2$1.NgForOf, selector: "[ngFor][ngForOf]", inputs: ["ngForOf", "ngForTrackBy", "ngForTemplate"] }], pipes: { "transloco": i3$2.TranslocoPipe }, changeDetection: i0.ChangeDetectionStrategy.OnPush, encapsulation: i0.ViewEncapsulation.None });
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.2.5", ngImport: i0, type: AjfPaginatedTableWidgetComponent, decorators: [{
+            type: Component,
+            args: [{ changeDetection: ChangeDetectionStrategy.OnPush, encapsulation: ViewEncapsulation.None, template: "<div class=\"ajf-paginated-table\" *ngIf=\"instance\">\n  <div class=\"ajf-paginated-table-title-container\" *ngIf=\"pages > 0\">\n    <div class=\"ajf-paginated-table-page-selector\">\n      <mat-label class=\"ajf-paginated-table-page-selector-label\"\n        >{{'Items per page:'|transloco}}</mat-label\n      >\n      <mat-select\n        [value]=\"paginatorConfig.pageSize\"\n        (selectionChange)=\"onPageSizeChange($event.value)\"\n      >\n        <mat-option\n          [value]=\"pageSizeOpt\"\n          *ngFor=\"let pageSizeOpt of paginatorConfig.pageSizeOptions\"\n        >\n          {{ pageSizeOpt }}\n        </mat-option>\n      </mat-select>\n    </div>\n    <div class=\"ajf-spacer\"></div>\n    <div class=\"ajf-paginated-table-paginator\">\n      <a\n        (click)=\"goToPage('previous')\"\n        class=\"ajf-paginated-table-btn ajf-paginated-table-back-btn\"\n        [class.ajf-paginated-table-btn-disabled]=\"canGoBackward === false\"\n      ></a>\n      <div class=\"ajf-paginated-table-paginator-page\">{{ currentPage }}</div>\n      <div class=\"ajf-paginated-table-paginator-separator\"></div>\n      <div class=\"ajf-paginated-table-paginator-pages\">{{ pages }}</div>\n      <a\n        (click)=\"goToPage('next')\"\n        class=\"ajf-paginated-table-btn ajf-paginated-table-forward-btn\"\n        [class.ajf-paginated-table-btn-disabled]=\"canGoForward === false\"\n      ></a>\n    </div>\n  </div>\n  <div class=\"ajf-paginated-table-item\">\n    <ajf-table [data]=\"currentContent\" (sortSelected)=\"sortPaginatedData($event)\"></ajf-table>\n  </div>\n</div>\n", styles: ["table{border-spacing:0}table td{padding:10px}.ajf-paginated-table,.ajf-paginated-table table{width:100%}.ajf-paginated-table-page-selector{display:flex;align-items:baseline}.ajf-paginated-table-page-selector .ajf-paginated-table-page-selector-label{white-space:nowrap;margin-right:4px;font-size:.9em}.ajf-paginated-table-page-selector mat-select{width:50px;font-size:.9em}.ajf-paginated-table-title-container{display:flex;align-items:center}.ajf-spacer{flex:1 0 auto}.ajf-paginated-table-btn{cursor:pointer;display:block;width:32px;height:32px;position:relative}.ajf-paginated-table-btn:after{width:100%;height:100%;display:flex;justify-content:center;align-items:center}.ajf-paginated-table-paginator-separator{width:16px;height:32px;position:relative}.ajf-paginated-table-paginator-separator:after{width:100%;height:100%;display:flex;justify-content:center;align-items:center;content:\"/\"}.ajf-paginated-table-btn-disabled{opacity:.5;cursor:default}.ajf-paginated-table-back-btn:after{content:\"<\"}.ajf-paginated-table-forward-btn:after{content:\">\"}.ajf-paginated-table-paginator{display:flex;align-items:center;font-size:.9em}.ajf-paginated-table-paginator>*{margin:0 .5em}\n"] }]
+        }], ctorParameters: function () { return [{ type: i0.ChangeDetectorRef }, { type: i0.ElementRef }]; } });
 
 /**
  * @license
@@ -672,6 +823,7 @@ AjfReportsModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "12.0.0", versio
         AjfMapWidgetComponent,
         AjfPageBreakWidgetComponent,
         AjfPaginatedListWidgetComponent,
+        AjfPaginatedTableWidgetComponent,
         AjfReportRenderer,
         AjfReportWidget,
         AjfTableWidgetComponent,
@@ -688,7 +840,8 @@ AjfReportsModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "12.0.0", versio
         AjfTranslocoModule,
         CommonModule,
         AjfReportsModule$1,
-        MatDialogModule], exports: [AjfReportRenderer, AjfReportWidget] });
+        MatDialogModule,
+        MatSelectModule], exports: [AjfReportRenderer, AjfReportWidget] });
 AjfReportsModule.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "13.2.5", ngImport: i0, type: AjfReportsModule, imports: [[
             AjfChartModule,
             AjfCommonModule,
@@ -704,6 +857,7 @@ AjfReportsModule.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", versio
             CommonModule,
             AjfReportsModule$1,
             MatDialogModule,
+            MatSelectModule,
         ]] });
 i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.2.5", ngImport: i0, type: AjfReportsModule, decorators: [{
             type: NgModule,
@@ -723,6 +877,7 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.2.5", ngImpor
                         CommonModule,
                         AjfReportsModule$1,
                         MatDialogModule,
+                        MatSelectModule,
                     ],
                     declarations: [
                         AjfChartWidgetComponent,
@@ -738,6 +893,7 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.2.5", ngImpor
                         AjfMapWidgetComponent,
                         AjfPageBreakWidgetComponent,
                         AjfPaginatedListWidgetComponent,
+                        AjfPaginatedTableWidgetComponent,
                         AjfReportRenderer,
                         AjfReportWidget,
                         AjfTableWidgetComponent,
@@ -773,5 +929,5 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.2.5", ngImpor
  * Generated bundle index. Do not edit.
  */
 
-export { AjfChartWidgetComponent, AjfColumnWidgetComponent, AjfDialogWidgetComponent, AjfFilterWidgetComponent, AjfFormulaWidgetComponent, AjfHeatMapWidgetComponent, AjfImageContainerWidgetComponent, AjfImageWidgetComponent, AjfLayoutWidgetComponent, AjfMapWidgetComponent, AjfPageBreakWidgetComponent, AjfPaginatedListWidgetComponent, AjfReportRenderer, AjfReportWidget, AjfReportsModule, AjfTableWidgetComponent, AjfTextWidgetComponent, AjfWidgetService };
+export { AjfChartWidgetComponent, AjfColumnWidgetComponent, AjfDialogWidgetComponent, AjfFilterWidgetComponent, AjfFormulaWidgetComponent, AjfHeatMapWidgetComponent, AjfImageContainerWidgetComponent, AjfImageWidgetComponent, AjfLayoutWidgetComponent, AjfMapWidgetComponent, AjfPageBreakWidgetComponent, AjfPaginatedListWidgetComponent, AjfPaginatedTableWidgetComponent, AjfReportRenderer, AjfReportWidget, AjfReportsModule, AjfTableWidgetComponent, AjfTextWidgetComponent, AjfWidgetService };
 //# sourceMappingURL=ajf-material-reports.mjs.map

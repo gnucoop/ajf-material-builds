@@ -19,9 +19,11 @@
  * If not, see http://www.gnu.org/licenses/.
  *
  */
-import { AjfBaseWidgetComponent, AjfColumnWidgetInstance, AjfDialogWidgetInstance, AjfLayoutWidgetInstance, AjfPaginatedListWidgetInstance, AjfReportWidget as CoreComponent, AjfWidgetComponentsMap, AjfWidgetInstance, AjfWidgetService as CoreService } from '@ajf/core/reports';
+import { AjfBaseWidgetComponent, AjfColumnWidgetInstance, AjfDialogWidgetInstance, AjfLayoutWidgetInstance, AjfPaginatedListWidgetInstance, AjfPaginatedTableWidgetInstance, AjfReportWidget as CoreComponent, AjfWidgetComponentsMap, AjfWidgetInstance, AjfWidgetService as CoreService } from '@ajf/core/reports';
+import { AjfTableCell } from '@ajf/core/table';
 import { AfterContentChecked, ChangeDetectorRef, ElementRef, OnChanges, OnInit, Renderer2, SimpleChanges, TemplateRef } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Sort } from '@angular/material/sort';
 import { Observable } from 'rxjs';
 import * as i0 from "@angular/core";
 export declare class AjfWidgetService extends CoreService {
@@ -75,4 +77,56 @@ export declare class AjfPaginatedListWidgetComponent extends AjfBaseWidgetCompon
     private _fillCurrentContent;
     static ɵfac: i0.ɵɵFactoryDeclaration<AjfPaginatedListWidgetComponent, never>;
     static ɵcmp: i0.ɵɵComponentDeclaration<AjfPaginatedListWidgetComponent, "ng-component", never, {}, {}, never, never>;
+}
+export declare class AjfPaginatedTableWidgetComponent extends AjfBaseWidgetComponent<AjfPaginatedTableWidgetInstance> implements OnChanges, OnInit {
+    readonly paginatorConfig: {
+        pageSize: number;
+        pageSizeOptions: number[];
+    };
+    get currentPage(): number;
+    private _currentPage;
+    get pages(): number;
+    private _pages;
+    get orderBy(): number;
+    private _orderBy;
+    get currentContent(): AjfTableCell[][];
+    private _currentContent;
+    private _allDataContent;
+    get headerContent(): AjfTableCell[];
+    private _headerContent;
+    get canGoForward(): boolean;
+    private _canGoForward;
+    get canGoBackward(): boolean;
+    private _canGoBackward;
+    constructor(cdr: ChangeDetectorRef, el: ElementRef);
+    /**
+     * Set initial data for the table on instance changes
+     * @param changes
+     */
+    ngOnChanges(changes: SimpleChanges): void;
+    ngOnInit(): void;
+    /**
+     * Got to next or previous page
+     * @param direction
+     * @returns
+     */
+    goToPage(direction: 'next' | 'previous'): void;
+    onPageSizeChange(_pageSize: number): void;
+    /**
+     * Sort all data for the table, not only current page data
+     * @param sort
+     * @returns
+     */
+    sortPaginatedData(sort: Sort): void;
+    private _compare;
+    /**
+     * Set current header and data for the table, starting from page 1
+     */
+    private _updateCurrentContent;
+    /**
+     * Update current data for the table, using page and sorted data
+     */
+    private _fillCurrentContent;
+    static ɵfac: i0.ɵɵFactoryDeclaration<AjfPaginatedTableWidgetComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfPaginatedTableWidgetComponent, "ng-component", never, {}, {}, never, never>;
 }
