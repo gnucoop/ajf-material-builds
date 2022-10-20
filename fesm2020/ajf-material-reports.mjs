@@ -617,7 +617,14 @@ class AjfPaginatedTableWidgetComponent extends AjfBaseWidgetComponent {
         this._pages = 0;
         this._orderBy = 0;
         this._currentContent = [];
+        /**
+         * full data table
+         */
         this._allDataContent = [];
+        /**
+         * full sorted data table
+         */
+        this._sortedAllDataContent = [];
         this._headerContent = [];
         this._canGoForward = false;
         this._canGoBackward = false;
@@ -691,17 +698,20 @@ class AjfPaginatedTableWidgetComponent extends AjfBaseWidgetComponent {
      * @returns
      */
     sortPaginatedData(sort) {
-        if (!sort.active || sort.direction === '') {
-            return;
-        }
         if (this._allDataContent.length > 1) {
-            this._currentPage = 1;
-            this._canGoForward = this._currentPage < this._pages;
-            this._canGoBackward = false;
-            this._allDataContent = this._allDataContent.sort((a, b) => {
-                const isAsc = sort.direction === 'asc';
-                return this._compare(a[0], b[0], isAsc);
-            });
+            if (!sort.active || sort.direction === '') {
+                this._sortedAllDataContent = this._allDataContent.slice();
+            }
+            else {
+                this._currentPage = 1;
+                this._canGoForward = this._currentPage < this._pages;
+                this._canGoBackward = false;
+                const columnIdx = parseInt(sort.active.slice(-1)) || 0;
+                this._sortedAllDataContent = this._allDataContent.slice().sort((a, b) => {
+                    const isAsc = sort.direction === 'asc';
+                    return this._compare(a[columnIdx], b[columnIdx], isAsc);
+                });
+            }
             this._fillCurrentContent();
         }
     }
@@ -719,10 +729,12 @@ class AjfPaginatedTableWidgetComponent extends AjfBaseWidgetComponent {
             this._headerContent = [];
             this._currentContent = [];
             this._allDataContent = [];
+            this._sortedAllDataContent = [];
         }
         else {
             this._headerContent = this.instance.data[0];
             this._allDataContent = this.instance.data.slice(1);
+            this._sortedAllDataContent = [...this._allDataContent];
             this._currentPage = 1;
             this._pages = Math.ceil(this._allDataContent.length / this.paginatorConfig.pageSize);
             this._canGoForward = this._pages > 1;
@@ -733,14 +745,14 @@ class AjfPaginatedTableWidgetComponent extends AjfBaseWidgetComponent {
      * Update current data for the table, using page and sorted data
      */
     _fillCurrentContent() {
-        if (this._allDataContent.length === 0 && this._headerContent.length > 0) {
+        if (this._sortedAllDataContent.length === 0 && this._headerContent.length > 0) {
             this._currentContent = [this._headerContent];
         }
         else {
             const start = (this._currentPage - 1) * this.paginatorConfig.pageSize;
             this._currentContent = [
                 this._headerContent,
-                ...this._allDataContent.slice(start, start + this.paginatorConfig.pageSize),
+                ...this._sortedAllDataContent.slice(start, start + this.paginatorConfig.pageSize),
             ];
         }
         this._cdr.markForCheck();

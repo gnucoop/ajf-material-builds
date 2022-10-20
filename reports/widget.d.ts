@@ -91,7 +91,14 @@ export declare class AjfPaginatedTableWidgetComponent extends AjfBaseWidgetCompo
     private _orderBy;
     get currentContent(): AjfTableCell[][];
     private _currentContent;
+    /**
+     * full data table
+     */
     private _allDataContent;
+    /**
+     * full sorted data table
+     */
+    private _sortedAllDataContent;
     get headerContent(): AjfTableCell[];
     private _headerContent;
     get canGoForward(): boolean;
