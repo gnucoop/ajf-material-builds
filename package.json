@@ -1,6 +1,6 @@
 {
   "name": "@ajf/material",
-  "version": "13.2.13-5675da4a",
+  "version": "13.2.14-d6aabee3",
   "description": "",
   "repository": {
     "type": "git",
@@ -13,7 +13,7 @@
   },
   "homepage": "https://github.com/gnucoop/ajf#readme",
   "peerDependencies": {
-    "@ajf/core": "13.2.13",
+    "@ajf/core": "13.2.14",
     "@angular/animations": "^13.2.5",
     "@angular/cdk": "^13.2.5",
     "@angular/common": "^13.2.5",
