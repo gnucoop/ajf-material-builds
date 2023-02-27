@@ -26,5 +26,5 @@ import * as i0 from "@angular/core";
 export declare class AjfTextFieldComponent extends CoreComponent {
     constructor(cdr: ChangeDetectorRef, service: AjfFormRendererService, was: AjfWarningAlertService);
     static ɵfac: i0.ɵɵFactoryDeclaration<AjfTextFieldComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<AjfTextFieldComponent, "ng-component", never, {}, {}, never, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfTextFieldComponent, "ng-component", never, {}, {}, never, never, false, never>;
 }

@@ -42,5 +42,5 @@ export declare class AjfFbChoicesOriginEditor {
     deleteRow(rowIdx: number): void;
     addRow(): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<AjfFbChoicesOriginEditor, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<AjfFbChoicesOriginEditor, "ajf-fb-choices-origin-editor", never, { "choicesOrigin": "choicesOrigin"; }, {}, never, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfFbChoicesOriginEditor, "ajf-fb-choices-origin-editor", never, { "choicesOrigin": "choicesOrigin"; }, {}, never, never, false, never>;
 }

@@ -26,5 +26,5 @@ import * as i0 from "@angular/core";
 export declare class AjfEmptyFieldComponent extends AjfBaseFieldComponent<AjfEmptyFieldInstance> {
     constructor(cdr: ChangeDetectorRef, service: AjfFormRendererService, was: AjfWarningAlertService);
     static ɵfac: i0.ɵɵFactoryDeclaration<AjfEmptyFieldComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<AjfEmptyFieldComponent, "ng-component", never, {}, {}, never, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfEmptyFieldComponent, "ng-component", never, {}, {}, never, never, false, never>;
 }

@@ -26,5 +26,5 @@ import * as i0 from "@angular/core";
 export declare class AjfInputFieldComponent extends CoreComponent {
     constructor(cdr: ChangeDetectorRef, service: AjfFormRendererService, was: AjfWarningAlertService);
     static ɵfac: i0.ɵɵFactoryDeclaration<AjfInputFieldComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<AjfInputFieldComponent, "ng-component", never, {}, {}, never, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfInputFieldComponent, "ng-component", never, {}, {}, never, never, false, never>;
 }

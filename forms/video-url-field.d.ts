@@ -28,5 +28,5 @@ import * as i0 from "@angular/core";
 export declare class AjfVideoUrlFieldComponent extends CoreComponent {
     constructor(cdr: ChangeDetectorRef, service: AjfFormRendererService, was: AjfWarningAlertService, domSanitizer: DomSanitizer, httpClient: HttpClient);
     static ɵfac: i0.ɵɵFactoryDeclaration<AjfVideoUrlFieldComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<AjfVideoUrlFieldComponent, "ng-component", never, {}, {}, never, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfVideoUrlFieldComponent, "ng-component", never, {}, {}, never, never, false, never>;
 }

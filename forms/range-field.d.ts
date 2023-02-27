@@ -27,5 +27,5 @@ import * as i0 from "@angular/core";
 export declare class AjfRangeFieldComponent extends AjfRange {
     constructor(cdr: ChangeDetectorRef, service: AjfFormRendererService, was: AjfWarningAlertService);
     static ɵfac: i0.ɵɵFactoryDeclaration<AjfRangeFieldComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<AjfRangeFieldComponent, "ajf-range", never, {}, {}, never, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfRangeFieldComponent, "ajf-range", never, {}, {}, never, never, false, never>;
 }

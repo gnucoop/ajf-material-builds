@@ -34,5 +34,5 @@ export declare class AjfFbConditionEditorDialog {
     constructor(service: AjfFormBuilderService, dialogRef: MatDialogRef<AjfFbConditionEditorDialog>);
     saveCondition(): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<AjfFbConditionEditorDialog, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<AjfFbConditionEditorDialog, "ajf-condition-editor-dialog", never, {}, {}, never, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfFbConditionEditorDialog, "ajf-condition-editor-dialog", never, {}, {}, never, never, false, never>;
 }

@@ -44,5 +44,5 @@ export declare class AjfFbStringIdentifierDialogComponent implements OnDestroy {
     saveStringIdentifier(): void;
     selected(row: AjfFormStringIdentifier, evt: MatAutocompleteSelectedEvent): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<AjfFbStringIdentifierDialogComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<AjfFbStringIdentifierDialogComponent, "ajf-fb-string-identifier-dialog", never, {}, {}, never, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfFbStringIdentifierDialogComponent, "ajf-fb-string-identifier-dialog", never, {}, {}, never, never, false, never>;
 }

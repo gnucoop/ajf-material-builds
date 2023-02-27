@@ -22,17 +22,17 @@
 import { AjfBaseWidgetComponent } from '@ajf/core/reports';
 import { ChangeDetectionStrategy, Component, ViewEncapsulation, } from '@angular/core';
 import * as i0 from "@angular/core";
-import * as i1 from "@ajf/core/reports";
-import * as i2 from "@ajf/core/table";
-import * as i3 from "@angular/common";
+import * as i1 from "@ajf/core/table";
+import * as i2 from "@angular/common";
+import * as i3 from "@ajf/core/reports";
 export class AjfTableWidgetComponent extends AjfBaseWidgetComponent {
     constructor(cdr, el) {
         super(cdr, el);
     }
 }
-AjfTableWidgetComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "13.2.5", ngImport: i0, type: AjfTableWidgetComponent, deps: [{ token: i0.ChangeDetectorRef }, { token: i0.ElementRef }], target: i0.ɵɵFactoryTarget.Component });
-AjfTableWidgetComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "13.2.5", type: AjfTableWidgetComponent, selector: "ng-component", usesInheritance: true, ngImport: i0, template: "<ajf-widget-export\n  *ngIf=\"instance\"\n  [widgetType]=\"instance.widgetType\"\n  [data]=\"instance.data\"\n  [enable]=\"instance.exportable\"\n>\n  <ajf-table [data]=\"instance.data\"></ajf-table>\n</ajf-widget-export>\n", styles: ["table{border-spacing:0}table tr th,table tr td{padding:10px}table tr td .read_more_cell{cursor:pointer;margin:0;white-space:nowrap;display:inline-block}table tr td .read_more_text{padding-right:5px;margin:0;display:inline-block;white-space:nowrap}table tr td .material-icons{vertical-align:middle;cursor:pointer}\n"], components: [{ type: i1.AjfWidgetExport, selector: "ajf-widget-export", inputs: ["widgetType", "data", "overlay", "enable"] }, { type: i2.AjfTable, selector: "ajf-table", inputs: ["data", "cellpadding"], outputs: ["sortSelected"] }], directives: [{ type: i3.NgIf, selector: "[ngIf]", inputs: ["ngIf", "ngIfThen", "ngIfElse"] }], changeDetection: i0.ChangeDetectionStrategy.OnPush, encapsulation: i0.ViewEncapsulation.None });
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.2.5", ngImport: i0, type: AjfTableWidgetComponent, decorators: [{
+AjfTableWidgetComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "15.0.4", ngImport: i0, type: AjfTableWidgetComponent, deps: [{ token: i0.ChangeDetectorRef }, { token: i0.ElementRef }], target: i0.ɵɵFactoryTarget.Component });
+AjfTableWidgetComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14.0.0", version: "15.0.4", type: AjfTableWidgetComponent, selector: "ng-component", usesInheritance: true, ngImport: i0, template: "<ajf-widget-export\n  *ngIf=\"instance\"\n  [widgetType]=\"instance.widgetType\"\n  [data]=\"instance.data\"\n  [enable]=\"instance.exportable\"\n>\n  <ajf-table [data]=\"instance.data\"></ajf-table>\n</ajf-widget-export>\n", styles: ["table{border-spacing:0}table tr th,table tr td{padding:10px}table tr td .read_more_cell{cursor:pointer;margin:0;white-space:nowrap;display:inline-block}table tr td .read_more_text{padding-right:5px;margin:0;display:inline-block;white-space:nowrap}table tr td .material-icons{vertical-align:middle;cursor:pointer}\n"], dependencies: [{ kind: "component", type: i1.AjfTable, selector: "ajf-table", inputs: ["data", "cellpadding"], outputs: ["sortSelected"] }, { kind: "directive", type: i2.NgIf, selector: "[ngIf]", inputs: ["ngIf", "ngIfThen", "ngIfElse"] }, { kind: "component", type: i3.AjfWidgetExport, selector: "ajf-widget-export", inputs: ["widgetType", "data", "overlay", "enable"] }], changeDetection: i0.ChangeDetectionStrategy.OnPush, encapsulation: i0.ViewEncapsulation.None });
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.0.4", ngImport: i0, type: AjfTableWidgetComponent, decorators: [{
             type: Component,
             args: [{ changeDetection: ChangeDetectionStrategy.OnPush, encapsulation: ViewEncapsulation.None, template: "<ajf-widget-export\n  *ngIf=\"instance\"\n  [widgetType]=\"instance.widgetType\"\n  [data]=\"instance.data\"\n  [enable]=\"instance.exportable\"\n>\n  <ajf-table [data]=\"instance.data\"></ajf-table>\n</ajf-widget-export>\n", styles: ["table{border-spacing:0}table tr th,table tr td{padding:10px}table tr td .read_more_cell{cursor:pointer;margin:0;white-space:nowrap;display:inline-block}table tr td .read_more_text{padding-right:5px;margin:0;display:inline-block;white-space:nowrap}table tr td .material-icons{vertical-align:middle;cursor:pointer}\n"] }]
         }], ctorParameters: function () { return [{ type: i0.ChangeDetectorRef }, { type: i0.ElementRef }]; } });

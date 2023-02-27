@@ -25,5 +25,5 @@ import * as i0 from "@angular/core";
 export declare class AjfGraphWidgetComponent extends AjfBaseWidgetComponent<AjfGraphWidgetInstance> {
     constructor(cdr: ChangeDetectorRef, el: ElementRef);
     static ɵfac: i0.ɵɵFactoryDeclaration<AjfGraphWidgetComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<AjfGraphWidgetComponent, "ajf-graph-widget", never, {}, {}, never, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfGraphWidgetComponent, "ajf-graph-widget", never, {}, {}, never, never, false, never>;
 }

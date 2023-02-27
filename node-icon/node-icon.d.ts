@@ -23,5 +23,5 @@ import { AjfNodeIcon as CoreNodeIcon } from '@ajf/core/node-icon';
 import * as i0 from "@angular/core";
 export declare class AjfNodeIcon extends CoreNodeIcon {
     static ɵfac: i0.ɵɵFactoryDeclaration<AjfNodeIcon, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<AjfNodeIcon, "ajf-node-icon", never, {}, {}, never, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfNodeIcon, "ajf-node-icon", never, {}, {}, never, never, false, never>;
 }

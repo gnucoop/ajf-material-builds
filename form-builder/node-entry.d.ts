@@ -92,5 +92,5 @@ export declare class AjfFbNodeEntry implements AfterViewInit, OnDestroy {
     emptyAreaDropPredicate(): (item: CdkDrag, _drop: CdkDropList) => boolean;
     private _updateBranchHeights;
     static ɵfac: i0.ɵɵFactoryDeclaration<AjfFbNodeEntry, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<AjfFbNodeEntry, "ajf-fb-node-entry", never, { "isFirst": "isFirst"; "isExpanded": "isExpanded"; "nodeEntry": "nodeEntry"; "level": "level"; "isDraggable": "isDraggable"; "originOffset": "originOffset"; "firstBranchColor": "firstBranchColor"; }, {}, never, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfFbNodeEntry, "ajf-fb-node-entry", never, { "isFirst": "isFirst"; "isExpanded": "isExpanded"; "nodeEntry": "nodeEntry"; "level": "level"; "isDraggable": "isDraggable"; "originOffset": "originOffset"; "firstBranchColor": "firstBranchColor"; }, {}, never, never, false, never>;
 }

@@ -29,5 +29,5 @@ export declare const CALENDAR_CONTROL_VALUE_ACCESSOR: any;
 export declare class AjfCalendarComponent extends AjfCalendar {
     constructor(cdr: ChangeDetectorRef, service: AjfCalendarService);
     static ɵfac: i0.ɵɵFactoryDeclaration<AjfCalendarComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<AjfCalendarComponent, "ajf-calendar", never, {}, {}, never, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfCalendarComponent, "ajf-calendar", never, {}, {}, never, never, false, never>;
 }

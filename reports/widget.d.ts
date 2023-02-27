@@ -35,12 +35,12 @@ export declare class AjfReportWidget extends CoreComponent {
     readonly widgetsMap: AjfWidgetComponentsMap;
     constructor(renderer: Renderer2, widgetService: AjfWidgetService);
     static ɵfac: i0.ɵɵFactoryDeclaration<AjfReportWidget, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<AjfReportWidget, "ajf-widget", never, {}, {}, never, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfReportWidget, "ajf-widget", never, {}, {}, never, never, false, never>;
 }
 export declare class AjfColumnWidgetComponent extends AjfBaseWidgetComponent<AjfColumnWidgetInstance> {
     constructor(cdr: ChangeDetectorRef, el: ElementRef);
     static ɵfac: i0.ɵɵFactoryDeclaration<AjfColumnWidgetComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<AjfColumnWidgetComponent, "ng-component", never, {}, {}, never, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfColumnWidgetComponent, "ng-component", never, {}, {}, never, never, false, never>;
 }
 export declare class AjfLayoutWidgetComponent extends AjfBaseWidgetComponent<AjfLayoutWidgetInstance> implements AfterContentChecked {
     private _allcolumnsRendered$;
@@ -48,7 +48,7 @@ export declare class AjfLayoutWidgetComponent extends AjfBaseWidgetComponent<Ajf
     constructor(cdr: ChangeDetectorRef, el: ElementRef);
     ngAfterContentChecked(): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<AjfLayoutWidgetComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<AjfLayoutWidgetComponent, "ng-component", never, {}, {}, never, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfLayoutWidgetComponent, "ng-component", never, {}, {}, never, never, false, never>;
 }
 export declare class AjfDialogWidgetComponent extends AjfBaseWidgetComponent<AjfDialogWidgetInstance> {
     private _dialog;
@@ -56,7 +56,7 @@ export declare class AjfDialogWidgetComponent extends AjfBaseWidgetComponent<Ajf
     constructor(cdr: ChangeDetectorRef, el: ElementRef, _dialog: MatDialog);
     openDialog(): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<AjfDialogWidgetComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<AjfDialogWidgetComponent, "ng-component", never, {}, {}, never, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfDialogWidgetComponent, "ng-component", never, {}, {}, never, never, false, never>;
 }
 export declare class AjfPaginatedListWidgetComponent extends AjfBaseWidgetComponent<AjfPaginatedListWidgetInstance> implements OnChanges, OnInit {
     get currentPage(): number;
@@ -76,7 +76,7 @@ export declare class AjfPaginatedListWidgetComponent extends AjfBaseWidgetCompon
     private _updateCurrentContent;
     private _fillCurrentContent;
     static ɵfac: i0.ɵɵFactoryDeclaration<AjfPaginatedListWidgetComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<AjfPaginatedListWidgetComponent, "ng-component", never, {}, {}, never, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfPaginatedListWidgetComponent, "ng-component", never, {}, {}, never, never, false, never>;
 }
 export declare class AjfPaginatedTableWidgetComponent extends AjfBaseWidgetComponent<AjfPaginatedTableWidgetInstance> implements OnChanges, OnInit {
     readonly paginatorConfig: {
@@ -135,5 +135,5 @@ export declare class AjfPaginatedTableWidgetComponent extends AjfBaseWidgetCompo
      */
     private _fillCurrentContent;
     static ɵfac: i0.ɵɵFactoryDeclaration<AjfPaginatedTableWidgetComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<AjfPaginatedTableWidgetComponent, "ng-component", never, {}, {}, never, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfPaginatedTableWidgetComponent, "ng-component", never, {}, {}, never, never, false, never>;
 }

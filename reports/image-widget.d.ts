@@ -25,5 +25,5 @@ import * as i0 from "@angular/core";
 export declare class AjfImageWidgetComponent extends AjfBaseWidgetComponent<AjfImageWidgetInstance> {
     constructor(cdr: ChangeDetectorRef, el: ElementRef);
     static ɵfac: i0.ɵɵFactoryDeclaration<AjfImageWidgetComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<AjfImageWidgetComponent, "ng-component", never, {}, {}, never, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfImageWidgetComponent, "ng-component", never, {}, {}, never, never, false, never>;
 }

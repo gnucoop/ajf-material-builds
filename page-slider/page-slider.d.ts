@@ -29,5 +29,5 @@ export declare class AjfPageSlider extends CorePageSlider {
     static ngAcceptInputType_hideNavigationButtons: BooleanInput;
     static ngAcceptInputType_fixedOrientation: BooleanInput;
     static ɵfac: i0.ɵɵFactoryDeclaration<AjfPageSlider, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<AjfPageSlider, "ajf-page-slider", never, {}, {}, never, ["*", "[ajfPageSliderBar]"]>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfPageSlider, "ajf-page-slider", never, {}, {}, never, ["*", "[ajfPageSliderBar]"], false, never>;
 }

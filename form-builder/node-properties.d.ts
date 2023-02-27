@@ -21,7 +21,7 @@
  */
 import { AjfChoicesOrigin, AjfFieldWithChoices, AjfNode, AjfNumberField, AjfRangeField, AjfTableField } from '@ajf/core/forms';
 import { ChangeDetectorRef, OnDestroy } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { AjfFormBuilderNodeEntry, AjfFormBuilderService } from './form-builder-service';
@@ -51,7 +51,7 @@ export declare class AjfFbNodeProperties implements OnDestroy {
     private _enabled;
     get enabled(): Observable<boolean>;
     private _propertiesForm;
-    get propertiesForm(): Observable<FormGroup>;
+    get propertiesForm(): Observable<UntypedFormGroup>;
     private _hasChoices;
     get hasChoices(): Observable<boolean> | undefined;
     private _curVisibility;
@@ -127,7 +127,7 @@ export declare class AjfFbNodeProperties implements OnDestroy {
     private _removeTriggerConditionSub;
     private _saveEvt;
     private _saveSub;
-    constructor(_cdr: ChangeDetectorRef, _service: AjfFormBuilderService, _dialog: MatDialog, _fb: FormBuilder);
+    constructor(_cdr: ChangeDetectorRef, _service: AjfFormBuilderService, _dialog: MatDialog, _fb: UntypedFormBuilder);
     editVisibility(): void;
     editConditionalBranch(idx: number): void;
     editFormulaReps(): void;
@@ -185,5 +185,5 @@ export declare class AjfFbNodeProperties implements OnDestroy {
     private _handleVisibilityChange;
     private _guessVisibilityOpt;
     static ɵfac: i0.ɵɵFactoryDeclaration<AjfFbNodeProperties, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<AjfFbNodeProperties, "ajf-fb-node-properties", never, {}, {}, never, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfFbNodeProperties, "ajf-fb-node-properties", never, {}, {}, never, never, false, never>;
 }

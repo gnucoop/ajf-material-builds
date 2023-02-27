@@ -27,5 +27,5 @@ export declare const AJF_TIME_CONTROL_VALUE_ACCESSOR: any;
 export declare class AjfTime extends Base implements ControlValueAccessor, OnDestroy {
     constructor();
     static ɵfac: i0.ɵɵFactoryDeclaration<AjfTime, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<AjfTime, "ajf-time", never, {}, {}, never, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfTime, "ajf-time", never, {}, {}, never, never, false, never>;
 }

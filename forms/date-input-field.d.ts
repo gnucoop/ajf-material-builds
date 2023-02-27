@@ -33,5 +33,5 @@ export declare class AjfDateInputFieldComponent extends AjfBaseFieldComponent<Aj
     onChange(): void;
     protected _onInstanceChange(): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<AjfDateInputFieldComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<AjfDateInputFieldComponent, "ng-component", never, {}, {}, never, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfDateInputFieldComponent, "ng-component", never, {}, {}, never, never, false, never>;
 }

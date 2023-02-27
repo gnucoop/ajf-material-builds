@@ -26,5 +26,5 @@ import * as i0 from "@angular/core";
 export declare class AjfImage extends CoreImage {
     constructor(el: ElementRef, renderer: Renderer2, ds: DomSanitizer);
     static ɵfac: i0.ɵɵFactoryDeclaration<AjfImage, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<AjfImage, "ajf-image", never, {}, {}, never, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfImage, "ajf-image", never, {}, {}, never, never, false, never>;
 }

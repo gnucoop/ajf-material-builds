@@ -33,5 +33,5 @@ export declare class AjfFbChoicesOriginEditorDialog {
     saveChoicesOrigin(): void;
     cancelChoicesOriginEdit(): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<AjfFbChoicesOriginEditorDialog, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<AjfFbChoicesOriginEditorDialog, "ajf-fb-choices-origin-editor-dialog", never, {}, {}, never, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfFbChoicesOriginEditorDialog, "ajf-fb-choices-origin-editor-dialog", never, {}, {}, never, never, false, never>;
 }

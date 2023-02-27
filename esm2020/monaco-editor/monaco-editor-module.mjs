@@ -24,10 +24,10 @@ import { AjfMonacoEditor } from './monaco-editor';
 import * as i0 from "@angular/core";
 export class AjfMonacoEditorModule {
 }
-AjfMonacoEditorModule.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "13.2.5", ngImport: i0, type: AjfMonacoEditorModule, deps: [], target: i0.ɵɵFactoryTarget.NgModule });
-AjfMonacoEditorModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "12.0.0", version: "13.2.5", ngImport: i0, type: AjfMonacoEditorModule, declarations: [AjfMonacoEditor], exports: [AjfMonacoEditor] });
-AjfMonacoEditorModule.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "13.2.5", ngImport: i0, type: AjfMonacoEditorModule });
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.2.5", ngImport: i0, type: AjfMonacoEditorModule, decorators: [{
+AjfMonacoEditorModule.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "15.0.4", ngImport: i0, type: AjfMonacoEditorModule, deps: [], target: i0.ɵɵFactoryTarget.NgModule });
+AjfMonacoEditorModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "14.0.0", version: "15.0.4", ngImport: i0, type: AjfMonacoEditorModule, declarations: [AjfMonacoEditor], exports: [AjfMonacoEditor] });
+AjfMonacoEditorModule.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "15.0.4", ngImport: i0, type: AjfMonacoEditorModule });
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.0.4", ngImport: i0, type: AjfMonacoEditorModule, decorators: [{
             type: NgModule,
             args: [{
                     declarations: [AjfMonacoEditor],

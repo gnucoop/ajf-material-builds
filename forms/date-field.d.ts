@@ -26,5 +26,5 @@ import * as i0 from "@angular/core";
 export declare class AjfDateFieldComponent extends AjfBaseFieldComponent<AjfDateFieldInstance> {
     constructor(cdr: ChangeDetectorRef, service: AjfFormRendererService, was: AjfWarningAlertService);
     static ɵfac: i0.ɵɵFactoryDeclaration<AjfDateFieldComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<AjfDateFieldComponent, "ng-component", never, {}, {}, never, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfDateFieldComponent, "ng-component", never, {}, {}, never, never, false, never>;
 }

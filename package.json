@@ -1,6 +1,6 @@
 {
   "name": "@ajf/material",
-  "version": "13.2.15-89c1a7d7",
+  "version": "15.0.0-932730d4",
   "description": "",
   "repository": {
     "type": "git",
@@ -13,14 +13,14 @@
   },
   "homepage": "https://github.com/gnucoop/ajf#readme",
   "peerDependencies": {
-    "@ajf/core": "13.2.15",
-    "@angular/animations": "^13.2.5",
-    "@angular/cdk": "^13.2.5",
-    "@angular/common": "^13.2.5",
-    "@angular/core": "^13.2.5",
-    "@angular/forms": "^13.2.5",
-    "@angular/material": "^13.2.5",
-    "@angular/platform-browser": "^13.2.5"
+    "@ajf/core": "15.0.0",
+    "@angular/animations": "^15.0.4",
+    "@angular/cdk": "^15.0.3",
+    "@angular/common": "^15.0.4",
+    "@angular/core": "^15.0.4",
+    "@angular/forms": "^15.0.4",
+    "@angular/material": "^15.0.4",
+    "@angular/platform-browser": "^15.0.4"
   },
   "dependencies": {
     "tslib": "^2.3.0"
@@ -30,13 +30,13 @@
   "esm2020": "esm2020/ajf-material.mjs",
   "fesm2020": "fesm2020/ajf-material.mjs",
   "fesm2015": "fesm2015/ajf-material.mjs",
-  "typings": "ajf-material.d.ts",
+  "typings": "index.d.ts",
   "exports": {
     "./package.json": {
       "default": "./package.json"
     },
     ".": {
-      "types": "./ajf-material.d.ts",
+      "types": "./index.d.ts",
       "esm2020": "./esm2020/ajf-material.mjs",
       "es2020": "./fesm2020/ajf-material.mjs",
       "es2015": "./fesm2015/ajf-material.mjs",
@@ -44,7 +44,7 @@
       "default": "./fesm2020/ajf-material.mjs"
     },
     "./barcode": {
-      "types": "./barcode/ajf-material-barcode.d.ts",
+      "types": "./barcode/index.d.ts",
       "esm2020": "./esm2020/barcode/ajf-material-barcode.mjs",
       "es2020": "./fesm2020/ajf-material-barcode.mjs",
       "es2015": "./fesm2015/ajf-material-barcode.mjs",
@@ -52,7 +52,7 @@
       "default": "./fesm2020/ajf-material-barcode.mjs"
     },
     "./calendar": {
-      "types": "./calendar/ajf-material-calendar.d.ts",
+      "types": "./calendar/index.d.ts",
       "esm2020": "./esm2020/calendar/ajf-material-calendar.mjs",
       "es2020": "./fesm2020/ajf-material-calendar.mjs",
       "es2015": "./fesm2015/ajf-material-calendar.mjs",
@@ -60,7 +60,7 @@
       "default": "./fesm2020/ajf-material-calendar.mjs"
     },
     "./checkbox-group": {
-      "types": "./checkbox-group/ajf-material-checkbox-group.d.ts",
+      "types": "./checkbox-group/index.d.ts",
       "esm2020": "./esm2020/checkbox-group/ajf-material-checkbox-group.mjs",
       "es2020": "./fesm2020/ajf-material-checkbox-group.mjs",
       "es2015": "./fesm2015/ajf-material-checkbox-group.mjs",
@@ -68,7 +68,7 @@
       "default": "./fesm2020/ajf-material-checkbox-group.mjs"
     },
     "./form-builder": {
-      "types": "./form-builder/ajf-material-form-builder.d.ts",
+      "types": "./form-builder/index.d.ts",
       "esm2020": "./esm2020/form-builder/ajf-material-form-builder.mjs",
       "es2020": "./fesm2020/ajf-material-form-builder.mjs",
       "es2015": "./fesm2015/ajf-material-form-builder.mjs",
@@ -76,7 +76,7 @@
       "default": "./fesm2020/ajf-material-form-builder.mjs"
     },
     "./forms": {
-      "types": "./forms/ajf-material-forms.d.ts",
+      "types": "./forms/index.d.ts",
       "esm2020": "./esm2020/forms/ajf-material-forms.mjs",
       "es2020": "./fesm2020/ajf-material-forms.mjs",
       "es2015": "./fesm2015/ajf-material-forms.mjs",
@@ -84,7 +84,7 @@
       "default": "./fesm2020/ajf-material-forms.mjs"
     },
     "./image": {
-      "types": "./image/ajf-material-image.d.ts",
+      "types": "./image/index.d.ts",
       "esm2020": "./esm2020/image/ajf-material-image.mjs",
       "es2020": "./fesm2020/ajf-material-image.mjs",
       "es2015": "./fesm2015/ajf-material-image.mjs",
@@ -92,7 +92,7 @@
       "default": "./fesm2020/ajf-material-image.mjs"
     },
     "./monaco-editor": {
-      "types": "./monaco-editor/ajf-material-monaco-editor.d.ts",
+      "types": "./monaco-editor/index.d.ts",
       "esm2020": "./esm2020/monaco-editor/ajf-material-monaco-editor.mjs",
       "es2020": "./fesm2020/ajf-material-monaco-editor.mjs",
       "es2015": "./fesm2015/ajf-material-monaco-editor.mjs",
@@ -100,7 +100,7 @@
       "default": "./fesm2020/ajf-material-monaco-editor.mjs"
     },
     "./node-icon": {
-      "types": "./node-icon/ajf-material-node-icon.d.ts",
+      "types": "./node-icon/index.d.ts",
       "esm2020": "./esm2020/node-icon/ajf-material-node-icon.mjs",
       "es2020": "./fesm2020/ajf-material-node-icon.mjs",
       "es2015": "./fesm2015/ajf-material-node-icon.mjs",
@@ -108,7 +108,7 @@
       "default": "./fesm2020/ajf-material-node-icon.mjs"
     },
     "./page-slider": {
-      "types": "./page-slider/ajf-material-page-slider.d.ts",
+      "types": "./page-slider/index.d.ts",
       "esm2020": "./esm2020/page-slider/ajf-material-page-slider.mjs",
       "es2020": "./fesm2020/ajf-material-page-slider.mjs",
       "es2015": "./fesm2015/ajf-material-page-slider.mjs",
@@ -116,7 +116,7 @@
       "default": "./fesm2020/ajf-material-page-slider.mjs"
     },
     "./reports": {
-      "types": "./reports/ajf-material-reports.d.ts",
+      "types": "./reports/index.d.ts",
       "esm2020": "./esm2020/reports/ajf-material-reports.mjs",
       "es2020": "./fesm2020/ajf-material-reports.mjs",
       "es2015": "./fesm2015/ajf-material-reports.mjs",
@@ -124,7 +124,7 @@
       "default": "./fesm2020/ajf-material-reports.mjs"
     },
     "./time": {
-      "types": "./time/ajf-material-time.d.ts",
+      "types": "./time/index.d.ts",
       "esm2020": "./esm2020/time/ajf-material-time.mjs",
       "es2020": "./fesm2020/ajf-material-time.mjs",
       "es2015": "./fesm2015/ajf-material-time.mjs",

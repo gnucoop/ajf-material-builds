@@ -31,5 +31,5 @@ export declare class AjfFilterWidgetComponent extends AjfBaseWidgetComponent<Ajf
     readonly filteredInstance: Observable<AjfWidgetInstance>;
     constructor(cdr: ChangeDetectorRef, el: ElementRef, _ts: TranslocoService, _formRenderer: AjfFormRendererService);
     static ɵfac: i0.ɵɵFactoryDeclaration<AjfFilterWidgetComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<AjfFilterWidgetComponent, "ajf-filter-widget", never, {}, { "filteredInstance": "filteredInstance"; }, never, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfFilterWidgetComponent, "ajf-filter-widget", never, {}, { "filteredInstance": "filteredInstance"; }, never, never, false, never>;
 }

@@ -27,5 +27,5 @@ export declare class AjfImageContainerWidgetComponent extends AjfBaseWidgetCompo
     readonly imageTypes: typeof AjfImageType;
     constructor(cdr: ChangeDetectorRef, el: ElementRef);
     static ɵfac: i0.ɵɵFactoryDeclaration<AjfImageContainerWidgetComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<AjfImageContainerWidgetComponent, "ng-component", never, {}, {}, never, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfImageContainerWidgetComponent, "ng-component", never, {}, {}, never, never, false, never>;
 }

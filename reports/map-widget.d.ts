@@ -25,5 +25,5 @@ import * as i0 from "@angular/core";
 export declare class AjfMapWidgetComponent extends AjfBaseWidgetComponent<AjfMapWidgetInstance> {
     constructor(cdr: ChangeDetectorRef, el: ElementRef);
     static ɵfac: i0.ɵɵFactoryDeclaration<AjfMapWidgetComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<AjfMapWidgetComponent, "ng-component", never, {}, {}, never, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfMapWidgetComponent, "ng-component", never, {}, {}, never, never, false, never>;
 }

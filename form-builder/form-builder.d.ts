@@ -77,5 +77,5 @@ export declare class AjfFormBuilder implements AfterViewChecked, AfterContentIni
     expandToggle(evt: MatSlideToggleChange): void;
     private _setCurrentForm;
     static ɵfac: i0.ɵɵFactoryDeclaration<AjfFormBuilder, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<AjfFormBuilder, "ajf-form-builder", never, { "form": "form"; }, {}, never, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfFormBuilder, "ajf-form-builder", never, { "form": "form"; }, {}, never, never, false, never>;
 }

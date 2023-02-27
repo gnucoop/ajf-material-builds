@@ -26,5 +26,5 @@ import * as i0 from "@angular/core";
 export declare class AjfBarcodeFieldComponent extends AjfBaseFieldComponent {
     constructor(cdr: ChangeDetectorRef, service: AjfFormRendererService, was: AjfWarningAlertService);
     static ɵfac: i0.ɵɵFactoryDeclaration<AjfBarcodeFieldComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<AjfBarcodeFieldComponent, "ng-component", never, {}, {}, never, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfBarcodeFieldComponent, "ng-component", never, {}, {}, never, never, false, never>;
 }

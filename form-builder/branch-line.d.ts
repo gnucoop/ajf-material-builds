@@ -35,5 +35,5 @@ export declare class AjfFbBranchLine {
     private _updateOffset;
     private _updateColor;
     static ɵfac: i0.ɵɵFactoryDeclaration<AjfFbBranchLine, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<AjfFbBranchLine, "ajf-fb-branch-line", never, { "offset": "offset"; "color": "color"; "height": "height"; }, {}, never, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfFbBranchLine, "ajf-fb-branch-line", never, { "offset": "offset"; "color": "color"; "height": "height"; }, {}, never, never, false, never>;
 }

@@ -36,5 +36,5 @@ export declare class AjfFbConditionEditor {
     private _updateFunctions;
     private _fieldVarType;
     static ɵfac: i0.ɵɵFactoryDeclaration<AjfFbConditionEditor, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<AjfFbConditionEditor, "ajf-condition-editor", never, { "fields": "fields"; "condition": "condition"; }, {}, never, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfFbConditionEditor, "ajf-condition-editor", never, { "fields": "fields"; "condition": "condition"; }, {}, never, never, false, never>;
 }

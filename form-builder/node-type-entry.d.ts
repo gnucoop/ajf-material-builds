@@ -29,5 +29,5 @@ export declare class AjfFbNodeTypeEntry {
     set nodeType(nodeType: AjfFormBuilderNodeTypeEntry | undefined);
     constructor(_cdr: ChangeDetectorRef);
     static ɵfac: i0.ɵɵFactoryDeclaration<AjfFbNodeTypeEntry, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<AjfFbNodeTypeEntry, "ajf-fb-node-type-entry", never, { "nodeType": "nodeType"; }, {}, never, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfFbNodeTypeEntry, "ajf-fb-node-type-entry", never, { "nodeType": "nodeType"; }, {}, never, never, false, never>;
 }

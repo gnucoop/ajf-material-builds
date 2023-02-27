@@ -29,5 +29,5 @@ export declare class AjfFormField extends CoreFormField {
     constructor(cdr: ChangeDetectorRef, fieldService: AjfFieldService);
     static ngAcceptInputType_readonly: BooleanInput;
     static ɵfac: i0.ɵɵFactoryDeclaration<AjfFormField, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<AjfFormField, "ajf-field,ajf-form-field", never, {}, {}, never, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfFormField, "ajf-field,ajf-form-field", never, {}, {}, never, never, false, never>;
 }

@@ -25,5 +25,5 @@ import * as i0 from "@angular/core";
 export declare class AjfReportRenderer extends CoreReportRenderer {
     constructor(cdr: ChangeDetectorRef);
     static ɵfac: i0.ɵɵFactoryDeclaration<AjfReportRenderer, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<AjfReportRenderer, "ajf-report", never, {}, {}, never, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfReportRenderer, "ajf-report", never, {}, {}, never, never, false, never>;
 }
