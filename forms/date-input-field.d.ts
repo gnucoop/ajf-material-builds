@@ -19,19 +19,14 @@
  * If not, see http://www.gnu.org/licenses/.
  *
  */
-import { AjfBaseFieldComponent, AjfDateFieldInstance, AjfDateValueStringPipe, AjfFormRendererService } from '@ajf/core/forms';
+import { AjfBaseFieldComponent, AjfDateFieldInstance, AjfFormRendererService } from '@ajf/core/forms';
 import { ChangeDetectorRef } from '@angular/core';
 import { MatInput } from '@angular/material/input';
 import { AjfWarningAlertService } from './warning-alert-service';
 import * as i0 from "@angular/core";
 export declare class AjfDateInputFieldComponent extends AjfBaseFieldComponent<AjfDateFieldInstance> {
-    private _dvs;
     input: MatInput;
-    private _minDateStr;
-    private _maxDateStr;
-    constructor(cdr: ChangeDetectorRef, service: AjfFormRendererService, was: AjfWarningAlertService, _dvs: AjfDateValueStringPipe);
-    onChange(): void;
-    protected _onInstanceChange(): void;
+    constructor(cdr: ChangeDetectorRef, service: AjfFormRendererService, was: AjfWarningAlertService);
     static ɵfac: i0.ɵɵFactoryDeclaration<AjfDateInputFieldComponent, never>;
     static ɵcmp: i0.ɵɵComponentDeclaration<AjfDateInputFieldComponent, "ng-component", never, {}, {}, never, never, false, never>;
 }
