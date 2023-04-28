@@ -25,6 +25,8 @@ import { ChangeDetectorRef } from '@angular/core';
 import * as i0 from "@angular/core";
 export declare class AjfFormRenderer extends CoreFormRenderer {
     topBar: boolean;
+    centeredFieldsContent: boolean;
+    maxColumns: 1 | 2 | 3;
     constructor(rendererService: AjfFormRendererService, changeDetectorRef: ChangeDetectorRef);
     static ngAcceptInputType_fixedOrientation: BooleanInput;
     static ngAcceptInputType_hasEndMessage: BooleanInput;
@@ -35,5 +37,5 @@ export declare class AjfFormRenderer extends CoreFormRenderer {
     static ngAcceptInputType_readonly: BooleanInput;
     static ngAcceptInputType_saveDisabled: BooleanInput;
     static ɵfac: i0.ɵɵFactoryDeclaration<AjfFormRenderer, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<AjfFormRenderer, "ajf-form", never, { "topBar": "topBar"; }, {}, never, ["[ajfFormTopToolbarButtons]", "[ajfFormSaveButton]", "[ajfFormStartMessageTitle]", "[ajfFormStartMessage]", "[ajfFormEndMessageTitle]", "[ajfFormEndMessage]"], false, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AjfFormRenderer, "ajf-form", never, { "topBar": "topBar"; "centeredFieldsContent": "centeredFieldsContent"; "maxColumns": "maxColumns"; }, {}, never, ["[ajfFormTopToolbarButtons]", "[ajfFormSaveButton]", "[ajfFormStartMessageTitle]", "[ajfFormStartMessage]", "[ajfFormEndMessageTitle]", "[ajfFormEndMessage]"], false, never>;
 }
