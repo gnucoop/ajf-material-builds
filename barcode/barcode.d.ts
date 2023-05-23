@@ -20,14 +20,20 @@
  *
  */
 import { AjfBarcode } from '@ajf/core/barcode';
-import { ChangeDetectorRef, Renderer2 } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, OnDestroy, Renderer2 } from '@angular/core';
+import { Subscription } from 'rxjs';
 import * as i0 from "@angular/core";
 export declare const BARCODE_CONTROL_VALUE_ACCESSOR: any;
 /**
  * Ajf barcode component.
  */
-export declare class AjfBarcodeComponent extends AjfBarcode {
+export declare class AjfBarcodeComponent extends AjfBarcode implements OnDestroy, AfterViewInit {
+    sourceSelectSub: Subscription;
+    resetSub: Subscription;
     constructor(cdr: ChangeDetectorRef, renderer: Renderer2);
+    setupVideoSourceSub(): void;
+    ngAfterViewInit(): void;
+    ngOnDestroy(): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<AjfBarcodeComponent, never>;
     static ɵcmp: i0.ɵɵComponentDeclaration<AjfBarcodeComponent, "ajf-barcode", never, {}, {}, never, never, false, never>;
 }
