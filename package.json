@@ -1,6 +1,6 @@
 {
   "name": "@ajf/material",
-  "version": "15.2.2-c37c9740",
+  "version": "15.2.2-f0f33138",
   "description": "",
   "repository": {
     "type": "git",
@@ -82,6 +82,14 @@
       "es2015": "./fesm2015/ajf-material-forms.mjs",
       "node": "./fesm2015/ajf-material-forms.mjs",
       "default": "./fesm2020/ajf-material-forms.mjs"
+    },
+    "./geolocation": {
+      "types": "./geolocation/index.d.ts",
+      "esm2020": "./esm2020/geolocation/ajf-material-geolocation.mjs",
+      "es2020": "./fesm2020/ajf-material-geolocation.mjs",
+      "es2015": "./fesm2015/ajf-material-geolocation.mjs",
+      "node": "./fesm2015/ajf-material-geolocation.mjs",
+      "default": "./fesm2020/ajf-material-geolocation.mjs"
     },
     "./image": {
       "types": "./image/index.d.ts",
