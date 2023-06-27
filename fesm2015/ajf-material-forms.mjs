@@ -1,5 +1,5 @@
 import * as i1 from '@ajf/core/forms';
-import { AjfBaseFieldComponent, AJF_WARNING_ALERT_SERVICE, AjfInputFieldComponent as AjfInputFieldComponent$1, AjfFieldWithChoicesComponent, AJF_SEARCH_ALERT_THRESHOLD, AjfTableFieldComponent as AjfTableFieldComponent$1, AjfVideoUrlFieldComponent as AjfVideoUrlFieldComponent$1, AjfFieldService as AjfFieldService$1, AjfFieldType, AjfReadOnlyFieldComponent, AjfReadOnlyTableFieldComponent, AjfReadOnlySelectFieldComponent, AjfReadOnlyGeolocationFieldComponent, AjfFileFieldComponent, AjfReadOnlyFileFieldComponent, AjfImageFieldComponent, AjfReadOnlyImageFieldComponent, AjfReadOnlyVideoUrlFieldComponent, AjfFormField as AjfFormField$1, AjfFormRenderer as AjfFormRenderer$1, AjfFormsModule as AjfFormsModule$1 } from '@ajf/core/forms';
+import { AjfBaseFieldComponent, AJF_WARNING_ALERT_SERVICE, AjfInputFieldComponent as AjfInputFieldComponent$1, AjfFieldWithChoicesComponent, AJF_SEARCH_ALERT_THRESHOLD, AjfTableFieldComponent as AjfTableFieldComponent$1, AjfVideoUrlFieldComponent as AjfVideoUrlFieldComponent$1, AjfFieldService as AjfFieldService$1, AjfFieldType, AjfReadOnlyFieldComponent, AjfReadOnlyDateFieldComponent, AjfReadOnlyTableFieldComponent, AjfReadOnlySelectFieldComponent, AjfReadOnlyGeolocationFieldComponent, AjfFileFieldComponent, AjfReadOnlyFileFieldComponent, AjfImageFieldComponent, AjfReadOnlyImageFieldComponent, AjfReadOnlyVideoUrlFieldComponent, AjfFormField as AjfFormField$1, AjfFormRenderer as AjfFormRenderer$1, AjfFormsModule as AjfFormsModule$1 } from '@ajf/core/forms';
 import * as i0 from '@angular/core';
 import { Component, ChangeDetectionStrategy, ViewEncapsulation, Injectable, Inject, ViewChild, Optional, Input, NgModule } from '@angular/core';
 import * as i2$1 from '@angular/common';
@@ -707,7 +707,7 @@ class AjfFieldService extends AjfFieldService$1 {
             }),
             (this.componentsMap[AjfFieldType.DateInput] = {
                 component: AjfDateInputFieldComponent,
-                readOnlyComponent: AjfReadOnlyFieldComponent,
+                readOnlyComponent: AjfReadOnlyDateFieldComponent,
             }),
             (this.componentsMap[AjfFieldType.Table] = {
                 component: AjfTableFieldComponent,
