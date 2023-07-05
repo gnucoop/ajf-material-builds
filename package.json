@@ -1,6 +1,6 @@
 {
   "name": "@ajf/material",
-  "version": "15.2.3-eda13f54",
+  "version": "15.2.3-c6e50555",
   "description": "",
   "repository": {
     "type": "git",
@@ -98,14 +98,6 @@
       "es2015": "./fesm2015/ajf-material-image.mjs",
       "node": "./fesm2015/ajf-material-image.mjs",
       "default": "./fesm2020/ajf-material-image.mjs"
-    },
-    "./monaco-editor": {
-      "types": "./monaco-editor/index.d.ts",
-      "esm2020": "./esm2020/monaco-editor/ajf-material-monaco-editor.mjs",
-      "es2020": "./fesm2020/ajf-material-monaco-editor.mjs",
-      "es2015": "./fesm2015/ajf-material-monaco-editor.mjs",
-      "node": "./fesm2015/ajf-material-monaco-editor.mjs",
-      "default": "./fesm2020/ajf-material-monaco-editor.mjs"
     },
     "./node-icon": {
       "types": "./node-icon/index.d.ts",

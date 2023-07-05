@@ -20,21 +20,18 @@
  *
  */
 import { AjfField, AjfValidationService } from '@ajf/core/forms';
-import { AjfMonacoEditor } from '@ajf/material/monaco-editor';
+import { AfterViewInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import * as i0 from "@angular/core";
-export declare class AjfFbConditionEditor {
-    monacoEditor: AjfMonacoEditor;
+export declare class AjfFbConditionEditor implements AfterViewInit {
     private _fields;
     get fields(): AjfField[];
     set fields(fields: AjfField[]);
     condition: string;
-    editedValue: string;
+    formulaEditorControl: FormControl<string | null>;
     constructor(_: AjfValidationService);
+    ngAfterViewInit(): void;
     insertVariable(variable: string): void;
-    onEditorInit(): void;
-    private _updateVariables;
-    private _updateFunctions;
-    private _fieldVarType;
     static ɵfac: i0.ɵɵFactoryDeclaration<AjfFbConditionEditor, never>;
     static ɵcmp: i0.ɵɵComponentDeclaration<AjfFbConditionEditor, "ajf-condition-editor", never, { "fields": "fields"; "condition": "condition"; }, {}, never, never, false, never>;
 }
