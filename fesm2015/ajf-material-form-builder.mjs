@@ -366,75 +366,77 @@ class AjfFormBuilderService {
         this._availableNodeTypes = [
             {
                 label: 'Slide',
-                icon: { fontSet: 'ajf-icon', fontIcon: 'field-slide' },
-                nodeType: { node: AjfNodeType.AjfSlide },
+                node: { nodeType: AjfNodeType.AjfSlide },
                 isSlide: true,
             },
             {
                 label: 'Repeating slide',
-                icon: { fontSet: 'ajf-icon', fontIcon: 'field-repeatingslide' },
-                nodeType: { node: AjfNodeType.AjfRepeatingSlide },
+                node: { nodeType: AjfNodeType.AjfRepeatingSlide },
                 isSlide: true,
             },
             {
                 label: 'String',
-                icon: { fontSet: 'ajf-icon', fontIcon: 'field-string' },
-                nodeType: { node: AjfNodeType.AjfField, field: AjfFieldType.String },
+                node: { nodeType: AjfNodeType.AjfField, fieldType: AjfFieldType.String },
             },
             {
                 label: 'Text',
-                icon: { fontSet: 'ajf-icon', fontIcon: 'field-text' },
-                nodeType: { node: AjfNodeType.AjfField, field: AjfFieldType.Text },
+                node: { nodeType: AjfNodeType.AjfField, fieldType: AjfFieldType.Text },
             },
             {
                 label: 'Number',
-                icon: { fontSet: 'ajf-icon', fontIcon: 'field-number' },
-                nodeType: { node: AjfNodeType.AjfField, field: AjfFieldType.Number },
+                node: { nodeType: AjfNodeType.AjfField, fieldType: AjfFieldType.Number },
             },
             {
                 label: 'Boolean',
-                icon: { fontSet: 'ajf-icon', fontIcon: 'field-boolean' },
-                nodeType: { node: AjfNodeType.AjfField, field: AjfFieldType.Boolean },
+                node: { nodeType: AjfNodeType.AjfField, fieldType: AjfFieldType.Boolean },
             },
             {
                 label: 'Single choice',
-                icon: { fontSet: 'ajf-icon', fontIcon: 'field-singlechoice' },
-                nodeType: { node: AjfNodeType.AjfField, field: AjfFieldType.SingleChoice },
+                node: { nodeType: AjfNodeType.AjfField, fieldType: AjfFieldType.SingleChoice },
             },
             {
                 label: 'Multiple choice',
-                icon: { fontSet: 'ajf-icon', fontIcon: 'field-multiplechoice' },
-                nodeType: { node: AjfNodeType.AjfField, field: AjfFieldType.MultipleChoice },
+                node: { nodeType: AjfNodeType.AjfField, fieldType: AjfFieldType.MultipleChoice },
             },
             {
                 label: 'Formula',
-                icon: { fontSet: 'ajf-icon', fontIcon: 'field-formula' },
-                nodeType: { node: AjfNodeType.AjfField, field: AjfFieldType.Formula },
+                node: { nodeType: AjfNodeType.AjfField, fieldType: AjfFieldType.Formula },
             },
             {
                 label: 'Date',
-                icon: { fontSet: 'ajf-icon', fontIcon: 'field-date' },
-                nodeType: { node: AjfNodeType.AjfField, field: AjfFieldType.Date },
+                node: { nodeType: AjfNodeType.AjfField, fieldType: AjfFieldType.Date },
             },
             {
                 label: 'Date input',
-                icon: { fontSet: 'ajf-icon', fontIcon: 'field-dateinput' },
-                nodeType: { node: AjfNodeType.AjfField, field: AjfFieldType.DateInput },
+                node: { nodeType: AjfNodeType.AjfField, fieldType: AjfFieldType.DateInput },
             },
             {
                 label: 'Time',
-                icon: { fontSet: 'ajf-icon', fontIcon: 'field-time' },
-                nodeType: { node: AjfNodeType.AjfField, field: AjfFieldType.Time },
+                node: { nodeType: AjfNodeType.AjfField, fieldType: AjfFieldType.Time },
             },
             {
                 label: 'Table',
-                icon: { fontSet: 'ajf-icon', fontIcon: 'field-table' },
-                nodeType: { node: AjfNodeType.AjfField, field: AjfFieldType.Table },
+                node: { nodeType: AjfNodeType.AjfField, fieldType: AjfFieldType.Table },
+            },
+            {
+                label: 'Geolocation',
+                node: { nodeType: AjfNodeType.AjfField, fieldType: AjfFieldType.Geolocation },
+            },
+            {
+                label: 'Barcode',
+                node: { nodeType: AjfNodeType.AjfField, fieldType: AjfFieldType.Barcode },
+            },
+            {
+                label: 'File',
+                node: { nodeType: AjfNodeType.AjfField, fieldType: AjfFieldType.File },
+            },
+            {
+                label: 'Image',
+                node: { nodeType: AjfNodeType.AjfField, fieldType: AjfFieldType.Image },
             },
             {
                 label: 'Range',
-                icon: { fontSet: 'ajf-icon', fontIcon: 'field-range' },
-                nodeType: { node: AjfNodeType.AjfField, field: AjfFieldType.Range },
+                node: { nodeType: AjfNodeType.AjfField, fieldType: AjfFieldType.Range },
             },
         ];
         this._form = new BehaviorSubject(null);
@@ -583,15 +585,14 @@ class AjfFormBuilderService {
         return '';
     }
     insertNode(nodeType, parent, parentNode, inContent = false, insertInIndex = 0) {
-        var _a;
         let node;
         const id = ++nodeUniqueId;
-        const isFieldNode = ((_a = nodeType.nodeType) === null || _a === void 0 ? void 0 : _a.field) != null;
+        const isFieldNode = nodeType.node.fieldType != null;
         if (isFieldNode) {
             node = createField({
                 id,
                 nodeType: AjfNodeType.AjfField,
-                fieldType: nodeType.nodeType.field,
+                fieldType: nodeType.node.fieldType,
                 parent: parent.id,
                 parentNode,
                 name: '',
@@ -600,7 +601,7 @@ class AjfFormBuilderService {
         else {
             node = createContainerNode({
                 id,
-                nodeType: nodeType.nodeType.node,
+                nodeType: nodeType.node.nodeType,
                 parent: 0,
                 parentNode,
                 name: '',
@@ -2559,10 +2560,10 @@ class AjfFbNodeTypeEntry {
     }
 }
 AjfFbNodeTypeEntry.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "15.0.4", ngImport: i0, type: AjfFbNodeTypeEntry, deps: [{ token: i0.ChangeDetectorRef }], target: i0.ɵɵFactoryTarget.Component });
-AjfFbNodeTypeEntry.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14.0.0", version: "15.0.4", type: AjfFbNodeTypeEntry, selector: "ajf-fb-node-type-entry", inputs: { nodeType: "nodeType" }, ngImport: i0, template: "<ng-container *ngIf=\"nodeType\">\n  <mat-icon\n    [fontSet]=\"nodeType.icon.fontSet\" [fontIcon]=\"nodeType.icon.fontIcon\"></mat-icon>\n  {{ nodeType.label }}\n</ng-container>\n", styles: ["ajf-fb-node-type-entry{display:block;padding:1em 1.5em}ajf-fb-node-type-entry mat-icon{vertical-align:middle}\n"], dependencies: [{ kind: "directive", type: i3.NgIf, selector: "[ngIf]", inputs: ["ngIf", "ngIfThen", "ngIfElse"] }, { kind: "component", type: i5$1.MatIcon, selector: "mat-icon", inputs: ["color", "inline", "svgIcon", "fontSet", "fontIcon"], exportAs: ["matIcon"] }], changeDetection: i0.ChangeDetectionStrategy.OnPush, encapsulation: i0.ViewEncapsulation.None });
+AjfFbNodeTypeEntry.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14.0.0", version: "15.0.4", type: AjfFbNodeTypeEntry, selector: "ajf-fb-node-type-entry", inputs: { nodeType: "nodeType" }, ngImport: i0, template: "<ng-container *ngIf=\"nodeType\">\n  <ajf-node-icon [node]=\"nodeType.node\"></ajf-node-icon>&nbsp;{{nodeType.label}}\n</ng-container>\n", styles: ["ajf-fb-node-type-entry{display:block;padding:1em 1.5em}ajf-fb-node-type-entry mat-icon{vertical-align:middle}\n"], dependencies: [{ kind: "component", type: i2$1.AjfNodeIcon, selector: "ajf-node-icon" }, { kind: "directive", type: i3.NgIf, selector: "[ngIf]", inputs: ["ngIf", "ngIfThen", "ngIfElse"] }], changeDetection: i0.ChangeDetectionStrategy.OnPush, encapsulation: i0.ViewEncapsulation.None });
 i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.0.4", ngImport: i0, type: AjfFbNodeTypeEntry, decorators: [{
             type: Component,
-            args: [{ selector: 'ajf-fb-node-type-entry', encapsulation: ViewEncapsulation.None, changeDetection: ChangeDetectionStrategy.OnPush, template: "<ng-container *ngIf=\"nodeType\">\n  <mat-icon\n    [fontSet]=\"nodeType.icon.fontSet\" [fontIcon]=\"nodeType.icon.fontIcon\"></mat-icon>\n  {{ nodeType.label }}\n</ng-container>\n", styles: ["ajf-fb-node-type-entry{display:block;padding:1em 1.5em}ajf-fb-node-type-entry mat-icon{vertical-align:middle}\n"] }]
+            args: [{ selector: 'ajf-fb-node-type-entry', encapsulation: ViewEncapsulation.None, changeDetection: ChangeDetectionStrategy.OnPush, template: "<ng-container *ngIf=\"nodeType\">\n  <ajf-node-icon [node]=\"nodeType.node\"></ajf-node-icon>&nbsp;{{nodeType.label}}\n</ng-container>\n", styles: ["ajf-fb-node-type-entry{display:block;padding:1em 1.5em}ajf-fb-node-type-entry mat-icon{vertical-align:middle}\n"] }]
         }], ctorParameters: function () { return [{ type: i0.ChangeDetectorRef }]; }, propDecorators: { nodeType: [{
                 type: Input
             }] } });
