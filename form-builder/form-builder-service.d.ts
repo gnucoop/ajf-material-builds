@@ -19,13 +19,16 @@
  * If not, see http://www.gnu.org/licenses/.
  *
  */
-import { AjfAttachmentsOrigin, AjfChoicesOrigin, AjfField, AjfForm, AjfFormStringIdentifier, AjfNode, AjfNodeGroup, AjfRepeatingSlide, AjfSlide } from '@ajf/core/forms';
+import { AjfAttachmentsOrigin, AjfChoicesOrigin, AjfField, AjfFieldType, AjfForm, AjfFormStringIdentifier, AjfNode, AjfNodeGroup, AjfNodeType, AjfRepeatingSlide, AjfSlide } from '@ajf/core/forms';
 import { AjfCondition } from '@ajf/core/models';
 import { BehaviorSubject, Observable } from 'rxjs';
 import * as i0 from "@angular/core";
 export interface AjfFormBuilderNodeTypeEntry {
     label: string;
-    node: any;
+    nodeType: {
+        node: AjfNodeType;
+        field?: AjfFieldType;
+    };
     isSlide?: boolean;
 }
 export interface AjfFormBuilderNodeEntry {
